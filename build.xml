@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<project name="Stardog Examples" default="dist" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<import file="ivy.build.xml"/>
+
+	<target name="clean">
+
+	</target>
+
+	<target name="init-build-path">
+		<ivy:buildlist reference="build-path" onMissingDescriptor="skip">
+			<fileset dir="." includes="**/build.xml"/>
+		</ivy:buildlist>
+	</target>
+
+	<target name="build" depends="init-ivy">
+		<ivy:configure file="settings/ivysettings.xml" />
+
+		<ivy:buildlist reference="build-path" onMissingDescriptor="skip">
+			<fileset dir="." includes="**/build.xml"/>
+		</ivy:buildlist>
+	</target>
+
+	<target name="dist" depends="build">
+
+		<subant buildpathref="build-path" failonerror="true">
+			<property name="ivy.settings" location="settings/ivysettings.xml"/>
+			<property name="publish.repo" value="local.repo"/>
+
+			<target name="clean"/>
+			<!--<target name="resolve"/>-->
+			<target name="dist"/>
+			<!--<target name="publish"/>-->
+		</subant>
+	</target>
+
+	<target name="docs" depends="init-build-path">
+		<!-- run docco -->
+		<!-- run docco -->
+	</target>
+</project>

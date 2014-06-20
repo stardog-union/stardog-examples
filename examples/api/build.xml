@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<project name="API Examples" default="dist" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<description>
+		Stardog API Examples
+	</description>
+
+	<property name="build" location="build"/>
+	<property name="build.main" location="${build}/main"/>
+	<property name="build.test" location="${build}/test"/>
+
+	<property name="lib" location="lib"/>
+	<property name="dist" location="dist"/>
+
+	<property name="src" location="main/src"/>
+	<property name="test" location="test/src"/>
+
+	<property file="../../project.properties"/>
+
+	<property name="ivy.settings" location="../../settings/ivysettings.xml"/>
+	<property name="publish.repo" value="local.repo"/>
+
+	<property name="project.name" value="stardog-examples"/>
+	<property name="project.version" value="1.0"/>
+
+	<import file="../../ivy.build.xml"/>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+		<delete dir="${lib}"/>
+	</target>
+
+	<target name="init" depends="init-ivy">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.main}"/>
+		<mkdir dir="${build.test}"/>
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${lib}"/>
+	</target>
+
+	<target name="resolve" depends="init-ivy" description="--> retrieve dependencies with ivy">
+		<ivy:configure file="${ivy.settings}" />
+
+		<ivy:resolve file="ivy.xml"/>
+		<ivy:retrieve pattern="${lib}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" type="jar, bundle"/>
+		<ivy:cachepath pathid="classpath"/>
+	</target>
+
+	<target name="build" depends="init, resolve">
+		<path id="project.class.path">
+			<path refid="classpath"/>
+			<fileset dir="${stardog.install}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+
+		<javac source="1.6" target="1.6" srcdir="${src}" destdir="${build.main}" debug="yes" deprecation="yes">
+			<classpath>
+				<path refid="project.class.path"/>
+			</classpath>
+		</javac>
+
+		<copy todir="${build.main}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+
+		<javac source="1.6" target="1.6" srcdir="${test}" destdir="${build.test}" debug="yes" deprecation="yes">
+			<classpath>
+				<path refid="project.class.path"/>
+				<pathelement path="${build.main}"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dist" depends="build">
+		<mkdir dir="${dist}/lib" />
+
+		<copy todir="${dist}/lib" flatten="true">
+			<fileset dir="${lib}">
+				<include name="**/*.jar" />
+				<exclude name="**/${project.name}*.jar"/>
+			</fileset>
+		</copy>
+
+		<jar jarfile="${dist}/${project.name}-${project.version}.jar"
+			 basedir="${build.main}">
+		</jar>
+
+		<jar jarfile="${dist}/${project.name}-test-${project.version}.jar"
+			 basedir="${build.test}">
+		</jar>
+	</target>
+
+	<target name="publish">
+		<ivy:publish resolver="${publish.repo}" pubrevision="${project.version}" overwrite="true">
+			<artifacts pattern="${dist}/[artifact]-[revision].[ext]" />
+		</ivy:publish>
+	</target>
+
+	<target name="docs">
+
+	</target>
+
+</project>

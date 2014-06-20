@@ -1,0 +1,70 @@
+<ivy-module version="2.2">
+	<info organisation="com.complexible.stardog.examples" module="api">
+		<license name="APL 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+		<ivyauthor name="Michael Grove"/>
+		<description homepage="https://github.com/clarkparsia/stardog-examples">Example code for working with and extending Stardog.</description>
+	</info>
+
+	<configurations>
+		<conf name="compile" description="Everything required to run the core module"/>
+		<conf name="default" description="Everything required to run the module"/>
+		<conf name="test" extends="default" description="Everything needed to run the module and its test suite"/>
+	</configurations>
+
+	<publications>
+		<artifact name="stardog-examples" type="jar" ext="jar" conf="default"/>
+	</publications>
+
+	<dependencies>
+		<!--<dependency org="com.complexible.stardog" name="shared" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="api" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.search" name="api" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="icv" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.reasoning" name="api" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; the deps for the core of Stardog &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog" name="dbms" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="logging" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="security" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; these are the common extensions to the core dbms &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog" name="reasoning" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="icv" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="search" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; other plugins for common vocabs &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog" name="skos" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog" name="prov" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; SNARL server &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog.protocols.snarl" name="server" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.reasoning.snarl" name="server" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.icv.snarl" name="server" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; HTTP server &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog.protocols.http" name="server" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.reasoning.http" name="server" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.icv.http" name="server" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; SNARL client &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog.protocols.snarl" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.reasoning.snarl" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.search.snarl" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.icv.snarl" name="client" rev="2.1.3" conf="default"/>-->
+
+		<!--&lt;!&ndash; HTTP client &ndash;&gt;-->
+		<!--<dependency org="com.complexible.stardog.protocols.http" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.reasoning.http" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.search.http" name="client" rev="2.1.3" conf="default"/>-->
+		<!--<dependency org="com.complexible.stardog.icv.http" name="client" rev="2.1.3" conf="default"/>-->
+
+		<!--<dependency org="org.slf4j" name="slf4j-api" rev="1.7.5" conf="compile,default,test->default"/>-->
+		<!--<dependency org="org.slf4j" name="slf4j-jdk14" rev="1.7.5" conf="compile,default,test->default"/>-->
+
+		<!--<dependency org="com.google.guava" name="guava" rev="17.0" conf="compile,default,test->default">-->
+			<!--<exclude org="com.google.code.findbugs"/>-->
+		<!--</dependency>-->
+
+		<!--<dependency org="junit" name="junit" rev="4.8.2" conf="test->default"/>-->
+	</dependencies>
+</ivy-module>
