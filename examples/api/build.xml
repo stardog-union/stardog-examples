@@ -60,7 +60,7 @@
 
 	<target name="run" depends="build" description="Run each of the examples.">
 		<antcall target="runExample" inheritrefs="true" inheritall="true">
-			<param name="example" value="com.complexible.stardog.api.ConnectionAPIExample"/>
+			<param name="example" value="com.complexible.stardog.examples.api.ConnectionAPIExample"/>
 		</antcall>
 	</target>
 
@@ -78,7 +78,7 @@
 		<exec executable="docco">
 			<arg value="-o"/>
 			<arg value="${docs}"/>
-			<arg value="${src}/com/complexible/stardog/api/ConnectionAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionAPIExample.java"/>
 		</exec>
 	</target>
 
