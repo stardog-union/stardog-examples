@@ -62,6 +62,10 @@
 		<antcall target="runExample" inheritrefs="true" inheritall="true">
 			<param name="example" value="com.complexible.stardog.examples.api.ConnectionAPIExample"/>
 		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.sesame.SesameExample"/>
+		</antcall>
 	</target>
 
 	<target name="runExample">
@@ -79,6 +83,7 @@
 			<arg value="-o"/>
 			<arg value="${docs}"/>
 			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/sesame/SesameExample.java"/>
 		</exec>
 	</target>
 
