@@ -10,9 +10,9 @@
 	<property name="build.test" location="${build}/test"/>
 
 	<property name="dist" location="dist"/>
+	<property name="docs" location="docs"/>
 
 	<property name="src" location="main/src"/>
-	<!--<property name="test" location="test/src"/>-->
 
 	<property file="../../project.properties"/>
 
@@ -49,13 +49,6 @@
 				<exclude name="**/*.java" />
 			</fileset>
 		</copy>
-
-		<!--<javac source="1.6" target="1.6" srcdir="${test}" destdir="${build.test}" debug="yes" deprecation="yes">-->
-			<!--<classpath>-->
-				<!--<path refid="project.class.path"/>-->
-				<!--<pathelement path="${build.main}"/>-->
-			<!--</classpath>-->
-		<!--</javac>-->
 	</target>
 
 	<target name="dist" depends="build" description="Package the example as a jar">
@@ -63,10 +56,6 @@
 		<jar jarfile="${dist}/${project.name}-${project.version}.jar"
 			 basedir="${build.main}">
 		</jar>
-
-		<!--<jar jarfile="${dist}/${project.name}-test-${project.version}.jar"-->
-			 <!--basedir="${build.test}">-->
-		<!--</jar>-->
 	</target>
 
 	<target name="run" depends="build" description="Run each of the examples.">
@@ -88,7 +77,7 @@
 	<target name="docs" description="Generate any documentation for the examples">
 		<exec executable="docco">
 			<arg value="-o"/>
-			<arg value="docs"/>
+			<arg value="${docs}"/>
 			<arg value="${src}/com/complexible/stardog/api/ConnectionAPIExample.java"/>
 		</exec>
 	</target>
