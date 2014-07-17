@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 
-<project name="Common.IVY" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="Common.IVY" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 	<description>
 		Common IVY Tasks
 	</description>
 
-	<property name="ivy.settings.location" location="settings/ivysettings.xml"/>
+	<dirname property="Common.IVY.basedir" file="${ant.file.Common.IVY}"/>
+
+	<property name="ivy.settings.location" location="${Common.IVY.basedir}/settings/ivysettings.xml"/>
 
 	<property name="lib" location="lib"/>
 

@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<project name="Function Extension Examples" default="test" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<description>
+		Stardog Function Extension Examples
+	</description>
+
+	<property name="build" location="build"/>
+	<property name="build.main" location="${build}/main"/>
+	<property name="build.test" location="${build}/test"/>
+
+	<property name="dist" location="dist"/>
+	<property name="lib" location="lib"/>
+	<property name="docs" location="docs"/>
+
+	<property name="src" location="main/src"/>
+	<property name="test" location="test/src"/>
+
+	<property file="../../project.properties"/>
+
+	<property name="project.name" value="stardog-function-examples"/>
+	<property name="project.version" value="1.0"/>
+
+	<include file="../../ivy.build.xml"/>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+
+	<target name="init" depends="Common.IVY.init-ivy">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.main}"/>
+		<mkdir dir="${build.test}"/>
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${lib}"/>
+	</target>
+
+	<target name="build" depends="init, Common.IVY.resolve" description="Compile the example">
+		<path id="project.class.path">
+			<fileset dir="${stardog.install}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+
+		<javac source="1.6" target="1.6" srcdir="${src}" destdir="${build.main}" debug="yes" deprecation="yes">
+			<classpath>
+				<path refid="project.class.path"/>
+				<path refid="classpath"/>
+			</classpath>
+		</javac>
+
+		<copy todir="${build.main}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+
+		<javac source="1.6" target="1.6" srcdir="${test}" destdir="${build.test}" debug="yes" deprecation="yes">
+			<classpath>
+				<path refid="project.class.path"/>
+				<pathelement path="${build.main}"/>
+				<path refid="classpath"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dist" depends="build" description="Package the example as a jar">
+
+		<jar jarfile="${dist}/${project.name}-${project.version}.jar"
+			 basedir="${build.main}">
+		</jar>
+
+		<jar jarfile="${dist}/${project.name}-test-${project.version}.jar"
+			 basedir="${build.test}">
+		</jar>
+	</target>
+
+	<target name="test" depends="build" description="Run the test suite">
+
+		<junit fork="yes" printsummary="yes" haltonfailure="yes" failureproperty="junit.failure" showoutput="true">
+			<jvmarg value="-Dstardog.home=${stardog.home}"/>
+
+			<test name="com.complexible.stardog.examples.functions.TestTitleCaseFunction"/>
+
+			<formatter type="brief" usefile="false"/>
+
+			<classpath>
+				<path refid="project.class.path"/>
+				<path refid="classpath"/>
+				<pathelement path="${build.main}"/>
+				<pathelement path="${build.test}"/>
+			</classpath>
+		</junit>
+	</target>
+
+	<target name="docs" description="Generate any documentation for the examples">
+		<exec executable="docco">
+			<arg value="-o"/>
+			<arg value="${docs}"/>
+			<arg value="${src}/com/complexible/stardog/examples/functions/TitleCase.java"/>
+		</exec>
+	</target>
+
+</project>
