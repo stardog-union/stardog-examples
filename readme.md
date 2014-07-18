@@ -33,7 +33,7 @@ using the default port.  Then, navigate into any of those directories where ther
 ## Generating Documentation
 
 The Stardog [documentation](http://docs.stardog.com) and its [javadocs](http://docs.stardog.com/java/snarl) are a good
-place to start. But some examples in this repository in this repository are annotated using Markdown; they can be processed by
+place to start. But some examples in this repository are annotated using Markdown; they can be processed by
 [Docco](http://jashkenas.github.io/docco/).
 
 If you don't have Docco installed, it's pretty easy to get started:
