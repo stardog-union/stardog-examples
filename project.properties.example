@@ -1,0 +1,5 @@
+# The path to where stardog is installed.
+stardog.install = /path/to/stardog
+
+# Path to the stardog home directory where your license lives
+stardog.home = /path/to/home

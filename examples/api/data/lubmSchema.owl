@@ -1,0 +1,1984 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY http "http://" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY daml "http://www.daml.org/2001/03/daml+oil#" >
+    <!ENTITY www14 "http://www.Department6.University0.edu/" >
+    <!ENTITY www12 "http://www.Department0.University0.edu/" >
+    <!ENTITY www "http://www.Department7.University0.edu/" >
+    <!ENTITY www9 "http://www.Department3.University0.edu/" >
+    <!ENTITY www13 "http://www.Department8.University0.edu/" >
+    <!ENTITY www5 "http://www.Department9.University0.edu/" >
+    <!ENTITY www4 "http://www.Department2.University0.edu/" >
+    <!ENTITY www6 "http://www.Department4.University0.edu/" >
+    <!ENTITY www15 "http://www.Department5.University0.edu/" >
+    <!ENTITY www8 "http://www.Department1.University0.edu/" >
+    <!ENTITY www3 "http://www.Department13.University0.edu/" >
+    <!ENTITY www10 "http://www.Department14.University0.edu/" >
+    <!ENTITY www11 "http://www.Department10.University0.edu/" >
+    <!ENTITY www2 "http://www.Department11.University0.edu/" >
+    <!ENTITY www7 "http://www.Department12.University0.edu/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Lecturer5 "http://www.Department1.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer4 "http://www.Department1.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer06 "http://www.Department6.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer15 "http://www.Department1.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer010 "http://www.Department1.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer39 "http://www.Department1.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer2 "http://www.Department1.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer3 "http://www.Department4.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer53 "http://www.Department5.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer55 "http://www.Department8.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer45 "http://www.Department4.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer43 "http://www.Department5.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer52 "http://www.Department2.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer34 "http://www.Department8.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer46 "http://www.Department8.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer111 "http://www.Department6.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer04 "http://www.Department4.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer36 "http://www.Department6.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer47 "http://www.Department6.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer09 "http://www.Department0.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer05 "http://www.Department8.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer6 "http://www.Department9.University0.edu/Lecturer6/" >
+    <!ENTITY Lecturer0 "http://www.Department2.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer54 "http://www.Department9.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer17 "http://www.Department0.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer48 "http://www.Department9.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer12 "http://www.Department8.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer03 "http://www.Department3.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer312 "http://www.Department9.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer110 "http://www.Department2.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer13 "http://www.Department3.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer24 "http://www.Department9.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer29 "http://www.Department5.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer19 "http://www.Department9.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer38 "http://www.Department2.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer310 "http://www.Department5.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer07 "http://www.Department9.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer56 "http://www.Department3.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer16 "http://www.Department7.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer28 "http://www.Department3.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer011 "http://www.Department7.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer37 "http://www.Department3.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer33 "http://www.Department7.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer23 "http://www.Department7.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer62 "http://www.Department0.University0.edu/Lecturer6/" >
+    <!ENTITY Lecturer42 "http://www.Department7.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer012 "http://www.Department13.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer013 "http://www.Department12.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer1 "http://www.Department10.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer08 "http://www.Department10.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer14 "http://www.Department12.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer26 "http://www.Department12.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer18 "http://www.Department14.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer014 "http://www.Department14.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer58 "http://www.Department10.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer44 "http://www.Department12.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer49 "http://www.Department10.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer311 "http://www.Department13.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer35 "http://www.Department10.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer25 "http://www.Department13.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer22 "http://www.Department10.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer112 "http://www.Department13.University0.edu/Lecturer1/" >
+    <!ENTITY Lecturer63 "http://www.Department10.University0.edu/Lecturer6/" >
+    <!ENTITY Lecturer210 "http://www.Department11.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer02 "http://www.Department11.University0.edu/Lecturer0/" >
+    <!ENTITY Lecturer32 "http://www.Department11.University0.edu/Lecturer3/" >
+    <!ENTITY Lecturer59 "http://www.Department11.University0.edu/Lecturer5/" >
+    <!ENTITY Lecturer27 "http://www.Department14.University0.edu/Lecturer2/" >
+    <!ENTITY Lecturer410 "http://www.Department14.University0.edu/Lecturer4/" >
+    <!ENTITY Lecturer57 "http://www.Department14.University0.edu/Lecturer5/" >
+    <!ENTITY univ-bench "http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#" >
+    <!ENTITY FullProfessor73 "http://www.Department1.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor02 "http://www.Department4.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor012 "http://www.Department0.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor611 "http://www.Department1.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor92 "http://www.Department1.University0.edu/FullProfessor9/" >
+    <!ENTITY FullProfessor04 "http://www.Department3.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor82 "http://www.Department1.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor411 "http://www.Department4.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor515 "http://www.Department8.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor22 "http://www.Department3.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor55 "http://www.Department0.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor3 "http://www.Department4.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor65 "http://www.Department8.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor17 "http://www.Department3.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor44 "http://www.Department0.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor2 "http://www.Department4.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor53 "http://www.Department3.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor64 "http://www.Department2.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor74 "http://www.Department8.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor4 "http://www.Department3.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor310 "http://www.Department0.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor13 "http://www.Department0.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor114 "http://www.Department4.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor87 "http://www.Department8.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor39 "http://www.Department3.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor214 "http://www.Department0.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor93 "http://www.Department0.University0.edu/FullProfessor9/" >
+    <!ENTITY FullProfessor311 "http://www.Department2.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor79 "http://www.Department3.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor48 "http://www.Department2.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor16 "http://www.Department8.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor86 "http://www.Department0.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor612 "http://www.Department3.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor59 "http://www.Department2.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor24 "http://www.Department8.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor72 "http://www.Department0.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor14 "http://www.Department2.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor09 "http://www.Department1.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor38 "http://www.Department8.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor66 "http://www.Department0.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor69 "http://www.Department4.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor25 "http://www.Department2.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor412 "http://www.Department8.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor83 "http://www.Department3.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor57 "http://www.Department4.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor27 "http://www.Department1.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor314 "http://www.Department1.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor1 "http://www.Department1.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor011 "http://www.Department2.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor510 "http://www.Department1.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor05 "http://www.Department8.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor414 "http://www.Department1.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor112 "http://www.Department7.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor26 "http://www.Department7.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor014 "http://www.Department9.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor315 "http://www.Department7.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor415 "http://www.Department7.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor513 "http://www.Department6.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor5 "http://www.Department5.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor35 "http://www.Department9.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor76 "http://www.Department5.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor614 "http://www.Department6.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor613 "http://www.Department5.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor46 "http://www.Department9.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor8 "http://www.Department5.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor84 "http://www.Department6.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor18 "http://www.Department9.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor7 "http://www.Department6.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor9 "http://www.Department5.University0.edu/FullProfessor9/" >
+    <!ENTITY FullProfessor94 "http://www.Department6.University0.edu/FullProfessor9/" >
+    <!ENTITY FullProfessor215 "http://www.Department9.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor010 "http://www.Department7.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor110 "http://www.Department5.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor15 "http://www.Department6.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor212 "http://www.Department5.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor213 "http://www.Department6.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor36 "http://www.Department6.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor512 "http://www.Department9.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor32 "http://www.Department5.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor610 "http://www.Department9.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor45 "http://www.Department5.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor49 "http://www.Department6.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor511 "http://www.Department7.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor615 "http://www.Department7.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor08 "http://www.Department6.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor07 "http://www.Department5.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor78 "http://www.Department11.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor06 "http://www.Department14.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor29 "http://www.Department13.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor115 "http://www.Department13.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor03 "http://www.Department13.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor28 "http://www.Department14.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor19 "http://www.Department14.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor34 "http://www.Department11.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor410 "http://www.Department10.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor47 "http://www.Department11.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor312 "http://www.Department10.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor56 "http://www.Department11.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor62 "http://www.Department10.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor68 "http://www.Department11.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor514 "http://www.Department10.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor015 "http://www.Department12.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor23 "http://www.Department12.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor111 "http://www.Department12.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor37 "http://www.Department12.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor42 "http://www.Department12.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor54 "http://www.Department12.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor6 "http://www.Department12.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor75 "http://www.Department12.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor85 "http://www.Department12.University0.edu/FullProfessor8/" >
+    <!ENTITY FullProfessor0 "http://www.Department11.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor013 "http://www.Department10.University0.edu/FullProfessor0/" >
+    <!ENTITY FullProfessor113 "http://www.Department10.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor77 "http://www.Department13.University0.edu/FullProfessor7/" >
+    <!ENTITY FullProfessor210 "http://www.Department11.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor211 "http://www.Department10.University0.edu/FullProfessor2/" >
+    <!ENTITY FullProfessor12 "http://www.Department11.University0.edu/FullProfessor1/" >
+    <!ENTITY FullProfessor52 "http://www.Department13.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor33 "http://www.Department14.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor63 "http://www.Department13.University0.edu/FullProfessor6/" >
+    <!ENTITY FullProfessor413 "http://www.Department14.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor313 "http://www.Department13.University0.edu/FullProfessor3/" >
+    <!ENTITY FullProfessor58 "http://www.Department14.University0.edu/FullProfessor5/" >
+    <!ENTITY FullProfessor43 "http://www.Department13.University0.edu/FullProfessor4/" >
+    <!ENTITY FullProfessor67 "http://www.Department14.University0.edu/FullProfessor6/" >
+    <!ENTITY AssistantProfessor75 "http://www.Department8.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor611 "http://www.Department2.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor212 "http://www.Department3.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor5 "http://www.Department7.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor76 "http://www.Department4.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor27 "http://www.Department5.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor415 "http://www.Department5.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor65 "http://www.Department8.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor55 "http://www.Department2.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor83 "http://www.Department4.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssistantProfessor48 "http://www.Department7.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor36 "http://www.Department3.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor36 "http://www.Department5.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor513 "http://www.Department5.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor510 "http://www.Department8.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor84 "http://www.Department2.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor9 "http://www.Department8.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssistantProfessor412 "http://www.Department3.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor0 "http://www.Department6.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor56 "http://www.Department4.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor38 "http://www.Department7.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor42 "http://www.Department5.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor69 "http://www.Department5.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor711 "http://www.Department2.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor85 "http://www.Department8.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssistantProfessor514 "http://www.Department3.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor23 "http://www.Department7.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor612 "http://www.Department4.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor56 "http://www.Department5.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor79 "http://www.Department5.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor311 "http://www.Department4.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor411 "http://www.Department4.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor96 "http://www.Department2.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor95 "http://www.Department7.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssistantProfessor713 "http://www.Department7.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor010 "http://www.Department3.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor06 "http://www.Department1.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor97 "http://www.Department9.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssistantProfessor12 "http://www.Department4.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor813 "http://www.Department3.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor013 "http://www.Department9.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssociateProfessor09 "http://www.Department5.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor88 "http://www.Department7.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssistantProfessor16 "http://www.Department3.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor611 "http://www.Department7.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor19 "http://www.Department1.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor98 "http://www.Department3.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor24 "http://www.Department4.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor120 "http://www.Department9.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor111 "http://www.Department5.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor44 "http://www.Department8.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor6 "http://www.Department3.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor77 "http://www.Department9.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor211 "http://www.Department1.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor712 "http://www.Department3.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor38 "http://www.Department8.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor07 "http://www.Department4.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssistantProfessor87 "http://www.Department9.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor314 "http://www.Department1.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor47 "http://www.Department9.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor710 "http://www.Department8.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor63 "http://www.Department8.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor415 "http://www.Department3.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor45 "http://www.Department1.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor511 "http://www.Department9.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor710 "http://www.Department2.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor52 "http://www.Department3.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor514 "http://www.Department8.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor53 "http://www.Department1.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor613 "http://www.Department9.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssistantProfessor63 "http://www.Department2.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssistantProfessor25 "http://www.Department9.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor112 "http://www.Department7.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor23 "http://www.Department3.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor613 "http://www.Department1.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor62 "http://www.Department3.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor05 "http://www.Department8.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor55 "http://www.Department2.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor314 "http://www.Department9.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor015 "http://www.Department7.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor3 "http://www.Department3.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor711 "http://www.Department3.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor7 "http://www.Department1.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor45 "http://www.Department2.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor011 "http://www.Department9.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor010 "http://www.Department3.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor86 "http://www.Department3.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor2 "http://www.Department8.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor88 "http://www.Department1.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor312 "http://www.Department2.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor13 "http://www.Department9.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor14 "http://www.Department3.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssistantProfessor93 "http://www.Department3.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssociateProfessor1 "http://www.Department8.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor913 "http://www.Department1.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssociateProfessor110 "http://www.Department4.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor510 "http://www.Department7.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor29 "http://www.Department1.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor210 "http://www.Department4.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor02 "http://www.Department0.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor34 "http://www.Department1.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor413 "http://www.Department7.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor87 "http://www.Department7.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor08 "http://www.Department0.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor86 "http://www.Department8.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor121 "http://www.Department0.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor73 "http://www.Department7.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor03 "http://www.Department1.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor014 "http://www.Department4.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssociateProfessor29 "http://www.Department0.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor97 "http://www.Department8.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssociateProfessor68 "http://www.Department7.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor15 "http://www.Department1.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor32 "http://www.Department0.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor213 "http://www.Department0.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor73 "http://www.Department6.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor67 "http://www.Department1.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor412 "http://www.Department0.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor18 "http://www.Department0.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor94 "http://www.Department7.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor78 "http://www.Department1.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor4 "http://www.Department0.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor512 "http://www.Department0.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor413 "http://www.Department1.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor62 "http://www.Department0.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor315 "http://www.Department0.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor52 "http://www.Department1.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor614 "http://www.Department9.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor37 "http://www.Department6.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor511 "http://www.Department6.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor75 "http://www.Department0.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor910 "http://www.Department4.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor66 "http://www.Department0.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor59 "http://www.Department9.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor04 "http://www.Department8.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssistantProfessor42 "http://www.Department6.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor65 "http://www.Department6.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor03 "http://www.Department2.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssociateProfessor811 "http://www.Department0.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor58 "http://www.Department0.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor48 "http://www.Department9.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor54 "http://www.Department6.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor912 "http://www.Department0.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor810 "http://www.Department0.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor76 "http://www.Department6.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor313 "http://www.Department9.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor77 "http://www.Department4.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor6 "http://www.Department6.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor99 "http://www.Department6.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor74 "http://www.Department0.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor85 "http://www.Department6.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor214 "http://www.Department9.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor8 "http://www.Department4.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor126 "http://www.Department7.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssistantProfessor111 "http://www.Department5.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor0 "http://www.Department2.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor713 "http://www.Department5.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor32 "http://www.Department8.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor54 "http://www.Department4.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor312 "http://www.Department2.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor15 "http://www.Department6.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor07 "http://www.Department7.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor014 "http://www.Department5.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor915 "http://www.Department9.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor43 "http://www.Department8.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor05 "http://www.Department6.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor67 "http://www.Department5.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor69 "http://www.Department4.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor411 "http://www.Department2.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor215 "http://www.Department6.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor99 "http://www.Department0.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssistantProfessor39 "http://www.Department5.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor35 "http://www.Department7.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor17 "http://www.Department6.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor214 "http://www.Department2.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor92 "http://www.Department5.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor114 "http://www.Department8.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor82 "http://www.Department9.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor37 "http://www.Department4.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor311 "http://www.Department6.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor12 "http://www.Department2.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssistantProfessor26 "http://www.Department5.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor22 "http://www.Department6.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor22 "http://www.Department7.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor115 "http://www.Department2.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor814 "http://www.Department5.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor714 "http://www.Department9.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor215 "http://www.Department8.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor49 "http://www.Department4.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor98 "http://www.Department4.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssociateProfessor46 "http://www.Department6.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor212 "http://www.Department2.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor58 "http://www.Department10.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor66 "http://www.Department12.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor117 "http://www.Department13.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor4 "http://www.Department10.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor810 "http://www.Department12.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor74 "http://www.Department12.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor26 "http://www.Department13.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor9 "http://www.Department12.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssociateProfessor78 "http://www.Department10.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor7 "http://www.Department14.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor310 "http://www.Department13.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor94 "http://www.Department12.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssociateProfessor615 "http://www.Department10.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor410 "http://www.Department13.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor44 "http://www.Department14.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor68 "http://www.Department12.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor16 "http://www.Department10.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssistantProfessor012 "http://www.Department11.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor17 "http://www.Department11.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor515 "http://www.Department13.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor512 "http://www.Department14.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor715 "http://www.Department13.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor08 "http://www.Department10.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor714 "http://www.Department12.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor89 "http://www.Department12.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor610 "http://www.Department13.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor25 "http://www.Department11.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor615 "http://www.Department14.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor315 "http://www.Department10.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor812 "http://www.Department13.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor211 "http://www.Department14.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor49 "http://www.Department12.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor914 "http://www.Department13.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssociateProfessor28 "http://www.Department10.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor35 "http://www.Department14.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor57 "http://www.Department12.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor012 "http://www.Department11.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor414 "http://www.Department11.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor513 "http://www.Department11.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor105 "http://www.Department8.University0.edu/AssistantProfessor10/" >
+    <!ENTITY AssistantProfessor09 "http://www.Department14.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor64 "http://www.Department11.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssistantProfessor310 "http://www.Department11.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor113 "http://www.Department2.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssistantProfessor1 "http://www.Department14.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor27 "http://www.Department11.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor39 "http://www.Department11.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor107 "http://www.Department2.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor110 "http://www.Department11.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor47 "http://www.Department11.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssistantProfessor84 "http://www.Department11.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor911 "http://www.Department10.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor910 "http://www.Department11.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssistantProfessor712 "http://www.Department11.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor815 "http://www.Department10.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssociateProfessor103 "http://www.Department0.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssociateProfessor122 "http://www.Department0.University0.edu/AssociateProfessor12/" >
+    <!ENTITY AssociateProfessor72 "http://www.Department11.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssistantProfessor610 "http://www.Department11.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssociateProfessor114 "http://www.Department0.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor1011 "http://www.Department5.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssociateProfessor134 "http://www.Department0.University0.edu/AssociateProfessor13/" >
+    <!ENTITY AssociateProfessor89 "http://www.Department11.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor515 "http://www.Department11.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor93 "http://www.Department11.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssociateProfessor10 "http://www.Department8.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor10 "http://www.Department9.University0.edu/AssistantProfessor10/" >
+    <!ENTITY AssistantProfessor82 "http://www.Department10.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor612 "http://www.Department14.University0.edu/AssociateProfessor6/" >
+    <!ENTITY AssociateProfessor123 "http://www.Department7.University0.edu/AssociateProfessor12/" >
+    <!ENTITY AssociateProfessor57 "http://www.Department14.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssistantProfessor92 "http://www.Department10.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssociateProfessor115 "http://www.Department7.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor43 "http://www.Department14.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor83 "http://www.Department14.University0.edu/AssociateProfessor8/" >
+    <!ENTITY AssistantProfessor64 "http://www.Department10.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssistantProfessor72 "http://www.Department10.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssociateProfessor79 "http://www.Department14.University0.edu/AssociateProfessor7/" >
+    <!ENTITY AssociateProfessor133 "http://www.Department7.University0.edu/AssociateProfessor13/" >
+    <!ENTITY AssistantProfessor96 "http://www.Department13.University0.edu/AssistantProfessor9/" >
+    <!ENTITY AssociateProfessor95 "http://www.Department14.University0.edu/AssociateProfessor9/" >
+    <!ENTITY AssistantProfessor8 "http://www.Department13.University0.edu/AssistantProfessor8/" >
+    <!ENTITY AssociateProfessor104 "http://www.Department7.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor33 "http://www.Department12.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor02 "http://www.Department10.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssistantProfessor46 "http://www.Department13.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssistantProfessor14 "http://www.Department10.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor2 "http://www.Department12.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor313 "http://www.Department13.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssociateProfessor18 "http://www.Department12.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssistantProfessor715 "http://www.Department13.University0.edu/AssistantProfessor7/" >
+    <!ENTITY AssistantProfessor614 "http://www.Department13.University0.edu/AssistantProfessor6/" >
+    <!ENTITY AssistantProfessor113 "http://www.Department12.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssociateProfessor04 "http://www.Department12.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor59 "http://www.Department13.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssistantProfessor06 "http://www.Department12.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor11 "http://www.Department3.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor119 "http://www.Department14.University0.edu/AssociateProfessor1/" >
+    <!ENTITY AssociateProfessor34 "http://www.Department12.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssistantProfessor410 "http://www.Department10.University0.edu/AssistantProfessor4/" >
+    <!ENTITY AssociateProfessor108 "http://www.Department3.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor013 "http://www.Department13.University0.edu/AssistantProfessor0/" >
+    <!ENTITY AssociateProfessor24 "http://www.Department12.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssociateProfessor015 "http://www.Department14.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor53 "http://www.Department10.University0.edu/AssistantProfessor5/" >
+    <!ENTITY AssociateProfessor5 "http://www.Department12.University0.edu/AssociateProfessor5/" >
+    <!ENTITY AssociateProfessor33 "http://www.Department14.University0.edu/AssociateProfessor3/" >
+    <!ENTITY AssociateProfessor011 "http://www.Department13.University0.edu/AssociateProfessor0/" >
+    <!ENTITY AssistantProfessor210 "http://www.Department10.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssistantProfessor28 "http://www.Department13.University0.edu/AssistantProfessor2/" >
+    <!ENTITY AssociateProfessor414 "http://www.Department12.University0.edu/AssociateProfessor4/" >
+    <!ENTITY AssociateProfessor213 "http://www.Department14.University0.edu/AssociateProfessor2/" >
+    <!ENTITY AssistantProfessor3 "http://www.Department10.University0.edu/AssistantProfessor3/" >
+    <!ENTITY AssistantProfessor19 "http://www.Department13.University0.edu/AssistantProfessor1/" >
+    <!ENTITY AssistantProfessor104 "http://www.Department13.University0.edu/AssistantProfessor10/" >
+    <!ENTITY AssociateProfessor102 "http://www.Department12.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor106 "http://www.Department10.University0.edu/AssistantProfessor10/" >
+    <!ENTITY AssociateProfessor109 "http://www.Department14.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssociateProfessor1010 "http://www.Department11.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor102 "http://www.Department12.University0.edu/AssistantProfessor10/" >
+    <!ENTITY AssociateProfessor112 "http://www.Department14.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor124 "http://www.Department11.University0.edu/AssociateProfessor12/" >
+    <!ENTITY AssociateProfessor116 "http://www.Department11.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor132 "http://www.Department11.University0.edu/AssociateProfessor13/" >
+    <!ENTITY AssociateProfessor105 "http://www.Department10.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssociateProfessor13 "http://www.Department13.University0.edu/AssociateProfessor13/" >
+    <!ENTITY AssociateProfessor125 "http://www.Department13.University0.edu/AssociateProfessor12/" >
+    <!ENTITY AssociateProfessor118 "http://www.Department13.University0.edu/AssociateProfessor11/" >
+    <!ENTITY AssociateProfessor106 "http://www.Department13.University0.edu/AssociateProfessor10/" >
+    <!ENTITY AssistantProfessor103 "http://www.Department11.University0.edu/AssistantProfessor10/" >
+]>
+
+
+<rdf:RDF xmlns="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#"
+     xml:base="file:/Users/evrensirin/projects/datasets/lubm/university0-11.owl"
+     xmlns:AssociateProfessor812="&http;www.Department13.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor710="&http;www.Department8.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor813="&http;www.Department3.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor711="&http;www.Department2.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor814="&http;www.Department5.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor815="&http;www.Department10.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor712="&http;www.Department3.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor77="&http;www.Department9.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor713="&http;www.Department5.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor76="&http;www.Department4.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor714="&http;www.Department9.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor79="&http;www.Department5.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor810="&http;www.Department12.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor715="&http;www.Department13.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor78="&http;www.Department1.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor811="&http;www.Department0.University0.edu/AssociateProfessor8/"
+     xmlns:AssistantProfessor72="&http;www.Department10.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor73="&http;www.Department6.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor74="&http;www.Department0.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor75="&http;www.Department8.University0.edu/AssistantProfessor7/"
+     xmlns:univ-bench="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#"
+     xmlns:Lecturer210="&http;www.Department11.University0.edu/Lecturer2/"
+     xmlns:AssistantProfessor68="&http;www.Department12.University0.edu/AssistantProfessor6/"
+     xmlns:Lecturer311="&http;www.Department13.University0.edu/Lecturer3/"
+     xmlns:Lecturer310="&http;www.Department5.University0.edu/Lecturer3/"
+     xmlns:AssistantProfessor67="&http;www.Department1.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor66="&http;www.Department0.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor65="&http;www.Department8.University0.edu/AssistantProfessor6/"
+     xmlns:FullProfessor92="&http;www.Department1.University0.edu/FullProfessor9/"
+     xmlns:FullProfessor93="&http;www.Department0.University0.edu/FullProfessor9/"
+     xmlns:AssistantProfessor69="&http;www.Department5.University0.edu/AssistantProfessor6/"
+     xmlns:FullProfessor94="&http;www.Department6.University0.edu/FullProfessor9/"
+     xmlns:Lecturer112="&http;www.Department13.University0.edu/Lecturer1/"
+     xmlns:Lecturer110="&http;www.Department2.University0.edu/Lecturer1/"
+     xmlns:Lecturer111="&http;www.Department6.University0.edu/Lecturer1/"
+     xmlns:AssistantProfessor63="&http;www.Department2.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor64="&http;www.Department10.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor62="&http;www.Department3.University0.edu/AssistantProfessor6/"
+     xmlns:Lecturer010="&http;www.Department1.University0.edu/Lecturer0/"
+     xmlns:Lecturer013="&http;www.Department12.University0.edu/Lecturer0/"
+     xmlns:Lecturer014="&http;www.Department14.University0.edu/Lecturer0/"
+     xmlns:Lecturer011="&http;www.Department7.University0.edu/Lecturer0/"
+     xmlns:Lecturer012="&http;www.Department13.University0.edu/Lecturer0/"
+     xmlns:AssistantProfessor59="&http;www.Department13.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor58="&http;www.Department0.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor55="&http;www.Department2.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor54="&http;www.Department6.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor57="&http;www.Department12.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor56="&http;www.Department4.University0.edu/AssistantProfessor5/"
+     xmlns:Lecturer312="&http;www.Department9.University0.edu/Lecturer3/"
+     xmlns:AssociateProfessor314="&http;www.Department1.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor313="&http;www.Department9.University0.edu/AssociateProfessor3/"
+     xmlns:AssistantProfessor52="&http;www.Department1.University0.edu/AssistantProfessor5/"
+     xmlns:AssociateProfessor315="&http;www.Department10.University0.edu/AssociateProfessor3/"
+     xmlns:AssistantProfessor53="&http;www.Department10.University0.edu/AssistantProfessor5/"
+     xmlns:AssociateProfessor310="&http;www.Department13.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor312="&http;www.Department2.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor011="&http;www.Department13.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor010="&http;www.Department3.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor311="&http;www.Department6.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor411="&http;www.Department2.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor410="&http;www.Department13.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor413="&http;www.Department7.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor412="&http;www.Department0.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor415="&http;www.Department3.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor414="&http;www.Department12.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor014="&http;www.Department4.University0.edu/AssociateProfessor0/"
+     xmlns:Lecturer410="&http;www.Department14.University0.edu/Lecturer4/"
+     xmlns:AssistantProfessor49="&http;www.Department12.University0.edu/AssistantProfessor4/"
+     xmlns:AssociateProfessor015="&http;www.Department14.University0.edu/AssociateProfessor0/"
+     xmlns:AssistantProfessor48="&http;www.Department7.University0.edu/AssistantProfessor4/"
+     xmlns:AssociateProfessor012="&http;www.Department11.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor013="&http;www.Department9.University0.edu/AssociateProfessor0/"
+     xmlns:AssistantProfessor47="&http;www.Department9.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor46="&http;www.Department13.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor45="&http;www.Department2.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor44="&http;www.Department14.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor43="&http;www.Department8.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor42="&http;www.Department6.University0.edu/AssistantProfessor4/"
+     xmlns:FullProfessor65="&http;www.Department8.University0.edu/FullProfessor6/"
+     xmlns:AssistantProfessor32="&http;www.Department8.University0.edu/AssistantProfessor3/"
+     xmlns:FullProfessor64="&http;www.Department2.University0.edu/FullProfessor6/"
+     xmlns:AssistantProfessor33="&http;www.Department12.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor34="&http;www.Department1.University0.edu/AssistantProfessor3/"
+     xmlns:FullProfessor63="&http;www.Department13.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor62="&http;www.Department10.University0.edu/FullProfessor6/"
+     xmlns:AssistantProfessor35="&http;www.Department14.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor36="&http;www.Department3.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor37="&http;www.Department6.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor38="&http;www.Department7.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor39="&http;www.Department5.University0.edu/AssistantProfessor3/"
+     xmlns:rdf="&http;www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:FullProfessor59="&http;www.Department2.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor57="&http;www.Department4.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor58="&http;www.Department14.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor55="&http;www.Department0.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor56="&http;www.Department11.University0.edu/FullProfessor5/"
+     xmlns:AssistantProfessor23="&http;www.Department7.University0.edu/AssistantProfessor2/"
+     xmlns:FullProfessor52="&http;www.Department13.University0.edu/FullProfessor5/"
+     xmlns:AssistantProfessor24="&http;www.Department4.University0.edu/AssistantProfessor2/"
+     xmlns:FullProfessor54="&http;www.Department12.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor53="&http;www.Department3.University0.edu/FullProfessor5/"
+     xmlns:AssistantProfessor22="&http;www.Department6.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor27="&http;www.Department11.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor28="&http;www.Department13.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor25="&http;www.Department9.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor26="&http;www.Department5.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor29="&http;www.Department1.University0.edu/AssistantProfessor2/"
+     xmlns:FullProfessor48="&http;www.Department2.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor49="&http;www.Department6.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor44="&http;www.Department0.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor45="&http;www.Department5.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor46="&http;www.Department9.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor47="&http;www.Department11.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor83="&http;www.Department3.University0.edu/FullProfessor8/"
+     xmlns:AssistantProfessor14="&http;www.Department10.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor15="&http;www.Department1.University0.edu/AssistantProfessor1/"
+     xmlns:FullProfessor82="&http;www.Department1.University0.edu/FullProfessor8/"
+     xmlns:AssistantProfessor16="&http;www.Department3.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor17="&http;www.Department6.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor10="&http;www.Department9.University0.edu/AssistantProfessor10/"
+     xmlns:FullProfessor87="&http;www.Department8.University0.edu/FullProfessor8/"
+     xmlns:FullProfessor86="&http;www.Department0.University0.edu/FullProfessor8/"
+     xmlns:FullProfessor85="&http;www.Department12.University0.edu/FullProfessor8/"
+     xmlns:AssistantProfessor12="&http;www.Department4.University0.edu/AssistantProfessor1/"
+     xmlns:FullProfessor84="&http;www.Department6.University0.edu/FullProfessor8/"
+     xmlns:AssistantProfessor13="&http;www.Department9.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor18="&http;www.Department0.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor19="&http;www.Department13.University0.edu/AssistantProfessor1/"
+     xmlns:FullProfessor2="&http;www.Department4.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor3="&http;www.Department4.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor0="&http;www.Department11.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor1="&http;www.Department1.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor6="&http;www.Department12.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor7="&http;www.Department6.University0.edu/FullProfessor7/"
+     xmlns:FullProfessor4="&http;www.Department3.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor5="&http;www.Department5.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor79="&http;www.Department3.University0.edu/FullProfessor7/"
+     xmlns:FullProfessor8="&http;www.Department5.University0.edu/FullProfessor8/"
+     xmlns:FullProfessor77="&http;www.Department13.University0.edu/FullProfessor7/"
+     xmlns:FullProfessor9="&http;www.Department5.University0.edu/FullProfessor9/"
+     xmlns:FullProfessor78="&http;www.Department11.University0.edu/FullProfessor7/"
+     xmlns:AssistantProfessor05="&http;www.Department6.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor06="&http;www.Department12.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor03="&http;www.Department1.University0.edu/AssistantProfessor0/"
+     xmlns:FullProfessor72="&http;www.Department0.University0.edu/FullProfessor7/"
+     xmlns:AssistantProfessor04="&http;www.Department8.University0.edu/AssistantProfessor0/"
+     xmlns:FullProfessor74="&http;www.Department8.University0.edu/FullProfessor7/"
+     xmlns:FullProfessor73="&http;www.Department1.University0.edu/FullProfessor7/"
+     xmlns:AssistantProfessor02="&http;www.Department10.University0.edu/AssistantProfessor0/"
+     xmlns:FullProfessor76="&http;www.Department5.University0.edu/FullProfessor7/"
+     xmlns:FullProfessor75="&http;www.Department12.University0.edu/FullProfessor7/"
+     xmlns:AssistantProfessor09="&http;www.Department14.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor07="&http;www.Department4.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor08="&http;www.Department0.University0.edu/AssistantProfessor0/"
+     xmlns:FullProfessor66="&http;www.Department0.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor67="&http;www.Department14.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor68="&http;www.Department11.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor69="&http;www.Department4.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor16="&http;www.Department8.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor15="&http;www.Department6.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor18="&http;www.Department9.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor17="&http;www.Department3.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor12="&http;www.Department11.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor14="&http;www.Department2.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor13="&http;www.Department0.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor19="&http;www.Department14.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor07="&http;www.Department5.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor06="&http;www.Department14.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor05="&http;www.Department8.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor04="&http;www.Department3.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor03="&http;www.Department13.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor02="&http;www.Department4.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor09="&http;www.Department1.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor08="&http;www.Department6.University0.edu/FullProfessor0/"
+     xmlns:AssociateProfessor911="&http;www.Department10.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor912="&http;www.Department0.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor913="&http;www.Department1.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor914="&http;www.Department13.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor915="&http;www.Department9.University0.edu/AssociateProfessor9/"
+     xmlns:http="http://"
+     xmlns:AssociateProfessor910="&http;www.Department4.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor121="&http;www.Department0.University0.edu/AssociateProfessor1/"
+     xmlns:FullProfessor34="&http;www.Department11.University0.edu/FullProfessor3/"
+     xmlns:AssociateProfessor120="&http;www.Department9.University0.edu/AssociateProfessor1/"
+     xmlns:FullProfessor33="&http;www.Department14.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor36="&http;www.Department6.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor35="&http;www.Department9.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor38="&http;www.Department8.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor37="&http;www.Department12.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor39="&http;www.Department3.University0.edu/FullProfessor3/"
+     xmlns:AssociateProfessor212="&http;www.Department2.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor213="&http;www.Department14.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor210="&http;www.Department4.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor211="&http;www.Department1.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor214="&http;www.Department9.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor119="&http;www.Department14.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor215="&http;www.Department6.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor117="&http;www.Department13.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor118="&http;www.Department13.University0.edu/AssociateProfessor11/"
+     xmlns:AssociateProfessor115="&http;www.Department7.University0.edu/AssociateProfessor11/"
+     xmlns:AssociateProfessor116="&http;www.Department11.University0.edu/AssociateProfessor11/"
+     xmlns:AssociateProfessor113="&http;www.Department2.University0.edu/AssociateProfessor11/"
+     xmlns:AssociateProfessor114="&http;www.Department0.University0.edu/AssociateProfessor11/"
+     xmlns:FullProfessor42="&http;www.Department12.University0.edu/FullProfessor4/"
+     xmlns:AssociateProfessor111="&http;www.Department5.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor112="&http;www.Department14.University0.edu/AssociateProfessor11/"
+     xmlns:FullProfessor43="&http;www.Department13.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor25="&http;www.Department2.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor24="&http;www.Department8.University0.edu/FullProfessor2/"
+     xmlns:AssociateProfessor110="&http;www.Department4.University0.edu/AssociateProfessor1/"
+     xmlns:FullProfessor23="&http;www.Department12.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor22="&http;www.Department3.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor29="&http;www.Department13.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor28="&http;www.Department14.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor27="&http;www.Department1.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor26="&http;www.Department7.University0.edu/FullProfessor2/"
+     xmlns:AssistantProfessor410="&http;www.Department10.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor411="&http;www.Department4.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor414="&http;www.Department11.University0.edu/AssistantProfessor4/"
+     xmlns:AssociateProfessor108="&http;www.Department3.University0.edu/AssociateProfessor10/"
+     xmlns:AssistantProfessor415="&http;www.Department5.University0.edu/AssistantProfessor4/"
+     xmlns:AssociateProfessor109="&http;www.Department14.University0.edu/AssociateProfessor10/"
+     xmlns:AssistantProfessor515="&http;www.Department11.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor412="&http;www.Department3.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor413="&http;www.Department1.University0.edu/AssistantProfessor4/"
+     xmlns:AssociateProfessor104="&http;www.Department7.University0.edu/AssociateProfessor10/"
+     xmlns:AssistantProfessor513="&http;www.Department5.University0.edu/AssistantProfessor5/"
+     xmlns:AssociateProfessor105="&http;www.Department10.University0.edu/AssociateProfessor10/"
+     xmlns:AssistantProfessor514="&http;www.Department3.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor511="&http;www.Department9.University0.edu/AssistantProfessor5/"
+     xmlns:AssociateProfessor106="&http;www.Department13.University0.edu/AssociateProfessor10/"
+     xmlns:AssociateProfessor107="&http;www.Department2.University0.edu/AssociateProfessor10/"
+     xmlns:AssistantProfessor512="&http;www.Department14.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor510="&http;www.Department8.University0.edu/AssistantProfessor5/"
+     xmlns:FullProfessor32="&http;www.Department5.University0.edu/FullProfessor3/"
+     xmlns:AssociateProfessor102="&http;www.Department12.University0.edu/AssociateProfessor10/"
+     xmlns:AssociateProfessor103="&http;www.Department0.University0.edu/AssociateProfessor10/"
+     xmlns:AssociateProfessor134="&http;www.Department0.University0.edu/AssociateProfessor13/"
+     xmlns:AssociateProfessor133="&http;www.Department7.University0.edu/AssociateProfessor13/"
+     xmlns:AssociateProfessor132="&http;www.Department11.University0.edu/AssociateProfessor13/"
+     xmlns:AssociateProfessor123="&http;www.Department7.University0.edu/AssociateProfessor12/"
+     xmlns:AssociateProfessor122="&http;www.Department0.University0.edu/AssociateProfessor12/"
+     xmlns:AssociateProfessor125="&http;www.Department13.University0.edu/AssociateProfessor12/"
+     xmlns:AssociateProfessor124="&http;www.Department11.University0.edu/AssociateProfessor12/"
+     xmlns:AssociateProfessor126="&http;www.Department7.University0.edu/AssociateProfessor1/"
+     xmlns:Lecturer09="&http;www.Department0.University0.edu/Lecturer0/"
+     xmlns:Lecturer08="&http;www.Department10.University0.edu/Lecturer0/"
+     xmlns:Lecturer07="&http;www.Department9.University0.edu/Lecturer0/"
+     xmlns:Lecturer06="&http;www.Department6.University0.edu/Lecturer0/"
+     xmlns:Lecturer05="&http;www.Department8.University0.edu/Lecturer0/"
+     xmlns:Lecturer04="&http;www.Department4.University0.edu/Lecturer0/"
+     xmlns:Lecturer03="&http;www.Department3.University0.edu/Lecturer0/"
+     xmlns:Lecturer02="&http;www.Department11.University0.edu/Lecturer0/"
+     xmlns:Lecturer19="&http;www.Department9.University0.edu/Lecturer1/"
+     xmlns:Lecturer16="&http;www.Department7.University0.edu/Lecturer1/"
+     xmlns:Lecturer15="&http;www.Department1.University0.edu/Lecturer1/"
+     xmlns:Lecturer18="&http;www.Department14.University0.edu/Lecturer1/"
+     xmlns:Lecturer17="&http;www.Department0.University0.edu/Lecturer1/"
+     xmlns:Lecturer12="&http;www.Department8.University0.edu/Lecturer1/"
+     xmlns:Lecturer14="&http;www.Department12.University0.edu/Lecturer1/"
+     xmlns:Lecturer13="&http;www.Department3.University0.edu/Lecturer1/"
+     xmlns:AssistantProfessor313="&http;www.Department13.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor314="&http;www.Department9.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor315="&http;www.Department0.University0.edu/AssistantProfessor3/"
+     xmlns:AssociateProfessor76="&http;www.Department6.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor310="&http;www.Department11.University0.edu/AssistantProfessor3/"
+     xmlns:AssociateProfessor77="&http;www.Department4.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor311="&http;www.Department4.University0.edu/AssistantProfessor3/"
+     xmlns:AssociateProfessor78="&http;www.Department10.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor79="&http;www.Department14.University0.edu/AssociateProfessor7/"
+     xmlns:AssistantProfessor312="&http;www.Department2.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor210="&http;www.Department10.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor211="&http;www.Department14.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor212="&http;www.Department3.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor99="&http;www.Department0.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor213="&http;www.Department0.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor98="&http;www.Department4.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor214="&http;www.Department2.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor215="&http;www.Department8.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor92="&http;www.Department10.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor93="&http;www.Department3.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor96="&http;www.Department13.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor97="&http;www.Department9.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor94="&http;www.Department12.University0.edu/AssistantProfessor9/"
+     xmlns:AssistantProfessor95="&http;www.Department7.University0.edu/AssistantProfessor9/"
+     xmlns:AssociateProfessor73="&http;www.Department7.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor72="&http;www.Department11.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor75="&http;www.Department0.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor74="&http;www.Department12.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor69="&http;www.Department4.University0.edu/AssociateProfessor6/"
+     xmlns:FullProfessor610="&http;www.Department9.University0.edu/FullProfessor6/"
+     xmlns:AssociateProfessor67="&http;www.Department5.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor68="&http;www.Department7.University0.edu/AssociateProfessor6/"
+     xmlns:FullProfessor612="&http;www.Department3.University0.edu/FullProfessor6/"
+     xmlns:AssociateProfessor65="&http;www.Department6.University0.edu/AssociateProfessor6/"
+     xmlns:FullProfessor611="&http;www.Department1.University0.edu/FullProfessor6/"
+     xmlns:AssociateProfessor66="&http;www.Department12.University0.edu/AssociateProfessor6/"
+     xmlns:FullProfessor614="&http;www.Department6.University0.edu/FullProfessor6/"
+     xmlns:AssistantProfessor88="&http;www.Department7.University0.edu/AssistantProfessor8/"
+     xmlns:FullProfessor613="&http;www.Department5.University0.edu/FullProfessor6/"
+     xmlns:AssistantProfessor87="&http;www.Department9.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor89="&http;www.Department12.University0.edu/AssistantProfessor8/"
+     xmlns:FullProfessor615="&http;www.Department7.University0.edu/FullProfessor6/"
+     xmlns:FullProfessor415="&http;www.Department7.University0.edu/FullProfessor4/"
+     xmlns:AssistantProfessor82="&http;www.Department10.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor83="&http;www.Department4.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor84="&http;www.Department11.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor85="&http;www.Department8.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor86="&http;www.Department3.University0.edu/AssistantProfessor8/"
+     xmlns:owl="&http;www.w3.org/2002/07/owl#"
+     xmlns:AssociateProfessor64="&http;www.Department11.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor63="&http;www.Department8.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor62="&http;www.Department0.University0.edu/AssociateProfessor6/"
+     xmlns:FullProfessor410="&http;www.Department10.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor411="&http;www.Department4.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor412="&http;www.Department8.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor413="&http;www.Department14.University0.edu/FullProfessor4/"
+     xmlns:FullProfessor414="&http;www.Department1.University0.edu/FullProfessor4/"
+     xmlns:AssociateProfessor98="&http;www.Department3.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor99="&http;www.Department6.University0.edu/AssociateProfessor9/"
+     xmlns:Lecturer4="&http;www.Department1.University0.edu/Lecturer4/"
+     xmlns:Lecturer5="&http;www.Department1.University0.edu/Lecturer5/"
+     xmlns:Lecturer6="&http;www.Department9.University0.edu/Lecturer6/"
+     xmlns:AssistantProfessor710="&http;www.Department2.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor615="&http;www.Department14.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor614="&http;www.Department13.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor712="&http;www.Department11.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor711="&http;www.Department3.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor714="&http;www.Department12.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor611="&http;www.Department7.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor610="&http;www.Department11.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor713="&http;www.Department7.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor93="&http;www.Department11.University0.edu/AssociateProfessor9/"
+     xmlns:AssistantProfessor613="&http;www.Department9.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor612="&http;www.Department4.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor715="&http;www.Department13.University0.edu/AssistantProfessor7/"
+     xmlns:AssociateProfessor92="&http;www.Department5.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor95="&http;www.Department14.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor94="&http;www.Department7.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor97="&http;www.Department8.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor96="&http;www.Department2.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor89="&http;www.Department11.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor87="&http;www.Department7.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor88="&http;www.Department1.University0.edu/AssociateProfessor8/"
+     xmlns:Lecturer3="&http;www.Department4.University0.edu/Lecturer3/"
+     xmlns:Lecturer2="&http;www.Department1.University0.edu/Lecturer2/"
+     xmlns:Lecturer1="&http;www.Department10.University0.edu/Lecturer1/"
+     xmlns:Lecturer0="&http;www.Department2.University0.edu/Lecturer0/"
+     xmlns:Lecturer63="&http;www.Department10.University0.edu/Lecturer6/"
+     xmlns:Lecturer62="&http;www.Department0.University0.edu/Lecturer6/"
+     xmlns:AssistantProfessor0="&http;www.Department2.University0.edu/AssistantProfessor0/"
+     xmlns:xsd="&http;www.w3.org/2001/XMLSchema#"
+     xmlns:AssociateProfessor82="&http;www.Department9.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor86="&http;www.Department8.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor85="&http;www.Department6.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor84="&http;www.Department2.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor83="&http;www.Department14.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor37="&http;www.Department4.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor36="&http;www.Department5.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor39="&http;www.Department11.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor38="&http;www.Department8.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor33="&http;www.Department14.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor32="&http;www.Department0.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor35="&http;www.Department7.University0.edu/AssociateProfessor3/"
+     xmlns:AssociateProfessor34="&http;www.Department12.University0.edu/AssociateProfessor3/"
+     xmlns:Lecturer59="&http;www.Department11.University0.edu/Lecturer5/"
+     xmlns:Lecturer53="&http;www.Department5.University0.edu/Lecturer5/"
+     xmlns:Lecturer54="&http;www.Department9.University0.edu/Lecturer5/"
+     xmlns:Lecturer52="&http;www.Department2.University0.edu/Lecturer5/"
+     xmlns:Lecturer57="&http;www.Department14.University0.edu/Lecturer5/"
+     xmlns:Lecturer58="&http;www.Department10.University0.edu/Lecturer5/"
+     xmlns:Lecturer55="&http;www.Department8.University0.edu/Lecturer5/"
+     xmlns:Lecturer56="&http;www.Department3.University0.edu/Lecturer5/"
+     xmlns:AssociateProfessor1011="&http;www.Department5.University0.edu/AssociateProfessor10/"
+     xmlns:FullProfessor510="&http;www.Department1.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor511="&http;www.Department7.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor512="&http;www.Department9.University0.edu/FullProfessor5/"
+     xmlns:FullProfessor513="&http;www.Department6.University0.edu/FullProfessor5/"
+     xmlns:AssociateProfessor29="&http;www.Department0.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor28="&http;www.Department10.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor27="&http;www.Department5.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor26="&http;www.Department13.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor25="&http;www.Department11.University0.edu/AssociateProfessor2/"
+     xmlns:FullProfessor514="&http;www.Department10.University0.edu/FullProfessor5/"
+     xmlns:AssociateProfessor24="&http;www.Department12.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor23="&http;www.Department3.University0.edu/AssociateProfessor2/"
+     xmlns:FullProfessor515="&http;www.Department8.University0.edu/FullProfessor5/"
+     xmlns:AssociateProfessor22="&http;www.Department7.University0.edu/AssociateProfessor2/"
+     xmlns:Lecturer48="&http;www.Department9.University0.edu/Lecturer4/"
+     xmlns:Lecturer49="&http;www.Department10.University0.edu/Lecturer4/"
+     xmlns:Lecturer42="&http;www.Department7.University0.edu/Lecturer4/"
+     xmlns:Lecturer43="&http;www.Department5.University0.edu/Lecturer4/"
+     xmlns:Lecturer44="&http;www.Department12.University0.edu/Lecturer4/"
+     xmlns:Lecturer45="&http;www.Department4.University0.edu/Lecturer4/"
+     xmlns:Lecturer46="&http;www.Department8.University0.edu/Lecturer4/"
+     xmlns:AssociateProfessor1010="&http;www.Department11.University0.edu/AssociateProfessor10/"
+     xmlns:Lecturer47="&http;www.Department6.University0.edu/Lecturer4/"
+     xmlns:www10="&http;www.Department14.University0.edu/"
+     xmlns:www11="&http;www.Department10.University0.edu/"
+     xmlns:www="&http;www.Department7.University0.edu/"
+     xmlns:AssociateProfessor55="&http;www.Department2.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor54="&http;www.Department4.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor57="&http;www.Department14.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor56="&http;www.Department5.University0.edu/AssociateProfessor5/"
+     xmlns:www14="&http;www.Department6.University0.edu/"
+     xmlns:AssociateProfessor59="&http;www.Department9.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor58="&http;www.Department10.University0.edu/AssociateProfessor5/"
+     xmlns:www15="&http;www.Department5.University0.edu/"
+     xmlns:www12="&http;www.Department0.University0.edu/"
+     xmlns:www13="&http;www.Department8.University0.edu/"
+     xmlns:rdfs="&http;www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="&http;www.w3.org/2006/12/owl2-xml#"
+     xmlns:Lecturer39="&http;www.Department1.University0.edu/Lecturer3/"
+     xmlns:AssociateProfessor52="&http;www.Department3.University0.edu/AssociateProfessor5/"
+     xmlns:Lecturer37="&http;www.Department3.University0.edu/Lecturer3/"
+     xmlns:Lecturer38="&http;www.Department2.University0.edu/Lecturer3/"
+     xmlns:AssociateProfessor53="&http;www.Department1.University0.edu/AssociateProfessor5/"
+     xmlns:Lecturer35="&http;www.Department10.University0.edu/Lecturer3/"
+     xmlns:Lecturer36="&http;www.Department6.University0.edu/Lecturer3/"
+     xmlns:Lecturer33="&http;www.Department7.University0.edu/Lecturer3/"
+     xmlns:Lecturer34="&http;www.Department8.University0.edu/Lecturer3/"
+     xmlns:Lecturer32="&http;www.Department11.University0.edu/Lecturer3/"
+     xmlns:AssociateProfessor46="&http;www.Department6.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor45="&http;www.Department1.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor44="&http;www.Department8.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor43="&http;www.Department14.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor49="&http;www.Department4.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor48="&http;www.Department9.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor47="&http;www.Department11.University0.edu/AssociateProfessor4/"
+     xmlns:Lecturer26="&http;www.Department12.University0.edu/Lecturer2/"
+     xmlns:AssociateProfessor42="&http;www.Department5.University0.edu/AssociateProfessor4/"
+     xmlns:Lecturer27="&http;www.Department14.University0.edu/Lecturer2/"
+     xmlns:Lecturer28="&http;www.Department3.University0.edu/Lecturer2/"
+     xmlns:Lecturer29="&http;www.Department5.University0.edu/Lecturer2/"
+     xmlns:Lecturer22="&http;www.Department10.University0.edu/Lecturer2/"
+     xmlns:Lecturer23="&http;www.Department7.University0.edu/Lecturer2/"
+     xmlns:Lecturer24="&http;www.Department9.University0.edu/Lecturer2/"
+     xmlns:Lecturer25="&http;www.Department13.University0.edu/Lecturer2/"
+     xmlns:AssistantProfessor015="&http;www.Department7.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor014="&http;www.Department5.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor013="&http;www.Department13.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor012="&http;www.Department11.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor115="&http;www.Department2.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor114="&http;www.Department8.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor113="&http;www.Department12.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor112="&http;www.Department7.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor111="&http;www.Department5.University0.edu/AssistantProfessor1/"
+     xmlns:AssociateProfessor613="&http;www.Department1.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor612="&http;www.Department14.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor611="&http;www.Department2.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor515="&http;www.Department13.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor610="&http;www.Department13.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor514="&http;www.Department8.University0.edu/AssociateProfessor5/"
+     xmlns:AssistantProfessor105="&http;www.Department8.University0.edu/AssistantProfessor10/"
+     xmlns:AssistantProfessor104="&http;www.Department13.University0.edu/AssistantProfessor10/"
+     xmlns:AssociateProfessor513="&http;www.Department11.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor512="&http;www.Department0.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor615="&http;www.Department10.University0.edu/AssociateProfessor6/"
+     xmlns:daml="&http;www.daml.org/2001/03/daml+oil#"
+     xmlns:AssistantProfessor106="&http;www.Department10.University0.edu/AssistantProfessor10/"
+     xmlns:AssociateProfessor614="&http;www.Department9.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor511="&http;www.Department6.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor510="&http;www.Department7.University0.edu/AssociateProfessor5/"
+     xmlns:AssistantProfessor103="&http;www.Department11.University0.edu/AssistantProfessor10/"
+     xmlns:AssistantProfessor102="&http;www.Department12.University0.edu/AssistantProfessor10/"
+     xmlns:AssistantProfessor110="&http;www.Department11.University0.edu/AssistantProfessor1/"
+     xmlns:AssociateProfessor0="&http;www.Department6.University0.edu/AssociateProfessor0/"
+     xmlns:AssistantProfessor010="&http;www.Department3.University0.edu/AssistantProfessor0/"
+     xmlns:AssistantProfessor011="&http;www.Department9.University0.edu/AssistantProfessor0/"
+     xmlns:AssociateProfessor6="&http;www.Department3.University0.edu/AssociateProfessor6/"
+     xmlns:AssociateProfessor5="&http;www.Department12.University0.edu/AssociateProfessor5/"
+     xmlns:AssociateProfessor8="&http;www.Department4.University0.edu/AssociateProfessor8/"
+     xmlns:AssociateProfessor7="&http;www.Department1.University0.edu/AssociateProfessor7/"
+     xmlns:AssociateProfessor2="&http;www.Department8.University0.edu/AssociateProfessor2/"
+     xmlns:AssociateProfessor1="&http;www.Department8.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor4="&http;www.Department10.University0.edu/AssociateProfessor4/"
+     xmlns:AssociateProfessor3="&http;www.Department3.University0.edu/AssociateProfessor3/"
+     xmlns:FullProfessor110="&http;www.Department5.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor111="&http;www.Department12.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor112="&http;www.Department7.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor113="&http;www.Department10.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor114="&http;www.Department4.University0.edu/FullProfessor1/"
+     xmlns:FullProfessor115="&http;www.Department13.University0.edu/FullProfessor1/"
+     xmlns:AssociateProfessor9="&http;www.Department12.University0.edu/AssociateProfessor9/"
+     xmlns:AssociateProfessor12="&http;www.Department2.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor13="&http;www.Department13.University0.edu/AssociateProfessor13/"
+     xmlns:AssociateProfessor10="&http;www.Department8.University0.edu/AssociateProfessor10/"
+     xmlns:AssociateProfessor11="&http;www.Department3.University0.edu/AssociateProfessor11/"
+     xmlns:AssociateProfessor16="&http;www.Department10.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor17="&http;www.Department11.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor14="&http;www.Department3.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor15="&http;www.Department6.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor18="&http;www.Department12.University0.edu/AssociateProfessor1/"
+     xmlns:AssociateProfessor19="&http;www.Department1.University0.edu/AssociateProfessor1/"
+     xmlns:www9="&http;www.Department3.University0.edu/"
+     xmlns:www8="&http;www.Department1.University0.edu/"
+     xmlns:www7="&http;www.Department12.University0.edu/"
+     xmlns:AssistantProfessor810="&http;www.Department0.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor910="&http;www.Department11.University0.edu/AssistantProfessor9/"
+     xmlns:AssociateProfessor02="&http;www.Department0.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor03="&http;www.Department2.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor04="&http;www.Department12.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor05="&http;www.Department8.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor06="&http;www.Department1.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor07="&http;www.Department7.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor08="&http;www.Department10.University0.edu/AssociateProfessor0/"
+     xmlns:AssociateProfessor09="&http;www.Department5.University0.edu/AssociateProfessor0/"
+     xmlns:AssistantProfessor6="&http;www.Department6.University0.edu/AssistantProfessor6/"
+     xmlns:AssistantProfessor5="&http;www.Department7.University0.edu/AssistantProfessor5/"
+     xmlns:AssistantProfessor8="&http;www.Department13.University0.edu/AssistantProfessor8/"
+     xmlns:AssistantProfessor7="&http;www.Department14.University0.edu/AssistantProfessor7/"
+     xmlns:AssistantProfessor2="&http;www.Department12.University0.edu/AssistantProfessor2/"
+     xmlns:AssistantProfessor1="&http;www.Department14.University0.edu/AssistantProfessor1/"
+     xmlns:AssistantProfessor4="&http;www.Department0.University0.edu/AssistantProfessor4/"
+     xmlns:AssistantProfessor3="&http;www.Department10.University0.edu/AssistantProfessor3/"
+     xmlns:AssistantProfessor9="&http;www.Department8.University0.edu/AssistantProfessor9/"
+     xmlns:FullProfessor315="&http;www.Department7.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor314="&http;www.Department1.University0.edu/FullProfessor3/"
+     xmlns:www2="&http;www.Department11.University0.edu/"
+     xmlns:FullProfessor313="&http;www.Department13.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor312="&http;www.Department10.University0.edu/FullProfessor3/"
+     xmlns:FullProfessor311="&http;www.Department2.University0.edu/FullProfessor3/"
+     xmlns:www4="&http;www.Department2.University0.edu/"
+     xmlns:www3="&http;www.Department13.University0.edu/"
+     xmlns:FullProfessor310="&http;www.Department0.University0.edu/FullProfessor3/"
+     xmlns:www6="&http;www.Department4.University0.edu/"
+     xmlns:www5="&http;www.Department9.University0.edu/"
+     xmlns:FullProfessor214="&http;www.Department0.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor213="&http;www.Department6.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor010="&http;www.Department7.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor215="&http;www.Department9.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor210="&http;www.Department11.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor212="&http;www.Department5.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor211="&http;www.Department10.University0.edu/FullProfessor2/"
+     xmlns:FullProfessor015="&http;www.Department12.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor011="&http;www.Department2.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor012="&http;www.Department0.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor013="&http;www.Department10.University0.edu/FullProfessor0/"
+     xmlns:FullProfessor014="&http;www.Department9.University0.edu/FullProfessor0/">
+    <owl:Ontology rdf:about="">
+        <owl:imports rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl"/>
+    </owl:Ontology>
+    <owl:Ontology rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl">
+        <rdfs:label
+            >Univ-bench Ontology</rdfs:label>
+        <rdfs:comment
+            >An university ontology for benchmark tests</rdfs:comment>
+        <owl:versionInfo
+            >univ-bench-ontology-owl, ver April 1, 2004</owl:versionInfo>
+    </owl:Ontology>
+    <owl:Ontology rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl">
+        <rdfs:label
+            >Univ-bench Ontology</rdfs:label>
+        <rdfs:comment
+            >An university ontology for benchmark tests</rdfs:comment>
+        <owl:versionInfo
+            >univ-bench-ontology-owl, ver April 1, 2004</owl:versionInfo>
+    </owl:Ontology>
+    <owl:Ontology rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl">
+        <rdfs:label
+            >Univ-bench Ontology</rdfs:label>
+        <rdfs:comment
+            >An university ontology for benchmark tests</rdfs:comment>
+        <owl:versionInfo
+            >univ-bench-ontology-owl, ver April 1, 2004</owl:versionInfo>
+    </owl:Ontology>
+    
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#advisor -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#advisor">
+        <rdfs:label>is being advised by</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#affiliateOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#affiliateOf">
+        <rdfs:label>is affiliated with</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#affiliatedOrganizationOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#affiliatedOrganizationOf">
+        <rdfs:label>is affiliated with</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom">
+        <rdfs:label>has a degree from</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#doctoralDegreeFrom -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#doctoralDegreeFrom">
+        <rdfs:label>has a doctoral degree from</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University"/>
+        <rdfs:subPropertyOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#hasAlumnus -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#hasAlumnus">
+        <rdfs:label>has as an alumnus</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University"/>
+        <owl:inverseOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#headOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#headOf">
+        <rdfs:label>is the head of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#worksFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#listedCourse -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#listedCourse">
+        <rdfs:label>lists as a course</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Schedule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#mastersDegreeFrom -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#mastersDegreeFrom">
+        <rdfs:label>has a masters degree from</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University"/>
+        <rdfs:subPropertyOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#member -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#member">
+        <rdfs:label>has as a member</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#memberOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#memberOf">
+        <rdfs:label>member of</rdfs:label>
+        <owl:inverseOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#member"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#orgPublication -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#orgPublication">
+        <rdfs:label>publishes</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationAuthor -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationAuthor">
+        <rdfs:label>was written by</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationDate -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationDate">
+        <rdfs:label>was written on</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationResearch -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#publicationResearch">
+        <rdfs:label>is about</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Research"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#researchProject -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#researchProject">
+        <rdfs:label>has as a research project</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Research"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#softwareDocumentation -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#softwareDocumentation">
+        <rdfs:label>is documented in</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Software"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#softwareVersion -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#softwareVersion">
+        <rdfs:label>is version</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Software"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#subOrganizationOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#subOrganizationOf">
+        <rdf:type rdf:resource="&http;www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:label>is part of</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse">
+        <rdfs:label>is taking</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student"/>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment>Axiom added for the sake of efficiency of reasoning under EL.</rdfs:comment>
+        <owl:annotatedTarget rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+        <owl:annotatedSource rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse"/>
+        <owl:annotatedProperty rdf:resource="&http;www.w3.org/2000/01/rdf-schema#range"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment>Axiom added for the sake of efficiency of reasoning under EL.</rdfs:comment>
+        <owl:annotatedTarget rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student"/>
+        <owl:annotatedSource rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse"/>
+        <owl:annotatedProperty rdf:resource="&http;www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#teacherOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#teacherOf">
+        <rdfs:label>teaches</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#teachingAssistantOf -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#teachingAssistantOf">
+        <rdfs:label>is a teaching assistant for</rdfs:label>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#TeachingAssistant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#tenured -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#tenured">
+        <rdfs:label>is tenured:</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#undergraduateDegreeFrom -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#undergraduateDegreeFrom">
+        <rdfs:label>has an undergraduate degree from</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:range rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University"/>
+        <rdfs:subPropertyOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#worksFor -->
+
+    <owl:ObjectProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#worksFor">
+        <rdfs:label>Works For</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#memberOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#age -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#age">
+        <rdfs:label>is age</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#emailAddress -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#emailAddress">
+        <rdfs:label>can be reached at</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#name -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#name">
+        <rdfs:label>name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#officeNumber -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#officeNumber">
+        <rdfs:label>office room No.</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#researchInterest -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#researchInterest">
+        <rdfs:label>is researching</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#telephone -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#telephone">
+        <rdfs:label>telephone number</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#title -->
+
+    <owl:DatatypeProperty rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#title">
+        <rdfs:label>title</rdfs:label>
+        <rdfs:domain rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AdministrativeStaff -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AdministrativeStaff">
+        <rdfs:label>administrative staff worker</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Article -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Article">
+        <rdfs:label>article</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AssistantProfessor -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AssistantProfessor">
+        <rdfs:label>assistant professor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AssociateProfessor -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AssociateProfessor">
+        <rdfs:label>associate professor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Book -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Book">
+        <rdfs:label>book</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Chair -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Chair">
+        <rdfs:label>chair</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#headOf"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Department"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ClericalStaff -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ClericalStaff">
+        <rdfs:label>clerical staff worker</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AdministrativeStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#College -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#College">
+        <rdfs:label>school</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ConferencePaper -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ConferencePaper">
+        <rdfs:label>conference paper</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course">
+        <rdfs:label>teaching course</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Work"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Dean -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Dean">
+        <rdfs:label>dean</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#headOf"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#College"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Department -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Department">
+        <rdfs:label>university department</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Director -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Director">
+        <rdfs:label>director</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#headOf"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Program"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Employee -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Employee">
+        <rdfs:label>Employee</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#worksFor"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty">
+        <rdfs:label>faculty member</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Employee"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor">
+        <rdfs:label>full professor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateCourse -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateCourse">
+        <rdfs:label>Graduate Level Courses</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent">
+        <rdfs:label>graduate student</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse"/>
+                <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateCourse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Institute -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Institute">
+        <rdfs:label>institute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#JournalArticle -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#JournalArticle">
+        <rdfs:label>journal article</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Lecturer -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Lecturer">
+        <rdfs:label>lecturer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Manual -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Manual">
+        <rdfs:label>manual</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization">
+        <rdfs:label>organization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person">
+        <rdfs:label>person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#PostDoc -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#PostDoc">
+        <rdfs:label>post doctorate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor">
+        <rdfs:label>professor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Faculty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Program -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Program">
+        <rdfs:label>program</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication">
+        <rdfs:label>publication</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Research -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Research">
+        <rdfs:label>research work</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Work"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchAssistant -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchAssistant">
+        <rdfs:label>university research assistant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#worksFor"/>
+                <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchGroup -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#ResearchGroup">
+        <rdfs:label>research group</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Schedule -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Schedule">
+        <rdfs:label>schedule</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Software -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Software">
+        <rdfs:label>software program</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Specification -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Specification">
+        <rdfs:label>published specification</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student">
+        <rdfs:label>student</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#takesCourse"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#SystemsStaff -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#SystemsStaff">
+        <rdfs:label>systems staff worker</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#AdministrativeStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#TeachingAssistant -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#TeachingAssistant">
+        <rdfs:label>university teaching assistant</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#teachingAssistantOf"/>
+                        <owl:someValuesFrom rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Course"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#TechnicalReport -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#TechnicalReport">
+        <rdfs:label>technical report</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#UndergraduateStudent -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#UndergraduateStudent">
+        <rdfs:label>undergraduate student</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#University">
+        <rdfs:label>university</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#UnofficialPublication -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#UnofficialPublication">
+        <rdfs:label>unnoficial publication</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#VisitingProfessor -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#VisitingProfessor">
+        <rdfs:label>visiting professor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Work -->
+
+    <owl:Class rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Work">
+        <rdfs:label>Work</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&http;www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#degreeFrom"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#hasAlumnus"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#listedCourse"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&http;www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Organization"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Publication"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Schedule"/>
+            <rdf:Description rdf:about="&http;www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Work"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

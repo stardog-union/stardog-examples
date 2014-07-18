@@ -1,0 +1,29 @@
+<ivy-module version="2.2">
+	<info organisation="com.complexible.stardog.examples" module="functions">
+		<ivyauthor name="Michael Grove"/>
+		<description homepage="https://github.com/clarkparsia/stardog">Stardog Functions Example</description>
+	</info>
+
+	<configurations>
+		<conf name="compile" description="Everything required to compile the module"/>
+		<conf name="default" description="Everything required to run the module"/>
+		<conf name="test" extends="default" description="Everything required to run the module and its test suite"/>
+	</configurations>
+
+	<publications>
+		<artifact name="stardog-function-examples" type="jar" ext="jar" conf="compile,default"/>
+		<artifact name="stardog-function-examples-test" type="jar" ext="jar" conf="test"/>
+	</publications>
+
+	<dependencies defaultconf="compile;default;test">
+		<dependency org="com.google.guava" name="guava" rev="17.0" conf="compile,default,test->default">
+			<exclude org="com.google.code.findbugs"/>
+		</dependency>
+
+		<dependency org="io.netty" name="netty-all" rev="4.0.20.Final" conf="compile,default,test->default">
+			<exclude org="com.google.protobuf" />
+		</dependency>
+
+		<dependency org="junit" name="junit" rev="4.8.2" conf="test->default"/>
+	</dependencies>
+</ivy-module>

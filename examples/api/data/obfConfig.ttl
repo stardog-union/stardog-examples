@@ -1,0 +1,85 @@
+# This is an example configuration file that can be used for 
+# the obfuscation commands. This configuration file is an
+# extended version of the default which does not obfuscate
+# rules, Stardog filter functions, and magic proeprties. 
+
+# Default namespace will be used as the base URI of the output
+@prefix : <http://example.com/obfuscated#> .
+
+# Namespaces that will be used in pattern specification 
+# These namespaces will also be used in the output RDF
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix swrl: <http://www.w3.org/2003/11/swrlb#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xpath: <http://www.w3.org/2005/xpath-functions#> .
+@prefix math: <http://www.w3.org/2005/xpath-functions/math#> .
+
+# Obfuscation namespace is used only for parsing the config file
+@prefix obf: <tag:stardog:api:obf:> .
+
+
+[] a obf:Obfuscation ;
+
+	# Message digest algorithm that will be used to obfuscate terms
+	# Should be a message digest algorithm supported by Java
+	obf:digest "SHA-256" ;
+
+	# Any URI and literal value will be pattern matched with the filters.
+	# Only the values that match the include pattern and do not match the
+	# exclude pattern will be obfuscated.
+	
+	# The patterns in a filter expression has a position identifier which
+	# is one of [any, subject, predicate, object]. The pattern will be
+	# applied to a value depending on the position of the value.
+	# For example, it is possible to write filter expressions
+	# such that the same URI will be obfuscated when it is used in the
+	# subject position but not in the object position. The pattern
+	# expression should be a valid Java regular expression. For more
+	# information, see:
+	# http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html
+
+	obf:include [
+		obf:position obf:any ;
+		obf:pattern ".*"
+	] ;
+	
+	# Filter expression may just refer to a namespace which means any URI
+	# belonging to that namespace will be matched. The value of the
+	# namespace should be defined in the namespaces declaration.
+
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "rdf"
+	] ;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "owl"
+	] ;
+	obf:exclude [
+		obf:position obf:predicate ;
+		obf:namespace "rdfs"
+	] ;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "stardog"
+	] ;;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "swrl"
+	] ;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "swrlb"
+	] ;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "xpath"
+	] ;
+	obf:exclude [
+		obf:position obf:any ;
+		obf:namespace "math"
+	] .

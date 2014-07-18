@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<project name="API Examples" default="build" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<description>
+		Stardog API Examples
+	</description>
+
+	<property name="build" location="build"/>
+	<property name="build.main" location="${build}/main"/>
+	<property name="build.test" location="${build}/test"/>
+
+	<property name="dist" location="dist"/>
+	<property name="docs" location="docs"/>
+
+	<property name="src" location="main/src"/>
+
+	<property file="../../project.properties"/>
+
+	<property name="project.name" value="stardog-examples"/>
+	<property name="project.version" value="1.0"/>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+
+	<target name="init">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.main}"/>
+		<mkdir dir="${build.test}"/>
+		<mkdir dir="${dist}"/>
+	</target>
+
+	<target name="build" depends="init" description="Compile the example">
+		<path id="project.class.path">
+			<fileset dir="${stardog.install}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+
+		<javac source="1.6" target="1.6" srcdir="${src}" destdir="${build.main}" debug="yes" deprecation="yes">
+			<classpath>
+				<path refid="project.class.path"/>
+			</classpath>
+		</javac>
+
+		<copy todir="${build.main}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="dist" depends="build" description="Package the example as a jar">
+
+		<jar jarfile="${dist}/${project.name}-${project.version}.jar"
+			 basedir="${build.main}">
+		</jar>
+	</target>
+
+	<target name="run" depends="build" description="Run each of the examples.">
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ConnectionAPIExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ConnectionPoolsExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ExplanationExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ICVDocsExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ICVExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ProvSkosExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ReasoningExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.VersioningExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.WaldoAPIExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.sesame.SesameExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.jena.JenaExample"/>
+		</antcall>
+	</target>
+
+	<target name="runExample">
+		<java classname="${example}" fork="true" failonerror="true">
+			<jvmarg value="-Dstardog.home=${stardog.home}"/>
+			<classpath>
+				<path refid="project.class.path"/>
+				<pathelement path="${build.main}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="docs" description="Generate any documentation for the examples">
+		<exec executable="docco">
+			<arg value="-o"/>
+			<arg value="${docs}"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ExplanationExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/WaldoAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/VersioningExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ReasoningExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ProvSkosExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ICVExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/sesame/SesameExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/jena/JenaExample.java"/>
+		</exec>
+	</target>
+
+</project>
