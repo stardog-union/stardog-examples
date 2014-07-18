@@ -19,7 +19,7 @@ From there you can navigate into any of the example directories where there is a
 
 ## Generating Documentation
 
-The Stardog [documentation](http://docs.stardog.com) and it's [javadocs](http://docs.stardog.com/java/snarl) are a good
+The Stardog [documentation](http://docs.stardog.com) and its [javadocs](http://docs.stardog.com/java/snarl) are a good
 place to start. But some examples are annotated using Markdown so they can be processed by
 [Docco](http://jashkenas.github.io/docco/).
 
