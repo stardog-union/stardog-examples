@@ -49,11 +49,3 @@ and the contents of the file should be a list of the fully qualified class names
 
 These need to be a part of your classpath, usually embedded in the jar file with the compiled source, in order for
 the `ServiceLoader` to make them up.
-
-todo:
-
-examples for Property Functions + tests
-example for db archetype
-rest of the example code
-link to main repo
-publish and announce
