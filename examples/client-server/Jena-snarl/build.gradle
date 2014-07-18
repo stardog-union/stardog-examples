@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.complexible.stardog.examples.jena.JenaIntegration"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+//	Use the following two lines for a stardog jena snarl client
+	compile ('com.complexible.stardog:jena:2.1.3')
+	compile ('com.complexible.stardog.protocols.snarl:client:2.1.3')
+}

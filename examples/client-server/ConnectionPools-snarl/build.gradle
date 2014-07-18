@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.complexible.stardog.examples.api.ConnectionPoolsExample"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+//	Use the following line for a stardog snarl client
+	compile ('com.complexible.stardog.protocols.snarl:client:2.1.3')
+}

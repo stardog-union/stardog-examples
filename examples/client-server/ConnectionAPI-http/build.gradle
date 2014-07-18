@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.complexible.stardog.examples.api.ConnectionAPIExample"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+//	Use the following line for a stardog http client
+	compile ('com.complexible.stardog.protocols.http:client:2.1.3')
+}

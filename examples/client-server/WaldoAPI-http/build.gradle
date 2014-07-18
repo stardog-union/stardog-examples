@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.complexible.stardog.examples.api.WaldoAPIExample"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+//	Use the following line for a stardog search http client
+	compile ('com.complexible.stardog.search.http:client:2.1.3')
+}
