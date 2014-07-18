@@ -1,0 +1,172 @@
+/*
+ * Copyright (c) 2010-2014 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.complexible.stardog.examples.api;
+
+import java.io.File;
+
+import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+import com.complexible.common.protocols.server.Server;
+import org.openrdf.model.Literal;
+import org.openrdf.query.BindingSet;
+import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.query.TupleQueryResult;
+import org.openrdf.rio.RDFFormat;
+
+import com.complexible.common.iterations.Iteration;
+import com.complexible.stardog.Stardog;
+import com.complexible.stardog.api.ConnectionConfiguration;
+import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.SelectQuery;
+import com.complexible.stardog.api.admin.AdminConnection;
+import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.complexible.stardog.api.search.SearchConnection;
+import com.complexible.stardog.api.search.SearchResult;
+import com.complexible.stardog.api.search.SearchResults;
+import com.complexible.stardog.api.search.Searcher;
+
+/**
+ * <p>Simple example </p>
+ *
+ * @author  Michael Grove
+ * @since   0.6.5
+ * @version 2.0
+ */
+public class WaldoAPIExample {
+	// Using the Waldo Search API
+	// --------------
+	// A short example illustrating the use of the [full text search capabilities](http://docs.stardog.com/using/#sd-Searching) in Stardog
+	// via the SNARL API.
+	public static void main(String[] args) throws Exception {
+		// First thing's first, we have to create and start a Stardog server to use
+		Server aServer = Stardog
+			                 .buildServer()
+			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
+			                 .start();
+
+		try {
+			// Open an `AdminConnection` to Stardog so that we can setup the database for the example
+			AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                   .credentials("admin", "admin")
+			                                                   .connect();
+
+			try {
+				// If our example database exists, drop it and create it anew
+				if (dbms.list().contains("waldoTest")) {
+					dbms.drop("waldoTest");
+				}
+
+				dbms.memory("waldoTest")
+				    .searchable(true)
+				    .create();
+			}
+			finally {
+				dbms.close();
+			}
+
+
+			// Obtain a `Connection` to the database we just created
+			Connection aConn = ConnectionConfiguration
+				                   .to("waldoTest")
+				                   .credentials("admin", "admin")
+				                   .connect();
+
+			try {
+				// To start, lets add some data into the database so that it can be queried and searched
+				aConn.begin();
+				aConn
+					.add().io()
+					.format(RDFFormat.RDFXML)
+					.file(new File("data/catalog.rdf"));
+
+				aConn.commit();
+
+				// Lets try an example with the basic Waldo API
+				// We want to view this connection as a [searchable connection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/SearchConnection.html),
+				// so we request a view of the `Connection` as a `SearchConnection`
+				SearchConnection aSearchConn = aConn.as(SearchConnection.class);
+
+				// With that done, let's create a [Searcher](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/Searcher.html)
+				// that we can use to run some full text searches over the database.
+				// Here we will specify that we only want results over a score of `0.5`, and no more than `50` results
+				// for things that match the search term `mac`.  Stardog's full text search is backed by [Lucene](http://lucene.apache.org)
+				// so you can use the full Lucene search syntax in your queries.
+				Searcher aSearch = aSearchConn.search()
+					                   .limit(50)
+					                   .query("mac")
+					                   .threshold(0.5);
+
+				// We can run the search and then iterate over the results
+				SearchResults aSearchResults = aSearch.search();
+
+				Iteration<SearchResult, QueryEvaluationException> resultIt = aSearchResults.iteration();
+
+				try {
+					System.out.println("\nAPI results: ");
+					while (resultIt.hasNext()) {
+						SearchResult aHit = resultIt.next();
+
+						System.out.println(aHit.getHit() + " with a score of: " + aHit.getScore());
+					}
+				}
+				finally {
+					// `Iteration`s must be closed
+					resultIt.close();
+				}
+
+
+				// The `Searcher` can be re-used if we want to find the next set of results.  We already found the
+				// first fifty, so lets grab the next page.
+				aSearch.offset(50);
+
+				aSearchResults = aSearch.search();
+
+				// The Stardog full-text search index no different than the RDF index, which means you can query it
+				// via SPARQL, even combining your search over the full-text index with BGPs which query your RDF
+				// letting you query *both* indexes at the same time.  The SPARQL syntax is based on the LARQ
+				// syntax in Jena.  Here you will see the SPARQL query that is equivalent to the search we just
+				// did via `Searcher`, which we can see when we print the results.
+				String aQuery = "SELECT DISTINCT ?s ?score WHERE {\n" +
+				                "\t?s ?p ?l.\n" +
+				                "\t( ?l ?score ) <" + SearchConnection.MATCH_PREDICATE + "> ( 'mac' 0.5 50 ).\n" +
+				                "}";
+
+				SelectQuery query = aConn.select(aQuery);
+
+				TupleQueryResult aResult = query.execute();
+
+				try {
+					System.out.println("Query results: ");
+					while (aResult.hasNext()) {
+						BindingSet result = aResult.next();
+
+						System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
+					}
+				}
+				finally {
+                    aResult.close();
+				}
+			}
+			finally {
+				// Always close your connections when you're done
+				aConn.close();
+			}
+		}
+		finally {
+			// You MUST stop the server if you've started it!
+			aServer.stop();
+		}
+
+	}
+}

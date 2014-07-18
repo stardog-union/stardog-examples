@@ -64,6 +64,38 @@
 		</antcall>
 
 		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ConnectionPoolsExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ExplanationExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ICVDocsExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ICVExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ProvSkosExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.ReasoningExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.VersioningExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
+			<param name="example" value="com.complexible.stardog.examples.api.WaldoAPIExample"/>
+		</antcall>
+
+		<antcall target="runExample" inheritrefs="true" inheritall="true">
 			<param name="example" value="com.complexible.stardog.examples.sesame.SesameExample"/>
 		</antcall>
 
@@ -87,6 +119,13 @@
 			<arg value="-o"/>
 			<arg value="${docs}"/>
 			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ExplanationExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/WaldoAPIExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/VersioningExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ReasoningExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ProvSkosExample.java"/>
+			<arg value="${src}/com/complexible/stardog/examples/api/ICVExample.java"/>
 			<arg value="${src}/com/complexible/stardog/examples/sesame/SesameExample.java"/>
 			<arg value="${src}/com/complexible/stardog/examples/jena/JenaExample.java"/>
 		</exec>
