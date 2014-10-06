@@ -17,12 +17,20 @@ package com.complexible.stardog.examples.api;
 import static com.complexible.common.rdf.model.Values.literal;
 import static com.complexible.common.rdf.model.Values.namespace;
 import static com.complexible.common.rdf.model.Values.uri;
-import info.aduna.io.FileUtil;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.concurrent.TimeUnit;
+import com.complexible.common.rdf.model.Values;
+import com.complexible.stardog.api.update.UpdateHandler;
+import com.complexible.stardog.api.update.UpdateOperation;
+import com.complexible.stardog.api.update.UpdateSequence;
+import com.complexible.stardog.api.update.Updates;
+import com.complexible.stardog.api.update.io.UpdateSPARQLWriter;
+import com.google.common.collect.Sets;
 
+import java.util.List;
+import java.util.Set;
+
+import org.openrdf.model.Namespace;
+import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.FOAF;
@@ -44,8 +52,7 @@ import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.versioning.VersioningOptions;
 import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-import com.google.common.util.concurrent.Uninterruptibles;
+import org.openrdf.rio.RDFHandlerException;
 
 /**
  * <p>Simple example for versioning</p>
@@ -171,6 +178,57 @@ public class VersioningExample {
 
 				System.out.println("Tagged " + aHeadVersion.getURI() + " " + aTag);
 
+				// Let's show a quick example of how to print out the diffs between two versions as SPARQL Update queries
+				// These are the versions we want to calculate the diff between
+				Version aTo = aHeadVersion;
+				Version aFrom = aHeadVersion.getRelativeVersion(-2);
+
+				System.out.println();
+				System.out.println("Print the diffs between HEAD-2 and HEAD:");
+
+				try {
+					// We'll write the diffs as SPARQL update queries
+					UpdateHandler aWriter = new UpdateSPARQLWriter(System.out);
+					aWriter.startRDF();
+
+					Iterable<Namespace> aNamespaces = aConn.namespaces();
+					for (Namespace aNamespace : aNamespaces) {
+						aWriter.handleNamespace(aNamespace.getPrefix(), aNamespace.getName());
+					}
+
+					UpdateSequence aDiff;
+
+					final Set<Statement> aAdditions = Sets.newHashSet();
+					final Set<Statement> aRemovals = Sets.newHashSet();
+
+					Version aVersion = aFrom;
+					// Iterate over the versions, grabbing the diff, and coalescing the changes
+					while (aVersion != null) {
+						aDiff = aVersion.getDiff();
+						for (UpdateOperation aOp : aDiff) {
+							Set<Statement> aAddTarget = aOp.getType() == UpdateOperation.Type.ADD ? aAdditions : aRemovals;
+							Set<Statement> aRemoveTarget = aOp.getType() == UpdateOperation.Type.REMOVE ? aAdditions : aRemovals;
+							for (Statement aStmt : toStatements(aOp)) {
+								aAddTarget.add(aStmt);
+								aRemoveTarget.remove(aStmt);
+							}
+						}
+						aVersion = aVersion.equals(aTo) ? null : aVersion.getNext();
+					}
+
+					// now that we have all the changes, create the diff and write it out
+					aDiff = Updates.newSequence(Updates.add(aAdditions), Updates.remove(aRemovals));
+
+					Updates.handle(aDiff, aWriter);
+
+					aWriter.endRDF();
+				}
+				catch (RDFHandlerException e) {
+					throw new StardogException(e);
+				}
+
+				System.out.println();
+
 				// Finally, we can revert.  Let's undo our last to commits and print the current data in the database
 				// so we can see that we're back to where we started.
 				aConn.revert(aHeadVersion.getRelativeVersion(-2), aHeadVersion, "Undo last two commits");
@@ -185,6 +243,21 @@ public class VersioningExample {
 		finally {
 			// You MUST stop the server if you've started it!
 			aServer.stop();
+		}
+	}
+
+	private static Iterable<Statement> toStatements(UpdateOperation theOp) throws StardogException {
+		if (theOp.getNamedGraphs().isEmpty()) {
+			return theOp.getStatements();
+		}
+		else {
+			List<Statement> aResult = Lists.newArrayList();
+			for (Statement aStmt : theOp.getStatements()) {
+				for (URI aGraph : theOp.getNamedGraphs()) {
+					aResult.add(Values.statement(aStmt.getSubject(), aStmt.getPredicate(), aStmt.getObject(), aGraph));
+				}
+			}
+			return aResult;
 		}
 	}
 }
