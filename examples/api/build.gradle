@@ -1,0 +1,67 @@
+group = "com.complexible.stardog.examples.api"
+
+//apply plugin:'application'
+
+dependencies {
+	compile ("org.openrdf.sesame:sesame-runtime:2.7.12") {
+		exclude group: "org.slf4j"
+		exclude group: "com.fasterxml.jackson.core"
+	}
+	compile (group: "com.google.guava", name: "guava", version: "17.0") {
+		exclude group: "com.google.code.findbugs"
+	}
+
+	stardogClientLibs.each { d ->
+		compile fileTree(dir: d, include: '*.jar')
+	}
+
+	stardogServerLibs.each { d ->
+		compile fileTree(dir: d, include: '*.jar')
+	}
+}
+
+//task createData {
+//	def dataDir = file("$buildDir/data")
+//	outputs.dir dataDir
+//	doLast {
+//		dataDir.mkDirs()
+//	}
+//}
+
+task execute(type:JavaExec) {
+//	setup()
+
+	if (hasProperty("mainClass")) {
+		main = mainClass
+	}
+	else {
+		main = "com.complexible.stardog.examples.api.ConnectionAPIExample"
+	}
+
+	classpath = sourceSets.main.runtimeClasspath
+
+	if (hasProperty("stardog.home")) {
+		jvmArgs = [ "-Dstardog.home=${stardog.home}" ]
+	}
+	else {
+		jvmArgs = [ "-Dstardog.home=${stardogPath}" ]
+	}
+}
+
+task docs << {
+	exec {
+		commandLine "docco",
+					"-o",
+					"${distPath}/docs",
+					"${srcPath}/com/complexible/stardog/examples/api/ConnectionAPIExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ExplanationExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/VersioningExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ProvSkosExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",
+					"${srcPath}/com/complexible/stardog/examples/sesame/SesameExample.java",
+					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java"
+	}
+}

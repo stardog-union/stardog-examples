@@ -1,0 +1,91 @@
+apply plugin: 'java'
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.2'
+}
+
+// little trick to include stardog libs from local classpath
+String path = "repo/stardog"
+if (hasProperty("stardogPath")) {
+	path = stardogPath
+}
+
+println "Stardog location: " + path
+def clientLibs = []
+def serverLibs = []
+def clientDir = new File(path + "/client")
+def serverDir = new File(path + "/server")
+
+if (clientDir.exists()) {
+	clientDir.eachFileRecurse(groovy.io.FileType.DIRECTORIES) { file ->
+		clientLibs << file.getAbsolutePath()
+	}
+}
+
+if (serverDir.exists()) {
+	serverDir.eachFileRecurse(groovy.io.FileType.DIRECTORIES) { file ->
+		serverLibs << file.getAbsolutePath()
+	}
+}
+
+ext {
+	projectVersion = '0.0.1'
+	distPath = "${projectDir}/dist"
+	stardogClientLibs = clientLibs
+	stardogServerLibs = serverLibs
+}
+
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.complexible.stardog'
+	version = projectVersion
+	// also configure in idea.gradle
+	sourceCompatibility = '1.7'
+	targetCompatibility = '1.7'
+
+	repositories {
+//		ivy {
+//			// load prop from gradle.properties
+//			url cpRepositoryDir
+//			layout 'pattern', {
+//				artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+//				artifact "[organisation]/[module]/[revision]/[artifact].[ext]"
+//				ivy "[organisation]/[module]/[revision]/ivy.xml"
+//				m2compatible = true
+//			}
+//		}
+		mavenLocal()
+		mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: "java"
+
+	// common deps
+	dependencies {
+		compile 'org.slf4j:slf4j-api:1.7.5'
+		compile 'org.slf4j:slf4j-jdk14:1.7.5'
+
+		testCompile 'junit:junit:4.8.2'
+	}
+
+	sourceSets {
+		main {
+			java {
+				srcDir 'main/src'
+			}
+			resources {
+				srcDir 'main/resources'
+			}
+		}
+		test {
+			java {
+				srcDir 'test/src'
+			}
+			resources {
+				srcDir 'test/resources'
+			}
+		}
+	}
+}

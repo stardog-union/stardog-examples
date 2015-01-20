@@ -5,20 +5,27 @@ well as examples of how to use some of the extension points within Stardog.
 
 ## How to build examples
 
-
 First, you'll need a valid Stardog download.
 
-For the examples in `examples/api` and `examples/function`, you'll need [Ant](http://ant.apache.org/).  Copy 
-the example properties file into the correct place:
+For the examples in `examples/api` and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
+
+To compile or run the examples, they will need a valid Stardog distribution.  You can specify where Stardog is located
+via `stardogPath`:
 
 ```bash
-cp project.properties.example project.properties
+gradle compileJava -PstardogPath=~/Downloads/stardog-3.0
 ```
 
-Then, using your text editor of choice, specify the paths to your Stardog installation location and home directory.
-Once that's done, you can navigate into any of the directories below `examples/api` or `examples/function` where there is a `build.xml` file
-and run `ant build`
+To run the examples, they require a valid `$STARDOG_HOME`; you can provide this via the parameter `stardog.home`
+(eg `-Pstardog.home=/my/stardog/home`).  If this is not set, it will default to whatever path you specified for
+`stardogPath`.
 
+To run any of the examples, you can use the Gradle `execute` task.  By default, this will run the `ConnectionAPIExample`
+program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
+
+```java
+gradle execute -PstardogPath=~/Downloads/stardog-3.0 -PmainClass=com.complexible.stardog.examples.ICVExample
+```
 
 For the examples in `examples/client-server`, you'll need [Maven](http://maven.apache.org/) and [Gradle](http://www.gradle.org/).  Install
 the Stardog libraries into your local maven repository by executing the following command from the Stardog installation directory:
@@ -48,7 +55,7 @@ Then, you can run it directly against any example:
 docco -o docs main/src/com/complexible/stardog/api/ConnectionAPIExample.java
 ```
 
-Or you can use the supplied `ant docs` task in each build file that will run Docco against all annotated source files.
+Or you can use the supplied `gradle docs` task in each build file that will run Docco against all annotated source files.
 
 ## Service Loading
 

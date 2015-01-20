@@ -1,0 +1,19 @@
+group = "com.complexible.stardog.examples.function"
+
+dependencies {
+	compile ("org.openrdf.sesame:sesame-runtime:2.7.12") {
+		exclude group: "org.slf4j"
+		exclude group: "com.fasterxml.jackson.core"
+	}
+	compile (group: "com.google.guava", name: "guava", version: "17.0") {
+		exclude group: "com.google.code.findbugs"
+	}
+
+	stardogClientLibs.each { d ->
+		compile fileTree(dir: d, include: '*.jar')
+	}
+
+	stardogServerLibs.each { d ->
+		compile fileTree(dir: d, include: '*.jar')
+	}
+}
