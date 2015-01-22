@@ -35,13 +35,14 @@ import com.complexible.stardog.api.search.SearchConnection;
 import com.complexible.stardog.api.search.SearchResult;
 import com.complexible.stardog.api.search.SearchResults;
 import com.complexible.stardog.api.search.Searcher;
+import com.complexible.stardog.search.SearchOptions;
 
 /**
  * <p>Simple example </p>
  *
  * @author  Michael Grove
  * @since   0.6.5
- * @version 2.0
+ * @version 3.0
  */
 public class WaldoAPIExample {
 	// Using the Waldo Search API
@@ -68,7 +69,7 @@ public class WaldoAPIExample {
 				}
 
 				dbms.memory("waldoTest")
-				    .searchable(true)
+				    .set(SearchOptions.SEARCHABLE, true)
 				    .create();
 			}
 			finally {
