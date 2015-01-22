@@ -64,7 +64,6 @@ import com.complexible.stardog.icv.ConstraintFactory;
 import com.complexible.stardog.icv.ConstraintViolation;
 import com.complexible.stardog.icv.ICV;
 import com.complexible.stardog.icv.api.ICVConnection;
-import com.complexible.stardog.reasoning.api.ReasoningType;
 import com.google.common.base.Strings;
 
 /**
@@ -96,7 +95,7 @@ public class ICVDocsExample {
 		// obtain a connection to the database
 		final Connection aConn = ConnectionConfiguration
 			.to("testICVDocs")				// the name of the db to connect to
-			.reasoning(ReasoningType.QL)	// need reasoning for ICV
+			.reasoning(true)	            // need reasoning for ICV
 			.credentials("admin", "admin")  // credentials to use while connecting
  			.connect();						// now open the connection
 

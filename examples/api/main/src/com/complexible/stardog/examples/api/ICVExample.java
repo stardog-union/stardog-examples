@@ -47,7 +47,6 @@ import com.complexible.stardog.icv.ConstraintFactory;
 import com.complexible.stardog.icv.ConstraintViolation;
 import com.complexible.stardog.icv.ICV;
 import com.complexible.stardog.icv.api.ICVConnection;
-import com.complexible.stardog.reasoning.api.ReasoningType;
 
 /**
  * <p></p>
@@ -91,7 +90,7 @@ public class ICVExample {
 			// Obtain a connection to the database
 			Connection aConn = ConnectionConfiguration
 				                   .to("testICVExample")
-				                   .reasoning(ReasoningType.QL)
+				                   .reasoning(true)
 				                   .credentials("admin", "admin")
 				                   .connect();
 

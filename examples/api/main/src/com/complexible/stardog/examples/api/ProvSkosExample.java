@@ -38,7 +38,6 @@ import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.prov.ProvVocabulary;
-import com.complexible.stardog.reasoning.api.ReasoningType;
 
 /**
  * <p>Example code illustrating use of the built-in ontologies in Stardog, specifically for PROV and SKOS ontologies.</p>
@@ -101,7 +100,7 @@ public class ProvSkosExample {
 			Connection aConn = ConnectionConfiguration
 				                   .to(db)
 				                   .credentials("admin", "admin")
-				                   .reasoning(ReasoningType.RL)
+				                   .reasoning(true)
 				                   .connect();
 
 			try {

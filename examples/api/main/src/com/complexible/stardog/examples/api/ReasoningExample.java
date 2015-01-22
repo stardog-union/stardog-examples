@@ -33,7 +33,6 @@ import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
-import com.complexible.stardog.reasoning.api.ReasoningType;
 
 /**
  * <p>A small example program illustrating how to access Stardog's reasoning capabilities.</p>
@@ -100,14 +99,13 @@ public class ReasoningExample {
 			// to configure and open a new connection to a database.
 			//
 			// We'll use the configuration to specify which database we want to connect to as well as our login information,
-			// then we can obtain a new connection.  This is also where you specify the type of reasoning you would like the connection
-			// to use.  Please note that reasoning is *per connection* there's no requirement to specify the type of
-			// reasoning you want to use when you create a database.  You can use whatever type of reasoning suits your
-			// current use-case by specifying it when you create a Connection.
+			// then we can obtain a new connection.  This is also where you specify whether you would like the connection
+			// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
+			// reasoning you want to use when you create a database.
 			ReasoningConnection aReasoningConn = ConnectionConfiguration
 				.to("reasoningExampleTest")
 				.credentials("admin", "admin")
-				.reasoning(ReasoningType.QL)
+				.reasoning(true)
 				.connect()
 				.as(ReasoningConnection.class);
 

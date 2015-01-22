@@ -32,7 +32,6 @@ import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.reasoning.Proof;
-import com.complexible.stardog.reasoning.api.ReasoningType;
 import com.complexible.stardog.reasoning.ExpressionWriter;
 import com.complexible.stardog.reasoning.ProofWriter;
 
@@ -86,12 +85,12 @@ public class ExplanationExample {
 		    }
 
 
-		    // Open a `Connection` to the database we just created with the default `RL` reasoning level.
+		    // Open a `Connection` to the database we just created with reasoning turned on.
 		    // We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
 		    // [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
 		    ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
 		                                                                      .credentials("admin", "admin")
-		                                                                      .reasoning(ReasoningType.RL)
+		                                                                      .reasoning(true)
 		                                                                      .connect()
 		                                                                      .as(ReasoningConnection.class);
 
@@ -111,7 +110,7 @@ public class ExplanationExample {
 			    // We'll use the `Getter` interface to look up `:z a :A`, but we'll specify that no reasoning should
 			    // be performed
 			    boolean aExistsNoReasoning = aReasoningConnection.get()
-					    .reasoning(ReasoningType.NONE)
+					    .reasoning(false)
 			            .subject(z)
 			            .predicate(RDF.TYPE)
 			            .object(A)
