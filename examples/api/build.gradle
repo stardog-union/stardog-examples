@@ -1,7 +1,5 @@
 group = "com.complexible.stardog.examples.api"
 
-//apply plugin:'application'
-
 dependencies {
 	compile ("org.openrdf.sesame:sesame-runtime:2.7.12") {
 		exclude group: "org.slf4j"
@@ -20,19 +18,10 @@ dependencies {
 	}
 }
 
-//task createData {
-//	def dataDir = file("$buildDir/data")
-//	outputs.dir dataDir
-//	doLast {
-//		dataDir.mkDirs()
-//	}
-//}
-
 task execute(type:JavaExec) {
-//	setup()
 
-	if (hasProperty("mainClass")) {
-		main = mainClass
+	if (project.hasProperty("mainClass")) {
+		main = project.mainClass
 	}
 	else {
 		main = "com.complexible.stardog.examples.api.ConnectionAPIExample"
@@ -40,11 +29,17 @@ task execute(type:JavaExec) {
 
 	classpath = sourceSets.main.runtimeClasspath
 
-	if (hasProperty("stardog.home")) {
-		jvmArgs = [ "-Dstardog.home=${stardog.home}" ]
+	if (project.hasProperty("stardogHome")) {
+		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
 	}
 	else {
-		jvmArgs = [ "-Dstardog.home=${stardogPath}" ]
+		jvmArgs = [ "-Dstardog.home=${project.stardogPath}" ]
+	}
+}
+
+task executeAll << {
+	sourceSets.main.allJava.each { File aFile ->
+		runExample aFile.getAbsolutePath()
 	}
 }
 
@@ -63,5 +58,27 @@ task docs << {
 					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",
 					"${srcPath}/com/complexible/stardog/examples/sesame/SesameExample.java",
 					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java"
+	}
+}
+
+def runExample(String example) {
+	// replace / with .
+	String fqcn = example.replaceAll(System.getProperty("file.separator"), ".");
+	// strip .java
+	fqcn = fqcn.substring(0, fqcn.length() - 5);
+	fqcn = fqcn.substring(fqcn.indexOf("com.complexible"));
+
+	javaexec {
+
+		main = fqcn
+
+		classpath = project(':examples:api').sourceSets.main.runtimeClasspath
+
+		if (project.hasProperty("stardogHome")) {
+			jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
+		}
+		else {
+			jvmArgs = [ "-Dstardog.home=${project.stardogPath}" ]
+		}
 	}
 }
