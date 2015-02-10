@@ -3,8 +3,8 @@
 The Stardog [com.complexible.stardog.plan.filter.functions.Function](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/Function.html)
 interface is the extension point for section 17.6 (Extensible Value Testing) of the [SPARQL spec](http://www.w3.org/TR/2012/PR-sparql11-query-20121108/#extensionFunctions).
 
-`Function` is corresponds to build in expressions used in `FILTER`, `BIND` and `SELECT` expressions as well as
-aggregate operators in a SPARQL query.  Examples are built-ins such as `&&` and `||` as well as functions defined in the
+`Function` corresponds to built-in expressions used in `FILTER`, `BIND` and `SELECT` expressions, as well as
+aggregate operators in a SPARQL query. Examples include `&&` and `||` and functions defined in the
 SPARQL spec like `sameTerm`, `str`, and `now`.
 
 ## Implementing Custom Functions
