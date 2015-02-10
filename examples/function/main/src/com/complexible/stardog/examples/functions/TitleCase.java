@@ -19,7 +19,9 @@ import com.complexible.common.base.Strings2;
 import com.complexible.common.rdf.model.Namespaces;
 import com.complexible.common.rdf.model.StardogValueFactory;
 import com.complexible.stardog.plan.filter.functions.AbstractFunction;
-import com.complexible.stardog.plan.filter.functions.FunctionEvaluationException;
+import com.complexible.stardog.plan.filter.ExpressionEvaluationException;
+import com.complexible.stardog.plan.filter.ExpressionVisitor;
+import com.complexible.stardog.plan.filter.functions.string.StringFunction;
 import org.openrdf.model.Value;
 
 import static com.complexible.common.rdf.model.Values.literal;
@@ -33,7 +35,7 @@ import static com.complexible.common.rdf.model.Values.literal;
  *
  * @see <a href="http://www.w3.org/TR/2012/PR-sparql11-query-20121108/#extensionFunctions">Extension Functions</a>
  */
-public final class TitleCase extends AbstractFunction {
+public final class TitleCase extends AbstractFunction implements StringFunction {
 
 	// ## Initializing a Function
 	//
@@ -57,6 +59,18 @@ public final class TitleCase extends AbstractFunction {
 		super(1 /* takes a single argument */, Namespaces.STARDOG+"titleCase");
 	}
 
+	private TitleCase(final TitleCase theExpr) {
+		super(theExpr);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return "TitleCase";
+	}
+
 	// # Filter Evaluation
 	//
 	// Here is where we can evaluate the function.  The parameters of this method correspond to the arguments
@@ -68,12 +82,29 @@ public final class TitleCase extends AbstractFunction {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Value internalEvaluate(final Value... theArgs) throws FunctionEvaluationException {
+	protected Value internalEvaluate(final Value... theArgs) throws ExpressionEvaluationException {
 
 		// Verify that the single input argument is a plain literal, or an xsd:string.
 		assertStringLiteral(theArgs[0]);
 
 		// We know that we have a string, so let's just title case it and return it.
 		return literal(Strings2.toTitleCase(theArgs[0].stringValue()), StardogValueFactory.XSD.STRING);
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void accept(final ExpressionVisitor theVisitor) {
+		theVisitor.visit(this);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public TitleCase copy() {
+		return new TitleCase(this);
 	}
 }
