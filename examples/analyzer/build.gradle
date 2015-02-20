@@ -3,11 +3,5 @@ group = "com.complexible.stardog.examples.analyzer"
 dependencies {
 	compile "org.apache.lucene:lucene-analyzers-common:4.7.2"
 
-	stardogClientLibs.each { d ->
-		compile fileTree(dir: d, include: '*.jar')
-	}
-
-	stardogServerLibs.each { d ->
-		compile fileTree(dir: d, include: '*.jar')
-	}
+	compile "com.complexible.stardog.search:stardog-search-waldo:${stardogVersion}"
 }

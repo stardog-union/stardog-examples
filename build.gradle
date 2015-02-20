@@ -1,38 +1,18 @@
 apply plugin: 'java'
 
+if (!project.hasProperty('stardogRepo')) {
+	throw new InvalidUserDataException("Url to Stardog repository is not defined." +
+									   " Set up the property 'stardogRepo' in gradle.properties.")
+}
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.2'
 }
 
-// little trick to include stardog libs from local classpath
-String path = "repo/stardog"
-if (hasProperty("stardogPath")) {
-	path = stardogPath
-}
-
-println "Stardog location: " + path
-def clientLibs = []
-def serverLibs = []
-def clientDir = new File(path + "/client")
-def serverDir = new File(path + "/server")
-
-if (clientDir.exists()) {
-	clientDir.eachFileRecurse(groovy.io.FileType.DIRECTORIES) { file ->
-		clientLibs << file.getAbsolutePath()
-	}
-}
-
-if (serverDir.exists()) {
-	serverDir.eachFileRecurse(groovy.io.FileType.DIRECTORIES) { file ->
-		serverLibs << file.getAbsolutePath()
-	}
-}
-
 ext {
+	stardogVersion = '3.0'
 	projectVersion = '0.0.1'
 	distPath = "${projectDir}/dist"
-	stardogClientLibs = clientLibs
-	stardogServerLibs = serverLibs
 }
 
 allprojects {
@@ -40,12 +20,19 @@ allprojects {
 	group = 'com.complexible.stardog'
 	version = projectVersion
 	// also configure in idea.gradle
-	sourceCompatibility = '1.7'
-	targetCompatibility = '1.7'
+	sourceCompatibility = '1.6'
+	targetCompatibility = '1.6'
 
 	repositories {
-		mavenLocal()
 		mavenCentral()
+		maven {
+			url stardogRepo
+			// todo: remove this once we go live
+			credentials {
+				username artifactoryUsername
+				password artifactoryPassword
+			}
+		}
 	}
 }
 
@@ -54,8 +41,8 @@ subprojects {
 
 	// common deps
 	dependencies {
-		compile 'org.slf4j:slf4j-api:1.7.5'
-		compile 'org.slf4j:slf4j-jdk14:1.7.5'
+		compile 'org.slf4j:slf4j-api:1.7.7'
+		compile 'org.slf4j:slf4j-jdk14:1.7.7'
 
 		testCompile 'junit:junit:4.8.2'
 	}
