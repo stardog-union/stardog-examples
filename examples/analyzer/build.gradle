@@ -3,5 +3,5 @@ group = "com.complexible.stardog.examples.analyzer"
 dependencies {
 	compile "org.apache.lucene:lucene-analyzers-common:4.7.2"
 
-	compile "com.complexible.stardog.search:stardog-search-waldo:${stardogVersion}"
+	compile "com.complexible.stardog:server:${stardogVersion}"
 }

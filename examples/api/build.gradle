@@ -2,42 +2,15 @@ group = "com.complexible.stardog.examples.api"
 
 dependencies {
 	// server core modules
-	compile "com.complexible.stardog.core:stardog:${stardogVersion}"
-	compile "com.complexible.stardog.security:stardog-core-security:${stardogVersion}"
-	compile "com.complexible.stardog.logging:stardog-logging:${stardogVersion}"
-	compile "com.complexible.stardog.icv:stardog-icv-core:${stardogVersion}"
-	compile "com.complexible.stardog.reasoning:stardog-reasoning-core:${stardogVersion}"
-	compile "com.complexible.stardog.search:stardog-search-waldo:${stardogVersion}"
+	compile "com.complexible.stardog:server:${stardogVersion}"
+
+	// client modules
+	compile "com.complexible.stardog:client-snarl:${stardogVersion}"
+	compile "com.complexible.stardog:client-http:${stardogVersion}" // not used in this project but serves as an example
+
+	// external apis
 	compile "com.complexible.stardog.sesame:stardog-sesame-core:${stardogVersion}"
-	compile "com.complexible.stardog.versioning:stardog-versioning-core:${stardogVersion}"
-	compile "com.complexible.stardog.watchdog:stardog-watchdog-core:${stardogVersion}"
-	compile "com.complexible.stardog.skos:stardog-skos:${stardogVersion}"
-	compile "com.complexible.stardog.prov:stardog-prov:${stardogVersion}"
-
-	// server snarl modules
-	compile "com.complexible.stardog.protocols.snarl:stardog-protocols-snarl-server:${stardogVersion}"
-	compile "com.complexible.stardog.icv.snarl:stardog-icv-protocols-snarl-server:${stardogVersion}"
-	compile "com.complexible.stardog.reasoning.snarl:stardog-reasoning-protocols-snarl-server:${stardogVersion}"
-	compile "com.complexible.stardog.versioning.snarl:stardog-versioning-protocols-snarl-server:${stardogVersion}"
-	compile "com.complexible.stardog.watchdog.snarl:stardog-watchdog-protocols-snarl-server:${stardogVersion}"
-
-	// client api modules
-	compile "com.complexible.stardog.reasoning:stardog-reasoning-api:${stardogVersion}"
-	compile "com.complexible.stardog.icv:stardog-icv-api:${stardogVersion}"
-	compile "com.complexible.stardog.icv:stardog-icv-api_snarl:${stardogVersion}"
-	compile "com.complexible.stardog.search:stardog-search-api:${stardogVersion}"
 	compile "com.complexible.stardog.jena:stardog-jena:${stardogVersion}"
-	compile "com.complexible.stardog.repair:stardog-repair:${stardogVersion}"
-	compile "com.complexible.stardog.versioning:stardog-versioning-api:${stardogVersion}"
-	compile "com.complexible.stardog.sesame:stardog-sesame-core:${stardogVersion}"
-
-	// client snarl modules
-	compile "com.complexible.stardog.protocols.snarl:stardog-protocols-snarl-client:${stardogVersion}"
-	compile "com.complexible.stardog.icv.snarl:stardog-icv-protocols-snarl-client:${stardogVersion}"
-	compile "com.complexible.stardog.reasoning.snarl:stardog-reasoning-protocols-snarl-client:${stardogVersion}"
-	compile "com.complexible.stardog.search.snarl:stardog-search-protocols-snarl-client:${stardogVersion}"
-	compile "com.complexible.stardog.versioning.snarl:stardog-versioning-protocols-snarl-client:${stardogVersion}"
-	compile "com.complexible.stardog.watchdog.snarl:stardog-watchdog-protocols-snarl-client:${stardogVersion}"
 }
 
 task execute(type:JavaExec) {
