@@ -27,7 +27,7 @@ task execute(type:JavaExec) {
 	if (project.hasProperty("stardogHome")) {
 		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
 	}
-	else {
+	else if (project.hasProperty("stardogPath")) {
 		jvmArgs = [ "-Dstardog.home=${project.stardogPath}" ]
 	}
 }
