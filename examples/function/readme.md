@@ -14,15 +14,15 @@ This class provides much of the basic scaffolding for implementing a new `Functi
 
 If your new function falls into one of the existing categories, it should implement the appropriate marker interface:
 
-* `com.complexible.stardog.plan.filter.function.cast.CastFunction`
-* `com.complexible.stardog.plan.filter.function.datetime.DateTimeFunction`
-* `com.complexible.stardog.plan.filter.function.hash.HashFunction`
-* `com.complexible.stardog.plan.filter.function.numeric.MathFunction`
-* `com.complexible.stardog.plan.filter.function.rdfterm.RDFTermFunction`
-* `com.complexible.stardog.plan.filter.function.string.StringFunction`
+* `com.complexible.stardog.plan.filter.functions.cast.CastFunction`
+* `com.complexible.stardog.plan.filter.functions.datetime.DateTimeFunction`
+* `com.complexible.stardog.plan.filter.functions.hash.HashFunction`
+* `com.complexible.stardog.plan.filter.functions.numeric.MathFunction`
+* `com.complexible.stardog.plan.filter.functions.rdfterm.RDFTermFunction`
+* `com.complexible.stardog.plan.filter.functions.string.StringFunction`
 
 
-If not, then it *must* implement `com.complexible.stardog.plan.filter.function.UserDefinedFunction`.  Extending one
+If not, then it *must* implement `com.complexible.stardog.plan.filter.functions.UserDefinedFunction`.  Extending one
 of these marker interfaces is required for the `Function` to be traverseable via the visitor pattern.
 
 A zero-argument constructor *must* be provided which delegates some initialization to `super`, providing first the `int`
