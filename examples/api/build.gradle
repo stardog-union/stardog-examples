@@ -23,7 +23,6 @@ task execute(type:JavaExec, dependsOn: compileJava) {
 	}
 
 	classpath = sourceSets.main.runtimeClasspath
-	classpath.each { println it }
 
 	if (project.hasProperty("stardogHome")) {
 		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
