@@ -13,7 +13,7 @@ dependencies {
 	compile "com.complexible.stardog.jena:stardog-jena:${stardogVersion}"
 }
 
-task execute(type:JavaExec) {
+task execute(type:JavaExec, dependsOn: compileJava) {
 
 	if (project.hasProperty("mainClass")) {
 		main = project.mainClass
@@ -23,16 +23,14 @@ task execute(type:JavaExec) {
 	}
 
 	classpath = sourceSets.main.runtimeClasspath
+	classpath.each { println it }
 
 	if (project.hasProperty("stardogHome")) {
 		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
 	}
-	else if (project.hasProperty("stardogPath")) {
-		jvmArgs = [ "-Dstardog.home=${project.stardogPath}" ]
-	}
 }
 
-task executeAll << {
+task executeAll(dependsOn: compileJava) << {
 	sourceSets.main.allJava.each { File aFile ->
 		runExample aFile.getAbsolutePath()
 	}

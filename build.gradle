@@ -24,7 +24,6 @@ allprojects {
 	targetCompatibility = '1.6'
 
 	repositories {
-		mavenCentral()
 		maven {
 			url stardogRepo
 			// todo: remove this once we go live
@@ -33,6 +32,7 @@ allprojects {
 				password artifactoryPassword
 			}
 		}
+		mavenCentral()
 	}
 }
 

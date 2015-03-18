@@ -9,33 +9,21 @@ First, you'll need a valid Stardog download.
 
 For the examples in `examples/api` and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
 
-To compile or run the examples, they will need a valid Stardog distribution.  You can specify where Stardog is located
-via `stardogPath`:
+To compile or run the examples, gradle will automatically download the dependencies from our public maven repository:
 
 ```bash
-gradle compileJava -PstardogPath=~/Downloads/stardog-3.0
+gradle compileJava
 ```
 
 To run the examples, they require a valid `$STARDOG_HOME`; you can provide this via the parameter `stardog.home`
-(eg `-Pstardog.home=/my/stardog/home`).  If this is not set, it will default to whatever path you specified for
-`stardogPath`.
+(eg `-PstardogHome=/my/stardog/home`).
 
 To run any of the examples, you can use the Gradle `execute` task.  By default, this will run the `ConnectionAPIExample`
 program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
 
 ```java
-gradle execute -PstardogPath=~/Downloads/stardog-3.0 -PmainClass=com.complexible.stardog.examples.ICVExample
+gradle execute -PmainClass=com.complexible.stardog.examples.ICVExample
 ```
-
-For the examples in `examples/client-server`, you'll need [Maven](http://maven.apache.org/) and [Gradle](http://www.gradle.org/).  Install
-the Stardog libraries into your local maven repository by executing the following command from the Stardog installation directory:
-
-```bash
-bin/mavenInstall
-```
-
-The examples in the directories below `examples/client-server` assume you're running the Stardog server in another process on the local host
-using the default port.  Then, navigate into any of those directories where there is a `build.gradle` file and run `gradle run`
 
 ## Generating Documentation
 
