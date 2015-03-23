@@ -13,6 +13,7 @@ ext {
 	stardogVersion = '3.0'
 	projectVersion = '0.0.1'
 	distPath = "${projectDir}/dist"
+	stardogRepo= "http://maven.stardog.com"
 }
 
 allprojects {
@@ -26,11 +27,6 @@ allprojects {
 	repositories {
 		maven {
 			url stardogRepo
-			// todo: remove this once we go live
-			credentials {
-				username artifactoryUsername
-				password artifactoryPassword
-			}
 		}
 		mavenCentral()
 	}
