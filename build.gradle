@@ -1,10 +1,5 @@
 apply plugin: 'java'
 
-if (!project.hasProperty('stardogRepo')) {
-	throw new InvalidUserDataException("Url to Stardog repository is not defined." +
-									   " Set up the property 'stardogRepo' in gradle.properties.")
-}
-
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.2'
 }
@@ -13,7 +8,7 @@ ext {
 	stardogVersion = '3.0'
 	projectVersion = '0.0.1'
 	distPath = "${projectDir}/dist"
-	stardogRepo= "http://maven.stardog.com"
+	stardogRepo = "http://maven.stardog.com"
 }
 
 allprojects {
