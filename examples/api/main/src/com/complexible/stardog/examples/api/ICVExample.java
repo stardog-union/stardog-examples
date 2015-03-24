@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2014 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,39 +14,28 @@
  */
 package com.complexible.stardog.examples.api;
 
-import static com.complexible.common.openrdf.util.ExpressionFactory.some;
-import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
-
-import java.util.Set;
-
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import com.complexible.stardog.reasoning.Proof;
-import com.complexible.stardog.reasoning.ProofWriter;
-import org.openrdf.model.Graph;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.query.BindingSet;
-
-import com.complexible.common.base.Pair;
-import com.complexible.common.iterations.Iteration;
 import com.complexible.common.openrdf.model.Graphs;
 import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.StardogException;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.icv.Constraint;
 import com.complexible.stardog.icv.ConstraintFactory;
-import com.complexible.stardog.icv.ConstraintViolation;
-import com.complexible.stardog.icv.ICV;
 import com.complexible.stardog.icv.api.ICVConnection;
+import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+import com.complexible.stardog.reasoning.Proof;
+import com.complexible.stardog.reasoning.ProofWriter;
+import org.openrdf.model.Graph;
+import org.openrdf.model.URI;
+import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.vocabulary.RDF;
+import org.openrdf.model.vocabulary.RDFS;
+
+import static com.complexible.common.openrdf.util.ExpressionFactory.some;
+import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
 
 /**
  * <p></p>

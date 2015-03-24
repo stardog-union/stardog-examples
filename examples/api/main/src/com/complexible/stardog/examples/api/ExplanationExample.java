@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2014 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package com.complexible.stardog.examples.api;
 import static com.complexible.common.openrdf.util.ExpressionFactory.type;
 
 import com.complexible.stardog.api.ConnectionConfiguration;
-import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.ValueFactoryImpl;
 import org.openrdf.model.vocabulary.OWL;

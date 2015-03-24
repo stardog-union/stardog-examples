@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2014 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,22 @@
 package com.complexible.stardog.examples.sesame;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 import com.complexible.common.openrdf.repository.RepositoryConnections;
+import com.complexible.common.protocols.server.Server;
+import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
+import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
+import com.complexible.stardog.api.admin.AdminConnection;
+import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+import com.complexible.stardog.sesame.StardogRepository;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.rio.RDFFormat;
-
-import com.complexible.common.protocols.server.Server;
-import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
-import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.admin.AdminConnection;
-import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.sesame.StardogRepository;
 
 /**
  * <p>A basic example of using Stardog via the Sesame API</p>
