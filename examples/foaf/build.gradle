@@ -1,0 +1,9 @@
+group = "com.complexible.stardog.examples.foaf"
+
+dependencies {
+	// server core modules
+	compile "com.complexible.stardog:server:${stardogVersion}"
+
+	// client snarl module
+	testCompile "com.complexible.stardog:client-snarl:${stardogVersion}"
+}

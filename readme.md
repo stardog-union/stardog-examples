@@ -7,7 +7,7 @@ well as examples of how to use some of the extension points within Stardog.
 
 First, you'll need a valid Stardog download.
 
-For the examples in `examples/api` and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
+For the examples in `examples/api`, `example/foaf`, and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
 
 To compile or run the examples, gradle will automatically download the dependencies from our public maven repository:
 

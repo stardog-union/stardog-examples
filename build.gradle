@@ -5,7 +5,7 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = '3.0'
+	stardogVersion = '3.1.1'
 	projectVersion = '0.0.1'
 	distPath = "${projectDir}/dist"
 	stardogRepo = "http://maven.stardog.com"
