@@ -22,7 +22,7 @@ Create a new database using the FOAF archetype:
 $ $STARDOG/bin/stardog-admin db create -o database.archetypes="foaf" -n foafDB
 ```
 
-That's it. Even tough you created a database without any data you will see that there is a default namespace, ontology and
+That's it. Even though you created a database without any data you will see that there is a default namespace, ontology and
 constraints associated with this database:
 
 ```bash
