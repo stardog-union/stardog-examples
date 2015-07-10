@@ -1,34 +1,31 @@
 # Examples of using and extending Stardog
 
+[![Join the chat at https://gitter.im/Complexible/stardog-examples](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Complexible/stardog-examples?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a small collection of examples of working with [Stardog](http://stardog.com) via its APIs, as
 well as examples of how to use some of the extension points within Stardog.
 
 ## How to build examples
 
-
 First, you'll need a valid Stardog download.
 
-For the examples in `examples/api` and `examples/function`, you'll need [Ant](http://ant.apache.org/).  Copy 
-the example properties file into the correct place:
+For the examples in `examples/api`, `example/foaf`, and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
+
+To compile or run the examples, gradle will automatically download the dependencies from our public maven repository:
 
 ```bash
-cp project.properties.example project.properties
+gradle compileJava
 ```
 
-Then, using your text editor of choice, specify the paths to your Stardog installation location and home directory.
-Once that's done, you can navigate into any of the directories below `examples/api` or `examples/function` where there is a `build.xml` file
-and run `ant build`
+To run the examples, they require a valid `$STARDOG_HOME`; you can provide this via the parameter `stardog.home`
+(eg `-PstardogHome=/my/stardog/home`).
 
+To run any of the examples, you can use the Gradle `execute` task.  By default, this will run the `ConnectionAPIExample`
+program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
 
-For the examples in `examples/client-server`, you'll need [Maven](http://maven.apache.org/) and [Gradle](http://www.gradle.org/).  Install
-the Stardog libraries into your local maven repository by executing the following command from the Stardog installation directory:
-
-```bash
-bin/mavenInstall
+```java
+gradle execute -PmainClass=com.complexible.stardog.examples.ICVExample
 ```
-
-The examples in the directories below `examples/client-server` assume you're running the Stardog server in another process on the local host
-using the default port.  Then, navigate into any of those directories where there is a `build.gradle` file and run `gradle run`
 
 ## Generating Documentation
 
@@ -48,7 +45,7 @@ Then, you can run it directly against any example:
 docco -o docs main/src/com/complexible/stardog/api/ConnectionAPIExample.java
 ```
 
-Or you can use the supplied `ant docs` task in each build file that will run Docco against all annotated source files.
+Or you can use the supplied `gradle docs` task in each build file that will run Docco against all annotated source files.
 
 ## Service Loading
 
