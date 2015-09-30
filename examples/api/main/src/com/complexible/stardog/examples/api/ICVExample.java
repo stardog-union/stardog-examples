@@ -14,8 +14,9 @@
  */
 package com.complexible.stardog.examples.api;
 
-import com.complexible.common.openrdf.model.Graphs;
+import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.protocols.server.Server;
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
@@ -28,9 +29,8 @@ import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
-import org.openrdf.model.Graph;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Model;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
 
@@ -42,7 +42,7 @@ import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
  *
  * @author  Michael Grove
  * @since   0.7
- * @version 2.0
+ * @version 4.0
  */
 public class ICVExample {
 
@@ -60,11 +60,10 @@ public class ICVExample {
 
 		try {
 			// Open an `AdminConnection` to Stardog so we can set up our database for the example
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                               .credentials("admin", "admin")
-			                                                               .connect();
 
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                                    .credentials("admin", "admin")
+			                                                                    .connect()) {
 				// If the example database exists, drop it, so we can create it fresh
 				if (aAdminConnection.list().contains("testICVExample")) {
 					aAdminConnection.drop("testICVExample");
@@ -72,26 +71,22 @@ public class ICVExample {
 
 				aAdminConnection.createMemory("testICVExample");
 			}
-			finally {
-				aAdminConnection.close();
-			}
 
 			// Obtain a connection to the database
-			Connection aConn = ConnectionConfiguration
-				                   .to("testICVExample")
-				                   .reasoning(true)
-				                   .credentials("admin", "admin")
-				                   .connect();
 
-			try {
-				URI Engine = ValueFactoryImpl.getInstance().createURI("urn:Engine");
-				URI Product = ValueFactoryImpl.getInstance().createURI("urn:Product");
-				URI Manufacturer = ValueFactoryImpl.getInstance().createURI("urn:Manufacturer");
-				URI manufacturedBy = ValueFactoryImpl.getInstance().createURI("urn:manufacturedBy");
-				URI e1 = ValueFactoryImpl.getInstance().createURI("urn:e1");
-				URI m1 = ValueFactoryImpl.getInstance().createURI("urn:m1");
+			try (Connection aConn = ConnectionConfiguration
+				                        .to("testICVExample")
+				                        .reasoning(true)
+				                        .credentials("admin", "admin")
+				                        .connect()) {
+				IRI Engine = Values.iri("urn:Engine");
+				IRI Product = Values.iri("urn:Product");
+				IRI Manufacturer = Values.iri("urn:Manufacturer");
+				IRI manufacturedBy = Values.iri("urn:manufacturedBy");
+				IRI e1 = Values.iri("urn:e1");
+				IRI m1 = Values.iri("urn:m1");
 
-				Graph aGraph = Graphs.newGraph();
+				Model aGraph = Models2.newModel();
 
 				// Let's create a very simple piece of data, complete with a bit of schema information, to use
 				aGraph.add(Engine, RDFS.SUBCLASSOF, Product);
@@ -123,10 +118,6 @@ public class ICVExample {
 				// integrity constraint violations.
 				Proof aProof = aValidator.explain(aConstraint).proof();
 				System.out.println(ProofWriter.toString(aProof));
-			}
-			finally {
-				// Always close your connections when you're done
-				aConn.close();
 			}
 		}
 		finally {

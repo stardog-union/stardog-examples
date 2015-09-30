@@ -10,7 +10,7 @@ import org.apache.lucene.util.Version;
  *
  * @author  Michael Grove
  * @since   3.0
- * @version 3.0
+ * @version 4.0
  */
 public final class FrenchAnalyzerFactory implements AnalyzerFactory {
 
@@ -19,6 +19,6 @@ public final class FrenchAnalyzerFactory implements AnalyzerFactory {
 	 */
 	@Override
 	public Analyzer get() {
-		return new FrenchAnalyzer(Version.LUCENE_47);
+		return new FrenchAnalyzer();
 	}
 }

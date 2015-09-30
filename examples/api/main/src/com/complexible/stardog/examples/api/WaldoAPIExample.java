@@ -14,17 +14,16 @@
  */
 package com.complexible.stardog.examples.api;
 
-import java.io.File;
+import java.nio.file.Paths;
 
+import com.complexible.common.base.CloseableIterator;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.common.protocols.server.Server;
 import org.openrdf.model.Literal;
 import org.openrdf.query.BindingSet;
-import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.rio.RDFFormat;
 
-import com.complexible.common.iterations.Iteration;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Connection;
@@ -42,7 +41,7 @@ import com.complexible.stardog.search.SearchOptions;
  *
  * @author  Michael Grove
  * @since   0.6.5
- * @version 3.0
+ * @version 4.0
  */
 public class WaldoAPIExample {
 	// Using the Waldo Search API
@@ -58,11 +57,9 @@ public class WaldoAPIExample {
 
 		try {
 			// Open an `AdminConnection` to Stardog so that we can setup the database for the example
-			AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                   .credentials("admin", "admin")
-			                                                   .connect();
-
-			try {
+			try (AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                        .credentials("admin", "admin")
+			                                                        .connect()) {
 				// If our example database exists, drop it and create it anew
 				if (dbms.list().contains("waldoTest")) {
 					dbms.drop("waldoTest");
@@ -72,24 +69,18 @@ public class WaldoAPIExample {
 				    .set(SearchOptions.SEARCHABLE, true)
 				    .create();
 			}
-			finally {
-				dbms.close();
-			}
-
 
 			// Obtain a `Connection` to the database we just created
-			Connection aConn = ConnectionConfiguration
-				                   .to("waldoTest")
-				                   .credentials("admin", "admin")
-				                   .connect();
-
-			try {
+			try (Connection aConn = ConnectionConfiguration
+				                        .to("waldoTest")
+				                        .credentials("admin", "admin")
+				                        .connect()) {
 				// To start, lets add some data into the database so that it can be queried and searched
 				aConn.begin();
 				aConn
 					.add().io()
 					.format(RDFFormat.RDFXML)
-					.file(new File("data/catalog.rdf"));
+					.file(Paths.get("data/catalog.rdf"));
 
 				aConn.commit();
 
@@ -111,9 +102,7 @@ public class WaldoAPIExample {
 				// We can run the search and then iterate over the results
 				SearchResults aSearchResults = aSearch.search();
 
-				Iteration<SearchResult, QueryEvaluationException> resultIt = aSearchResults.iteration();
-
-				try {
+				try (CloseableIterator<SearchResult> resultIt = aSearchResults.iterator()) {
 					System.out.println("\nAPI results: ");
 					while (resultIt.hasNext()) {
 						SearchResult aHit = resultIt.next();
@@ -121,11 +110,6 @@ public class WaldoAPIExample {
 						System.out.println(aHit.getHit() + " with a score of: " + aHit.getScore());
 					}
 				}
-				finally {
-					// `Iteration`s must be closed
-					resultIt.close();
-				}
-
 
 				// The `Searcher` can be re-used if we want to find the next set of results.  We already found the
 				// first fifty, so lets grab the next page.
@@ -145,9 +129,7 @@ public class WaldoAPIExample {
 
 				SelectQuery query = aConn.select(aQuery);
 
-				TupleQueryResult aResult = query.execute();
-
-				try {
+				try (TupleQueryResult aResult = query.execute()) {
 					System.out.println("Query results: ");
 					while (aResult.hasNext()) {
 						BindingSet result = aResult.next();
@@ -155,13 +137,6 @@ public class WaldoAPIExample {
 						System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
 					}
 				}
-				finally {
-                    aResult.close();
-				}
-			}
-			finally {
-				// Always close your connections when you're done
-				aConn.close();
 			}
 		}
 		finally {

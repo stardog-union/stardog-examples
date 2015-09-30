@@ -16,8 +16,9 @@ package com.complexible.stardog.examples.api;
 
 import static com.complexible.common.rdf.model.Values.literal;
 import static com.complexible.common.rdf.model.Values.namespace;
-import static com.complexible.common.rdf.model.Values.uri;
+import static com.complexible.common.rdf.model.Values.iri;
 
+import com.complexible.common.base.CloseableIterator;
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.api.update.UpdateHandler;
 import com.complexible.stardog.api.update.UpdateOperation;
@@ -29,15 +30,14 @@ import com.google.common.collect.Sets;
 import java.util.List;
 import java.util.Set;
 
+import org.openrdf.model.IRI;
 import org.openrdf.model.Namespace;
 import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.rio.RDFFormat;
 
-import com.complexible.common.iterations.Iteration;
 import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.rio.RDFWriters;
 import com.complexible.stardog.Contexts;
@@ -59,13 +59,13 @@ import org.openrdf.rio.RDFHandlerException;
  *
  * @author  Evren Sirin
  * @since   2.2
- * @version 2.2
+ * @version 4.0
  */
 public class VersioningExample {
 	private static final String NS = "http://example.org/test/";
-	private static final URI Alice = uri(NS, "Alice");
-	private static final URI Bob = uri(NS, "Bob");
-	private static final URI Charlie = uri(NS, "Charlie");
+	private static final IRI Alice = iri(NS, "Alice");
+	private static final IRI Bob = iri(NS, "Bob");
+	private static final IRI Charlie = iri(NS, "Charlie");
 
 	// Versioning of RDF graphs
 	// ---
@@ -82,13 +82,12 @@ public class VersioningExample {
 			String aDB = "versionedDB";
 
 			// Create an `AdminConnection` to Stardog to set up the database for the example
-			AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                   .credentials("admin", "admin")
-			                                                   .connect();
 
 			// If the database exists, drop and it create it fresh
 			ConnectionConfiguration aConfig;
-			try {
+			try (AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                        .credentials("admin", "admin")
+			                                                        .connect()) {
 				if (dbms.list().contains(aDB)) {
 					dbms.drop(aDB);
 				}
@@ -100,16 +99,12 @@ public class VersioningExample {
 				                                                                  namespace("dc", DC.NAMESPACE)))
 				              .create();
 			}
-			finally {
-				dbms.close();
-			}
 
 
 			// Obtain a `Connection` to the database and request a view of the connection as a
 			// [VersioningConnection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html)
-			VersioningConnection aConn = aConfig.connect().as(VersioningConnection.class);
 
-			try {
+			try (VersioningConnection aConn = aConfig.connect().as(VersioningConnection.class)) {
 				// Now, let's make some changes to the databases
 				aConn.begin();
 				aConn.add()
@@ -133,7 +128,7 @@ public class VersioningExample {
 				aConn.commit("Changing Alice's email");
 
 				// Print the contents of the database and verify they are correct
-				RDFWriters.write(aConn.get().context(Contexts.ALL).iterator(), RDFFormat.TRIG, aConn.namespaces(), System.out);
+				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 
 				// We can still use the regular commit function from the `Connection` interface. This will also create a new
 				// version along with its metadata but it will not have a commit message
@@ -144,25 +139,19 @@ public class VersioningExample {
 				     .statement(Charlie, FOAF.MBOX, literal("mailto:charlie@example.org"), Charlie);
 				aConn.commit();
 
-				RDFWriters.write(aConn.get().context(Contexts.ALL).iterator(), RDFFormat.TRIG, aConn.namespaces(), System.out);
+				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 
 				// Lets try an example with the basic versioning API to list all versions
-				Iteration<Version, StardogException> resultIt = aConn.versions()
-				                                                     .find()
-				                                                     .oldestFirst()
-				                                                     .iterator();
-
-				try {
+				try (CloseableIterator<Version> resultIt = aConn.versions()
+				                                                .find()
+				                                                .oldestFirst()
+				                                                .iterator()) {
 					System.out.println("\nVersions: ");
 					while (resultIt.hasNext()) {
 						Version aVersion = resultIt.next();
 
 						System.out.println(aVersion);
 					}
-				}
-				finally {
-					// don't forget to close your iteration!
-					resultIt.close();
 				}
 
 				// We're at a good point with our data, we think it's a 1.0 version, so let's tag it so we could
@@ -233,11 +222,7 @@ public class VersioningExample {
 				// so we can see that we're back to where we started.
 				aConn.revert(aHeadVersion.getRelativeVersion(-2), aHeadVersion, "Undo last two commits");
 
-				RDFWriters.write(aConn.get().context(Contexts.ALL).iterator(), RDFFormat.TRIG, aConn.namespaces(), System.out);
-			}
-			finally {
-				// Always close your connections when you're done
-				aConn.close();
+				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 			}
 		}
 		finally {
@@ -253,7 +238,7 @@ public class VersioningExample {
 		else {
 			List<Statement> aResult = Lists.newArrayList();
 			for (Statement aStmt : theOp.getStatements()) {
-				for (URI aGraph : theOp.getNamedGraphs()) {
+				for (IRI aGraph : theOp.getNamedGraphs()) {
 					aResult.add(Values.statement(aStmt.getSubject(), aStmt.getPredicate(), aStmt.getObject(), aGraph));
 				}
 			}

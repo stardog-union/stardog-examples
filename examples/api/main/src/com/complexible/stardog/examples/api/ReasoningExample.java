@@ -14,11 +14,11 @@
  */
 package com.complexible.stardog.examples.api;
 
-import java.io.File;
+import java.nio.file.Paths;
 
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.IRI;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.rio.RDFFormat;
@@ -27,7 +27,6 @@ import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
-import com.complexible.stardog.api.IO;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
@@ -39,7 +38,7 @@ import com.complexible.stardog.api.reasoning.ReasoningConnection;
  *
  * @author  Michael Grove
  * @since   0.4.5
- * @version 2.0
+ * @version 4.0
  */
 public class ReasoningExample {
     // Using Reasoning in Stardog
@@ -73,11 +72,9 @@ public class ReasoningExample {
 			// Most operations supported by the DBMS require specific permissions, so either an admin account
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                               .credentials("admin", "admin")
-			                                                               .connect();
-
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                                    .credentials("admin", "admin")
+			                                                                    .connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
 				// if it does, we want to drop it and re-create so that we can run the example from clean database.
 				if (aAdminConnection.list().contains("reasoningExampleTest")) {
@@ -86,10 +83,6 @@ public class ReasoningExample {
 
 				// Convenience function for creating a non-persistent in-memory database with all the default settings.
 				aAdminConnection.createMemory("reasoningExampleTest");
-			}
-			finally {
-				// *ALWAYS* close your connections!
-				aAdminConnection.close();
 			}
 
 			// Using reasoning via SNARL
@@ -102,28 +95,27 @@ public class ReasoningExample {
 			// then we can obtain a new connection.  This is also where you specify whether you would like the connection
 			// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
 			// reasoning you want to use when you create a database.
-			ReasoningConnection aReasoningConn = ConnectionConfiguration
-				.to("reasoningExampleTest")
-				.credentials("admin", "admin")
-				.reasoning(true)
-				.connect()
-				.as(ReasoningConnection.class);
 
-			// Now obtain a non-reasoning connection to the database for comparison
-			Connection aConn = ConnectionConfiguration
-							.to("reasoningExampleTest")
-							.credentials("admin", "admin")
-							.connect();
-
-			try {
+			try (ReasoningConnection aReasoningConn = ConnectionConfiguration
+				                                          .to("reasoningExampleTest")
+				                                          .credentials("admin", "admin")
+				                                          .reasoning(true)
+				                                          .connect()
+				                                          .as(ReasoningConnection.class);
+			     // and obtain a non-reasoning connection to the database for comparison
+			     Connection aConn = ConnectionConfiguration
+				                        .to("reasoningExampleTest")
+				                        .credentials("admin", "admin")
+				                        .connect()) {
+				
 				// Now lets add lubm1 and the lubm ontology to the database.
 				// We can use either the reasoning connection or the base connection for addition, results will be same
 				aReasoningConn.begin();
 
-				IO aAdder = aReasoningConn.add().io().format(RDFFormat.RDFXML);
-
-				aAdder.file(new File("data/University0_0.owl"))
-					  .file(new File("data/lubmSchema.owl"));
+				aReasoningConn.add().io()
+				              .format(RDFFormat.RDFXML)
+				              .file(Paths.get("data/University0_0.owl"))
+				              .file(Paths.get("data/lubmSchema.owl"));
 
 				aReasoningConn.commit();
 
@@ -136,13 +128,6 @@ public class ReasoningExample {
 				System.out.println("\nResults with reasoning...");
 				printCounts(aReasoningConn);
 			}
-			finally {
-				// Closing the reasoning connection will close the base connection too
-				aReasoningConn.close();
-
-				// And close our other connection
-				aConn.close();
-			}
 		}
 		finally {
 			// You MUST stop the server if you've started it!
@@ -151,11 +136,11 @@ public class ReasoningExample {
 	}
 
 	private static void printCounts(final Connection theConn) throws StardogException, QueryEvaluationException {
-		URI PERSON = ValueFactoryImpl.getInstance().createURI("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person");
-		URI STUDENT = ValueFactoryImpl.getInstance().createURI("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student");
-		URI GRAD_STUDENT = ValueFactoryImpl.getInstance().createURI("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent");
-		URI PROFESSOR = ValueFactoryImpl.getInstance().createURI("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor");
-		URI FULL_PROFESSOR = ValueFactoryImpl.getInstance().createURI("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor");
+		IRI PERSON = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person");
+		IRI STUDENT = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student");
+		IRI GRAD_STUDENT = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent");
+		IRI PROFESSOR = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor");
+		IRI FULL_PROFESSOR = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor");
 
 		SelectQuery aQuery = theConn.select("SELECT ?x WHERE {\n" +
 									 "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +

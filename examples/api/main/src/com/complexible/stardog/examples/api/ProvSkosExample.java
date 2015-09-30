@@ -18,8 +18,8 @@ import java.util.Arrays;
 
 import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.SKOS;
@@ -44,7 +44,7 @@ import com.complexible.stardog.prov.ProvVocabulary;
  *
  * @author  Evren Sirin
  * @since   2.0
- * @version 2.0
+ * @version 4.0
  */
 public class ProvSkosExample {
 	// Very simple publication vocabulary used in this example
@@ -55,11 +55,11 @@ public class ProvSkosExample {
 			super("urn:example:publication:");
 		}
 
-		public URI Book = term("Book");
-		public URI Fiction = term("Fiction");
-		public URI ScienceFiction = term("ScienceFiction");
+		public IRI Book = term("Book");
+		public IRI Fiction = term("Fiction");
+		public IRI ScienceFiction = term("ScienceFiction");
 
-		public URI Author = term("Author");
+		public IRI Author = term("Author");
 	}
 
 	// Define constants for vocabularies that we will use
@@ -80,10 +80,9 @@ public class ProvSkosExample {
 			String db = "exampleProvSkos";
 
 			// Create an `AdminConnection` to Stardog
-			AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                   .credentials("admin", "admin")
-			                                                   .connect();
-			try {
+			try (AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                        .credentials("admin", "admin")
+			                                                        .connect()) {
 				// Drop the example database if it exists so we can create it fresh
 				if (dbms.list().contains(db)) {
 					dbms.drop(db);
@@ -92,18 +91,14 @@ public class ProvSkosExample {
 				// Enable both `PROV` and `SKOS` ontologies for the current database
 				dbms.memory(db).set(DatabaseOptions.ARCHETYPES, Arrays.asList("skos", "prov")).create();
 			}
-			finally {
-				dbms.close();
-			}
 
 			// Obtain a connection to the database
-			Connection aConn = ConnectionConfiguration
-				                   .to(db)
-				                   .credentials("admin", "admin")
-				                   .reasoning(true)
-				                   .connect();
 
-			try {
+			try (Connection aConn = ConnectionConfiguration
+				                        .to(db)
+				                        .credentials("admin", "admin")
+				                        .reasoning(true)
+				                        .connect()) {
 				// First create some SKOS data and introduce an error (related and transitive broader relations should be disjoint)
 				aConn.begin();
 				aConn.add()
@@ -124,8 +119,8 @@ public class ProvSkosExample {
 				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY) ? "is" : "is NOT") + " valid!");
 
 				// Let's remove the problematic triple and add some PROV data
-				URI The_War_of_the_Worlds = Values.uri("http://dbpedia.org/resource/The_War_of_the_Worlds");
-				URI H_G_Wells = Values.uri("http://dbpedia.org/resource/H._G._Wells");
+				IRI The_War_of_the_Worlds = Values.iri("http://dbpedia.org/resource/The_War_of_the_Worlds");
+				IRI H_G_Wells = Values.iri("http://dbpedia.org/resource/H._G._Wells");
 				Resource attr = Values.bnode();
 				aConn.begin();
 				aConn.remove()
@@ -158,10 +153,6 @@ public class ProvSkosExample {
 
 				// Print the query results
 				QueryResultIO.write(aQuery.execute(), TextTableQueryResultWriter.FORMAT, System.out);
-			}
-			finally {
-				// Always close your connections when you are done with them
-				aConn.close();
 			}
 		}
 		finally {

@@ -16,9 +16,9 @@ package com.complexible.stardog.examples.api;
 
 import static com.complexible.common.openrdf.util.ExpressionFactory.type;
 
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.api.ConnectionConfiguration;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.OWL;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
@@ -40,22 +40,22 @@ import com.complexible.stardog.reasoning.ProofWriter;
  * @author Michael Grove
  *
  * @since   0.7.3
- * @version 2.0
+ * @version 4.0
  *
  * @see Expression
  * @see com.complexible.common.openrdf.util.ExpressionFactory
  */
 public class ExplanationExample {
-    protected static final URI x = ValueFactoryImpl.getInstance().createURI("urn:x");
-	protected static final URI y = ValueFactoryImpl.getInstance().createURI("urn:y");
-	protected static final URI z = ValueFactoryImpl.getInstance().createURI("urn:z");
-	protected static final URI A = ValueFactoryImpl.getInstance().createURI("urn:A");
-	protected static final URI B = ValueFactoryImpl.getInstance().createURI("urn:B");
-	protected static final URI C = ValueFactoryImpl.getInstance().createURI("urn:C");
-	protected static final URI D = ValueFactoryImpl.getInstance().createURI("urn:D");
-	protected static final URI p = ValueFactoryImpl.getInstance().createURI("urn:p");
-	protected static final URI p1 = ValueFactoryImpl.getInstance().createURI("urn:p1");
-	protected static final URI p2 = ValueFactoryImpl.getInstance().createURI("urn:p2");
+    protected static final IRI x = Values.iri("urn:x");
+	protected static final IRI y = Values.iri("urn:y");
+	protected static final IRI z = Values.iri("urn:z");
+	protected static final IRI A = Values.iri("urn:A");
+	protected static final IRI B = Values.iri("urn:B");
+	protected static final IRI C = Values.iri("urn:C");
+	protected static final IRI D = Values.iri("urn:D");
+	protected static final IRI p = Values.iri("urn:p");
+	protected static final IRI p1 = Values.iri("urn:p1");
+	protected static final IRI p2 = Values.iri("urn:p2");
 
 	// Explanations in Stardog
 	// -------------------
@@ -69,9 +69,8 @@ public class ExplanationExample {
             .start();
 
 	    try {
-		    AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect();
 
-		    try {
+		    try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
 			    // Drop the example database if it exists and start fresh
 			    if (aAdminConnection.list().contains("reasoningTest")) {
 					aAdminConnection.drop("reasoningTest");
@@ -79,22 +78,16 @@ public class ExplanationExample {
 
 			    aAdminConnection.memory("reasoningTest").create();
 		    }
-		    finally {
-			    aAdminConnection.close();
-		    }
 
 
 		    // Open a `Connection` to the database we just created with reasoning turned on.
 		    // We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
 		    // [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
-		    ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
-		                                                                      .credentials("admin", "admin")
-		                                                                      .reasoning(true)
-		                                                                      .connect()
-		                                                                      .as(ReasoningConnection.class);
-
-
-		    try {
+		    try (ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
+		                                                                           .credentials("admin", "admin")
+		                                                                           .reasoning(true)
+		                                                                           .connect()
+		                                                                           .as(ReasoningConnection.class)) {
 			    // Add a simple schema and couple instance triples to the database that we'll use for the example
 			    aReasoningConnection.begin();
 			    aReasoningConnection.add()
@@ -171,9 +164,6 @@ public class ExplanationExample {
 
 			    System.out.println("Render only asserted statements: ");
 			    System.out.println(ExpressionWriter.toString(aProof.getStatements()));
-		    }
-		    finally {
-			    aReasoningConnection.close();
 		    }
 	    }
 	    finally {

@@ -14,28 +14,25 @@
  */
 package com.complexible.stardog.examples.api;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStreamWriter;
+import java.nio.file.Paths;
 
-import com.complexible.common.openrdf.model.GraphIO;
+import com.complexible.common.openrdf.model.ModelIO;
+import com.complexible.common.openrdf.model.Models2;
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.Graph;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Model;
 import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.rio.RDFFormat;
 
-import com.complexible.common.iterations.Iteration;
-import com.complexible.common.openrdf.model.Graphs;
 import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.Getter;
 import com.complexible.stardog.api.ConnectionConfiguration;
@@ -48,7 +45,7 @@ import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
  *
  * @author  Michael Grove
  * @since   0.4
- * @version 2.0
+ * @version 4.0
  */
 public class ConnectionAPIExample {
 	// Using the SNARL API
@@ -75,19 +72,18 @@ public class ConnectionAPIExample {
 		try {
 			// Using AdminConnection
 			// ---------------------
-			// Now that the server is running, we want to create a connection to the DBMS itself so we can do
-			// some administrative stuff, namely, creating a new database to use for the purpose of this example.
+			// Now that the server is running, we want to create a connection to the DBMS itself so we can perform
+			// some administrative actions, namely, creating a new database to use for the purpose of this example.
 			// We need to create a connection to perform administrative actions, so we can use the `AdminConnectionConfiguration`
 			// utility class for opening the connection.
 			//
 			// Most operations supported by the DBMS require specific permissions, so either an admin account
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                               .credentials("admin", "admin")
-			                                                               .connect();
 
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                                    .credentials("admin", "admin")
+			                                                                    .connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
 				// if it does, we want to drop it and re-create so that we can run the example from a clean database.
 				if (aAdminConnection.list().contains("testConnectionAPI")) {
@@ -96,10 +92,6 @@ public class ConnectionAPIExample {
 
 				// Convenience function for creating a non-persistent in-memory database with all the default settings.
 				aAdminConnection.createMemory("testConnectionAPI");
-			}
-			finally {
-				// *ALWAYS* close your connections!
-				aAdminConnection.close();
 			}
 
 			// Using the SNARL API
@@ -110,12 +102,11 @@ public class ConnectionAPIExample {
 			//
 			// We'll use the configuration to specify which database we want to connect to as well as our login information,
 			// then we can obtain a new connection.
-			Connection aConn = ConnectionConfiguration
-				                   .to("testConnectionAPI")
-				                   .credentials("admin", "admin")
-				                   .connect();
 
-			try {
+			try (Connection aConn = ConnectionConfiguration
+				                        .to("testConnectionAPI")
+				                        .credentials("admin", "admin")
+				                        .connect()) {
 				// All changes to a database *must* be performed within a transaction.  We want to add some data to the database
 				// so we can begin firing off some queries, so first, we'll start a new transaction.
 				aConn.begin();
@@ -129,15 +120,14 @@ public class ConnectionAPIExample {
 				     .format(RDFFormat.N3)
 				     .stream(new FileInputStream("data/sp2b_10k.n3"));
 
-				// You're not restricted to adding, or removing, data from a file.  You can create `Graph` objects
+				// You're not restricted to adding, or removing, data from a file.  You can create `Model` objects
 				// containing information you want to add or remove from the database and make the modification wit
-				// that graph.  Here we'll create a new Graph and add a statement that we want added to our database.
-				Graph aGraph = Graphs.newGraph(ValueFactoryImpl.getInstance()
-				                                               .createStatement(ValueFactoryImpl.getInstance().createURI("urn:subj"),
-				                                                                ValueFactoryImpl.getInstance().createURI("urn:pred"),
-				                                                                ValueFactoryImpl.getInstance().createURI("urn:obj")));
+				// that graph.  Here we'll create a new Model and add a statement that we want added to our database.
+				Model aGraph = Models2.newModel(Values.statement(Values.iri("urn:subj"),
+				                                                 Values.iri("urn:pred"),
+				                                                 Values.iri("urn:obj")));
 
-				Resource aContext = ValueFactoryImpl.getInstance().createURI("urn:test:context");
+				Resource aContext = Values.iri("urn:test:context");
 
 				// With our newly created `Graph`, we can easily add that to the database as well.  You can also
 				// easily specify the context the data should be added to.  This will insert all of the statements
@@ -156,7 +146,7 @@ public class ConnectionAPIExample {
 				// the triples to be removed instead of added.
 				aConn.remove().io()
 				     .format(RDFFormat.N3)
-				     .file(new File("data/remove_data.nt"));
+				     .file(Paths.get("data/remove_data.nt"));
 
 				// Lastly, we'll commit the changes.
 				aConn.commit();
@@ -186,7 +176,7 @@ public class ConnectionAPIExample {
 				// `Query` objects are easily parameterized; so we can bind the "s" variable in the previous query with a specific value.
 				// Queries should be managed via the parameterized methods, rather than created by concatenating strings together,
 				// because that is not only more readable, it helps avoid SPARQL injection attacks.
-				URI aURI = ValueFactoryImpl.getInstance().createURI("http://localhost/publications/articles/Journal1/1940/Article1");
+				IRI aURI = Values.iri("http://localhost/publications/articles/Journal1/1940/Article1");
 				aQuery.parameter("s", aURI);
 
 				// Now that we've bound 's' to a specific value, we're not going to pull down the entire database with our query
@@ -213,22 +203,11 @@ public class ConnectionAPIExample {
 				//
 				// So here we'll create a `Getter` to obtain the list of statements with `aURI` as the subject.  If we print those
 				// out we'll see that we've retrieved the same results as the query we just ran.
-				Iteration<Statement, StardogException> aIter = aConn.get()
-				                                                    .subject(aURI)
-				                                                    .iterator();
+				System.out.println("\nOr you can use a getter to do the same thing...");
 
-				try {
-					System.out.println("\nOr you can use a getter to do the same thing...");
-
-					while (aIter.hasNext()) {
-						System.out.println(aIter.next());
-					}
-				}
-				finally {
-					// `Iteration` objects are the same as Java `Iterator`'s with the only difference that 1) they can throw exceptions and 2)
-					// they are closeable.  So you should make sure you close all your Iterations as well
-					aIter.close();
-				}
+				aConn.get().subject(aURI)
+				     .statements()
+				     .forEach(System.out::println);
 
 				// `Getter` objects are parameterizable just like `Query`, so you can easily modify and re-use them to change
 				// what slice of the database you'll retrieve.
@@ -243,34 +222,21 @@ public class ConnectionAPIExample {
 				// for *this* individual.  In our example, that'll be a single triple.
 				aGetter.subject(aURI);
 
-				aIter = aGetter.iterator();
+				System.out.println("\nJust a single statement now...");
 
-				try {
-					System.out.println("\nJust a single statement now...");
-
-					while (aIter.hasNext()) {
-						System.out.println(aIter.next());
-					}
-				}
-				finally {
-					// Close your Iterations!
-					aIter.close();
-				}
+				aGetter.statements()
+				       .forEach(System.out::println);
 
 				// `Getter` objects are stateful, so we can remove the filter on the predicate position by setting it back to null.
 				aGetter.predicate(null);
 
 				// Subject is still bound to the value of `aURI` so we can use the `graph` method of `Getter` to get a graph of all
 				// the triples where `aURI` is the subject, effectively performing a basic describe query.
-				aGraph = aGetter.graph();
+				aGraph = aGetter.statements().collect(Models2.toModel());
 
 				System.out.println("\nFinally, the same results as earlier, but as a graph...");
 
-				GraphIO.writeGraph(aGraph, new OutputStreamWriter(System.out), RDFFormat.TURTLE);
-			}
-			finally {
-				// Lastly, *always* close your Connections.
-				aConn.close();
+				ModelIO.write(aGraph, new OutputStreamWriter(System.out), RDFFormat.TURTLE);
 			}
 		}
 		finally {

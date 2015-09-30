@@ -24,19 +24,20 @@ import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.jena.SDJenaFactory;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.ResultSetFormatter;
-import com.hp.hpl.jena.rdf.model.Model;
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.Model;
+
 
 /**
  * <p>Example of how to use the Jena integration with stardog</p>
  *
  * @author  Michael Grove
  * @since   0.3.3
- * @version 2.0
+ * @version 4.0
  */
 public class JenaExample {
 	// Using Stardog with the [Jena](http://jena.apache.org) API
@@ -53,11 +54,9 @@ public class JenaExample {
 
 		try {
 			// Next we'll establish a admin connection to Stardog so we can create a database to use for the example
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
-			                                                               .credentials("admin", "admin")
-			                                                               .connect();
-
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                                    .credentials("admin", "admin")
+			                                                                    .connect()) {
 				// If the database already exists, we'll drop it and create a fresh copy
 				if (aAdminConnection.list().contains("testJena")) {
 					aAdminConnection.drop("testJena");
@@ -65,19 +64,16 @@ public class JenaExample {
 
 				aAdminConnection.createMemory("testJena");
 			}
-			finally {
-				aAdminConnection.close();
-			}
 
 			// Now we open a Connection our new database
-			Connection aConn = ConnectionConfiguration
-				                   .to("testJena")
-				                   .credentials("admin", "admin")
-				                   .connect();
 
-			// Then we obtain a Jena `Model` for the specified stardog database which is backed by our `Connection`
-			Model aModel = SDJenaFactory.createModel(aConn);
-			try {
+			try (Connection aConn = ConnectionConfiguration
+				                         .to("testJena")
+				                         .credentials("admin", "admin")
+				                         .connect()) {
+
+				// Then we obtain a Jena `Model` for the specified stardog database which is backed by our `Connection`
+				Model aModel = SDJenaFactory.createModel(aConn);
 
 				// Start a transaction before adding the data.  This is not required, but it is faster to group the entire add into a single transaction rather
 				// than rely on the auto commit of the underlying stardog connection.
@@ -98,20 +94,11 @@ public class JenaExample {
 				Query aQuery = QueryFactory.create(aQueryString);
 
 				// ... and run it
-				QueryExecution aExec = QueryExecutionFactory.create(aQuery, aModel);
 
-				try {
+				try (QueryExecution aExec = QueryExecutionFactory.create(aQuery, aModel)) {
 					// Now print the results
 					ResultSetFormatter.out(aExec.execSelect(), aModel);
 				}
-				finally {
-					// Always close the execution
-					aExec.close();
-				}
-			}
-			finally {
-				// close the model to free up the connection to the stardog database
-				aModel.close();
 			}
 		}
 		finally {

@@ -14,6 +14,8 @@
  */
 package com.complexible.stardog.examples.api;
 
+import java.util.Iterator;
+
 import static com.complexible.common.openrdf.util.ExpressionFactory.all;
 import static com.complexible.common.openrdf.util.ExpressionFactory.and;
 import static com.complexible.common.openrdf.util.ExpressionFactory.cardinality;
@@ -33,22 +35,22 @@ import static com.complexible.common.openrdf.util.ExpressionFactory.some;
 import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
 import static com.complexible.common.openrdf.util.ExpressionFactory.subPropertyOf;
 
+import com.complexible.common.base.CloseableIterator;
+import com.complexible.common.openrdf.model.Models2;
+import com.complexible.common.openrdf.util.ModelBuilder;
+import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.Graph;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Model;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
 import org.openrdf.model.Value;
-import org.openrdf.model.impl.ValueFactoryImpl;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
 import org.openrdf.model.vocabulary.XMLSchema;
 import org.openrdf.query.BindingSet;
 
-import com.complexible.common.iterations.Iteration;
-import com.complexible.common.openrdf.model.Graphs;
 import com.complexible.common.openrdf.util.ExpressionFactory;
-import com.complexible.common.openrdf.util.GraphBuilder;
 import com.complexible.common.openrdf.util.OWL2;
 import com.complexible.common.openrdf.vocabulary.Vocabulary;
 import com.complexible.common.protocols.server.Server;
@@ -71,566 +73,568 @@ import com.google.common.base.Strings;
  *
  * @author  Michael Grove
  * @since   0.7
- * @version 2.0
+ * @version 4.0
  */
 public class ICVDocsExample {
 
 	public static void main(String[] args) throws Exception {
-        Server aServer = Stardog
-            .buildServer()
-            .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-            .start();
+		Server aServer = Stardog
+			                 .buildServer()
+			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
+			                 .start();
 
 		// create a database for the example (if there is already a database with such a name,
 		// drop it first)
-        AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect();
+		try (AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+		                                                        .credentials("admin", "admin")
+		                                                        .connect()) {
 
-    	if (dbms.list().contains("testICVDocs")) {
-			dbms.drop("testICVDocs");
-		}		
-		
-		dbms.createMemory("testICVDocs");		
-		dbms.close();
+			if (dbms.list().contains("testICVDocs")) {
+				dbms.drop("testICVDocs");
+			}
+
+			dbms.createMemory("testICVDocs");
+		}
 		
 		// obtain a connection to the database
-		final Connection aConn = ConnectionConfiguration
+		try (Connection aConn = ConnectionConfiguration
 			.to("testICVDocs")				// the name of the db to connect to
 			.reasoning(true)	            // need reasoning for ICV
 			.credentials("admin", "admin")  // credentials to use while connecting
- 			.connect();						// now open the connection
-
-		// now we create a validator to use
-		final ICVConnection aValidator = aConn.as(ICVConnection.class);
-
-		// before we dive into the examples, lets create the concepts and data we'll be using in the examples
-		final Vocabulary aVocab = new Vocabulary("http://www.semanticweb.org/company.owl#");
-
-		final URI Manager = aVocab.term("Manager");
-		final URI Employee = aVocab.term("Employee");
-		final URI Project = aVocab.term("Project");
-		final URI Project_Leader = aVocab.term("Project_Leader");
-		final URI Supervisor = aVocab.term("Supervisor");
-		final URI Department = aVocab.term("Department");
-		final URI US_Government_Agency = aVocab.term("US_Government_Agency");
-
-		final URI is_responsible_for = aVocab.term("is_responsible_for");
-		final URI is_supervisor_of = aVocab.term("is_supervisor_of");
-		final URI receives_funds_from = aVocab.term("receives_funds_from");
-		final URI dob = aVocab.term("dob");
-		final URI number = aVocab.term("number");
-		final URI supervises = aVocab.term("supervises");
-		final URI works_on = aVocab.term("works_on");
-		final URI works_in = aVocab.term("works_in");
-		final URI manages = aVocab.term("manages");
-		final URI name = aVocab.term("name");
-		final URI nationality = aVocab.term("nationality");
-
-		final URI NASA = aVocab.term("NASA");
-		final URI Alice = aVocab.term("Alice");
-		final URI Andy = aVocab.term("Andy");
-		final URI Jose = aVocab.term("Jose");
-		final URI Heidi = aVocab.term("Heidi");
-		final URI Diego = aVocab.term("Diego");
-		final URI Maria = aVocab.term("Maria");
-		final URI Bob = aVocab.term("Bob");
-		final URI Esteban = aVocab.term("Esteban");
-		final URI Lucinda = aVocab.term("Lucinda");
-		final URI Isabella = aVocab.term("Isabella");
-		final URI MyProject = aVocab.term("MyProject");
-		final URI MyProjectFoo = aVocab.term("MyProjectFoo");
-		final URI MyProjectBar = aVocab.term("MyProjectBar");
-		final URI MyProjectBaz = aVocab.term("MyProjectBaz");
-		final URI MyDepartment = aVocab.term("MyDepartment");
-		final URI MyDepartment1 = aVocab.term("MyDepartment1");
-
-		System.out.println();
+ 			.connect()) {                        // now open the connection
+
+			// now we create a validator to use
+			final ICVConnection aValidator = aConn.as(ICVConnection.class);
+
+			// before we dive into the examples, lets create the concepts and data we'll be using in the examples
+			final Vocabulary aVocab = new Vocabulary("http://www.semanticweb.org/company.owl#");
+
+			final IRI Manager = aVocab.term("Manager");
+			final IRI Employee = aVocab.term("Employee");
+			final IRI Project = aVocab.term("Project");
+			final IRI Project_Leader = aVocab.term("Project_Leader");
+			final IRI Supervisor = aVocab.term("Supervisor");
+			final IRI Department = aVocab.term("Department");
+			final IRI US_Government_Agency = aVocab.term("US_Government_Agency");
+
+			final IRI is_responsible_for = aVocab.term("is_responsible_for");
+			final IRI is_supervisor_of = aVocab.term("is_supervisor_of");
+			final IRI receives_funds_from = aVocab.term("receives_funds_from");
+			final IRI dob = aVocab.term("dob");
+			final IRI number = aVocab.term("number");
+			final IRI supervises = aVocab.term("supervises");
+			final IRI works_on = aVocab.term("works_on");
+			final IRI works_in = aVocab.term("works_in");
+			final IRI manages = aVocab.term("manages");
+			final IRI name = aVocab.term("name");
+			final IRI nationality = aVocab.term("nationality");
+
+			final IRI NASA = aVocab.term("NASA");
+			final IRI Alice = aVocab.term("Alice");
+			final IRI Andy = aVocab.term("Andy");
+			final IRI Jose = aVocab.term("Jose");
+			final IRI Heidi = aVocab.term("Heidi");
+			final IRI Diego = aVocab.term("Diego");
+			final IRI Maria = aVocab.term("Maria");
+			final IRI Bob = aVocab.term("Bob");
+			final IRI Esteban = aVocab.term("Esteban");
+			final IRI Lucinda = aVocab.term("Lucinda");
+			final IRI Isabella = aVocab.term("Isabella");
+			final IRI MyProject = aVocab.term("MyProject");
+			final IRI MyProjectFoo = aVocab.term("MyProjectFoo");
+			final IRI MyProjectBar = aVocab.term("MyProjectBar");
+			final IRI MyProjectBaz = aVocab.term("MyProjectBaz");
+			final IRI MyDepartment = aVocab.term("MyDepartment");
+			final IRI MyDepartment1 = aVocab.term("MyDepartment1");
 
-		// the GraphBuilder we'll use to create our Aboxes for the example
-		final GraphBuilder aBuilder = new GraphBuilder();
+			System.out.println();
 
-		System.out.println("(1) Subsumption Constraints");
-		System.out.println(Strings.repeat("-", 25) + "\n");
-
-		// Managers must be employees
-		Constraint aSubConstraint = ConstraintFactory.constraint(subClassOf(Manager, Employee));
+			// the GraphBuilder we'll use to create our Aboxes for the example
+			final ModelBuilder aBuilder = new ModelBuilder();
 
-		// lets start by adding this constraint to our database
-		addConstraint(aValidator, aSubConstraint);
+			System.out.println("(1) Subsumption Constraints");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		// we'll create our initial invalid Abox
-		aBuilder.instance(Manager, Alice); // Alice is a Manager
+			// Managers must be employees
+			Constraint aSubConstraint = ConstraintFactory.constraint(subClassOf(Manager, Employee));
 
-		// and add that to stardog
-		insert(aConn, aBuilder.graph());
+			// lets start by adding this constraint to our database
+			addConstraint(aValidator, aSubConstraint);
 
-		System.out.println("This ABox is not valid, Alice is violating our constraint because she is not an Employee...");
-		printValidity(aValidator);
+			// we'll create our initial invalid Abox
+			aBuilder.instance(Manager, Alice); // Alice is a Manager
 
-		// we know we're missing that Alice is an Employee, so lets add that to our database
-		insert(aConn, Graphs.newGraph(statement(Alice, RDF.TYPE, Employee)));
+			// and add that to stardog
+			insert(aConn, aBuilder.model());
 
-		System.out.println("But now that we've stated that Alice is an Employee, we're valid...");
-		printValidity(aValidator);
+			System.out.println("This ABox is not valid, Alice is violating our constraint because she is not an Employee...");
+			printValidity(aValidator);
 
-		// clear our builder state
-		aBuilder.reset();
+			// we know we're missing that Alice is an Employee, so lets add that to our database
+			insert(aConn, Models2.newModel(statement(Alice, RDF.TYPE, Employee)));
 
-		// and clear the database
-		clear(aValidator);
+			System.out.println("But now that we've stated that Alice is an Employee, we're valid...");
+			printValidity(aValidator);
 
-		System.out.println("(2) Domain-Range constraints: Only project leaders can be responsible for projects");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			// clear our builder state
+			aBuilder.reset();
 
-		Constraint aDomainConstraint = ConstraintFactory.constraint(domain(is_responsible_for, Project_Leader));
-		Constraint aRangeConstraint = ConstraintFactory.constraint(range(is_responsible_for, Project));
+			// and clear the database
+			clear(aValidator);
 
-		addConstraint(aValidator, aDomainConstraint, aRangeConstraint);
+			System.out.println("(2) Domain-Range constraints: Only project leaders can be responsible for projects");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		// lets create our initial invalid abox
-		aBuilder.instance(Project, MyProject);
-		aBuilder.instance(null /* no type */, Alice)
-				.addProperty(is_responsible_for, MyProject);
+			Constraint aDomainConstraint = ConstraintFactory.constraint(domain(is_responsible_for, Project_Leader));
+			Constraint aRangeConstraint = ConstraintFactory.constraint(range(is_responsible_for, Project));
 
-		// add the invalid data into Stardog
-		insert(aConn, aBuilder.graph());
+			addConstraint(aValidator, aDomainConstraint, aRangeConstraint);
 
-		System.out.println("We should see that Alice is violating the domain constraint that she is a Project_Leader...");
-		printValidity(aValidator);
+			// lets create our initial invalid abox
+			aBuilder.instance(Project, MyProject);
+			aBuilder.instance(null /* no type */, Alice)
+			        .addProperty(is_responsible_for, MyProject);
 
-		// next example of an invalid abox
-		// first remove the old invalid data
-		remove(aConn, aBuilder.graph());
+			// add the invalid data into Stardog
+			insert(aConn, aBuilder.model());
 
-		// a different invalid abox.  MyProject is not typed as a Project
-		aBuilder.reset();
-		aBuilder.instance(Project_Leader, Alice)
-				.addProperty(is_responsible_for, MyProject);
+			System.out.println("We should see that Alice is violating the domain constraint that she is a Project_Leader...");
+			printValidity(aValidator);
 
-		insert(aConn, aBuilder.graph());
+			// next example of an invalid abox
+			// first remove the old invalid data
+			remove(aConn, aBuilder.model());
 
-		System.out.println("Now we should see that MyProject is invalid for the range constraint...");
-		printValidity(aValidator);
+			// a different invalid abox.  MyProject is not typed as a Project
+			aBuilder.reset();
+			aBuilder.instance(Project_Leader, Alice)
+			        .addProperty(is_responsible_for, MyProject);
 
-		// remove invalid data
-		remove(aConn, aBuilder.graph());
+			insert(aConn, aBuilder.model());
 
-		// create a valid abox
-		aBuilder.reset();
-		aBuilder.instance(Project, MyProject);
-		aBuilder.instance(Project_Leader, Alice)
-				.addProperty(is_responsible_for, MyProject);
-		
-		insert(aConn, aBuilder.graph());
+			System.out.println("Now we should see that MyProject is invalid for the range constraint...");
+			printValidity(aValidator);
 
-		System.out.println("And with a complete ABox with all the correct domain and range restrictions met, we're valid...");
-		printValidity(aValidator);
+			// remove invalid data
+			remove(aConn, aBuilder.model());
 
-		aBuilder.reset();
-		clear(aValidator);
-		System.out.println("(4) Each date of birth must be a date");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			// create a valid abox
+			aBuilder.reset();
+			aBuilder.instance(Project, MyProject);
+			aBuilder.instance(Project_Leader, Alice)
+			        .addProperty(is_responsible_for, MyProject);
 
-		// all dates of birth must be dates.  Note that we're explicitly stating that dob is a dataProperty
-		// if this is not specified, the constraint will not be interpreted correctly.
-		Constraint aRangeConstraint2 = ConstraintFactory.constraint(range(dataProperty(dob), XMLSchema.DATE));
+			insert(aConn, aBuilder.model());
 
-		addConstraint(aValidator, aRangeConstraint2);
+			System.out.println("And with a complete ABox with all the correct domain and range restrictions met, we're valid...");
+			printValidity(aValidator);
 
-		aBuilder.instance(null /* no type */, Bob)
-			    .addProperty(dob, "1970-01-01");
+			aBuilder.reset();
+			clear(aValidator);
+			System.out.println("(4) Each date of birth must be a date");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		insert(aConn, aBuilder.graph());
+			// all dates of birth must be dates.  Note that we're explicitly stating that dob is a dataProperty
+			// if this is not specified, the constraint will not be interpreted correctly.
+			Constraint aRangeConstraint2 = ConstraintFactory.constraint(range(dataProperty(dob), XMLSchema.DATE));
 
-		System.out.println("We should see that Bob is violating the range constraint...");
-		printValidity(aValidator);
+			addConstraint(aValidator, aRangeConstraint2);
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			aBuilder.instance(null /* no type */, Bob)
+			        .addProperty(dob, "1970-01-01");
 
-		// now we'll constraint a valid abox
-		aBuilder.instance(null /* no type */, Bob)
-			    .addProperty(dob, ValueFactoryImpl.getInstance().createLiteral("1970-01-01", XMLSchema.DATE));
+			insert(aConn, aBuilder.model());
 
-		insert(aConn, aBuilder.graph());
+			System.out.println("We should see that Bob is violating the range constraint...");
+			printValidity(aValidator);
 
-		System.out.println("Now that Bob's dob is typed, we're valid...");
-		printValidity(aValidator);
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(5) Participation constraints: Each supervistor must supervise at least ONE (1) employee");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			// now we'll constraint a valid abox
+			aBuilder.instance(null /* no type */, Bob)
+			        .addProperty(dob, Values.literal("1970-01-01", XMLSchema.DATE));
 
-		Constraint aSuperviseConstraint = ConstraintFactory.constraint(subClassOf(Supervisor, some(supervises, Employee)));
+			insert(aConn, aBuilder.model());
 
-		addConstraint(aValidator, aSuperviseConstraint);
+			System.out.println("Now that Bob's dob is typed, we're valid...");
+			printValidity(aValidator);
 
-		aBuilder.instance(Supervisor, Alice);
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(5) Participation constraints: Each supervistor must supervise at least ONE (1) employee");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		insert(aConn, aBuilder.graph());
+			Constraint aSuperviseConstraint = ConstraintFactory.constraint(subClassOf(Supervisor, some(supervises, Employee)));
 
-		System.out.println("We are invalid because Alice is a Supervisor but supervises no one...");
-		printValidity(aValidator);
+			addConstraint(aValidator, aSuperviseConstraint);
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			aBuilder.instance(Supervisor, Alice);
 
-		aBuilder.instance(Supervisor, Alice)
-			    .addProperty(supervises, Bob);
+			insert(aConn, aBuilder.model());
 
-		insert(aConn, aBuilder.graph());
+			System.out.println("We are invalid because Alice is a Supervisor but supervises no one...");
+			printValidity(aValidator);
 
-		System.out.println("This is still invalid, Alice is a Supervisor and does supervise someone, but that individual is not known to be an employee...");
-		printValidity(aValidator);
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		// assert that Bob is an employee
-		insert(aConn, Graphs.newGraph(statement(Bob, RDF.TYPE, Employee)));
+			aBuilder.instance(Supervisor, Alice)
+			        .addProperty(supervises, Bob);
 
-		System.out.println("We asserted that Bob is an Employee, so we're ok now...");
-		printValidity(aValidator);
+			insert(aConn, aBuilder.model());
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(6) Each project must have a valid project number");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			System.out.println("This is still invalid, Alice is a Supervisor and does supervise someone, but that individual is not known to be an employee...");
+			printValidity(aValidator);
 
-		Constraint aValidProjectNumberConstraint = ConstraintFactory.constraint(subClassOf(Project, some(number,
-																										 ExpressionFactory.Datatypes.Integer
-																											 .minInclusive(ValueFactoryImpl.getInstance().createLiteral("0", XMLSchema.INTEGER))
-																											 .maxExclusive(ValueFactoryImpl.getInstance().createLiteral("5000", XMLSchema.INTEGER)))));
+			// assert that Bob is an employee
+			insert(aConn, Models2.newModel(statement(Bob, RDF.TYPE, Employee)));
 
-		addConstraint(aValidator, aValidProjectNumberConstraint);
+			System.out.println("We asserted that Bob is an Employee, so we're ok now...");
+			printValidity(aValidator);
 
-		System.out.println("This is ok, it's not typed as a project...");
-		aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyProject);
-		insert(aConn, aBuilder.graph());
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(6) Each project must have a valid project number");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aValidProjectNumberConstraint = ConstraintFactory.constraint(subClassOf(Project, some(number,
+			                                                                                                 ExpressionFactory.Datatypes.Integer
+				                                                                                                 .minInclusive(Values.literal("0", XMLSchema.INTEGER))
+				                                                                                                 .maxExclusive(Values
+					                                                                                                               .literal("5000", XMLSchema.INTEGER)))));
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			addConstraint(aValidator, aValidProjectNumberConstraint);
 
-		System.out.println("But this is not valid: a project w/o a number...");
-		aBuilder.instance(Project, MyProject);
-		insert(aConn, aBuilder.graph());
+			System.out.println("This is ok, it's not typed as a project...");
+			aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyProject);
+			insert(aConn, aBuilder.model());
 
-		printValidity(aValidator);
+			printValidity(aValidator);
 
-		Statement aNumberUntyped = statement(MyProject, number, ValueFactoryImpl.getInstance().createLiteral("23"));
-		Statement aNumberTypedButOutOfRange = statement(MyProject, number, ValueFactoryImpl.getInstance().createLiteral("6000", XMLSchema.INTEGER));
-		Statement aNumberTypedAndInRange = statement(MyProject, number, ValueFactoryImpl.getInstance().createLiteral("23", XMLSchema.INTEGER));
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		System.out.println("Also invalid: number in range, but untyped...");
-		insert(aConn, Graphs.newGraph(aNumberUntyped));
-		printValidity(aValidator);
+			System.out.println("But this is not valid: a project w/o a number...");
+			aBuilder.instance(Project, MyProject);
+			insert(aConn, aBuilder.model());
 
-		remove(aConn, Graphs.newGraph(aNumberUntyped));
+			printValidity(aValidator);
 
-		System.out.println("Still invalid: number is typed, but out of range...");
-		insert(aConn, Graphs.newGraph(aNumberTypedButOutOfRange));
-		printValidity(aValidator);
+			Statement aNumberUntyped = statement(MyProject, number, Values.literal("23"));
+			Statement aNumberTypedButOutOfRange = statement(MyProject, number, Values.literal("6000", XMLSchema.INTEGER));
+			Statement aNumberTypedAndInRange = statement(MyProject, number, Values.literal("23", XMLSchema.INTEGER));
 
-		remove(aConn, Graphs.newGraph(aNumberTypedButOutOfRange));
+			System.out.println("Also invalid: number in range, but untyped...");
+			insert(aConn, Models2.newModel(aNumberUntyped));
+			printValidity(aValidator);
 
-		System.out.println("Now number is typed, and is in range, this is ok...");
-		insert(aConn, Graphs.newGraph(aNumberTypedAndInRange));
-		printValidity(aValidator);
+			remove(aConn, Models2.newModel(aNumberUntyped));
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(7) Employees mustn't work on more than 3 projects");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			System.out.println("Still invalid: number is typed, but out of range...");
+			insert(aConn, Models2.newModel(aNumberTypedButOutOfRange));
+			printValidity(aValidator);
 
-		Constraint aEmployeeWorkOnMaxThreeProjects = ConstraintFactory.constraint(subClassOf(Employee, max(objectProperty(works_on), 3, namedClass(Project))));
+			remove(aConn, Models2.newModel(aNumberTypedButOutOfRange));
 
-		addConstraint(aValidator, aEmployeeWorkOnMaxThreeProjects);
+			System.out.println("Now number is typed, and is in range, this is ok...");
+			insert(aConn, Models2.newModel(aNumberTypedAndInRange));
+			printValidity(aValidator);
 
-		System.out.println("This is ok since Bob not typed as an Employee...");
-		aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Bob);
-		insert(aConn, aBuilder.graph());
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(7) Employees mustn't work on more than 3 projects");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aEmployeeWorkOnMaxThreeProjects = ConstraintFactory.constraint(subClassOf(Employee, max(objectProperty(works_on), 3, namedClass(Project))));
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			addConstraint(aValidator, aEmployeeWorkOnMaxThreeProjects);
 
-		System.out.println("This is also ok, Bob only works on one project...");
-		aBuilder
-			.instance(Employee, Bob)
-			.addProperty(works_on, MyProject);
+			System.out.println("This is ok since Bob not typed as an Employee...");
+			aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Bob);
+			insert(aConn, aBuilder.model());
 
-		aBuilder.instance(Project, MyProject);
+			printValidity(aValidator);
 
-		insert(aConn, aBuilder.graph());
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		printValidity(aValidator);
+			System.out.println("This is also ok, Bob only works on one project...");
+			aBuilder
+				.instance(Employee, Bob)
+				.addProperty(works_on, MyProject);
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			aBuilder.instance(Project, MyProject);
 
-		System.out.println("But this is not, Bob cannot work on four projects...");
-		aBuilder
-			.instance(Employee, Bob)
-			.addProperty(works_on, MyProject)
-			.addProperty(works_on, MyProjectFoo)
-			.addProperty(works_on, MyProjectBar)
-			.addProperty(works_on, MyProjectBaz);
+			insert(aConn, aBuilder.model());
 
-		aBuilder.instance(Project, MyProject);
-		aBuilder.instance(Project, MyProjectFoo);
-		aBuilder.instance(Project, MyProjectBar);
-		aBuilder.instance(Project, MyProjectBaz);
+			printValidity(aValidator);
 
-		insert(aConn, aBuilder.graph());
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		printValidity(aValidator);
+			System.out.println("But this is not, Bob cannot work on four projects...");
+			aBuilder
+				.instance(Employee, Bob)
+				.addProperty(works_on, MyProject)
+				.addProperty(works_on, MyProjectFoo)
+				.addProperty(works_on, MyProjectBar)
+				.addProperty(works_on, MyProjectBaz);
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(8) Departments must have at least 2 employees.");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			aBuilder.instance(Project, MyProject);
+			aBuilder.instance(Project, MyProjectFoo);
+			aBuilder.instance(Project, MyProjectBar);
+			aBuilder.instance(Project, MyProjectBaz);
 
-		Constraint aDeptsMustHaveAtLeastTwoEmployees = ConstraintFactory.constraint(subClassOf(Department, min(inverse(works_in), 2, namedClass(Employee))));
+			insert(aConn, aBuilder.model());
 
-		addConstraint(aValidator, aDeptsMustHaveAtLeastTwoEmployees);
+			printValidity(aValidator);
 
-		System.out.println("An untyped 'department' is ok...");
-		aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
-		insert(aConn, aBuilder.graph());
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(8) Departments must have at least 2 employees.");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aDeptsMustHaveAtLeastTwoEmployees = ConstraintFactory.constraint(subClassOf(Department, min(inverse(works_in), 2, namedClass(Employee))));
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			addConstraint(aValidator, aDeptsMustHaveAtLeastTwoEmployees);
 
-		System.out.println("This won't be valid, only Bob works in the department, and you need at least two people in a dept...");
-		aBuilder.instance(Department, MyDepartment);
-		aBuilder
-			.instance(Employee, Bob)
-			.addProperty(works_in, MyDepartment);
+			System.out.println("An untyped 'department' is ok...");
+			aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
+			insert(aConn, aBuilder.model());
 
-		insert(aConn, aBuilder.graph());
+			printValidity(aValidator);
 
-		printValidity(aValidator);
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		System.out.println("We'll add a second employee to the department, and that will be valid...");
-		insert(aConn, Graphs.newGraph(statement(Alice, RDF.TYPE, Employee), statement(Alice, works_in, MyDepartment)));
+			System.out.println("This won't be valid, only Bob works in the department, and you need at least two people in a dept...");
+			aBuilder.instance(Department, MyDepartment);
+			aBuilder
+				.instance(Employee, Bob)
+				.addProperty(works_in, MyDepartment);
 
-		printValidity(aValidator);
+			insert(aConn, aBuilder.model());
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(9) Managers must manage exactly 1 department.");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			printValidity(aValidator);
 
-		Constraint aManagerMustManageExactlyOneDepartment = ConstraintFactory.constraint(subClassOf(Manager, cardinality(manages, 1, Department)));
+			System.out.println("We'll add a second employee to the department, and that will be valid...");
+			insert(aConn, Models2.newModel(statement(Alice, RDF.TYPE, Employee), statement(Alice, works_in, MyDepartment)));
 
-		addConstraint(aValidator, aManagerMustManageExactlyOneDepartment);
+			printValidity(aValidator);
 
-		System.out.println("This is ok since the manager is untyped...");
-		aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Isabella);
-		insert(aConn, aBuilder.graph());
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(9) Managers must manage exactly 1 department.");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aManagerMustManageExactlyOneDepartment = ConstraintFactory.constraint(subClassOf(Manager, cardinality(manages, 1, Department)));
 
-		remove(aConn, aBuilder.graph());
-		aBuilder.reset();
+			addConstraint(aValidator, aManagerMustManageExactlyOneDepartment);
 
-		System.out.println("This is invalid since Isabella is a Manager, but is not managing any departments...");
-		aBuilder.instance(Manager, Isabella);
-		insert(aConn, aBuilder.graph());
+			System.out.println("This is ok since the manager is untyped...");
+			aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Isabella);
+			insert(aConn, aBuilder.model());
 
-		printValidity(aValidator);
+			printValidity(aValidator);
 
-		System.out.println("This is valid since now Isabella manages a department...");
-		insert(aConn, Graphs.newGraph(statement(Isabella, manages, MyDepartment),
-									  statement(MyDepartment, RDF.TYPE, Department)));
+			remove(aConn, aBuilder.model());
+			aBuilder.reset();
 
-		printValidity(aValidator);
+			System.out.println("This is invalid since Isabella is a Manager, but is not managing any departments...");
+			aBuilder.instance(Manager, Isabella);
+			insert(aConn, aBuilder.model());
 
-		System.out.println("This is invalid since now Isabella manages two departments...");
-		insert(aConn, Graphs.newGraph(statement(Isabella, manages, MyDepartment1),
-									  statement(MyDepartment1, RDF.TYPE, Department)));
+			printValidity(aValidator);
 
-		printValidity(aValidator);
+			System.out.println("This is valid since now Isabella manages a department...");
+			insert(aConn, Models2.newModel(statement(Isabella, manages, MyDepartment),
+			                               statement(MyDepartment, RDF.TYPE, Department)));
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(10) Entities must not have more than one name.");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			printValidity(aValidator);
 
-		Constraint aEntitesMustHaveOnlyOneName = ConstraintFactory.constraint(functionalProperty(name));
+			System.out.println("This is invalid since now Isabella manages two departments...");
+			insert(aConn, Models2.newModel(statement(Isabella, manages, MyDepartment1),
+			                               statement(MyDepartment1, RDF.TYPE, Department)));
 
-		addConstraint(aValidator, aEntitesMustHaveOnlyOneName);
+			printValidity(aValidator);
 
-		System.out.println("Untyped 'department' is ok...");
-		aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
-		insert(aConn, aBuilder.graph());
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(10) Entities must not have more than one name.");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aEntitesMustHaveOnlyOneName = ConstraintFactory.constraint(functionalProperty(name));
 
-		System.out.println("A department with one name is fine too...");
-		insert(aConn, Graphs.newGraph(statement(MyDepartment, name, literal("Human Resources"))));
+			addConstraint(aValidator, aEntitesMustHaveOnlyOneName);
 
-		printValidity(aValidator);
+			System.out.println("Untyped 'department' is ok...");
+			aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
+			insert(aConn, aBuilder.model());
 
-		System.out.println("But if you add a second name, its invalid...");
-		insert(aConn, Graphs.newGraph(statement(MyDepartment, name, literal("Legal"))));
+			printValidity(aValidator);
 
-		printValidity(aValidator);
+			System.out.println("A department with one name is fine too...");
+			insert(aConn, Models2.newModel(statement(MyDepartment, name, literal("Human Resources"))));
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(11) The manager of a department must work in that department.");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			printValidity(aValidator);
 
-		Constraint aManagerMustWorkInTheirDept = ConstraintFactory.constraint(subPropertyOf(manages, works_in));
+			System.out.println("But if you add a second name, its invalid...");
+			insert(aConn, Models2.newModel(statement(MyDepartment, name, literal("Legal"))));
 
-		addConstraint(aValidator, aManagerMustWorkInTheirDept);
+			printValidity(aValidator);
 
-		System.out.println("Bob manages a department, but does not work in it, this is not ok...");
-		insert(aConn, Graphs.newGraph(statement(Bob, manages, MyDepartment)));
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(11) The manager of a department must work in that department.");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		printValidity(aValidator);
+			Constraint aManagerMustWorkInTheirDept = ConstraintFactory.constraint(subPropertyOf(manages, works_in));
 
-		System.out.println("But if we assert that Bob works in his department, then we're back to being valid...");
-		insert(aConn, Graphs.newGraph(statement(Bob, works_in, MyDepartment)));
+			addConstraint(aValidator, aManagerMustWorkInTheirDept);
 
-		printValidity(aValidator);
+			System.out.println("Bob manages a department, but does not work in it, this is not ok...");
+			insert(aConn, Models2.newModel(statement(Bob, manages, MyDepartment)));
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(12) Department managers must supervise all the department's employees.");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			printValidity(aValidator);
 
-		Constraint aManagersMustSuperviseAllDeptEmployees = ConstraintFactory.constraint(subPropertyOf(propertyList(objectProperty(manages), inverse(works_in)),
-																									   objectProperty(is_supervisor_of)));
+			System.out.println("But if we assert that Bob works in his department, then we're back to being valid...");
+			insert(aConn, Models2.newModel(statement(Bob, works_in, MyDepartment)));
 
-		addConstraint(aValidator, aManagersMustSuperviseAllDeptEmployees);
+			printValidity(aValidator);
 
-		aBuilder
-			.instance(null /* no type */, Jose)
-			.addProperty(manages, MyDepartment)
-			.addProperty(is_supervisor_of, Maria);
-		aBuilder
-			.instance(null /* no type */, Maria)
-			.addProperty(works_in, MyDepartment);
-		aBuilder
-			.instance(null /* no type */, Diego)
-			.addProperty(works_in, MyDepartment);
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(12) Department managers must supervise all the department's employees.");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		System.out.println("This data is invalid because Jose is not the supervisor of Diego even though he works in Jose's department...");
-		insert(aConn, aBuilder.graph());
+			Constraint aManagersMustSuperviseAllDeptEmployees = ConstraintFactory.constraint(subPropertyOf(propertyList(objectProperty(manages), inverse(works_in)),
+			                                                                                               objectProperty(is_supervisor_of)));
 
-		printValidity(aValidator);
+			addConstraint(aValidator, aManagersMustSuperviseAllDeptEmployees);
 
-		System.out.println("But if we assert that Diego is supervised by Jose, the data is again valid");
-		insert(aConn, Graphs.newGraph(statement(Jose, is_supervisor_of, Diego)));
+			aBuilder
+				.instance(null /* no type */, Jose)
+				.addProperty(manages, MyDepartment)
+				.addProperty(is_supervisor_of, Maria);
+			aBuilder
+				.instance(null /* no type */, Maria)
+				.addProperty(works_in, MyDepartment);
+			aBuilder
+				.instance(null /* no type */, Diego)
+				.addProperty(works_in, MyDepartment);
 
-		printValidity(aValidator);
+			System.out.println("This data is invalid because Jose is not the supervisor of Diego even though he works in Jose's department...");
+			insert(aConn, aBuilder.model());
 
-		clear(aValidator);
-		aBuilder.reset();
-		System.out.println("(13) Complex constraints");
-		System.out.println(Strings.repeat("-", 25) + "\n");
+			printValidity(aValidator);
 
-		System.out.println("(13a) Employee Constraints: Each employee either works on at least one project, supervises at least\n" +
-						   "one employee that works on at least one project, or manages at least one\n" +
-						   "department.\n");
+			System.out.println("But if we assert that Diego is supervised by Jose, the data is again valid");
+			insert(aConn, Models2.newModel(statement(Jose, is_supervisor_of, Diego)));
 
-		Constraint aComplexEmployeeConstraint = ConstraintFactory.constraint(subClassOf(Employee, some(works_on, or(namedClass(Project),
-																													some(supervises, and(namedClass(Employee),
-																																		 some(works_on, Project))),
-																													some(manages, Department)))));
+			printValidity(aValidator);
 
-		addConstraint(aValidator, aComplexEmployeeConstraint);
+			clear(aValidator);
+			aBuilder.reset();
+			System.out.println("(13) Complex constraints");
+			System.out.println(Strings.repeat("-", 25) + "\n");
 
-		System.out.println("This is invalid because Esteban is an Employee but does not work on, supervise, or manage anything he's required to...");
-		aBuilder.instance(Employee, Esteban);
-		insert(aConn, aBuilder.graph());
+			System.out.println("(13a) Employee Constraints: Each employee either works on at least one project, supervises at least\n" +
+			                   "one employee that works on at least one project, or manages at least one\n" +
+			                   "department.\n");
 
-		printValidity(aValidator);
+			Constraint aComplexEmployeeConstraint = ConstraintFactory.constraint(subClassOf(Employee, some(works_on, or(namedClass(Project),
+			                                                                                                            some(supervises, and(namedClass(Employee),
+			                                                                                                                                 some(works_on, Project))),
+			                                                                                                            some(manages, Department)))));
 
-		System.out.println("We've satisfied the violation for Esteban by stating he supervises Lucinda, but we've said nothing about her, so we're still invalid...");
-		aBuilder
-			.instance(Employee, Esteban)
-			.addProperty(supervises, Lucinda);
-		aBuilder.instance(Employee, Lucinda);
+			addConstraint(aValidator, aComplexEmployeeConstraint);
 
-		insert(aConn, aBuilder.graph());
+			System.out.println("This is invalid because Esteban is an Employee but does not work on, supervise, or manage anything he's required to...");
+			aBuilder.instance(Employee, Esteban);
+			insert(aConn, aBuilder.model());
 
-		printValidity(aValidator);
+			printValidity(aValidator);
 
-		System.out.println("So now if we state that Lucinda works on a project, we're ok...");
-		insert(aConn, Graphs.newGraph(statement(Lucinda, works_on, MyProject), statement(MyProject, RDF.TYPE, Project)));
+			System.out.println("We've satisfied the violation for Esteban by stating he supervises Lucinda, but we've said nothing about her, so we're still invalid...");
+			aBuilder
+				.instance(Employee, Esteban)
+				.addProperty(supervises, Lucinda);
+			aBuilder.instance(Employee, Lucinda);
 
-		printValidity(aValidator);
+			insert(aConn, aBuilder.model());
 
-		clear(aValidator);
-		aBuilder.reset();
+			printValidity(aValidator);
 
-		System.out.println("Also valid is saying that Esteban manages a department...");
-		aBuilder
-			.instance(Employee, Esteban)
-			.addProperty(manages, MyDepartment);
-		aBuilder.instance(Department, MyDepartment);
+			System.out.println("So now if we state that Lucinda works on a project, we're ok...");
+			insert(aConn, Models2.newModel(statement(Lucinda, works_on, MyProject), statement(MyProject, RDF.TYPE, Project)));
 
-		printValidity(aValidator);
+			printValidity(aValidator);
 
-		System.out.println("Additionally, we can state that Esteban works on a project and that is ok too...");
-		insert(aConn, Graphs.newGraph(statement(Esteban, works_on, Project),
-									  statement(MyProject, RDF.TYPE, Project)));
+			clear(aValidator);
+			aBuilder.reset();
 
-		printValidity(aValidator);
+			System.out.println("Also valid is saying that Esteban manages a department...");
+			aBuilder
+				.instance(Employee, Esteban)
+				.addProperty(manages, MyDepartment);
+			aBuilder.instance(Department, MyDepartment);
 
-		clear(aValidator);
-		aBuilder.reset();
+			printValidity(aValidator);
 
-		System.out.println("(13b) Employees and US government funding");
-		System.out.println("Only employees who are American citizens can work on a project that receives funds from a US government agency.\n");
+			System.out.println("Additionally, we can state that Esteban works on a project and that is ok too...");
+			insert(aConn, Models2.newModel(statement(Esteban, works_on, Project),
+			                               statement(MyProject, RDF.TYPE, Project)));
 
-		Constraint aOnlyCitizensWorkForGovtFundedProject = ConstraintFactory.constraint(subClassOf(and(namedClass(Project), some(receives_funds_from, US_Government_Agency)),
-																								   all(inverse(works_on), and(namedClass(Employee), hasValue(nationality, literal("US"))))));
+			printValidity(aValidator);
 
-		addConstraint(aValidator, aOnlyCitizensWorkForGovtFundedProject);
+			clear(aValidator);
+			aBuilder.reset();
 
-		System.out.println("This is ok, we havent made any statements about people working on the project, so this is valid...");
-		aBuilder
-			.instance(Project, MyProject)
-			.addProperty(receives_funds_from, NASA);
-		aBuilder
-			.instance(US_Government_Agency, NASA);
+			System.out.println("(13b) Employees and US government funding");
+			System.out.println("Only employees who are American citizens can work on a project that receives funds from a US government agency.\n");
 
-		insert(aConn, aBuilder.graph());
-		printValidity(aValidator);
+			Constraint aOnlyCitizensWorkForGovtFundedProject = ConstraintFactory.constraint(subClassOf(and(namedClass(Project), some(receives_funds_from, US_Government_Agency)),
+			                                                                                           all(inverse(works_on), and(namedClass(Employee), hasValue(nationality, literal("US"))))));
 
-		System.out.println("But now this will be invalid because we've stated that Andy works on the project, but we've not stated that he's a US citizen...");
+			addConstraint(aValidator, aOnlyCitizensWorkForGovtFundedProject);
 
-		insert(aConn, Graphs.newGraph(statement(Andy, RDF.TYPE, Employee),
-									  statement(Andy, works_on, MyProject)));
+			System.out.println("This is ok, we havent made any statements about people working on the project, so this is valid...");
+			aBuilder
+				.instance(Project, MyProject)
+				.addProperty(receives_funds_from, NASA);
+			aBuilder
+				.instance(US_Government_Agency, NASA);
 
-		printValidity(aValidator);
+			insert(aConn, aBuilder.model());
+			printValidity(aValidator);
 
+			System.out.println("But now this will be invalid because we've stated that Andy works on the project, but we've not stated that he's a US citizen...");
 
-		System.out.println("We can fix that by stating that he's a citizen...");
+			insert(aConn, Models2.newModel(statement(Andy, RDF.TYPE, Employee),
+			                               statement(Andy, works_on, MyProject)));
 
-		insert(aConn, Graphs.newGraph(statement(Andy, nationality, literal("US"))));
+			printValidity(aValidator);
 
-		printValidity(aValidator);
 
-		System.out.println("This is invalid; even though we've stated Heidi's nationality correctly, she's a Supervisor rather than an Employee...");
-		insert(aConn, Graphs.newGraph(statement(Heidi, RDF.TYPE, Supervisor),
-									  statement(Heidi, works_on, MyProject),
-									  statement(Heidi, nationality, literal("US"))));
+			System.out.println("We can fix that by stating that he's a citizen...");
 
-		printValidity(aValidator);
-		
-		System.out.println("Now if we state the subclass relationship between Employee and Supervisor, we're valid again...");
-		insert(aConn, Graphs.newGraph(statement(Supervisor, RDFS.SUBCLASSOF, Employee)));
-		printValidity(aValidator);
+			insert(aConn, Models2.newModel(statement(Andy, nationality, literal("US"))));
 
-		// ALWAYS close connections when you are done with them
-		aConn.close();
+			printValidity(aValidator);
+
+			System.out.println("This is invalid; even though we've stated Heidi's nationality correctly, she's a Supervisor rather than an Employee...");
+			insert(aConn, Models2.newModel(statement(Heidi, RDF.TYPE, Supervisor),
+			                               statement(Heidi, works_on, MyProject),
+			                               statement(Heidi, nationality, literal("US"))));
+
+			printValidity(aValidator);
+
+			System.out.println("Now if we state the subclass relationship between Employee and Supervisor, we're valid again...");
+			insert(aConn, Models2.newModel(statement(Supervisor, RDFS.SUBCLASSOF, Employee)));
+			printValidity(aValidator);
+
+		}
 
 		// you MUST stop the server if you've started it!
 		aServer.stop();
@@ -641,11 +645,11 @@ public class ICVDocsExample {
 	}
 
 	private static Value literal(final String theValue) {
-		return ValueFactoryImpl.getInstance().createLiteral(theValue);
+		return Values.literal(theValue);
 	}
 
-	private static Statement statement(final URI theSubj, final URI thePred, final Value theObject) {
-		return ValueFactoryImpl.getInstance().createStatement(theSubj, thePred, theObject);
+	private static Statement statement(final IRI theSubj, final IRI thePred, final Value theObject) {
+		return Values.statement(theSubj, thePred, theObject);
 	}
 
 	private static void printValidity(final ICVConnection theValidator) throws StardogException {
@@ -653,33 +657,32 @@ public class ICVDocsExample {
 		System.out.println("The data " + (isValid ? "is" : "is NOT") + " valid!");
 
 		if (!isValid) {
-			Iteration<ConstraintViolation<BindingSet>, StardogException> aViolationIter = theValidator.getViolationBindings(ContextSets.DEFAULT_ONLY);
+			try (CloseableIterator<ConstraintViolation<BindingSet>> aViolationIter = theValidator.getViolationBindings(ContextSets.DEFAULT_ONLY)) {
 
-			while (aViolationIter.hasNext()) {
-				ConstraintViolation<BindingSet> aViolation = aViolationIter.next();
+				while (aViolationIter.hasNext()) {
+					ConstraintViolation<BindingSet> aViolation = aViolationIter.next();
 
-				Iteration<Resource, StardogException> aViolatingIndividuals = ICV.asIndividuals(aViolation.getViolations());
+					// ICV.asIndividuals will close the `aViolation.getViolations()` for us
+					Iterator<Resource> aViolatingIndividuals = ICV.asIndividuals(aViolation.getViolations());
 
-				System.out.println("Each of these individuals violated the constraint: " + aViolation.getConstraint());
+					System.out.println("Each of these individuals violated the constraint: " + aViolation.getConstraint());
 
-				while (aViolatingIndividuals.hasNext()) {
-					System.out.println(aViolatingIndividuals.next());
+					while (aViolatingIndividuals.hasNext()) {
+						System.out.println(aViolatingIndividuals.next());
+					}
 				}
-
-				// ALWAYS close Iterations when you're done with them!
-				aViolatingIndividuals.close();
 			}
 		}
 		System.out.println();
 	}
 
-	private static void insert(final Connection theConn, final Graph theGraph) throws StardogException {
+	private static void insert(final Connection theConn, final Model theGraph) throws StardogException {
 		theConn.begin();
 		theConn.add().graph(theGraph);
 		theConn.commit();
 	}
 
-	private static void remove(final Connection theConn, final Graph theGraph) throws StardogException {
+	private static void remove(final Connection theConn, final Model theGraph) throws StardogException {
 		theConn.begin();
 		theConn.remove().graph(theGraph);
 		theConn.commit();
@@ -691,5 +694,4 @@ public class ICVDocsExample {
 		theConn.clearConstraints();
 		theConn.commit();
 	}
-
 }

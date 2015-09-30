@@ -5,8 +5,8 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = '3.1.1'
-	projectVersion = '0.0.1'
+	stardogVersion = '4.0-SNAPSHOT'
+	projectVersion = '0.0.2'
 	distPath = "${projectDir}/dist"
 	stardogRepo = "http://maven.stardog.com"
 }
@@ -16,10 +16,13 @@ allprojects {
 	group = 'com.complexible.stardog'
 	version = projectVersion
 	// also configure in idea.gradle
-	sourceCompatibility = '1.6'
-	targetCompatibility = '1.6'
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
 
 	repositories {
+		maven {
+			url "file:///Users/mhgrove/work/ClarkParsia/GitHub/maven"
+		}
 		maven {
 			url stardogRepo
 		}

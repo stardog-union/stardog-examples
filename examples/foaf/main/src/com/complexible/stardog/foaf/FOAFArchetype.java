@@ -31,7 +31,7 @@ import com.complexible.stardog.icv.ConstrainedDatabaseArchetypeBase;
 public class FOAFArchetype extends ConstrainedDatabaseArchetypeBase {
 	public FOAFArchetype() {
 	    super("foaf", // name of the archetype (used in database options and also as the prefix for the namespaces)
-	          Values.uri(FOAF.NAMESPACE), // namespace for the archetype (used in stored namespaces)
+	          Values.iri(FOAF.NAMESPACE), // namespace for the archetype (used in stored namespaces)
 	          readStatements(FOAFArchetype.class, "foaf.rdf"), // one or more ontology files
 	          readStatements(FOAFArchetype.class, "foaf-constraints.ttl") // one or more constraint files
 	    );

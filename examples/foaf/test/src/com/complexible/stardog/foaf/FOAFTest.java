@@ -54,9 +54,9 @@ public class FOAFTest {
 
 	private static final String NS = "urn:example:";
 
-	private static final URI alice = Values.uri(NS, "alice");
-	private static final URI bob = Values.uri(NS, "bob");
-	private static final URI homepage = Values.uri(NS, "homepage");
+	private static final URI alice = Values.iri(NS, "alice");
+	private static final URI bob = Values.iri(NS, "bob");
+	private static final URI homepage = Values.iri(NS, "homepage");
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -64,31 +64,23 @@ public class FOAFTest {
 		                .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
 		                .start();
 
-		final AdminConnection aAdminConn = AdminConnectionConfiguration.toEmbeddedServer()
-		                                                          .credentials("admin", "admin")
-		                                                          .connect();
-
-		Connection aConn = null;
-
-		try {
+		try (AdminConnection aAdminConn = AdminConnectionConfiguration.toEmbeddedServer()
+		                                                              .credentials("admin", "admin")
+		                                                              .connect()) {
 			if (aAdminConn.list().contains(DB)) {
 				aAdminConn.drop(DB);
 			}
 
-			aConn = aAdminConn.memory(DB).set(DatabaseOptions.ARCHETYPES, ImmutableList.of("foaf")).create().connect();
-
-			aConn.begin();
-			aConn.add()
-			     .statement(alice, FOAF.KNOWS, bob)
-			     .statement(alice, FOAF.HOMEPAGE, homepage)
-			     .statement(bob, FOAF.IS_PRIMARY_TOPIC_OF, homepage);
-			aConn.commit();
-		}
-		finally {
-			aAdminConn.close();
-
-			if (aConn != null) {
-				aConn.close();
+			try (Connection aConn = aAdminConn.memory(DB)
+			                                  .set(DatabaseOptions.ARCHETYPES, ImmutableList.of("foaf"))
+			                                  .create()
+			                                  .connect()) {
+				aConn.begin();
+				aConn.add()
+				     .statement(alice, FOAF.KNOWS, bob)
+				     .statement(alice, FOAF.HOMEPAGE, homepage)
+				     .statement(bob, FOAF.IS_PRIMARY_TOPIC_OF, homepage);
+				aConn.commit();
 			}
 		}
 	}
@@ -102,8 +94,10 @@ public class FOAFTest {
 
 	@Test
 	public void testInference() throws Exception {
-		Connection aConn = ConnectionConfiguration.to(DB).credentials("admin", "admin").reasoning(true).connect();
-		try {
+		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .credentials("admin", "admin")
+		                                               .reasoning(true)
+		                                               .connect()) {
 			// test domain inference
 			assertTrue(aConn.get().subject(alice).predicate(RDF.TYPE).object(FOAF.PERSON).ask());
 
@@ -117,24 +111,22 @@ public class FOAFTest {
 			assertTrue(aConn.get().subject(alice).predicate(FOAF.IS_PRIMARY_TOPIC_OF).object(homepage).ask());
 			assertTrue(aConn.get().subject(alice).predicate(FOAF.PAGE).object(homepage).ask());
 		}
-		finally {
-			aConn.close();
-		}
 	}
 
 	@Test
 	public void testValidation() throws Exception {
-		ICVConnection aConn = ConnectionConfiguration.to(DB).credentials("admin", "admin").reasoning(true).connect().as(ICVConnection.class);
 
-		try {
+		try (ICVConnection aConn = ConnectionConfiguration.to(DB)
+		                                                  .credentials("admin", "admin")
+		                                                  .reasoning(true)
+		                                                  .connect()
+		                                                  .as(ICVConnection.class)) {
 			assertFalse(aConn.isValid());
 
 			Proof aProof = aConn.explain().proof();
 			assertEquals(ProofType.VIOLATED, aProof.getType());
-			assertEquals(Values.statement(FOAF.IS_PRIMARY_TOPIC_OF, RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY), Iterables.getOnlyElement(aProof.getExpression().graph()));
-		}
-		finally {
-			aConn.close();
+			assertEquals(Values.statement(FOAF.IS_PRIMARY_TOPIC_OF, RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY),
+			             Iterables.getOnlyElement(aProof.getExpression().model()));
 		}
 	}
 }

@@ -72,9 +72,8 @@ public class SesameExample {
 			// Most operations supported by the DBMS require specific permissions, so either an admin account
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect();
 
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
 				// if it does, we want to drop it and re-create so that we can run the example from a clean database.
 				if (aAdminConnection.list().contains("testSesame")) {
@@ -83,10 +82,6 @@ public class SesameExample {
 
 				// Convenience function for creating a non-persistent in-memory database with all the default settings.
 				aAdminConnection.createMemory("testSesame");
-			}
-			finally {
-				// Always close your connections
-				aAdminConnection.close();
 			}
 
 			// Create a Sesame `Repository` from a Stardog `ConnectionConfiguration`.  The configuration will be used
@@ -100,28 +95,18 @@ public class SesameExample {
 
 			try {
 				// Let's open a connection to the database, add some data, then query it
-				RepositoryConnection aRepoConn = aRepo.getConnection();
 
-				try {
+				try (RepositoryConnection aRepoConn = aRepo.getConnection()) {
 					// First add some data to the connection so we can query it.
 					RepositoryConnections.add(aRepoConn, new File("data/sp2b_10k.n3"));
 
 					// Now we can query the data we just loaded into the database
 					TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");
-					TupleQueryResult aResults = aQuery.evaluate();
 
-					try {
+					try (TupleQueryResult aResults = aQuery.evaluate()) {
 						// Print the results in tabular format
 						QueryResultIO.write(aResults, TextTableQueryResultWriter.FORMAT, System.out);
 					}
-					finally {
-						// Always close your query results!
-						aResults.close();
-					}
-				}
-				finally {
-					// Always close your connections!
-					aRepoConn.close();
 				}
 			}
 			finally {

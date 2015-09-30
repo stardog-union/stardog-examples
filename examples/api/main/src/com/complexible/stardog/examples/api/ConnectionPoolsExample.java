@@ -31,7 +31,7 @@ import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
  *
  * @author  Michael Grove
  * @since   0.5.1
- * @version 2.0
+ * @version 4.0
  */
 public class ConnectionPoolsExample {
 	// Using Connection Pools
@@ -46,15 +46,11 @@ public class ConnectionPoolsExample {
 
 		try {
 			// First create a temporary database to use (if there is one already, drop it first)
-			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect();
-			try {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
 				if (aAdminConnection.list().contains("testConnectionPool")) {
 					aAdminConnection.drop("testConnectionPool");
 				}
 				aAdminConnection.createMemory("testConnectionPool");
-			}
-			finally {
-				aAdminConnection.close();
 			}
 
 			// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
