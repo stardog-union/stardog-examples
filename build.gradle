@@ -5,7 +5,7 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = '4.0-SNAPSHOT'
+	stardogVersion = '4.0-RC1'
 	projectVersion = '0.0.2'
 	distPath = "${projectDir}/dist"
 	stardogRepo = "http://maven.stardog.com"
@@ -20,9 +20,6 @@ allprojects {
 	targetCompatibility = '1.8'
 
 	repositories {
-		maven {
-			url "file:///Users/mhgrove/work/ClarkParsia/GitHub/maven"
-		}
 		maven {
 			url stardogRepo
 		}
