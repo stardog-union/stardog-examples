@@ -2,6 +2,8 @@
 
 # Programming Stardog: Examples
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/clarkparsia/stardog-examples?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a small collection of examples of working with [Stardog](http://stardog.com) via its APIs, as
 well as examples of how to use some of the extension points within Stardog.
 
