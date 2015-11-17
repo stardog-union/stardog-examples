@@ -166,7 +166,7 @@ public class ConnectionAPIExample {
 				try {
 					System.out.println("The first ten results...");
 
-					QueryResultIO.write(aResult, TextTableQueryResultWriter.FORMAT, System.out);
+					QueryResultIO.writeTuple(aResult, TextTableQueryResultWriter.FORMAT, System.out);
 				}
 				finally {
 					// *Always* close your result sets, they hold resources which need to be released.
@@ -189,7 +189,7 @@ public class ConnectionAPIExample {
 				System.out.println("\nNow a particular slice...");
 
 				try {
-					QueryResultIO.write(aResult, TextTableQueryResultWriter.FORMAT, System.out);
+					QueryResultIO.writeTuple(aResult, TextTableQueryResultWriter.FORMAT, System.out);
 				}
 				finally {
 					// Again, *close* your result sets.

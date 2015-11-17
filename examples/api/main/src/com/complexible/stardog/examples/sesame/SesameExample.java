@@ -105,7 +105,7 @@ public class SesameExample {
 
 					try (TupleQueryResult aResults = aQuery.evaluate()) {
 						// Print the results in tabular format
-						QueryResultIO.write(aResults, TextTableQueryResultWriter.FORMAT, System.out);
+						QueryResultIO.writeTuple(aResults, TextTableQueryResultWriter.FORMAT, System.out);
 					}
 				}
 			}

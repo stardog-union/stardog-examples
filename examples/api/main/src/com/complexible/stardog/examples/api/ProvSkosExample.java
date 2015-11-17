@@ -152,7 +152,7 @@ public class ProvSkosExample {
 					                                 "}");
 
 				// Print the query results
-				QueryResultIO.write(aQuery.execute(), TextTableQueryResultWriter.FORMAT, System.out);
+				QueryResultIO.writeTuple(aQuery.execute(), TextTableQueryResultWriter.FORMAT, System.out);
 			}
 		}
 		finally {
