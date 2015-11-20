@@ -1,0 +1,64 @@
+# Sample obtained from:
+# http://www.dotnetrdf.org/content.asp?pageID=Inference%20and%20Reasoning
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vh: <http://example.org/vehicles/> .
+@prefix : <http://myvehicledata.com/> .
+
+@prefix rule: <tag:stardog:api:rule:> .
+
+# Tbox
+vh:schema
+{
+	vh:Vehicle a owl:Class .
+	vh:Car rdfs:subClassOf vh:Vehicle .
+	vh:SportsCar rdfs:subClassOf vh:Car .
+
+	vh:LatestModel a owl:Class .
+	vh:OldModel a owl:Class .
+
+	# throwing some rules here
+	[] a rule:SPARQLRule ;
+		rule:content """
+			PREFIX vh: <http://example.org/vehicles/>
+			IF {
+				?v a vh:Vehicle ;
+					vh:yearModel ?year .
+				bind(year(now()) - ?year as ?yearDiff) .
+				FILTER(?yearDiff = 0) .
+			}
+			THEN {
+				?v a vh:LatestModel .
+			}
+		""" .
+
+	[] a rule:SPARQLRule ;
+    		rule:content """
+    			PREFIX vh: <http://example.org/vehicles/>
+    			IF {
+    				?v a vh:Vehicle ;
+    					vh:yearModel ?year .
+    				bind(year(now()) - ?year as ?yearDiff) .
+    				FILTER(?yearDiff > 10) .
+    			}
+    			THEN {
+    				?v a vh:OldModel .
+    			}
+    		""" .
+}
+
+# default graph contains Abox data
+{
+	:car1 a vh:Car ;
+		vh:model "Camaro" ;
+		vh:yearModel "2001"^^xsd:int .
+
+	:car2 a vh:Car ;
+		vh:model "Tesla" ;
+		vh:yearModel "2015"^^xsd:int .
+
+	:car3 a vh:SportsCar ;
+		vh:model "Ferrari" ;
+		vh:yearModel "2009"^^xsd:int .
+}
