@@ -1,10 +1,13 @@
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix gr: <http://purl.org/goodrelations/v1#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dbpedia: <http://dbpedia.org/resource/> .
-@prefix vso: <http://purl.org/vso/ns#> .
 @prefix : <http://example.org/cars#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix vso: <http://purl.org/vso/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 :Manufacturer-Ford a gr:BusinessEntity ;
 	rdfs:label "Ford" .
@@ -19,16 +22,6 @@
 	gr:hasMakeAndModel :Model-e4v61spgp70791ce77bv3n0ethjdr0fp ;
 	vso:modelDate "1997-01-01"^^xsd:date .
 
-:Offer-1 a gr:Offering ;
-	rdfs:comment "ac, abs, moon" ;
-	gr:includes :Car-1 ;
-	gr:hasBusinessFunction gr:Sell ;
-	gr:hasPriceSpecification _:node18ulr4fa9x1 .
-
-_:node18ulr4fa9x1 a gr:UnitPriceSpecification ;
-	gr:hasCurrency "USD"^^xsd:string ;
-	gr:hasCurrencyValue "3000.0"^^xsd:float .
-
 :Manufacturer-Chevy a gr:BusinessEntity ;
 	rdfs:label "Chevy" .
 
@@ -42,19 +35,6 @@ _:node18ulr4fa9x1 a gr:UnitPriceSpecification ;
 	gr:hasMakeAndModel :Model-mbvb602k2eh76po2rgk2r0um6unb18f6 ;
 	vso:modelDate "1999-01-01"^^xsd:date .
 
-:Offer-2 a gr:Offering ;
-	rdfs:comment "" ;
-	gr:includes :Car-2 ;
-	gr:hasBusinessFunction gr:Sell ;
-	gr:hasPriceSpecification _:node18ulr4fa9x2 .
-
-_:node18ulr4fa9x2 a gr:UnitPriceSpecification ;
-	gr:hasCurrency "USD"^^xsd:string ;
-	gr:hasCurrencyValue "4900.0"^^xsd:float .
-
-:Manufacturer-Chevy a gr:BusinessEntity ;
-	rdfs:label "Chevy" .
-
 :Model-2undh962b7qt3kpgoouqlcun7k90ervq a gr:ProductOrServiceModel ;
 	rdfs:label "Chevy Venture \"Extended Edition, Very Large\"" ;
 	gr:hasManufacturer :Manufacturer-Chevy .
@@ -64,16 +44,6 @@ _:node18ulr4fa9x2 a gr:UnitPriceSpecification ;
 	gr:hasManufacturer :Manufacturer-26hg472sj19jjuejvno5v3amimb8i6bv ;
 	gr:hasMakeAndModel :Model-2undh962b7qt3kpgoouqlcun7k90ervq ;
 	vso:modelDate "1999-01-01"^^xsd:date .
-
-:Offer-3 a gr:Offering ;
-	rdfs:comment "" ;
-	gr:includes :Car-3 ;
-	gr:hasBusinessFunction gr:Sell ;
-	gr:hasPriceSpecification _:node18ulr4fa9x3 .
-
-_:node18ulr4fa9x3 a gr:UnitPriceSpecification ;
-	gr:hasCurrency "USD"^^xsd:string ;
-	gr:hasCurrencyValue "5000.0"^^xsd:float .
 
 :Manufacturer-Jeep a gr:BusinessEntity ;
 	rdfs:label "Jeep" .
@@ -88,13 +58,44 @@ _:node18ulr4fa9x3 a gr:UnitPriceSpecification ;
 	gr:hasMakeAndModel :Model-2spkv7ol89mupb0elrr27n76vq7u0fkk ;
 	vso:modelDate "1996-01-01"^^xsd:date .
 
-:Offer-4 a gr:Offering ;
+:Offer-190ed07b-6f5e-4115-bfc0-f87ea1cf751b a gr:Offering ;
+	rdfs:comment "ac, abs, moon" ;
+	gr:includes :Car-62522c50-fd8f-44e9-a823-1a4bb06d2c67 ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_1 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_1 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "3000.0"^^xsd:float .
+
+:Offer-3b29b6ed-aa97-4710-bc2f-9078997b5706 a gr:Offering ;
+	rdfs:comment "" ;
+	gr:includes :Car-197f3f78-e3d5-47c9-9b09-98bfaed2b478 ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_2 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_2 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "4900.0"^^xsd:float .
+
+:Offer-2c852e2d-f7b0-4a64-8bd6-f27dd4c82e53 a gr:Offering ;
+	rdfs:comment "" ;
+	gr:includes :Car-254d5584-1d43-4d84-bf39-87c6e1065abd ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_3 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_3 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "5000.0"^^xsd:float .
+
+:Offer-80448b32-5bb4-4767-9b95-5b0e4c124b73 a gr:Offering ;
 	rdfs:comment """MUST SELL!
 air, moon roof, loaded""" ;
-	gr:includes :Car-4 ;
+	gr:includes :Car-0d0d188b-9991-48c8-b1ec-0c9a84c0ed9b ;
 	gr:hasBusinessFunction gr:Sell ;
-	gr:hasPriceSpecification _:node18ulr4fa9x4 .
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_4 .
 
-_:node18ulr4fa9x4 a gr:UnitPriceSpecification ;
-	gr:hasCurrency "USD"^^xsd:string ;
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_4 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
 	gr:hasCurrencyValue "4799.0"^^xsd:float .
+~/projects/stardog$ 
