@@ -34,7 +34,9 @@ task execute(type:JavaExec, dependsOn: compileJava) {
 
 task executeAll(dependsOn: compileJava) << {
 	sourceSets.main.allJava.each { File aFile ->
-		runExample aFile.getAbsolutePath()
+		if (aFile.getName().contains("Example")) {
+			runExample aFile.getAbsolutePath()
+		}
 	}
 }
 

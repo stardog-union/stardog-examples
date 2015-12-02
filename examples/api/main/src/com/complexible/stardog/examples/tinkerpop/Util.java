@@ -55,7 +55,7 @@ final class Util {
 
 			/**
 			 * Create the DB with the given Metadata:
-			 * - The datbase name (1)
+			 * - The database name (1)
 			 * - Setting the database to have a Memory index (2)
 			 * - Disable canonical literals (3)
 			 * @see <a href="http://docs.stardog.com/#_database_configuration">Database Configuration for TinkerPop 3</a>
