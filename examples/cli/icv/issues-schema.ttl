@@ -1,0 +1,18 @@
+@prefix : <http://example.org/issues#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Issue a owl:Class .
+
+:SecurityIssue a owl:Class ;
+    rdfs:subClassOf :Issue .
+
+:state        a owl:ObjectProperty .
+:related      a owl:ObjectProperty .
+:reportedBy   a owl:ObjectProperty .
+:reportedOn   a owl:DatatypeProperty .
+:reproducedBy a owl:ObjectProperty .
+:reproducedOn a owl:DatatypeProperty .
+
+:assigned a :ValidState .
+:unassigned a :ValidState .
