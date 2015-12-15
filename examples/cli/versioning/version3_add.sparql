@@ -1,0 +1,11 @@
+PREFIX : <http://example.org/test/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT DATA {
+  :Charlie dc:publisher "Charlie" .
+  GRAPH :Charlie {
+	:Charlie a foaf:Person ;
+		foaf:mbox "mailto:charlie@example.org" .
+  }
+}

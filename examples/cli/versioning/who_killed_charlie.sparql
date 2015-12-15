@@ -1,0 +1,13 @@
+SELECT DISTINCT ?author ?msg ?date { 
+  ?v a vcs:Version; 
+     rdfs:comment ?msg; 
+     prov:wasAttributedTo/rdfs:label ?author; 
+     prov:generatedAtTime ?date; 
+     vcs:updates [ 
+        vcs:graph :Charlie; 
+        vcs:removals ?removals 
+     ] 
+     GRAPH ?removals { 
+        :Charlie ?p ?o 
+     } 
+}
