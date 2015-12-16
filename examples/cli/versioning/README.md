@@ -31,7 +31,7 @@ repeated in practice*.
 
 Versioning support for a database is disabled by default but can be enabled at any time 
 by setting the configuration option `versioning.enabled` to true. We will now create a
-database with versioning enabled and use an empty file with only namespace
+database with versioning enabled, and submit an empty file with only namespace
 declarations so these namespaces will be saved in the database:
 ```
 $ stardog-admin db create -o versioning.enabled=true -n demo namespaces.ttl
@@ -41,7 +41,7 @@ Versions
 --------
 
 When versioning is enabled all the changes to the database will be tracked automatically
-and the differences between each commit will be saved in the version history. We can also
+and the differences between each commit will be saved in the revision history. We can also
 associate a commit message with each version using the `vcs commit` command:
 ```
 $ stardog vcs commit --add version1_add.trig -m "Adding Alice and Bob" -u john -p john demo
@@ -93,12 +93,12 @@ Date:      2015-12-15 16:10:49
 The `vcs list` command shows all the versions in reverse chronological order so newer
 versions appear at the top. Every database will have an initial version that is created
 automatically at database creation time but the initial contents of the database are not 
-trackedso there will be no update data associated with the first version.
+tracked so there will be no update data associated with the first version.
 
-We can also specify constraints to list only specific set of versions. For example, the
+We can also specify constraints to list only a specific set of versions. For example, the
 following command will show the last version committed by the user `jane`:
 ```
-$ stardog vcs list --committer admin --limit 1 demo
+$ stardog vcs list --committer jane --limit 1 demo
 Version:   b69d3e37-e1ae-4efb-9e9d-c620315a4376
 Committer: jane
 Date:      2015-12-15 16:15:35
@@ -134,8 +134,8 @@ INSERT DATA {
 };
 ```
 
-We can see the diff between the current version of the database and another version
-in the past by using the version ID. We will use the version committed by `jane` 
+We can see the diff between the current version of the database and any other version
+by using the version ID. We will use the version created by `jane`'s commit 
 (note that if you are following these steps the automatically generated version IDs
 in your case will be different):
 ```
@@ -189,14 +189,12 @@ Tags
 
 Passing version identifiers to commands can be cumbersome and error-prone. We can tag 
 versions in the history with short, human-friendly names and use these names in the
-commands. 
-
-We can create a tag for the current version as follows:
+commands. We can create a tag for the current version as follows:
 ```
 $ stardog vcs tag --create v2 demo
 ```
 
-We can also specify a version ID to tag an older version. Let's tag the version created
+We can also specify a version ID if we need to tag an older version. Let's tag the version created
 by `jane`'s commit:
 ```
 $ stardog vcs tag --create v1 --version b69d3e37-e1ae-4efb-9e9d-c620315a4376 demo
@@ -235,12 +233,13 @@ Revert
 ------
 
 We can revert the database to a previous version using the `vcs revert` command. This command 
-does not perform any conflict resolution and simply applies the corresponding diff in reverse
+does not perform any conflict resolution and simply applies the corresponding diff(s) in reverse
 chronological order. All the additions specified in the given range will be removed and all 
-the removals in the given range will be added. You can use the diff command with the same range 
-to see the exact changes in the given range.
+the removals in the given range will be added. 
 
-Revert operation creates a new commit itself so we need to supply a commit message:
+Note: You can use the diff command with the same range  to see the exact changes in the given range. Good practice is to check the effect of a revert command with a diff command preceding it.
+
+The revert operation creates a new commit itself so we need to supply a commit message:
 ```
 $ stardog vcs revert -m "Revert to version 1" demo v1 
 Successfully reverted database
@@ -263,18 +262,17 @@ DELETE DATA {
 };
 ```
 
-Similar to diff command a single commit can be revert using the `--single` flag.
+In a way similar to the diff command, a single commit can be reverted using the `--single` flag.
 
 Version History
 ---------------
 
 The version history is saved and indexed by Stardog as a separate database. The versioning
-commands explained above all query the version history to function. This database can be
-queried by the end users too.
+commands explained above operate by querying the version history. This database can be
+queried directly by users.
 
 Version history stores metadata in its default graph and the actual changes in named graphs.
-[Versioning ontology](vcs_ontology.ttl) extends the [W3C PROV ontology](http://www.w3.org/TR/prov-overview/)
-and comments in the ontology provide detailed explanations about the terms.
+[Versioning ontology](vcs_ontology.ttl) extends the [W3C PROV ontology](http://www.w3.org/TR/prov-overview/); comments in the ontology provide detailed explanations about the terms.
 
 We will start by running a simple command that will retrieve all the versions:
 ```
@@ -292,7 +290,7 @@ $ stardog vcs query demo "SELECT * { ?v a vcs:Version }"
 Query returned 5 results in 00:00:00.041
 ```
 
-We can write a [query](list_versions.sparql] that retrieve more details about the versions:
+We can write a [query](list_versions.sparql) that retrieves more details about the versions:
 ```
 $ stardog vcs query demo list_versions.sparql
 +---------+-------------------------+------------------------------------------------------------------------------+
@@ -308,7 +306,7 @@ $ stardog vcs query demo list_versions.sparql
 Query returned 5 results in 00:00:00.048
 ```
 
-We can also export the [whole version history metadata](vcs_export.ttl) with a query:
+We can also export the [version history metadata](vcs_export.ttl) with a query:
 ```
 $ stardog vcs query -f turtle demo "CONSTRUCT WHERE {?s ?p ?o}" > vcs_export.ttl
 ```
@@ -327,9 +325,7 @@ $ stardog vcs query demo "select * { ?v vcs:updates/vcs:graph :Charlie }"
 Query returned 2 results in 00:00:00.043
 ```
 
-Now suppose we would like to know exactly which commit deleted  the `Charlie` instance.
-We can get this information by finding the changeset that removed the triples with
-the subject `Charlie` and finding the associated version. Executing the [corresponding query](who_killed_charlie.sparql) will return the version we are looking for:
+Now suppose we would like to know when the `Charlie` instance was deleted and by whom. We can get this information by finding the changeset that removed the triples with the subject `Charlie` and finding the associated version. Executing the [query](who_killed_charlie.sparql) will return the version we are looking for:
 ```
 $ stardog vcs query demo who_killed_charlie.sparql 
 +---------+-----------------------+------------------------------------------------------------------------------+
@@ -340,7 +336,3 @@ $ stardog vcs query demo who_killed_charlie.sparql
 
 Query returned 1 results in 00:00:00.679
 ```
-
-
-
-
