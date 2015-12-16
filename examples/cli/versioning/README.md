@@ -1,8 +1,7 @@
 Stardog Versioning
 ==================
 
-This tutorial explains how [Stardog versioning](http://docs.stardog.com/#_versioning)
-support works. The tutorial uses the CLI but all the functionality explained here is 
+This tutorial explains how [Stardog versioning](http://docs.stardog.com/#_versioning) works. The tutorial uses the CLI but all the functionality explained here is 
 also accessible via via the [Java API](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html) 
 or the [HTTP API](http://docs.stardog.apiary.io/#reference/versioning).
 
