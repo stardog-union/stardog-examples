@@ -25,14 +25,14 @@ $ stardog-admin user add -n jane --superuser
 $ stardog-admin user add -n john --superuser
 ```
 
-for simplicity we set the passwords of these users to be same as their usernames and
-also declare them to be superuser so we don't need to grant explicit permissions.
+For simplicity the passwords of these users will be their usernames. We declare 
+these users to be superusers so we don't need to grant explicit permissions.
 Needless to say this is done only for the purposes of this tutorial and should not be 
-done in practice.
+repeated in practice.
 
 Versioning support for a database is disabled by default but can be enabled at any time 
-by setting the configuration option versioning.enabled to true. We will now create a
-database with versioning enabled and also use an empty file with only namespace
+by setting the configuration option `versioning.enabled` to true. We will now create a
+database with versioning enabled and use an empty file with only namespace
 declarations so these namespaces will be saved in the database:
 ```
 $ stardog-admin db create -o versioning.enabled=true -n demo namespaces.ttl
@@ -48,7 +48,7 @@ associate a commit message with each version using the `vcs commit` command:
 $ stardog vcs commit --add version1_add.trig -m "Adding Alice and Bob" -u john -p john demo
 ```
 
-This command allows to add and remove triples in one transaction:
+This command allows us to add and remove triples in one transaction:
 ```
 $ stardog vcs commit --add version2_add.trig --remove version2_remove.trig -m "Changed Alice's email" -u jane -p jane demo
 ```
@@ -59,7 +59,9 @@ $ stardog vcs commit --query v/version3_add.sparql -m "Add Charlie" demo
 ```
 
 Note that the first two commands used an explicit username whereas the third command used
-the default username `admin`.
+the default username `admin`. If the database is updated through the regular `data add`, 
+`data remove`, or `query` commands when versioning is enabled, a corresponding version will 
+be created but the commit message will be empty.
 
 We can now list all the versions in this database:
 ```
@@ -91,7 +93,8 @@ Date:      2015-12-15 16:10:49
 
 The `vcs list` command shows all the versions in reverse chronological order so newer
 versions appear at the top. Every database will have an initial version that is created
-automatically at database creation time but the initial contents are not tracked.
+automatically at database creation time but the initial contents of the database are not 
+trackedso there will be no update data associated with the first version.
 
 We can also specify constraints to list only specific set of versions. For example, the
 following command will show the last version committed by the user `jane`:
@@ -107,10 +110,11 @@ Date:      2015-12-15 16:15:35
 Diffs
 -----
 
-Versioning allows users to see the exact set of changes performed as part of each commit.
-The diffs between versions are displayed as SPARQL update queries.
+Versioning allows users to see the exact set of changes between different versions of
+the database. The diffs between versions are displayed as SPARQL update queries.
 
-Executing the `vcs diff` command will show the changes in the last commit:
+Executing the `vcs diff` command with no arguments will show the changes in the 
+last commit:
 ```
 $ stardog vcs diff demo
 PREFIX : <http://example.org/test/>
@@ -155,7 +159,7 @@ INSERT DATA {
 };
 ```
 We are seeing all the changes committed after the given version ID which is why the 
-changes committed by `jane` are not included.
+changes committed by `jane` are not included in the result.
 
 In order to see the changes committed in a specific version we can use the `--single` 
 option which will show the changes committed by `jane`:
