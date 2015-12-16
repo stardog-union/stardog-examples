@@ -2,23 +2,23 @@ Stardog Versioning
 ==================
 
 This tutorial explains how [Stardog versioning](http://docs.stardog.com/#_versioning) works. The tutorial uses the CLI but all the functionality explained here is 
-also accessible via via the [Java API](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html) 
+also accessible via the [Java API](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html) 
 or the [HTTP API](http://docs.stardog.apiary.io/#reference/versioning).
 
 Stardog supports versioning capability that lets users track changes between revisions 
-of a Stardog database, add comments and other metadata to the revisions, extract diffs 
-between those revisions, tag revisions with labels, and query over the revision history 
+of a graph, i.e., a Stardog database, add comments and other metadata to the revisions, extract diffs 
+between those revisions, tag revisions with labels, and query the revision history 
 of the database using SPARQL.
 
-Versioning support in Stardog works similar to version control systems `git` or `svn`
-so most of the terminology will be familiar for those who work with these systems.
-However, versioning model in Stardog is simpler in the sense that there is no notion
-of "branching" so there is a single version history. 
+Versioning support in Stardog works a bit like version control systems (`git`, for example)
+so most of the terminology will be familiar if you work with these systems.
+However, the versioning model in Stardog is simpler in the sense that there is no notion
+of "branching", i.e., there is a single version history. 
 
 Setup
 ------
 
-In this tutorial we will use multiple users so we will first create two users:
+In this tutorial we will use multiple users; let's create them:
 ```
 $ stardog-admin user add -n jane --superuser
 $ stardog-admin user add -n john --superuser
@@ -26,8 +26,8 @@ $ stardog-admin user add -n john --superuser
 
 For simplicity the passwords of these users will be their usernames. We declare 
 these users to be superusers so we don't need to grant explicit permissions.
-Needless to say this is done only for the purposes of this tutorial and should not be 
-repeated in practice.
+*Needless to say this is done only for the purposes of this tutorial and should not be 
+repeated in practice*.
 
 Versioning support for a database is disabled by default but can be enabled at any time 
 by setting the configuration option `versioning.enabled` to true. We will now create a
