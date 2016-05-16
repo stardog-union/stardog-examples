@@ -1,0 +1,1 @@
+SELECT ?author ?msg ?date {   ?v a vcs:Version;      rdfs:comment ?msg;      prov:wasAttributedTo/rdfs:label ?author;      prov:generatedAtTime ?date; }

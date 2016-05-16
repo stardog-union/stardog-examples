@@ -1,0 +1,101 @@
+@prefix : <http://example.org/cars#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix vso: <http://purl.org/vso/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Manufacturer-Ford a gr:BusinessEntity ;
+	rdfs:label "Ford" .
+
+:Model-e4v61spgp70791ce77bv3n0ethjdr0fp a gr:ProductOrServiceModel ;
+	rdfs:label "Ford E350" ;
+	gr:hasManufacturer :Manufacturer-Ford .
+
+:Car-1 a vso:Automobile , gr:ActualProductOrServiceInstance ;
+	rdfs:label "Ford E350 (1997)" ;
+	gr:hasManufacturer :Manufacturer-a6nc5cg6lagnauhqlkticpfsmaon1c5g ;
+	gr:hasMakeAndModel :Model-e4v61spgp70791ce77bv3n0ethjdr0fp ;
+	vso:modelDate "1997-01-01"^^xsd:date .
+
+:Manufacturer-Chevy a gr:BusinessEntity ;
+	rdfs:label "Chevy" .
+
+:Model-mbvb602k2eh76po2rgk2r0um6unb18f6 a gr:ProductOrServiceModel ;
+	rdfs:label "Chevy Venture \"Extended Edition\"" ;
+	gr:hasManufacturer :Manufacturer-Chevy .
+
+:Car-2 a vso:Automobile , gr:ActualProductOrServiceInstance ;
+	rdfs:label "Chevy Venture \"Extended Edition\" (1999)" ;
+	gr:hasManufacturer :Manufacturer-26hg472sj19jjuejvno5v3amimb8i6bv ;
+	gr:hasMakeAndModel :Model-mbvb602k2eh76po2rgk2r0um6unb18f6 ;
+	vso:modelDate "1999-01-01"^^xsd:date .
+
+:Model-2undh962b7qt3kpgoouqlcun7k90ervq a gr:ProductOrServiceModel ;
+	rdfs:label "Chevy Venture \"Extended Edition, Very Large\"" ;
+	gr:hasManufacturer :Manufacturer-Chevy .
+
+:Car-3 a vso:Automobile , gr:ActualProductOrServiceInstance ;
+	rdfs:label "Chevy Venture \"Extended Edition, Very Large\" (1999)" ;
+	gr:hasManufacturer :Manufacturer-26hg472sj19jjuejvno5v3amimb8i6bv ;
+	gr:hasMakeAndModel :Model-2undh962b7qt3kpgoouqlcun7k90ervq ;
+	vso:modelDate "1999-01-01"^^xsd:date .
+
+:Manufacturer-Jeep a gr:BusinessEntity ;
+	rdfs:label "Jeep" .
+
+:Model-2spkv7ol89mupb0elrr27n76vq7u0fkk a gr:ProductOrServiceModel ;
+	rdfs:label "Jeep Grand Cherokee" ;
+	gr:hasManufacturer :Manufacturer-Jeep .
+
+:Car-4 a vso:Automobile , gr:ActualProductOrServiceInstance ;
+	rdfs:label "Jeep Grand Cherokee (1996)" ;
+	gr:hasManufacturer :Manufacturer-i2le5jc5p2un61u30h8jdanrlshnfb67 ;
+	gr:hasMakeAndModel :Model-2spkv7ol89mupb0elrr27n76vq7u0fkk ;
+	vso:modelDate "1996-01-01"^^xsd:date .
+
+:Offer-190ed07b-6f5e-4115-bfc0-f87ea1cf751b a gr:Offering ;
+	rdfs:comment "ac, abs, moon" ;
+	gr:includes :Car-62522c50-fd8f-44e9-a823-1a4bb06d2c67 ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_1 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_1 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "3000.0"^^xsd:float .
+
+:Offer-3b29b6ed-aa97-4710-bc2f-9078997b5706 a gr:Offering ;
+	rdfs:comment "" ;
+	gr:includes :Car-197f3f78-e3d5-47c9-9b09-98bfaed2b478 ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_2 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_2 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "4900.0"^^xsd:float .
+
+:Offer-2c852e2d-f7b0-4a64-8bd6-f27dd4c82e53 a gr:Offering ;
+	rdfs:comment "" ;
+	gr:includes :Car-254d5584-1d43-4d84-bf39-87c6e1065abd ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_3 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_3 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "5000.0"^^xsd:float .
+
+:Offer-80448b32-5bb4-4767-9b95-5b0e4c124b73 a gr:Offering ;
+	rdfs:comment """MUST SELL!
+air, moon roof, loaded""" ;
+	gr:includes :Car-0d0d188b-9991-48c8-b1ec-0c9a84c0ed9b ;
+	gr:hasBusinessFunction gr:Sell ;
+	gr:hasPriceSpecification _:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_4 .
+
+_:bnode_e41f9e81_5ca9_405e_8947_626932d018c5_4 a gr:UnitPriceSpecification ;
+	gr:hasCurrency "USD" ;
+	gr:hasCurrencyValue "4799.0"^^xsd:float .
+~/projects/stardog$ 
