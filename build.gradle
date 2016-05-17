@@ -5,11 +5,11 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = '4.0.5'
+	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '4.1'
 	projectVersion = '0.0.3'
 
 	distPath = "${projectDir}/dist"
-	stardogRepo = "http://maven.stardog.com"
+	stardogRepo = project.hasProperty("stardogRepo") ? project.getProperty("stardogRepo") : "http://maven.stardog.com"
 }
 
 allprojects {
