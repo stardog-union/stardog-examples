@@ -53,24 +53,24 @@ vcs:Update a owl:Class ;
 	] .
 
 vcs:NamedGraph a owl:Class ;
-	rdf:comment "Represents a named graph in the versioning metadata" .
+	rdfs:comment "Represents a named graph in the versioning metadata" .
 
 vcs:updates a owl:ObjectProperty ;
-	rdf:comment "Links to an update instance." ;
+	rdfs:comment "Links to an update instance." ;
 	rdfs:domain vcs:Version ;
 	rdfs:range vcs:Update .
 
 vcs:graph a owl:ObjectProperty ;
-	rdf:comment "Link to the named graph modified by a commit." ;
+	rdfs:comment "Link to the named graph modified by a commit." ;
 	rdfs:domain vcs:Update ;
 	rdfs:range vcs:NamedGraph .
 
 vcs:additions a owl:ObjectProperty ;
-	rdf:comment "Link to the named graph that stores the triples added by a commit." ;
+	rdfs:comment "Link to the named graph that stores the triples added by a commit." ;
 	rdfs:domain vcs:Update ;
 	rdfs:range vcs:NamedGraph .
 
 vcs:removals a owl:ObjectProperty ;
-	rdf:comment "Link to the named graph that stores the triples removed by a commit." ;
+	rdfs:comment "Link to the named graph that stores the triples removed by a commit." ;
 	rdfs:domain vcs:Update ;
 	rdfs:range vcs:NamedGraph .

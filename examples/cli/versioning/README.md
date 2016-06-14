@@ -54,7 +54,7 @@ $ stardog vcs commit --add version2_add.trig --remove version2_remove.trig -m "C
 
 It is also possible to make a commit through a SPARQL update query:
 ```
-$ stardog vcs commit --query v/version3_add.sparql -m "Add Charlie" demo
+$ stardog vcs commit --query version3_add.sparql -m "Add Charlie" demo
 ```
 
 Note that the first two commands used an explicit username whereas the third command used
