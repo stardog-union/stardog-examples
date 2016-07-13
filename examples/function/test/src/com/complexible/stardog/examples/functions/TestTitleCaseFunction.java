@@ -51,19 +51,14 @@ public class TestTitleCaseFunction {
 		                .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
 		                .start();
 
-		final AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
-		                                                          .credentials("admin", "admin")
-		                                                          .connect();
-
-		try {
+		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		                                                         .credentials("admin", "admin")
+		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
 				aConn.drop(DB);
 			}
 
 			aConn.createMemory(DB);
-		}
-		finally {
-			aConn.close();
 		}
 	}
 
@@ -76,17 +71,15 @@ public class TestTitleCaseFunction {
 
 	@Test
 	public void testTitleCase() throws Exception {
-		final Connection aConn = ConnectionConfiguration.to(DB)
-		                                                .credentials("admin", "admin")
-		                                                .connect();
 
-		try {
+		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .credentials("admin", "admin")
+		                                               .connect()) {
 
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(\"this sentence does not use title case.\") as ?str) }";
 
-			final TupleQueryResult aResult = aConn.select(aQuery).execute();
-			try {
+			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
 				assertTrue("Should have a result", aResult.hasNext());
 
 				final String aValue = aResult.next().getValue("str").stringValue();
@@ -95,27 +88,19 @@ public class TestTitleCaseFunction {
 
 				assertFalse("Should have no more results", aResult.hasNext());
 			}
-			finally {
-				aResult.close();
-			}
-		}
-		finally {
-			aConn.close();
 		}
 	}
 
 	@Test
 	public void testTitleCaseTooManyArgs() throws Exception {
-		final Connection aConn = ConnectionConfiguration.to(DB)
-		                                                .credentials("admin", "admin")
-		                                                .connect();
 
-		try {
+		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .credentials("admin", "admin")
+		                                               .connect()) {
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(\"this is one argument.\", \"And this is another\") as ?str) }";
 
-			final TupleQueryResult aResult = aConn.select(aQuery).execute();
-			try {
+			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
 				// there should be a result because implicit in the query is the singleton set, so because the bind
 				// should fail due to the value error, we expect a single empty binding
 				assertTrue("Should have a result", aResult.hasNext());
@@ -126,28 +111,20 @@ public class TestTitleCaseFunction {
 
 				assertFalse("Should have no more results", aResult.hasNext());
 			}
-			finally {
-				aResult.close();
-			}
-		}
-		finally {
-			aConn.close();
 		}
 	}
 
 	@Test
 	public void testTitleCaseWrongType() throws Exception {
-		final Connection aConn = ConnectionConfiguration.to(DB)
-		                                                .credentials("admin", "admin")
-		                                                .connect();
 
-		try {
+		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .credentials("admin", "admin")
+		                                               .connect()) {
 
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(7) as ?str) }";
 
-			final TupleQueryResult aResult = aConn.select(aQuery).execute();
-			try {
+			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
 				// there should be a result because implicit in the query is the singleton set, so because the bind
 				// should fail due to the value error, we expect a single empty binding
 				assertTrue("Should have a result", aResult.hasNext());
@@ -158,12 +135,6 @@ public class TestTitleCaseFunction {
 
 				assertFalse("Should have no more results", aResult.hasNext());
 			}
-			finally {
-				aResult.close();
-			}
-		}
-		finally {
-			aConn.close();
 		}
 	}
 }
