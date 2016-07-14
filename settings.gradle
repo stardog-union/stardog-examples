@@ -1,1 +1,1 @@
-include "examples:api", "examples:function", "examples:analyzer", "examples:foaf"
+include "examples:api", "examples:function", "examples:analyzer", "examples:foaf", "examples:propertyfunction"
