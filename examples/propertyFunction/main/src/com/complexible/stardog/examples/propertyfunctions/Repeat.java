@@ -422,6 +422,7 @@ public final class Repeat implements PropertyFunction {
 		@Override
 		public Set<Integer> getVars() {
 			return mNode.getSubjects().stream()
+			            .filter(QueryTerm::isVariable)
 			            .map(QueryTerm::getName)
 			            .collect(Collectors.toSet());
 		}
