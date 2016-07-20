@@ -40,11 +40,13 @@ is responsible for providing both the Plan and Operator API representations of t
 handles estimation and explanation.
 
 You must provide the IRI used to identify your property function via `getURIs` which actually returns a `List<IRI>` so 
-you can have aliases for your Property Function.
+you can have aliases for your Property Function. At least *one* name is required.
 
 A builder should be provided via `newBuilder`; the builder is an instance of 
 `com.complexible.stardog.plan.PropertyFunctionNodeBuilder` and is responsible for creating a 
-`com.complexible.stardog.plan.PlanNode`. `PlanNode` represents an element in a query plan, specifically, 
+`com.complexible.stardog.plan.PlanNode`. `PlanNode` is immutable, so this builder is how nodes are created and modified.
+
+`PlanNode` represents an element in a query plan, specifically, 
 `com.complexible.stardog.plan.PropertyFunctionPlanNode` corresponds to a node in a query plan for a Property Function.
 
 Finally, the physical operator which actually executes the Property Function is provided via `translate` as an 
@@ -90,7 +92,7 @@ corresponding `long` identifiers.
 ### Plan API
 
 The Query Plan API is a tree of `PlanNode`s and is the logical representation of a query plan. Each node in the tree 
-represents an operation in a query, such as a join, filter, or projection. Nodes can have any number of arguments, or 
+represents an operation in a query, such as a join, filter, or projection. Nodes can have any number of children, or 
 none at all. Leaves in the tree often scan an index, be it an RDF index, Lucene, spatial index, etc. Nodes are 
 immutable and are constructed via `PlanNodeBuilder` and modified by calling `toBuilder` on the `PlanNode`, making
 changes, and calling `PlanNodeBuilder#build` to get the modified node.
@@ -98,22 +100,28 @@ changes, and calling `PlanNodeBuilder#build` to get the modified node.
 ### QueryTerm
 
 [com.complexible.stardog.plan.QueryTerm](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/QueryTerm.html)
-represents terms within a SPARQL query. A `QueryTerm` can be either a `Constant` or a `Variable`. Variables have a `name`
-which corresponds to their index within a `Solution`. A `Constant` will have both its RDF `Value` and the value's
-equivalent `long` index ID.
+represents terms within a SPARQL query. A `QueryTerm` can be either a `Constant` or a `Variable`. 
+
+Variables have a `name` which corresponds to their index within a `Solution`. The value of a `Variable` can be bound
+within a `Solution` using `Solution#set(int, long)`; the first parameter is the variable's name and the second is
+the value to bind the variable to. Note that this uses the internal `long` identifier and not the RDF `Value` identifier.
+
+A `Constant` will have both its RDF `Value` and the value's equivalent `long` index ID.
 
 ### Solutions
 
 [com.complexible.stardog.plan.eval.operator.Solution](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/eval/operator/Solution.html)
 represents a current query solution. `Solution` can be thought of as a map from `int` to `long` values. Each variable 
 in the query has a corresponding `name` which is the key of that variable in the `Solution` where its value can be 
-stored or retrieved.
+stored or retrieved. Again, note that this uses the internal `long` identifier and not the RDF `Value` identifier.
 
 ### Evaluation
 
-[Operator](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/eval/operator/Operator.html) is the executable
-equivalent to `PlanNode`. An `Operator` tree is constructed from a query plan (a `PlanNode` tree) to create the 
-physical execution plan. `Operator` is basically an `Iterator<Solution>`. The root operator in the tree will return
+[Operator](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/eval/operator/Operator.html) is the physical, 
+executable equivalent to `PlanNode`. An `Operator` tree is constructed from an _optimized_ query plan (a `PlanNode` tree) 
+to create the physical execution plan. This translation will account for specifics of the runtime execution environment.
+
+`Operator` is basically an `Iterator<Solution>`. The root operator in the tree will return
 complete `Solution`s to the query. `Operator`s update/create `Solution` objects as they execute due to the result
 of their computation, such as a `JOIN`, or `BIND`. They can also omit `Solution` from any child operators they have, 
 such as with a `FILTER`.
