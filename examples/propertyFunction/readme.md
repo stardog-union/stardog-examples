@@ -45,6 +45,8 @@ you can have aliases for your Property Function. At least *one* name is required
 A builder should be provided via `newBuilder`; the builder is an instance of 
 `com.complexible.stardog.plan.PropertyFunctionNodeBuilder` and is responsible for creating a 
 `com.complexible.stardog.plan.PlanNode`. `PlanNode` is immutable, so this builder is how nodes are created and modified.
+The builder includes a `validate` method which should verify that the state of the builder is correct before constructing
+the node.
 
 `PlanNode` represents an element in a query plan, specifically, 
 `com.complexible.stardog.plan.PropertyFunctionPlanNode` corresponds to a node in a query plan for a Property Function.
