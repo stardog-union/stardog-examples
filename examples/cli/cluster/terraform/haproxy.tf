@@ -84,6 +84,6 @@ resource "aws_instance" "haproxy" {
 
   # Export system variable to be able to use it in other scripts
   provisioner "local-exec" {
-    command = "echo STARDOG_CLUSTER='${self.public_dns}'"
+    command = "export STARDOG_CLUSTER='${self.public_dns}'"
   }
 }

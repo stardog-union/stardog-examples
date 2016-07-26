@@ -19,10 +19,7 @@ backend stardogs
 
     balance roundrobin
 
-	# the following line performs a health check
-    # HAProxy will check that each node accepts connections and
-    # that it's operational within the cluster. Health check
-    # requires that Stardog nodes do not use --no-http option
+    # the following line performs a health check
     option httpchk GET /admin/healthcheck
     # replace these IP addresses with the corresponding node address
     ${redirects}
