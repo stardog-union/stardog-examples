@@ -1,0 +1,123 @@
+/*
+AWS region config
+*/
+
+variable "aws_region" {
+  description = "The AWS region to create things in."
+  default = "us-east-1"
+}
+
+variable "aws_az" {
+  description = "The AWS availability zone."
+  default = "us-east-1a"
+}
+
+# Ubuntu Server 14.04 LTS (PV), SSD Volume Type (64-bit) paravirtual
+variable "aws_amis" {
+  default = {
+    "us-east-1" = "ami-d85e75b0"
+  }
+}
+
+variable "aws_placement_group" {
+  description = "group for colocating the VMs in a single network within AWS"
+  default = "stardog-cluster-test"
+}
+
+/*
+AWS Connection parameters
+*/
+variable "key_name" {
+  description = "SSH key name"
+#  default = "Your key name"
+}
+
+variable "key_path" {
+  description = "SSH key path"
+#  default = "/local/path/to/your/pem"
+}
+
+/*
+Stardog instances configuration
+*/
+variable "stardog_ami" {
+  description = "AMI to use for Stardog instances"
+  default = {
+#    "us-east-1" = "Your AMI ID" # Java 8 should be installed
+  }
+}
+
+variable "stardog_type" {
+  description = "Stardog instance type"
+  default = "c3.2xlarge"
+}
+
+variable "stardog_dist" {
+  description = "Stardog distribution directory"
+  default = "/local/path/to/stardog-release.zip"
+}
+
+variable "stardog_license" {
+  description = "Stardog license to use"
+#  default = "/local/path/to/stardog-license-key.bin"
+}
+
+/*
+Definition of the number of instances to create.
+"size" is the number of instances to actually create; the mapping of
+index -> 'private ip' will be the order of the instances to create, defined by "size".
+Ej. there could be N mappings of IPs but if size=2, only the first 2 IPs will be taken.
+*/
+variable "stardogs" {
+  description = "IPs for Stardog nodes"
+  default = {
+    "size" = 3
+    "0" = "10.0.1.100"
+    "1" = "10.0.1.101"
+    "2" = "10.0.1.102"
+  }
+}
+
+/*
+ZooKeeper instances configuration
+*/
+variable "zookeeper_ami" {
+  description = "AMI to use for ZooKeeper instances"
+  default = {
+#    "us-east-1" = "Your AMI ID" # Java 8 should be installed
+  }
+}
+
+variable "zookeeper_type" {
+  description = "ZooKeeper instance type"
+  default = "c3.large"
+}
+
+/*
+Definition of the number of instances to create.
+"size" is the number of instances to actually create; the mapping of
+index -> 'private ip' will be the order of the instances to create, defined by "size".
+Ej. there could be N mappings of IPs but if size=2, only the first 2 IPs will be taken.
+*/
+variable "zookeepers" {
+  description = "IPs for Stardog nodes"
+  default = {
+    "size" = 3
+    "0" = "10.0.1.50"
+    "1" = "10.0.1.51"
+    "2" = "10.0.1.52"
+  }
+}
+
+/*
+HAProxy instance configuration
+*/
+variable "haproxy_type" {
+  description = "HAProxy instance type"
+  default = "c3.large"
+}
+
+variable "haproxy_ip" {
+  description = "HAProxy's private IP"
+  default = "10.0.1.25"
+}

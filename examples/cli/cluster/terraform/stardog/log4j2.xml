@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2010 - 2015, Clark & Parsia, LLC. <http://www.clarkparsia.com> -->
+<!-- For more information about licensing and copyright of this software, please contact -->
+<!-- inquiries@clarkparsia.com or visit http://stardog.com -->
+
+<Configuration>
+    <Properties>
+        <Property name="STARDOG_LOG">stardog</Property>
+        <Property name="ZOOKEEPER_LOG">zookeeper</Property>
+        <Property name="LOG_DIR">${sys:stardog.home}</Property>
+        <Property name="ARCHIVE">${LOG_DIR}/.logs_archive</Property><!-- for use with RollingFile -->
+        <Property name="PATTERN">%-5level %d [%t] %c:%M(%L): %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_ERR">
+            <PatternLayout pattern="${PATTERN}"/>
+        </Console>
+        <File name="stardogAppender"
+                     fileName="${LOG_DIR}/${STARDOG_LOG}.log" immediateFlush="false">
+            <PatternLayout pattern="${PATTERN}"/>
+        </File>
+        <!--
+            we can't really have two separate config files so we're 'leaking'
+            this pack config here
+         -->
+        <File name="zookeeperAppender"
+              fileName="${LOG_DIR}/${ZOOKEEPER_LOG}.log">
+            <PatternLayout pattern="${PATTERN}"/>
+        </File>
+        <Async name="Async">
+          <AppenderRef ref="stardogAppender"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="stardogAppender"/>
+        </Root>
+        <Logger name="org.apache.zookeeper" level="INFO" additivity="false">
+            <AppenderRef ref="zookeeperAppender"/>
+        </Logger>
+        <Logger name="com.complexible.stardog.pack" level="INFO" additivity="false">
+            <AppenderRef ref="stardogAppender"/>
+        </Logger>
+        <!--<Logger name="com.complexible.stardog.pack.replication.tx" level="TRACE" additivity="false">-->
+            <!--<AppenderRef ref="consoleAppender"/>-->
+        <!--</Logger>-->
+        <!--<Logger name="com.complexible.stardog.pack.replication.impl" level="TRACE" additivity="false">-->
+            <!--<AppenderRef ref="consoleAppender"/>-->
+        <!--</Logger>-->
+        <!--<Logger name="com.complexible.common.protocols.server.rpc" level="DEBUG" additivity="false">-->
+            <!--<AppenderRef ref="stardogAppender"/>-->
+        <!--</Logger>-->
+    </Loggers>
+</Configuration>
