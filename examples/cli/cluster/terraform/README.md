@@ -65,7 +65,7 @@ Nodes:
    10.0.1.102:5820
 ```
 
-- Go to the address `http://$STARDOG_CLUSTER:9000/` in your browser to check HAProxy status.
+- Go to the address `http://$STARDOG_CLUSTER:9000/` in your browser to check HAProxy status. The username and password for HAProxy are both set to `admin` in the [`haproxy/haproxy.cfg.tpl`](haproxy/haproxy.cfg.tpl) file.
 
 ### Changes to the cluster
 
