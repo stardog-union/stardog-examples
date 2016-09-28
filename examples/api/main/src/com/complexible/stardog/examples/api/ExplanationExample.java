@@ -59,7 +59,7 @@ public class ExplanationExample {
 
 	// Explanations in Stardog
 	// -------------------
-	// Here we will show a short example of how to use the [explanation features of Stardog](http://docs.stardog.com/owl2/#sd-Explaining-Reasoning-Results)
+	// Here we will show a short example of how to use the [explanation features of Stardog](http://docs.stardog.com/#_explaining_reasoning_results)
 	// to find out _why_ an inference was made.
     public static void main(String[] args) throws Exception {
 	    // Create and start a server for us to use during the example

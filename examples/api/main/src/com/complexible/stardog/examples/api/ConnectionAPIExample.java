@@ -57,13 +57,12 @@ public class ConnectionAPIExample {
 		// Creating a Server
 		// -----------------
 		// You'll need a server to connect to, obviously.  The `Stardog`
-		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html) to specify which protocol
-		// the server should use (options are HTTP & SNARL) and takes a `SocketAddress`
-		// the server should bind to.  This will return you a [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
+		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html)
+		// which can be used to configure the server.  This will return you a
+		// [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
 		// can be used to start & stop the Stardog server.
 		//
-		// This example shows up to create and start the embedded SNARL server.  Note that
-		// you can only embed the *SNARL* server, not HTTP.
+		// This example shows up to create and start the embedded server.
 		Server aServer = Stardog
 			                 .buildServer()
 			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)

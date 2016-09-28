@@ -46,7 +46,7 @@ import com.complexible.stardog.search.SearchOptions;
 public class WaldoAPIExample {
 	// Using the Waldo Search API
 	// --------------
-	// A short example illustrating the use of the [full text search capabilities](http://docs.stardog.com/using/#sd-Searching) in Stardog
+	// A short example illustrating the use of the [full text search capabilities](http://docs.stardog.com/#_full_text_search) in Stardog
 	// via the SNARL API.
 	public static void main(String[] args) throws Exception {
 		// First thing's first, we have to create and start a Stardog server to use

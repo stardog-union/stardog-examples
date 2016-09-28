@@ -5,8 +5,8 @@ dependencies {
 	compile "com.complexible.stardog:server:${stardogVersion}"
 
 	// client modules
-	compile "com.complexible.stardog:client-snarl:${stardogVersion}"
-	compile "com.complexible.stardog:client-http:${stardogVersion}" // not used in this project but serves as an example
+	compile "com.complexible.stardog:client-snarl:${stardogVersion}" // needed for embedded mode
+	compile "com.complexible.stardog:client-http:${stardogVersion}"
 
 	// external apis
 	compile "com.complexible.stardog.sesame:stardog-sesame-core:${stardogVersion}"

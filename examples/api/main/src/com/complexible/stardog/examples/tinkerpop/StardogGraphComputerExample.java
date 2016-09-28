@@ -42,7 +42,7 @@ public class StardogGraphComputerExample {
 			 * Open the TinkerPop3 Graph over the Stardog DB `testTinkerPop3` on its default graph
 			 * @see TinkerPop3Example#openGraph(String)
 			 */
-			try (Graph aTp3Graph = Util.openGraph(LUBM,     // the databse where the graph is (in the default graph)
+			try (Graph aTp3Graph = Util.openGraph(LUBM,     // the database where the graph is (in the default graph)
 			                                      false,    // no reasoning
 			                                      false,    // no cache
 			                                      "http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#"))  // the base IRI

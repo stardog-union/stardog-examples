@@ -48,7 +48,7 @@ public class ICVExample {
 
 	// Using the Stardog ICV API
 	// ---
-	// Basic example of how to use Stardog's support for [integrity constraints](http://docs.stardog.com/icv)
+	// Basic example of how to use Stardog's support for [integrity constraints](http://docs.stardog.com/#_validating_constraints)
 	// via the manual validation support offered by an ICVConnection.
 	public static void main(String[] args) throws Exception {
 		// As always, we need to create and start a Stardog server to use in our example

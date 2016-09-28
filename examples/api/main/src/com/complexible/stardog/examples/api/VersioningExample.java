@@ -69,7 +69,7 @@ public class VersioningExample {
 
 	// Versioning of RDF graphs
 	// ---
-	// New in Stardog 2.2 is the ability to [version RDF graphs](http://docs.stardog.com/using/#sd-Versioning).  This
+	// New in Stardog 2.2 is the ability to [version RDF graphs](http://docs.stardog.com/#_versioning).  This
 	// gives you VCS-like commands and concepts, such as tags and revert, for your RDF graphs.
 	public static void main(String[] args) throws Exception {
 		// As always, we need to create and start a Stardog server for our example
