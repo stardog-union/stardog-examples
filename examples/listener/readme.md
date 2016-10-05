@@ -5,5 +5,5 @@ extension mechanism is internally used for features like free text search and ge
 example shows a simple way to use this framework for attaching transaction listeners so every triple
 added/removed in a transaction can be seen and processed. This example simply prints the contents of the
 transaction in the log file but any custom behavior can be implemented by simple modifying one function
-in the [ListenerConnectableConnection](examples/listener/main/src/com/complexible/stardog/examples/listener/ListenerConnectableConnection.java)
+in the [ListenerConnectableConnection](main/src/com/complexible/stardog/examples/listener/ListenerConnectableConnection.java)
 class.
