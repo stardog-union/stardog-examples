@@ -18,6 +18,7 @@ package com.complexible.stardog.examples.listener;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import com.beust.jcommander.internal.Lists;
@@ -39,6 +40,7 @@ import com.complexible.tx.api.event.TransactionDataEvent;
 import com.complexible.tx.api.logging.recovery.DefaultRecoveryContext;
 import com.complexible.tx.api.logging.recovery.RecoveryContext;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
 import org.openrdf.rio.RDFFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,14 +98,6 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean transformsQueryPlans() {
-		return false;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public void optimize(final OptimizationPipeline.OptimizationPipelineBuilder theOptimizationPipeline) {
 		// no optimizations are needed
 	}
@@ -115,6 +109,7 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 	public Options getConnectionProperties() {
 		Preconditions.checkState(isOpen(), "Cannot use a closed connection");
 
+		// no specific connection properties
 		return Options.empty();
 	}
 
@@ -124,7 +119,14 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 	@Override
 	public RecoveryContext createRecoveryContext() {
 		Preconditions.checkState(isOpen(), "Cannot use a closed connection");
+		// no recovery required, use default
 		return DefaultRecoveryContext.builder().build();
+	}
+
+	@Override
+	public Set<String> getQueryRewritings() {
+		// no query rewritings are performed
+		return ImmutableSet.of();
 	}
 
 	/**
