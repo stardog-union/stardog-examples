@@ -1,0 +1,21 @@
+apply plugin:"java"
+
+group 'com.stardog.examples'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url "http://maven.stardog.com" }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Core Dependencies
+    compile ('com.complexible.stardog:client-http:4.2.2')
+
+}
+
+task execute(type:JavaExec) {
+    main = "com.stardog.examples.StardogClient"
+    classpath = sourceSets.main.runtimeClasspath
+}

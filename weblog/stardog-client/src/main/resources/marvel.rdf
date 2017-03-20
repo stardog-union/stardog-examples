@@ -1,0 +1,44 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+:incredibleHulk rdf:type foaf:Person.
+:incredibleHulk foaf:name "Robert Bruce Banner"^^xsd:string.
+:incredibleHulk foaf:title "Incredible Hulk"^^xsd:string.
+:incredibleHulk foaf:givenname "Robert"^^xsd:string.
+:incredibleHulk foaf:family_name "Banner"^^xsd:string.
+:incredibleHulk foaf:knows :captainAmerica.
+:incredibleHulk foaf:knows :blackWidow.
+:incredibleHulk foaf:knows :thor.
+:incredibleHulk foaf:knows :ironMan.
+
+:captainAmerica rdf:type foaf:Person.
+:captainAmerica foaf:name "Steven Rogers"^^xsd:string.
+:captainAmerica foaf:title "Captian America"^^xsd:string.
+:captainAmerica foaf:givenname "Steven"^^xsd:string.
+:captainAmerica foaf:family_name "Rogers"^^xsd:string.
+:captainAmerica foaf:nick "Steve"^^xsd:string.
+:captainAmerica foaf:knows :incredibleHulk.
+:captainAmerica foaf:knows :blackWidow.
+:captainAmerica foaf:knows :thor.
+:captainAmerica foaf:knows :ironMan.
+
+:thor rdf:type foaf:Person.
+:thor foaf:name "Thor Odinson"^^xsd:string.
+:thor foaf:title "Thor"^^xsd:string.
+:thor foaf:givenname "Thor"^^xsd:string.
+:thor foaf:family_name "Odinson"^^xsd:string.
+:thor foaf:knows :incredibleHulk.
+:thor foaf:knows :blackWidow.
+:thor foaf:knows :captainAmerica.
+:thor foaf:knows :ironMan.
+
+:blackWidow rdf:type foaf:Person.
+:blackWidow foaf:name "Natalia Alianovna Romanova"^^xsd:string.
+:blackWidow foaf:title "Black Widow"^^xsd:string.
+:blackWidow foaf:givenname "Natalia"^^xsd:string.
+:blackWidow foaf:family_name "Romanova"^^xsd:string.
+:blackWidow foaf:nick "Natasha"^^xsd:string.
+:blackWidow foaf:knows :incredibleHulk.
+:blackWidow foaf:knows :thor.
+:blackWidow foaf:knows :captainAmerica.
+:blackWidow foaf:knows :ironMan.

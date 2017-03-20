@@ -7,3 +7,7 @@
 .gradle
 gradle.properties
 build
+examples/.idea/misc.xml
+examples/.idea/modules.xml
+examples/.idea/vcs.xml
+examples/.idea/workspace.xml
