@@ -160,16 +160,10 @@ public class ConnectionAPIExample {
 
 				// We can go ahead and execute this query which will give us a result set.  Once we have our result set, we can do
 				// something interesting with the results.
-				TupleQueryResult aResult = aQuery.execute();
-
-				try {
+				try (TupleQueryResult aResult = aQuery.execute()) {
 					System.out.println("The first ten results...");
 
 					QueryResultIO.writeTuple(aResult, TextTableQueryResultWriter.FORMAT, System.out);
-				}
-				finally {
-					// *Always* close your result sets, they hold resources which need to be released.
-					aResult.close();
 				}
 
 				// `Query` objects are easily parameterized; so we can bind the "s" variable in the previous query with a specific value.
@@ -183,16 +177,10 @@ public class ConnectionAPIExample {
 				aQuery.limit(SelectQuery.NO_LIMIT);
 
 				// We've made our modifications, so we can re-run the query to get a new result set and see the difference in the results.
-				aResult = aQuery.execute();
+				try (TupleQueryResult aResult = aQuery.execute()) {
+					System.out.println("\nNow a particular slice...");
 
-				System.out.println("\nNow a particular slice...");
-
-				try {
 					QueryResultIO.writeTuple(aResult, TextTableQueryResultWriter.FORMAT, System.out);
-				}
-				finally {
-					// Again, *close* your result sets.
-					aResult.close();
 				}
 
 				// The previous query was just getting the statements in which the value of `aURI` is the subject.  We can get the

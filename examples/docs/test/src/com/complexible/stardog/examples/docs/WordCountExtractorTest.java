@@ -52,19 +52,14 @@ public class WordCountExtractorTest {
 		                .bind(new InetSocketAddress("localhost", 5821))
 		                .start();
 
-		final AdminConnection aConn = AdminConnectionConfiguration.toServer("http://localhost:5821")
+		try (final AdminConnection aConn = AdminConnectionConfiguration.toServer("http://localhost:5821")
 		                                                          .credentials("admin", "admin")
-		                                                          .connect();
-
-		try {
+		                                                          .connect()) {
 			if (aConn.list().contains(DB)) {
 				aConn.drop(DB);
 			}
 
 			aConn.memory(DB).set(StardocsOptions.DOCS_DEFAULT_RDF_EXTRACTORS, "WordCountExtractor").create();
-		}
-		finally {
-			aConn.close();
 		}
 	}
 
@@ -77,19 +72,15 @@ public class WordCountExtractorTest {
 
 	@Test
 	public void testWordCountExtractor() throws Exception {
-		Connection aConn = ConnectionConfiguration.to(DB).server("http://localhost:5821").credentials("admin", "admin").connect();
-		StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
+		try (Connection aConn = ConnectionConfiguration.to(DB).server("http://localhost:5821").credentials("admin", "admin").connect()) {
+			StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
 
-		IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
+			IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
 
-		try {
 			String aQuery = "select ?wc { graph ?doc { ?doc <tag:stardog:example:wordcount> ?wc } }";
 			TupleQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
 			String wordCount = aRes.next().getBinding("wc").getValue().stringValue();
 			assertEquals("313", wordCount);
-		}
-		finally {
-			aConn.close();
 		}
 	}
 }

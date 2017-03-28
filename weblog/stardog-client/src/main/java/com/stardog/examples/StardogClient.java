@@ -143,7 +143,6 @@ public class StardogClient {
 
             // Convenience function for creating a non-persistent in-memory database with all the default settings.
             aConn.disk(to).create();
-            aConn.close();
         }
     }
 
