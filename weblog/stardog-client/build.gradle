@@ -1,4 +1,5 @@
-apply plugin:"java"
+apply plugin: 'java'
+apply plugin: 'application'
 
 group 'com.stardog.examples'
 version '1.0-SNAPSHOT'
@@ -11,11 +12,7 @@ repositories {
 
 dependencies {
     // Core Dependencies
-    compile ('com.complexible.stardog:client-http:4.2.2')
-
+    compile ('com.complexible.stardog:client-http:4.2.4')
 }
 
-task execute(type:JavaExec) {
-    main = "com.stardog.examples.StardogClient"
-    classpath = sourceSets.main.runtimeClasspath
-}
+mainClassName = "com.stardog.examples.StardogClient"
