@@ -15,16 +15,13 @@
 
 package com.complexible.stardog.foaf;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.icv.api.ICVConnection;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofType;
 import com.google.common.collect.ImmutableList;
@@ -32,6 +29,7 @@ import com.google.common.collect.Iterables;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openrdf.model.IRI;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.OWL;
@@ -48,22 +46,16 @@ import static org.junit.Assert.assertTrue;
  * @author Evren Sirin
  */
 public class FOAFTest {
-	private static Server SERVER = null;
-
 	private static final String DB = "testFOAF";
 
 	private static final String NS = "urn:example:";
 
-	private static final URI alice = Values.iri(NS, "alice");
-	private static final URI bob = Values.iri(NS, "bob");
-	private static final URI homepage = Values.iri(NS, "homepage");
+	private static final IRI alice = Values.iri(NS, "alice");
+	private static final IRI bob = Values.iri(NS, "bob");
+	private static final IRI homepage = Values.iri(NS, "homepage");
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		SERVER = Stardog.buildServer()
-		                .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-		                .start();
-
 		try (AdminConnection aAdminConn = AdminConnectionConfiguration.toEmbeddedServer()
 		                                                              .credentials("admin", "admin")
 		                                                              .connect()) {
@@ -87,9 +79,6 @@ public class FOAFTest {
 
 	@AfterClass
 	public static void afterClass() {
-		if (SERVER != null) {
-			SERVER.stop();
-		}
 	}
 
 	@Test

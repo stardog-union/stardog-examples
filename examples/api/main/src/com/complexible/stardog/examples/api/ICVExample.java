@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import com.complexible.common.openrdf.model.Models2;
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
@@ -26,7 +26,6 @@ import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.icv.Constraint;
 import com.complexible.stardog.icv.ConstraintFactory;
 import com.complexible.stardog.icv.api.ICVConnection;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
 import org.openrdf.model.IRI;
@@ -40,9 +39,9 @@ import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
 /**
  * <p></p>
  *
- * @author  Michael Grove
- * @since   0.7
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.7
  */
 public class ICVExample {
 
@@ -51,16 +50,11 @@ public class ICVExample {
 	// Basic example of how to use Stardog's support for [integrity constraints](http://docs.stardog.com/#_validating_constraints)
 	// via the manual validation support offered by an ICVConnection.
 	public static void main(String[] args) throws Exception {
-		// As always, we need to create and start a Stardog server to use in our example
-
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Open an `AdminConnection` to Stardog so we can set up our database for the example
-
 			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
 			                                                                    .credentials("admin", "admin")
 			                                                                    .connect()) {
@@ -110,7 +104,9 @@ public class ICVExample {
 
 				// So we can check whether or not our data is valid,
 				// which it isn't; we're lacking the assertion that m1 is a Manufacturer.
-				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY) ? "is" : "is NOT") + " valid!");
+				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY)
+				                                  ? "is"
+				                                  : "is NOT") + " valid!");
 
 				// Ok, so our data is invalid.  But what's wrong with it?  It's easy to see in this case, but if we have
 				// a lot of data, it may not be so clear what we're missing.  So lets ask!  Like with reasoning, we
@@ -121,8 +117,7 @@ public class ICVExample {
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 }

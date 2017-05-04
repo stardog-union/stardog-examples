@@ -18,13 +18,11 @@ package com.complexible.stardog.examples.sesame;
 import java.io.File;
 
 import com.complexible.common.openrdf.repository.RepositoryConnections;
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.sesame.StardogRepository;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
@@ -36,30 +34,19 @@ import org.openrdf.repository.RepositoryConnection;
 /**
  * <p>A basic example of using Stardog via the Sesame API</p>
  *
- * @author  Michael Grove
- * @since   0.4
+ * @author Michael Grove
  * @version 2.0
+ * @since 0.4
  */
 public class SesameExample {
+
 	// Using Stardog with the [Sesame](http://openrdf.org) API
 	// -------------------
 	// In this example we'll show how to use the bindings for the Sesame API to use Stardog as a drop in replacement
 	// for an existing `Repository` based application.
 	public static void main(String[] args) throws Exception {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  The `Stardog`
-		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html) to specify which protocol
-		// the server should use (options are HTTP & SNARL) and takes a `SocketAddress`
-		// the server should bind to.  This will return you a [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
-		// can be used to start & stop the Stardog server.
-		//
-		// This example shows up to create and start the embedded SNARL server.  Note that
-		// you can only embed the *SNARL* server, not HTTP.
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Using AdminConnection
@@ -95,7 +82,6 @@ public class SesameExample {
 
 			try {
 				// Let's open a connection to the database, add some data, then query it
-
 				try (RepositoryConnection aRepoConn = aRepo.getConnection()) {
 					// First add some data to the connection so we can query it.
 					RepositoryConnections.add(aRepoConn, new File("data/sp2b_10k.n3"));
@@ -116,8 +102,8 @@ public class SesameExample {
 			}
 		}
 		finally {
-			// Always stop the server
-			aServer.stop();
+			aStardog.shutdown();
 		}
+
 	}
 }

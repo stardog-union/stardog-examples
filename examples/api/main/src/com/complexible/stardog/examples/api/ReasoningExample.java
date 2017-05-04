@@ -12,18 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
 import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.IRI;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
-
-import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
@@ -32,33 +26,27 @@ import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
+import org.openrdf.model.IRI;
+import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.query.TupleQueryResult;
+import org.openrdf.rio.RDFFormat;
 
 /**
  * <p>A small example program illustrating how to access Stardog's reasoning capabilities.</p>
  *
- * @author  Michael Grove
- * @since   0.4.5
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.4.5
  */
 public class ReasoningExample {
-    // Using Reasoning in Stardog
-    // --------------------------
-    // In this example we'll walk through a simple example using the SNARL API to access Stardog's
-    // reasoning capabilities.
+
+	// Using Reasoning in Stardog
+	// --------------------------
+	// In this example we'll walk through a simple example using the SNARL API to access Stardog's
+	// reasoning capabilities.
 	public static void main(String[] args) throws Exception {
-        // Creating a Server
-        // -----------------
-		// You'll need a server to connect to, obviously.  The `Stardog`
-		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html)
-		// which can be used to configure the server.  This will return you a
-		// [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
-		// can be used to start & stop the Stardog server.
-		//
-		// This example shows up to create and start the embedded server.
-        Server aServer = Stardog
-            .buildServer()
-            .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-            .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Using AdminConnection
@@ -106,7 +94,7 @@ public class ReasoningExample {
 				                        .to("reasoningExampleTest")
 				                        .credentials("admin", "admin")
 				                        .connect()) {
-				
+
 				// Now lets add lubm1 and the lubm ontology to the database.
 				// We can use either the reasoning connection or the base connection for addition, results will be same
 				aReasoningConn.begin();
@@ -129,8 +117,7 @@ public class ReasoningExample {
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 
@@ -142,8 +129,8 @@ public class ReasoningExample {
 		IRI FULL_PROFESSOR = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor");
 
 		SelectQuery aQuery = theConn.select("SELECT ?x WHERE {\n" +
-									 "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
-									 "}");
+		                                    "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
+		                                    "}");
 
 		aQuery.parameter("type", PERSON);
 		TupleQueryResult aResult = aQuery.execute();

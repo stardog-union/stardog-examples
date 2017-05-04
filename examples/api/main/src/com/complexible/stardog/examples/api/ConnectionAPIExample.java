@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import java.io.FileInputStream;
@@ -21,7 +22,14 @@ import java.nio.file.Paths;
 import com.complexible.common.openrdf.model.ModelIO;
 import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
+import com.complexible.stardog.Stardog;
+import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
+import com.complexible.stardog.api.Getter;
+import com.complexible.stardog.api.SelectQuery;
+import com.complexible.stardog.api.admin.AdminConnection;
+import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import org.openrdf.model.IRI;
 import org.openrdf.model.Model;
 import org.openrdf.model.Resource;
@@ -30,43 +38,23 @@ import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.rio.RDFFormat;
 
-import com.complexible.common.protocols.server.Server;
-import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
-import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.Connection;
-import com.complexible.stardog.api.Getter;
-import com.complexible.stardog.api.ConnectionConfiguration;
-import com.complexible.stardog.api.SelectQuery;
-import com.complexible.stardog.api.admin.AdminConnection;
-import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-
 /**
  * <p>Example code illustrating use of the Stardog Connection API</p>
  *
- * @author  Michael Grove
- * @since   0.4
- * @version 4.0
+ * @author Michael Grove
+ * @version 5.0
+ * @since 0.4
  */
 public class ConnectionAPIExample {
+
 	// Using the SNARL API
 	// -------------------
 	// In this example we'll walk through the basic usage of the Stardog Native API for the RDF Language (SNARL)
 	// API, which is the preferred way to interact with Stardog.  This will show how to use both the administrative
 	// and client APIs to perform some basic operations.
 	public static void main(String[] args) throws Exception {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  The `Stardog`
-		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html)
-		// which can be used to configure the server.  This will return you a
-		// [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
-		// can be used to start & stop the Stardog server.
-		//
-		// This example shows up to create and start the embedded server.
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Using AdminConnection
@@ -239,8 +227,7 @@ public class ConnectionAPIExample {
 			}
 		}
 		finally {
-			// We're done with the example, so we need to make sure we shut down the server we started.
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 }

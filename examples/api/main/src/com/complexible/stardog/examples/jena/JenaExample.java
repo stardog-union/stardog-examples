@@ -12,18 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.jena;
 
 import java.io.FileInputStream;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.jena.SDJenaFactory;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -35,22 +34,18 @@ import org.apache.jena.rdf.model.Model;
 /**
  * <p>Example of how to use the Jena integration with stardog</p>
  *
- * @author  Michael Grove
- * @since   0.3.3
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.3.3
  */
 public class JenaExample {
+
 	// Using Stardog with the [Jena](http://jena.apache.org) API
 	// -------------------
 	// In this example we'll show how to use the Stardog Jena API bindings.
 	public static void main(String[] args) throws Exception {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  For the example, lets create an embedded server.
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Next we'll establish a admin connection to Stardog so we can create a database to use for the example
@@ -66,11 +61,10 @@ public class JenaExample {
 			}
 
 			// Now we open a Connection our new database
-
 			try (Connection aConn = ConnectionConfiguration
-				                         .to("testJena")
-				                         .credentials("admin", "admin")
-				                         .connect()) {
+				                        .to("testJena")
+				                        .credentials("admin", "admin")
+				                        .connect()) {
 
 				// Then we obtain a Jena `Model` for the specified stardog database which is backed by our `Connection`
 				Model aModel = SDJenaFactory.createModel(aConn);
@@ -94,7 +88,6 @@ public class JenaExample {
 				Query aQuery = QueryFactory.create(aQueryString);
 
 				// ... and run it
-
 				try (QueryExecution aExec = QueryExecutionFactory.create(aQuery, aModel)) {
 					// Now print the results
 					ResultSetFormatter.out(aExec.execSelect(), aModel);
@@ -102,8 +95,7 @@ public class JenaExample {
 			}
 		}
 		finally {
-			// You must stop the server when you're done
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 }

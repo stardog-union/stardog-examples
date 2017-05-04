@@ -15,24 +15,18 @@
 
 package com.complexible.stardog.examples.docs;
 
-import com.complexible.common.protocols.server.Server;
-import com.complexible.stardog.Stardog;
+import java.io.File;
+
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.docs.StardocsConnection;
 import com.complexible.stardog.docs.StardocsOptions;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import com.google.common.collect.Lists;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openrdf.model.IRI;
 import org.openrdf.query.TupleQueryResult;
-
-import java.io.File;
-import java.net.InetSocketAddress;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,54 +36,31 @@ import static org.junit.Assert.assertEquals;
  * @author  Jess Balint
  */
 public class WordCountExtractorTest {
-	private static Server SERVER = null;
-
 	private static final String DB = "testExtractor";
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		SERVER = Stardog.buildServer()
-		                .bind(new InetSocketAddress("localhost", 5821))
-		                .start();
-
-		final AdminConnection aConn = AdminConnectionConfiguration.toServer("http://localhost:5821")
-		                                                          .credentials("admin", "admin")
-		                                                          .connect();
-
-		try {
+		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		                                                         .credentials("admin", "admin")
+		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
 				aConn.drop(DB);
 			}
 
 			aConn.memory(DB).set(StardocsOptions.DOCS_DEFAULT_RDF_EXTRACTORS, "WordCountExtractor").create();
 		}
-		finally {
-			aConn.close();
-		}
-	}
-
-	@AfterClass
-	public static void afterClass() {
-		if (SERVER != null) {
-			SERVER.stop();
-		}
 	}
 
 	@Test
 	public void testWordCountExtractor() throws Exception {
-		Connection aConn = ConnectionConfiguration.to(DB).server("http://localhost:5821").credentials("admin", "admin").connect();
-		StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
+		try (Connection aConn = ConnectionConfiguration.to(DB).server("http://localhost:5821").credentials("admin", "admin").connect()) {
+			StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
+			IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
 
-		IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
-
-		try {
 			String aQuery = "select ?wc { graph ?doc { ?doc <tag:stardog:example:wordcount> ?wc } }";
 			TupleQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
 			String wordCount = aRes.next().getBinding("wc").getValue().stringValue();
 			assertEquals("313", wordCount);
-		}
-		finally {
-			aConn.close();
 		}
 	}
 }

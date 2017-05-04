@@ -2,7 +2,6 @@ package com.complexible.stardog.examples.tinkerpop;
 
 import java.nio.file.Paths;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.protocols.server.ServerException;
 import com.complexible.stardog.Contexts;
 import com.complexible.stardog.Stardog;
@@ -14,7 +13,6 @@ import com.complexible.stardog.gremlin.StardogGraphConfiguration;
 import com.complexible.stardog.gremlin.StardogGraphFactory;
 import com.complexible.stardog.index.IndexOptions;
 import com.complexible.stardog.metadata.Metadata;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.google.common.base.Strings;
 import org.apache.tinkerpop.gremlin.structure.Graph;
 
@@ -28,21 +26,16 @@ final class Util {
 	/**
 	 * Stardog User {@value}
 	 */
-	static final String STARDOG_USER = "admin";
+	private static final String STARDOG_USER = "admin";
 
 	/**
 	 * Stardog Password {@value}
 	 */
-	static final String STARDOG_PASSWORD = "admin";
+	private static final String STARDOG_PASSWORD = "admin";
 
-	static Server loadDataset(final String dbName,
-	                                  final String filePath) throws ServerException {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  For the example, lets create an embedded server.
-		Server aServer = Stardog.buildServer()
-		                        .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-		                        .start();
+	static Stardog loadDataset(final String dbName, final String filePath) throws ServerException {
+		// Initializing Stardog instance
+		Stardog aServer = Stardog.builder().create();
 
 		// Next we'll establish a admin connection to Stardog so we can create a database to use for the example
 		try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
@@ -58,7 +51,7 @@ final class Util {
 			 * - The database name (1)
 			 * - Setting the database to have a Memory index (2)
 			 * - Disable canonical literals (3)
-			 * @see <a href="http://docs.stardog.com/#_database_configuration">Database Configuration for TinkerPop 3</a>
+			 * @see <a href="https://stardog.com/docs/#_database_configuration">Database Configuration for TinkerPop 3</a>
 			 */
 			aAdminConnection.builder(Metadata.create()
 				                         .set(DatabaseOptions.NAME, dbName)                             // (1)
@@ -87,10 +80,6 @@ final class Util {
 		}
 
 		return StardogGraphFactory.open(aConfig.build());
-	}
-
-	static Graph openGraph(final String theConnString, final boolean theReasoningFlag, final boolean theCache) {
-		return openGraph(theConnString, theReasoningFlag, theCache, null);
 	}
 
 }

@@ -16,28 +16,25 @@ package com.complexible.stardog.examples.api;
 
 import java.util.Arrays;
 
-import com.complexible.common.protocols.server.Server;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Resource;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.SKOS;
-import org.openrdf.query.resultio.QueryResultIO;
-
 import com.complexible.common.openrdf.vocabulary.Vocabulary;
 import com.complexible.common.rdf.model.Values;
 import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.prov.ProvVocabulary;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Resource;
+import org.openrdf.model.vocabulary.DC;
+import org.openrdf.model.vocabulary.RDF;
+import org.openrdf.model.vocabulary.SKOS;
+import org.openrdf.query.resultio.QueryResultIO;
 
 /**
  * <p>Example code illustrating use of the built-in ontologies in Stardog, specifically for PROV and SKOS ontologies.</p>
@@ -48,33 +45,31 @@ import com.complexible.stardog.prov.ProvVocabulary;
  */
 public class ProvSkosExample {
 	// Very simple publication vocabulary used in this example
-	public static class PublicationVocabulary extends Vocabulary {
-		public static final PublicationVocabulary INSTANCE = new PublicationVocabulary();
+	private static class PublicationVocabulary extends Vocabulary {
+		private static final PublicationVocabulary INSTANCE = new PublicationVocabulary();
 
-		public PublicationVocabulary() {
+		private PublicationVocabulary() {
 			super("urn:example:publication:");
 		}
 
-		public IRI Book = term("Book");
-		public IRI Fiction = term("Fiction");
-		public IRI ScienceFiction = term("ScienceFiction");
+		private IRI Book = term("Book");
+		private IRI Fiction = term("Fiction");
+		private IRI ScienceFiction = term("ScienceFiction");
 
-		public IRI Author = term("Author");
+		private IRI Author = term("Author");
 	}
 
 	// Define constants for vocabularies that we will use
-	public static final PublicationVocabulary PUB = PublicationVocabulary.INSTANCE;
-	public static final ProvVocabulary PROV = ProvVocabulary.INSTANCE;
+	private static final PublicationVocabulary PUB = PublicationVocabulary.INSTANCE;
+	private static final ProvVocabulary PROV = ProvVocabulary.INSTANCE;
 
 	// Database Archetypes
 	// ---
 	// A Database Archteype is a built-in "type" of a Database, they include common axioms and constraints for
 	// a particular type of data.  The default archetypes build into Stardog are currently SKOS and PROV.
 	public static void main(String[] args) throws Exception {
-		Server aServer = Stardog.buildServer()
-		                        .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-		                        .start();
-
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			String db = "exampleProvSkos";
@@ -116,7 +111,9 @@ public class ProvSkosExample {
 				ICVConnection aValidator = aConn.as(ICVConnection.class);
 
 				// For simplicity, we will just print that the data is not valid (explanations can be retrieved separately)
-				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY) ? "is" : "is NOT") + " valid!");
+				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY)
+				                                  ? "is"
+				                                  : "is NOT") + " valid!");
 
 				// Let's remove the problematic triple and add some PROV data
 				IRI The_War_of_the_Worlds = Values.iri("http://dbpedia.org/resource/The_War_of_the_Worlds");
@@ -135,7 +132,9 @@ public class ProvSkosExample {
 				aConn.commit();
 
 				// Now that the problematic triples is removed, the data will be valid
-				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY) ? "is" : "is NOT") + " valid!");
+				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY)
+				                                  ? "is"
+				                                  : "is NOT") + " valid!");
 
 				// Finlaly run a query that will retrieve all fiction books and their authors.
 				// This query uses both PROV and SKOS inferences that are automatically included with the archetypes.
@@ -144,20 +143,19 @@ public class ProvSkosExample {
 				// Also note that we don't need to define prefixes for skos and prov which are automatically registered
 				// to the database when the archetypes are loaded
 				SelectQuery aQuery = aConn.select(
-					                                 "PREFIX pub: <" + PUB.uri() + ">" +
-					                                 "PREFIX dc: <" + DC.NAMESPACE + ">" +
-					                                 "SELECT * WHERE {\n" +
-					                                 "  ?book dc:subject/skos:broaderTransitive pub:Book;\n" +
-					                                 "        prov:wasAttributedTo ?author\n" +
-					                                 "}");
+					"PREFIX pub: <" + PUB.uri() + ">" +
+					"PREFIX dc: <" + DC.NAMESPACE + ">" +
+					"SELECT * WHERE {\n" +
+					"  ?book dc:subject/skos:broaderTransitive pub:Book;\n" +
+					"        prov:wasAttributedTo ?author\n" +
+					"}");
 
 				// Print the query results
 				QueryResultIO.writeTuple(aQuery.execute(), TextTableQueryResultWriter.FORMAT, System.out);
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 }

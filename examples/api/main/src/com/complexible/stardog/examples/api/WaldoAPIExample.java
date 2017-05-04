@@ -12,21 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
 import com.complexible.common.base.CloseableIterator;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import com.complexible.common.protocols.server.Server;
-import org.openrdf.model.Literal;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
-
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
@@ -35,25 +29,27 @@ import com.complexible.stardog.api.search.SearchResult;
 import com.complexible.stardog.api.search.SearchResults;
 import com.complexible.stardog.api.search.Searcher;
 import com.complexible.stardog.search.SearchOptions;
+import org.openrdf.model.Literal;
+import org.openrdf.query.BindingSet;
+import org.openrdf.query.TupleQueryResult;
+import org.openrdf.rio.RDFFormat;
 
 /**
  * <p>Simple example </p>
  *
- * @author  Michael Grove
- * @since   0.6.5
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.6.5
  */
 public class WaldoAPIExample {
+
 	// Using the Waldo Search API
 	// --------------
 	// A short example illustrating the use of the [full text search capabilities](http://docs.stardog.com/#_full_text_search) in Stardog
 	// via the SNARL API.
 	public static void main(String[] args) throws Exception {
-		// First thing's first, we have to create and start a Stardog server to use
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Open an `AdminConnection` to Stardog so that we can setup the database for the example
@@ -95,9 +91,9 @@ public class WaldoAPIExample {
 				// for things that match the search term `mac`.  Stardog's full text search is backed by [Lucene](http://lucene.apache.org)
 				// so you can use the full Lucene search syntax in your queries.
 				Searcher aSearch = aSearchConn.search()
-					                   .limit(50)
-					                   .query("mac")
-					                   .threshold(0.5);
+				                              .limit(50)
+				                              .query("mac")
+				                              .threshold(0.5);
 
 				// We can run the search and then iterate over the results
 				SearchResults aSearchResults = aSearch.search();
@@ -140,9 +136,7 @@ public class WaldoAPIExample {
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
-
 	}
 }

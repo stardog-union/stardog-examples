@@ -15,14 +15,12 @@
 
 package com.complexible.stardog.examples.functions;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.model.Namespaces;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,18 +36,16 @@ import static org.junit.Assert.assertTrue;
  *
  * @author  Michael Grove
  * @since   1.0
- * @version 1.0
+ * @version 5.0
  */
 public class TestTitleCaseFunction {
-	private static Server SERVER = null;
-
 	private static final String DB = "testTitleCase";
+
+	private static Stardog STARDOG;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		SERVER = Stardog.buildServer()
-		                .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-		                .start();
+		STARDOG = Stardog.builder().create();
 
 		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
 		                                                         .credentials("admin", "admin")
@@ -64,9 +60,7 @@ public class TestTitleCaseFunction {
 
 	@AfterClass
 	public static void afterClass() {
-		if (SERVER != null) {
-			SERVER.stop();
-		}
+		STARDOG.shutdown();
 	}
 
 	@Test

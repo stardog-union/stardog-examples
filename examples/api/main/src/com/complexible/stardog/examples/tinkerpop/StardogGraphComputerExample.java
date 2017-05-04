@@ -1,6 +1,6 @@
 package com.complexible.stardog.examples.tinkerpop;
 
-import com.complexible.common.protocols.server.Server;
+import com.complexible.stardog.Stardog;
 import com.complexible.stardog.gremlin.structure.StardogGraph;
 import org.apache.tinkerpop.gremlin.process.computer.ComputerResult;
 import org.apache.tinkerpop.gremlin.process.computer.GraphComputer;
@@ -21,7 +21,7 @@ public class StardogGraphComputerExample {
 	/**
 	 * The name of the database we'll be using through the example
 	 */
-	private static final String LUBM = "lubum";
+	private static final String LUBM = "lubm";
 
 	/**
 	 * The file path of the data we'll load into the database for the example
@@ -29,15 +29,10 @@ public class StardogGraphComputerExample {
 	private static final String LUBM_DATA_FILE = "data/University0_0.owl";
 
 	public static void main(String[] args) throws Exception {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  For the example, lets create an embedded server.
-		Server aServer = null;
+		// Initialize the Stardog instance so the embedded server can be used
+		Stardog aStardog = Util.loadDataset(LUBM, LUBM_DATA_FILE);
 
 		try {
-			// Load the dataset and prepare to use
-			aServer = Util.loadDataset(LUBM, LUBM_DATA_FILE);
-
 			/**
 			 * Open the TinkerPop3 Graph over the Stardog DB `testTinkerPop3` on its default graph
 			 * @see TinkerPop3Example#openGraph(String)
@@ -81,10 +76,7 @@ public class StardogGraphComputerExample {
 			}
 		}
 		finally {
-			// Finally we make sure to shutdown the embedded stardog server
-			if (aServer != null && aServer.isRunning()) {
-				aServer.stop();
-			}
+			aStardog.shutdown();
 		}
 	}
 }

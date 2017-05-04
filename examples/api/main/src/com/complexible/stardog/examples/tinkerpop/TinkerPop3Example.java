@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.common.rdf.model.Values;
+import com.complexible.stardog.Stardog;
 import com.google.common.collect.ImmutableList;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversal;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;
@@ -34,14 +34,10 @@ public final class TinkerPop3Example {
 	private static final String TP3_DATA_FILE = "data/vehicles.trig";
 
 	public static void main(final String[] args) throws Exception {
-		// Creating a Server
-		// -----------------
-		// You'll need a server to connect to, obviously.  For the example, lets create an embedded server.
-		Server aServer = null;
+		// Initialize the Stardog instance so the embedded server can be used
+		Stardog aStardog = Util.loadDataset(TP3_DB, TP3_DATA_FILE);
 
 		try {
-			aServer = Util.loadDataset(TP3_DB, TP3_DATA_FILE);
-
 			/**
 			 * Open the TinkerPop3 Graph over the Stardog DB `testTinkerPop3` on its default graph
 			 * @see TinkerPop3Example#openGraph(String)
@@ -92,10 +88,7 @@ public final class TinkerPop3Example {
 			}
 		}
 		finally {
-			// Finally we make sure to shutdown the embedded stardog server
-			if (aServer != null && aServer.isRunning()) {
-				aServer.stop();
-			}
+			aStardog.shutdown();
 		}
 	}
 

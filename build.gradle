@@ -24,6 +24,7 @@ allprojects {
 		maven {
 			url stardogRepo
 		}
+		mavenLocal()
 		mavenCentral()
 	}
 

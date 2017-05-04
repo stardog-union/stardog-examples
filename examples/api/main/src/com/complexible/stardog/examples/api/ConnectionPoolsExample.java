@@ -12,40 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import java.util.concurrent.TimeUnit;
 
-import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.ConnectionPool;
 import com.complexible.stardog.api.ConnectionPoolConfig;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 
 /**
  * <p>A simple example to show how to setup and use ConnectionPools with Stardog</p>
  *
- * @author  Michael Grove
- * @since   0.5.1
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.5.1
  */
 public class ConnectionPoolsExample {
+
 	// Using Connection Pools
 	// -------------------
 	// In this example, we illustrate the configuration and use of the SNARL [ConnectionPool](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionPool.html)
 	public static void main(String[] args) throws Exception {
-		// Normal embedded server initialization.
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
-			// First create a temporary database to use (if there is one already, drop it first)
+			// Second create a temporary database to use (if there is one already, drop it first)
 			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
 				if (aAdminConnection.list().contains("testConnectionPool")) {
 					aAdminConnection.drop("testConnectionPool");
@@ -82,8 +79,8 @@ public class ConnectionPoolsExample {
 			aPool.shutdown();
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			// always shut down the instance when you are done with it
+			aStardog.shutdown();
 		}
 	}
 }
