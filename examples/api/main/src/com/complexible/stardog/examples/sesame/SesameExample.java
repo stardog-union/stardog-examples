@@ -68,37 +68,39 @@ public class SesameExample {
 				}
 
 				// Convenience function for creating a non-persistent in-memory database with all the default settings.
-				aAdminConnection.createMemory("testSesame");
-			}
+				aAdminConnection.disk("testSesame").create();
 
-			// Create a Sesame `Repository` from a Stardog `ConnectionConfiguration`.  The configuration will be used
-			// when creating new `RepositoryConnection` objects
-			Repository aRepo = new StardogRepository(ConnectionConfiguration
-				                                         .to("testSesame")
-				                                         .credentials("admin", "admin"));
+				// Create a Sesame `Repository` from a Stardog `ConnectionConfiguration`.  The configuration will be used
+				// when creating new `RepositoryConnection` objects
+				Repository aRepo = new StardogRepository(ConnectionConfiguration
+					                                         .to("testSesame")
+					                                         .credentials("admin", "admin"));
 
-			// You must always initialize a `Repository`
-			aRepo.initialize();
+				// You must always initialize a `Repository`
+				aRepo.initialize();
 
-			try {
-				// Let's open a connection to the database, add some data, then query it
-				try (RepositoryConnection aRepoConn = aRepo.getConnection()) {
-					// First add some data to the connection so we can query it.
-					RepositoryConnections.add(aRepoConn, new File("data/sp2b_10k.n3"));
+				try {
+					// Let's open a connection to the database, add some data, then query it
+					try (RepositoryConnection aRepoConn = aRepo.getConnection()) {
+						// First add some data to the connection so we can query it.
+						RepositoryConnections.add(aRepoConn, new File("data/sp2b_10k.n3"));
 
-					// Now we can query the data we just loaded into the database
-					TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");
+						// Now we can query the data we just loaded into the database
+						TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");
 
-					try (TupleQueryResult aResults = aQuery.evaluate()) {
-						// Print the results in tabular format
-						QueryResultIO.writeTuple(aResults, TextTableQueryResultWriter.FORMAT, System.out);
+						try (TupleQueryResult aResults = aQuery.evaluate()) {
+							// Print the results in tabular format
+							QueryResultIO.writeTuple(aResults, TextTableQueryResultWriter.FORMAT, System.out);
+						}
 					}
 				}
-			}
-			finally {
-				// Make sure you shut down the repository as well as closing the repository connection as this is what
-				// releases the internal Stardog connections and closes the connection pool
-				aRepo.shutDown();
+				finally {
+					// Make sure you shut down the repository as well as closing the repository connection as this is what
+					// releases the internal Stardog connections and closes the connection pool
+					aRepo.shutDown();
+				}
+
+				aAdminConnection.drop("testSesame");
 			}
 		}
 		finally {

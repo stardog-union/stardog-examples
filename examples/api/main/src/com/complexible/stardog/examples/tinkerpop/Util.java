@@ -12,14 +12,13 @@ import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.gremlin.StardogGraphConfiguration;
 import com.complexible.stardog.gremlin.StardogGraphFactory;
 import com.complexible.stardog.index.IndexOptions;
-import com.complexible.stardog.metadata.Metadata;
 import com.google.common.base.Strings;
 import org.apache.tinkerpop.gremlin.structure.Graph;
 
 /**
- * @author  Edgar Rodriguez-Diaz
- * @since   4.0
+ * @author Edgar Rodriguez-Diaz
  * @version 4.0
+ * @since 4.0
  */
 final class Util {
 
@@ -49,19 +48,27 @@ final class Util {
 			/**
 			 * Create the DB with the given Metadata:
 			 * - The database name (1)
-			 * - Setting the database to have a Memory index (2)
+			 * - Setting the database to have a disk index (2)
 			 * - Disable canonical literals (3)
 			 * @see <a href="https://stardog.com/docs/#_database_configuration">Database Configuration for TinkerPop 3</a>
 			 */
-			aAdminConnection.builder(Metadata.create()
-				                         .set(DatabaseOptions.NAME, dbName)                             // (1)
-				                         .set(IndexOptions.INDEX_TYPE, IndexOptions.IndexType.Memory)   // (2)
-				                         .set(IndexOptions.CANONICAL_LITERALS, false))                  // (3)
-				.create(Paths.get(filePath));
-
+			aAdminConnection.disk(dbName)
+			                .set(DatabaseOptions.NAME, dbName)
+			                .set(IndexOptions.CANONICAL_LITERALS, false)
+			                .create(Paths.get(filePath));
 		}
 
 		return aServer;
+	}
+
+	static void cleanup(final String dbName) throws ServerException {
+		try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+		                                                                    .credentials(STARDOG_USER, STARDOG_PASSWORD)
+		                                                                    .connect()) {
+			if (aAdminConnection.list().contains(dbName)) {
+				aAdminConnection.drop(dbName);
+			}
+		}
 	}
 
 	static Graph openGraph(final String theConnString,
@@ -71,9 +78,9 @@ final class Util {
 		StardogGraphConfiguration.Builder aConfig = StardogGraphConfiguration.builder()
 		                                                                     .connectionString(theConnString)
 		                                                                     .credentials(STARDOG_USER, STARDOG_PASSWORD)
-			                                            .reasoning(theReasoningFlag) /* is reasoning enabled? */
-			                                            .namedGraph(Contexts.DEFAULT.stringValue() /* Abox data is in the default graph */)
-			                                            .cache(theCache);
+		                                                                     .reasoning(theReasoningFlag) /* is reasoning enabled? */
+		                                                                     .namedGraph(Contexts.DEFAULT.stringValue() /* Abox data is in the default graph */)
+		                                                                     .cache(theCache);
 
 		if (!Strings.isNullOrEmpty(theBaseIRI)) {
 			aConfig.baseIRI(theBaseIRI);

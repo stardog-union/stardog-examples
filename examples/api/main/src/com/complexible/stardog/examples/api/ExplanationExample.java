@@ -72,92 +72,98 @@ public class ExplanationExample {
 					aAdminConnection.drop("reasoningTest");
 				}
 
-				aAdminConnection.memory("reasoningTest").create();
-			}
-			// Open a `Connection` to the database we just created with reasoning turned on.
-			// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
-			// [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
-			try (ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
-			                                                                       .credentials("admin", "admin")
-			                                                                       .reasoning(true)
-			                                                                       .connect()
-			                                                                       .as(ReasoningConnection.class)) {
-				// Add a simple schema and couple instance triples to the database that we'll use for the example
-				aReasoningConnection.begin();
-				aReasoningConnection.add()
-				                    .statement(p, RDFS.DOMAIN, B)
-				                    .statement(B, RDFS.SUBCLASSOF, A)
-				                    .statement(x, p, y)
-				                    .statement(z, RDF.TYPE, B);
-				aReasoningConnection.commit();
+				// Create a disk-based database with default settings
+				aAdminConnection.disk("reasoningTest").create();
+				// Open a `Connection` to the database we just created with reasoning turned on.
+				// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
+				// [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
+				try (ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
+				                                                                       .credentials("admin", "admin")
+				                                                                       .reasoning(true)
+				                                                                       .connect()
+				                                                                       .as(ReasoningConnection.class)) {
+					// Add a simple schema and couple instance triples to the database that we'll use for the example
+					aReasoningConnection.begin();
+					aReasoningConnection.add()
+					                    .statement(p, RDFS.DOMAIN, B)
+					                    .statement(B, RDFS.SUBCLASSOF, A)
+					                    .statement(x, p, y)
+					                    .statement(z, RDF.TYPE, B);
+					aReasoningConnection.commit();
 
-				// Now that we have data in the database, let's see the effects of using reasoning.  The above snippet
-				// states `B(z)` and `subClassOf(B, A)`, so therefore `A(z)`.  Let's look for that without using reasoning.
-				// We'll use the `Getter` interface to look up `:z a :A`, but we'll specify that no reasoning should
-				// be performed
-				boolean aExistsNoReasoning = aReasoningConnection.get()
-				                                                 .reasoning(false)
-				                                                 .subject(z)
-				                                                 .predicate(RDF.TYPE)
-				                                                 .object(A)
-				                                                 .ask();
+					// Now that we have data in the database, let's see the effects of using reasoning.  The above snippet
+					// states `B(z)` and `subClassOf(B, A)`, so therefore `A(z)`.  Let's look for that without using reasoning.
+					// We'll use the `Getter` interface to look up `:z a :A`, but we'll specify that no reasoning should
+					// be performed
+					boolean aExistsNoReasoning = aReasoningConnection.get()
+					                                                 .reasoning(false)
+					                                                 .subject(z)
+					                                                 .predicate(RDF.TYPE)
+					                                                 .object(A)
+					                                                 .ask();
 
-				// We will see that it's not there since we're not using reasoning
-				System.out.println("Exists without reasoning? " + aExistsNoReasoning);
+					// We will see that it's not there since we're not using reasoning
+					System.out.println("Exists without reasoning? " + aExistsNoReasoning);
 
-				// But if we do the same thing, but this time we don't disable reasoning, remember we said `RL` when
-				// we created the `Connection`, we will see that the statement is inferred to exist.
-				boolean aExistsReasoning = aReasoningConnection.get()
-				                                               .subject(z)
-				                                               .predicate(RDF.TYPE)
-				                                               .object(A)
-				                                               .ask();
+					// But if we do the same thing, but this time we don't disable reasoning, remember we said `RL` when
+					// we created the `Connection`, we will see that the statement is inferred to exist.
+					boolean aExistsReasoning = aReasoningConnection.get()
+					                                               .subject(z)
+					                                               .predicate(RDF.TYPE)
+					                                               .object(A)
+					                                               .ask();
 
-				System.out.println("Exists with reasoning? " + aExistsReasoning);
+					System.out.println("Exists with reasoning? " + aExistsReasoning);
 
-				// Pretty cool!  Now lets find out _why_ that statement was inferred by the reasoner.  Stardog can
-				// provide explanations for why an inference was made in the form of a
-				// [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html).  A `Proof`
-				// will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
-				// To get the explanation, we simply ask the `Connection` to provide us with the `Proof` for the given
-				// [Expression](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/Expression.html).
-				// An `Expression` is an OWL Axiom as a collection of RDF statements and are created using
-				// [ExpressionFactory](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html)
-				Proof aExplanation = aReasoningConnection.explain(type(z, A)).proof();
+					// Pretty cool!  Now lets find out _why_ that statement was inferred by the reasoner.  Stardog can
+					// provide explanations for why an inference was made in the form of a
+					// [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html).  A `Proof`
+					// will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
+					// To get the explanation, we simply ask the `Connection` to provide us with the `Proof` for the given
+					// [Expression](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/Expression.html).
+					// An `Expression` is an OWL Axiom as a collection of RDF statements and are created using
+					// [ExpressionFactory](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html)
+					Proof aExplanation = aReasoningConnection.explain(type(z, A)).proof();
 
-				// Now that we have the proof, we can print it out and we will see that the subClassOf axiom is
-				// responsible for the inference.
-				System.out.println("\nExplain inference: ");
-				System.out.println(ProofWriter.toString(aExplanation));
+					// Now that we have the proof, we can print it out and we will see that the subClassOf axiom is
+					// responsible for the inference.
+					System.out.println("\nExplain inference: ");
+					System.out.println(ProofWriter.toString(aExplanation));
 
-				// Another statement the reasoner will infer is `(x, RDF.TYPE, A)`.  But to infer this, it needs both of
-				// the axioms in the TBox, so the `Proof` to explain this is a bit more complicated.
-				aExplanation = aReasoningConnection.explain(type(x, A)).proof();
+					// Another statement the reasoner will infer is `(x, RDF.TYPE, A)`.  But to infer this, it needs both of
+					// the axioms in the TBox, so the `Proof` to explain this is a bit more complicated.
+					aExplanation = aReasoningConnection.explain(type(x, A)).proof();
 
-				System.out.println("Explain inference: ");
-				System.out.println(ProofWriter.toString(aExplanation));
+					System.out.println("Explain inference: ");
+					System.out.println(ProofWriter.toString(aExplanation));
 
-				// Now let's Introduce a simple inconsistency in our database.  We'll say that A and D are disjoint and
-				// that `D(z)`.  We have already shown that `A(z)`, so `z` is both an `A` and a `D`, and that's the
-				// inconsistency.
-				aReasoningConnection.begin();
-				aReasoningConnection.add()
-				                    .statement(A, OWL.DISJOINTWITH, C)
-				                    .statement(z, RDF.TYPE, C);
-				aReasoningConnection.commit();
+					// Now let's Introduce a simple inconsistency in our database.  We'll say that A and D are disjoint and
+					// that `D(z)`.  We have already shown that `A(z)`, so `z` is both an `A` and a `D`, and that's the
+					// inconsistency.
+					aReasoningConnection.begin();
+					aReasoningConnection.add()
+					                    .statement(A, OWL.DISJOINTWITH, C)
+					                    .statement(z, RDF.TYPE, C);
+					aReasoningConnection.commit();
 
-				// We can see now that our database is inconsistent
-				System.out.println("Consistent? " + aReasoningConnection.isConsistent());
+					// We can see now that our database is inconsistent
+					System.out.println("Consistent? " + aReasoningConnection.isConsistent());
 
-				// But maybe we didn't know that we were making an error, so we'll be wondering why the database is
-				// now inconsistent.  Fortunately for us, Stardog can explain that as well.  Let's ask for the `Proof`
-				// and find out why.
-				Proof aProof = aReasoningConnection.explainInconsistency().proof();
-				System.out.println("Explain inconsistency: ");
-				System.out.println(ProofWriter.toString(aProof));
+					// But maybe we didn't know that we were making an error, so we'll be wondering why the database is
+					// now inconsistent.  Fortunately for us, Stardog can explain that as well.  Let's ask for the `Proof`
+					// and find out why.
+					Proof aProof = aReasoningConnection.explainInconsistency().proof();
+					System.out.println("Explain inconsistency: ");
+					System.out.println(ProofWriter.toString(aProof));
 
-				System.out.println("Render only asserted statements: ");
-				System.out.println(ExpressionWriter.toString(aProof.getStatements()));
+					System.out.println("Render only asserted statements: ");
+					System.out.println(ExpressionWriter.toString(aProof.getStatements()));
+				}
+				finally {
+					if (aAdminConnection.list().contains("reasoningTest")) {
+						aAdminConnection.drop("reasoningTest");
+					}
+				}
 			}
 		}
 		finally {

@@ -63,57 +63,63 @@ public class ICVExample {
 					aAdminConnection.drop("testICVExample");
 				}
 
-				aAdminConnection.createMemory("testICVExample");
-			}
+				// create a disk database
+				aAdminConnection.disk("testICVExample").create();
 
-			// Obtain a connection to the database
+				// Obtain a connection to the database
+				try (Connection aConn = ConnectionConfiguration
+					                        .to("testICVExample")
+					                        .reasoning(true)
+					                        .credentials("admin", "admin")
+					                        .connect()) {
+					IRI Engine = Values.iri("urn:Engine");
+					IRI Product = Values.iri("urn:Product");
+					IRI Manufacturer = Values.iri("urn:Manufacturer");
+					IRI manufacturedBy = Values.iri("urn:manufacturedBy");
+					IRI e1 = Values.iri("urn:e1");
+					IRI m1 = Values.iri("urn:m1");
 
-			try (Connection aConn = ConnectionConfiguration
-				                        .to("testICVExample")
-				                        .reasoning(true)
-				                        .credentials("admin", "admin")
-				                        .connect()) {
-				IRI Engine = Values.iri("urn:Engine");
-				IRI Product = Values.iri("urn:Product");
-				IRI Manufacturer = Values.iri("urn:Manufacturer");
-				IRI manufacturedBy = Values.iri("urn:manufacturedBy");
-				IRI e1 = Values.iri("urn:e1");
-				IRI m1 = Values.iri("urn:m1");
+					Model aGraph = Models2.newModel();
 
-				Model aGraph = Models2.newModel();
+					// Let's create a very simple piece of data, complete with a bit of schema information, to use
+					aGraph.add(Engine, RDFS.SUBCLASSOF, Product);
+					aGraph.add(e1, RDF.TYPE, Engine);
+					aGraph.add(e1, manufacturedBy, m1);
 
-				// Let's create a very simple piece of data, complete with a bit of schema information, to use
-				aGraph.add(Engine, RDFS.SUBCLASSOF, Product);
-				aGraph.add(e1, RDF.TYPE, Engine);
-				aGraph.add(e1, manufacturedBy, m1);
+					// We'll insert that into the database
+					aConn.begin();
+					aConn.add().graph(aGraph);
+					aConn.commit();
 
-				// We'll insert that into the database
-				aConn.begin();
-				aConn.add().graph(aGraph);
-				aConn.commit();
+					// Now let's define a constraint; we want to say that a product must be manufactured by a Manufacturer:
+					Constraint aConstraint = ConstraintFactory.constraint(subClassOf(Product, some(manufacturedBy, Manufacturer)));
 
-				// Now let's define a constraint; we want to say that a product must be manufactured by a Manufacturer:
-				Constraint aConstraint = ConstraintFactory.constraint(subClassOf(Product, some(manufacturedBy, Manufacturer)));
+					// Grab an [ICVConnection](http://docs.stardog.com/java/snarl/com/complexible/stardog/icv/api/ICVConnection.html)
+					// so we can add our constraint to the database and start using ICV.
+					ICVConnection aValidator = aConn.as(ICVConnection.class);
 
-				// Grab an [ICVConnection](http://docs.stardog.com/java/snarl/com/complexible/stardog/icv/api/ICVConnection.html)
-				// so we can add our constraint to the database and start using ICV.
-				ICVConnection aValidator = aConn.as(ICVConnection.class);
+					// Add the constraint we just created to our database
+					aValidator.addConstraint(aConstraint);
 
-				// Add the constraint we just created to our database
-				aValidator.addConstraint(aConstraint);
+					// So we can check whether or not our data is valid,
+					// which it isn't; we're lacking the assertion that m1 is a Manufacturer.
+					System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY)
+					                                  ? "is"
+					                                  : "is NOT") + " valid!");
 
-				// So we can check whether or not our data is valid,
-				// which it isn't; we're lacking the assertion that m1 is a Manufacturer.
-				System.out.println("The data " + (aValidator.isValid(ContextSets.DEFAULT_ONLY)
-				                                  ? "is"
-				                                  : "is NOT") + " valid!");
-
-				// Ok, so our data is invalid.  But what's wrong with it?  It's easy to see in this case, but if we have
-				// a lot of data, it may not be so clear what we're missing.  So lets ask!  Like with reasoning, we
-				// can get a [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html) for
-				// integrity constraint violations.
-				Proof aProof = aValidator.explain(aConstraint).proof();
-				System.out.println(ProofWriter.toString(aProof));
+					// Ok, so our data is invalid.  But what's wrong with it?  It's easy to see in this case, but if we have
+					// a lot of data, it may not be so clear what we're missing.  So lets ask!  Like with reasoning, we
+					// can get a [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html) for
+					// integrity constraint violations.
+					Proof aProof = aValidator.explain(aConstraint).proof();
+					System.out.println(ProofWriter.toString(aProof));
+				}
+				finally {
+					// remove the disk database
+					if (aAdminConnection.list().contains("testICVExample")) {
+						aAdminConnection.drop("testICVExample");
+					}
+				}
 			}
 		}
 		finally {

@@ -57,40 +57,45 @@ public class JenaExample {
 					aAdminConnection.drop("testJena");
 				}
 
-				aAdminConnection.createMemory("testJena");
-			}
+				aAdminConnection.disk("testJena").create();
 
-			// Now we open a Connection our new database
-			try (Connection aConn = ConnectionConfiguration
-				                        .to("testJena")
-				                        .credentials("admin", "admin")
-				                        .connect()) {
+				// Now we open a Connection our new database
+				try (Connection aConn = ConnectionConfiguration
+					                        .to("testJena")
+					                        .credentials("admin", "admin")
+					                        .connect()) {
 
-				// Then we obtain a Jena `Model` for the specified stardog database which is backed by our `Connection`
-				Model aModel = SDJenaFactory.createModel(aConn);
+					// Then we obtain a Jena `Model` for the specified stardog database which is backed by our `Connection`
+					Model aModel = SDJenaFactory.createModel(aConn);
 
-				// Start a transaction before adding the data.  This is not required, but it is faster to group the entire add into a single transaction rather
-				// than rely on the auto commit of the underlying stardog connection.
-				aModel.begin();
+					// Start a transaction before adding the data.  This is not required, but it is faster to group the entire add into a single transaction rather
+					// than rely on the auto commit of the underlying stardog connection.
+					aModel.begin();
 
-				// Read data into the model.  note, this will add statement at a time.  Bulk loading needs to be performed directly with the BulkUpdateHandler provided
-				// by the underlying graph, or read in files in RDF/XML format, which uses the bulk loader natively.  Alternatively, you can load data into the stardog
-				// database using it's native API via the command line client.
-				aModel.getReader("N3").read(aModel, new FileInputStream("data/sp2b_10k.n3"), "");
+					// Read data into the model.  note, this will add statement at a time.  Bulk loading needs to be performed directly with the BulkUpdateHandler provided
+					// by the underlying graph, or read in files in RDF/XML format, which uses the bulk loader natively.  Alternatively, you can load data into the stardog
+					// database using it's native API via the command line client.
+					aModel.getReader("N3").read(aModel, new FileInputStream("data/sp2b_10k.n3"), "");
 
-				// When you're done adding, you need to commit the changes
-				aModel.commit();
+					// When you're done adding, you need to commit the changes
+					aModel.commit();
 
-				// Query that we will run against the data we just loaded
-				String aQueryString = "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}";
+					// Query that we will run against the data we just loaded
+					String aQueryString = "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}";
 
-				// Create a query...
-				Query aQuery = QueryFactory.create(aQueryString);
+					// Create a query...
+					Query aQuery = QueryFactory.create(aQueryString);
 
-				// ... and run it
-				try (QueryExecution aExec = QueryExecutionFactory.create(aQuery, aModel)) {
-					// Now print the results
-					ResultSetFormatter.out(aExec.execSelect(), aModel);
+					// ... and run it
+					try (QueryExecution aExec = QueryExecutionFactory.create(aQuery, aModel)) {
+						// Now print the results
+						ResultSetFormatter.out(aExec.execSelect(), aModel);
+					}
+				}
+				finally {
+					if (aAdminConnection.list().contains("testJena")) {
+						aAdminConnection.drop("testJena");
+					}
 				}
 			}
 		}

@@ -47,36 +47,39 @@ public class ConnectionPoolsExample {
 				if (aAdminConnection.list().contains("testConnectionPool")) {
 					aAdminConnection.drop("testConnectionPool");
 				}
-				aAdminConnection.createMemory("testConnectionPool");
+
+				// Create a disk-based database with default settings
+				aAdminConnection.disk("testConnectionAPI").create();
+				// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
+				// This configuration tells the pool how to create the new connections as they are needed.
+				ConnectionConfiguration aConnConfig = ConnectionConfiguration
+					                                      .to("testConnectionPool")
+					                                      .credentials("admin", "admin");
+
+				// Now we want to create the [configuration for our pool](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionPoolConfig.html).
+				// We start by providing the `ConnectionConfiguration` we just created, that's the basis of the pool.  Then
+				// we can configure some aspects of the pool such as expiration time and maximum size.
+				ConnectionPoolConfig aConfig = ConnectionPoolConfig
+					                               .using(aConnConfig)
+					                               .minPool(10)
+					                               .maxPool(1000)
+					                               .expiration(1, TimeUnit.HOURS)
+					                               .blockAtCapacity(1, TimeUnit.MINUTES);
+
+				// Once we have a valid configuration, we can actually create the `ConnectionPool`
+				ConnectionPool aPool = aConfig.create();
+
+				// Which we can use to get our Connections from this point forward
+				Connection aConn = aPool.obtain();
+
+				// And after we've done our work with the connection, instead of closing it, I want to return it to the pool instead.
+				aPool.release(aConn);
+
+				// When you're done with the pool, shut it down.  This will release all pooled connections.
+				aPool.shutdown();
+				// Remove the database
+				aAdminConnection.drop("testConnectionPool");
 			}
-
-			// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
-			// This configuration tells the pool how to create the new connections as they are needed.
-			ConnectionConfiguration aConnConfig = ConnectionConfiguration
-				                                      .to("testConnectionPool")
-				                                      .credentials("admin", "admin");
-
-			// Now we want to create the [configuration for our pool](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionPoolConfig.html).
-			// We start by providing the `ConnectionConfiguration` we just created, that's the basis of the pool.  Then
-			// we can configure some aspects of the pool such as expiration time and maximum size.
-			ConnectionPoolConfig aConfig = ConnectionPoolConfig
-				                               .using(aConnConfig)
-				                               .minPool(10)
-				                               .maxPool(1000)
-				                               .expiration(1, TimeUnit.HOURS)
-				                               .blockAtCapacity(1, TimeUnit.MINUTES);
-
-			// Once we have a valid configuration, we can actually create the `ConnectionPool`
-			ConnectionPool aPool = aConfig.create();
-
-			// Which we can use to get our Connections from this point forward
-			Connection aConn = aPool.obtain();
-
-			// And after we've done our work with the connection, instead of closing it, I want to return it to the pool instead.
-			aPool.release(aConn);
-
-			// When you're done with the pool, shut it down.  This will release all pooled connections.
-			aPool.shutdown();
 		}
 		finally {
 			// always shut down the instance when you are done with it

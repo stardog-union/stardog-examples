@@ -61,76 +61,82 @@ public class WaldoAPIExample {
 					dbms.drop("waldoTest");
 				}
 
-				dbms.memory("waldoTest")
+				// Create a disk database with full-text index
+				dbms.disk("waldoTest")
 				    .set(SearchOptions.SEARCHABLE, true)
 				    .create();
-			}
 
-			// Obtain a `Connection` to the database we just created
-			try (Connection aConn = ConnectionConfiguration
-				                        .to("waldoTest")
-				                        .credentials("admin", "admin")
-				                        .connect()) {
-				// To start, lets add some data into the database so that it can be queried and searched
-				aConn.begin();
-				aConn
-					.add().io()
-					.format(RDFFormat.RDFXML)
-					.file(Paths.get("data/catalog.rdf"));
+				// Obtain a `Connection` to the database we just created
+				try (Connection aConn = ConnectionConfiguration
+					                        .to("waldoTest")
+					                        .credentials("admin", "admin")
+					                        .connect()) {
+					// To start, lets add some data into the database so that it can be queried and searched
+					aConn.begin();
+					aConn
+						.add().io()
+						.format(RDFFormat.RDFXML)
+						.file(Paths.get("data/catalog.rdf"));
 
-				aConn.commit();
+					aConn.commit();
 
-				// Lets try an example with the basic Waldo API
-				// We want to view this connection as a [searchable connection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/SearchConnection.html),
-				// so we request a view of the `Connection` as a `SearchConnection`
-				SearchConnection aSearchConn = aConn.as(SearchConnection.class);
+					// Lets try an example with the basic Waldo API
+					// We want to view this connection as a [searchable connection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/SearchConnection.html),
+					// so we request a view of the `Connection` as a `SearchConnection`
+					SearchConnection aSearchConn = aConn.as(SearchConnection.class);
 
-				// With that done, let's create a [Searcher](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/Searcher.html)
-				// that we can use to run some full text searches over the database.
-				// Here we will specify that we only want results over a score of `0.5`, and no more than `50` results
-				// for things that match the search term `mac`.  Stardog's full text search is backed by [Lucene](http://lucene.apache.org)
-				// so you can use the full Lucene search syntax in your queries.
-				Searcher aSearch = aSearchConn.search()
-				                              .limit(50)
-				                              .query("mac")
-				                              .threshold(0.5);
+					// With that done, let's create a [Searcher](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/Searcher.html)
+					// that we can use to run some full text searches over the database.
+					// Here we will specify that we only want results over a score of `0.5`, and no more than `50` results
+					// for things that match the search term `mac`.  Stardog's full text search is backed by [Lucene](http://lucene.apache.org)
+					// so you can use the full Lucene search syntax in your queries.
+					Searcher aSearch = aSearchConn.search()
+					                              .limit(50)
+					                              .query("mac")
+					                              .threshold(0.5);
 
-				// We can run the search and then iterate over the results
-				SearchResults aSearchResults = aSearch.search();
+					// We can run the search and then iterate over the results
+					SearchResults aSearchResults = aSearch.search();
 
-				try (CloseableIterator<SearchResult> resultIt = aSearchResults.iterator()) {
-					System.out.println("\nAPI results: ");
-					while (resultIt.hasNext()) {
-						SearchResult aHit = resultIt.next();
+					try (CloseableIterator<SearchResult> resultIt = aSearchResults.iterator()) {
+						System.out.println("\nAPI results: ");
+						while (resultIt.hasNext()) {
+							SearchResult aHit = resultIt.next();
 
-						System.out.println(aHit.getHit() + " with a score of: " + aHit.getScore());
+							System.out.println(aHit.getHit() + " with a score of: " + aHit.getScore());
+						}
+					}
+
+					// The `Searcher` can be re-used if we want to find the next set of results.  We already found the
+					// first fifty, so lets grab the next page.
+					aSearch.offset(50);
+
+					aSearchResults = aSearch.search();
+
+					// The Stardog full-text search index no different than the RDF index, which means you can query it
+					// via SPARQL, even combining your search over the full-text index with BGPs which query your RDF
+					// letting you query *both* indexes at the same time.  The SPARQL syntax is based on the LARQ
+					// syntax in Jena.  Here you will see the SPARQL query that is equivalent to the search we just
+					// did via `Searcher`, which we can see when we print the results.
+					String aQuery = "SELECT DISTINCT ?s ?score WHERE {\n" +
+					                "\t?s ?p ?l.\n" +
+					                "\t( ?l ?score ) <" + SearchConnection.MATCH_PREDICATE + "> ( 'mac' 0.5 50 ).\n" +
+					                "}";
+
+					SelectQuery query = aConn.select(aQuery);
+
+					try (TupleQueryResult aResult = query.execute()) {
+						System.out.println("Query results: ");
+						while (aResult.hasNext()) {
+							BindingSet result = aResult.next();
+
+							System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
+						}
 					}
 				}
-
-				// The `Searcher` can be re-used if we want to find the next set of results.  We already found the
-				// first fifty, so lets grab the next page.
-				aSearch.offset(50);
-
-				aSearchResults = aSearch.search();
-
-				// The Stardog full-text search index no different than the RDF index, which means you can query it
-				// via SPARQL, even combining your search over the full-text index with BGPs which query your RDF
-				// letting you query *both* indexes at the same time.  The SPARQL syntax is based on the LARQ
-				// syntax in Jena.  Here you will see the SPARQL query that is equivalent to the search we just
-				// did via `Searcher`, which we can see when we print the results.
-				String aQuery = "SELECT DISTINCT ?s ?score WHERE {\n" +
-				                "\t?s ?p ?l.\n" +
-				                "\t( ?l ?score ) <" + SearchConnection.MATCH_PREDICATE + "> ( 'mac' 0.5 50 ).\n" +
-				                "}";
-
-				SelectQuery query = aConn.select(aQuery);
-
-				try (TupleQueryResult aResult = query.execute()) {
-					System.out.println("Query results: ");
-					while (aResult.hasNext()) {
-						BindingSet result = aResult.next();
-
-						System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
+				finally {
+					if (dbms.list().contains("waldoTest")) {
+						dbms.drop("waldoTest");
 					}
 				}
 			}

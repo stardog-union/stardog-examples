@@ -76,6 +76,8 @@ public class StardogGraphComputerExample {
 			}
 		}
 		finally {
+			// delete the database and stop Stardog
+			Util.cleanup(LUBM);
 			aStardog.shutdown();
 		}
 	}

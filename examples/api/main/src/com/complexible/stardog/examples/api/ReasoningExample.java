@@ -68,52 +68,58 @@ public class ReasoningExample {
 					aAdminConnection.drop("reasoningExampleTest");
 				}
 
-				// Convenience function for creating a non-persistent in-memory database with all the default settings.
-				aAdminConnection.createMemory("reasoningExampleTest");
-			}
+				// create a disk database
+				aAdminConnection.disk("reasoningExampleTest").create();
 
-			// Using reasoning via SNARL
-			// -------------------------
-			// Now that we've created our database for the example, lets open a connection to it.  For that we use the
-			// [SNARLConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/SNARLConnectionConfiguration.html)
-			// to configure and open a new connection to a database.
-			//
-			// We'll use the configuration to specify which database we want to connect to as well as our login information,
-			// then we can obtain a new connection.  This is also where you specify whether you would like the connection
-			// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
-			// reasoning you want to use when you create a database.
 
-			try (ReasoningConnection aReasoningConn = ConnectionConfiguration
-				                                          .to("reasoningExampleTest")
-				                                          .credentials("admin", "admin")
-				                                          .reasoning(true)
-				                                          .connect()
-				                                          .as(ReasoningConnection.class);
-			     // and obtain a non-reasoning connection to the database for comparison
-			     Connection aConn = ConnectionConfiguration
-				                        .to("reasoningExampleTest")
-				                        .credentials("admin", "admin")
-				                        .connect()) {
+				// Using reasoning via SNARL
+				// -------------------------
+				// Now that we've created our database for the example, lets open a connection to it.  For that we use the
+				// [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
+				// to configure and open a new connection to a database.
+				//
+				// We'll use the configuration to specify which database we want to connect to as well as our login information,
+				// then we can obtain a new connection.  This is also where you specify whether you would like the connection
+				// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
+				// reasoning you want to use when you create a database.
 
-				// Now lets add lubm1 and the lubm ontology to the database.
-				// We can use either the reasoning connection or the base connection for addition, results will be same
-				aReasoningConn.begin();
+				try (ReasoningConnection aReasoningConn = ConnectionConfiguration
+					                                          .to("reasoningExampleTest")
+					                                          .credentials("admin", "admin")
+					                                          .reasoning(true)
+					                                          .connect()
+					                                          .as(ReasoningConnection.class);
+				     // and obtain a non-reasoning connection to the database for comparison
+				     Connection aConn = ConnectionConfiguration
+					                        .to("reasoningExampleTest")
+					                        .credentials("admin", "admin")
+					                        .connect()) {
 
-				aReasoningConn.add().io()
-				              .format(RDFFormat.RDFXML)
-				              .file(Paths.get("data/University0_0.owl"))
-				              .file(Paths.get("data/lubmSchema.owl"));
+					// Now lets add lubm1 and the lubm ontology to the database.
+					// We can use either the reasoning connection or the base connection for addition, results will be same
+					aReasoningConn.begin();
 
-				aReasoningConn.commit();
+					aReasoningConn.add().io()
+					              .format(RDFFormat.RDFXML)
+					              .file(Paths.get("data/University0_0.owl"))
+					              .file(Paths.get("data/lubmSchema.owl"));
 
-				// So let's print out how many of some different types there are...
-				System.out.println("The default results...");
-				printCounts(aConn);
+					aReasoningConn.commit();
 
-				// Let's do the same thing with the reasoning connection
-				// and print the same set of counts, but this time, with reasoning so we can see the difference
-				System.out.println("\nResults with reasoning...");
-				printCounts(aReasoningConn);
+					// So let's print out how many of some different types there are...
+					System.out.println("The default results...");
+					printCounts(aConn);
+
+					// Let's do the same thing with the reasoning connection
+					// and print the same set of counts, but this time, with reasoning so we can see the difference
+					System.out.println("\nResults with reasoning...");
+					printCounts(aReasoningConn);
+				}
+				finally {
+					if (aAdminConnection.list().contains("reasoningExampleTest")) {
+						aAdminConnection.drop("reasoningExampleTest");
+					}
+				}
 			}
 		}
 		finally {

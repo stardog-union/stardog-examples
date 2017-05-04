@@ -88,6 +88,8 @@ public final class TinkerPop3Example {
 			}
 		}
 		finally {
+			// delete the database and stop Stardog
+			Util.cleanup(TP3_DB);
 			aStardog.shutdown();
 		}
 	}
