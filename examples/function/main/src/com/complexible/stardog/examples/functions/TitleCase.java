@@ -88,7 +88,7 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 		assertStringLiteral(theArgs[0]);
 
 		// We know that we have a string, so let's just title case it and return it.
-		return literal(Strings2.toTitleCase(theArgs[0].stringValue()), StardogValueFactory.XSD.STRING);
+		return literal(Strings2.toTitleCase(theArgs[0].stringValue()), StardogValueFactory.Datatype.STRING);
 	}
 
 

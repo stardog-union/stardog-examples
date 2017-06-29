@@ -16,6 +16,7 @@
 package com.complexible.stardog.foaf;
 
 import com.complexible.common.rdf.model.Values;
+import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
@@ -30,7 +31,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openrdf.model.IRI;
-import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.OWL;
 import org.openrdf.model.vocabulary.RDF;
@@ -54,16 +54,21 @@ public class FOAFTest {
 	private static final IRI bob = Values.iri(NS, "bob");
 	private static final IRI homepage = Values.iri(NS, "homepage");
 
+	private static Stardog stardog;
+
 	@BeforeClass
 	public static void beforeClass() throws Exception {
+		// we need to initialize the Stardog instance which will automatically start the embedded server.
+		stardog = Stardog.builder().create();
+
 		try (AdminConnection aAdminConn = AdminConnectionConfiguration.toEmbeddedServer()
-		                                                              .credentials("admin", "admin")
-		                                                              .connect()) {
+		                                                         .credentials("admin", "admin")
+		                                                         .connect()) {
 			if (aAdminConn.list().contains(DB)) {
 				aAdminConn.drop(DB);
 			}
 
-			try (Connection aConn = aAdminConn.memory(DB)
+			try (Connection aConn = aAdminConn.newDatabase(DB)
 			                                  .set(DatabaseOptions.ARCHETYPES, ImmutableList.of("foaf"))
 			                                  .create()
 			                                  .connect()) {
@@ -78,7 +83,8 @@ public class FOAFTest {
 	}
 
 	@AfterClass
-	public static void afterClass() {
+	public static void afterClass() throws Exception {
+		stardog.shutdown();
 	}
 
 	@Test

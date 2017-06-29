@@ -1,4 +1,4 @@
-group = "com.complexible.stardog.examples.listener"
+group = "com.complexible.stardog.examples.connectable"
 
 dependencies {
 	// server core modules

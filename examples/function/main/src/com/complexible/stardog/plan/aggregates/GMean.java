@@ -96,16 +96,13 @@ public final class GMean extends AbstractAggregate {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	protected void aggregate(final Value theValue, final long theMultiplicity) throws ExpressionEvaluationException {
+	protected void aggregate(final long theMultiplicity, final Value theValue, final Value... theOtherValues) throws ExpressionEvaluationException {
 		if (!(theValue instanceof Literal)) {
 			throw new ExpressionEvaluationException("Invalid argument to " + getName() + " argument MUST be a literal value, was: " + theValue);
 		}
 
-		mCount.aggregate(theValue, theMultiplicity);
+		mCount.aggregate(theMultiplicity, theValue);
 
 		if (mCurr == null) {
 			mCurr = theValue;

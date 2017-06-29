@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.complexible.stardog.examples.listener;
+package com.complexible.stardog.examples.connectable.listener;
 
 import java.io.PrintStream;
 import java.util.Optional;

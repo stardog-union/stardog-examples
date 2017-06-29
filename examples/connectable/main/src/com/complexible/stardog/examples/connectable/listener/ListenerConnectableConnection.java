@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
-package com.complexible.stardog.examples.listener;
+package com.complexible.stardog.examples.connectable.listener;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 import com.beust.jcommander.internal.Lists;
 import com.complexible.common.base.Change;
