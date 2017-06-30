@@ -12,3 +12,6 @@ examples/.idea/misc.xml
 examples/.idea/modules.xml
 examples/.idea/vcs.xml
 examples/.idea/workspace.xml
+
+.DS_Store/
+examples/.DS_Store/
