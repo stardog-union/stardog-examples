@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.complexible.stardog.examples.listener;
+package com.complexible.stardog.examples.connectable.listener;
 
 import com.complexible.stardog.AbstractStardogModule;
 import com.complexible.stardog.db.ConnectableFactory;

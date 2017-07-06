@@ -2,6 +2,7 @@
 *.iml
 *.ipr
 *.iws
+.idea/
 
 # gradle
 .gradle
