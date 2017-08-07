@@ -1,0 +1,31 @@
+prefix agg: <urn:aggregate>
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :r1 a spa:RegressionModel ;
+            spa:arguments (?genres ?contentRating ?storyline ?metaCritic) ;
+            spa:predict ?rating ;
+            spa:crossValidation 100 ;
+            spa:validationMetric spa:mae .
+    }
+}
+WHERE {
+        SELECT 
+        (agg:spa:set(?genre) as ?genres) 
+        ?contentRating
+        ?storyline
+        ?metaCritic
+        ?rating
+        {
+            ?movie  :rating ?rating .
+
+            OPTIONAL {
+                ?movie  :genre ?genre ;
+                        :contentRating ?contentRating ;
+                        :storyline ?storyline ;
+                        :metaCritic ?metaCritic .
+            }
+        }
+        GROUP BY ?movie ?rating ?contentRating ?storyline ?metaCritic
+}

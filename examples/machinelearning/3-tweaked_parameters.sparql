@@ -1,0 +1,38 @@
+prefix agg: <urn:aggregate>
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :r2 a spa:RegressionModel ;
+                spa:parameters 'loss_function=squared -l 0.08 -b 22 --l1 0.000001 --passes 2 -k -c --holdout_off' ;
+                spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
+                spa:predict ?rating ;
+                spa:crossValidation 100 ;
+                spa:validationMetric spa:mae .
+    }
+}
+WHERE {
+    SELECT         
+        (agg:spa:set(?author) as ?authors)
+        (agg:spa:set(?director) as ?directors)
+        (agg:spa:set(?producer) as ?producers)
+    	(agg:spa:set(?keyword) as ?keywords)
+        ?contentRating
+        ?year
+        ?metaCritic
+        ?rating
+    {
+        ?movie :rating ?rating .
+
+        OPTIONAL {
+            ?movie  :author ?author ;
+                    :director ?director ;
+                    :productionCompany ?producer ;
+                    :keyword ?keyword ;
+                    :contentRating ?contentRating ;
+                    :copyrightYear ?year ;
+                    :metaCritic ?metaCritic .
+        }
+    }
+    GROUP BY ?movie ?contentRating ?year ?metaCritic ?rating
+}

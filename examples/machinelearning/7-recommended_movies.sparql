@@ -1,0 +1,50 @@
+prefix agg: <urn:aggregate>
+prefix spa: <tag:stardog:api:analytics:>
+
+SELECT ?recommendation ?confidence
+WHERE {
+
+    graph spa:model {
+        :c1 spa:arguments (?actors ?writers ?directors ?genres ?producers ?keywords ?languages ?contentRating ?year ?metaCritic ?rating) ;
+            spa:confidence ?confidence ;
+            spa:predict ?recommendation .
+    }
+    {
+        SELECT         
+        (agg:spa:set(?actor) as ?actors) 
+        (agg:spa:set(?writer) as ?writers)
+        (agg:spa:set(?director) as ?directors)
+        (agg:spa:set(?genre) as ?genres)
+        (agg:spa:set(?producer) as ?producers)
+    	(agg:spa:set(?keyword) as ?keywords)
+    	(agg:spa:set(?language) as ?languages)
+        ?contentRating
+        ?year
+        ?metaCritic
+        ?storyline
+        ?rating
+        ?movie
+        {
+          ?movie    :rating ?rating .
+
+          OPTIONAL {
+            ?movie  :actor ?actor ;
+                    :author ?writer ;
+                    :director ?director ;
+                    :genre ?genre ;
+                    :contentRating ?contentRating ;
+                    :copyrightYear ?year ;
+                    :productionCompany ?producer ;
+                    :keyword ?keyword ;
+                    :language ?language ;
+                    :storyline ?storyline ;
+                    :metaCritic ?metaCritic .
+          }
+          FILTER(?movie in (t:tt0118715))   # The Big Lebowski
+        }
+        GROUP BY ?movie ?year ?contentRating ?metaCritic ?storyline ?rating
+    } 
+}
+ORDER BY DESC(?confidence)
+LIMIT 5
+
