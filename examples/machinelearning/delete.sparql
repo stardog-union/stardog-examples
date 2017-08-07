@@ -1,0 +1,7 @@
+prefix spa: <tag:stardog:api:analytics:>
+
+DELETE DATA {
+  graph spa:model {
+      [] spa:deleteModel :r2 .
+  }
+}
