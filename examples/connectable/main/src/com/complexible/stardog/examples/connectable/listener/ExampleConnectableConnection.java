@@ -25,17 +25,20 @@ import com.complexible.common.base.Change;
 import com.complexible.common.base.Options;
 import com.complexible.common.rdf.StatementSource;
 import com.complexible.common.rdf.StatementSources;
+import com.complexible.stardog.StardogException;
 import com.complexible.stardog.db.ConnectableConnection;
 import com.complexible.stardog.db.tx.IndexChange;
+import com.complexible.stardog.db.tx.TxFormats;
 import com.complexible.stardog.plan.optimizer.OptimizationPipeline;
+import com.complexible.tx.api.BaseResourceTransaction;
 import com.complexible.tx.api.FatalException;
 import com.complexible.tx.api.HeuristicRollbackException;
 import com.complexible.tx.api.IllegalTransactionStateException;
+import com.complexible.tx.api.PrepareResult;
+import com.complexible.tx.api.ResourceTransaction;
 import com.complexible.tx.api.ResourceTransactionException;
 import com.complexible.tx.api.Transaction;
-import com.complexible.tx.api.Transactions;
-import com.complexible.tx.api.event.TransactionCommitEvent;
-import com.complexible.tx.api.event.TransactionDataEvent;
+import com.complexible.tx.api.TransactionData;
 import com.complexible.tx.api.logging.recovery.DefaultRecoveryContext;
 import com.complexible.tx.api.logging.recovery.RecoveryContext;
 import com.google.common.base.Preconditions;
@@ -45,20 +48,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Listener connection implementation. This class registers transaction listeners for the connection so that triples/quads added/removed during a transaction
- * can be seen and processed as needed. This specific implementation simply writes the triples to the log file but any user-specific functionality can be
- * implemented here.
+ * Listener connection implementation. This class receives RDF statements data when it's transactionally added to or removed from
+ * a databases and prints it to the standard output. Any user-specific processing functionality can be implemented here.
  *
  * @author  Evren Sirin
  */
-final class ListenerConnectableConnection implements ConnectableConnection {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ListenerConnectableConnection.class);
+final class ExampleConnectableConnection implements ConnectableConnection {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleConnectableConnection.class);
 
 	private final String mDb;
 
 	private boolean mClosed = false;
 
-	ListenerConnectableConnection(final String theDb) {
+	// we will buffer all changes until commit because the transaction will have no effect unless it is committed
+	private final List<Change> mChanges = Lists.newArrayList();
+
+	ExampleConnectableConnection(final String theDb) {
 		mDb = theDb;
 	}
 
@@ -72,7 +77,7 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 
 		return theType.isInstance(this)
 		       ? Optional.of((T) this)
-		       : Optional.<T>empty();
+		       : Optional.empty();
 	}
 
 	/**
@@ -128,6 +133,11 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 		return ImmutableSet.of();
 	}
 
+	@Override
+	public void apply(final TransactionData<Change<IndexChange, StatementSource>, TxFormats.RDF> theData) throws StardogException {
+		mChanges.add(theData.getData());
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -139,21 +149,22 @@ final class ListenerConnectableConnection implements ConnectableConnection {
 
 		System.out.println("Transaction started for database " + mDb);
 
-		// we will buffer all changes until commit because the transaction will have no effect unless it is committed
-		final List<Change> aChanges = Lists.newArrayList();
-
-		// attach a listener for data events. every time triples are added/removed directly or via a SPARQL update
-		// query an associated event will be fired
-		Transactions.listenFor(theTransaction, TransactionDataEvent.class, theEvent -> {
-			Object aTxData = theEvent.getData().getData();
-			// only process index changes
-			if (aTxData instanceof Change && ((Change) aTxData).getChangeType() instanceof IndexChange) {
-				aChanges.add((Change) aTxData);
+		// registering a child transaction object which will handle all transactional events, e.g. commits and rollbacks
+		theTransaction.join(new BaseResourceTransaction(ResourceTransaction.META_TRANSACTION) {
+			@Override
+			protected PrepareResult prepare() throws ResourceTransactionException {
+				return PrepareResult.success();
 			}
-		});
 
-		Transactions.listenFor(theTransaction, TransactionCommitEvent.class, theEvent -> {
-			processIndexChange(aChanges);
+			@Override
+			protected void commit() throws ResourceTransactionException {
+				processIndexChange(mChanges);
+			}
+
+			@Override
+			protected void rollback() throws ResourceTransactionException {
+				mChanges.clear();
+			}
 		});
 	}
 

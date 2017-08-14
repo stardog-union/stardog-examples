@@ -21,12 +21,12 @@ import com.complexible.stardog.db.ConnectionContext;
 import com.google.common.base.Preconditions;
 
 /**
- * Connectable implementation for the listener. Sole responsibility for this class is to create a (sub)connection when the
+ * Connectable implementation for the example. Sole responsibility for this class is to create a (sub)connection when the
  * user connects to a database.
  *
  * @author  Evren Sirin
  */
-final class ListenerConnectable implements Connectable {
+final class ExampleConnectable implements Connectable {
 	private boolean mClosed = false;
 
 	private boolean mInitialized = false;
@@ -60,6 +60,6 @@ final class ListenerConnectable implements Connectable {
 	public ConnectableConnection openConnection(final ConnectionContext theContext) throws Exception {
 		// retrieve the database name from the connnection context and pass it to the connection
 		String aDbName = theContext.require(ConnectionContext.NAME, String.class);
-		return new ListenerConnectableConnection(aDbName);
+		return new ExampleConnectableConnection(aDbName);
 	}
 }

@@ -22,28 +22,27 @@ import com.complexible.stardog.db.ConnectableFactory;
 import com.complexible.stardog.db.ConnectableMetadata;
 import com.complexible.stardog.index.Index;
 import com.complexible.stardog.util.backup.Backup;
-import com.google.inject.Inject;
 
 /**
- * Listener connectable factory. This factory is a singleton and used to create one connectable for each database instance.
+ * Example connectable factory. This factory is a singleton and used to create one connectable for each database instance.
  *
  * @author  Evren Sirin
  */
-final class ListenerConnectableFactory implements ConnectableFactory<ListenerConnectable> {
+final class ExampleConnectableFactory implements ConnectableFactory<ExampleConnectable> {
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Optional<ListenerConnectable> create(final ConnectableMetadata theMetadata, final Index theIndex) throws Exception {
-		return Optional.of(new ListenerConnectable());
+	public Optional<ExampleConnectable> create(final ConnectableMetadata theMetadata, final Index theIndex) throws Exception {
+		return Optional.of(new ExampleConnectable());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Optional<ListenerConnectable> restore(final ConnectableMetadata theMetadata, final Index theIndex,
-	                                             final Backup theBackup, final PrintStream theStream) throws Exception {
-		return Optional.of(new ListenerConnectable());
+	public Optional<ExampleConnectable> restore(final ConnectableMetadata theMetadata, final Index theIndex,
+	                                            final Backup theBackup, final PrintStream theStream) throws Exception {
+		return Optional.of(new ExampleConnectable());
 	}
 }
