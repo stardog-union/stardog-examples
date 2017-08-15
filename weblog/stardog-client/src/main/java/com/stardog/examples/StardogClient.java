@@ -62,14 +62,16 @@ public class StardogClient {
                 connection.commit();
 
                 // Query the database to get our list of Marvel superheroes and print the results to the console
-                SelectQuery query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> select * { ?s rdf:type foaf:Person }");
+                SelectQuery query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> " +
+                        "select * { ?s rdf:type foaf:Person }");
                 TupleQueryResult tupleQueryResult = query.execute();
                 QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
 
                 // Query the database to see if the any of Thor's friends are not listed in the database and
                 // print the results to the console
-                query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> select * {<http://api.stardog.com/thor> foaf:knows ?o .\n" +
-                        "          filter not exists {?o rdf:type foaf:Person . } \n" +
+                query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> " +
+                        "select * {<http://api.stardog.com/thor> foaf:knows ?o ." +
+                        "          filter not exists {?o rdf:type foaf:Person . } " +
                         " } ");
                 tupleQueryResult = query.execute();
                 QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
@@ -93,8 +95,9 @@ public class StardogClient {
 
                 // Query the database again to see if the any of the Thor's friends are not listed in the database and
                 // print the results to the console. There should be no results in the query since we added Iron Man.
-                query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> select * {<http://api.stardog.com/thor> foaf:knows ?o .\n" +
-                        "          filter not exists {?o rdf:type foaf:Person . } \n" +
+                query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> " +
+                        "select * {<http://api.stardog.com/thor> foaf:knows ?o ." +
+                        "          filter not exists {?o rdf:type foaf:Person . }" +
                         " } ");
                 tupleQueryResult = query.execute();
                 QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
@@ -169,12 +172,7 @@ public class StardogClient {
      * @return Stardog Connection
      */
     public static Connection getConnection(ConnectionPool connectionPool) {
-        try {
-            return connectionPool.obtain();
-        } catch (StardogException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return connectionPool.obtain();
     }
 
     /**

@@ -12,7 +12,15 @@ repositories {
 
 dependencies {
     // Core Dependencies
-    compile ('com.complexible.stardog:client-http:4.2.4')
+    compile ('com.complexible.stardog:client-http:5.0.1')
+    compile ('com.complexible.stardog:stardog-spring:5.0.1')
+    compile "com.complexible.stardog:server:5.0.1"
+
+    compile ('org.springframework:spring-core:4.3.10.RELEASE')
+    compile ('org.springframework:spring-beans:4.3.10.RELEASE')
+    compile ('org.springframework:spring-context:4.3.10.RELEASE')
+    compile ('org.springframework:spring-tx:4.3.10.RELEASE')
+    compile ('org.slf4j:slf4j-api:1.6.1')
 }
 
-mainClassName = "com.stardog.examples.StardogClient"
+mainClassName = "com.stardog.examples.StardogSpringClient"
