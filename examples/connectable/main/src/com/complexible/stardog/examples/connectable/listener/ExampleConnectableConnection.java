@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import com.beust.jcommander.internal.Lists;
 import com.complexible.common.base.Change;
 import com.complexible.common.base.Options;
 import com.complexible.common.rdf.StatementSource;
@@ -43,6 +42,7 @@ import com.complexible.tx.api.logging.recovery.DefaultRecoveryContext;
 import com.complexible.tx.api.logging.recovery.RecoveryContext;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import org.openrdf.rio.RDFFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
