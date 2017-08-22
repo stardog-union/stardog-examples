@@ -20,11 +20,11 @@ Setup
 
 In this tutorial we will use multiple users; let's create them:
 ```
-$ stardog-admin user add -n jane --superuser
-$ stardog-admin user add -n john --superuser
+$ stardog-admin user add -N jane --superuser jane
+$ stardog-admin user add -N john --superuser john
 ```
 
-For simplicity the passwords of these users will be their usernames. We declare 
+For simplicity the passwords of these users are set to be their usernames. We declare 
 these users to be superusers so we don't need to grant explicit permissions.
 *Needless to say this is done only for the purposes of this tutorial and should not be 
 repeated in practice*.
