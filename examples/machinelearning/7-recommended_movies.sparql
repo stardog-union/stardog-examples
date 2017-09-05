@@ -25,10 +25,8 @@ WHERE {
         ?rating
         ?movie
         {
-          ?movie    :rating ?rating .
-
-          OPTIONAL {
-            ?movie  :actor ?actor ;
+          ?movie    :rating ?rating ;
+                    :actor ?actor ;
                     :author ?writer ;
                     :director ?director ;
                     :genre ?genre ;
@@ -39,7 +37,7 @@ WHERE {
                     :language ?language ;
                     :storyline ?storyline ;
                     :metaCritic ?metaCritic .
-          }
+
           FILTER(?movie in (t:tt0118715))   # The Big Lebowski
         }
         GROUP BY ?movie ?year ?contentRating ?metaCritic ?storyline ?rating
@@ -47,4 +45,3 @@ WHERE {
 }
 ORDER BY DESC(?confidence)
 LIMIT 5
-

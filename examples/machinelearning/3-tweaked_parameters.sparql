@@ -22,16 +22,18 @@ WHERE {
         ?metaCritic
         ?rating
     {
-        ?movie :rating ?rating .
+        ?movie  :rating ?rating ;
+                :author ?author ;
+                :director ?director ;
+                :keyword ?keyword ;
+                :contentRating ?contentRating ;
+                :copyrightYear ?year .
 
         OPTIONAL {
-            ?movie  :author ?author ;
-                    :director ?director ;
-                    :productionCompany ?producer ;
-                    :keyword ?keyword ;
-                    :contentRating ?contentRating ;
-                    :copyrightYear ?year ;
-                    :metaCritic ?metaCritic .
+            ?movie  :productionCompany ?producer .
+        }
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
         }
     }
     GROUP BY ?movie ?contentRating ?year ?metaCritic ?rating

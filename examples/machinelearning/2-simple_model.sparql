@@ -11,21 +11,21 @@ INSERT {
     }
 }
 WHERE {
-        SELECT 
-        (agg:spa:set(?genre) as ?genres) 
-        ?contentRating
-        ?storyline
-        ?metaCritic
-        ?rating
-        {
-            ?movie  :rating ?rating .
+    SELECT 
+    (agg:spa:set(?genre) as ?genres) 
+    ?contentRating
+    ?storyline
+    ?metaCritic
+    ?rating
+    {
+        ?movie  :rating ?rating ;
+                :genre ?genre ;
+                :contentRating ?contentRating ;
+                :storyline ?storyline .
 
-            OPTIONAL {
-                ?movie  :genre ?genre ;
-                        :contentRating ?contentRating ;
-                        :storyline ?storyline ;
-                        :metaCritic ?metaCritic .
-            }
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
         }
-        GROUP BY ?movie ?rating ?contentRating ?storyline ?metaCritic
+    }
+    GROUP BY ?movie ?rating ?contentRating ?storyline ?metaCritic
 }
