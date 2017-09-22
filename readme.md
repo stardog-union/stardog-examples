@@ -24,7 +24,7 @@ To run any of the examples, you can use the Gradle `execute` task.  By default, 
 program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
 
 ```java
-gradle execute -PmainClass=com.complexible.stardog.examples.ICVExample
+gradle execute -PmainClass=com.complexible.stardog.examples.api.ICVExample
 ```
 
 ## Generating Documentation
