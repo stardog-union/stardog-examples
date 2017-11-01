@@ -182,6 +182,7 @@ final class IndexAccessConnectable implements Connectable {
 	 */
 	@Override
 	public ConnectableConnection openConnection(final ConnectionContext theContext) throws Exception {
-		return new IndexAccessConnectableConnection(mIndex);
+		String aDbName = theContext.require(ConnectionContext.NAME, String.class);
+		return new IndexAccessConnectableConnection(aDbName);
 	}
 }

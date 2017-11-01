@@ -20,23 +20,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import com.beust.jcommander.internal.Lists;
 import com.complexible.common.base.Change;
 import com.complexible.common.base.Options;
 import com.complexible.common.rdf.StatementSource;
 import com.complexible.common.rdf.StatementSources;
 import com.complexible.stardog.db.ConnectableConnection;
 import com.complexible.stardog.db.tx.IndexChange;
-import com.complexible.stardog.index.Index;
 import com.complexible.stardog.plan.optimizer.OptimizationPipeline;
+import com.complexible.tx.api.BaseResourceTransaction;
 import com.complexible.tx.api.FatalException;
 import com.complexible.tx.api.HeuristicRollbackException;
 import com.complexible.tx.api.IllegalTransactionStateException;
+import com.complexible.tx.api.PrepareResult;
+import com.complexible.tx.api.ResourceTransaction;
 import com.complexible.tx.api.ResourceTransactionException;
 import com.complexible.tx.api.Transaction;
-import com.complexible.tx.api.Transactions;
-import com.complexible.tx.api.event.TransactionCommitEvent;
-import com.complexible.tx.api.event.TransactionDataEvent;
 import com.complexible.tx.api.logging.recovery.DefaultRecoveryContext;
 import com.complexible.tx.api.logging.recovery.RecoveryContext;
 import com.google.common.base.Preconditions;
@@ -55,12 +53,15 @@ import org.slf4j.LoggerFactory;
 final class IndexAccessConnectableConnection implements ConnectableConnection {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndexAccessConnectableConnection.class);
 
-	private final Index mIndex;
+	private final String mDb;
 
 	private boolean mClosed = false;
 
-	IndexAccessConnectableConnection(final Index theIndex) {
-		mIndex = theIndex;
+	// we will buffer all changes until commit because the transaction will have no effect unless it is committed
+	private final List<Change> mChanges = com.google.common.collect.Lists.newArrayList();
+
+	IndexAccessConnectableConnection(final String theDb) {
+		mDb = theDb;
 	}
 
 	/**
@@ -138,21 +139,24 @@ final class IndexAccessConnectableConnection implements ConnectableConnection {
 	                                                          ResourceTransactionException {
 		Preconditions.checkState(isOpen(), "Cannot use a closed connection");
 
-		// we will buffer all changes until commit because the transaction will have no effect unless it is committed
-		final List<Change> aChanges = Lists.newArrayList();
+		System.out.println("Transaction started for database " + mDb);
 
-		// attach a listener for data events. every time triples are added/removed directly or via a SPARQL update
-		// query an associated event will be fired
-		Transactions.listenFor(theTransaction, TransactionDataEvent.class, theEvent -> {
-			Object aTxData = theEvent.getData().getData();
-			// only process index changes
-			if (aTxData instanceof Change && ((Change) aTxData).getChangeType() instanceof IndexChange) {
-				aChanges.add((Change) aTxData);
+		// registering a child transaction object which will handle all transactional events, e.g. commits and rollbacks
+		theTransaction.join(new BaseResourceTransaction(ResourceTransaction.META_TRANSACTION) {
+			@Override
+			protected PrepareResult prepare() throws ResourceTransactionException {
+				return PrepareResult.success();
 			}
-		});
 
-		Transactions.listenFor(theTransaction, TransactionCommitEvent.class, theEvent -> {
-			processIndexChange(aChanges);
+			@Override
+			protected void commit() throws ResourceTransactionException {
+				processIndexChange(mChanges);
+			}
+
+			@Override
+			protected void rollback() throws ResourceTransactionException {
+				mChanges.clear();
+			}
 		});
 	}
 
