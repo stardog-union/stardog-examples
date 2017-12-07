@@ -23,6 +23,7 @@ import com.complexible.stardog.db.ConnectableConnection;
 import com.complexible.stardog.db.ConnectionContext;
 import com.complexible.stardog.index.Index;
 import com.complexible.stardog.index.IndexConnection;
+import com.complexible.stardog.index.IndexReader;
 import com.complexible.stardog.reasoning.ConnectableReasoner;
 import com.complexible.stardog.reasoning.ConnectableReasonerConnection;
 import com.complexible.stardog.reasoning.blackout.BlackoutConnection;
@@ -66,6 +67,7 @@ final class MaterializationConnectable implements Connectable {
 			mConnectableReasoner.initialize();
 
 			try (IndexConnection aConnection = mIndex.openConnection();
+			     IndexReader aReader = aConnection.getReader();
 			     ConnectableReasonerConnection aReasonerConn = mConnectableReasoner.openConnection(ConnectionContext
 				                                                                                       .builder()
 				                                                                                       .put(ConnectionContext.NAME, mDB)
@@ -78,7 +80,7 @@ final class MaterializationConnectable implements Connectable {
 				aMaterializer.initialize(((BlackoutConnection)aReasonerConn.getReasonerConnection()).getKB().getAxioms(),
 				                         mProperties);
 
-				aMaterializer.materialize(theBatch -> { /* write this to the index */ });
+				aMaterializer.materialize(aReader, theBatch -> { /* write this to the index */ });
 			}
 		}
 	}

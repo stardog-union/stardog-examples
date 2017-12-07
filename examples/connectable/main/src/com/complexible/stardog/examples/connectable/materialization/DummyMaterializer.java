@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import com.clarkparsia.pellet.api.term.axiom.Axiom;
 import com.complexible.common.collect.BufferList;
+import com.complexible.stardog.index.IndexReader;
 import com.complexible.stardog.index.Quad;
 
 /**
@@ -20,7 +21,7 @@ public class DummyMaterializer implements Materializer {
 	}
 
 	@Override
-	public void materialize(final Consumer<BufferList<Quad>> batchConsumer) {
+	public void materialize(final IndexReader data, final Consumer<BufferList<Quad>> batchConsumer) {
 		throw new UnsupportedOperationException("i'm a dummy, man!");
 	}
 }

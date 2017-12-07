@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import com.clarkparsia.pellet.api.term.axiom.Axiom;
 import com.complexible.common.collect.BufferList;
+import com.complexible.stardog.index.IndexReader;
 import com.complexible.stardog.index.Quad;
 
 /**
@@ -18,5 +19,5 @@ public interface Materializer {
 
 	void initialize(final Collection<Axiom> schema, final Properties properties);
 
-	void materialize(final Consumer<BufferList<Quad>> batchConsumer);
+	void materialize(final IndexReader data, final Consumer<BufferList<Quad>> batchConsumer);
 }
