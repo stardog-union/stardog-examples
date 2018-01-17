@@ -18,13 +18,16 @@ package com.complexible.stardog.examples.service;
 import java.io.InputStream;
 
 import com.complexible.common.base.Strings2;
+import com.complexible.stardog.plan.PlanNode;
 import com.complexible.stardog.plan.PlanVarInfo;
 import com.complexible.stardog.plan.eval.ExecutionContext;
+import com.complexible.stardog.plan.eval.operator.Operator;
 import com.complexible.stardog.plan.eval.operator.OperatorException;
 import com.complexible.stardog.plan.eval.operator.SolutionIterator;
-import com.complexible.stardog.plan.eval.operator.service.ServiceOperator;
 import com.complexible.stardog.plan.eval.service.ResultsToSolutionIterator;
 import com.complexible.stardog.plan.eval.service.Service;
+import com.complexible.stardog.plan.eval.service.ServiceQuery;
+import com.complexible.stardog.plan.util.SPARQLRenderer;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -53,7 +56,7 @@ final class ExampleService implements Service {
 	private static final TupleQueryResultFormat FORMAT = TupleQueryResultFormat.SPARQL;
 
 	/**
-	 * Returns whether or not this instance can {@link #evaluate} a SERVICE against the given IRI.
+	 * Returns whether or not this instance can a SERVICE query against the given IRI.
 	 *
 	 * @param theIRI    the IRI of the service
 	 * @return          {@code true} if this instance can {@code #evaluate} the service, {@code false}  otherwise
@@ -64,48 +67,50 @@ final class ExampleService implements Service {
 	}
 
 	/**
-	 * Evaluates the service over HTTP.
+	 * Create a query which evaluates the service over HTTP.
 	 *
-	 * @param theContext the execution context that includes the mappings for RDF values
-	 * @param theOperator the operator that
-	 * @param theVarInfo bi-directional mappings from integer variable indices to variable names
-	 * @return the result of service invocation
-	 *
-	 * @throws OperatorException if there was an error while evaluating the service
+	 * @param theIRI the IRI of the service call
+	 * @param thePlanNode the SPARQL body of the service call
+	 * @return a {@link ServiceQuery} to evaluate the service call
 	 */
 	@Override
-	public SolutionIterator evaluate(final ExecutionContext theContext, final ServiceOperator theOperator, final PlanVarInfo theVarInfo) throws OperatorException {
-		// convert the service IRI to an http:// IRI
-		String aServiceIRI = theOperator.getServiceVar().getValue().stringValue().replace(EXAMPLE_SCHEME, "http://");
+	public ServiceQuery createQuery(final IRI theIRI, final PlanNode thePlanNode) {
+		return new ServiceQuery(theIRI, thePlanNode) {
+			@Override
+			public SolutionIterator evaluate(final ExecutionContext theContext, final Operator theOperator, final PlanVarInfo theVarInfo) throws OperatorException {
+				// convert the service IRI to an http:// IRI
+				String aServiceIRI = serviceTerm().getValue().stringValue().replace(EXAMPLE_SCHEME, "http://");
 
-		// retrieve the SPARQL string for the service
-		String aQueryStr = theOperator.getServiceString();
+				// retrieve the SPARQL string for the service
+				String aQueryStr = SPARQLRenderer.renderSelect(body(), theVarInfo, true);
 
-		// create an HTTP request
-		final HttpGet aGet = createRequest(aServiceIRI, aQueryStr);
+				// create an HTTP request
+				final HttpGet aGet = createRequest(aServiceIRI, aQueryStr);
 
-		// execute the HTTP request
-		try (CloseableHttpClient aClient = HttpClientBuilder.create().build();
-		     CloseableHttpResponse aResponse = aClient.execute(aGet)) {
+				// execute the HTTP request
+				try (CloseableHttpClient aClient = HttpClientBuilder.create().build();
+				     CloseableHttpResponse aResponse = aClient.execute(aGet)) {
 
-			final int aResponseCode = aResponse.getStatusLine().getStatusCode();
+					final int aResponseCode = aResponse.getStatusLine().getStatusCode();
 
-			// check if the request failed
-			if (aResponseCode != HttpStatus.SC_OK) {
-				throw new OperatorException("SERVICE evaluation returned HTTP response code " + aResponseCode);
+					// check if the request failed
+					if (aResponseCode != HttpStatus.SC_OK) {
+						throw new OperatorException("SERVICE evaluation returned HTTP response code " + aResponseCode);
+					}
+
+					try (InputStream aServiceResults = aResponse.getEntity().getContent()) {
+						// parse the query results
+						TupleQueryResult aTupleQueryResult = QueryResultIO.parseTuple(aServiceResults, FORMAT);
+
+						// convert the results to a solution iterator so it can be processed by the execution engine, e.g. joined with the rest of the queyr results
+						return new ResultsToSolutionIterator(theContext, aTupleQueryResult, theVarInfo, body().getAllVars());
+					}
+				}
+				catch (Exception e) {
+					throw new OperatorException(e);
+				}
 			}
-
-			try (InputStream aServiceResults = aResponse.getEntity().getContent()) {
-				// parse the query results
-				TupleQueryResult aTupleQueryResult = QueryResultIO.parseTuple(aServiceResults, FORMAT);
-
-				// convert the results to a solution iterator so it can be processed by the execution engine, e.g. joined with the rest of the queyr results
-				return new ResultsToSolutionIterator(theContext, aTupleQueryResult, theVarInfo, theOperator.getVars());
-			}
-		}
-		catch (Exception e) {
-			throw new OperatorException(e);
-		}
+		};
 	}
 
 	private HttpGet createRequest(final String theService, final String theQueryStr) {
