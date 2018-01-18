@@ -1,1 +1,1 @@
-include "examples:api", "examples:function", "examples:analyzer", "examples:foaf", "examples:docs", "examples:connectable", "examples:service", "examples:describe"
+include "examples:api", "examples:function", "examples:analyzer", "examples:foaf", "examples:docs", "examples:connectable", "examples:service", "examples:describe", "examples:http_handler"

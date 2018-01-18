@@ -1,4 +1,4 @@
-group = "com.complexible.stardog.examples.service"
+group = "com.complexible.stardog.examples.handler"
 
 dependencies {
 	// server core modules
