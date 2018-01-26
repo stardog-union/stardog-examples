@@ -136,7 +136,7 @@ Tweaking some of Stardog's learning algorithm parameters through the `spa:parame
 +----------------------+
 | mean_absolute_error  |
 +----------------------+
-| 6.578509242114421E-1 |
+| 6.552457129602058E-1 |
 +----------------------+
 ```
 
@@ -199,7 +199,11 @@ prefix spa: <tag:stardog:api:analytics:>
 INSERT {
     graph spa:model {
         :c1 a spa:ClassificationModel ;
-                spa:parameters '-b 22 -l 1 --l1 0.000001' ;
+                spa:parameters [
+                    spa:b 22 ;
+                    spa:l 1 ;
+                    spa:l1 0.000001
+                ] ;
                 spa:arguments (?actors ?writers ?directors ?genres ?producers ?keywords ?languages ?contentRating ?year ?metaCritic ?rating) ;
                 spa:predict ?rec .
     }
@@ -264,11 +268,11 @@ Here are the top 5 recommended movies for [The Big Lebowski](https://www.youtube
 +------------------------+-----------------------+
 |     recommendation     |      confidence       |
 +------------------------+-----------------------+
-| "Inglourious Basterds" | 1.800626814365387E-1  |
-| "Kill Bill: Vol. 1"    | 1.4146585762500763E-1 |
-| "Reservoir Dogs"       | 1.321968138217926E-1  |
-| "Ted"                  | 6.476276367902756E-2  |
-| "Burn After Reading"   | 6.407367438077927E-2  |
+| "Inglourious Basterds" | 1.645991951227188E-1  |
+| "Kill Bill: Vol. 1"    | 1.3105767965316772E-1 |
+| "Reservoir Dogs"       | 1.2146846204996109E-1 |
+| "Burn After Reading"   | 8.05027186870575E-2   |
+| "Ted"                  | 7.016666978597641E-2  |
 +------------------------+-----------------------+
 ```
 

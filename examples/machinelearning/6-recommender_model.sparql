@@ -4,7 +4,11 @@ prefix spa: <tag:stardog:api:analytics:>
 INSERT {
     graph spa:model {
         :c1 a spa:ClassificationModel ;
-                spa:parameters '-b 22 -l 1 --l1 0.000001' ;
+                spa:parameters [
+                    spa:b 22 ;
+                    spa:l 1 ;
+                    spa:l1 0.000001
+                ] ;
                 spa:arguments (?actors ?writers ?directors ?genres ?producers ?keywords ?languages ?contentRating ?year ?metaCritic ?rating) ;
                 spa:predict ?rec .
     }

@@ -4,7 +4,16 @@ prefix spa: <tag:stardog:api:analytics:>
 INSERT {
     graph spa:model {
         :r2 a spa:RegressionModel ;
-                spa:parameters 'loss_function=squared -l 0.08 -b 22 --l1 0.000001 --passes 2 -k -c --holdout_off' ;
+                spa:parameters [
+                    spa:loss_function 'squared' ;
+                    spa:l 0.08 ;
+                    spa:b 22 ;
+                    spa:l1 0.000001 ;
+                    spa:passes 2 ;
+                    spa:k True ;
+                    spa:c True ;
+                    spa:holdout_off True ;
+                ] ;
                 spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
                 spa:predict ?rating ;
                 spa:crossValidation 100 ;
