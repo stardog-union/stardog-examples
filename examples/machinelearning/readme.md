@@ -125,7 +125,7 @@ After creating the model, the evaluation results are stored in the database and 
 
 We can accurately predict a movie's rating with a one star error margin. Not bad!
 
-Tweaking some of Stardog's learning algorithm parameters through the `spa:parameters` property, decreases the error even further.
+Using [hyperparameter optimization](https://www.stardog.com/docs/#_hyperparameter_optimization), we can decrease the error even further.
 
 ```
 ./stardog query movies 3-tweaked_parameters.sparql

@@ -6,9 +6,9 @@ INSERT {
         :r2 a spa:RegressionModel ;
                 spa:parameters [
                     spa:loss_function 'squared' ;
-                    spa:l 0.08 ;
                     spa:b 22 ;
-                    spa:l1 0.000001 ;
+                    spa:l (0.01 0.08) ;
+                    spa:l1 (0.0000001 0.000001) ;
                     spa:passes 2 ;
                     spa:k True ;
                     spa:c True ;
