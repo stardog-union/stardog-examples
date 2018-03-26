@@ -280,7 +280,7 @@ offline first and set the options later:
 
 ```
 $ stardog-admin db offline --timeout 0 issues 
-$ stardog-admin db metadata set -o icv.enabled=true icv.reasoning.enabled=true issues
+$ stardog-admin metadata set -o icv.enabled=true icv.reasoning.enabled=true issues
 $ stardog-admin db online issues
 ```
 
