@@ -1,0 +1,15 @@
+@prefix : <tag:stardog:demo:aml:> .
+@prefix sm: <tag:stardog:api:mapping:> .
+
+:BankAccount-{account1} :originated :Tx-{tx_id} ;
+    sm:map [
+      sm:table "transactions" ;
+    ] .
+
+:Tx-{tx_id} a :Transaction
+    :beneficiary :BankAccount-{account2} ;
+    :amount "{amount}"^^xsd:integer ;
+    :date "{tx_date}"^^xsd:date ;
+    sm:map [
+      sm:table "transactions" ;
+    ] .

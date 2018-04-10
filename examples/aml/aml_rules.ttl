@@ -1,0 +1,21 @@
+:Rule-AffiliationHolds stardog:rule:content """
+IF {
+    ?x :holds ?a .
+    ?a :company ?c .
+}
+THEN {
+    ?x :hasAffiliation ?c .
+    ?c :hasAffiliation ?x .
+}
+""" .
+
+:Rule-AffiliationAddress stardog:rule:content """
+IF {
+    ?x :hasAddress ?a .
+    ?y :hasAddress ?a .
+    filter (?x != ?y)
+}
+THEN {
+    ?x :hasAffiliation ?y .
+}
+""" .

@@ -1,0 +1,3 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:Company-{company} :hasBankAccount :BankAccount-{account} .

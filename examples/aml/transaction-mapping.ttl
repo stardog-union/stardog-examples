@@ -1,0 +1,7 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:BankAccount-{account1} :originated :Tx-{tx_id} .
+:Tx-{tx_id} a :Transaction ;
+    :beneficiary :BankAccount-{account2} ;
+    :amount "{amount}"^^xsd:integer ;
+    :date "{tx_date}"^^xsd:date .

@@ -1,0 +1,2001 @@
+id,city,country,lat,long,zip_code,street
+1,Hanušovice,Czech Republic,50.08049,16.93641,,15697 Buell Street
+2,Erdaocha,China,42.86738,127.48794,,895 Norway Maple Parkway
+3,Sheshory,Ukraine,48.33197,24.98329,,009 Bluejay Place
+4,Matsudo,Japan,35.78333,139.9,,2 Division Trail
+5,Salavat,Russia,53.38365,55.90773,,2946 Raven Court
+6,Dalai,China,44.62642,112.98902,,0 Michigan Alley
+7,Tha Luang,Thailand,15.07124,101.09801,,072 Luster Pass
+8,Saint-Pierre,Reunion,-21.3393,55.4781,97453 CEDEX,35 Amoth Hill
+9,Ramiriquí,Colombia,5.4002,-73.33544,,01 Morning Road
+10,Xomong,China,31.0226,91.67426,,1 Superior Junction
+11,Zhangjiayuan,China,34.69958,107.10216,,9 Huxley Terrace
+12,Kissimmee,United States,27.9953,-81.2593,34745,69 Mayfield Plaza
+13,Šid,Serbia,45.12833,19.22639,,72 Calypso Trail
+14,Västra Frölunda,Sweden,57.6467,11.9294,421 46,2774 Charing Cross Way
+15,Krasnyy Oktyabr’,Russia,56.10347,41.38395,,5653 1st Avenue
+16,Kuttu,Micronesia,5.453,153.4575,,4229 Fallview Place
+17,Rancapeundey,Indonesia,-7.3314,108.0665,,388 Arizona Road
+18,Gerelayang,Indonesia,-6.8527,115.2624,,38380 Commercial Point
+19,Mankoeng,South Africa,-23.9,29.81667,,05738 Lakewood Gardens Lane
+20,Xinzhai,China,23.72048,117.14866,,6668 Cody Drive
+21,Mont-Tremblant,Canada,46.21274,-74.58438,,316 Daystar Street
+22,Ganchazi,China,49.47244,128.26654,,11 Buell Point
+23,Anju,China,30.34956,105.45594,,661 Trailsway Circle
+24,Gaotieling,China,29.86167,113.79274,,62 Dawn Lane
+25,Rodópoli,Greece,38.11667,23.88333,,18 David Avenue
+26,Mancilang,Philippines,11.2835,123.7462,,191 Golf Point
+27,Oshawa,Canada,43.90012,-78.84957,,509 Jenna Circle
+28,Cầu Giấy,Vietnam,21.03228,105.80073,,46645 Surrey Drive
+29,Campo Quijano,Argentina,-24.90982,-65.63656,,6 Sachs Road
+30,Wujing,China,27.70223,99.53727,,77 Melvin Court
+31,To’rtko’l Shahri,Uzbekistan,41.56055,61.0018,,08 School Lane
+32,Geshan,China,29.28772,120.4375,,46097 Daystar Trail
+33,Simpangpasir,Indonesia,2.08252,100.5921,,6905 Bluestem Circle
+34,Drochia,Moldova,48.035,27.81611,,15394 8th Trail
+35,Moscow,Russia,42.819,47.1192,,51982 Burning Wood Junction
+36,Duiwelskloof,South Africa,-23.69339,30.14002,,14 Delladonna Point
+37,Akebielidou,China,46.21659,83.43329,,9 Claremont Way
+38,Plewiska,Poland,52.36706,16.80985,,10 Ryan Court
+39,Huruta,Ethiopia,8.15,39.35,,3675 Marcy Junction
+40,Nagai,Japan,38.10361,140.035,,9608 Sheridan Street
+41,Baoshan,China,46.52575,126.90525,,0663 Scott Junction
+42,Cimanggu Wetan,Indonesia,-7.3508,108.8405,,8 Orin Alley
+43,Cololaca,Honduras,14.3,-88.88333,,46 Dexter Park
+44,Ibabang Tayuman,Philippines,13.4042,122.5165,,48 Helena Alley
+45,Linjiang,China,41.80694,126.90778,,4421 Menomonie Road
+46,Skinnskatteberg,Sweden,59.8303,15.6934,739 30,7 Bellgrove Trail
+47,Jiangqiao,China,46.76991,123.67456,,24387 7th Drive
+48,Zhoupu,China,30.09254,120.06633,,47 Sommers Point
+49,Upata,Venezuela,8.00861,-62.39889,,74 Marquette Lane
+50,Alta Gracia,Argentina,-31.65292,-64.42826,,38 Merry Place
+51,Kępno,Poland,51.2784,17.98908,,86 Alpine Plaza
+52,Tubarão,Brazil,-28.46667,-49.00694,,52 Banding Park
+53,Libmanan,Philippines,13.6928,123.0596,,621 6th Drive
+54,Cibeureum Satu,Indonesia,-6.4005,106.1044,,97 Crownhardt Trail
+55,Kauran,Philippines,6.78556,124.47333,,4370 Dottie Way
+56,Nzega,Rwanda,-2.479,29.5564,,6 Stuart Plaza
+57,Mangli,Indonesia,-8.191,113.6516,,6561 Granby Way
+58,Jiangcun,China,29.772,117.36318,,8836 Rusk Street
+59,Leteki,Indonesia,-10.8996,122.9017,,50 Coolidge Trail
+60,Maracanaú,Brazil,-3.87667,-38.62556,,4 Donald Alley
+61,Kalipucang,Indonesia,-7.6433,108.7526,,6 Loeprich Drive
+62,Despotovac,Serbia,44.0925,21.44694,,727 Corry Plaza
+63,Washington,United States,38.9087,-77.0414,20036,0 Loomis Alley
+64,Eirado,Portugal,41.55,-8.3833,4730-510,9096 Namekagon Center
+65,Hexi,China,27.98047,119.63528,,584 Arkansas Street
+66,Tempaling,Indonesia,-6.7755,111.4474,,2 Sugar Circle
+67,Hanyin Chengguanzhen,China,32.89139,108.50472,,172 Orin Place
+68,Prokhladnyy,Russia,43.75741,44.0297,,06358 Helena Hill
+69,Borlänge,Sweden,60.4858,15.4371,784 55,3911 Oakridge Alley
+70,Cikadu,Indonesia,-6.7454,105.7007,,58069 Comanche Lane
+71,Zaytā Jammā‘īn,Palestinian Territory,32.13698,35.18595,,4729 Kingsford Junction
+72,Xiaoruo,China,26.27755,118.87262,,64 Lakeland Circle
+73,Xinxu,China,26.90636,115.13437,,743 Evergreen Place
+74,El Triunfo,Ecuador,-1.93333,-79.96667,,5 Carberry Park
+75,Tianxing,China,31.47085,109.5399,,02 Rigney Junction
+76,Kama,Russia,56.30512,54.09362,,58923 Shoshone Crossing
+77,Al Qarmadah,Tunisia,34.75,10.78333,,39 Milwaukee Avenue
+78,Oakland,United States,37.6802,-121.9215,94627,5243 Arapahoe Junction
+79,Osa,Russia,57.283,55.4589,,365 Kenwood Place
+80,Nasielsk,Poland,52.58887,20.80553,,49 Valley Edge Drive
+81,Kubachi,Russia,42.08598,47.60338,,90036 Park Meadow Plaza
+82,Shaxi,China,24.61694,113.67068,,9995 Fremont Court
+83,Budta,Philippines,7.20417,124.43972,,391 Ramsey Point
+84,Fizuli,Azerbaijan,39.60094,47.14529,,47685 Hoffman Park
+85,Nuga,Mongolia,48.31667,95.11667,,7 Columbus Parkway
+86,Brahin,Belarus,51.787,30.2677,,2 Corry Road
+87,Ecroignard,Mauritius,-20.22611,57.73611,,2593 Maywood Road
+88,Město,Czech Republic,49.97997,12.86432,,79 Vidon Court
+89,Qīr Moāv,Jordan,31.18248,35.69999,,9780 Tony Place
+90,Gunungpeundeuy,Indonesia,-7.3231,108.2514,,49163 Clarendon Hill
+91,Vila Nova Sintra,Cape Verde,14.86667,-24.71667,,16 Waywood Center
+92,Sumuragung,Indonesia,-6.9641,111.7132,,65 Hoffman Parkway
+93,Fuzhuang,China,32.95868,113.47892,,004 Quincy Court
+94,Veruela,Philippines,8.0731,125.9558,,4935 Memorial Junction
+95,Vil’nyans’k,Ukraine,47.94381,35.43539,,25 Fulton Point
+96,Grazhdanskoye,Russia,44.23,42.7698,,39 Grasskamp Lane
+97,Al Qubbah,Libya,32.76162,22.24237,,85 Jenna Junction
+98,Vilya,Russia,55.24556,42.20889,,320 Crescent Oaks Circle
+99,Prakhon Chai,Thailand,14.60592,103.12081,,84832 Buhler Place
+100,Uzlovaya,Russia,53.98179,38.17118,,43732 Hoard Drive
+101,Lukhovka,Russia,54.14844,45.25728,,05723 Pepper Wood Place
+102,Piggs Peak,Swaziland,-25.96667,31.25,,51 Straubel Terrace
+103,Kedungbulu,Indonesia,-7.5379,108.7836,,5 Elgar Crossing
+104,Matangpayang,Indonesia,5.12577,97.24949,,7 Northwestern Avenue
+105,Pengbu,China,30.29111,120.22021,,28 Novick Hill
+106,Yuanping,China,38.71528,112.7575,,2063 Northwestern Point
+107,Irkliyevskaya,Russia,45.85635,39.65381,,470 Union Lane
+108,Ochër,Russia,57.89035,54.7202,,24329 Bartelt Avenue
+109,Lianghe,China,38.33461,114.15801,,62 Loeprich Street
+110,Irirum,Philippines,12.61603,120.93061,,822 Sommers Way
+111,Onguday,Russia,50.75,86.15,,702 Basil Center
+112,Santa Maria do Souto,Portugal,41.4806,-8.2398,4800-260,386 Washington Hill
+113,Bahía Honda,Cuba,22.90361,-83.15917,,23 Elgar Junction
+114,Lagos,Nigeria,6.45306,3.39583,,1007 Goodland Trail
+115,El Peñol,Colombia,1.45987,-77.44544,,55 Cordelia Center
+116,Dolice,Poland,53.19081,15.20267,,3 Grim Avenue
+117,Wukang,China,30.54155,119.95935,,2997 Ruskin Parkway
+118,Mazańcowice,Poland,49.85802,18.97708,,66 Hoard Street
+119,Baş Göynük,Azerbaijan,41.32582,47.11357,,68 Butterfield Way
+120,Březová nad Svitavou,Czech Republic,49.64418,16.51799,,2 Nobel Alley
+121,Memphis,United States,35.1255,-90.0424,38126,048 Center Way
+122,Citeguh,Indonesia,-7.3372,107.9513,,8291 Steensland Point
+123,Uglich,Russia,57.5275,38.33167,,27765 Darwin Circle
+124,Emporeío,Greece,36.35813,25.44393,,84764 7th Pass
+125,San Rafael Abajo,Costa Rica,9.831,-84.29008,,072 Morrow Plaza
+126,Belūsovka,Kazakhstan,50.13287,82.52481,,80390 Fairview Place
+127,La Quebrada,Venezuela,9.15462,-70.57604,,83 Nova Street
+128,Lutou,China,32.2455,112.92987,,0754 Buena Vista Parkway
+129,Xinglongchang,China,28.05083,109.85,,71 Bultman Lane
+130,San Sebastián,El Salvador,13.73333,-88.83333,,7 Farmco Drive
+131,Arvayheer,Mongolia,46.26389,102.775,,27654 American Court
+132,Patrocínio,Brazil,-18.94389,-46.9925,,9 Ludington Way
+133,Loma Bonita,Mexico,19.2633,-99.4472,52740,42432 Mayer Crossing
+134,Birzai,Lithuania,56.2,24.75,,8414 Spohn Parkway
+135,Boucinha,Portugal,41.55,-8.2667,4890-011,24806 Forest Run Lane
+136,Kalunan,Indonesia,-8.39,124.6683,,116 Nelson Pass
+137,Duut,Mongolia,47.51667,91.63333,,636 Vidon Place
+138,Aksu,Kazakhstan,42.4219,69.82795,,28798 Dakota Lane
+139,Grazhdanka,Russia,60.03587,30.40518,,8744 Scott Trail
+140,Changfu,China,49.15161,125.29506,,7125 Nevada Street
+141,Capitán Solari,Argentina,-26.80215,-59.56089,,1479 Daystar Road
+142,Kassala,Sudan,15.45099,36.39998,,6088 Katie Drive
+143,Ribeirão,Portugal,41.4,-8.5333,4760-411,6 Hovde Pass
+144,Barreiro,Portugal,41.3667,-7.8333,5030-049,9 Forest Terrace
+145,Changling,China,44.26532,124.00045,,3313 Beilfuss Court
+146,Karangsono,Indonesia,-8.227,113.5204,,41 Troy Parkway
+147,Usuki,Japan,33.12342,131.80401,,4650 5th Pass
+148,Semboropasar,Indonesia,-8.21054,113.44508,,398 Knutson Lane
+149,Montrouge,France,48.8162,2.3139,92545 CEDEX,594 Valley Edge Hill
+150,Hrib-Loški Potok,Slovenia,45.70688,14.61674,,0401 Lyons Court
+151,Cibeunying,Indonesia,-7.2934,108.7441,,87 Fair Oaks Lane
+152,Langádhia,Greece,37.68186,22.03002,,0 Banding Place
+153,Shangmachang,China,50.37191,127.32717,,96 Mccormick Way
+154,Now Zād,Afghanistan,32.40314,64.46959,,254 Larry Parkway
+155,Melbourne,Australia,-37.814,144.9633,8383,63399 Hanover Lane
+156,Strachówka,Poland,52.42692,21.635,,4305 Kensington Way
+157,Sarov,Russia,54.93583,43.32352,,8002 Colorado Plaza
+158,Ia Kha,Vietnam,13.96242,107.84484,,62 Grayhawk Place
+159,Mandor,Indonesia,0.32243,109.33794,,71899 Darwin Place
+160,Ūdalah,Palestinian Territory,32.15363,35.27646,,4130 Lien Point
+161,Agiásos,Greece,39.085,26.37,,1854 Carey Place
+162,Ningxin,China,24.13797,115.75479,,0 Anhalt Crossing
+163,Angers,France,47.4667,-0.55,49033 CEDEX 01,76 Vera Place
+164,Fengpo,China,19.96796,110.77657,,2470 Oxford Center
+165,Boncis,Indonesia,-8.2635,112.8698,,44 Golf View Pass
+166,Jiukeng,China,29.68016,118.74343,,0428 Pennsylvania Lane
+167,Houston,United States,29.834,-95.4342,77240,70 Laurel Park
+168,San Lorenzo,Guatemala,14.48333,-91.51667,,95 Sunfield Crossing
+169,Abaza,Russia,52.655,90.09278,,4 Scofield Road
+170,Sarankhola,Bangladesh,22.31006,89.79113,,567 Coolidge Hill
+171,Chemodanovka,Russia,53.23162,45.24738,,6 Anzinger Terrace
+172,Kandete,Tanzania,-9.15,33.8,,03 Northridge Junction
+173,Huozhuangzi,China,39.29148,117.31358,,0306 Schlimgen Center
+174,Las Americas,Mexico,25.0615,-98.0696,88925,466 Cody Center
+175,Lanchkhuti,Georgia,42.09028,42.03239,,36 Transport Way
+176,Buyun,China,25.27031,116.85473,,1163 Hovde Avenue
+177,A’yi Take,China,38.95303,75.42783,,2 Briar Crest Street
+178,Cidolog,Indonesia,-7.3167,106.8395,,88 Grasskamp Place
+179,Tommot,Russia,58.95718,126.29158,,94347 Bunker Hill Lane
+180,Kafr al Labad,Palestinian Territory,32.29967,35.10955,,621 Pierstorff Drive
+181,Kashin,Russia,57.35917,37.60806,,103 Kropf Street
+182,Llauta,Peru,-14.26667,-74.91667,,7 Farragut Hill
+183,Vidin,Bulgaria,43.99,22.8725,,67 Lakewood Gardens Pass
+184,Cocabamba,Peru,-6.6,-78.01667,,24 Erie Center
+185,Hongshan,China,23.10253,113.46581,,8 Westerfield Park
+186,Campaka,Indonesia,-6.5444,105.9203,,42 Mifflin Circle
+187,Georgīevka,Kazakhstan,49.32671,81.57373,,5 Weeping Birch Terrace
+188,Yeniugou,China,38.42731,99.51866,,94 Straubel Drive
+189,Lubenia,Poland,49.93078,21.92665,,0 Coleman Trail
+190,Paupanda Bawah,Indonesia,-8.8559,121.6432,,56294 Melby Parkway
+191,Central,Hong Kong,22.28299,114.15846,,44449 Thompson Point
+192,Burgas,Bulgaria,42.50606,27.46781,,28558 Montana Lane
+193,Larkird,Afghanistan,35.48936,66.66409,,536 Clarendon Circle
+194,Tân Sơn,Vietnam,11.77521,108.7848,,42 Bartelt Park
+195,Lanigan,Canada,51.85006,-105.03443,,9024 Weeping Birch Plaza
+196,Gjøvik,Norway,60.7957,10.6916,2821,6968 Kinsman Place
+197,Jakobstad,Finland,63.67486,22.70256,,8 Cascade Trail
+198,Tomari,Russia,47.76482,142.07106,,770 Menomonie Way
+199,Slavyansk-na-Kubani,Russia,45.2558,38.1256,,69 Bultman Junction
+200,Sult,Albania,40.88472,20.09944,,7 Blackbird Court
+201,Ban Talat Nua,Thailand,7.88489,98.38557,,6043 Eastwood Junction
+202,Kefar Tavor,Israel,32.68656,35.42118,,7 Oriole Center
+203,Taoxi,China,27.7823,115.58172,,88 Oneill Court
+204,Motupe,Peru,-6.15194,-79.71417,,2 Nelson Pass
+205,Cikondang,Indonesia,-7.4736,108.8089,,0516 Amoth Parkway
+206,Kristinehamn,Sweden,59.3098,14.1081,681 54,5 Gulseth Lane
+207,Hvozdná,Czech Republic,49.24848,17.75163,,8 Annamark Avenue
+208,Tak,Thailand,16.86968,99.12898,,8056 Del Sol Terrace
+209,Pittsburgh,United States,40.4344,-80.0248,15266,06253 Golf Course Park
+210,Magdeburg,Germany,52.156,11.5789,39130,779 Vernon Street
+211,Sarnia,Canada,42.97866,-82.40407,,1 Messerschmidt Crossing
+212,Fada N'gourma,Burkina Faso,12.06157,0.35843,,0532 Browning Pass
+213,Larvik,Norway,59.0533,10.0352,3260,8505 8th Drive
+214,Austin,United States,30.3752,-97.9007,78732,2725 Springs Trail
+215,Jawor,Poland,51.05132,16.19347,,650 Gateway Drive
+216,Courtaboeuf,France,48.6848,2.2049,91948 CEDEX,1 Little Fleur Parkway
+217,Tingsryd,Sweden,56.5247,14.979,362 23,53 Holy Cross Park
+218,Tuochuan,China,28.15313,115.66062,,7 Shoshone Park
+219,Lidköping,Sweden,58.5052,13.1577,531 93,52 Harper Place
+220,Rio Negro,Brazil,-26.10583,-49.7975,,39743 Monument Terrace
+221,Hongqiao,China,28.24889,117.68444,,3557 Straubel Circle
+222,Nguigmi,Niger,14.24953,13.10921,,64380 Dakota Avenue
+223,Miramar,Argentina,-30.91858,-62.67814,,35 Bartelt Avenue
+224,Les Cèdres,Canada,45.30008,-74.04922,,05831 Fair Oaks Hill
+225,Sunchales,Argentina,-30.94404,-61.56148,,03352 Declaration Road
+226,Francisco Sarabia,Mexico,25.7352,-101.5435,29783,0740 Gerald Court
+227,Hutang,China,30.07489,120.42103,,886 Rusk Hill
+228,Tegalsari,Indonesia,-6.8101,111.3797,,2 Mosinee Center
+229,Khemarat,Thailand,16.04252,105.21836,,229 Sherman Park
+230,Chengbei,China,28.44238,121.37741,,149 Memorial Street
+231,Carpina,Brazil,-7.85083,-35.25472,,7 Menomonie Plaza
+232,Krajan Ngerdani,Indonesia,-8.1966,111.611,,5013 Miller Place
+233,Pregonero,Venezuela,8.01909,-71.76595,,7972 Bluejay Parkway
+234,Sasykoli,Russia,47.55153,46.99679,,6 Delladonna Circle
+235,Лабуништа,Macedonia,41.26861,20.59611,,58537 Westridge Street
+236,Havirga,Mongolia,45.66667,113.08333,,63055 Gulseth Lane
+237,Tabu,Philippines,9.8923,122.7098,,62 Graedel Center
+238,Estreito Câmara de Lobos,Portugal,,,9325-006,346 Hollow Ridge Terrace
+239,Luzhany,Ukraine,48.36492,25.77173,,4284 Sycamore Parkway
+240,Zushi,Japan,35.29264,139.57735,,05036 Lukken Trail
+241,Baiyin,China,36.54696,104.17023,,5 Mccormick Plaza
+242,Smyków,Poland,51.04442,20.40032,,60257 Dixon Lane
+243,Runan,China,33.00111,114.35417,,3475 Old Shore Park
+244,Taouloukoult,Morocco,31.22218,-9.07943,,0561 Ryan Court
+245,Būrkah,Afghanistan,36.22242,69.15038,,267 Bayside Terrace
+246,Puutura,Indonesia,-8.8644,121.5214,,48140 Reinke Court
+247,Lalmanirhat,Bangladesh,25.91719,89.44595,,219 Pennsylvania Point
+248,Koshki,Russia,54.20914,50.46767,,48591 Buell Parkway
+249,Perniö,Finland,60.2,23.13333,,56869 Mallory Point
+250,Daping,China,28.58297,107.9342,,875 Nobel Circle
+251,Longwantun,China,40.2228,116.85683,,808 Susan Circle
+252,Donetsk,Russia,48.33487,39.9459,,755 Lunder Park
+253,Majiao,China,30.06359,114.92948,,751 Kedzie Pass
+254,Trzciana,Poland,50.30771,21.33725,,6792 Browning Center
+255,Týnec,Czech Republic,48.77943,17.01322,,45 Holy Cross Lane
+256,Az Ziyārah,Syria,35.68482,36.33867,,1 Surrey Point
+257,København,Denmark,55.6759,12.5655,1633,4662 Debs Lane
+258,Helixi,China,30.62841,118.98124,,7 Barby Place
+259,Bechyně,Czech Republic,49.29523,14.4681,,07055 Buell Circle
+260,Dolany,Czech Republic,49.64987,17.3224,,27309 Dennis Terrace
+261,Volosovo,Russia,59.44802,29.49139,,0216 Village Street
+262,Chengkou,China,25.32172,113.73966,,2457 Crowley Avenue
+263,Peimei,China,28.63954,117.10369,,9476 Elmside Avenue
+264,Genyem,Indonesia,-2.5791,140.1495,,6350 Packers Park
+265,Toyós,Honduras,15.55,-87.65,,9028 Lakeland Hill
+266,Zhalinghu,China,35.08524,97.90807,,43606 Raven Place
+267,Turija,Serbia,44.52273,21.63945,,1497 Schlimgen Parkway
+268,Charenton-le-Pont,France,48.8221,2.4122,94224 CEDEX,02 Sherman Junction
+269,Guzhu,China,23.51572,114.70569,,53213 Monument Hill
+270,A Yun Pa,Vietnam,13.40025,108.43504,,96 Brickson Park Plaza
+271,Conchopata,Peru,-14.46968,-71.19843,,7 Meadow Vale Terrace
+272,Shahe,China,23.99417,112.87917,,6 Jay Park
+273,Halmstad,Sweden,56.6745,12.8568,300 10,79034 Porter Street
+274,Daqiao,China,28.05452,115.5806,,3034 Stone Corner Alley
+275,Merik,Indonesia,-6.9021,112.0493,,75513 Claremont Park
+276,Ljungby,Sweden,56.8332,13.9408,341 23,44845 Hoepker Terrace
+277,Semarang,Indonesia,-6.9932,110.4203,,3432 Golf View Terrace
+278,Leksand,Sweden,60.7329,15.0018,793 50,48 Hansons Crossing
+279,Hřebeč,Czech Republic,50.13595,14.16446,,5 Old Gate Park
+280,Chapimarca,Peru,-13.97528,-73.065,,65726 Transport Street
+281,Tāklisah,Tunisia,36.78333,10.63333,,1 West Place
+282,Bone South,Philippines,16.2446,120.9958,,479 Welch Place
+283,Kacangan Lor,Indonesia,-7.147,111.6679,,9 Oak Valley Avenue
+284,Františkovy Lázně,Czech Republic,50.12033,12.35174,,75132 Red Cloud Parkway
+285,Orlando,United States,28.3822,-81.569,32830,5050 Novick Court
+286,Orodo,Nigeria,5.61667,7.03333,,07 Summerview Alley
+287,Shakhun’ya,Russia,57.67579,46.61136,,792 Schlimgen Center
+288,Anyu,China,29.37585,112.09168,,6 Nobel Junction
+289,Ḩawsh ‘Īsá,Egypt,30.9128,30.29018,,3557 Colorado Point
+290,Changqing,China,46.80168,130.29017,,812 Mccormick Pass
+291,Akim Oda,Ghana,5.92665,-0.98577,,82 Shoshone Park
+292,Anabar,Nauru,-0.50845,166.95326,,98 Kenwood Way
+293,Marseille,France,43.2969,5.3811,13937 CEDEX 20,97785 Elgar Plaza
+294,Kutampi,Indonesia,-8.6742,115.5523,,08 Sundown Point
+295,Kronshtadt,Russia,59.99541,29.76668,,0 Moose Trail
+296,Lalmanirhat,Bangladesh,25.91719,89.44595,,7591 Washington Alley
+297,Pamanukan,Indonesia,-6.28417,107.81056,,3 Merrick Alley
+298,Al Mijlad,Sudan,11.03333,27.73333,,82 Erie Terrace
+299,Khong,Thailand,15.44392,102.32862,,8574 Fuller Pass
+300,Tonantins,Brazil,-2.87306,-67.80222,,93081 Nelson Pass
+301,Melaka,Malaysia,2.2057,102.2562,75552,75670 Granby Alley
+302,Provins,France,48.55,3.3,77484 CEDEX,509 Southridge Pass
+303,Zhuli,China,27.70833,119.76833,,9163 Westend Pass
+304,Aranyaprathet,Thailand,13.69276,102.50128,,0621 8th Plaza
+305,Sandaotong,China,45.68017,129.73585,,019 Merry Alley
+306,Drahichyn,Belarus,52.1874,25.1597,,8395 Caliangt Trail
+307,La Montañita,Colombia,1.4766,-75.4398,,29 Forest Run Drive
+308,Hudlice,Czech Republic,49.96096,13.97063,,3067 Dayton Point
+309,Pijao,Colombia,4.33419,-75.70348,,8 Valley Edge Crossing
+310,Viga,Philippines,12.5162,125.0528,,514 Towne Center
+311,Taipinghu,China,30.36727,118.03974,,86137 Eastlawn Way
+312,Cahabón,Guatemala,15.56667,-89.81667,,49654 Dexter Road
+313,Jawornik,Poland,49.8464,21.89404,,2 Summerview Way
+314,Gurra e Vogël,Albania,41.53611,19.99083,,91262 Raven Place
+315,Al Mazzūnah,Tunisia,34.57758,9.84193,,42682 Anderson Park
+316,Sorol,Micronesia,8.1435,140.394,,8256 Scott Terrace
+317,Donghai,China,31.76841,121.87051,,980 Vera Alley
+318,Mendeleyevsk,Russia,55.90818,52.29047,,386 Bellgrove Place
+319,Gose,Japan,34.45,135.73333,,157 Linden Place
+320,Santo Niño,Philippines,11.06306,124.56167,,8 Fair Oaks Way
+321,San José,Honduras,14.25,-87.95,,56445 Norway Maple Center
+322,Dalian,China,38.91222,121.60222,,96 Killdeer Lane
+323,Tselinnoye,Russia,53.07822,85.65364,,88 Dovetail Street
+324,Unidos,Philippines,8.5942,123.668,,8 Hudson Parkway
+325,Vagonoremont,Russia,55.9,37.55,,7 Monument Pass
+326,Taiyang,China,31.16345,109.01017,,91161 Stone Corner Center
+327,Emnambithi-Ladysmith,South Africa,-28.55965,29.77535,,5576 Loftsgordon Court
+328,Goussainville,France,49.0137,2.4659,95697 CEDEX,52 Nancy Plaza
+329,Frederico Westphalen,Brazil,-27.35917,-53.39444,,20 Fairview Crossing
+330,Tarxien,Malta,35.86583,14.515,,7 Jana Terrace
+331,Insua,Portugal,41.8917,-8.6167,4930-250,35 Fair Oaks Road
+332,Komletinci,Croatia,45.14972,18.94917,,663 Pepper Wood Way
+333,Amieiro,Portugal,41.2833,-7.4,5070-175,09 Delaware Circle
+334,La Serena,Chile,-29.90453,-71.24894,,5965 Bluejay Parkway
+335,Popova,Russia,42.96096,131.72494,,18 Prairie Rose Pass
+336,Toshkivka,Ukraine,48.77914,38.57903,,9 Loftsgordon Drive
+337,Kastsyukowka,Belarus,52.5387,30.9173,,71844 Sage Center
+338,Gugark’,Armenia,40.8046,44.54025,,6387 Magdeline Point
+339,Terra Chã,Portugal,,,9700-685,6565 Michigan Court
+340,Tajumulco,Guatemala,15.08333,-91.88333,,27 Coolidge Place
+341,Palmdale,United States,34.6019,-117.8123,93591,8374 Mendota Park
+342,Karak City,Jordan,31.16368,35.76204,,0 Kinsman Trail
+343,Hefu,China,30.78016,120.15807,,8168 Gerald Point
+344,Xinji,China,37.90278,115.20361,,0 Merrick Crossing
+345,Arboga,Sweden,59.3939,15.8388,732 46,7499 Killdeer Crossing
+346,Kamogatachō-kamogata,Japan,34.53745,133.58967,,7 Oakridge Center
+347,Bistrica ob Sotli,Slovenia,46.05889,15.66417,,4 Welch Circle
+348,Numan,Nigeria,9.46667,12.03333,,4 Onsgard Court
+349,Tolkmicko,Poland,54.32038,19.52695,,1 Messerschmidt Place
+350,Kadengan,Indonesia,-7.184,111.3876,,3 Melby Lane
+351,Strelka,Russia,45.20633,37.2865,,2601 Chinook Way
+352,Des Moines,United States,41.5487,-93.5827,50320,061 Mayer Trail
+353,Saint-Pierre-des-Corps,France,47.3862,0.7485,37705 CEDEX,610 Northridge Pass
+354,Sabhā,Libya,27.03766,14.42832,,703 Granby Alley
+355,Ādīs Zemen,Ethiopia,12.11667,37.78333,,57807 Cambridge Pass
+356,Dongshi,China,29.80919,111.37538,,51529 Kim Center
+357,Pitai,Indonesia,-10.0108,123.6442,,094 Hanson Park
+358,Buenavista,Mexico,21.5589,-102.5564,47216,34898 Birchwood Pass
+359,Xufu,China,37.67911,120.48167,,53 Stephen Avenue
+360,Colombo,Sri Lanka,6.93194,79.84778,,282 Forest Pass
+361,Dromiskin,Ireland,53.9275,-6.41139,,14 3rd Crossing
+362,Dayr Sāmit,Palestinian Territory,31.52057,34.97442,,6 Grasskamp Plaza
+363,Moorreesburg,South Africa,-33.15388,18.66031,,10 Sullivan Hill
+364,Amsterdam Noord west,Netherlands,52.3666,4.9027,1039,07839 Vera Point
+365,Zwettl,Austria,48.6,15.15,3923,901 Harper Alley
+366,Héroumbili,Comoros,-11.54389,43.37972,,22597 Green Park
+367,Xindeng,China,29.97132,119.72892,,2244 Oak Place
+368,Vazante,Brazil,-17.98694,-46.90778,,39162 Maryland Street
+369,Huangyang,China,32.2388,106.36868,,23644 Nobel Plaza
+370,Fécamp,France,49.7579,0.3746,76404 CEDEX,3394 Tony Center
+371,Curitibanos,Brazil,-27.28278,-50.58444,,833 Beilfuss Road
+372,Wakimachi,Japan,34.06667,134.15,,1 Onsgard Lane
+373,Pjanići,Bosnia and Herzegovina,44.98568,15.82304,,97 Eastwood Avenue
+374,Daoqiao,China,30.81919,113.75331,,6733 Sugar Trail
+375,Chipata,Zambia,-13.63333,32.65,,68 Vernon Alley
+376,Baras,Philippines,14.5234,121.2651,,5 School Court
+377,Kuala Baru,Indonesia,2.24731,97.78697,,18 7th Junction
+378,São Lourenço da Mata,Brazil,-8.00222,-35.01833,,16 Surrey Point
+379,Lethem,Guyana,3.38333,-59.8,,29 Corry Lane
+380,Nueva Guinea,Nicaragua,11.68758,-84.45616,,394 Kedzie Point
+381,Nyakhachava,Belarus,52.644,25.2027,,3 Briar Crest Alley
+382,Shuibian,China,27.60805,115.32636,,5950 Algoma Center
+383,Morelos,Mexico,18.7031,-98.9919,62577,13 Anhalt Place
+384,Fuan,Indonesia,-10.2079,123.7745,,48 Red Cloud Way
+385,Hannō,Japan,35.85194,139.31806,,6606 Delladonna Court
+386,Aveiras de Cima,Portugal,39.1333,-8.9,2050-065,25 International Parkway
+387,Noisy-le-Grand,France,48.8498,2.5627,93883 CEDEX,60222 Forster Center
+388,Beichengqu,China,40.43944,113.15361,,22807 Farmco Circle
+389,Bekasi,Indonesia,-6.2349,106.9896,,3988 Waxwing Road
+390,Marianowo,Poland,53.38287,15.26645,,626 Portage Place
+391,Pustá Polom,Czech Republic,49.84917,17.9979,,42 Darwin Court
+392,Fonte Boa,Brazil,-2.51389,-66.09167,,57792 Weeping Birch Pass
+393,København,Denmark,55.6759,12.5655,1430,782 Northridge Parkway
+394,Gonbad-e Kāvūs,Iran,37.25004,55.16721,,46 Del Mar Center
+395,Xindu,China,33.33987,120.14594,,854 Grayhawk Road
+396,Sernovodsk,Russia,53.92293,51.25704,,36692 Oak Avenue
+397,Bangekdewa,Indonesia,-8.7476,116.1921,,41 Melby Trail
+398,Makbon,Indonesia,-0.74753,131.53875,,6 Kenwood Point
+399,Zaslawye,Belarus,54.0114,27.2695,,1 Annamark Hill
+400,Neópolis,Brazil,-10.32,-36.57944,,28 David Street
+401,Pinhal de Frades,Portugal,38.6167,-9.1,2840-284,7 Melrose Circle
+402,Jepat Kidul,Indonesia,-6.5574,111.0519,,4799 Raven Drive
+403,Djibo,Burkina Faso,14.0994,-1.62554,,30 2nd Way
+404,Sindangsari,Indonesia,-7.4778,108.6147,,67 Pond Junction
+405,Xinhua,China,26.88838,102.93324,,588 Barnett Lane
+406,Olofström,Sweden,56.2773,14.534,293 35,467 Mayfield Alley
+407,Alofi,Niue,-19.05952,-169.91867,,9 4th Park
+408,Las Yaras,Peru,-17.86417,-70.56278,,75 Prentice Place
+409,Ratchasan,Thailand,13.78211,101.28133,,6732 Grayhawk Road
+410,Anjozorobe,Madagascar,-18.4,47.86667,,8756 Evergreen Terrace
+411,Masachapa,Nicaragua,11.78687,-86.51416,,5928 Caliangt Street
+412,Dongdai,China,26.24366,119.61566,,26 Helena Road
+413,Kranj,Slovenia,46.23887,14.35561,,5 Express Junction
+414,San Cristobal,Cuba,22.71658,-83.05647,,72950 Carey Pass
+415,Anfeng,China,32.73281,120.39844,,17610 Trailsway Trail
+416,Revolucion Verde,Mexico,23.8058,-98.9322,87445,2451 Center Point
+417,Argithéa,Greece,37.97688,23.88715,,1668 Village Green Road
+418,Mataquescuintla,Guatemala,14.52917,-90.18417,,31 Anhalt Crossing
+419,Bunder,Indonesia,-7.1867,113.52967,,75 Mcbride Center
+420,Hofors,Sweden,60.5457,16.2867,813 27,2837 Meadow Ridge Trail
+421,Nový Malín,Czech Republic,49.94262,17.03191,,48046 Beilfuss Plaza
+422,Guaraciaba do Norte,Brazil,-4.16694,-40.7475,,91 Farragut Alley
+423,Fatubia,Indonesia,-9.8204,124.5113,,9 Vahlen Junction
+424,Binhailu,China,37.44081,121.43051,,885 Hansons Drive
+425,Banbalah,Tunisia,35.7,10.8,,5196 Grayhawk Terrace
+426,Tabalong,Philippines,9.62157,123.81231,,01477 Coolidge Terrace
+427,Zhangdan,China,28.12702,120.25335,,7037 Talisman Court
+428,Amarillo,United States,35.1885,-101.8165,79176,046 Graedel Center
+429,Tabia,Morocco,30.03462,-8.87688,,42050 Ohio Avenue
+430,Fort Lauderdale,United States,26.1654,-80.2959,33345,1 Welch Road
+431,Sarrat,Philippines,18.1574,120.647,,19 Merchant Road
+432,Shreveport,United States,32.6076,-93.7526,71161,841 Nancy Hill
+433,Borovikha,Russia,53.5072,83.8379,,5 6th Terrace
+434,Fómeque,Colombia,4.48797,-73.89749,,82197 Arkansas Center
+435,Kryevidh,Albania,41.10056,19.5275,,33013 Anzinger Trail
+436,Margamukti,Indonesia,-7.0092,108.2846,,633 International Plaza
+437,Saint John’s,Antigua and Barbuda,17.11717,-61.84573,,1 Ridgeview Place
+438,Wedangtemu,Indonesia,-7.0708,108.3939,,9286 Autumn Leaf Court
+439,Dugulubgey,Russia,43.6625,43.53694,,70236 Arapahoe Crossing
+440,Chosica,Peru,-11.94306,-76.70944,,78 Memorial Court
+441,Praia das Maçãs,Portugal,38.8333,-9.45,2705-126,317 8th Avenue
+442,Iwakuni,Japan,34.16297,132.22,,997 Maple Parkway
+443,Kumanis,Indonesia,-0.5497,100.831,,4199 Kensington Avenue
+444,Yorosso,Mali,12.35812,-4.77688,,39117 Utah Avenue
+445,Renhe,China,23.33284,113.29198,,3423 Goodland Road
+446,Pengshi,China,30.45317,113.18316,,112 Rockefeller Park
+447,Nan,Thailand,18.78378,100.77899,,0279 Westend Junction
+448,Sobreira,Portugal,41.3667,-7.3833,5090-017,9 Hansons Park
+449,Madīnat Lab‘ūs,Yemen,13.86667,45.25,,77 Waxwing Circle
+450,Vatutine,Ukraine,49.01502,31.06211,,15226 Moose Street
+451,Kham Sakae Saeng,Thailand,15.33221,102.17278,,91122 Orin Crossing
+452,Guashe,China,27.41274,114.72018,,3974 Canary Park
+453,Daming,China,25.69069,118.07901,,5 Lawn Parkway
+454,Iligan City,Philippines,8.25,124.4,,1287 Union Place
+455,Miraflores,Portugal,38.7,-9.2333,1495-048,717 Thompson Pass
+456,Insrom,Indonesia,-1.1538,136.04786,,5 Hudson Point
+457,Balazar,Portugal,41.4,-8.6333,4570-013,380 Marquette Road
+458,Hongsi,China,28.72219,108.11448,,7517 Oxford Center
+459,Taraban Timur,Indonesia,-7.1149,113.5773,,35775 Vera Avenue
+460,Delta del Tigre,Uruguay,-34.76333,-56.38528,,90624 Moulton Junction
+461,Riangderi,Indonesia,-8.3628,123.3026,,2 Springs Point
+462,Pathum Thani,Thailand,14.01346,100.53049,,08 New Castle Circle
+463,Tambangan,Indonesia,-7.486,108.8217,,0 South Drive
+464,Pittsburgh,United States,40.4344,-80.0248,15286,77324 Browning Alley
+465,San Isidro,Mexico,27.0246,-101.6453,29020,481 Prairieview Lane
+466,Hołoby,Ukraine,51.08651,25.00767,,45137 Esch Circle
+467,Faqqū‘ah,Palestinian Territory,32.48998,35.40163,,81822 Loftsgordon Junction
+468,Jabat,Marshall Islands,7.75003,168.97513,,0403 Coolidge Alley
+469,Pruzhany,Belarus,52.556,24.4573,,7288 Susan Crossing
+470,Tazouta,Morocco,33.66991,-4.63392,,14521 Morrow Point
+471,Hekou,China,28.97028,107.63539,,3646 Arapahoe Court
+472,Passos,Brazil,-20.71889,-46.60972,,4605 Evergreen Terrace
+473,Condong,Indonesia,-7.3447,108.2591,,9 Darwin Alley
+474,Linhu,China,31.12731,120.45623,,79 Kenwood Court
+475,San Pascual,Philippines,13.12972,122.97917,,238 Lawn Park
+476,Thatèng,Laos,15.43499,106.38346,,3769 Wayridge Way
+477,Wenquan,China,28.53746,114.34881,,291 Scott Junction
+478,Salinungan Proper,Philippines,16.86906,121.61454,,475 Rowland Junction
+479,Granadero Baigorria,Argentina,-32.85683,-60.71754,,6 Grover Lane
+480,Dobruševo,Macedonia,41.16861,21.4825,,600 Claremont Circle
+481,Balally,Ireland,53.27504,-6.23594,,9 Springview Avenue
+482,Pleszew,Poland,51.89636,17.78549,,14377 Debra Crossing
+483,Nowlamary,Bangladesh,23.67346,88.98885,,6 Eastwood Plaza
+484,Shuangzhu,China,26.63114,118.6457,,2 Esker Way
+485,Cayenne,French Guiana,4.9333,-52.3333,97341 CEDEX,466 Sachtjen Way
+486,Virginia,Ireland,53.83389,-7.07556,,4 Manley Point
+487,Ñuñoa,Peru,-14.47788,-70.63583,,9971 Monument Drive
+488,Tor,Egypt,28.23638,33.6254,,9 Bartelt Terrace
+489,Kebon,Indonesia,-6.8598,111.4288,,6306 Sutteridge Court
+490,Zomba,Malawi,-15.38596,35.3188,,9349 Farmco Plaza
+491,Inda Silasē,Ethiopia,14.10307,38.28289,,1251 Hauk Junction
+492,Mayanhe,China,34.0725,105.73694,,90 Hoffman Alley
+493,Xiangxi,China,29.24073,116.54824,,669 Maywood Lane
+494,Zhoutou,China,29.86409,116.31816,,42071 Macpherson Parkway
+495,Linquan,China,29.4608,115.72709,,9898 Sullivan Park
+496,Dún Laoghaire,Ireland,53.29395,-6.13586,,55 Dwight Drive
+497,Distracción,Colombia,10.89693,-72.8861,,1146 Debs Parkway
+498,Alejal,Philippines,7.38417,125.66,,5 Longview Way
+499,Pýli,Greece,39.45806,21.61889,,490 Truax Place
+500,Paris 15,France,48.8412,2.3003,75756 CEDEX 15,1707 Blaine Place
+501,Columbeira,Portugal,39.9833,-8.5833,2540-593,4 Canary Terrace
+502,Paraguaçu,Brazil,-21.54722,-45.7375,,4 Grover Park
+503,Maliuzui,China,29.69286,106.94399,,4647 Golf View Lane
+504,Houilles,France,48.9216,2.1926,78804 CEDEX,43554 Northland Park
+505,Itaporanga,Brazil,-7.30444,-38.15028,,43131 Delladonna Alley
+506,Boldumsaz,Turkmenistan,42.12824,59.67101,,6028 Kings Avenue
+507,Iza,Ukraine,48.21525,23.32866,,42 Sunbrook Pass
+508,Nagpandayan,Philippines,15.60138,120.76893,,83579 Hagan Terrace
+509,Podporozh’ye,Russia,60.91124,34.17064,,42948 Ronald Regan Point
+510,Silvino Lobos,Philippines,12.3,124.83333,,4 Anhalt Avenue
+511,Navatat,Philippines,15.84971,120.39054,,1 Lyons Way
+512,Nandong,China,38.10305,114.75817,,6954 Boyd Road
+513,Maloye Verevo,Russia,59.61361,30.17278,,820 Fremont Circle
+514,Anjihai,China,44.35787,85.35189,,7299 2nd Crossing
+515,Jevíčko,Czech Republic,49.6322,16.71125,,558 Sachtjen Junction
+516,Kolonowskie,Poland,50.65338,18.38493,,171 Pleasure Place
+517,Hongwei,China,26.16905,118.99626,,38 Pankratz Center
+518,Mullsjö,Sweden,57.9171,13.8783,565 31,3096 Cherokee Junction
+519,Cabcaben,Philippines,14.454,120.5914,,649 Blaine Way
+520,Untolovo,Russia,60.0122,30.20897,,41557 Ludington Drive
+521,Fanzeres,Portugal,41.1185,-8.4416,4510-469,27 Jenifer Point
+522,As Sab‘ Biyār,Syria,33.77974,37.68357,,7396 Eggendart Alley
+523,La Purisima,Mexico,20.9658,-101.5583,36200,2 Coleman Drive
+524,Anguera,Brazil,-12.15111,-39.24639,,2744 Schurz Terrace
+525,Sanzhang,China,34.44674,109.46073,,205 Golden Leaf Center
+526,Las Palmas,Mexico,18.4736,-95.7131,95600,0720 Canary Pass
+527,Nanyulinxi,China,39.20892,112.68142,,4484 Sullivan Parkway
+528,Novoalekseyevskaya,Russia,44.81889,40.93389,,6 Morning Lane
+529,Lincheng,China,32.88816,119.83248,,2 Browning Hill
+530,Getulio,Philippines,10.747,122.666,,0 Homewood Hill
+531,Předměřice nad Labem,Czech Republic,50.25633,15.81556,,57084 Springview Lane
+532,Fonte,Portugal,41.25,-8.4771,4615-099,31337 Jenna Way
+533,Tiehe,China,29.02703,115.97103,,576 7th Junction
+534,Coris,Peru,-9.83333,-77.75,,3039 Packers Court
+535,Simitli,Bulgaria,41.88333,23.11667,,10911 Duke Junction
+536,Kulykiv,Ukraine,50.31424,24.81757,,28580 Bashford Point
+537,Heidelberg,South Africa,-26.50476,28.35921,,25 Del Sol Center
+538,Kefar Tavor,Israel,32.68656,35.42118,,18418 Ronald Regan Way
+539,Innoshima,Japan,34.28333,133.18333,,69725 Vermont Terrace
+540,Awat,China,40.63837,80.37966,,0384 Sherman Drive
+541,Prokhladnyy,Russia,43.75741,44.0297,,9 Delaware Point
+542,Zhangcun,China,29.21903,118.33537,,2 Sullivan Plaza
+543,Donghai,China,31.76841,121.87051,,57 Armistice Center
+544,Kasreman Wetan,Indonesia,-8.1455,111.8408,,965 Heath Street
+545,Shanhe,China,35.48436,108.36398,,60512 Lyons Place
+546,Brocēni,Latvia,56.7,22.53333,,144 Warner Road
+547,Armstrong,Canada,50.44979,-119.20235,,4 Gale Alley
+548,Kyoto,Japan,35.02107,135.75385,,4183 Clove Pass
+549,Tamatam,Micronesia,7.53868,149.41428,,80703 Northport Lane
+550,Krajan Ngerdani,Indonesia,-8.1966,111.611,,72044 Mariners Cove Center
+551,Smārde,Latvia,56.9542,23.33736,,82152 Alpine Junction
+552,Xike,China,24.67338,118.15,,176 Delaware Avenue
+553,Leonárisso,Cyprus,35.46892,34.13886,,33966 Pleasure Alley
+554,Cigembong,Indonesia,-7.1432,106.5101,,3316 Johnson Alley
+555,Netishyn,Ukraine,50.34004,26.64171,,74604 Coleman Avenue
+556,Sukamenak,Indonesia,-7.8097,108.3165,,96000 Arkansas Way
+557,Palampal,Indonesia,-6.967,113.7517,,10 Glacier Hill Avenue
+558,Zhongdong,China,40.11899,98.81716,,9 Buhler Plaza
+559,La Cuesta,Peru,-7.91667,-78.71667,,9594 Artisan Terrace
+560,Leduc,Canada,53.26682,-113.55201,,7963 Pawling Junction
+561,Zoumachang,China,27.87132,105.20105,,5446 Lukken Terrace
+562,Hiroshima-shi,Japan,34.39627,132.45937,,51582 Clemons Terrace
+563,Agoo,Philippines,16.3228,120.3666,,3780 Lunder Crossing
+564,Hovtashen,Armenia,40.0251,44.45129,,596 8th Crossing
+565,Shilaoren,China,36.09778,120.49083,,544 Northwestern Road
+566,Venezuela,Cuba,21.73528,-78.79639,,554 Pepper Wood Parkway
+567,Oropesa,Peru,-13.59278,-71.77194,,9 Schurz Circle
+568,San Lorenzo,Peru,-11.46667,-69.3,,754 Anthes Place
+569,Montes,Portugal,39.7167,-8.7333,2460-825,584 Morningstar Circle
+570,Karangtawar,Indonesia,-6.9645,112.3387,,6 Bellgrove Circle
+571,Manhush,Ukraine,47.05582,37.31068,,9 Longview Drive
+572,Lokokrangan,Indonesia,-8.255,116.2591,,542 Thierer Lane
+573,Baishuiyang,China,28.89697,120.8938,,1702 Hooker Point
+574,Fujiayan,China,30.30955,110.47855,,44134 Southridge Road
+575,Gersikputih Tengah,Indonesia,-7.0353,113.9564,,73646 Armistice Terrace
+576,Miastko,Poland,54.00283,16.98263,,1294 Westend Drive
+577,Sykiés,Greece,40.64944,22.95083,,513 Marcy Road
+578,Västerås,Sweden,59.6162,16.5528,721 06,8173 Summit Road
+579,Labuan,Malaysia,5.2913,115.2459,87028,2972 Oak Junction
+580,Des Moines,United States,41.6727,-93.5722,50393,8 Northridge Circle
+581,Zuogaiduoma,China,35.05587,103.12599,,0 Sherman Trail
+582,Sierra Imataca,Venezuela,8.4555,-62.42891,,1816 Clarendon Place
+583,Arzila,Portugal,40.1833,-8.55,3045-356,94135 Sycamore Place
+584,Néa Flogitá,Greece,40.26108,23.22107,,59 Schlimgen Junction
+585,Passal,Portugal,42.0778,-8.2833,4960-130,01 Warner Center
+586,Sidomakmur,Indonesia,-8.056,113.1448,,18665 Northridge Way
+587,Karapyshi,Ukraine,49.64237,30.79002,,55 Waxwing Trail
+588,Baoshan,China,48.12812,123.94554,,2 Red Cloud Street
+589,Polevskoy,Russia,56.44222,60.18778,,73 Russell Lane
+590,Santiago De Compostela,Spain,42.8805,-8.5457,15899,72 Pond Avenue
+591,Hujiaba,China,32.97759,106.46881,,38881 1st Terrace
+592,Wangren,China,30.15372,115.1235,,46552 Judy Road
+593,Uppsala,Sweden,59.8585,17.6454,751 82,12 Hazelcrest Road
+594,Kudowa-Zdrój,Poland,50.44297,16.24397,,877 Melby Street
+595,Puerto Boyacá,Colombia,5.97584,-74.58846,,79422 Susan Trail
+596,Cárdenas,Cuba,23.0375,-81.20472,,25 Schiller Drive
+597,Putrajawa,Indonesia,-7.0054,108.0109,,39344 Reindahl Drive
+598,Shirbīn,Egypt,31.19688,31.5243,,69 Hooker Junction
+599,Venado Tuerto,Argentina,-33.74556,-61.96884,,02 Old Shore Place
+600,Séléa,Comoros,-11.78444,43.26083,,23 Carpenter Hill
+601,Luzern,Switzerland,47.0638,8.2775,6015,4 Mallard Hill
+602,Gaomiaoji,China,32.92904,118.99698,,49482 Sage Crossing
+603,Kaji,China,26.02849,102.78884,,11334 Dovetail Terrace
+604,Padang,Indonesia,-0.94924,100.35427,,7 Namekagon Court
+605,La Paz de Oriente,Nicaragua,11.82331,-86.12756,,4 Hoffman Drive
+606,Donghai,China,22.94594,115.64204,,2978 Dakota Drive
+607,Concepción,Chile,-36.82699,-73.04977,,9 Sugar Junction
+608,Charleston,United States,32.7831,-79.937,29424,3215 Lukken Alley
+609,Evansville,United States,37.9971,-87.575,47747,444 Ryan Point
+610,Algarvia,Portugal,,,9630-224,1675 Arapahoe Junction
+611,Radziszów,Poland,49.93531,19.81522,,65763 Mandrake Alley
+612,Le Chambon-Feugerolles,France,45.3969,4.3259,42505 CEDEX,84148 Bunker Hill Plaza
+613,Longquan,China,30.5613,104.26893,,8812 Valley Edge Street
+614,Idkū,Egypt,31.30782,30.29901,,86 Rowland Avenue
+615,Baixo Guandu,Brazil,-19.51889,-41.01583,,96 Buhler Road
+616,Langnga,Indonesia,-3.8459,119.5222,,23 Clyde Gallagher Place
+617,Chengdu,China,30.66667,104.06667,,41371 Anhalt Avenue
+618,Vyksa,Russia,55.3175,42.17444,,62 Bashford Crossing
+619,Tchoban Bey,Syria,36.61667,37.45,,7082 Hovde Pass
+620,Jayanca,Peru,-6.39083,-79.82194,,075 Mallory Avenue
+621,Shuangxi,China,30.95815,118.80454,,4208 Shopko Crossing
+622,Ufimskiy,Russia,56.7084,58.0517,,0 Lake View Point
+623,Paris 07,France,48.8565,2.321,75321 CEDEX 07,95 Kedzie Place
+624,Oslo,Norway,59.9522,10.9108,915,07242 Moose Lane
+625,Chortkiv,Ukraine,49.01709,25.79804,,0967 Mockingbird Park
+626,Aurora,United States,39.7388,-104.4083,80044,87084 Duke Center
+627,Bayang,Philippines,7.79278,124.19167,,575 Dorton Plaza
+628,Vidnoye,Russia,55.55239,37.70966,,09 Forest Run Way
+629,Courbevoie,France,48.8967,2.2567,92671 CEDEX,68 Vidon Place
+630,Ningchegu,China,39.15889,117.6625,,5610 Park Meadow Point
+631,Koíla,Greece,40.33055,21.79102,,4606 Talisman Parkway
+632,Hangu,Pakistan,33.53108,71.05934,,1 Algoma Lane
+633,Mollās̄ānī,Iran,31.5851,48.885,,842 Quincy Place
+634,Souto,Portugal,42.025,-8.5417,4910-060,08815 Gateway Court
+635,Anggana,Indonesia,-0.5705,117.2844,,59 Corry Road
+636,Morocelí,Honduras,14.11667,-86.86667,,8 Anzinger Junction
+637,Terpsithéa,Greece,39.61898,22.35087,,9955 Johnson Court
+638,Hangbu,China,27.8153,116.24578,,79895 Moose Terrace
+639,Utara,Indonesia,-7.19886,113.49658,,36710 Grover Alley
+640,Ariquemes,Brazil,-9.91333,-63.04083,,84 Wayridge Circle
+641,Orléans,France,47.9029,1.9039,45957 CEDEX 9,66 Division Center
+642,Doetinchem,Netherlands,51.965,6.2889,7004,94357 Sherman Circle
+643,Khlong Luang,Thailand,14.06467,100.64578,,71 Shelley Lane
+644,Kosamphi Nakhon,Thailand,16.63131,99.34975,,6844 Ronald Regan Way
+645,Yaruchel,Honduras,14.53333,-88.81667,,5 Vermont Avenue
+646,Wawa,Nigeria,9.90222,4.41917,,9 Veith Point
+647,Bungereng,Indonesia,-6.907,113.8666,,4 Hudson Crossing
+648,Sanankerto,Indonesia,-8.15051,112.74594,,17 Homewood Drive
+649,Zengguang,China,23.01802,114.87215,,4 Briar Crest Center
+650,Řečany nad Labem,Czech Republic,50.03589,15.47735,,468 Loeprich Junction
+651,Dasha,China,23.2481,112.74336,,1520 Derek Pass
+652,Andrijevica,Montenegro,42.73389,19.79194,,8315 Kropf Court
+653,Yunping,China,33.69847,106.41404,,228 Bluestem Avenue
+654,Kurów,Poland,51.38941,22.18637,,4 Northridge Trail
+655,Slobodnica,Croatia,45.16222,17.93278,,73281 Cherokee Street
+656,Houping,China,29.602,108.02951,,09157 Vermont Point
+657,Sacramento,United States,38.3774,-121.4444,94250,40395 Grim Center
+658,Yerba Buena,Argentina,-26.81667,-65.31667,,426 Moland Way
+659,Luzhi,China,31.27642,120.86762,,9 Havey Lane
+660,Nganane,Tanzania,-6.4,39.55,,497 Carpenter Drive
+661,Genet,Ethiopia,9.06667,38.5,,4 Artisan Terrace
+662,Xiumei,China,29.51391,111.62586,,80 Killdeer Circle
+663,Keroak,Indonesia,-8.5705,116.498,,897 Corry Center
+664,Bojongloa,Indonesia,-7.3199,107.9327,,9 High Crossing Junction
+665,Nīkshahr,Iran,26.2258,60.2143,,43 Brown Center
+666,Ashton,South Africa,-33.83136,20.05594,,42279 Rusk Terrace
+667,Shimodate,Japan,36.3,139.98333,,12122 Maple Wood Court
+668,Kavalerovo,Russia,44.27221,135.05227,,70348 Northland Court
+669,Goléré,Senegal,16.25574,-14.10165,,23530 Sunfield Pass
+670,Lübeck,Germany,53.8922,10.7583,23568,791 Hanson Trail
+671,Bontoc,Philippines,17.08731,120.97685,,64311 Dorton Junction
+672,Leramatang,Indonesia,-8.3647,123.5718,,05 Memorial Point
+673,Courbevoie,France,48.8967,2.2567,92404 CEDEX,55 Westerfield Alley
+674,Xinsheng,China,29.95673,105.75092,,4 Knutson Lane
+675,Levashi,Russia,42.43036,47.32148,,84926 American Trail
+676,Yongfeng,China,27.42829,112.18338,,93 Farwell Street
+677,Sucre,Ecuador,-1.27974,-80.41885,,68 Cordelia Drive
+678,Panineungan,Indonesia,-7.2725,107.1956,,67645 Roth Court
+679,Debrzno,Poland,53.53817,17.23643,,6 Vera Circle
+680,Yylanly,Turkmenistan,41.83333,59.65,,7404 Eggendart Road
+681,Uchkulan,Russia,43.45706,42.09643,,309 Paget Place
+682,Margasari,Indonesia,-7.0189,108.6237,,0361 Magdeline Circle
+683,Czyżowice,Poland,49.9849,18.40433,,9334 Reinke Circle
+684,Hamberang Sabrang,Indonesia,-6.538,106.4032,,41 Katie Alley
+685,Kadubamban,Indonesia,-6.3192,105.8994,,85 Coolidge Terrace
+686,Breia,Portugal,41.9,-8.4333,4950-284,380 Cordelia Park
+687,Okakarara,Namibia,-20.58333,17.43333,,2591 Michigan Avenue
+688,Sūrān,Iran,27.2855,61.9965,,93 Springs Road
+689,Hengpi,China,22.03808,112.31816,,2916 Raven Drive
+690,Taurija,Peru,-8.30861,-77.42194,,17 Eagle Crest Drive
+691,Xo’jayli Shahri,Uzbekistan,42.40881,59.44544,,8 Esch Junction
+692,Repatriación,Paraguay,-25.53333,-55.95,,245 Tony Junction
+693,Batibati,Indonesia,-3.6184,114.7166,,46285 Menomonie Way
+694,Rutul,Russia,41.53566,47.42391,,673 Grayhawk Alley
+695,Jelah,Bosnia and Herzegovina,44.654,17.95897,,6319 Trailsway Street
+696,Limeil-Brévannes,France,48.7448,2.487,94454 CEDEX,52 Susan Parkway
+697,Senneterre,Canada,48.39302,-77.23951,,86025 Dakota Drive
+698,Lianzhou,China,21.66621,109.20116,,2 Maple Point
+699,Ketapang,Indonesia,-6.9589,112.5545,,14092 Sutteridge Drive
+700,Inta,Russia,66.03169,60.16594,,8970 Lunder Road
+701,Independencia,Mexico,20.7305,-100.9099,38260,71 Mayer Way
+702,Montalegre,Portugal,41.6962,-7.791,5470-206,40 Dakota Avenue
+703,Ust’-Dzheguta,Russia,44.0834,41.9763,,035 Badeau Place
+704,El Rosario,Nicaragua,11.77756,-86.37374,,223 Del Sol Circle
+705,Santa Cruz de Yojoa,Honduras,14.98333,-87.9,,28968 Lotheville Way
+706,Fagersta,Sweden,60.0042,15.7932,737 47,0097 Fieldstone Place
+707,La Soledad,Mexico,17.0747,-95.0386,70324,42878 Sage Street
+708,Ban Ko Lan,Thailand,12.9242,100.78794,,06 School Avenue
+709,Tidaholm,Sweden,58.1804,13.9582,522 24,14 Maryland Parkway
+710,Quinta,Portugal,41.5267,-8.07,4860-077,9823 Corry Crossing
+711,Livramento,Portugal,38.7,-9.3667,2765-366,5435 School Circle
+712,Cengang,China,30.07752,121.99572,,8 Fisk Lane
+713,Korniyivka,Ukraine,50.41661,31.46261,,2188 Arrowood Crossing
+714,Saint Louis,United States,38.6531,-90.2435,63150,30 Northridge Circle
+715,Kelapa,Indonesia,-1.87758,105.67662,,3747 Golden Leaf Park
+716,Šuto Orizare,Macedonia,42.04,21.425,,2 Oak Valley Center
+717,Yangzhuang,China,33.33713,113.83743,,9 Kipling Road
+718,Smederevo,Serbia,44.66278,20.93,,5459 Debra Circle
+719,Lewograran,Indonesia,-8.476,123.0303,,59 Northfield Lane
+720,Požarevac,Serbia,44.62133,21.18782,,022 Cambridge Place
+721,Bayanhongor,Mongolia,46.19444,100.71806,,294 Schlimgen Crossing
+722,Gózd,Poland,51.37832,21.37914,,7 Paget Parkway
+723,Caibarién,Cuba,22.52056,-79.46694,,43 Ramsey Parkway
+724,Tohong,Indonesia,-8.5573,120.0033,,89 Northport Pass
+725,Sredniy,Russia,52.8884,103.4904,,29160 Dapin Way
+726,Kamionka Strumitowa,Ukraine,50.10655,24.34451,,54798 Crownhardt Crossing
+727,Charxin,Uzbekistan,39.69667,66.76861,,585 Dryden Park
+728,Karangnongko,Indonesia,-6.9871,111.397,,00827 Darwin Way
+729,Vila Fria,Portugal,41.825,-8.7208,4935-804,38958 Eagle Crest Road
+730,Sasovo,Russia,54.35369,41.91986,,0 Sundown Point
+731,Jiujie,China,24.11367,102.68678,,796 Atwood Plaza
+732,Koudougou,Burkina Faso,12.25263,-2.36272,,525 Pearson Way
+733,Mao,Dominican Republic,19.55186,-71.07813,,1 Annamark Lane
+734,Ḩablah,Palestinian Territory,32.16523,34.97748,,43895 Memorial Junction
+735,São Luís de Montes Belos,Brazil,-16.525,-50.37222,,38990 Eastlawn Park
+736,Meilong,China,22.89146,115.21138,,6 Arkansas Pass
+737,Zhengdonglu,China,32.19278,119.4705,,9595 Rieder Street
+738,Tours,France,47.3833,0.6833,37942 CEDEX 9,3061 Nevada Crossing
+739,El Ingenio,Peru,-14.64528,-75.05833,,0906 Alpine Drive
+740,Aurora,United States,41.7582,-88.2971,60505,4416 Lyons Lane
+741,Cairo,Egypt,30.06263,31.24967,,83 Red Cloud Crossing
+742,Boñgalon,Philippines,16.00022,120.15904,,5441 Upham Place
+743,Kihniö,Finland,62.2,23.18333,,025 Clyde Gallagher Crossing
+744,Los Algarrobos,Panama,8.11667,-81.01667,,91 Sugar Way
+745,Chedao,China,36.40077,106.73512,,6360 Rowland Center
+746,Sandakan,Malaysia,5.8456,118.0571,90736,08 Erie Drive
+747,Jiuzihe,China,31.14084,115.67122,,4 Anzinger Center
+748,Pirassununga,Brazil,-21.99611,-47.42583,,51 Forest Run Lane
+749,Volodymyr-Volyns’kyy,Ukraine,50.85253,24.32364,,3 Dayton Street
+750,Zavet,Bulgaria,43.76667,26.66667,,8439 Drewry Way
+751,Baiguan,China,33.96617,104.91444,,05 Summerview Avenue
+752,Bahay Pare,Philippines,15.03238,120.88083,,17 Park Meadow Street
+753,Toulouse,France,43.6043,1.4437,31079 CEDEX 5,74395 Dovetail Lane
+754,Doyong,Philippines,15.97224,120.35386,,33 Farwell Hill
+755,Huilong,China,22.9289,112.62868,,4 8th Place
+756,Natarleba,Indonesia,-8.5139,122.541,,73093 Bayside Point
+757,Łysomice,Poland,53.08629,18.62002,,3200 Paget Hill
+758,Engenheiro Beltrão,Brazil,-23.79722,-52.26917,,3395 Boyd Plaza
+759,Refojos,Portugal,41.5556,-8.3222,4860-352,1412 High Crossing Hill
+760,Извор,Macedonia,42.20389,21.57833,,6531 Pankratz Way
+761,Paraiso,Philippines,6.47361,124.81083,,173 1st Street
+762,Jiaozuo,China,35.23972,113.23306,,3 Huxley Terrace
+763,Lysekil,Sweden,58.2743,11.4358,453 22,49 Mifflin Circle
+764,Saint-Germain-en-Laye,France,48.9,2.0833,78105 CEDEX,5918 Village Green Drive
+765,Yichun,China,27.83333,114.4,,9940 Walton Way
+766,Mellila,Morocco,33.38,-7.14,,518 Oriole Road
+767,Cawalo,Indonesia,-8.3115,121.6978,,3129 Mayfield Park
+768,Rahayu,Indonesia,-7.4594,107.644,,32797 Fisk Junction
+769,Il’ya,Belarus,54.4167,27.2958,,9 4th Parkway
+770,Mabayo,Philippines,14.7318,120.2781,,76557 Lakewood Gardens Avenue
+771,Kaom,Indonesia,-7.1297,108.4164,,78202 Talmadge Point
+772,Moya,Comoros,-12.30667,44.43778,,851 Almo Parkway
+773,San Vicente,Philippines,10.55,119.26667,,4930 Brown Way
+774,Boshchorbogh,Tajikistan,37.52027,68.12824,,9125 Lien Avenue
+775,Bálsamo Oriental,Honduras,15.48333,-86.33333,,358 Paget Hill
+776,Chahe,China,32.33907,119.38139,,8 Manufacturers Point
+777,Guatraché,Argentina,-37.66776,-63.53022,,4185 Prentice Junction
+778,Jinhaihu,China,40.18108,117.27376,,57823 Alpine Parkway
+779,Polo,Philippines,9.4816,123.1802,,3 Fisk Road
+780,Verkhn’odniprovs’k,Ukraine,48.65242,34.33457,,0 Canary Center
+781,Shapaja,Peru,-6.57972,-76.26278,,788 Pepper Wood Crossing
+782,Xingxi,China,23.70498,117.19071,,1 Ramsey Center
+783,Montgomery,United States,32.3834,-86.2434,36109,333 Continental Circle
+784,Ruda Śląska,Poland,50.2584,18.85632,,18760 Golden Leaf Place
+785,San Jose,Philippines,12.5296,124.4875,,61780 Debs Road
+786,Tysmenychany,Ukraine,48.77168,24.66626,,5 Fremont Trail
+787,Murtajih,Indonesia,-7.16689,113.50912,,4178 Barnett Crossing
+788,Outeiro,Portugal,41.7333,-7.7333,5470-332,18006 Hudson Hill
+789,Yanahuaya,Peru,-14.26667,-69.2,,121 Oakridge Park
+790,Itacoatiara,Brazil,-3.14306,-58.44417,,855 Scott Pass
+791,Pleiku,Vietnam,13.98333,108,,042 Crest Line Drive
+792,San Juan de Mata,Philippines,15.5352,120.5302,,423 High Crossing Trail
+793,Yarang,Thailand,6.75986,101.29339,,334 Prairie Rose Avenue
+794,Cruzeiro,Portugal,40.9167,-8.5,3700-364,469 3rd Street
+795,Mekarsari,Indonesia,-8.0648,111.9237,,873 Oneill Junction
+796,Santiago do Cacém,Portugal,38.2452,-8.7238,7540-104,259 Randy Terrace
+797,Gualeguay,Argentina,-33.14156,-59.30966,,99 Evergreen Crossing
+798,Dukhovshchina,Russia,55.1919,32.4111,,4 Gerald Park
+799,Agoo,Philippines,16.3228,120.3666,,8466 Hagan Point
+800,Yambrasbamba,Peru,-5.75,-77.9,,0 Nova Drive
+801,Zangbi,China,30.6664,92.36563,,651 Golf Plaza
+802,Ikedachō,Japan,34.02849,133.80616,,7 Sunfield Pass
+803,Petrodvorets,Russia,59.89565,29.80145,,122 Hoepker Place
+804,Mikhaylov,Russia,54.2298,39.0269,,2 Roxbury Circle
+805,Catalina,Canada,48.51659,-53.08135,,17 Erie Way
+806,Leonárisso,Cyprus,35.46892,34.13886,,582 Bluestem Center
+807,Borås,Sweden,57.721,12.9401,503 16,2550 Oak Valley Alley
+808,Zhaizigou,China,35.67881,102.88919,,578 Division Street
+809,As Saffānīyah,Saudi Arabia,27.97083,48.73,,2117 Lotheville Circle
+810,Kuala Lumpur,Malaysia,3.139,101.6869,50943,0492 Amoth Street
+811,Baqiao,China,34.3183,109.08186,,7120 Crowley Lane
+812,La Curva,Philippines,12.40484,121.04591,,112 Aberg Center
+813,Mabyan,Yemen,15.73773,43.55701,,747 Granby Drive
+814,Uchkeken,Russia,43.93778,42.51167,,1 Bonner Court
+815,Caxias,Brazil,-4.85889,-43.35611,,3 Sugar Plaza
+816,Oekuu,Indonesia,-10.327,123.7881,,51 Washington Circle
+817,Al Wardānīn,Tunisia,35.70915,10.67397,,1293 Ruskin Hill
+818,San Agustín de Valle Fértil,Argentina,-30.63353,-67.46821,,70 Beilfuss Drive
+819,Shuimen,China,26.97173,120.06896,,30420 Mesta Point
+820,Pinglumiao,China,34.90994,109.73445,,30158 Westridge Way
+821,Santa Rosa de Lima,El Salvador,13.62472,-87.89361,,5370 Alpine Circle
+822,Nanzhen,China,29.87188,110.54848,,45284 Nelson Lane
+823,Tulay,Philippines,14.26969,120.76925,,43781 Riverside Hill
+824,Sujiazhuang,China,30.87323,120.07042,,3 High Crossing Park
+825,Bilyarsk,Russia,54.98358,50.38671,,848 Claremont Lane
+826,Dongpu,China,30.05583,120.53133,,736 Oxford Drive
+827,Yueyahe,China,39.16253,117.24144,,9 Mayer Point
+828,São Marcos da Serra,Portugal,37.25,-7.9667,8375-254,4 Bunker Hill Avenue
+829,Piracuruca,Brazil,-3.92806,-41.70917,,28 Rockefeller Way
+830,Zhaitou,China,38.56514,114.02731,,90733 Vera Pass
+831,Ar Rābiyah,Kuwait,29.295,47.93306,,446 Lakewood Gardens Park
+832,Gujō,Japan,35.73691,136.95852,,90994 Esker Point
+833,Cikubang,Indonesia,-7.4453,108.0225,,66 Utah Street
+834,Krandil,Indonesia,-8.1129,112.4929,,6116 Boyd Center
+835,Gedaliang,China,39.7698,76.64803,,842 Merry Pass
+836,Ush-Tyube,Kazakhstan,45.25201,77.98007,,0 Esch Center
+837,Kuybyshevskiy Zaton,Russia,55.1593,49.1701,,6076 Red Cloud Court
+838,Barrio San Luis,Colombia,4.66779,-74.0215,,4933 Dayton Court
+839,Palca,Peru,-15.23361,-70.59722,,85112 Derek Street
+840,Kerasochóri,Greece,39.00556,21.63778,,7 John Wall Place
+841,Guozhuang,China,38.21146,114.86461,,63461 Namekagon Pass
+842,Bourg-lès-Valence,France,44.956,4.9102,26504 CEDEX,2216 Dawn Parkway
+843,Ouangani,Mayotte,-12.84639,45.13611,,3608 Cascade Plaza
+844,Huaqiao,China,28.53491,114.95941,,5263 Anhalt Way
+845,Shuikou,China,31.09827,119.8646,,36092 Victoria Hill
+846,Tatebal,Indonesia,-8.7536,117.3536,,442 Trailsway Pass
+847,Gayabaru,Indonesia,-10.8435,123.0579,,3529 Prentice Court
+848,Maunggora,Indonesia,-8.8043,121.5146,,4304 Kings Circle
+849,Xipi,China,25.09167,117.01056,,0315 3rd Junction
+850,Karangparwa,Indonesia,-8.6034,116.1271,,0659 Forest Court
+851,Pampachiri,Peru,-14.18694,-73.54389,,08792 Vera Parkway
+852,Baras,Philippines,14.5234,121.2651,,3822 Anhalt Pass
+853,Bayan Uula Sumu,Mongolia,45.16667,101.4,,8288 Carpenter Parkway
+854,Newton,United States,42.3319,-71.254,2162,627 Schurz Pass
+855,Wissous,France,48.7335,2.3234,91324 CEDEX,21 Forest Park
+856,Wuqu,China,27.23361,119.56556,,4607 Waubesa Hill
+857,Tandzut,Armenia,40.07015,44.07476,,177 Veith Junction
+858,Magisterial,Mexico,20.7793,-102.6561,47207,12752 Parkside Center
+859,Myhove,Ukraine,48.15749,25.37904,,647 Hudson Place
+860,Moreno,Brazil,-8.11861,-35.09222,,0153 Hayes Alley
+861,L-Iklin,Malta,35.90414,14.45415,,54153 Russell Circle
+862,Belfast,United Kingdom,54.5833,-5.9333,BT2,1210 Buell Court
+863,Tambov,Russia,52.73169,41.44326,,6 Bobwhite Alley
+864,Madala,Nigeria,9.10444,7.21333,,8 Anzinger Circle
+865,Rehoboth,Namibia,-23.31667,17.08333,,299 Kim Parkway
+866,Xianju,China,31.40015,112.03379,,3843 4th Court
+867,Mayakovski,Armenia,40.25196,44.63928,,2819 Tony Street
+868,Dashiju,China,29.44472,121.03417,,731 Fordem Street
+869,Boise,United States,43.4599,-116.244,83732,96209 Badeau Avenue
+870,Karara,Indonesia,-9.6493,120.2418,,746 Maywood Drive
+871,Tidili Mesfioua,Morocco,31.46586,-7.61199,,1 Stuart Junction
+872,Maoshan,China,31.79154,119.29592,,1 Karstens Alley
+873,Tanniu,China,19.7117,110.73109,,26692 Comanche Avenue
+874,Meishan,China,31.10322,119.73497,,54 Di Loreto Alley
+875,Maracaju,Brazil,-21.61444,-55.16833,,91483 Londonderry Crossing
+876,Huixing,China,29.68403,106.61486,,6 International Park
+877,Niedźwiedź,Poland,49.621,20.07794,,6303 New Castle Parkway
+878,San Miguel,Mexico,20.0397,-101.645,58805,28 Main Terrace
+879,Rozvadov,Ukraine,49.5,23.61667,,46 Hallows Crossing
+880,Shireet,Mongolia,45.72727,112.35563,,7 Mitchell Alley
+881,Kocēni,Latvia,57.52057,25.33821,,6857 Fairfield Alley
+882,Chuanxi,China,28.17167,110.26083,,29 Packers Road
+883,Four Cross Roads,Barbados,13.16667,-59.51667,,2741 Bayside Avenue
+884,Konsoy,Tajikistan,40.49155,69.70245,,3977 Aberg Circle
+885,Três Lagoas,Brazil,-20.78741,-51.70406,,07227 Del Mar Junction
+886,Guanta,Venezuela,10.23448,-64.59552,,899 Comanche Lane
+887,Baisangguan,China,32.96261,110.991,,0 5th Plaza
+888,Phunphin,Thailand,9.11072,99.23208,,4 Mitchell Street
+889,Boyu,China,37.37775,122.34885,,36 Haas Road
+890,Targowisko,Poland,49.98473,20.29346,,787 Charing Cross Terrace
+891,Khoronk’,Armenia,40.13507,44.24541,,86825 Shoshone Road
+892,La Soledad,Mexico,17.5936,-96.5694,68430,1 Lakeland Road
+893,Padej,Serbia,45.82756,20.16279,,8 Mccormick Crossing
+894,Huayucachi,Peru,-12.13333,-75.23333,,21824 Elka Point
+895,Mandalt,China,43.84028,113.71556,,3 Maple Wood Trail
+896,Wojsławice,Poland,50.91916,23.54602,,812 Debra Trail
+897,Atbasar,Kazakhstan,51.80652,68.35996,,5 Carpenter Alley
+898,La Esperanza,Honduras,15.63333,-85.76667,,77361 Marquette Lane
+899,Nanjie,China,35.73556,107.63528,,571 Kim Lane
+900,Gaotang,China,34.40658,109.65203,,196 Warrior Place
+901,Campechuela,Cuba,20.23417,-77.27889,,36 Atwood Place
+902,Fezna,Morocco,31.52921,-4.45562,,94590 Northland Junction
+903,Awat,China,40.63837,80.37966,,54 Redwing Park
+904,Xinyi,China,34.56954,109.59966,,0 Swallow Lane
+905,Biasong,Philippines,10.5229,123.736,,7 Oxford Crossing
+906,Halmstad,Sweden,56.6745,12.8568,302 70,21 Farwell Way
+907,Chishmy,Russia,54.57648,55.37642,,0 Southridge Point
+908,Sankeng,China,23.6,112.8,,01180 Stuart Alley
+909,Konosha,Russia,60.9736,40.257,,5 Hooker Park
+910,Jiangyan,China,32.50611,120.14278,,48170 Corry Center
+911,Měřín,Czech Republic,49.39321,15.88381,,42 Union Pass
+912,Lyon,France,45.7485,4.8467,69446 CEDEX 03,30 Bellgrove Circle
+913,Flen,Sweden,59.0583,16.5878,642 24,618 Bunker Hill Drive
+914,Quxi,China,25.65376,116.91517,,8741 Blue Bill Park Junction
+915,Cheban,China,21.51727,109.83061,,39 Calypso Circle
+916,Vesëlyy,Russia,47.09338,40.7422,,5912 Rowland Avenue
+917,Fatufeto,Indonesia,-10.1635,123.5751,,418 Moulton Crossing
+918,Mališevo,Kosovo,42.48222,20.74583,,2 Sage Trail
+919,Huyu,China,39.20052,113.10261,,59126 Jackson Point
+920,Kotabunan,Indonesia,0.81217,124.65546,,6 Westport Center
+921,Xinbao,China,34.57418,103.6153,,6552 Bowman Trail
+922,Korba,Tunisia,36.57861,10.85861,,171 Kinsman Point
+923,Alvaro Obregon,Mexico,26.2789,-101.9372,29913,7888 Fulton Terrace
+924,Plyeshchanitsy,Belarus,54.4235,27.8301,,73 Barby Court
+925,San Francisco de Macorís,Dominican Republic,19.30099,-70.25259,,00400 Katie Circle
+926,Xamba,China,40.88472,107.14,,34 Oak Valley Point
+927,Karangsari,Indonesia,-6.4361,105.9725,,00 Waywood Avenue
+928,Meijiang,China,26.47583,116.015,,78 7th Avenue
+929,Färgelanda,Sweden,58.5682,11.9923,458 31,719 Jana Place
+930,Kharbathā Banī Ḩārith,Palestinian Territory,31.94508,35.07194,,3525 Ludington Park
+931,Sāqayn,Yemen,16.877,43.52499,,574 Pond Plaza
+932,Podosinovets,Russia,60.27758,47.06587,,7189 Erie Circle
+933,Bulongji,China,40.53087,96.54102,,18 Vera Avenue
+934,Izvestkovyy,Russia,48.98043,131.55274,,93171 Loftsgordon Point
+935,Longlou,China,19.65632,110.96459,,7 Anzinger Park
+936,Nagua,Dominican Republic,19.3832,-69.8474,,26 Doe Crossing Place
+937,Quintã,Portugal,41.231,-8.5238,4620-729,7959 Blue Bill Park Point
+938,Miaogou,China,36.88085,107.9166,,217 Bashford Road
+939,Batas Barat,Indonesia,-7.0506,113.5429,,620 Carey Alley
+940,Liangshan,China,35.07318,105.974,,145 Charing Cross Point
+941,Tyler,United States,32.4112,-95.2899,75799,090 Division Drive
+942,Zouparria do Monte,Portugal,40.2674,-8.4,3020-895,3324 Weeping Birch Drive
+943,Vogan,Togo,6.33333,1.53333,,906 Carioca Circle
+944,Ust’-Ulagan,Russia,50.63258,87.96046,,74 Pawling Pass
+945,Tuymazy,Russia,54.60666,53.7097,,2059 Ridgeview Way
+946,Querocotillo,Peru,-6.27389,-79.03806,,3908 Hoffman Trail
+947,Shicha,China,36.00794,106.54978,,69899 Delaware Road
+948,Apatin,Serbia,45.67111,18.98472,,4 Memorial Hill
+949,Zdenci,Croatia,45.58917,17.95028,,24 Crownhardt Road
+950,Venda do Valador,Portugal,38.9746,-9.2365,2665-299,1905 Linden Trail
+951,Peranap,Indonesia,-0.5449,101.9837,,641 Karstens Court
+952,Qeshm,Iran,26.9492,56.2691,,07 Anhalt Drive
+953,San Miguel Dueñas,Guatemala,14.52389,-90.79833,,3670 Quincy Alley
+954,Fort Pierce,United States,27.4049,-80.3623,34981,2943 Pawling Center
+955,Joinville,Brazil,-26.30444,-48.84556,,35 Little Fleur Park
+956,Fangfan,China,31.3898,114.10426,,8 Florence Alley
+957,Hamberang Sabrang,Indonesia,-6.538,106.4032,,1282 Katie Center
+958,Cuba,Portugal,38.2833,-7.9333,7940-006,02262 Mariners Cove Parkway
+959,Fenghuo,China,29.45876,111.74773,,47 Sachtjen Street
+960,Jengglungharjo,Indonesia,-8.241,111.8956,,481 Miller Alley
+961,Agnibilékrou,Ivory Coast,7.13113,-3.20415,,7723 Delaware Junction
+962,Vila Nova Sintra,Cape Verde,14.86667,-24.71667,,87 Portage Road
+963,Alivéri,Greece,38.41667,24.03333,,433 Kingsford Street
+964,Casa Quemada,Honduras,15.11667,-88.08333,,37896 Southridge Drive
+965,San Francisco,Mexico,21.9383,-103.3853,46175,6994 Pearson Parkway
+966,Levallois-Perret,France,48.8939,2.2886,92592 CEDEX,5 Ridgeview Way
+967,Kakamega,Kenya,0.28422,34.75228,,1161 Fallview Crossing
+968,Akonolinga,Cameroon,3.76667,12.25,,11 Maywood Hill
+969,Pigí,Greece,39.51194,21.70111,,399 Graceland Terrace
+970,Taoyuan,China,32.66896,106.79998,,4 Granby Street
+971,Czchów,Poland,49.83726,20.68056,,42 Ronald Regan Pass
+972,Handa,Japan,34.88333,136.93333,,5499 Homewood Alley
+973,Lilin Satu,Indonesia,-8.6193,116.3645,,768 Elka Center
+974,Qidi,China,26.95592,113.66137,,03889 Burning Wood Road
+975,Xinpeicun,China,39.61755,113.52935,,5 Kingsford Way
+976,Khallat Ḩamāmah,Palestinian Territory,31.7216,35.19243,,13 Lighthouse Bay Circle
+977,Portland,United States,45.5806,-122.3748,97296,83255 Fair Oaks Hill
+978,Ust’-Uda,Russia,54.1742,103.0304,,3225 Anhalt Lane
+979,Dushu,China,33.32543,113.15969,,885 Sunnyside Parkway
+980,Pedro Sánchez,Dominican Republic,18.86375,-69.10868,,38 Autumn Leaf Circle
+981,Mahābād,Iran,36.7631,45.7222,,40 Homewood Pass
+982,Tsurugi-asahimachi,Japan,36.45,136.63333,,25252 5th Plaza
+983,Gumaus,Philippines,14.3103,122.7229,,0217 Larry Junction
+984,Caçapava do Sul,Brazil,-30.51222,-53.49139,,8529 Logan Plaza
+985,Toluviejo,Colombia,9.45082,-75.43864,,6768 Superior Crossing
+986,Mizhirah,Saudi Arabia,16.82611,42.73333,,2030 Reindahl Circle
+987,Baishan,China,41.93853,126.41965,,1 Forest Point
+988,Allen,Philippines,12.5006,124.2849,,05376 Butterfield Circle
+989,Tầm Vu,Vietnam,10.44114,106.46793,,6 Lawn Terrace
+990,Coyah,Guinea,9.70556,-13.37694,,4326 Warrior Trail
+991,Xike,China,24.66117,118.1433,,4 Scott Point
+992,Op,Indonesia,-9.9152,124.6472,,575 Melrose Lane
+993,Gorē,Ethiopia,8.15,35.53333,,9 Grayhawk Street
+994,Mazra‘at Bayt Jinn,Syria,33.32836,35.92144,,8755 Fremont Drive
+995,Lianhe,China,29.59324,108.42665,,2 Comanche Avenue
+996,Fenkeng,China,26.12859,115.66555,,58907 Quincy Avenue
+997,Tongchuan,China,31.09407,105.08731,,7 Tomscot Circle
+998,Rostock,Germany,54.1243,12.1243,18147,15488 Laurel Place
+999,Budagovo,Russia,54.6255,100.13109,,76 Ridgeview Crossing
+1000,San Isidro,Peru,-12.11667,-77.05,,9107 Straubel Hill
+1001,Mooresville,United States,,,28115,6 Thatcher St. 
+1002,Gibsonia,United States,,,15044,971 Shadow Brook Street 
+1003,Dothan,United States,,,36301,166 North Lakeshore Lane 
+1004,Cockeysville,United States,,,21030,918 Griffin Street 
+1005,Westlake,United States,,,44145,27 Gulf Court 
+1006,Palm Coast,United States,,,32137,468 Galvin St. 
+1007,Pikesville,United States,,,21208,42 New Avenue 
+1008,Holbrook,United States,,,11741,8878 Primrose St. 
+1009,Macungie,United States,,,18062,9911 Griffin St. 
+1010,Mount Juliet,United States,,,37122,8129 Gates Dr. 
+1011,Naugatuck,United States,,,6770,845 S. Fairfield Ave. 
+1012,Chambersburg,United States,,,17201,719 Crescent Rd. 
+1013,Chicopee,United States,,,1020,331 Rockland Street 
+1014,Des Moines,United States,,,50310,9236 Stonybrook St. 
+1015,Peabody,United States,,,1960,66 Jennings Dr. 
+1016,Nampa,United States,,,83651,18 High Noon Rd. 
+1017,Pompano Beach,United States,,,33060,88 Pleasant Road 
+1018,Chatsworth,United States,,,30705,7850 Princess Street 
+1019,Saratoga Springs,United States,,,12866,9789 Prairie Street 
+1020,Smyrna,United States,,,30080,23 Adams Dr. 
+1021,Indiana,United States,,,15701,9200 Walt Whitman Rd. 
+1022,Fairport,United States,,,14450,651 Golden Star Street 
+1023,Chelmsford,United States,,,1824,7492 Cambridge St. 
+1024,Framingham,United States,,,1701,9531 Pawnee Dr. 
+1025,Herndon,United States,,,20170,5 North 3rd Street 
+1026,Georgetown,United States,,,29440,77 Trenton Dr. 
+1027,Stafford,United States,,,22554,53 Central Ave. 
+1028,Marion,United States,,,28752,827 Sherwood Ave. 
+1029,Westport,United States,,,6880,202 Berkshire Ave. 
+1030,Maspeth,United States,,,11378,5 Manhattan Lane 
+1031,Charlottesville,United States,,,22901,1 S. Pulaski Avenue 
+1032,Key West,United States,,,33040,85 Bridgeton St. 
+1033,Montgomery,United States,,,36109,55 Nichols St. 
+1034,Bethel Park,United States,,,15102,901 Buckingham Lane 
+1035,Uniontown,United States,,,15401,759C Swanson Dr. 
+1036,Dorchester Center,United States,,,2124,763 Hudson St. 
+1037,Yuma,United States,,,85365,995 SE. Pierce Dr. 
+1038,Gaithersburg,United States,,,20877,11 Hilldale Street 
+1039,Parkersburg,United States,,,26101,575 W. Amherst Dr. 
+1040,Greenfield,United States,,,46140,8113 Silver Spear St. 
+1041,Lombard,United States,,,60148,66 West Cherry Hill Lane 
+1042,Buckeye,United States,,,85326,7223 Ann Drive 
+1043,Daphne,United States,,,36526,58 Brown St. 
+1044,Selden,United States,,,11784,44 Glenholme Lane 
+1045,Ashland,United States,,,44805,9125 Bayport Rd. 
+1046,Wake Forest,United States,,,27587,524 Woodside Road 
+1047,Appleton,United States,,,54911,5 Hill St. 
+1048,East Lansing,United States,,,48823,8846 Pierce Drive 
+1049,Peachtree City,United States,,,30269,7737 Vernon Drive 
+1050,Muskego,United States,,,53150,805 Addison Lane 
+1051,Long Beach,United States,,,11561,980 Devon Street 
+1052,Bloomfield,United States,,,7003,94 Blackburn Dr. 
+1053,Venice,United States,,,34293,9379 Peachtree St. 
+1054,South Richmond Hill,United States,,,11419,79 Marsh Street 
+1055,Waukegan,United States,,,60085,615 Lawrence Rd. 
+1056,Newton,United States,,,7860,960 East Newcastle Lane 
+1057,Oklahoma City,United States,,,73112,8824 Circle Avenue 
+1058,Owosso,United States,,,48867,38 Green Hill Lane 
+1059,Chillicothe,United States,,,45601,1 E. Rocky River Dr. 
+1060,Morganton,United States,,,28655,407 Country St. 
+1061,Sun Prairie,United States,,,53590,897 West Blue Spring Ave. 
+1062,Holland,United States,,,49423,68 Fairway Street 
+1063,Liverpool,United States,,,13090,5 W. Roberts Dr. 
+1064,Burnsville,United States,,,55337,846 North Lexington Lane 
+1065,Long Branch,United States,,,7740,127 Poor House Road 
+1066,Encino,United States,,,91316,8838 Cambridge Drive 
+1067,Cartersville,United States,,,30120,69 Roosevelt Street 
+1068,Concord,United States,,,3301,26 Cobblestone St. 
+1069,Deer Park,United States,,,11729,9216 Old Richardson Street 
+1070,Phoenixville,United States,,,19460,7837 Charles Ave. 
+1071,Ashburn,United States,,,20147,255 N. Rose St. 
+1072,Pembroke Pines,United States,,,33028,74 Greystone Dr. 
+1073,Coventry,United States,,,2816,984 Old El Dorado Street 
+1074,North Miami Beach,United States,,,33160,282 Lancaster Road 
+1075,Pueblo,United States,,,81001,739 Tanglewood Road 
+1076,Garfield,United States,,,7026,963 Evergreen St. 
+1077,Mishawaka,United States,,,46544,133 E. Lakewood Dr. 
+1078,Portage,United States,,,46368,977 Rocky River Lane 
+1079,Carpentersville,United States,,,60110,14 Peg Shop Avenue 
+1080,Dracut,United States,,,1826,8498 Arnold Drive 
+1081,Bronx,United States,,,10451,7946 Sulphur Springs St. 
+1082,Louisville,United States,,,40207,517 Big Rock Cove Lane 
+1083,Cumming,United States,,,30040,88 Eagle Ave. 
+1084,Staten Island,United States,,,10301,9023 Applegate St. 
+1085,Dallas,United States,,,30132,49 W. Lancaster Ave. 
+1086,Charlottesville,United States,,,22901,196 Eagle St. 
+1087,Saint Cloud,United States,,,56301,29 Glen Eagles St. 
+1088,Winter Haven,United States,,,33880,26 Del Monte Dr. 
+1089,New Rochelle,United States,,,10801,6 Rockville Ave. 
+1090,Yuma,United States,,,85365,8569 Glenridge Court 
+1091,Vienna,United States,,,22180,8295 Brandywine Street 
+1092,Manahawkin,United States,,,8050,7917 Smoky Hollow Dr. 
+1093,Lawrence,United States,,,1841,70 New Drive 
+1094,East Lansing,United States,,,48823,7725 N. Hudson Road 
+1095,Piqua,United States,,,45356,7 Heritage St. 
+1096,Berwyn,United States,,,60402,352 Glenholme Lane 
+1097,North Fort Myers,United States,,,33917,5 North Fieldstone St. 
+1098,Goshen,United States,,,46526,215 N. Beacon Court 
+1099,Fremont,United States,,,43420,926 E. Plymouth Dr. 
+1100,West Hempstead,United States,,,11552,8893 N. Delaware St. 
+1101,Benton Harbor,United States,,,49022,9080 North High Point St. 
+1102,Logansport,United States,,,46947,83 Shub Farm Dr. 
+1103,Suite 109 ,United States,,,,7733 Wilson Street 
+1104,Rolling Meadows,United States,,,60008,23 Sunset Rd. 
+1105,Glasgow,United States,,,42141,462 S. Belmont Road 
+1106,Wakefield,United States,,,1880,442 Campfire Street 
+1107,Stroudsburg,United States,,,18360,409 Rockledge Lane 
+1108,Casselberry,United States,,,32707,9561 Selby Street 
+1109,Seymour,United States,,,47274,42 W. Brickell Court 
+1110,Fort Mill,United States,,,29708,853 S. Alderwood Drive 
+1111,Clinton Township,United States,,,48035,677 Orchard Street 
+1112,Flint,United States,,,48504,9 Del Monte St. 
+1113,New Rochelle,United States,,,10801,872 Shady St. 
+1114,Long Beach,United States,,,11561,517 Fifth Street 
+1115,Park Forest,United States,,,60466,661 W. Tanglewood Ave. 
+1116,Cartersville,United States,,,30120,651 Greystone St. 
+1117,Windsor Mill,United States,,,21244,7617 Heather Avenue 
+1118,Chicago Heights,United States,,,60411,652 Bishop Road 
+1119,Tucker,United States,,,30084,799 Ketch Harbour Street 
+1120,Ashtabula,United States,,,44004,8690 N. Green Lake St. 
+1121,Troy,United States,,,12180,202 Race St. 
+1122,Glastonbury,United States,,,6033,8432 Augusta St. 
+1123,Lowell,United States,,,1851,61 South Bayport Lane 
+1124,Hialeah,United States,,,33010,390 Glenlake Ave. 
+1125,Lansdale,United States,,,19446,9466 Young Lane 
+1126,Euless,United States,,,76039,9553 Griffin Ave. 
+1127,Sterling,United States,,,20164,7922 Coffee Drive 
+1128,Crystal Lake,United States,,,60014,7033 Foster Street 
+1129,Fort Dodge,United States,,,50501,869 East Central Dr. 
+1130,Allentown,United States,,,18102,9446 W. Newport Drive 
+1131,Louisville,United States,,,40207,9505 Garfield Drive 
+1132,Newington,United States,,,6111,97 Homestead Street 
+1133,Brooklyn,United States,,,11201,7278 Rock Maple Drive 
+1134,Roselle,United States,,,60172,71 Selby Lane 
+1135,Wayne,United States,,,7470,440 South Ramblewood Ave. 
+1136,South Richmond Hill,United States,,,11419,96 Roosevelt Road 
+1137,South El Monte,United States,,,91733,601 W. Fremont Drive 
+1138,Springboro,United States,,,45066,964 N. Gulf Ave. 
+1139,Hoffman Estates,United States,,,60169,9723 Olive Street 
+1140,Burlington,United States,,,1803,732 10th Rd. 
+1141,Grand Rapids,United States,,,49503,791 Courtland Ave. 
+1142,Columbia,United States,,,21044,9 Southampton Ave. 
+1143,Lutherville Timonium,United States,,,21093,819 Plymouth Avenue 
+1144,South El Monte,United States,,,91733,9019 Hickory Lane 
+1145,North Andover,United States,,,1845,9410 Ramblewood St. 
+1146,Pomona,United States,,,91768,317 Cambridge Dr. 
+1147,Irmo,United States,,,29063,7337 Windfall Lane 
+1148,Aliquippa,United States,,,15001,55 Sugar St. 
+1149,Jupiter,United States,,,33458,759 W. Birchpond St. 
+1150,San Pablo,United States,,,94806,515 Henry Street 
+1151,Irwin,United States,,,15642,991 Riverview Road 
+1152,Ridgewood,United States,,,7450,99 Beechwood Rd. 
+1153,Fairburn,United States,,,30213,9998 N. Leatherwood Street 
+1154,Findlay,United States,,,45840,7794 St Margarets Ave. 
+1155,Camp Hill,United States,,,17011,190 Surrey Dr. 
+1156,Braintree,United States,,,2184,276 Old Sherwood Ave. 
+1157,Hammonton,United States,,,8037,602 Old Arcadia Court 
+1158,Myrtle Beach,United States,,,29577,199 Summer St. 
+1159,Algonquin,United States,,,60102,8291 E. Mulberry Road 
+1160,Corona,United States,,,11368,7617 Iroquois Drive 
+1161,New Bedford,United States,,,2740,133 N. Oak Road 
+1162,Dothan,United States,,,36301,72 Devon Drive 
+1163,Plymouth,United States,,,2360,75 Beaver Ridge Ave. 
+1164,Flint,United States,,,48504,220 Cobblestone Ave. 
+1165,West Islip,United States,,,11795,903 Devon Ave. 
+1166,Shepherdsville,United States,,,40165,242 Wentworth Dr. 
+1167,Maineville,United States,,,45039,97 Colonial Ave. 
+1168,Fullerton,United States,,,92831,8536 Ivy St. 
+1169,Mebane,United States,,,27302,9803 E. Linda St. 
+1170,Yuma,United States,,,85365,7424 Evergreen Dr. 
+1171,Mebane,United States,,,27302,464 Pine Road 
+1172,Olney,United States,,,20832,7 Wellington Avenue 
+1173,Stafford,United States,,,22554,552 Court Rd. 
+1174,Wethersfield,United States,,,6109,68 Orange St. 
+1175,Dearborn Heights,United States,,,48127,476 South Border Rd. 
+1176,Sewell,United States,,,8080,7712 N. Piper Street 
+1177,Brick,United States,,,8723,240 Valley Farms St. 
+1178,Granger,United States,,,46530,74 North Armstrong Road 
+1179,Riverside,United States,,,8075,444 Cross Street 
+1180,Wayne,United States,,,7470,89 Division Lane 
+1181,Traverse City,United States,,,49684,62 SW. Rockwell St. 
+1182,Batavia,United States,,,45103,57 W. Bayberry Dr. 
+1183,Nashville,United States,,,37205,112 Andover St. 
+1184,West Roxbury,United States,,,2132,7721 Gonzales Road 
+1185,Grand Forks,United States,,,58201,605 E. Sherman Dr. 
+1186,Tonawanda,United States,,,14150,8383 Bay Meadows Rd. 
+1187,Hummelstown,United States,,,17036,908 Wood Avenue 
+1188,Mason City,United States,,,50401,49 Woodsman St. 
+1189,West Chicago,United States,,,60185,689 Thomas Rd. 
+1190,Delray Beach,United States,,,33445,5 Studebaker Lane 
+1191,Saint Augustine,United States,,,32084,33 Fulton Street 
+1192,Portsmouth,United States,,,23703,7203 West Rd. 
+1193,Kokomo,United States,,,46901,745 Linda Lane 
+1194,Nutley,United States,,,7110,396 Tallwood Drive 
+1195,Douglasville,United States,,,30134,43 Temple Ave. 
+1196,Chesterfield,United States,,,23832,7130 E. Mayflower Lane 
+1197,Oak Lawn,United States,,,60453,466 Green Lake Circle 
+1198,Merrimack,United States,,,3054,555 Campfire St. 
+1199,Dedham,United States,,,2026,8635 Pennsylvania Rd. 
+1200,Taylor,United States,,,48180,222 W. Lancaster Drive 
+1201,Des Moines,United States,,,50310,644 Gates Street 
+1202,Oak Lawn,United States,,,60453,8448 Grant St. 
+1203,Powhatan,United States,,,23139,7480 Hill Ave. 
+1204,Pittsfield,United States,,,1201,3 Longfellow Drive 
+1205,Roswell,United States,,,30075,7032 Lookout Ave. 
+1206,Kingston,United States,,,12401,105 East Princeton Lane 
+1207,Waterbury,United States,,,6705,9373 Golf St. 
+1208,Asheville,United States,,,28803,9542 Ridge St. 
+1209,Boynton Beach,United States,,,33435,389 Argyle Ave. 
+1210,Cranston,United States,,,2920,4 Van Dyke Lane 
+1211,Pickerington,United States,,,43147,2 Shub Farm Drive 
+1212,Buffalo Grove,United States,,,60089,9363 Rockland Dr. 
+1213,Oviedo,United States,,,32765,2 Wall Street 
+1214,Suffolk,United States,,,23434,6 East Green Hill Lane 
+1215,Union,United States,,,7083,152 Bayport Court 
+1216,Noblesville,United States,,,46060,8747 53rd Drive 
+1217,Buffalo Grove,United States,,,60089,193 Rosewood Ave. 
+1218,North Brunswick,United States,,,8902,58 San Juan St. 
+1219,Jamaica,United States,,,11432,93 Amherst St. 
+1220,South Bend,United States,,,46614,512 Central Road 
+1221,Quakertown,United States,,,18951,380 Stillwater Ave. 
+1222,Augusta,United States,,,30906,8584 Second Court 
+1223,North Ridgeville,United States,,,44039,9105 College Court 
+1224,West Des Moines,United States,,,50265,7562 Smoky Hollow Avenue 
+1225,Farmington,United States,,,48331,164 Nichols Street 
+1226,Lincolnton,United States,,,28092,5 Marshall St. 
+1227,Akron,United States,,,44312,638 Lakewood Dr. 
+1228,Orlando,United States,,,32806,966 San Pablo Street 
+1229,Perrysburg,United States,,,43551,146 Carpenter Rd. 
+1230,Warminster,United States,,,18974,702 South Dr. 
+1231,Natchez,United States,,,39120,8609 Vale Street 
+1232,Waterloo,United States,,,50701,958 Race Circle 
+1233,Reidsville,United States,,,27320,724 High Ridge St. 
+1234,New Albany,United States,,,47150,561B Bishop Ave. 
+1235,Ocoee,United States,,,34761,5 Creek Drive 
+1236,East Hartford,United States,,,6118,4 Acacia St. 
+1237,Sewell,United States,,,8080,8449 Creekside Dr. 
+1238,Oxford,United States,,,38655,236 W. Wakehurst Drive 
+1239,Clover,United States,,,29710,845 Front Ave. 
+1240,Ellenwood,United States,,,30294,9299 Jackson Circle 
+1241,De Pere,United States,,,54115,79 Belmont St. 
+1242,Lombard,United States,,,60148,661 West Cherry Lane 
+1243,Irwin,United States,,,15642,21 Gainsway Court 
+1244,Macomb,United States,,,48042,7044 Lawrence St. 
+1245,Morgantown,United States,,,26508,322 W. Smith Store Street 
+1246,Key West,United States,,,33040,8711 Harvard St. 
+1247,Natick,United States,,,1760,99 Laurel Ave. 
+1248,Clearwater,United States,,,33756,8360 Hartford Lane 
+1249,Toledo,United States,,,43612,142 Ashley Avenue 
+1250,Jackson Heights,United States,,,11372,7188 San Juan Ave. 
+1251,Cartersville,United States,,,30120,33 Grand St. 
+1252,Graham,United States,,,27253,8731 Lexington Ave. 
+1253,Rock Hill,United States,,,29730,8 Foster Street 
+1254,Winston Salem,United States,,,27103,8400 Acacia Ave. 
+1255,Huntersville,United States,,,28078,7526 North Walt Whitman Circle 
+1256,Mechanicsburg,United States,,,17050,397 Hall Lane 
+1257,Bronx,United States,,,10451,321 Miller Drive 
+1258,Xenia,United States,,,45385,8121 Birch Hill Rd. 
+1259,Glenview,United States,,,60025,7705 South Columbia St. 
+1260,Apopka,United States,,,32703,34 Oklahoma Ave. 
+1261,Ames,United States,,,50010,592 Warren St. 
+1262,Cherry Hill,United States,,,8003,37 Birchpond Street 
+1263,Paramus,United States,,,7652,906 South Rosewood St. 
+1264,Pasadena,United States,,,21122,7472 S. Aspen St. 
+1265,Champlin,United States,,,55316,9698 Manor Drive 
+1266,Leland,United States,,,28451,3 Shub Farm St. 
+1267,Plymouth,United States,,,2360,8 Myers Ave. 
+1268,Lacey,United States,,,98503,9535 Essex Lane 
+1269,Maplewood,United States,,,7040,93 SW. Market Dr. 
+1270,Royersford,United States,,,19468,419 Galvin Street 
+1271,Lynnwood,United States,,,98037,9736 Indian Spring Court 
+1272,Mableton,United States,,,30126,656 Old Hilltop Street 
+1273,Lancaster,United States,,,14086,503 Richardson Ave. 
+1274,Carol Stream,United States,,,60188,312 E. Buckingham Street 
+1275,Voorhees,United States,,,8043,20 Arlington Court 
+1276,Southampton,United States,,,18966,348 Bank Road 
+1277,Iowa City,United States,,,52240,7026 N. Saxon Court 
+1278,Buffalo Grove,United States,,,60089,7192 Lake Forest Drive 
+1279,Midlothian,United States,,,23112,310 West Hanover Dr. 
+1280,Englewood,United States,,,7631,7900 Adams Court 
+1281,Fort Lee,United States,,,7024,8283 High Point St. 
+1282,Ridgecrest,United States,,,93555,67 Lantern St. 
+1283,Medford,United States,,,2155,8220 Poplar St. 
+1284,Anderson,United States,,,29621,719 Fairview St. 
+1285,Cottage Grove,United States,,,55016,8609 Pierce Dr. 
+1286,Utica,United States,,,13501,19 Sugar Ave. 
+1287,Tampa,United States,,,33604,54 Rockwell Dr. 
+1288,Hackettstown,United States,,,7840,673 Glenlake St. 
+1289,Depew,United States,,,14043,7651 Rockwell St. 
+1290,North Fort Myers,United States,,,33917,642 Longbranch Court 
+1291,Mechanicsburg,United States,,,17050,4 Bridge St. 
+1292,Peoria,United States,,,61604,81 Pineknoll Avenue 
+1293,Washington,United States,,,15301,8118 Hudson St. 
+1294,New Port Richey,United States,,,34653,30 Littleton Rd. 
+1295,Jacksonville Beach,United States,,,32250,653 Edgewood Street 
+1296,Amityville,United States,,,11701,11 Stillwater Drive 
+1297,Berwyn,United States,,,60402,8 Marvon Court 
+1298,Rock Hill,United States,,,29730,8339 New Ave. 
+1299,Norfolk,United States,,,23503,7642 Princess Dr. 
+1300,Merrimack,United States,,,3054,7051 Prince Street 
+1301,Kennesaw,United States,,,30144,54 North Winchester St. 
+1302,Williamsburg,United States,,,23185,94 Fieldstone Street 
+1303,New Lenox,United States,,,60451,35 E. Shady Court 
+1304,East Northport,United States,,,11731,9278 Longfellow Street 
+1305,Carlisle,United States,,,17013,918 S. Lake View Lane 
+1306,Waukegan,United States,,,60085,8856 Sierra St. 
+1307,Marion,United States,,,28752,3 Birch Hill Drive 
+1308,Eugene,United States,,,97402,8124 East Avenue 
+1309,Doylestown,United States,,,18901,9963 Madison St. 
+1310,Derry,United States,,,3038,7037 Selby Dr. 
+1311,Deer Park,United States,,,11729,509 East Pendergast Street 
+1312,Bethlehem,United States,,,18015,17 Ryan St. 
+1313,Vista,United States,,,92083,76 Wintergreen Street 
+1314,El Dorado,United States,,,71730,93 Williams Rd. 
+1315,Elmhurst,United States,,,11373,89 Sunset Drive 
+1316,Montgomery,United States,,,36109,577 Thomas Rd. 
+1317,Anchorage,United States,,,99504,9924 Evergreen St. 
+1318,New Haven,United States,,,6511,9359 Pennington Ave. 
+1319,Floral Park,United States,,,11001,5 East Ivy St. 
+1320,North Royalton,United States,,,44133,62 Ridge St. 
+1321,Danville,United States,,,24540,8819 Oakwood Drive 
+1322,Long Beach,United States,,,11561,9529 Orange Lane 
+1323,Floral Park,United States,,,11001,468 Ridgeview Street 
+1324,Rosedale,United States,,,11422,896 Ivy Road 
+1325,El Paso,United States,,,79930,327 Sulphur Springs Rd. 
+1326,Pittsfield,United States,,,1201,26 Pierce Street 
+1327,Park Ridge,United States,,,60068,623 Annadale Rd. 
+1328,Waterford,United States,,,48329,83 Rock Maple Circle 
+1329,Pompano Beach,United States,,,33060,149 2nd Street 
+1330,Gurnee,United States,,,60031,961 Atlantic Street 
+1331,Rockledge,United States,,,32955,547 Carriage Ave. 
+1332,Montgomery Village,United States,,,20886,89 Sierra St. 
+1333,Bonita Springs,United States,,,34135,58 North Longbranch St. 
+1334,Fullerton,United States,,,92831,92 South New Rd. 
+1335,Muncie,United States,,,47302,9787 South Wakehurst Street 
+1336,Lawndale,United States,,,90260,98 Hilldale Rd. 
+1337,Schaumburg,United States,,,60193,857 Rock Maple St. 
+1338,Beloit,United States,,,53511,7667 Rockledge Ave. 
+1339,Ridgecrest,United States,,,93555,583 S. Bald Hill St. 
+1340,Chandler,United States,,,85224,65 Stonybrook St. 
+1341,Quakertown,United States,,,18951,15 Lake View Drive 
+1342,Muncie,United States,,,47302,212 Philmont St. 
+1343,Paducah,United States,,,42001,8045 Catherine Rd. 
+1344,Littleton,United States,,,80123,970 John Dr. 
+1345,Flushing,United States,,,11354,8928 Arcadia Ave. 
+1346,Cleveland,United States,,,37312,1 Vernon Street 
+1347,Royal Oak,United States,,,48067,15 North Highland Rd. 
+1348,Grandville,United States,,,49418,143 Euclid Dr. 
+1349,Massapequa,United States,,,11758,98 Piper St. 
+1350,Baldwin,United States,,,11510,7 Sunset Street 
+1351,Fort Dodge,United States,,,50501,120 W. Gartner St. 
+1352,Rockville,United States,,,20850,37 Galvin St. 
+1353,Reidsville,United States,,,27320,1 Meadow Ave. 
+1354,Greenville,United States,,,27834,17 North Cooper Drive 
+1355,Martinsville,United States,,,24112,7391 Harvard Ave. 
+1356,Somerset,United States,,,8873,723 Third Court 
+1357,Prior Lake,United States,,,55372,29 Beechwood St. 
+1358,Valley Stream,United States,,,11580,195 Oxford Dr. 
+1359,Spring Hill,United States,,,34608,921 Smith St. 
+1360,Ravenna,United States,,,44266,8724 Hillside Dr. 
+1361,Stroudsburg,United States,,,18360,62 Strawberry Circle 
+1362,Cambridge,United States,,,2138,22 New St. 
+1363,New Port Richey,United States,,,34653,998 Olive Road 
+1364,Depew,United States,,,14043,85 Galvin Ave. 
+1365,Westland,United States,,,48185,71 Airport St. 
+1366,De Pere,United States,,,54115,7566 E. Crescent St. 
+1367,Myrtle Beach,United States,,,29577,344 Squaw Creek Ave. 
+1368,Alliance,United States,,,44601,262 South Pearl St. 
+1369,Shelbyville,United States,,,37160,234 Manor Lane 
+1370,Richmond Hill,United States,,,11418,164 Beacon Ave. 
+1371,Queensbury,United States,,,12804,7162 Beechwood Street 
+1372,Warwick,United States,,,2886,8700 W. White Rd. 
+1373,Elizabeth City,United States,,,27909,35 E. 10th Street 
+1374,Ft Mitchell,United States,,,41017,6 Bridgeton Lane 
+1375,Riverview,United States,,,33569,8 E. Cottage Lane 
+1376,Phillipsburg,United States,,,8865,112 Fairfield Dr. 
+1377,Marion,United States,,,28752,187 North River Road 
+1378,Alexandria,United States,,,22304,7929 Rosewood Street 
+1379,Battle Creek,United States,,,49015,44 Border Dr. 
+1380,Huntington Station,United States,,,11746,186 SW. Surrey Lane 
+1381,Irwin,United States,,,15642,215 Aspen Street 
+1382,Moses Lake,United States,,,98837,7578 Valley Court 
+1383,Longview,United States,,,75604,397 Cottage Circle 
+1384,Fishers,United States,,,46037,16 Johnson Court 
+1385,Mount Prospect,United States,,,60056,65 Fairway St. 
+1386,Rocklin,United States,,,95677,3 Tallwood Street 
+1387,Morganton,United States,,,28655,6 Henry Smith Avenue 
+1388,Muskogee,United States,,,74403,7515 Amherst Ave. 
+1389,Auburn,United States,,,13021,411 Hanover Lane 
+1390,Middle River,United States,,,21220,8598 Riverview Rd. 
+1391,Bountiful,United States,,,84010,444 Cottage St. 
+1392,Auburn,United States,,,13021,7 Sage Court 
+1393,Meriden,United States,,,6450,9023 Talbot Rd. 
+1394,Raeford,United States,,,28376,9228 Swanson Street 
+1395,East Elmhurst,United States,,,11369,9844 Pheasant Ave. 
+1396,Tualatin,United States,,,97062,552 West Sunset Street 
+1397,Elizabeth,United States,,,7202,24 Bank St. 
+1398,Parsippany,United States,,,7054,7776 Old Mechanic Street 
+1399,Greenville,United States,,,27834,58 South Marlborough Street 
+1400,Albany,United States,,,12203,34 High Point Court 
+1401,Queensbury,United States,,,12804,87 E. James St. 
+1402,Saginaw,United States,,,48601,550 Lakeview Road 
+1403,Waynesboro,United States,,,17268,177 Lake Forest St. 
+1404,West Fargo,United States,,,58078,209 Paris Hill St. 
+1405,New Milford,United States,,,6776,69 Stonybrook Street 
+1406,Bridgeport,United States,,,6606,977 West Amerige Ave. 
+1407,Mahwah,United States,,,7430,56 Bohemia Ave. 
+1408,Beltsville,United States,,,20705,25 S. Grant Rd. 
+1409,Brookfield,United States,,,53045,8232 Garden Court 
+1410,Monroe,United States,,,10950,23 Birchpond Rd. 
+1411,Oak Ridge,United States,,,37830,9852 W. High Point Drive 
+1412,Venice,United States,,,34293,78 Valley Farms Rd. 
+1413,Wallingford,United States,,,6492,822 Santa Clara St. 
+1414,Winter Garden,United States,,,34787,10 Richardson Drive 
+1415,Santa Clara,United States,,,95050,875 Annadale Dr. 
+1416,Freehold,United States,,,7728,407 Oakwood Drive 
+1417,Marlborough,United States,,,1752,9018 Aspen Ave. 
+1418,Banning,United States,,,92220,536 Pawnee Drive 
+1419,Lake Villa,United States,,,60046,65 Shirley St. 
+1420,Yakima,United States,,,98908,9 Chapel Lane 
+1421,Cranberry Twp,United States,,,16066,534 Constitution Street 
+1422,Hackensack,United States,,,7601,16 South Country Club Drive 
+1423,Rossville,United States,,,30741,25 Ramblewood St. 
+1424,Winona,United States,,,55987,24 Purple Finch Ave. 
+1425,High Point,United States,,,27265,9046 Old Lyme Street 
+1426,Saint Augustine,United States,,,32084,46 East Circle Drive 
+1427,Mount Holly,United States,,,8060,445 Broad St. 
+1428,Derry,United States,,,3038,41 Beaver Ridge Road 
+1429,Waxhaw,United States,,,28173,182 Swanson Drive 
+1430,Galloway,United States,,,43119,729 Princess Dr. 
+1431,Shakopee,United States,,,55379,935 County Dr. 
+1432,New Lenox,United States,,,60451,939 Lyme St. 
+1433,Alliance,United States,,,44601,8 Delaware Dr. 
+1434,Westbury,United States,,,11590,81 South Logan Avenue 
+1435,Lowell,United States,,,1851,71 Amherst St. 
+1436,Hallandale,United States,,,33009,495 North Chestnut Street 
+1437,Hallandale,United States,,,33009,828 Edgefield Avenue 
+1438,Mason,United States,,,45040,963 10th Drive 
+1439,Branford,United States,,,6405,65 Olive Drive 
+1440,North Royalton,United States,,,44133,11 Manor Ave. 
+1441,Dothan,United States,,,36301,191 Proctor Rd. 
+1442,Champaign,United States,,,61821,8866 Sunset Ave. 
+1443,Havertown,United States,,,19083,270 Orchard Ave. 
+1444,Helena,United States,,,59601,186 Windsor St. 
+1445,Livonia,United States,,,48150,8334 St Louis Lane 
+1446,Endicott,United States,,,13760,8575 Saxton St. 
+1447,Clermont,United States,,,34711,7572 Mammoth Road 
+1448,Medford,United States,,,2155,9755 Glen Creek Ave. 
+1449,New Rochelle,United States,,,10801,816 Annadale Dr. 
+1450,Lapeer,United States,,,48446,7991 Hilldale St. 
+1451,Kaukauna,United States,,,54130,24 Marshall Court 
+1452,Centereach,United States,,,11720,305 Ann St. 
+1453,Grand Island,United States,,,68801,72 North Clay St. 
+1454,Media,United States,,,19063,36B South Durham St. 
+1455,Lumberton,United States,,,28358,68 Oakwood Street 
+1456,Spring Valley,United States,,,10977,320 North Depot Rd. 
+1457,Schenectady,United States,,,12302,3 Meadowbrook Ave. 
+1458,Passaic,United States,,,7055,8987 Ketch Harbour Lane 
+1459,Los Banos,United States,,,93635,90 Sherman Street 
+1460,Reno,United States,,,89523,52 E. Thomas Drive 
+1461,Grandville,United States,,,49418,72 Division Drive 
+1462,Rowlett,United States,,,75088,322 Goldfield Ave. 
+1463,Cranston,United States,,,2920,88 Beech Circle 
+1464,Woonsocket,United States,,,2895,1 Tarkiln Hill Lane 
+1465,Fort Myers,United States,,,33905,50 Valley Farms St. 
+1466,Southgate,United States,,,48195,7144 Shadow Brook St. 
+1467,Glendale,United States,,,85302,9471 William Street 
+1468,Carmel,United States,,,10512,144 Rocky River Street 
+1469,Memphis,United States,,,38106,589 Mountainview St. 
+1470,Wake Forest,United States,,,27587,9325 James Ave. 
+1471,Kennewick,United States,,,99337,32 Parker Lane 
+1472,Sheboygan,United States,,,53081,969 New Saddle Court 
+1473,Cockeysville,United States,,,21030,32 Glen Ridge Street 
+1474,Muncie,United States,,,47302,4 University Court 
+1475,Ringgold,United States,,,30736,468 S. Smith Store Ave. 
+1476,Levittown,United States,,,11756,888 Rockwell St. 
+1477,Plainview,United States,,,11803,43 Rockaway Dr. 
+1478,Scarsdale,United States,,,10583,9182 Willow Street 
+1479,Auburndale,United States,,,33823,8 Nichols Ave. 
+1480,Lawrenceville,United States,,,30043,9652 County Street 
+1481,Westmont,United States,,,60559,622 Pulaski Lane 
+1482,Pembroke Pines,United States,,,33028,44 Ann Street 
+1483,Spring Hill,United States,,,34608,9 East Rose St. 
+1484,Willingboro,United States,,,8046,59 Colonial Court 
+1485,Memphis,United States,,,38106,64 East Primrose St. 
+1486,Jenison,United States,,,49428,128 Primrose St. 
+1487,Lanham,United States,,,20706,434 Logan Street 
+1488,Cape Coral,United States,,,33904,270 York Street 
+1489,Lincolnton,United States,,,28092,1 Tallwood Street 
+1490,Crawfordsville,United States,,,47933,8172 Old Mammoth Street 
+1491,Bronx,United States,,,10451,7251 Cemetery Street 
+1492,Leland,United States,,,28451,7104 Westminster Ave. 
+1493,Stockbridge,United States,,,30281,768 Hill Drive 
+1494,Trussville,United States,,,35173,489 Bohemia St. 
+1495,Pleasanton,United States,,,94566,32 Cherry Hill Ave. 
+1496,Brentwood,United States,,,11717,21 High Point Road 
+1497,Crown Point,United States,,,46307,7199 Sutor Ave. 
+1498,Jackson Heights,United States,,,11372,6 Arrowhead Road 
+1499,Iowa City,United States,,,52240,98 Durham St. 
+1500,Orland Park,United States,,,60462,76 Littleton Ave. 
+1501,Vincentown,United States,,,8088,997 North Church Dr. 
+1502,Findlay,United States,,,45840,83 Wood Circle 
+1503,Findlay,United States,,,45840,264 Livingston Street 
+1504,Elkton,United States,,,21921,7475 Buttonwood Street 
+1505,Farmingdale,United States,,,11735,9893 Swanson Ave. 
+1506,Powell,United States,,,37849,27 Mayfield Dr. 
+1507,Stamford,United States,,,6902,9811 Orchard St. 
+1508,Valley Stream,United States,,,11580,9394 Edgemont Street 
+1509,Orange Park,United States,,,32065,35 Rockville St. 
+1510,Flint,United States,,,48504,955 Randall Mill St. 
+1511,Titusville,United States,,,32780,7674 North Foster Lane 
+1512,Sarasota,United States,,,34231,521 E. Sherman Ave. 
+1513,Muskegon,United States,,,49441,695 Queen Road 
+1514,Elmont,United States,,,11003,4 Pilgrim Dr. 
+1515,Streamwood,United States,,,60107,68 Strawberry Ave. 
+1516,Ithaca,United States,,,14850,395 SW. Valley Farms Drive 
+1517,Tupelo,United States,,,38801,32 Bald Hill Rd. 
+1518,Mahopac,United States,,,10541,1 S. Green Hill Dr. 
+1519,Saint Augustine,United States,,,32084,7280 Hartford Drive 
+1520,Edison,United States,,,8817,56 NW. Constitution Street 
+1521,Moorhead,United States,,,56560,8525 N. Clay St. 
+1522,Summerfield,United States,,,34491,630 Rock Maple St. 
+1523,Mentor,United States,,,44060,3 8th Ave. 
+1524,Fort Lee,United States,,,7024,8957 Lafayette Street 
+1525,West Islip,United States,,,11795,27 Lantern Ave. 
+1526,Hopewell Junction,United States,,,12533,7781 West Jefferson Ave. 
+1527,Horn Lake,United States,,,38637,70 Chestnut Avenue 
+1528,Indiana,United States,,,15701,428 North Canal Drive 
+1529,Portsmouth,United States,,,23703,7776 Mill Pond St. 
+1530,Mount Juliet,United States,,,37122,8631 Marlborough Rd. 
+1531,Rome,United States,,,13440,8707 W. Green Lake Dr. 
+1532,Sylvania,United States,,,43560,9213 West Washington Avenue 
+1533,Los Banos,United States,,,93635,10 Sierra Lane 
+1534,Eastpointe,United States,,,48021,8642 Clark Dr. 
+1535,Marlborough,United States,,,1752,483 Grove St. 
+1536,Princeton,United States,,,8540,903 Pilgrim Dr. 
+1537,Circle Pines,United States,,,55014,57 Chestnut St. 
+1538,Woodhaven,United States,,,11421,46 Carriage Street 
+1539,Huntersville,United States,,,28078,40 Carpenter Ave. 
+1540,Taylor,United States,,,48180,975 Hilldale Dr. 
+1541,Streamwood,United States,,,60107,694 Green Hill St. 
+1542,Victoria,United States,,,77904,7963 Selby Dr. 
+1543,Amarillo,United States,,,79106,8084 Williams Drive 
+1544,Farmington,United States,,,48331,7177 Birchpond St. 
+1545,Downingtown,United States,,,19335,8102 Pine Street 
+1546,Branford,United States,,,6405,131 Nut Swamp Drive 
+1547,Deer Park,United States,,,11729,94 Canterbury Drive 
+1548,Plainfield,United States,,,7060,465 Gartner Street 
+1549,Depew,United States,,,14043,471 Buttonwood Ave. 
+1550,North Canton,United States,,,44720,8196 Gulf Road 
+1551,Allentown,United States,,,18102,87 Wall Street 
+1552,Indiana,United States,,,15701,6 6th Street 
+1553,Saugus,United States,,,1906,478 Brandywine St. 
+1554,Seymour,United States,,,47274,928 Maiden Drive 
+1555,Smithtown,United States,,,11787,1 Glendale Rd. 
+1556,Easton,United States,,,18042,128 Dunbar St. 
+1557,Port Huron,United States,,,48060,291 Jackson St. 
+1558,Mcdonough,United States,,,30252,248 Garden St. 
+1559,Bergenfield,United States,,,7621,162 Leeton Ridge St. 
+1560,Ottawa,United States,,,61350,651 Prairie Street 
+1561,Mobile,United States,,,36605,659 Morris Dr. 
+1562,Newark,United States,,,7103,392 Brandywine Drive 
+1563,Ankeny,United States,,,50023,9454 Manor Lane 
+1564,North Ridgeville,United States,,,44039,9142 Bellevue Drive 
+1565,Stratford,United States,,,6614,9001 Vermont St. 
+1566,Deerfield Beach,United States,,,33442,8049 West Holly Lane 
+1567,Fuquay Varina,United States,,,27526,8098 Center Avenue 
+1568,Liverpool,United States,,,13090,8527 South Campfire Avenue 
+1569,Peoria,United States,,,61604,452 Kirkland Court 
+1570,Ladson,United States,,,29456,96 Arnold Lane 
+1571,Westwood,United States,,,7675,8253 Durham Court 
+1572,Brooklyn,United States,,,11201,7053 Lakewood St. 
+1573,Elizabethtown,United States,,,17022,43 Edgemont Drive 
+1574,Alabaster,United States,,,35007,847 Linda Drive 
+1575,Bonita Springs,United States,,,34135,7 Selby Ave. 
+1576,Danvers,United States,,,1923,8590 Edgemont Street 
+1577,Sylvania,United States,,,43560,8988 Oakland Rd. 
+1578,Billerica,United States,,,1821,7226 Newport Ave. 
+1579,Hamden,United States,,,6514,372 Westport Road 
+1580,Sheboygan,United States,,,53081,6 South Franklin Street 
+1581,Lansdale,United States,,,19446,788 Jefferson Dr. 
+1582,Riverview,United States,,,33569,7721 Orchard St. 
+1583,Cottage Grove,United States,,,55016,377 Carson St. 
+1584,San Lorenzo,United States,,,94580,26 Brewery Court 
+1585,Menasha,United States,,,54952,8726 Mayfair Street 
+1586,Richmond,United States,,,23223,8492 Talbot St. 
+1587,Smithtown,United States,,,11787,97 Aspen St. 
+1588,Longview,United States,,,75604,809 Smith Ave. 
+1589,Tampa,United States,,,33604,542C San Carlos Dr. 
+1590,Montgomery,United States,,,36109,9728 Glenholme Ave. 
+1591,East Stroudsburg,United States,,,18301,45 Willow Rd. 
+1592,Piqua,United States,,,45356,84 Old Hill Street 
+1593,Union City,United States,,,7087,41 Tanglewood Drive 
+1594,Alliance,United States,,,44601,35 Maple Road 
+1595,West Springfield,United States,,,1089,454 Annadale Dr. 
+1596,Woodside,United States,,,11377,7668 Hill Street 
+1597,Ridgefield,United States,,,6877,6 Wayne St. 
+1598,Snellville,United States,,,30039,242 Pawnee Street 
+1599,Elizabeth,United States,,,7202,55 Highland Dr. 
+1600,Yonkers,United States,,,10701,9447 East Vernon Lane 
+1601,Baldwinsville,United States,,,13027,95 Rock Creek Road 
+1602,Baldwin,United States,,,11510,20 Mulberry Ave. 
+1603,Harrisonburg,United States,,,22801,95 Grove St. 
+1604,Redondo Beach,United States,,,90278,24 Cedarwood Lane 
+1605,West Fargo,United States,,,58078,9290 Spruce Drive 
+1606,District Heights,United States,,,20747,7659 Beacon St. 
+1607,Helotes,United States,,,78023,875 Honey Creek St. 
+1608,Battle Creek,United States,,,49015,452 Sunnyslope Rd. 
+1609,Longview,United States,,,75604,254 South Nichols Road 
+1610,Wilson,United States,,,27893,7538 E. Edgewood Drive 
+1611,Bartlett,United States,,,60103,575 East Talbot Road 
+1612,Hanover Park,United States,,,60133,9397 Wagon Street 
+1613,Fredericksburg,United States,,,22405,826 Riverview Court 
+1614,Waukegan,United States,,,60085,14 Mill Street 
+1615,Munster,United States,,,46321,9005 W. Indian Summer Ave. 
+1616,Lowell,United States,,,1851,85 Oxford St. 
+1617,Wheeling,United States,,,26003,9151 Bow Ridge Ave. 
+1618,Anderson,United States,,,29621,82 Old King Rd. 
+1619,Ames,United States,,,50010,9336 Sunbeam Road 
+1620,Bluffton,United States,,,29910,87 Beach Dr. 
+1621,Butler,United States,,,16001,799 South John Ave. 
+1622,Fairburn,United States,,,30213,791 Oklahoma Rd. 
+1623,Mokena,United States,,,60448,404 Clay Lane 
+1624,Concord,United States,,,3301,625 South Hamilton Road 
+1625,West Chicago,United States,,,60185,345 Trenton Street 
+1626,North Ridgeville,United States,,,44039,8843 Airport Ave. 
+1627,Brick,United States,,,8723,60 Fieldstone Dr. 
+1628,Rosedale,United States,,,11422,9 Lilac Ave. 
+1629,Egg Harbor Township,United States,,,8234,9340 Oakwood Ave. 
+1630,Wayne,United States,,,7470,7907 Hudson Drive 
+1631,Palmetto,United States,,,34221,688 Beaver Ridge Ave. 
+1632,Elizabethton,United States,,,37643,85 Lakeview St. 
+1633,Auburndale,United States,,,33823,176 Del Monte Street 
+1634,Norwalk,United States,,,6851,164 Clark Street 
+1635,Omaha,United States,,,68107,980 East Pawnee Street 
+1636,Westbury,United States,,,11590,509 North Marshall Street 
+1637,Goldsboro,United States,,,27530,963 Augusta Rd. 
+1638,Aliquippa,United States,,,15001,14 N. Walnut Street 
+1639,West Roxbury,United States,,,2132,7 Vermont Street 
+1640,Land O Lakes,United States,,,34639,53 Winding Way Rd. 
+1641,Kent,United States,,,44240,463 Pleasant Drive 
+1642,Ridgewood,United States,,,7450,255 3rd Street 
+1643,Asbury Park,United States,,,7712,155 Brook St. 
+1644,Sterling,United States,,,20164,231 Delaware St. 
+1645,Laurel,United States,,,20707,536 Lake View Avenue 
+1646,Woodstock,United States,,,30188,8225 Kingston Rd. 
+1647,Stroudsburg,United States,,,18360,83 East Street 
+1648,Ann Arbor,United States,,,48103,8108 Studebaker Rd. 
+1649,Chesapeake,United States,,,23320,850 Euclid Drive 
+1650,Havertown,United States,,,19083,8823 Beach Street 
+1651,Marysville,United States,,,43040,9863 Myers Drive 
+1652,New Milford,United States,,,6776,554 SE. Magnolia St. 
+1653,Dorchester,United States,,,2125,575 Evergreen Street 
+1654,Capitol Heights,United States,,,20743,569 E. Mill Pond Ave. 
+1655,Patchogue,United States,,,11772,7599 Golf Drive 
+1656,Clinton,United States,,,20735,269 N. Somerset Drive 
+1657,Suffolk,United States,,,23434,25 W. New Avenue 
+1658,Muncie,United States,,,47302,8016 Water Street 
+1659,Linden,United States,,,7036,81 Greenrose Road 
+1660,Perkasie,United States,,,18944,4 Beach Street 
+1661,North Attleboro,United States,,,2760,666 Cambridge Avenue 
+1662,Naugatuck,United States,,,6770,9741 Essex Street 
+1663,Lakeville,United States,,,55044,8164 South Depot Lane 
+1664,Powhatan,United States,,,23139,880 Helen Dr. 
+1665,Chardon,United States,,,44024,52 Hilltop Ave. 
+1666,Vienna,United States,,,22180,8238 Hamilton Ave. 
+1667,Cantonment,United States,,,32533,68 Jockey Hollow Lane 
+1668,Chippewa Falls,United States,,,54729,8480 8th St. 
+1669,Smyrna,United States,,,30080,388 Rock Creek Court 
+1670,Vienna,United States,,,22180,8236 Pulaski Ave. 
+1671,Lowell,United States,,,1851,3 University Street 
+1672,Canal Winchester,United States,,,43110,294 Lilac Street 
+1673,Athens,United States,,,30605,7412 Selby St. 
+1674,Asheboro,United States,,,27205,59 Gartner St. 
+1675,Rapid City,United States,,,57701,535 Hanover Ave. 
+1676,Spring Valley,United States,,,10977,6 North Piper St. 
+1677,Lorton,United States,,,22079,652 Glenlake Street 
+1678,Lansing,United States,,,48910,38 Bedford St. 
+1679,Burnsville,United States,,,55337,7368 Hamilton Drive 
+1680,Garland,United States,,,75043,8415 Summer St. 
+1681,Camas,United States,,,98607,3 Peninsula St. 
+1682,Merrillville,United States,,,46410,792 East Sycamore St. 
+1683,Lincolnton,United States,,,28092,83 Peg Shop Drive 
+1684,Peoria,United States,,,61604,4 West Philmont Street 
+1685,Chapel Hill,United States,,,27516,8648 Riverview Ave. 
+1686,Roswell,United States,,,30075,887 Windfall Lane 
+1687,Fort Wayne,United States,,,46804,7601 Sunnyslope Ave. 
+1688,Avon Lake,United States,,,44012,398 Augusta Rd. 
+1689,Metairie,United States,,,70001,3 W. Berkshire Court 
+1690,East Hartford,United States,,,6118,701 Country Club St. 
+1691,Burbank,United States,,,60459,578 N. Indian Spring Street 
+1692,Conway,United States,,,29526,7369 Tallwood Drive 
+1693,Bethel Park,United States,,,15102,948 Leatherwood Court 
+1694,Sykesville,United States,,,21784,635 Longbranch Street 
+1695,Hazleton,United States,,,18201,41 SE. White Lane 
+1696,New Kensington,United States,,,15068,174 Pennington St. 
+1697,New Britain,United States,,,6051,2 Sherwood Lane 
+1698,Kalispell,United States,,,59901,60 Helen Rd. 
+1699,Hamtramck,United States,,,48212,458 Pheasant Street 
+1700,Linden,United States,,,7036,329 Oxford Drive 
+1701,Sicklerville,United States,,,8081,871 Atlantic Lane 
+1702,Saint Charles,United States,,,60174,7739 E. Edgewater Street 
+1703,Algonquin,United States,,,60102,33 Brown Drive 
+1704,York,United States,,,17402,9047 Studebaker Ave. 
+1705,Atlantic City,United States,,,8401,77 East Franklin Street 
+1706,West Des Moines,United States,,,50265,8784 Carriage Ave. 
+1707,Bonita Springs,United States,,,34135,338 Summit Dr. 
+1708,Fort Myers,United States,,,33905,7720C Longbranch Dr. 
+1709,Cumming,United States,,,30040,87 Orange Street 
+1710,Bayside,United States,,,11361,336 Surrey St. 
+1711,Myrtle Beach,United States,,,29577,53 Charles Ave. 
+1712,Westmont,United States,,,60559,129 East Greenview Drive 
+1713,Southfield,United States,,,48076,545 Depot Ave. 
+1714,Banning,United States,,,92220,449 Shore Drive 
+1715,Brentwood,United States,,,11717,8 Glendale Drive 
+1716,Malden,United States,,,2148,70 Essex Lane 
+1717,Westlake,United States,,,44145,56 Winchester Lane 
+1718,Leland,United States,,,28451,17 Berkshire Street 
+1719,Mcminnville,United States,,,37110,59 Redwood St. 
+1720,Sidney,United States,,,45365,9922 Pennington Ave. 
+1721,Asheboro,United States,,,27205,7056 Griffin Lane 
+1722,Starkville,United States,,,39759,7662 San Carlos Ave. 
+1723,Columbus,United States,,,31904,53 W. Mammoth Street 
+1724,Xenia,United States,,,45385,272 Carpenter Drive 
+1725,Apple Valley,United States,,,92307,931 S. Penn St. 
+1726,Holyoke,United States,,,1040,624 Young Lane 
+1727,Garland,United States,,,75043,925 Redwood Street 
+1728,Bloomington,United States,,,47401,382 West Big Rock Cove St. 
+1729,Unit 208 ,United States,,,,262 E. Bellevue St. 
+1730,Mesa,United States,,,85203,590 North Birchpond Drive 
+1731,Owings Mills,United States,,,21117,9449 Lexington St. 
+1732,Wisconsin Rapids,United States,,,54494,9667 Pumpkin Hill Road 
+1733,Maumee,United States,,,43537,203 Holly Court 
+1734,Roanoke Rapids,United States,,,27870,823 Brook St. 
+1735,Jeffersonville,United States,,,47130,9 Arrowhead Court 
+1736,Huntsville,United States,,,35803,8611C Carson Street 
+1737,Hartford,United States,,,6106,8004 Snake Hill St. 
+1738,Lorton,United States,,,22079,92 Harrison Street 
+1739,Niles,United States,,,49120,86 Branch Dr. 
+1740,East Orange,United States,,,7017,317 Sunbeam St. 
+1741,Paducah,United States,,,42001,196 Coffee St. 
+1742,Canfield,United States,,,44406,761 S. 8th Street 
+1743,East Lansing,United States,,,48823,9279 8th St. 
+1744,Little Rock,United States,,,72209,7636 Fifth Street 
+1745,Johnston,United States,,,2919,100 Shirley St. 
+1746,Windsor Mill,United States,,,21244,92 Edgewater Street 
+1747,Tewksbury,United States,,,1876,8861 Hartford Avenue 
+1748,Vienna,United States,,,22180,8 South Park Rd. 
+1749,Sunnyside,United States,,,11104,7205 Smith Store Drive 
+1750,Ozone Park,United States,,,11417,224 Bedford Road 
+1751,Pickerington,United States,,,43147,2 Cleveland Street 
+1752,Winston Salem,United States,,,27103,48 Jones Lane 
+1753,Independence,United States,,,41051,50 Evergreen Street 
+1754,Chelsea,United States,,,2150,86 Saxon Road 
+1755,Fairfield,United States,,,6824,17 Bow Ridge St. 
+1756,Spring Hill,United States,,,34608,998 Gainsway Drive 
+1757,Flowery Branch,United States,,,30542,8760 Parker Court 
+1758,El Dorado,United States,,,71730,45 Manhattan Street 
+1759,Harrison Township,United States,,,48045,7788 Bay Meadows St. 
+1760,Champlin,United States,,,55316,4 South Lafayette St. 
+1761,Pasadena,United States,,,21122,8813 S. George Street 
+1762,West New York,United States,,,7093,76 Bellevue St. 
+1763,New Bern,United States,,,28560,8718 Lake View Rd. 
+1764,Auburn,United States,,,13021,9907 Columbia Dr. 
+1765,North Canton,United States,,,44720,218 South Swanson Ave. 
+1766,Durham,United States,,,27703,80 South 10th Court 
+1767,Rossville,United States,,,30741,9039 Galvin Street 
+1768,Waltham,United States,,,2453,981 Roehampton Rd. 
+1769,Sicklerville,United States,,,8081,4 Lower River Dr. 
+1770,Dorchester Center,United States,,,2124,93 N. Meadow St. 
+1771,Desoto,United States,,,75115,5 Greenrose Court 
+1772,Scotch Plains,United States,,,7076,38 Ashley St. 
+1773,Vicksburg,United States,,,39180,361 Bow Ridge Street 
+1774,Norwalk,United States,,,6851,63 Market St. 
+1775,Glenview,United States,,,60025,7312 West Rd. 
+1776,Edison,United States,,,8817,459 Sherman Lane 
+1777,Charlottesville,United States,,,22901,936 Buckingham St. 
+1778,Media,United States,,,19063,8417 North Thompson Lane 
+1779,Nashua,United States,,,3060,8026 W. Tunnel Drive 
+1780,Plymouth,United States,,,2360,7412 School Dr. 
+1781,Lockport,United States,,,14094,654 South Aspen St. 
+1782,Lake Villa,United States,,,60046,69 Lake View Ave. 
+1783,Mason City,United States,,,50401,7547 Whitemarsh St. 
+1784,Roslindale,United States,,,2131,4 Lake View Road 
+1785,Highland Park,United States,,,60035,862 Ridgewood St. 
+1786,Franklin Square,United States,,,11010,57 Joy Ridge Drive 
+1787,Helotes,United States,,,78023,81 Fairway Rd. 
+1788,Bay City,United States,,,48706,9112 North Rockcrest Lane 
+1789,Wheaton,United States,,,60187,7985 Lexington Circle 
+1790,Saint Charles,United States,,,60174,8094 S. Mayfield St. 
+1791,Janesville,United States,,,53546,9871 Corona Lane 
+1792,Winston Salem,United States,,,27103,494 Jefferson Street 
+1793,Shepherdsville,United States,,,40165,986 Summit Drive 
+1794,Panama City,United States,,,32404,13 Marsh St. 
+1795,Bowie,United States,,,20715,68 Trout St. 
+1796,Revere,United States,,,2151,84 Hall Court 
+1797,Far Rockaway,United States,,,11691,42 Philmont Dr. 
+1798,Brownsburg,United States,,,46112,828 Garfield Ave. 
+1799,Wooster,United States,,,44691,7331 E. Laurel Dr. 
+1800,Cary,United States,,,27511,7402 Southampton St. 
+1801,Newington,United States,,,6111,7517 Evergreen Lane 
+1802,Saint Cloud,United States,,,56301,6 Ohio St. 
+1803,Brookfield,United States,,,53045,8424 Orange Dr. 
+1804,Richmond Hill,United States,,,11418,1 San Carlos St. 
+1805,Easton,United States,,,18042,63 Pawnee St. 
+1806,Lacey,United States,,,98503,69 Warren Ave. 
+1807,Mount Prospect,United States,,,60056,84 Riverside Ave. 
+1808,Blackwood,United States,,,8012,422 Franklin Circle 
+1809,Montclair,United States,,,7042,7414 Southampton Drive 
+1810,Lacey,United States,,,98503,707 Oak Drive 
+1811,Muscatine,United States,,,52761,650 S. Ramblewood St. 
+1812,Glasgow,United States,,,42141,7 S. Vernon St. 
+1813,Apt 888 ,United States,,,,50 Augusta Dr. 
+1814,Daphne,United States,,,36526,858 Del Monte Ave. 
+1815,Wantagh,United States,,,11793,67 Amerige St. 
+1816,Vincentown,United States,,,8088,9907 Oak Meadow Drive 
+1817,Deltona,United States,,,32725,9326 Squaw Creek Dr. 
+1818,East Hartford,United States,,,6118,81 St Margarets Street 
+1819,Shelbyville,United States,,,37160,7712 Santa Clara St. 
+1820,Wausau,United States,,,54401,774 North Washington Street 
+1821,Sioux Falls,United States,,,57103,431 Marshall St. 
+1822,Absecon,United States,,,8205,8973 Edgemont St. 
+1823,Vista,United States,,,92083,731 Lafayette Court 
+1824,Methuen,United States,,,1844,53 George Drive 
+1825,Sioux Falls,United States,,,57103,34 S. Indian Spring Avenue 
+1826,Colonial Heights,United States,,,23834,610 Cactus St. 
+1827,Suwanee,United States,,,30024,428 West Big Rock Cove St. 
+1828,Chatsworth,United States,,,30705,7133 S. Cleveland Street 
+1829,Niceville,United States,,,32578,86 Primrose Ave. 
+1830,Murrells Inlet,United States,,,29576,332 College Avenue 
+1831,Lutherville Timonium,United States,,,21093,541 James Dr. 
+1832,Taunton,United States,,,2780,40 Oxford Street 
+1833,Lithonia,United States,,,30038,99 Poor House St. 
+1834,Coachella,United States,,,92236,3 West Edgewood St. 
+1835,Schenectady,United States,,,12302,86 Surrey Ave. 
+1836,Indian Trail,United States,,,28079,7882 Delaware St. 
+1837,Stroudsburg,United States,,,18360,5 Kirkland Lane 
+1838,Fairborn,United States,,,45324,99 Cambridge St. 
+1839,Richmond Hill,United States,,,11418,450 Cedar Swamp Dr. 
+1840,Granger,United States,,,46530,9078 Vine Street 
+1841,Cape Coral,United States,,,33904,8054 Purple Finch Dr. 
+1842,Roseville,United States,,,48066,36 Highland Court 
+1843,Leominster,United States,,,1453,429 Ridge Ave. 
+1844,Bemidji,United States,,,56601,9210 Valley View St. 
+1845,Rapid City,United States,,,57701,186 Homestead Street 
+1846,Hoffman Estates,United States,,,60169,8779 Valley View Street 
+1847,Champlin,United States,,,55316,21 Halifax Dr. 
+1848,Irwin,United States,,,15642,19 Creekside Dr. 
+1849,Port Washington,United States,,,11050,46 Brickell Ave. 
+1850,Clayton,United States,,,27520,493 Honey Creek St. 
+1851,Silver Spring,United States,,,20901,8378 Armstrong Ave. 
+1852,Lawrence Township,United States,,,8648,9587 South Sussex Ave. 
+1853,Glendora,United States,,,91740,19 South Longfellow Drive 
+1854,Branford,United States,,,6405,50 Oakland Street 
+1855,Starkville,United States,,,39759,223 Wagon Drive 
+1856,Sanford,United States,,,27330,93 Durham St. 
+1857,West Chicago,United States,,,60185,62 N. Sierra St. 
+1858,Cockeysville,United States,,,21030,9548 North Longfellow St. 
+1859,Mebane,United States,,,27302,899 Lake View Street 
+1860,Natick,United States,,,1760,847 Mill Pond St. 
+1861,Mchenry,United States,,,60050,53 Chapel Street 
+1862,Bowie,United States,,,20715,62 SW. Rocky River St. 
+1863,Loganville,United States,,,30052,2 S. Lancaster Ave. 
+1864,Westerville,United States,,,43081,69 Fulton St. 
+1865,Coatesville,United States,,,19320,714 Sierra Lane 
+1866,Albany,United States,,,12203,55 East Big Rock Cove Dr. 
+1867,North Haven,United States,,,6473,41 Livingston St. 
+1868,Gulfport,United States,,,39503,336 Talbot St. 
+1869,Bayside,United States,,,11361,14 Valley View Ave. 
+1870,Clifton,United States,,,7011,34 Cardinal St. 
+1871,New Brunswick,United States,,,8901,55 Brook Court 
+1872,North Canton,United States,,,44720,310 Belmont St. 
+1873,Deer Park,United States,,,11729,561 N. Ramblewood Ave. 
+1874,Grand Rapids,United States,,,49503,729 Whitemarsh Court 
+1875,Southgate,United States,,,48195,86 Branch Avenue 
+1876,Westford,United States,,,1886,546 Lower River St. 
+1877,Mason,United States,,,45040,71 Trenton St. 
+1878,Rolling Meadows,United States,,,60008,8201 Paris Hill St. 
+1879,Powder Springs,United States,,,30127,9758 Bohemia Ave. 
+1880,Conway,United States,,,29526,8976 State Court 
+1881,Oxon Hill,United States,,,20745,8466 Prince St. 
+1882,Bridgewater,United States,,,8807,7886 Fairground Drive 
+1883,Front Royal,United States,,,22630,80 Colonial Road 
+1884,Paramus,United States,,,7652,8498 Woodsman Ave. 
+1885,Ottawa,United States,,,61350,47 Central Lane 
+1886,Lancaster,United States,,,14086,848 Second St. 
+1887,Lilburn,United States,,,30047,9250 Philmont Lane 
+1888,Ocoee,United States,,,34761,9835 Country Club St. 
+1889,Ashtabula,United States,,,44004,8512 Rockville Street 
+1890,Germantown,United States,,,20874,28 SE. Galvin Court 
+1891,Coventry,United States,,,2816,7008 Buttonwood Drive 
+1892,Stamford,United States,,,6902,68 Walnutwood Rd. 
+1893,Dekalb,United States,,,60115,9176 SW. Harrison Ave. 
+1894,Providence,United States,,,2904,7982 Virginia Street 
+1895,Orchard Park,United States,,,14127,8779 Thatcher Dr. 
+1896,North Royalton,United States,,,44133,27 53rd Ave. 
+1897,Bayside,United States,,,11361,524 Brickell Street 
+1898,Howard Beach,United States,,,11414,9809 SW. Miles Drive 
+1899,Romeoville,United States,,,60446,9136 Philmont Rd. 
+1900,Latrobe,United States,,,15650,861 W. St Paul Court 
+1901,Asheville,United States,,,28803,270 S. Briarwood Dr. 
+1902,Ogden,United States,,,84404,9877 Lakeview Drive 
+1903,Garfield,United States,,,7026,8487 Brook Street 
+1904,Suite J ,United States,,,,9351 Country St. 
+1905,Deltona,United States,,,32725,9845 Charles Street 
+1906,Chillicothe,United States,,,45601,56 N. Ridgewood Drive 
+1907,Capitol Heights,United States,,,20743,536 Tanglewood Drive 
+1908,Port Richey,United States,,,34668,22 Mayfield Drive 
+1909,Amsterdam,United States,,,12010,90 Amerige Dr. 
+1910,Noblesville,United States,,,46060,275 Rose Ave. 
+1911,Freeport,United States,,,11520,9138 S. Cardinal Dr. 
+1912,Indiana,United States,,,15701,80 Country Club St. 
+1913,Boca Raton,United States,,,33428,47 York St. 
+1914,Central Islip,United States,,,11722,98 Kingston Ave. 
+1915,Fairburn,United States,,,30213,554 Elm Drive 
+1916,Parkersburg,United States,,,26101,7123 Vale Dr. 
+1917,Colonial Heights,United States,,,23834,27 W. Halifax Ave. 
+1918,Navarre,United States,,,32566,8 Arch St. 
+1919,Marcus Hook,United States,,,19061,159 Beechwood Drive 
+1920,Princeton,United States,,,8540,947 Delaware Dr. 
+1921,Stockbridge,United States,,,30281,8765 Elm St. 
+1922,Huntington,United States,,,11743,11 N. Vermont Drive 
+1923,Henderson,United States,,,42420,8622 Henry Ave. 
+1924,Spring Hill,United States,,,34608,32 Greenview St. 
+1925,Round Lake,United States,,,60073,82 Oak Meadow St. 
+1926,Grand Blanc,United States,,,48439,8839 Arnold Lane 
+1927,Jamaica Plain,United States,,,2130,88 Queen Avenue 
+1928,Saginaw,United States,,,48601,821 North Taylor Road 
+1929,Amarillo,United States,,,79106,7513 High Point Ave. 
+1930,Eau Claire,United States,,,54701,371 Sierra Ave. 
+1931,Paterson,United States,,,7501,9908 Acacia Court 
+1932,Front Royal,United States,,,22630,7418 Greenrose St. 
+1933,Clayton,United States,,,27520,9258 E. Morris Street 
+1934,Saint Petersburg,United States,,,33702,417 Glen Creek Avenue 
+1935,Brockton,United States,,,2301,8780 Tallwood Street 
+1936,State College,United States,,,16801,7 Coffee Street 
+1937,Coram,United States,,,11727,7425 Military St. 
+1938,Mount Pleasant,United States,,,29464,981 East Cleveland Ave. 
+1939,Englewood,United States,,,7631,71 Riverside St. 
+1940,Deer Park,United States,,,11729,443 Lilac St. 
+1941,Elmhurst,United States,,,11373,8186 Glen Ridge Drive 
+1942,Jacksonville Beach,United States,,,32250,756 Hilltop Drive 
+1943,Deerfield Beach,United States,,,33442,47 Edgefield Ave. 
+1944,Chambersburg,United States,,,17201,99 Gainsway Court 
+1945,Syosset,United States,,,11791,410 Evergreen Dr. 
+1946,Spring Valley,United States,,,10977,7566 West Front St. 
+1947,Lincoln Park,United States,,,48146,262 S. Grant Lane 
+1948,Clifton Park,United States,,,12065,25 El Dorado Ave. 
+1949,New Haven,United States,,,6511,5 Randall Mill Street 
+1950,Mchenry,United States,,,60050,35 Shub Farm Street 
+1951,Piscataway,United States,,,8854,10 Princess St. 
+1952,West Bloomfield,United States,,,48322,34 Bay Meadows Court 
+1953,Media,United States,,,19063,968 Columbia Drive 
+1954,Madisonville,United States,,,42431,8396 Wayne Drive 
+1955,Muskego,United States,,,53150,95 East Pine Lane 
+1956,San Antonio,United States,,,78213,9786 8th Dr. 
+1957,Miamisburg,United States,,,45342,7430 Oakland Rd. 
+1958,Gloucester,United States,,,1930,613 Lantern Court 
+1959,Plainview,United States,,,11803,236 W. Prairie Drive 
+1960,Fairborn,United States,,,45324,554 Grand Drive 
+1961,Bristol,United States,,,6010,54 Manor Station Ave. 
+1962,Glendora,United States,,,91740,40 Fawn Road 
+1963,Spring Hill,United States,,,34608,233 Bohemia Street 
+1964,Carpentersville,United States,,,60110,976 New Ave. 
+1965,Franklin Square,United States,,,11010,633 James St. 
+1966,Cambridge,United States,,,2138,9322 East Grandrose Rd. 
+1967,Passaic,United States,,,7055,402 High Noon Dr. 
+1968,Columbus,United States,,,31904,8415 West Johnson Ave. 
+1969,North Haven,United States,,,6473,37 Hamilton Dr. 
+1970,Grand Island,United States,,,68801,72 NE. Harvey St. 
+1971,Hixson,United States,,,37343,8890 Charles St. 
+1972,Tuckerton,United States,,,8087,9480 Ketch Harbour Drive 
+1973,Greer,United States,,,29650,9258 Smith Store St. 
+1974,Indiana,United States,,,15701,293 Franklin Street 
+1975,Webster,United States,,,14580,405 Stonybrook St. 
+1976,Winder,United States,,,30680,477 Bridle St. 
+1977,Wellington,United States,,,33414,29 South Southampton St. 
+1978,Deltona,United States,,,32725,50 Cedar Swamp Avenue 
+1979,Tuscaloosa,United States,,,35405,498 Garden Street 
+1980,Delray Beach,United States,,,33445,8533 Glen Creek Rd. 
+1981,Norwalk,United States,,,6851,251 Southampton St. 
+1982,Ypsilanti,United States,,,48197,300 Woodsman Lane 
+1983,Mebane,United States,,,27302,8642 South Marvon Road 
+1984,La Crosse,United States,,,54601,8698 Grove Avenue 
+1985,Crown Point,United States,,,46307,262 Laurel Drive 
+1986,Haines City,United States,,,33844,7571 Elizabeth Drive 
+1987,Shrewsbury,United States,,,1545,9338 Pendergast St. 
+1988,Fresh Meadows,United States,,,11365,310 S. Swanson Lane 
+1989,Fort Mill,United States,,,29708,16 Baker St. 
+1990,Schererville,United States,,,46375,7509 Pineknoll Rd. 
+1991,Beverly,United States,,,1915,739 Pine St. 
+1992,Fredericksburg,United States,,,22405,3 Country Drive 
+1993,Port Charlotte,United States,,,33952,937 Manhattan St. 
+1994,Owensboro,United States,,,42301,6 East Rockaway Drive 
+1995,Eden Prairie,United States,,,55347,887 El Dorado Ave. 
+1996,Rock Hill,United States,,,29730,7327 Country Club Drive 
+1997,Niagara Falls,United States,,,14304,371 Big Rock Cove Lane 
+1998,Cornelius,United States,,,28031,88 Middle River St. 
+1999,New York,United States,,,10002,9224 S. Poor House Ave. 
+2000,Holyoke,United States,,,1040,596 Atlantic St. 

@@ -1,0 +1,6 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:Company-{id} a :Company ;
+  :name "{name}" ;
+  :description "{description}" ;
+.
