@@ -6,7 +6,7 @@
       sm:table "transactions" ;
     ] .
 
-:Tx-{tx_id} a :Transaction
+:Tx-{tx_id} a :Transaction ;
     :beneficiary :BankAccount-{account2} ;
     :amount "{amount}"^^xsd:integer ;
     :date "{tx_date}"^^xsd:date ;
