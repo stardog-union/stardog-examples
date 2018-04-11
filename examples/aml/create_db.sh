@@ -28,7 +28,7 @@ stardog-admin virtual import $DB transaction-mapping.ttl aml_dataset_transaction
 
 # Or, comment the prior line and uncomment these lines to load the transactions into MySQL
 # Alterntively, can use load_transactions.sql instead of load_transactions-mysql.sql
-#mysql -uadmin -padmin -hlocalhost <load_transactions-mysql.sql
+#mysql -uadmin -padmin -hlocalhost stardog < load_transactions-mysql.sql
 #stardog-admin virtual add aml.properties transaction-mapping-sql.ttl
 
 stardog data add -g graph:schema $DB aml_rules.ttl

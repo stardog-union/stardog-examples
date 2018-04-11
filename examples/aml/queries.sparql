@@ -1,0 +1,371 @@
+# Node types
+SELECT ?t (count(?a) as ?g)
+WHERE {
+    ?a a ?t .
+    {
+        select distinct ?t {
+        ?a a ?t
+        }
+    }
+}
+GROUP BY ?t
+
+tag:stardog:demo:aml:Address	1000
+tag:stardog:demo:aml:BankAccount	1999
+tag:stardog:demo:aml:Company	1000
+tag:stardog:demo:aml:Person	1000
+tag:stardog:demo:aml:Employee	50
+
+
+# Relationship types
+SELECT ?p (count(?a) as ?g)
+WHERE {
+    ?a ?p ?b .
+    {
+        select distinct ?p {
+            ?s ?p ?o
+        }
+    }
+}
+GROUP BY ?p
+
+tag:stardog:demo:aml:city	1000
+tag:stardog:demo:aml:street	1000
+http://www.w3.org/2003/01/geo/wgs84_pos#lat	997
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type	5049
+http://www.w3.org/2003/01/geo/wgs84_pos#long	997
+tag:stardog:demo:aml:country	2000
+tag:stardog:demo:aml:zipCode	148
+tag:stardog:demo:aml:balance	1999
+tag:stardog:demo:aml:number	1999
+tag:stardog:demo:aml:description	1000
+tag:stardog:demo:aml:name	1000
+tag:stardog:demo:aml:lastName	1000
+tag:stardog:demo:aml:firstName	1000
+tag:stardog:demo:aml:email	1000
+tag:stardog:demo:aml:hasAddress	2000
+tag:stardog:demo:aml:hasBankAccount	1213
+tag:stardog:demo:aml:company	150
+tag:stardog:demo:aml:share	150
+tag:stardog:demo:aml:holds	150
+
+# Node-Relationship-Node types
+select ?st ?p ?ot (count(*) as ?count) {
+  { # T-T
+    ?s ?p ?o .
+    ?s a ?st .
+    ?o a ?ot .
+  }
+  union
+  { # T-U
+    ?s ?p ?o .
+    ?s a ?st .
+    bind (if (isBlank(?o), "<blank>", "<untyped>") as ?ot)
+    filter not exists { ?o a ?t }
+    filter (!isLiteral(?o))
+    filter (?p != rdf:type)
+  }
+  union
+  { # T-L
+    ?s ?p ?o .
+    ?s a ?st .
+    bind (datatype(?o) as ?ot)
+    filter (isLiteral(?o))
+  }
+  union
+  { # U-T
+    ?s ?p ?o .
+    ?o a ?ot .
+    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
+    filter not exists { ?s a ?t }
+  }
+  union
+  { # U-U
+    ?s ?p ?o .
+    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
+    bind (if (isBlank(?o), "<blank>", "<untyped>") as ?ot)
+    filter not exists { ?o a ?t }
+    filter not exists { ?s a ?t }
+    filter (!isLiteral(?o))
+    filter (?p != rdf:type)
+  }
+  union
+  { # U-L
+    ?s ?p ?o .
+    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
+    bind (datatype(?o) as ?ot)
+    filter not exists { ?s a ?t }
+    filter (isLiteral(?o))
+  }
+}
+group by ?st ?p ?ot
+order by ?st desc(count(*)) ?p
+
+tag:stardog:demo:aml:Address	tag:stardog:demo:aml:city	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Address	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Address	tag:stardog:demo:aml:street	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Address	http://www.w3.org/2003/01/geo/wgs84_pos#lat	http://www.w3.org/2001/XMLSchema#decimal	997
+tag:stardog:demo:aml:Address	http://www.w3.org/2003/01/geo/wgs84_pos#long	http://www.w3.org/2001/XMLSchema#decimal	997
+tag:stardog:demo:aml:Address	tag:stardog:demo:aml:zipCode	http://www.w3.org/2001/XMLSchema#string	148
+tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:originated	<untyped>	73062
+tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:balance	http://www.w3.org/2001/XMLSchema#decimal	1999
+tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:number	http://www.w3.org/2001/XMLSchema#string	1999
+tag:stardog:demo:aml:Company	tag:stardog:demo:aml:description	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Company	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	1000
+tag:stardog:demo:aml:Company	tag:stardog:demo:aml:name	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Company	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	662
+tag:stardog:demo:aml:Company	tag:stardog:demo:aml:holds	<blank>	100
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	50
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:email	http://www.w3.org/2001/XMLSchema#string	50
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:firstName	http://www.w3.org/2001/XMLSchema#string	50
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	50
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:lastName	http://www.w3.org/2001/XMLSchema#string	50
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	23
+tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:holds	<blank>	2
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:email	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:firstName	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	1000
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:lastName	http://www.w3.org/2001/XMLSchema#string	1000
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	551
+tag:stardog:demo:aml:Person	tag:stardog:demo:aml:holds	<blank>	50
+<blank>	tag:stardog:demo:aml:company	tag:stardog:demo:aml:Company	150
+<blank>	tag:stardog:demo:aml:share	http://www.w3.org/2001/XMLSchema#integer	150
+<untyped>	tag:stardog:demo:aml:amount	http://www.w3.org/2001/XMLSchema#integer	73062
+<untyped>	tag:stardog:demo:aml:beneficiary	tag:stardog:demo:aml:BankAccount	73062
+<untyped>	tag:stardog:demo:aml:date	http://www.w3.org/2001/XMLSchema#date	73062
+prefix : <tag:stardog:demo:aml:>
+
+
+# Find people without accounts
+SELECT ?p
+WHERE {
+    ?p a :Person .
+    FILTER NOT EXISTS {?p :hasBankAccount ?o}
+}
+
+# Same thing with virtual
+select * {
+  service <virtual://aml> {
+    :BankAccount-4391-4466-9775-8814 :originated ?t .
+    ?t :beneficiary :BankAccount-8201-8285-4081-3604 ;
+       :amount ?a ;
+       :date ?d
+  }
+}
+
+# Find company holdings (no company should have > 100% shares outstanding)
+select ?c (sum(?s) as ?total) {
+ ?t :holds ?h .
+ ?h :share ?s ;
+    :company ?c .
+}
+group by ?c
+order by desc (sum(?s))
+
+# Find holdings for a specific set of companies
+select * {
+  ?t :holds ?h .
+  ?h :share ?s ;
+     :company ?c .
+    filter (?c in (:Company-355,:Company-52,:Company-707))
+}
+
+# Find money transfers through an (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
+select ?org ?ben (sum(?m) as ?s) {
+?org a :Person ;
+    :hasAffiliation ?t1 .
+?t1 :hasBankAccount ?a1 .
+?a1 :originated ?tx .
+?tx :beneficiary ?a2 ;
+    :amount ?m .
+?t2 :hasBankAccount ?a2 .
+?ben a :Person ;
+    :hasAffiliation ?t2 .
+}
+group by ?org ?ben
+order by desc(?s)
+limit 50
+
+# List all direct transfers between two specific people.
+select * {
+ :Person-992 :hasAffiliation ?b .
+ ?b :hasBankAccount ?c .
+ ?c :originated ?d .
+ ?d :beneficiary ?e ;
+    :amount ?m .
+ ?f :hasBankAccount ?e .
+ :Person-321 :hasAffiliation ?f .
+}
+
+# Find paths between two people
+PATHS ALL 
+START ?s = :Person-451 END ?e = :Person-506
+VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
+MAX LENGTH 8
+
+# Find all transfers through affiliated relationships (includes cases where ?org = ?ben, excludes direct to direct, includes direct to indirect and inverse)
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation* ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?a1 :originated ?tx .
+    ?tx :beneficiary ?a2 ;
+        :amount ?m .
+    ?t2 :hasBankAccount ?a2 ;
+        :hasAffiliation* ?ben .
+    ?ben a :Person .
+    # Nothing suspicious about direct transfers
+    filter (?org != ?t1 || ?ben != ?t2)
+}
+group by ?org ?ben
+order by desc(?s)
+limit 100
+
+# Score fraud indicator as $ x (paths count)^2
+select * {
+    {
+        # Count distint paths
+        select ?org ?ben ?s (count(*) as ?c) {
+            {
+                # Group by intermediaries
+                select ?org ?ben ?t1 ?t2 ?s {
+                    ?org :hasAffiliation* ?t1 .
+                    ?t1 :hasBankAccount ?a1 .
+                    ?a1 :originated ?tx .
+                    ?tx :beneficiary ?a2 .
+                    ?t2 :hasBankAccount ?a2 ;
+                        :hasAffiliation* ?ben .
+                    {
+                        # Find highest sum of Tx for all paths between org and ben
+                        select ?org ?ben (sum(?m) as ?s) {
+                            ?org a :Person ;
+                                :hasAffiliation* ?t1 .
+                            ?t1 :hasBankAccount ?a1 .
+                            ?a1 :originated ?tx .
+                            ?tx :beneficiary ?a2 ;
+                                :amount ?m .
+                            ?t2 :hasBankAccount ?a2 ;
+                                :hasAffiliation* ?ben .
+                            ?ben a :Person .
+                        }
+                        group by ?org ?ben
+                        order by desc(?s) ?org ?ben
+                        limit 1000
+                    }
+                }
+                group by ?org ?ben ?t1 ?t2 ?s
+            }
+        }
+        group by ?org ?ben ?s
+        order by desc(?s) ?org ?ben
+    }
+    bind(?s * ?c * ?c as ?z)
+}
+order by desc(?z) ?org ?ben
+
+# Find all paths emanating from a specific person
+PREFIX : <tag:stardog:demo:aml:>
+PATHS ALL 
+START ?s = :Person-67 END ?e
+VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
+MAX LENGTH 4
+
+select * {
+    select ?s (count(*) as ?c) {
+        ?s :hasBankAccount ?b .
+        ?b ?p ?t
+    }
+    group by ?s
+}
+order by desc(?c)
+
+# Attempt to constrain paths to a specific number of hops
+select  distinct ?t1 ?t2 ?t3 ?t3a {
+    ?t0 ?p1 ?t1 .
+    ?t1 ?p2 ?t2 .
+    ?t2 ?p3 ?t3 .
+    optional { ?t3a :hasBankAccount ?t3 }
+    ?t3 ?p4 ?t4 .
+    ?t4 ?p5 ?t5 .
+#    ?t5 ?p6 ?t6 .
+#    ?t6 ?p7 ?t7 .
+    filter (
+        ?t0 = :Person-67
+        && ?p1 != rdf:type && !isLiteral(?t1)
+        && ?p2 != rdf:type && !isLiteral(?t2)
+        && ?p3 != rdf:type && !isLiteral(?t3)
+        && ?p4 != rdf:type && !isLiteral(?t4)
+        && ?p5 != rdf:type && !isLiteral(?t5)
+ #       && ?p6 != rdf:type && !isLiteral(?t6)
+ #       && ?p7 != rdf:type && !isLiteral(?t7)
+        && ?t0 != ?t1
+        && ?t0 != ?t2
+        && ?t0 != ?t3
+        && ?t0 != ?t4
+        && ?t0 != ?t5
+ #       && ?t0 != ?t6
+ #       && ?t0 != ?t7
+        && ?t1 != ?t2
+        && ?t1 != ?t3
+        && ?t1 != ?t4
+        && ?t1 != ?t5
+ #       && ?t1 != ?t6
+ #       && ?t1 != ?t7
+        && ?t2 != ?t3
+        && ?t2 != ?t4
+        && ?t2 != ?t5
+  #      && ?t2 != ?t6
+  #      && ?t2 != ?t7
+        && ?t3 != ?t4
+        && ?t3 != ?t5
+  #      && ?t3 != ?t6
+  #      && ?t3 != ?t7
+        && ?t4 != ?t5
+  #      && ?t4 != ?t6
+  #      && ?t4 != ?t7
+  #      && ?t5 != ?t6
+  #      && ?t5 != ?t7
+  #      && ?t6 != ?t7
+    )
+}
+order by ?t0 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?t7 
+
+
+===========DATA CREATION NOTES==============
+
+# Used to join people (odd) and companies (even) to addresses
+=IF(RAND()<0.2,(FLOOR(RAND()*1000,1)+1)*2-1,B2)
+
+20% different odd, 10% different even, 70% same
+=IF(RAND()<0.2,(FLOOR(RAND()*1000,1)+1)*2-1,IF(RAND()<0.125,(FLOOR(RAND()*1000,1)+1)*2,B2))
+
+#People holds
+=IF(RAND()<0.05,FLOOR(RAND()*1000+1,1),0)
+
+Tx Amounts follow power law: =POWER((POWER($G$1,$H$1+1) - POWER($F$1,$H$1+1)) * F2 + POWER($F$1,$H$1+1),1/($H$1+1))
+Where f1=100, g1=1,000,000, h1=-1.47
+
+DROP TABLE IF EXISTS `transactions`;
+
+CREATE TABLE `transactions` (
+      `tx_id` integer primary key,
+      `account1` varchar(20),
+      `account2` varchar(20),
+      `amount`   integer,
+      `tx_date`  date
+);
+
+LOAD DATA LOCAL INFILE
+'C:/@cyg/stardog-examples/examples/aml/aml_dataset_transactions.csv'
+INTO TABLE `transactions`
+FIELDS TERMINATED BY ','
+-- Change line termination to \r\n for Windows
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(`tx_id`, `account1`,`account2`,`amount`,`tx_date`);
+
+"C:\Program Files\MySQL\MySQL Workbench 6.3 CE\mysqldump.exe" -u admin -padmin -h localhost stardog transactions > transacions.sql
+
+"C:\Program Files\MySQL\MySQL Workbench 6.3 CE\mysql.exe" -u admin -padmin -h localhost stardog < load_transactions.sql
+
