@@ -32,8 +32,3 @@ stardog-admin virtual import $DB transaction-mapping.ttl aml_dataset_transaction
 #stardog-admin virtual add aml.properties transaction-mapping-sql.ttl
 
 stardog data add -g graph:schema $DB aml_rules.ttl
-
-exit
-stardog query execute $DB generate.ru
-
-stardog query execute -r $DB watchlist_txs.rq
