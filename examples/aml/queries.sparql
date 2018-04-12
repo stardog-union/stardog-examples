@@ -18,6 +18,12 @@ tag:stardog:demo:aml:Employee	50
 
 
 # Relationship types
+select ?relationship (count(*) as ?count)
+{
+  ?node ?relationship ?node2
+}
+group by ?relationship
+
 SELECT ?p (count(?a) as ?g)
 WHERE {
     ?a ?p ?b .
@@ -168,20 +174,20 @@ select * {
   ?t :holds ?h .
   ?h :share ?s ;
      :company ?c .
-    filter (?c in (:Company-355,:Company-52,:Company-707))
+  filter (?c in (:Company-355,:Company-52,:Company-707))
 }
 
-# Find money transfers through an (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
+# Find money transfers through a (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
 select ?org ?ben (sum(?m) as ?s) {
-?org a :Person ;
-    :hasAffiliation ?t1 .
-?t1 :hasBankAccount ?a1 .
-?a1 :originated ?tx .
-?tx :beneficiary ?a2 ;
-    :amount ?m .
-?t2 :hasBankAccount ?a2 .
-?ben a :Person ;
-    :hasAffiliation ?t2 .
+  ?org a :Person ;
+      :hasAffiliation ?t1 .
+  ?t1 :hasBankAccount ?a1 .
+  ?a1 :originated ?tx .
+  ?tx :beneficiary ?a2 ;
+      :amount ?m .
+  ?t2 :hasBankAccount ?a2 .
+  ?ben a :Person ;
+      :hasAffiliation ?t2 .
 }
 group by ?org ?ben
 order by desc(?s)
@@ -189,13 +195,13 @@ limit 50
 
 # List all direct transfers between two specific people.
 select * {
- :Person-992 :hasAffiliation ?b .
- ?b :hasBankAccount ?c .
- ?c :originated ?d .
- ?d :beneficiary ?e ;
+  :Person-992 :hasAffiliation ?b .
+  ?b :hasBankAccount ?c .
+  ?c :originated ?d .
+  ?d :beneficiary ?e ;
     :amount ?m .
- ?f :hasBankAccount ?e .
- :Person-321 :hasAffiliation ?f .
+  ?f :hasBankAccount ?e .
+  :Person-321 :hasAffiliation ?f .
 }
 
 # Find paths between two people
@@ -264,108 +270,218 @@ select * {
 }
 order by desc(?z) ?org ?ben
 
-# Find all paths emanating from a specific person
+
+# Find all paths emanating from a specific person (turn reasoning off)
 PREFIX : <tag:stardog:demo:aml:>
 PATHS ALL 
 START ?s = :Person-67 END ?e
 VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
 MAX LENGTH 4
 
-select * {
-    select ?s (count(*) as ?c) {
-        ?s :hasBankAccount ?b .
-        ?b ?p ?t
+
+# Find money transfers through an affiliated relationship using virtual transaction data
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?t2 :hasBankAccount ?a2 .
+    ?ben a :Person ;
+        :hasAffiliation ?t2 .
+
+    graph <virtual://aml> 
+    {
+        ?a1 :originated ?tx .
+        ?tx :beneficiary ?a2 ;
+            :amount ?m .
     }
-    group by ?s
 }
-order by desc(?c)
+group by ?org ?ben
+order by desc(?s)
+limit 50
 
-# Attempt to constrain paths to a specific number of hops
-select  distinct ?t1 ?t2 ?t3 ?t3a {
-    ?t0 ?p1 ?t1 .
-    ?t1 ?p2 ?t2 .
-    ?t2 ?p3 ?t3 .
-    optional { ?t3a :hasBankAccount ?t3 }
-    ?t3 ?p4 ?t4 .
-    ?t4 ?p5 ?t5 .
-#    ?t5 ?p6 ?t6 .
-#    ?t6 ?p7 ?t7 .
-    filter (
-        ?t0 = :Person-67
-        && ?p1 != rdf:type && !isLiteral(?t1)
-        && ?p2 != rdf:type && !isLiteral(?t2)
-        && ?p3 != rdf:type && !isLiteral(?t3)
-        && ?p4 != rdf:type && !isLiteral(?t4)
-        && ?p5 != rdf:type && !isLiteral(?t5)
- #       && ?p6 != rdf:type && !isLiteral(?t6)
- #       && ?p7 != rdf:type && !isLiteral(?t7)
-        && ?t0 != ?t1
-        && ?t0 != ?t2
-        && ?t0 != ?t3
-        && ?t0 != ?t4
-        && ?t0 != ?t5
- #       && ?t0 != ?t6
- #       && ?t0 != ?t7
-        && ?t1 != ?t2
-        && ?t1 != ?t3
-        && ?t1 != ?t4
-        && ?t1 != ?t5
- #       && ?t1 != ?t6
- #       && ?t1 != ?t7
-        && ?t2 != ?t3
-        && ?t2 != ?t4
-        && ?t2 != ?t5
-  #      && ?t2 != ?t6
-  #      && ?t2 != ?t7
-        && ?t3 != ?t4
-        && ?t3 != ?t5
-  #      && ?t3 != ?t6
-  #      && ?t3 != ?t7
-        && ?t4 != ?t5
-  #      && ?t4 != ?t6
-  #      && ?t4 != ?t7
-  #      && ?t5 != ?t6
-  #      && ?t5 != ?t7
-  #      && ?t6 != ?t7
-    )
+# Prior query (necessarily) transfers all Tx data to Stardog
+Slice(offset=0, limit=50) [#50]
+`─ Distinct [#536K]
+   `─ Projection(?org, ?ben, ?s) [#536K]
+      `─ OrderBy(DESC(?s), offset=0, limit=50) [#536K]
+         `─ Group(by=[?org, ?ben] aggregates=[(SUM(?m) AS ?s)]) [#536K]
+            `─ Distinct [#2.1M]
+               `─ Projection(?tx, ?m, ?a2, ?a1, ?org, ?t1, ?ben, ?t2) [#2.1M]
+                  `─ HashJoin(?a1) [#2.1M]
+                     +─ ServiceJoin(?a2) [#945]
+                     │  +─ VirtualGraphSql<virtual://aml> [#17084] {
+                     │  │  +─    SELECT `tx_id` AS `F_1`, `account1` AS `F_0`, `account2` AS `F_6`, `amount` AS `F_5`
+                     │  │  +─    FROM `transactions`
+                     │  │  +─    WHERE `amount` IS NOT NULL AND `account2` IS NOT NULL AND `account1` IS NOT NULL
+                     │  │  }
+                     │  `─ Union [#472]
+                     │     +─ MergeJoin(?t2) [#1]
+                     │     │  +─ Sort(?t2) [#1]
+                     │     │  │  `─ MergeJoin(?ftfvcxmi) [#1]
+                     │     │  │     +─ Sort(?ftfvcxmi) [#1]
+                     │     │  │     │  `─ MergeJoin(?ben) [#1]
+                     │     │  │     │     +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                     │     │  │     │     `─ Scan[POS](?ftfvcxmi, <tag:stardog:demo:aml:company>, ?ben) [#163]
+                     │     │  │     `─ Scan[POS](?t2, <tag:stardog:demo:aml:holds>, ?ftfvcxmi) [#163]
+                     │     │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
+                     │     `─ Union [#471]
+                     │        +─ MergeJoin(?t2) [#37]
+                     │        │  +─ Sort(?t2) [#58]
+                     │        │  │  `─ MergeJoin(?lekfzjnk) [#58]
+                     │        │  │     +─ Sort(?lekfzjnk) [#58]
+                     │        │  │     │  `─ MergeJoin(?ben) [#58]
+                     │        │  │     │     +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                     │        │  │     │     `─ Scan[PSO](?ben, <tag:stardog:demo:aml:holds>, ?lekfzjnk) [#163]
+                     │        │  │     `─ Scan[PSO](?lekfzjnk, <tag:stardog:demo:aml:company>, ?t2) [#163]
+                     │        │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
+                     │        `─ Filter(?ben != ?t2) [#433]
+                     │           `─ HashJoin(?qvtaizhx) [#867]
+                     │              +─ MergeJoin(?t2) [#1.2K]
+                     │              │  +─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
+                     │              │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasAddress>, ?qvtaizhx) [#2.0K]
+                     │              `─ MergeJoin(?ben) [#997]
+                     │                 +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                     │                 `─ Scan[PSO](?ben, <tag:stardog:demo:aml:hasAddress>, ?qvtaizhx) [#2.0K]
+                     `─ Union [#472]
+                        +─ MergeJoin(?t1) [#1]
+                        │  +─ Sort(?t1) [#1]
+                        │  │  `─ MergeJoin(?umhpkpqv) [#1]
+                        │  │     +─ Sort(?umhpkpqv) [#1]
+                        │  │     │  `─ MergeJoin(?org) [#1]
+                        │  │     │     +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                        │  │     │     `─ Scan[POS](?umhpkpqv, <tag:stardog:demo:aml:company>, ?org) [#163]
+                        │  │     `─ Scan[POS](?t1, <tag:stardog:demo:aml:holds>, ?umhpkpqv) [#163]
+                        │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
+                        `─ Union [#471]
+                           +─ MergeJoin(?t1) [#37]
+                           │  +─ Sort(?t1) [#58]
+                           │  │  `─ MergeJoin(?pnufoeol) [#58]
+                           │  │     +─ Sort(?pnufoeol) [#58]
+                           │  │     │  `─ MergeJoin(?org) [#58]
+                           │  │     │     +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                           │  │     │     `─ Scan[PSO](?org, <tag:stardog:demo:aml:holds>, ?pnufoeol) [#163]
+                           │  │     `─ Scan[PSO](?pnufoeol, <tag:stardog:demo:aml:company>, ?t1) [#163]
+                           │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
+                           `─ Filter(?org != ?t1) [#433]
+                              `─ HashJoin(?pgdtwbqm) [#867]
+                                 +─ MergeJoin(?t1) [#1.2K]
+                                 │  +─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasAddress>, ?pgdtwbqm) [#2.0K]
+                                 │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
+                                 `─ MergeJoin(?org) [#997]
+                                    +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
+                                    `─ Scan[PSO](?org, <tag:stardog:demo:aml:hasAddress>, ?pgdtwbqm) [#2.0K]
+
+
+# Materialize (store in Stardog natively) rolled-up Tx data from date range
+insert {
+    ?a1 :originated [
+        :beneficiary ?a2 ;
+        :amount ?msum ;
+        :date ?date
+    ]
 }
-order by ?t0 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?t7 
+where {
+    select * {
+        graph <virtual://aml> 
+        {
+            select ?a1 ?a2 (sum(?m) as ?msum) ('2017-08-31'^^xsd:date as ?date) {
+                ?a1 :originated ?tx .
+                ?tx :beneficiary ?a2 ;
+                    :amount ?m ;
+                    :date ?d .
+                # Could save roll-up Tx for (say) each quarter, or could merge into single Tx per account pair
+                filter (?d < '2017-09-01'^^xsd:date)
+            }
+            group by ?a1 ?a2
+        }
+    }
+}
+
+# Find money transfers through an affiliated relationship using hybrid materialized/virtual transaction data
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?t2 :hasBankAccount ?a2 .
+    ?ben a :Person ;
+        :hasAffiliation ?t2 .
+    {
+        ?a1 :originated ?tx .
+        ?tx :beneficiary ?a2 ;
+            :amount ?m ;
+            :date ?d
+        filter (?d < '2017-09-01'^^xsd:date)
+    }
+    union
+    {
+        graph <virtual://aml> {
+            ?a1 :originated ?tx .
+            ?tx :beneficiary ?a2 ;
+                :amount ?m ;
+                :date ?d
+            filter (?d >= '2017-09-01'^^xsd:date)
+        }
+    }
+}
+group by ?org ?ben
+order by desc(?s)
+limit 50
 
 
-===========DATA CREATION NOTES==============
-
-# Used to join people (odd) and companies (even) to addresses
-=IF(RAND()<0.2,(FLOOR(RAND()*1000,1)+1)*2-1,B2)
-
-20% different odd, 10% different even, 70% same
-=IF(RAND()<0.2,(FLOOR(RAND()*1000,1)+1)*2-1,IF(RAND()<0.125,(FLOOR(RAND()*1000,1)+1)*2,B2))
-
-#People holds
-=IF(RAND()<0.05,FLOOR(RAND()*1000+1,1),0)
-
-Tx Amounts follow power law: =POWER((POWER($G$1,$H$1+1) - POWER($F$1,$H$1+1)) * F2 + POWER($F$1,$H$1+1),1/($H$1+1))
-Where f1=100, g1=1,000,000, h1=-1.47
-
-DROP TABLE IF EXISTS `transactions`;
-
-CREATE TABLE `transactions` (
-      `tx_id` integer primary key,
-      `account1` varchar(20),
-      `account2` varchar(20),
-      `amount`   integer,
-      `tx_date`  date
-);
-
-LOAD DATA LOCAL INFILE
-'C:/@cyg/stardog-examples/examples/aml/aml_dataset_transactions.csv'
-INTO TABLE `transactions`
-FIELDS TERMINATED BY ','
--- Change line termination to \r\n for Windows
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS
-(`tx_id`, `account1`,`account2`,`amount`,`tx_date`);
-
-"C:\Program Files\MySQL\MySQL Workbench 6.3 CE\mysqldump.exe" -u admin -padmin -h localhost stardog transactions > transacions.sql
-
-"C:\Program Files\MySQL\MySQL Workbench 6.3 CE\mysql.exe" -u admin -padmin -h localhost stardog < load_transactions.sql
+# Big Daddy - score fraud indicator as $ x (paths count)^2 - using hybrid materialized/virtual transaction data
+select * {
+    {
+        # Count distint paths
+        select ?org ?ben ?s (count(*) as ?c) {
+            {
+                # Group by intermediaries
+                select ?org ?ben ?t1 ?t2 ?s {
+                    ?org :hasAffiliation* ?t1 .
+                    ?t1 :hasBankAccount ?a1 .
+                    ?a1 :originated ?tx .
+                    ?tx :beneficiary ?a2 .
+                    ?t2 :hasBankAccount ?a2 ;
+                        :hasAffiliation* ?ben .
+                    {
+                        # Find highest sum of Tx for all paths between org and ben
+                        select ?org ?ben (sum(?m) as ?s) {
+                            ?org a :Person ;
+                                :hasAffiliation* ?t1 .
+                            ?t1 :hasBankAccount ?a1 .
+                            ?t2 :hasBankAccount ?a2 ;
+                                :hasAffiliation* ?ben .
+                            ?ben a :Person .
+                            # Combine older summarized Tx from Stardog and newer itemized Tx from virtual source
+                            {
+                                ?a1 :originated ?tx .
+                                ?tx :beneficiary ?a2 ;
+                                    :amount ?m ;
+                                    :date ?d
+                                filter (?d < '2017-09-01'^^xsd:date)
+                            }
+                            union
+                            {
+                                graph <virtual://aml> {
+                                    ?a1 :originated ?tx .
+                                    ?tx :beneficiary ?a2 ;
+                                        :amount ?m ;
+                                        :date ?d
+                                    filter (?d >= '2017-09-01'^^xsd:date)
+                                }
+                            }
+                        }
+                        group by ?org ?ben
+                        order by desc(?s) ?org ?ben
+                        limit 1000
+                    }
+                }
+                group by ?org ?ben ?t1 ?t2 ?s
+            }
+        }
+        group by ?org ?ben ?s
+        order by desc(?s) ?org ?ben
+    }
+    bind(?s * ?c * ?c as ?z)
+}
+order by desc(?z) ?org ?ben
 
