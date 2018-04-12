@@ -1,20 +1,14 @@
 # Node types
-SELECT ?t (count(?a) as ?g)
-WHERE {
-    ?a a ?t .
-    {
-        select distinct ?t {
-        ?a a ?t
-        }
-    }
+select ?t (count(?a) as ?g) {
+    ?a a ?t
 }
-GROUP BY ?t
+group by ?t
 
-tag:stardog:demo:aml:Address	1000
-tag:stardog:demo:aml:BankAccount	1999
-tag:stardog:demo:aml:Company	1000
-tag:stardog:demo:aml:Person	1000
-tag:stardog:demo:aml:Employee	50
+:Address	2000
+:BankAccount	1999
+:Company	1000
+:Person	1000
+:Transaction	23259
 
 
 # Relationship types
@@ -24,130 +18,35 @@ select ?relationship (count(*) as ?count)
 }
 group by ?relationship
 
-SELECT ?p (count(?a) as ?g)
-WHERE {
-    ?a ?p ?b .
-    {
-        select distinct ?p {
-            ?s ?p ?o
-        }
-    }
-}
-GROUP BY ?p
-
-tag:stardog:demo:aml:city	1000
-tag:stardog:demo:aml:street	1000
-http://www.w3.org/2003/01/geo/wgs84_pos#lat	997
-http://www.w3.org/1999/02/22-rdf-syntax-ns#type	5049
-http://www.w3.org/2003/01/geo/wgs84_pos#long	997
-tag:stardog:demo:aml:country	2000
-tag:stardog:demo:aml:zipCode	148
-tag:stardog:demo:aml:balance	1999
-tag:stardog:demo:aml:number	1999
-tag:stardog:demo:aml:description	1000
-tag:stardog:demo:aml:name	1000
-tag:stardog:demo:aml:lastName	1000
-tag:stardog:demo:aml:firstName	1000
-tag:stardog:demo:aml:email	1000
-tag:stardog:demo:aml:hasAddress	2000
-tag:stardog:demo:aml:hasBankAccount	1213
-tag:stardog:demo:aml:company	150
-tag:stardog:demo:aml:share	150
-tag:stardog:demo:aml:holds	150
-
-# Node-Relationship-Node types
-select ?st ?p ?ot (count(*) as ?count) {
-  { # T-T
-    ?s ?p ?o .
-    ?s a ?st .
-    ?o a ?ot .
-  }
-  union
-  { # T-U
-    ?s ?p ?o .
-    ?s a ?st .
-    bind (if (isBlank(?o), "<blank>", "<untyped>") as ?ot)
-    filter not exists { ?o a ?t }
-    filter (!isLiteral(?o))
-    filter (?p != rdf:type)
-  }
-  union
-  { # T-L
-    ?s ?p ?o .
-    ?s a ?st .
-    bind (datatype(?o) as ?ot)
-    filter (isLiteral(?o))
-  }
-  union
-  { # U-T
-    ?s ?p ?o .
-    ?o a ?ot .
-    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
-    filter not exists { ?s a ?t }
-  }
-  union
-  { # U-U
-    ?s ?p ?o .
-    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
-    bind (if (isBlank(?o), "<blank>", "<untyped>") as ?ot)
-    filter not exists { ?o a ?t }
-    filter not exists { ?s a ?t }
-    filter (!isLiteral(?o))
-    filter (?p != rdf:type)
-  }
-  union
-  { # U-L
-    ?s ?p ?o .
-    bind (if (isBlank(?s), "<blank>", "<untyped>") as ?st)
-    bind (datatype(?o) as ?ot)
-    filter not exists { ?s a ?t }
-    filter (isLiteral(?o))
-  }
-}
-group by ?st ?p ?ot
-order by ?st desc(count(*)) ?p
-
-tag:stardog:demo:aml:Address	tag:stardog:demo:aml:city	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Address	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Address	tag:stardog:demo:aml:street	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Address	http://www.w3.org/2003/01/geo/wgs84_pos#lat	http://www.w3.org/2001/XMLSchema#decimal	997
-tag:stardog:demo:aml:Address	http://www.w3.org/2003/01/geo/wgs84_pos#long	http://www.w3.org/2001/XMLSchema#decimal	997
-tag:stardog:demo:aml:Address	tag:stardog:demo:aml:zipCode	http://www.w3.org/2001/XMLSchema#string	148
-tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:originated	<untyped>	73062
-tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:balance	http://www.w3.org/2001/XMLSchema#decimal	1999
-tag:stardog:demo:aml:BankAccount	tag:stardog:demo:aml:number	http://www.w3.org/2001/XMLSchema#string	1999
-tag:stardog:demo:aml:Company	tag:stardog:demo:aml:description	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Company	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	1000
-tag:stardog:demo:aml:Company	tag:stardog:demo:aml:name	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Company	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	662
-tag:stardog:demo:aml:Company	tag:stardog:demo:aml:holds	<blank>	100
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	50
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:email	http://www.w3.org/2001/XMLSchema#string	50
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:firstName	http://www.w3.org/2001/XMLSchema#string	50
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	50
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:lastName	http://www.w3.org/2001/XMLSchema#string	50
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	23
-tag:stardog:demo:aml:Employee	tag:stardog:demo:aml:holds	<blank>	2
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:country	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:email	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:firstName	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:hasAddress	tag:stardog:demo:aml:Address	1000
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:lastName	http://www.w3.org/2001/XMLSchema#string	1000
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:hasBankAccount	tag:stardog:demo:aml:BankAccount	551
-tag:stardog:demo:aml:Person	tag:stardog:demo:aml:holds	<blank>	50
-<blank>	tag:stardog:demo:aml:company	tag:stardog:demo:aml:Company	150
-<blank>	tag:stardog:demo:aml:share	http://www.w3.org/2001/XMLSchema#integer	150
-<untyped>	tag:stardog:demo:aml:amount	http://www.w3.org/2001/XMLSchema#integer	73062
-<untyped>	tag:stardog:demo:aml:beneficiary	tag:stardog:demo:aml:BankAccount	73062
-<untyped>	tag:stardog:demo:aml:date	http://www.w3.org/2001/XMLSchema#date	73062
-prefix : <tag:stardog:demo:aml:>
+:street	2000
+wgs:lat	997
+rdf:type	29258
+wgs:long	997
+:city	2000
+:country	3000
+:zipCode	1144
+:balance	1999
+:number	1999
+:description	1000
+:name	1000
+:lastName	1000
+:firstName	1000
+:email	1000
+:hasAddress	2000
+:hasBankAccount	1213
+:holds	163
+:company	163
+:share	163
+:originated	22370
+:beneficiary	22370
+:amount	22370
+:date	22370
 
 
 # Find people without accounts
-SELECT ?p
-WHERE {
+select ?p {
     ?p a :Person .
-    FILTER NOT EXISTS {?p :hasBankAccount ?o}
+    filter not exists {?p :hasBankAccount ?o}
 }
 
 # Same thing with virtual
@@ -204,8 +103,8 @@ select * {
   :Person-321 :hasAffiliation ?f .
 }
 
-# Find paths between two people
-PATHS ALL 
+# Find paths between two people (turn reasoning off)
+PATHS ALL
 START ?s = :Person-451 END ?e = :Person-506
 VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
 MAX LENGTH 8
@@ -270,15 +169,6 @@ select * {
 }
 order by desc(?z) ?org ?ben
 
-
-# Find all paths emanating from a specific person (turn reasoning off)
-PREFIX : <tag:stardog:demo:aml:>
-PATHS ALL 
-START ?s = :Person-67 END ?e
-VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
-MAX LENGTH 4
-
-
 # Find money transfers through an affiliated relationship using virtual transaction data
 select ?org ?ben (sum(?m) as ?s) {
     ?org a :Person ;
@@ -288,7 +178,7 @@ select ?org ?ben (sum(?m) as ?s) {
     ?ben a :Person ;
         :hasAffiliation ?t2 .
 
-    graph <virtual://aml> 
+    graph <virtual://aml>
     {
         ?a1 :originated ?tx .
         ?tx :beneficiary ?a2 ;
@@ -299,7 +189,7 @@ group by ?org ?ben
 order by desc(?s)
 limit 50
 
-# Prior query (necessarily) transfers all Tx data to Stardog
+# Portion of query plan prior query. Necessarily transfers all Tx data to Stardog
 Slice(offset=0, limit=50) [#50]
 `─ Distinct [#536K]
    `─ Projection(?org, ?ben, ?s) [#536K]
@@ -315,62 +205,7 @@ Slice(offset=0, limit=50) [#50]
                      │  │  +─    WHERE `amount` IS NOT NULL AND `account2` IS NOT NULL AND `account1` IS NOT NULL
                      │  │  }
                      │  `─ Union [#472]
-                     │     +─ MergeJoin(?t2) [#1]
-                     │     │  +─ Sort(?t2) [#1]
-                     │     │  │  `─ MergeJoin(?ftfvcxmi) [#1]
-                     │     │  │     +─ Sort(?ftfvcxmi) [#1]
-                     │     │  │     │  `─ MergeJoin(?ben) [#1]
-                     │     │  │     │     +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                     │     │  │     │     `─ Scan[POS](?ftfvcxmi, <tag:stardog:demo:aml:company>, ?ben) [#163]
-                     │     │  │     `─ Scan[POS](?t2, <tag:stardog:demo:aml:holds>, ?ftfvcxmi) [#163]
-                     │     │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
-                     │     `─ Union [#471]
-                     │        +─ MergeJoin(?t2) [#37]
-                     │        │  +─ Sort(?t2) [#58]
-                     │        │  │  `─ MergeJoin(?lekfzjnk) [#58]
-                     │        │  │     +─ Sort(?lekfzjnk) [#58]
-                     │        │  │     │  `─ MergeJoin(?ben) [#58]
-                     │        │  │     │     +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                     │        │  │     │     `─ Scan[PSO](?ben, <tag:stardog:demo:aml:holds>, ?lekfzjnk) [#163]
-                     │        │  │     `─ Scan[PSO](?lekfzjnk, <tag:stardog:demo:aml:company>, ?t2) [#163]
-                     │        │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
-                     │        `─ Filter(?ben != ?t2) [#433]
-                     │           `─ HashJoin(?qvtaizhx) [#867]
-                     │              +─ MergeJoin(?t2) [#1.2K]
-                     │              │  +─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasBankAccount>, ?a2) [#1.2K]
-                     │              │  `─ Scan[PSO](?t2, <tag:stardog:demo:aml:hasAddress>, ?qvtaizhx) [#2.0K]
-                     │              `─ MergeJoin(?ben) [#997]
-                     │                 +─ Scan[POS](?ben, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                     │                 `─ Scan[PSO](?ben, <tag:stardog:demo:aml:hasAddress>, ?qvtaizhx) [#2.0K]
-                     `─ Union [#472]
-                        +─ MergeJoin(?t1) [#1]
-                        │  +─ Sort(?t1) [#1]
-                        │  │  `─ MergeJoin(?umhpkpqv) [#1]
-                        │  │     +─ Sort(?umhpkpqv) [#1]
-                        │  │     │  `─ MergeJoin(?org) [#1]
-                        │  │     │     +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                        │  │     │     `─ Scan[POS](?umhpkpqv, <tag:stardog:demo:aml:company>, ?org) [#163]
-                        │  │     `─ Scan[POS](?t1, <tag:stardog:demo:aml:holds>, ?umhpkpqv) [#163]
-                        │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
-                        `─ Union [#471]
-                           +─ MergeJoin(?t1) [#37]
-                           │  +─ Sort(?t1) [#58]
-                           │  │  `─ MergeJoin(?pnufoeol) [#58]
-                           │  │     +─ Sort(?pnufoeol) [#58]
-                           │  │     │  `─ MergeJoin(?org) [#58]
-                           │  │     │     +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                           │  │     │     `─ Scan[PSO](?org, <tag:stardog:demo:aml:holds>, ?pnufoeol) [#163]
-                           │  │     `─ Scan[PSO](?pnufoeol, <tag:stardog:demo:aml:company>, ?t1) [#163]
-                           │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
-                           `─ Filter(?org != ?t1) [#433]
-                              `─ HashJoin(?pgdtwbqm) [#867]
-                                 +─ MergeJoin(?t1) [#1.2K]
-                                 │  +─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasAddress>, ?pgdtwbqm) [#2.0K]
-                                 │  `─ Scan[PSO](?t1, <tag:stardog:demo:aml:hasBankAccount>, ?a1) [#1.2K]
-                                 `─ MergeJoin(?org) [#997]
-                                    +─ Scan[POS](?org, rdf:type, <tag:stardog:demo:aml:Person>) [#1.0K]
-                                    `─ Scan[PSO](?org, <tag:stardog:demo:aml:hasAddress>, ?pgdtwbqm) [#2.0K]
-
+                     ...
 
 # Materialize (store in Stardog natively) rolled-up Tx data from date range
 insert {
@@ -382,7 +217,7 @@ insert {
 }
 where {
     select * {
-        graph <virtual://aml> 
+        graph <virtual://aml>
         {
             select ?a1 ?a2 (sum(?m) as ?msum) ('2017-08-31'^^xsd:date as ?date) {
                 ?a1 :originated ?tx .
@@ -426,7 +261,6 @@ select ?org ?ben (sum(?m) as ?s) {
 group by ?org ?ben
 order by desc(?s)
 limit 50
-
 
 # Big Daddy - score fraud indicator as $ x (paths count)^2 - using hybrid materialized/virtual transaction data
 select * {
@@ -484,4 +318,3 @@ select * {
     bind(?s * ?c * ?c as ?z)
 }
 order by desc(?z) ?org ?ben
-

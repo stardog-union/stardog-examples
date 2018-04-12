@@ -999,1003 +999,1003 @@ id,city,country,lat,long,zip_code,street
 998,Rostock,Germany,54.1243,12.1243,18147,15488 Laurel Place
 999,Budagovo,Russia,54.6255,100.13109,,76 Ridgeview Crossing
 1000,San Isidro,Peru,-12.11667,-77.05,,9107 Straubel Hill
-1001,Mooresville,United States,,,28115,6 Thatcher St. 
-1002,Gibsonia,United States,,,15044,971 Shadow Brook Street 
-1003,Dothan,United States,,,36301,166 North Lakeshore Lane 
-1004,Cockeysville,United States,,,21030,918 Griffin Street 
-1005,Westlake,United States,,,44145,27 Gulf Court 
-1006,Palm Coast,United States,,,32137,468 Galvin St. 
-1007,Pikesville,United States,,,21208,42 New Avenue 
-1008,Holbrook,United States,,,11741,8878 Primrose St. 
-1009,Macungie,United States,,,18062,9911 Griffin St. 
-1010,Mount Juliet,United States,,,37122,8129 Gates Dr. 
-1011,Naugatuck,United States,,,6770,845 S. Fairfield Ave. 
-1012,Chambersburg,United States,,,17201,719 Crescent Rd. 
-1013,Chicopee,United States,,,1020,331 Rockland Street 
-1014,Des Moines,United States,,,50310,9236 Stonybrook St. 
-1015,Peabody,United States,,,1960,66 Jennings Dr. 
-1016,Nampa,United States,,,83651,18 High Noon Rd. 
-1017,Pompano Beach,United States,,,33060,88 Pleasant Road 
-1018,Chatsworth,United States,,,30705,7850 Princess Street 
-1019,Saratoga Springs,United States,,,12866,9789 Prairie Street 
-1020,Smyrna,United States,,,30080,23 Adams Dr. 
-1021,Indiana,United States,,,15701,9200 Walt Whitman Rd. 
-1022,Fairport,United States,,,14450,651 Golden Star Street 
-1023,Chelmsford,United States,,,1824,7492 Cambridge St. 
-1024,Framingham,United States,,,1701,9531 Pawnee Dr. 
-1025,Herndon,United States,,,20170,5 North 3rd Street 
-1026,Georgetown,United States,,,29440,77 Trenton Dr. 
-1027,Stafford,United States,,,22554,53 Central Ave. 
-1028,Marion,United States,,,28752,827 Sherwood Ave. 
-1029,Westport,United States,,,6880,202 Berkshire Ave. 
-1030,Maspeth,United States,,,11378,5 Manhattan Lane 
-1031,Charlottesville,United States,,,22901,1 S. Pulaski Avenue 
-1032,Key West,United States,,,33040,85 Bridgeton St. 
-1033,Montgomery,United States,,,36109,55 Nichols St. 
-1034,Bethel Park,United States,,,15102,901 Buckingham Lane 
-1035,Uniontown,United States,,,15401,759C Swanson Dr. 
-1036,Dorchester Center,United States,,,2124,763 Hudson St. 
-1037,Yuma,United States,,,85365,995 SE. Pierce Dr. 
-1038,Gaithersburg,United States,,,20877,11 Hilldale Street 
-1039,Parkersburg,United States,,,26101,575 W. Amherst Dr. 
-1040,Greenfield,United States,,,46140,8113 Silver Spear St. 
-1041,Lombard,United States,,,60148,66 West Cherry Hill Lane 
-1042,Buckeye,United States,,,85326,7223 Ann Drive 
-1043,Daphne,United States,,,36526,58 Brown St. 
-1044,Selden,United States,,,11784,44 Glenholme Lane 
-1045,Ashland,United States,,,44805,9125 Bayport Rd. 
-1046,Wake Forest,United States,,,27587,524 Woodside Road 
-1047,Appleton,United States,,,54911,5 Hill St. 
-1048,East Lansing,United States,,,48823,8846 Pierce Drive 
-1049,Peachtree City,United States,,,30269,7737 Vernon Drive 
-1050,Muskego,United States,,,53150,805 Addison Lane 
-1051,Long Beach,United States,,,11561,980 Devon Street 
-1052,Bloomfield,United States,,,7003,94 Blackburn Dr. 
-1053,Venice,United States,,,34293,9379 Peachtree St. 
-1054,South Richmond Hill,United States,,,11419,79 Marsh Street 
-1055,Waukegan,United States,,,60085,615 Lawrence Rd. 
-1056,Newton,United States,,,7860,960 East Newcastle Lane 
-1057,Oklahoma City,United States,,,73112,8824 Circle Avenue 
-1058,Owosso,United States,,,48867,38 Green Hill Lane 
-1059,Chillicothe,United States,,,45601,1 E. Rocky River Dr. 
-1060,Morganton,United States,,,28655,407 Country St. 
-1061,Sun Prairie,United States,,,53590,897 West Blue Spring Ave. 
-1062,Holland,United States,,,49423,68 Fairway Street 
-1063,Liverpool,United States,,,13090,5 W. Roberts Dr. 
-1064,Burnsville,United States,,,55337,846 North Lexington Lane 
-1065,Long Branch,United States,,,7740,127 Poor House Road 
-1066,Encino,United States,,,91316,8838 Cambridge Drive 
-1067,Cartersville,United States,,,30120,69 Roosevelt Street 
-1068,Concord,United States,,,3301,26 Cobblestone St. 
-1069,Deer Park,United States,,,11729,9216 Old Richardson Street 
-1070,Phoenixville,United States,,,19460,7837 Charles Ave. 
-1071,Ashburn,United States,,,20147,255 N. Rose St. 
-1072,Pembroke Pines,United States,,,33028,74 Greystone Dr. 
-1073,Coventry,United States,,,2816,984 Old El Dorado Street 
-1074,North Miami Beach,United States,,,33160,282 Lancaster Road 
-1075,Pueblo,United States,,,81001,739 Tanglewood Road 
-1076,Garfield,United States,,,7026,963 Evergreen St. 
-1077,Mishawaka,United States,,,46544,133 E. Lakewood Dr. 
-1078,Portage,United States,,,46368,977 Rocky River Lane 
-1079,Carpentersville,United States,,,60110,14 Peg Shop Avenue 
-1080,Dracut,United States,,,1826,8498 Arnold Drive 
-1081,Bronx,United States,,,10451,7946 Sulphur Springs St. 
-1082,Louisville,United States,,,40207,517 Big Rock Cove Lane 
-1083,Cumming,United States,,,30040,88 Eagle Ave. 
-1084,Staten Island,United States,,,10301,9023 Applegate St. 
-1085,Dallas,United States,,,30132,49 W. Lancaster Ave. 
-1086,Charlottesville,United States,,,22901,196 Eagle St. 
-1087,Saint Cloud,United States,,,56301,29 Glen Eagles St. 
-1088,Winter Haven,United States,,,33880,26 Del Monte Dr. 
-1089,New Rochelle,United States,,,10801,6 Rockville Ave. 
-1090,Yuma,United States,,,85365,8569 Glenridge Court 
-1091,Vienna,United States,,,22180,8295 Brandywine Street 
-1092,Manahawkin,United States,,,8050,7917 Smoky Hollow Dr. 
-1093,Lawrence,United States,,,1841,70 New Drive 
-1094,East Lansing,United States,,,48823,7725 N. Hudson Road 
-1095,Piqua,United States,,,45356,7 Heritage St. 
-1096,Berwyn,United States,,,60402,352 Glenholme Lane 
-1097,North Fort Myers,United States,,,33917,5 North Fieldstone St. 
-1098,Goshen,United States,,,46526,215 N. Beacon Court 
-1099,Fremont,United States,,,43420,926 E. Plymouth Dr. 
-1100,West Hempstead,United States,,,11552,8893 N. Delaware St. 
-1101,Benton Harbor,United States,,,49022,9080 North High Point St. 
-1102,Logansport,United States,,,46947,83 Shub Farm Dr. 
-1103,Suite 109 ,United States,,,,7733 Wilson Street 
-1104,Rolling Meadows,United States,,,60008,23 Sunset Rd. 
-1105,Glasgow,United States,,,42141,462 S. Belmont Road 
-1106,Wakefield,United States,,,1880,442 Campfire Street 
-1107,Stroudsburg,United States,,,18360,409 Rockledge Lane 
-1108,Casselberry,United States,,,32707,9561 Selby Street 
-1109,Seymour,United States,,,47274,42 W. Brickell Court 
-1110,Fort Mill,United States,,,29708,853 S. Alderwood Drive 
-1111,Clinton Township,United States,,,48035,677 Orchard Street 
-1112,Flint,United States,,,48504,9 Del Monte St. 
-1113,New Rochelle,United States,,,10801,872 Shady St. 
-1114,Long Beach,United States,,,11561,517 Fifth Street 
-1115,Park Forest,United States,,,60466,661 W. Tanglewood Ave. 
-1116,Cartersville,United States,,,30120,651 Greystone St. 
-1117,Windsor Mill,United States,,,21244,7617 Heather Avenue 
-1118,Chicago Heights,United States,,,60411,652 Bishop Road 
-1119,Tucker,United States,,,30084,799 Ketch Harbour Street 
-1120,Ashtabula,United States,,,44004,8690 N. Green Lake St. 
-1121,Troy,United States,,,12180,202 Race St. 
-1122,Glastonbury,United States,,,6033,8432 Augusta St. 
-1123,Lowell,United States,,,1851,61 South Bayport Lane 
-1124,Hialeah,United States,,,33010,390 Glenlake Ave. 
-1125,Lansdale,United States,,,19446,9466 Young Lane 
-1126,Euless,United States,,,76039,9553 Griffin Ave. 
-1127,Sterling,United States,,,20164,7922 Coffee Drive 
-1128,Crystal Lake,United States,,,60014,7033 Foster Street 
-1129,Fort Dodge,United States,,,50501,869 East Central Dr. 
-1130,Allentown,United States,,,18102,9446 W. Newport Drive 
-1131,Louisville,United States,,,40207,9505 Garfield Drive 
-1132,Newington,United States,,,6111,97 Homestead Street 
-1133,Brooklyn,United States,,,11201,7278 Rock Maple Drive 
-1134,Roselle,United States,,,60172,71 Selby Lane 
-1135,Wayne,United States,,,7470,440 South Ramblewood Ave. 
-1136,South Richmond Hill,United States,,,11419,96 Roosevelt Road 
-1137,South El Monte,United States,,,91733,601 W. Fremont Drive 
-1138,Springboro,United States,,,45066,964 N. Gulf Ave. 
-1139,Hoffman Estates,United States,,,60169,9723 Olive Street 
-1140,Burlington,United States,,,1803,732 10th Rd. 
-1141,Grand Rapids,United States,,,49503,791 Courtland Ave. 
-1142,Columbia,United States,,,21044,9 Southampton Ave. 
-1143,Lutherville Timonium,United States,,,21093,819 Plymouth Avenue 
-1144,South El Monte,United States,,,91733,9019 Hickory Lane 
-1145,North Andover,United States,,,1845,9410 Ramblewood St. 
-1146,Pomona,United States,,,91768,317 Cambridge Dr. 
-1147,Irmo,United States,,,29063,7337 Windfall Lane 
-1148,Aliquippa,United States,,,15001,55 Sugar St. 
-1149,Jupiter,United States,,,33458,759 W. Birchpond St. 
-1150,San Pablo,United States,,,94806,515 Henry Street 
-1151,Irwin,United States,,,15642,991 Riverview Road 
-1152,Ridgewood,United States,,,7450,99 Beechwood Rd. 
-1153,Fairburn,United States,,,30213,9998 N. Leatherwood Street 
-1154,Findlay,United States,,,45840,7794 St Margarets Ave. 
-1155,Camp Hill,United States,,,17011,190 Surrey Dr. 
-1156,Braintree,United States,,,2184,276 Old Sherwood Ave. 
-1157,Hammonton,United States,,,8037,602 Old Arcadia Court 
-1158,Myrtle Beach,United States,,,29577,199 Summer St. 
-1159,Algonquin,United States,,,60102,8291 E. Mulberry Road 
-1160,Corona,United States,,,11368,7617 Iroquois Drive 
-1161,New Bedford,United States,,,2740,133 N. Oak Road 
-1162,Dothan,United States,,,36301,72 Devon Drive 
-1163,Plymouth,United States,,,2360,75 Beaver Ridge Ave. 
-1164,Flint,United States,,,48504,220 Cobblestone Ave. 
-1165,West Islip,United States,,,11795,903 Devon Ave. 
-1166,Shepherdsville,United States,,,40165,242 Wentworth Dr. 
-1167,Maineville,United States,,,45039,97 Colonial Ave. 
-1168,Fullerton,United States,,,92831,8536 Ivy St. 
-1169,Mebane,United States,,,27302,9803 E. Linda St. 
-1170,Yuma,United States,,,85365,7424 Evergreen Dr. 
-1171,Mebane,United States,,,27302,464 Pine Road 
-1172,Olney,United States,,,20832,7 Wellington Avenue 
-1173,Stafford,United States,,,22554,552 Court Rd. 
-1174,Wethersfield,United States,,,6109,68 Orange St. 
-1175,Dearborn Heights,United States,,,48127,476 South Border Rd. 
-1176,Sewell,United States,,,8080,7712 N. Piper Street 
-1177,Brick,United States,,,8723,240 Valley Farms St. 
-1178,Granger,United States,,,46530,74 North Armstrong Road 
-1179,Riverside,United States,,,8075,444 Cross Street 
-1180,Wayne,United States,,,7470,89 Division Lane 
-1181,Traverse City,United States,,,49684,62 SW. Rockwell St. 
-1182,Batavia,United States,,,45103,57 W. Bayberry Dr. 
-1183,Nashville,United States,,,37205,112 Andover St. 
-1184,West Roxbury,United States,,,2132,7721 Gonzales Road 
-1185,Grand Forks,United States,,,58201,605 E. Sherman Dr. 
-1186,Tonawanda,United States,,,14150,8383 Bay Meadows Rd. 
-1187,Hummelstown,United States,,,17036,908 Wood Avenue 
-1188,Mason City,United States,,,50401,49 Woodsman St. 
-1189,West Chicago,United States,,,60185,689 Thomas Rd. 
-1190,Delray Beach,United States,,,33445,5 Studebaker Lane 
-1191,Saint Augustine,United States,,,32084,33 Fulton Street 
-1192,Portsmouth,United States,,,23703,7203 West Rd. 
-1193,Kokomo,United States,,,46901,745 Linda Lane 
-1194,Nutley,United States,,,7110,396 Tallwood Drive 
-1195,Douglasville,United States,,,30134,43 Temple Ave. 
-1196,Chesterfield,United States,,,23832,7130 E. Mayflower Lane 
-1197,Oak Lawn,United States,,,60453,466 Green Lake Circle 
-1198,Merrimack,United States,,,3054,555 Campfire St. 
-1199,Dedham,United States,,,2026,8635 Pennsylvania Rd. 
-1200,Taylor,United States,,,48180,222 W. Lancaster Drive 
-1201,Des Moines,United States,,,50310,644 Gates Street 
-1202,Oak Lawn,United States,,,60453,8448 Grant St. 
-1203,Powhatan,United States,,,23139,7480 Hill Ave. 
-1204,Pittsfield,United States,,,1201,3 Longfellow Drive 
-1205,Roswell,United States,,,30075,7032 Lookout Ave. 
-1206,Kingston,United States,,,12401,105 East Princeton Lane 
-1207,Waterbury,United States,,,6705,9373 Golf St. 
-1208,Asheville,United States,,,28803,9542 Ridge St. 
-1209,Boynton Beach,United States,,,33435,389 Argyle Ave. 
-1210,Cranston,United States,,,2920,4 Van Dyke Lane 
-1211,Pickerington,United States,,,43147,2 Shub Farm Drive 
-1212,Buffalo Grove,United States,,,60089,9363 Rockland Dr. 
-1213,Oviedo,United States,,,32765,2 Wall Street 
-1214,Suffolk,United States,,,23434,6 East Green Hill Lane 
-1215,Union,United States,,,7083,152 Bayport Court 
-1216,Noblesville,United States,,,46060,8747 53rd Drive 
-1217,Buffalo Grove,United States,,,60089,193 Rosewood Ave. 
-1218,North Brunswick,United States,,,8902,58 San Juan St. 
-1219,Jamaica,United States,,,11432,93 Amherst St. 
-1220,South Bend,United States,,,46614,512 Central Road 
-1221,Quakertown,United States,,,18951,380 Stillwater Ave. 
-1222,Augusta,United States,,,30906,8584 Second Court 
-1223,North Ridgeville,United States,,,44039,9105 College Court 
-1224,West Des Moines,United States,,,50265,7562 Smoky Hollow Avenue 
-1225,Farmington,United States,,,48331,164 Nichols Street 
-1226,Lincolnton,United States,,,28092,5 Marshall St. 
-1227,Akron,United States,,,44312,638 Lakewood Dr. 
-1228,Orlando,United States,,,32806,966 San Pablo Street 
-1229,Perrysburg,United States,,,43551,146 Carpenter Rd. 
-1230,Warminster,United States,,,18974,702 South Dr. 
-1231,Natchez,United States,,,39120,8609 Vale Street 
-1232,Waterloo,United States,,,50701,958 Race Circle 
-1233,Reidsville,United States,,,27320,724 High Ridge St. 
-1234,New Albany,United States,,,47150,561B Bishop Ave. 
-1235,Ocoee,United States,,,34761,5 Creek Drive 
-1236,East Hartford,United States,,,6118,4 Acacia St. 
-1237,Sewell,United States,,,8080,8449 Creekside Dr. 
-1238,Oxford,United States,,,38655,236 W. Wakehurst Drive 
-1239,Clover,United States,,,29710,845 Front Ave. 
-1240,Ellenwood,United States,,,30294,9299 Jackson Circle 
-1241,De Pere,United States,,,54115,79 Belmont St. 
-1242,Lombard,United States,,,60148,661 West Cherry Lane 
-1243,Irwin,United States,,,15642,21 Gainsway Court 
-1244,Macomb,United States,,,48042,7044 Lawrence St. 
-1245,Morgantown,United States,,,26508,322 W. Smith Store Street 
-1246,Key West,United States,,,33040,8711 Harvard St. 
-1247,Natick,United States,,,1760,99 Laurel Ave. 
-1248,Clearwater,United States,,,33756,8360 Hartford Lane 
-1249,Toledo,United States,,,43612,142 Ashley Avenue 
-1250,Jackson Heights,United States,,,11372,7188 San Juan Ave. 
-1251,Cartersville,United States,,,30120,33 Grand St. 
-1252,Graham,United States,,,27253,8731 Lexington Ave. 
-1253,Rock Hill,United States,,,29730,8 Foster Street 
-1254,Winston Salem,United States,,,27103,8400 Acacia Ave. 
-1255,Huntersville,United States,,,28078,7526 North Walt Whitman Circle 
-1256,Mechanicsburg,United States,,,17050,397 Hall Lane 
-1257,Bronx,United States,,,10451,321 Miller Drive 
-1258,Xenia,United States,,,45385,8121 Birch Hill Rd. 
-1259,Glenview,United States,,,60025,7705 South Columbia St. 
-1260,Apopka,United States,,,32703,34 Oklahoma Ave. 
-1261,Ames,United States,,,50010,592 Warren St. 
-1262,Cherry Hill,United States,,,8003,37 Birchpond Street 
-1263,Paramus,United States,,,7652,906 South Rosewood St. 
-1264,Pasadena,United States,,,21122,7472 S. Aspen St. 
-1265,Champlin,United States,,,55316,9698 Manor Drive 
-1266,Leland,United States,,,28451,3 Shub Farm St. 
-1267,Plymouth,United States,,,2360,8 Myers Ave. 
-1268,Lacey,United States,,,98503,9535 Essex Lane 
-1269,Maplewood,United States,,,7040,93 SW. Market Dr. 
-1270,Royersford,United States,,,19468,419 Galvin Street 
-1271,Lynnwood,United States,,,98037,9736 Indian Spring Court 
-1272,Mableton,United States,,,30126,656 Old Hilltop Street 
-1273,Lancaster,United States,,,14086,503 Richardson Ave. 
-1274,Carol Stream,United States,,,60188,312 E. Buckingham Street 
-1275,Voorhees,United States,,,8043,20 Arlington Court 
-1276,Southampton,United States,,,18966,348 Bank Road 
-1277,Iowa City,United States,,,52240,7026 N. Saxon Court 
-1278,Buffalo Grove,United States,,,60089,7192 Lake Forest Drive 
-1279,Midlothian,United States,,,23112,310 West Hanover Dr. 
-1280,Englewood,United States,,,7631,7900 Adams Court 
-1281,Fort Lee,United States,,,7024,8283 High Point St. 
-1282,Ridgecrest,United States,,,93555,67 Lantern St. 
-1283,Medford,United States,,,2155,8220 Poplar St. 
-1284,Anderson,United States,,,29621,719 Fairview St. 
-1285,Cottage Grove,United States,,,55016,8609 Pierce Dr. 
-1286,Utica,United States,,,13501,19 Sugar Ave. 
-1287,Tampa,United States,,,33604,54 Rockwell Dr. 
-1288,Hackettstown,United States,,,7840,673 Glenlake St. 
-1289,Depew,United States,,,14043,7651 Rockwell St. 
-1290,North Fort Myers,United States,,,33917,642 Longbranch Court 
-1291,Mechanicsburg,United States,,,17050,4 Bridge St. 
-1292,Peoria,United States,,,61604,81 Pineknoll Avenue 
-1293,Washington,United States,,,15301,8118 Hudson St. 
-1294,New Port Richey,United States,,,34653,30 Littleton Rd. 
-1295,Jacksonville Beach,United States,,,32250,653 Edgewood Street 
-1296,Amityville,United States,,,11701,11 Stillwater Drive 
-1297,Berwyn,United States,,,60402,8 Marvon Court 
-1298,Rock Hill,United States,,,29730,8339 New Ave. 
-1299,Norfolk,United States,,,23503,7642 Princess Dr. 
-1300,Merrimack,United States,,,3054,7051 Prince Street 
-1301,Kennesaw,United States,,,30144,54 North Winchester St. 
-1302,Williamsburg,United States,,,23185,94 Fieldstone Street 
-1303,New Lenox,United States,,,60451,35 E. Shady Court 
-1304,East Northport,United States,,,11731,9278 Longfellow Street 
-1305,Carlisle,United States,,,17013,918 S. Lake View Lane 
-1306,Waukegan,United States,,,60085,8856 Sierra St. 
-1307,Marion,United States,,,28752,3 Birch Hill Drive 
-1308,Eugene,United States,,,97402,8124 East Avenue 
-1309,Doylestown,United States,,,18901,9963 Madison St. 
-1310,Derry,United States,,,3038,7037 Selby Dr. 
-1311,Deer Park,United States,,,11729,509 East Pendergast Street 
-1312,Bethlehem,United States,,,18015,17 Ryan St. 
-1313,Vista,United States,,,92083,76 Wintergreen Street 
-1314,El Dorado,United States,,,71730,93 Williams Rd. 
-1315,Elmhurst,United States,,,11373,89 Sunset Drive 
-1316,Montgomery,United States,,,36109,577 Thomas Rd. 
-1317,Anchorage,United States,,,99504,9924 Evergreen St. 
-1318,New Haven,United States,,,6511,9359 Pennington Ave. 
-1319,Floral Park,United States,,,11001,5 East Ivy St. 
-1320,North Royalton,United States,,,44133,62 Ridge St. 
-1321,Danville,United States,,,24540,8819 Oakwood Drive 
-1322,Long Beach,United States,,,11561,9529 Orange Lane 
-1323,Floral Park,United States,,,11001,468 Ridgeview Street 
-1324,Rosedale,United States,,,11422,896 Ivy Road 
-1325,El Paso,United States,,,79930,327 Sulphur Springs Rd. 
-1326,Pittsfield,United States,,,1201,26 Pierce Street 
-1327,Park Ridge,United States,,,60068,623 Annadale Rd. 
-1328,Waterford,United States,,,48329,83 Rock Maple Circle 
-1329,Pompano Beach,United States,,,33060,149 2nd Street 
-1330,Gurnee,United States,,,60031,961 Atlantic Street 
-1331,Rockledge,United States,,,32955,547 Carriage Ave. 
-1332,Montgomery Village,United States,,,20886,89 Sierra St. 
-1333,Bonita Springs,United States,,,34135,58 North Longbranch St. 
-1334,Fullerton,United States,,,92831,92 South New Rd. 
-1335,Muncie,United States,,,47302,9787 South Wakehurst Street 
-1336,Lawndale,United States,,,90260,98 Hilldale Rd. 
-1337,Schaumburg,United States,,,60193,857 Rock Maple St. 
-1338,Beloit,United States,,,53511,7667 Rockledge Ave. 
-1339,Ridgecrest,United States,,,93555,583 S. Bald Hill St. 
-1340,Chandler,United States,,,85224,65 Stonybrook St. 
-1341,Quakertown,United States,,,18951,15 Lake View Drive 
-1342,Muncie,United States,,,47302,212 Philmont St. 
-1343,Paducah,United States,,,42001,8045 Catherine Rd. 
-1344,Littleton,United States,,,80123,970 John Dr. 
-1345,Flushing,United States,,,11354,8928 Arcadia Ave. 
-1346,Cleveland,United States,,,37312,1 Vernon Street 
-1347,Royal Oak,United States,,,48067,15 North Highland Rd. 
-1348,Grandville,United States,,,49418,143 Euclid Dr. 
-1349,Massapequa,United States,,,11758,98 Piper St. 
-1350,Baldwin,United States,,,11510,7 Sunset Street 
-1351,Fort Dodge,United States,,,50501,120 W. Gartner St. 
-1352,Rockville,United States,,,20850,37 Galvin St. 
-1353,Reidsville,United States,,,27320,1 Meadow Ave. 
-1354,Greenville,United States,,,27834,17 North Cooper Drive 
-1355,Martinsville,United States,,,24112,7391 Harvard Ave. 
-1356,Somerset,United States,,,8873,723 Third Court 
-1357,Prior Lake,United States,,,55372,29 Beechwood St. 
-1358,Valley Stream,United States,,,11580,195 Oxford Dr. 
-1359,Spring Hill,United States,,,34608,921 Smith St. 
-1360,Ravenna,United States,,,44266,8724 Hillside Dr. 
-1361,Stroudsburg,United States,,,18360,62 Strawberry Circle 
-1362,Cambridge,United States,,,2138,22 New St. 
-1363,New Port Richey,United States,,,34653,998 Olive Road 
-1364,Depew,United States,,,14043,85 Galvin Ave. 
-1365,Westland,United States,,,48185,71 Airport St. 
-1366,De Pere,United States,,,54115,7566 E. Crescent St. 
-1367,Myrtle Beach,United States,,,29577,344 Squaw Creek Ave. 
-1368,Alliance,United States,,,44601,262 South Pearl St. 
-1369,Shelbyville,United States,,,37160,234 Manor Lane 
-1370,Richmond Hill,United States,,,11418,164 Beacon Ave. 
-1371,Queensbury,United States,,,12804,7162 Beechwood Street 
-1372,Warwick,United States,,,2886,8700 W. White Rd. 
-1373,Elizabeth City,United States,,,27909,35 E. 10th Street 
-1374,Ft Mitchell,United States,,,41017,6 Bridgeton Lane 
-1375,Riverview,United States,,,33569,8 E. Cottage Lane 
-1376,Phillipsburg,United States,,,8865,112 Fairfield Dr. 
-1377,Marion,United States,,,28752,187 North River Road 
-1378,Alexandria,United States,,,22304,7929 Rosewood Street 
-1379,Battle Creek,United States,,,49015,44 Border Dr. 
-1380,Huntington Station,United States,,,11746,186 SW. Surrey Lane 
-1381,Irwin,United States,,,15642,215 Aspen Street 
-1382,Moses Lake,United States,,,98837,7578 Valley Court 
-1383,Longview,United States,,,75604,397 Cottage Circle 
-1384,Fishers,United States,,,46037,16 Johnson Court 
-1385,Mount Prospect,United States,,,60056,65 Fairway St. 
-1386,Rocklin,United States,,,95677,3 Tallwood Street 
-1387,Morganton,United States,,,28655,6 Henry Smith Avenue 
-1388,Muskogee,United States,,,74403,7515 Amherst Ave. 
-1389,Auburn,United States,,,13021,411 Hanover Lane 
-1390,Middle River,United States,,,21220,8598 Riverview Rd. 
-1391,Bountiful,United States,,,84010,444 Cottage St. 
-1392,Auburn,United States,,,13021,7 Sage Court 
-1393,Meriden,United States,,,6450,9023 Talbot Rd. 
-1394,Raeford,United States,,,28376,9228 Swanson Street 
-1395,East Elmhurst,United States,,,11369,9844 Pheasant Ave. 
-1396,Tualatin,United States,,,97062,552 West Sunset Street 
-1397,Elizabeth,United States,,,7202,24 Bank St. 
-1398,Parsippany,United States,,,7054,7776 Old Mechanic Street 
-1399,Greenville,United States,,,27834,58 South Marlborough Street 
-1400,Albany,United States,,,12203,34 High Point Court 
-1401,Queensbury,United States,,,12804,87 E. James St. 
-1402,Saginaw,United States,,,48601,550 Lakeview Road 
-1403,Waynesboro,United States,,,17268,177 Lake Forest St. 
-1404,West Fargo,United States,,,58078,209 Paris Hill St. 
-1405,New Milford,United States,,,6776,69 Stonybrook Street 
-1406,Bridgeport,United States,,,6606,977 West Amerige Ave. 
-1407,Mahwah,United States,,,7430,56 Bohemia Ave. 
-1408,Beltsville,United States,,,20705,25 S. Grant Rd. 
-1409,Brookfield,United States,,,53045,8232 Garden Court 
-1410,Monroe,United States,,,10950,23 Birchpond Rd. 
-1411,Oak Ridge,United States,,,37830,9852 W. High Point Drive 
-1412,Venice,United States,,,34293,78 Valley Farms Rd. 
-1413,Wallingford,United States,,,6492,822 Santa Clara St. 
-1414,Winter Garden,United States,,,34787,10 Richardson Drive 
-1415,Santa Clara,United States,,,95050,875 Annadale Dr. 
-1416,Freehold,United States,,,7728,407 Oakwood Drive 
-1417,Marlborough,United States,,,1752,9018 Aspen Ave. 
-1418,Banning,United States,,,92220,536 Pawnee Drive 
-1419,Lake Villa,United States,,,60046,65 Shirley St. 
-1420,Yakima,United States,,,98908,9 Chapel Lane 
-1421,Cranberry Twp,United States,,,16066,534 Constitution Street 
-1422,Hackensack,United States,,,7601,16 South Country Club Drive 
-1423,Rossville,United States,,,30741,25 Ramblewood St. 
-1424,Winona,United States,,,55987,24 Purple Finch Ave. 
-1425,High Point,United States,,,27265,9046 Old Lyme Street 
-1426,Saint Augustine,United States,,,32084,46 East Circle Drive 
-1427,Mount Holly,United States,,,8060,445 Broad St. 
-1428,Derry,United States,,,3038,41 Beaver Ridge Road 
-1429,Waxhaw,United States,,,28173,182 Swanson Drive 
-1430,Galloway,United States,,,43119,729 Princess Dr. 
-1431,Shakopee,United States,,,55379,935 County Dr. 
-1432,New Lenox,United States,,,60451,939 Lyme St. 
-1433,Alliance,United States,,,44601,8 Delaware Dr. 
-1434,Westbury,United States,,,11590,81 South Logan Avenue 
-1435,Lowell,United States,,,1851,71 Amherst St. 
-1436,Hallandale,United States,,,33009,495 North Chestnut Street 
-1437,Hallandale,United States,,,33009,828 Edgefield Avenue 
-1438,Mason,United States,,,45040,963 10th Drive 
-1439,Branford,United States,,,6405,65 Olive Drive 
-1440,North Royalton,United States,,,44133,11 Manor Ave. 
-1441,Dothan,United States,,,36301,191 Proctor Rd. 
-1442,Champaign,United States,,,61821,8866 Sunset Ave. 
-1443,Havertown,United States,,,19083,270 Orchard Ave. 
-1444,Helena,United States,,,59601,186 Windsor St. 
-1445,Livonia,United States,,,48150,8334 St Louis Lane 
-1446,Endicott,United States,,,13760,8575 Saxton St. 
-1447,Clermont,United States,,,34711,7572 Mammoth Road 
-1448,Medford,United States,,,2155,9755 Glen Creek Ave. 
-1449,New Rochelle,United States,,,10801,816 Annadale Dr. 
-1450,Lapeer,United States,,,48446,7991 Hilldale St. 
-1451,Kaukauna,United States,,,54130,24 Marshall Court 
-1452,Centereach,United States,,,11720,305 Ann St. 
-1453,Grand Island,United States,,,68801,72 North Clay St. 
-1454,Media,United States,,,19063,36B South Durham St. 
-1455,Lumberton,United States,,,28358,68 Oakwood Street 
-1456,Spring Valley,United States,,,10977,320 North Depot Rd. 
-1457,Schenectady,United States,,,12302,3 Meadowbrook Ave. 
-1458,Passaic,United States,,,7055,8987 Ketch Harbour Lane 
-1459,Los Banos,United States,,,93635,90 Sherman Street 
-1460,Reno,United States,,,89523,52 E. Thomas Drive 
-1461,Grandville,United States,,,49418,72 Division Drive 
-1462,Rowlett,United States,,,75088,322 Goldfield Ave. 
-1463,Cranston,United States,,,2920,88 Beech Circle 
-1464,Woonsocket,United States,,,2895,1 Tarkiln Hill Lane 
-1465,Fort Myers,United States,,,33905,50 Valley Farms St. 
-1466,Southgate,United States,,,48195,7144 Shadow Brook St. 
-1467,Glendale,United States,,,85302,9471 William Street 
-1468,Carmel,United States,,,10512,144 Rocky River Street 
-1469,Memphis,United States,,,38106,589 Mountainview St. 
-1470,Wake Forest,United States,,,27587,9325 James Ave. 
-1471,Kennewick,United States,,,99337,32 Parker Lane 
-1472,Sheboygan,United States,,,53081,969 New Saddle Court 
-1473,Cockeysville,United States,,,21030,32 Glen Ridge Street 
-1474,Muncie,United States,,,47302,4 University Court 
-1475,Ringgold,United States,,,30736,468 S. Smith Store Ave. 
-1476,Levittown,United States,,,11756,888 Rockwell St. 
-1477,Plainview,United States,,,11803,43 Rockaway Dr. 
-1478,Scarsdale,United States,,,10583,9182 Willow Street 
-1479,Auburndale,United States,,,33823,8 Nichols Ave. 
-1480,Lawrenceville,United States,,,30043,9652 County Street 
-1481,Westmont,United States,,,60559,622 Pulaski Lane 
-1482,Pembroke Pines,United States,,,33028,44 Ann Street 
-1483,Spring Hill,United States,,,34608,9 East Rose St. 
-1484,Willingboro,United States,,,8046,59 Colonial Court 
-1485,Memphis,United States,,,38106,64 East Primrose St. 
-1486,Jenison,United States,,,49428,128 Primrose St. 
-1487,Lanham,United States,,,20706,434 Logan Street 
-1488,Cape Coral,United States,,,33904,270 York Street 
-1489,Lincolnton,United States,,,28092,1 Tallwood Street 
-1490,Crawfordsville,United States,,,47933,8172 Old Mammoth Street 
-1491,Bronx,United States,,,10451,7251 Cemetery Street 
-1492,Leland,United States,,,28451,7104 Westminster Ave. 
-1493,Stockbridge,United States,,,30281,768 Hill Drive 
-1494,Trussville,United States,,,35173,489 Bohemia St. 
-1495,Pleasanton,United States,,,94566,32 Cherry Hill Ave. 
-1496,Brentwood,United States,,,11717,21 High Point Road 
-1497,Crown Point,United States,,,46307,7199 Sutor Ave. 
-1498,Jackson Heights,United States,,,11372,6 Arrowhead Road 
-1499,Iowa City,United States,,,52240,98 Durham St. 
-1500,Orland Park,United States,,,60462,76 Littleton Ave. 
-1501,Vincentown,United States,,,8088,997 North Church Dr. 
-1502,Findlay,United States,,,45840,83 Wood Circle 
-1503,Findlay,United States,,,45840,264 Livingston Street 
-1504,Elkton,United States,,,21921,7475 Buttonwood Street 
-1505,Farmingdale,United States,,,11735,9893 Swanson Ave. 
-1506,Powell,United States,,,37849,27 Mayfield Dr. 
-1507,Stamford,United States,,,6902,9811 Orchard St. 
-1508,Valley Stream,United States,,,11580,9394 Edgemont Street 
-1509,Orange Park,United States,,,32065,35 Rockville St. 
-1510,Flint,United States,,,48504,955 Randall Mill St. 
-1511,Titusville,United States,,,32780,7674 North Foster Lane 
-1512,Sarasota,United States,,,34231,521 E. Sherman Ave. 
-1513,Muskegon,United States,,,49441,695 Queen Road 
-1514,Elmont,United States,,,11003,4 Pilgrim Dr. 
-1515,Streamwood,United States,,,60107,68 Strawberry Ave. 
-1516,Ithaca,United States,,,14850,395 SW. Valley Farms Drive 
-1517,Tupelo,United States,,,38801,32 Bald Hill Rd. 
-1518,Mahopac,United States,,,10541,1 S. Green Hill Dr. 
-1519,Saint Augustine,United States,,,32084,7280 Hartford Drive 
-1520,Edison,United States,,,8817,56 NW. Constitution Street 
-1521,Moorhead,United States,,,56560,8525 N. Clay St. 
-1522,Summerfield,United States,,,34491,630 Rock Maple St. 
-1523,Mentor,United States,,,44060,3 8th Ave. 
-1524,Fort Lee,United States,,,7024,8957 Lafayette Street 
-1525,West Islip,United States,,,11795,27 Lantern Ave. 
-1526,Hopewell Junction,United States,,,12533,7781 West Jefferson Ave. 
-1527,Horn Lake,United States,,,38637,70 Chestnut Avenue 
-1528,Indiana,United States,,,15701,428 North Canal Drive 
-1529,Portsmouth,United States,,,23703,7776 Mill Pond St. 
-1530,Mount Juliet,United States,,,37122,8631 Marlborough Rd. 
-1531,Rome,United States,,,13440,8707 W. Green Lake Dr. 
-1532,Sylvania,United States,,,43560,9213 West Washington Avenue 
-1533,Los Banos,United States,,,93635,10 Sierra Lane 
-1534,Eastpointe,United States,,,48021,8642 Clark Dr. 
-1535,Marlborough,United States,,,1752,483 Grove St. 
-1536,Princeton,United States,,,8540,903 Pilgrim Dr. 
-1537,Circle Pines,United States,,,55014,57 Chestnut St. 
-1538,Woodhaven,United States,,,11421,46 Carriage Street 
-1539,Huntersville,United States,,,28078,40 Carpenter Ave. 
-1540,Taylor,United States,,,48180,975 Hilldale Dr. 
-1541,Streamwood,United States,,,60107,694 Green Hill St. 
-1542,Victoria,United States,,,77904,7963 Selby Dr. 
-1543,Amarillo,United States,,,79106,8084 Williams Drive 
-1544,Farmington,United States,,,48331,7177 Birchpond St. 
-1545,Downingtown,United States,,,19335,8102 Pine Street 
-1546,Branford,United States,,,6405,131 Nut Swamp Drive 
-1547,Deer Park,United States,,,11729,94 Canterbury Drive 
-1548,Plainfield,United States,,,7060,465 Gartner Street 
-1549,Depew,United States,,,14043,471 Buttonwood Ave. 
-1550,North Canton,United States,,,44720,8196 Gulf Road 
-1551,Allentown,United States,,,18102,87 Wall Street 
-1552,Indiana,United States,,,15701,6 6th Street 
-1553,Saugus,United States,,,1906,478 Brandywine St. 
-1554,Seymour,United States,,,47274,928 Maiden Drive 
-1555,Smithtown,United States,,,11787,1 Glendale Rd. 
-1556,Easton,United States,,,18042,128 Dunbar St. 
-1557,Port Huron,United States,,,48060,291 Jackson St. 
-1558,Mcdonough,United States,,,30252,248 Garden St. 
-1559,Bergenfield,United States,,,7621,162 Leeton Ridge St. 
-1560,Ottawa,United States,,,61350,651 Prairie Street 
-1561,Mobile,United States,,,36605,659 Morris Dr. 
-1562,Newark,United States,,,7103,392 Brandywine Drive 
-1563,Ankeny,United States,,,50023,9454 Manor Lane 
-1564,North Ridgeville,United States,,,44039,9142 Bellevue Drive 
-1565,Stratford,United States,,,6614,9001 Vermont St. 
-1566,Deerfield Beach,United States,,,33442,8049 West Holly Lane 
-1567,Fuquay Varina,United States,,,27526,8098 Center Avenue 
-1568,Liverpool,United States,,,13090,8527 South Campfire Avenue 
-1569,Peoria,United States,,,61604,452 Kirkland Court 
-1570,Ladson,United States,,,29456,96 Arnold Lane 
-1571,Westwood,United States,,,7675,8253 Durham Court 
-1572,Brooklyn,United States,,,11201,7053 Lakewood St. 
-1573,Elizabethtown,United States,,,17022,43 Edgemont Drive 
-1574,Alabaster,United States,,,35007,847 Linda Drive 
-1575,Bonita Springs,United States,,,34135,7 Selby Ave. 
-1576,Danvers,United States,,,1923,8590 Edgemont Street 
-1577,Sylvania,United States,,,43560,8988 Oakland Rd. 
-1578,Billerica,United States,,,1821,7226 Newport Ave. 
-1579,Hamden,United States,,,6514,372 Westport Road 
-1580,Sheboygan,United States,,,53081,6 South Franklin Street 
-1581,Lansdale,United States,,,19446,788 Jefferson Dr. 
-1582,Riverview,United States,,,33569,7721 Orchard St. 
-1583,Cottage Grove,United States,,,55016,377 Carson St. 
-1584,San Lorenzo,United States,,,94580,26 Brewery Court 
-1585,Menasha,United States,,,54952,8726 Mayfair Street 
-1586,Richmond,United States,,,23223,8492 Talbot St. 
-1587,Smithtown,United States,,,11787,97 Aspen St. 
-1588,Longview,United States,,,75604,809 Smith Ave. 
-1589,Tampa,United States,,,33604,542C San Carlos Dr. 
-1590,Montgomery,United States,,,36109,9728 Glenholme Ave. 
-1591,East Stroudsburg,United States,,,18301,45 Willow Rd. 
-1592,Piqua,United States,,,45356,84 Old Hill Street 
-1593,Union City,United States,,,7087,41 Tanglewood Drive 
-1594,Alliance,United States,,,44601,35 Maple Road 
-1595,West Springfield,United States,,,1089,454 Annadale Dr. 
-1596,Woodside,United States,,,11377,7668 Hill Street 
-1597,Ridgefield,United States,,,6877,6 Wayne St. 
-1598,Snellville,United States,,,30039,242 Pawnee Street 
-1599,Elizabeth,United States,,,7202,55 Highland Dr. 
-1600,Yonkers,United States,,,10701,9447 East Vernon Lane 
-1601,Baldwinsville,United States,,,13027,95 Rock Creek Road 
-1602,Baldwin,United States,,,11510,20 Mulberry Ave. 
-1603,Harrisonburg,United States,,,22801,95 Grove St. 
-1604,Redondo Beach,United States,,,90278,24 Cedarwood Lane 
-1605,West Fargo,United States,,,58078,9290 Spruce Drive 
-1606,District Heights,United States,,,20747,7659 Beacon St. 
-1607,Helotes,United States,,,78023,875 Honey Creek St. 
-1608,Battle Creek,United States,,,49015,452 Sunnyslope Rd. 
-1609,Longview,United States,,,75604,254 South Nichols Road 
-1610,Wilson,United States,,,27893,7538 E. Edgewood Drive 
-1611,Bartlett,United States,,,60103,575 East Talbot Road 
-1612,Hanover Park,United States,,,60133,9397 Wagon Street 
-1613,Fredericksburg,United States,,,22405,826 Riverview Court 
-1614,Waukegan,United States,,,60085,14 Mill Street 
-1615,Munster,United States,,,46321,9005 W. Indian Summer Ave. 
-1616,Lowell,United States,,,1851,85 Oxford St. 
-1617,Wheeling,United States,,,26003,9151 Bow Ridge Ave. 
-1618,Anderson,United States,,,29621,82 Old King Rd. 
-1619,Ames,United States,,,50010,9336 Sunbeam Road 
-1620,Bluffton,United States,,,29910,87 Beach Dr. 
-1621,Butler,United States,,,16001,799 South John Ave. 
-1622,Fairburn,United States,,,30213,791 Oklahoma Rd. 
-1623,Mokena,United States,,,60448,404 Clay Lane 
-1624,Concord,United States,,,3301,625 South Hamilton Road 
-1625,West Chicago,United States,,,60185,345 Trenton Street 
-1626,North Ridgeville,United States,,,44039,8843 Airport Ave. 
-1627,Brick,United States,,,8723,60 Fieldstone Dr. 
-1628,Rosedale,United States,,,11422,9 Lilac Ave. 
-1629,Egg Harbor Township,United States,,,8234,9340 Oakwood Ave. 
-1630,Wayne,United States,,,7470,7907 Hudson Drive 
-1631,Palmetto,United States,,,34221,688 Beaver Ridge Ave. 
-1632,Elizabethton,United States,,,37643,85 Lakeview St. 
-1633,Auburndale,United States,,,33823,176 Del Monte Street 
-1634,Norwalk,United States,,,6851,164 Clark Street 
-1635,Omaha,United States,,,68107,980 East Pawnee Street 
-1636,Westbury,United States,,,11590,509 North Marshall Street 
-1637,Goldsboro,United States,,,27530,963 Augusta Rd. 
-1638,Aliquippa,United States,,,15001,14 N. Walnut Street 
-1639,West Roxbury,United States,,,2132,7 Vermont Street 
-1640,Land O Lakes,United States,,,34639,53 Winding Way Rd. 
-1641,Kent,United States,,,44240,463 Pleasant Drive 
-1642,Ridgewood,United States,,,7450,255 3rd Street 
-1643,Asbury Park,United States,,,7712,155 Brook St. 
-1644,Sterling,United States,,,20164,231 Delaware St. 
-1645,Laurel,United States,,,20707,536 Lake View Avenue 
-1646,Woodstock,United States,,,30188,8225 Kingston Rd. 
-1647,Stroudsburg,United States,,,18360,83 East Street 
-1648,Ann Arbor,United States,,,48103,8108 Studebaker Rd. 
-1649,Chesapeake,United States,,,23320,850 Euclid Drive 
-1650,Havertown,United States,,,19083,8823 Beach Street 
-1651,Marysville,United States,,,43040,9863 Myers Drive 
-1652,New Milford,United States,,,6776,554 SE. Magnolia St. 
-1653,Dorchester,United States,,,2125,575 Evergreen Street 
-1654,Capitol Heights,United States,,,20743,569 E. Mill Pond Ave. 
-1655,Patchogue,United States,,,11772,7599 Golf Drive 
-1656,Clinton,United States,,,20735,269 N. Somerset Drive 
-1657,Suffolk,United States,,,23434,25 W. New Avenue 
-1658,Muncie,United States,,,47302,8016 Water Street 
-1659,Linden,United States,,,7036,81 Greenrose Road 
-1660,Perkasie,United States,,,18944,4 Beach Street 
-1661,North Attleboro,United States,,,2760,666 Cambridge Avenue 
-1662,Naugatuck,United States,,,6770,9741 Essex Street 
-1663,Lakeville,United States,,,55044,8164 South Depot Lane 
-1664,Powhatan,United States,,,23139,880 Helen Dr. 
-1665,Chardon,United States,,,44024,52 Hilltop Ave. 
-1666,Vienna,United States,,,22180,8238 Hamilton Ave. 
-1667,Cantonment,United States,,,32533,68 Jockey Hollow Lane 
-1668,Chippewa Falls,United States,,,54729,8480 8th St. 
-1669,Smyrna,United States,,,30080,388 Rock Creek Court 
-1670,Vienna,United States,,,22180,8236 Pulaski Ave. 
-1671,Lowell,United States,,,1851,3 University Street 
-1672,Canal Winchester,United States,,,43110,294 Lilac Street 
-1673,Athens,United States,,,30605,7412 Selby St. 
-1674,Asheboro,United States,,,27205,59 Gartner St. 
-1675,Rapid City,United States,,,57701,535 Hanover Ave. 
-1676,Spring Valley,United States,,,10977,6 North Piper St. 
-1677,Lorton,United States,,,22079,652 Glenlake Street 
-1678,Lansing,United States,,,48910,38 Bedford St. 
-1679,Burnsville,United States,,,55337,7368 Hamilton Drive 
-1680,Garland,United States,,,75043,8415 Summer St. 
-1681,Camas,United States,,,98607,3 Peninsula St. 
-1682,Merrillville,United States,,,46410,792 East Sycamore St. 
-1683,Lincolnton,United States,,,28092,83 Peg Shop Drive 
-1684,Peoria,United States,,,61604,4 West Philmont Street 
-1685,Chapel Hill,United States,,,27516,8648 Riverview Ave. 
-1686,Roswell,United States,,,30075,887 Windfall Lane 
-1687,Fort Wayne,United States,,,46804,7601 Sunnyslope Ave. 
-1688,Avon Lake,United States,,,44012,398 Augusta Rd. 
-1689,Metairie,United States,,,70001,3 W. Berkshire Court 
-1690,East Hartford,United States,,,6118,701 Country Club St. 
-1691,Burbank,United States,,,60459,578 N. Indian Spring Street 
-1692,Conway,United States,,,29526,7369 Tallwood Drive 
-1693,Bethel Park,United States,,,15102,948 Leatherwood Court 
-1694,Sykesville,United States,,,21784,635 Longbranch Street 
-1695,Hazleton,United States,,,18201,41 SE. White Lane 
-1696,New Kensington,United States,,,15068,174 Pennington St. 
-1697,New Britain,United States,,,6051,2 Sherwood Lane 
-1698,Kalispell,United States,,,59901,60 Helen Rd. 
-1699,Hamtramck,United States,,,48212,458 Pheasant Street 
-1700,Linden,United States,,,7036,329 Oxford Drive 
-1701,Sicklerville,United States,,,8081,871 Atlantic Lane 
-1702,Saint Charles,United States,,,60174,7739 E. Edgewater Street 
-1703,Algonquin,United States,,,60102,33 Brown Drive 
-1704,York,United States,,,17402,9047 Studebaker Ave. 
-1705,Atlantic City,United States,,,8401,77 East Franklin Street 
-1706,West Des Moines,United States,,,50265,8784 Carriage Ave. 
-1707,Bonita Springs,United States,,,34135,338 Summit Dr. 
-1708,Fort Myers,United States,,,33905,7720C Longbranch Dr. 
-1709,Cumming,United States,,,30040,87 Orange Street 
-1710,Bayside,United States,,,11361,336 Surrey St. 
-1711,Myrtle Beach,United States,,,29577,53 Charles Ave. 
-1712,Westmont,United States,,,60559,129 East Greenview Drive 
-1713,Southfield,United States,,,48076,545 Depot Ave. 
-1714,Banning,United States,,,92220,449 Shore Drive 
-1715,Brentwood,United States,,,11717,8 Glendale Drive 
-1716,Malden,United States,,,2148,70 Essex Lane 
-1717,Westlake,United States,,,44145,56 Winchester Lane 
-1718,Leland,United States,,,28451,17 Berkshire Street 
-1719,Mcminnville,United States,,,37110,59 Redwood St. 
-1720,Sidney,United States,,,45365,9922 Pennington Ave. 
-1721,Asheboro,United States,,,27205,7056 Griffin Lane 
-1722,Starkville,United States,,,39759,7662 San Carlos Ave. 
-1723,Columbus,United States,,,31904,53 W. Mammoth Street 
-1724,Xenia,United States,,,45385,272 Carpenter Drive 
-1725,Apple Valley,United States,,,92307,931 S. Penn St. 
-1726,Holyoke,United States,,,1040,624 Young Lane 
-1727,Garland,United States,,,75043,925 Redwood Street 
-1728,Bloomington,United States,,,47401,382 West Big Rock Cove St. 
-1729,Unit 208 ,United States,,,,262 E. Bellevue St. 
-1730,Mesa,United States,,,85203,590 North Birchpond Drive 
-1731,Owings Mills,United States,,,21117,9449 Lexington St. 
-1732,Wisconsin Rapids,United States,,,54494,9667 Pumpkin Hill Road 
-1733,Maumee,United States,,,43537,203 Holly Court 
-1734,Roanoke Rapids,United States,,,27870,823 Brook St. 
-1735,Jeffersonville,United States,,,47130,9 Arrowhead Court 
-1736,Huntsville,United States,,,35803,8611C Carson Street 
-1737,Hartford,United States,,,6106,8004 Snake Hill St. 
-1738,Lorton,United States,,,22079,92 Harrison Street 
-1739,Niles,United States,,,49120,86 Branch Dr. 
-1740,East Orange,United States,,,7017,317 Sunbeam St. 
-1741,Paducah,United States,,,42001,196 Coffee St. 
-1742,Canfield,United States,,,44406,761 S. 8th Street 
-1743,East Lansing,United States,,,48823,9279 8th St. 
-1744,Little Rock,United States,,,72209,7636 Fifth Street 
-1745,Johnston,United States,,,2919,100 Shirley St. 
-1746,Windsor Mill,United States,,,21244,92 Edgewater Street 
-1747,Tewksbury,United States,,,1876,8861 Hartford Avenue 
-1748,Vienna,United States,,,22180,8 South Park Rd. 
-1749,Sunnyside,United States,,,11104,7205 Smith Store Drive 
-1750,Ozone Park,United States,,,11417,224 Bedford Road 
-1751,Pickerington,United States,,,43147,2 Cleveland Street 
-1752,Winston Salem,United States,,,27103,48 Jones Lane 
-1753,Independence,United States,,,41051,50 Evergreen Street 
-1754,Chelsea,United States,,,2150,86 Saxon Road 
-1755,Fairfield,United States,,,6824,17 Bow Ridge St. 
-1756,Spring Hill,United States,,,34608,998 Gainsway Drive 
-1757,Flowery Branch,United States,,,30542,8760 Parker Court 
-1758,El Dorado,United States,,,71730,45 Manhattan Street 
-1759,Harrison Township,United States,,,48045,7788 Bay Meadows St. 
-1760,Champlin,United States,,,55316,4 South Lafayette St. 
-1761,Pasadena,United States,,,21122,8813 S. George Street 
-1762,West New York,United States,,,7093,76 Bellevue St. 
-1763,New Bern,United States,,,28560,8718 Lake View Rd. 
-1764,Auburn,United States,,,13021,9907 Columbia Dr. 
-1765,North Canton,United States,,,44720,218 South Swanson Ave. 
-1766,Durham,United States,,,27703,80 South 10th Court 
-1767,Rossville,United States,,,30741,9039 Galvin Street 
-1768,Waltham,United States,,,2453,981 Roehampton Rd. 
-1769,Sicklerville,United States,,,8081,4 Lower River Dr. 
-1770,Dorchester Center,United States,,,2124,93 N. Meadow St. 
-1771,Desoto,United States,,,75115,5 Greenrose Court 
-1772,Scotch Plains,United States,,,7076,38 Ashley St. 
-1773,Vicksburg,United States,,,39180,361 Bow Ridge Street 
-1774,Norwalk,United States,,,6851,63 Market St. 
-1775,Glenview,United States,,,60025,7312 West Rd. 
-1776,Edison,United States,,,8817,459 Sherman Lane 
-1777,Charlottesville,United States,,,22901,936 Buckingham St. 
-1778,Media,United States,,,19063,8417 North Thompson Lane 
-1779,Nashua,United States,,,3060,8026 W. Tunnel Drive 
-1780,Plymouth,United States,,,2360,7412 School Dr. 
-1781,Lockport,United States,,,14094,654 South Aspen St. 
-1782,Lake Villa,United States,,,60046,69 Lake View Ave. 
-1783,Mason City,United States,,,50401,7547 Whitemarsh St. 
-1784,Roslindale,United States,,,2131,4 Lake View Road 
-1785,Highland Park,United States,,,60035,862 Ridgewood St. 
-1786,Franklin Square,United States,,,11010,57 Joy Ridge Drive 
-1787,Helotes,United States,,,78023,81 Fairway Rd. 
-1788,Bay City,United States,,,48706,9112 North Rockcrest Lane 
-1789,Wheaton,United States,,,60187,7985 Lexington Circle 
-1790,Saint Charles,United States,,,60174,8094 S. Mayfield St. 
-1791,Janesville,United States,,,53546,9871 Corona Lane 
-1792,Winston Salem,United States,,,27103,494 Jefferson Street 
-1793,Shepherdsville,United States,,,40165,986 Summit Drive 
-1794,Panama City,United States,,,32404,13 Marsh St. 
-1795,Bowie,United States,,,20715,68 Trout St. 
-1796,Revere,United States,,,2151,84 Hall Court 
-1797,Far Rockaway,United States,,,11691,42 Philmont Dr. 
-1798,Brownsburg,United States,,,46112,828 Garfield Ave. 
-1799,Wooster,United States,,,44691,7331 E. Laurel Dr. 
-1800,Cary,United States,,,27511,7402 Southampton St. 
-1801,Newington,United States,,,6111,7517 Evergreen Lane 
-1802,Saint Cloud,United States,,,56301,6 Ohio St. 
-1803,Brookfield,United States,,,53045,8424 Orange Dr. 
-1804,Richmond Hill,United States,,,11418,1 San Carlos St. 
-1805,Easton,United States,,,18042,63 Pawnee St. 
-1806,Lacey,United States,,,98503,69 Warren Ave. 
-1807,Mount Prospect,United States,,,60056,84 Riverside Ave. 
-1808,Blackwood,United States,,,8012,422 Franklin Circle 
-1809,Montclair,United States,,,7042,7414 Southampton Drive 
-1810,Lacey,United States,,,98503,707 Oak Drive 
-1811,Muscatine,United States,,,52761,650 S. Ramblewood St. 
-1812,Glasgow,United States,,,42141,7 S. Vernon St. 
-1813,Apt 888 ,United States,,,,50 Augusta Dr. 
-1814,Daphne,United States,,,36526,858 Del Monte Ave. 
-1815,Wantagh,United States,,,11793,67 Amerige St. 
-1816,Vincentown,United States,,,8088,9907 Oak Meadow Drive 
-1817,Deltona,United States,,,32725,9326 Squaw Creek Dr. 
-1818,East Hartford,United States,,,6118,81 St Margarets Street 
-1819,Shelbyville,United States,,,37160,7712 Santa Clara St. 
-1820,Wausau,United States,,,54401,774 North Washington Street 
-1821,Sioux Falls,United States,,,57103,431 Marshall St. 
-1822,Absecon,United States,,,8205,8973 Edgemont St. 
-1823,Vista,United States,,,92083,731 Lafayette Court 
-1824,Methuen,United States,,,1844,53 George Drive 
-1825,Sioux Falls,United States,,,57103,34 S. Indian Spring Avenue 
-1826,Colonial Heights,United States,,,23834,610 Cactus St. 
-1827,Suwanee,United States,,,30024,428 West Big Rock Cove St. 
-1828,Chatsworth,United States,,,30705,7133 S. Cleveland Street 
-1829,Niceville,United States,,,32578,86 Primrose Ave. 
-1830,Murrells Inlet,United States,,,29576,332 College Avenue 
-1831,Lutherville Timonium,United States,,,21093,541 James Dr. 
-1832,Taunton,United States,,,2780,40 Oxford Street 
-1833,Lithonia,United States,,,30038,99 Poor House St. 
-1834,Coachella,United States,,,92236,3 West Edgewood St. 
-1835,Schenectady,United States,,,12302,86 Surrey Ave. 
-1836,Indian Trail,United States,,,28079,7882 Delaware St. 
-1837,Stroudsburg,United States,,,18360,5 Kirkland Lane 
-1838,Fairborn,United States,,,45324,99 Cambridge St. 
-1839,Richmond Hill,United States,,,11418,450 Cedar Swamp Dr. 
-1840,Granger,United States,,,46530,9078 Vine Street 
-1841,Cape Coral,United States,,,33904,8054 Purple Finch Dr. 
-1842,Roseville,United States,,,48066,36 Highland Court 
-1843,Leominster,United States,,,1453,429 Ridge Ave. 
-1844,Bemidji,United States,,,56601,9210 Valley View St. 
-1845,Rapid City,United States,,,57701,186 Homestead Street 
-1846,Hoffman Estates,United States,,,60169,8779 Valley View Street 
-1847,Champlin,United States,,,55316,21 Halifax Dr. 
-1848,Irwin,United States,,,15642,19 Creekside Dr. 
-1849,Port Washington,United States,,,11050,46 Brickell Ave. 
-1850,Clayton,United States,,,27520,493 Honey Creek St. 
-1851,Silver Spring,United States,,,20901,8378 Armstrong Ave. 
-1852,Lawrence Township,United States,,,8648,9587 South Sussex Ave. 
-1853,Glendora,United States,,,91740,19 South Longfellow Drive 
-1854,Branford,United States,,,6405,50 Oakland Street 
-1855,Starkville,United States,,,39759,223 Wagon Drive 
-1856,Sanford,United States,,,27330,93 Durham St. 
-1857,West Chicago,United States,,,60185,62 N. Sierra St. 
-1858,Cockeysville,United States,,,21030,9548 North Longfellow St. 
-1859,Mebane,United States,,,27302,899 Lake View Street 
-1860,Natick,United States,,,1760,847 Mill Pond St. 
-1861,Mchenry,United States,,,60050,53 Chapel Street 
-1862,Bowie,United States,,,20715,62 SW. Rocky River St. 
-1863,Loganville,United States,,,30052,2 S. Lancaster Ave. 
-1864,Westerville,United States,,,43081,69 Fulton St. 
-1865,Coatesville,United States,,,19320,714 Sierra Lane 
-1866,Albany,United States,,,12203,55 East Big Rock Cove Dr. 
-1867,North Haven,United States,,,6473,41 Livingston St. 
-1868,Gulfport,United States,,,39503,336 Talbot St. 
-1869,Bayside,United States,,,11361,14 Valley View Ave. 
-1870,Clifton,United States,,,7011,34 Cardinal St. 
-1871,New Brunswick,United States,,,8901,55 Brook Court 
-1872,North Canton,United States,,,44720,310 Belmont St. 
-1873,Deer Park,United States,,,11729,561 N. Ramblewood Ave. 
-1874,Grand Rapids,United States,,,49503,729 Whitemarsh Court 
-1875,Southgate,United States,,,48195,86 Branch Avenue 
-1876,Westford,United States,,,1886,546 Lower River St. 
-1877,Mason,United States,,,45040,71 Trenton St. 
-1878,Rolling Meadows,United States,,,60008,8201 Paris Hill St. 
-1879,Powder Springs,United States,,,30127,9758 Bohemia Ave. 
-1880,Conway,United States,,,29526,8976 State Court 
-1881,Oxon Hill,United States,,,20745,8466 Prince St. 
-1882,Bridgewater,United States,,,8807,7886 Fairground Drive 
-1883,Front Royal,United States,,,22630,80 Colonial Road 
-1884,Paramus,United States,,,7652,8498 Woodsman Ave. 
-1885,Ottawa,United States,,,61350,47 Central Lane 
-1886,Lancaster,United States,,,14086,848 Second St. 
-1887,Lilburn,United States,,,30047,9250 Philmont Lane 
-1888,Ocoee,United States,,,34761,9835 Country Club St. 
-1889,Ashtabula,United States,,,44004,8512 Rockville Street 
-1890,Germantown,United States,,,20874,28 SE. Galvin Court 
-1891,Coventry,United States,,,2816,7008 Buttonwood Drive 
-1892,Stamford,United States,,,6902,68 Walnutwood Rd. 
-1893,Dekalb,United States,,,60115,9176 SW. Harrison Ave. 
-1894,Providence,United States,,,2904,7982 Virginia Street 
-1895,Orchard Park,United States,,,14127,8779 Thatcher Dr. 
-1896,North Royalton,United States,,,44133,27 53rd Ave. 
-1897,Bayside,United States,,,11361,524 Brickell Street 
-1898,Howard Beach,United States,,,11414,9809 SW. Miles Drive 
-1899,Romeoville,United States,,,60446,9136 Philmont Rd. 
-1900,Latrobe,United States,,,15650,861 W. St Paul Court 
-1901,Asheville,United States,,,28803,270 S. Briarwood Dr. 
-1902,Ogden,United States,,,84404,9877 Lakeview Drive 
-1903,Garfield,United States,,,7026,8487 Brook Street 
-1904,Suite J ,United States,,,,9351 Country St. 
-1905,Deltona,United States,,,32725,9845 Charles Street 
-1906,Chillicothe,United States,,,45601,56 N. Ridgewood Drive 
-1907,Capitol Heights,United States,,,20743,536 Tanglewood Drive 
-1908,Port Richey,United States,,,34668,22 Mayfield Drive 
-1909,Amsterdam,United States,,,12010,90 Amerige Dr. 
-1910,Noblesville,United States,,,46060,275 Rose Ave. 
-1911,Freeport,United States,,,11520,9138 S. Cardinal Dr. 
-1912,Indiana,United States,,,15701,80 Country Club St. 
-1913,Boca Raton,United States,,,33428,47 York St. 
-1914,Central Islip,United States,,,11722,98 Kingston Ave. 
-1915,Fairburn,United States,,,30213,554 Elm Drive 
-1916,Parkersburg,United States,,,26101,7123 Vale Dr. 
-1917,Colonial Heights,United States,,,23834,27 W. Halifax Ave. 
-1918,Navarre,United States,,,32566,8 Arch St. 
-1919,Marcus Hook,United States,,,19061,159 Beechwood Drive 
-1920,Princeton,United States,,,8540,947 Delaware Dr. 
-1921,Stockbridge,United States,,,30281,8765 Elm St. 
-1922,Huntington,United States,,,11743,11 N. Vermont Drive 
-1923,Henderson,United States,,,42420,8622 Henry Ave. 
-1924,Spring Hill,United States,,,34608,32 Greenview St. 
-1925,Round Lake,United States,,,60073,82 Oak Meadow St. 
-1926,Grand Blanc,United States,,,48439,8839 Arnold Lane 
-1927,Jamaica Plain,United States,,,2130,88 Queen Avenue 
-1928,Saginaw,United States,,,48601,821 North Taylor Road 
-1929,Amarillo,United States,,,79106,7513 High Point Ave. 
-1930,Eau Claire,United States,,,54701,371 Sierra Ave. 
-1931,Paterson,United States,,,7501,9908 Acacia Court 
-1932,Front Royal,United States,,,22630,7418 Greenrose St. 
-1933,Clayton,United States,,,27520,9258 E. Morris Street 
-1934,Saint Petersburg,United States,,,33702,417 Glen Creek Avenue 
-1935,Brockton,United States,,,2301,8780 Tallwood Street 
-1936,State College,United States,,,16801,7 Coffee Street 
-1937,Coram,United States,,,11727,7425 Military St. 
-1938,Mount Pleasant,United States,,,29464,981 East Cleveland Ave. 
-1939,Englewood,United States,,,7631,71 Riverside St. 
-1940,Deer Park,United States,,,11729,443 Lilac St. 
-1941,Elmhurst,United States,,,11373,8186 Glen Ridge Drive 
-1942,Jacksonville Beach,United States,,,32250,756 Hilltop Drive 
-1943,Deerfield Beach,United States,,,33442,47 Edgefield Ave. 
-1944,Chambersburg,United States,,,17201,99 Gainsway Court 
-1945,Syosset,United States,,,11791,410 Evergreen Dr. 
-1946,Spring Valley,United States,,,10977,7566 West Front St. 
-1947,Lincoln Park,United States,,,48146,262 S. Grant Lane 
-1948,Clifton Park,United States,,,12065,25 El Dorado Ave. 
-1949,New Haven,United States,,,6511,5 Randall Mill Street 
-1950,Mchenry,United States,,,60050,35 Shub Farm Street 
-1951,Piscataway,United States,,,8854,10 Princess St. 
-1952,West Bloomfield,United States,,,48322,34 Bay Meadows Court 
-1953,Media,United States,,,19063,968 Columbia Drive 
-1954,Madisonville,United States,,,42431,8396 Wayne Drive 
-1955,Muskego,United States,,,53150,95 East Pine Lane 
-1956,San Antonio,United States,,,78213,9786 8th Dr. 
-1957,Miamisburg,United States,,,45342,7430 Oakland Rd. 
-1958,Gloucester,United States,,,1930,613 Lantern Court 
-1959,Plainview,United States,,,11803,236 W. Prairie Drive 
-1960,Fairborn,United States,,,45324,554 Grand Drive 
-1961,Bristol,United States,,,6010,54 Manor Station Ave. 
-1962,Glendora,United States,,,91740,40 Fawn Road 
-1963,Spring Hill,United States,,,34608,233 Bohemia Street 
-1964,Carpentersville,United States,,,60110,976 New Ave. 
-1965,Franklin Square,United States,,,11010,633 James St. 
-1966,Cambridge,United States,,,2138,9322 East Grandrose Rd. 
-1967,Passaic,United States,,,7055,402 High Noon Dr. 
-1968,Columbus,United States,,,31904,8415 West Johnson Ave. 
-1969,North Haven,United States,,,6473,37 Hamilton Dr. 
-1970,Grand Island,United States,,,68801,72 NE. Harvey St. 
-1971,Hixson,United States,,,37343,8890 Charles St. 
-1972,Tuckerton,United States,,,8087,9480 Ketch Harbour Drive 
-1973,Greer,United States,,,29650,9258 Smith Store St. 
-1974,Indiana,United States,,,15701,293 Franklin Street 
-1975,Webster,United States,,,14580,405 Stonybrook St. 
-1976,Winder,United States,,,30680,477 Bridle St. 
-1977,Wellington,United States,,,33414,29 South Southampton St. 
-1978,Deltona,United States,,,32725,50 Cedar Swamp Avenue 
-1979,Tuscaloosa,United States,,,35405,498 Garden Street 
-1980,Delray Beach,United States,,,33445,8533 Glen Creek Rd. 
-1981,Norwalk,United States,,,6851,251 Southampton St. 
-1982,Ypsilanti,United States,,,48197,300 Woodsman Lane 
-1983,Mebane,United States,,,27302,8642 South Marvon Road 
-1984,La Crosse,United States,,,54601,8698 Grove Avenue 
-1985,Crown Point,United States,,,46307,262 Laurel Drive 
-1986,Haines City,United States,,,33844,7571 Elizabeth Drive 
-1987,Shrewsbury,United States,,,1545,9338 Pendergast St. 
-1988,Fresh Meadows,United States,,,11365,310 S. Swanson Lane 
-1989,Fort Mill,United States,,,29708,16 Baker St. 
-1990,Schererville,United States,,,46375,7509 Pineknoll Rd. 
-1991,Beverly,United States,,,1915,739 Pine St. 
-1992,Fredericksburg,United States,,,22405,3 Country Drive 
-1993,Port Charlotte,United States,,,33952,937 Manhattan St. 
-1994,Owensboro,United States,,,42301,6 East Rockaway Drive 
-1995,Eden Prairie,United States,,,55347,887 El Dorado Ave. 
-1996,Rock Hill,United States,,,29730,7327 Country Club Drive 
-1997,Niagara Falls,United States,,,14304,371 Big Rock Cove Lane 
-1998,Cornelius,United States,,,28031,88 Middle River St. 
-1999,New York,United States,,,10002,9224 S. Poor House Ave. 
-2000,Holyoke,United States,,,1040,596 Atlantic St. 
+1001,Mooresville,United States,,,28115,6 Thatcher St.
+1002,Gibsonia,United States,,,15044,971 Shadow Brook Street
+1003,Dothan,United States,,,36301,166 North Lakeshore Lane
+1004,Cockeysville,United States,,,21030,918 Griffin Street
+1005,Westlake,United States,,,44145,27 Gulf Court
+1006,Palm Coast,United States,,,32137,468 Galvin St.
+1007,Pikesville,United States,,,21208,42 New Avenue
+1008,Holbrook,United States,,,11741,8878 Primrose St.
+1009,Macungie,United States,,,18062,9911 Griffin St.
+1010,Mount Juliet,United States,,,37122,8129 Gates Dr.
+1011,Naugatuck,United States,,,6770,845 S. Fairfield Ave.
+1012,Chambersburg,United States,,,17201,719 Crescent Rd.
+1013,Chicopee,United States,,,1020,331 Rockland Street
+1014,Des Moines,United States,,,50310,9236 Stonybrook St.
+1015,Peabody,United States,,,1960,66 Jennings Dr.
+1016,Nampa,United States,,,83651,18 High Noon Rd.
+1017,Pompano Beach,United States,,,33060,88 Pleasant Road
+1018,Chatsworth,United States,,,30705,7850 Princess Street
+1019,Saratoga Springs,United States,,,12866,9789 Prairie Street
+1020,Smyrna,United States,,,30080,23 Adams Dr.
+1021,Indiana,United States,,,15701,9200 Walt Whitman Rd.
+1022,Fairport,United States,,,14450,651 Golden Star Street
+1023,Chelmsford,United States,,,1824,7492 Cambridge St.
+1024,Framingham,United States,,,1701,9531 Pawnee Dr.
+1025,Herndon,United States,,,20170,5 North 3rd Street
+1026,Georgetown,United States,,,29440,77 Trenton Dr.
+1027,Stafford,United States,,,22554,53 Central Ave.
+1028,Marion,United States,,,28752,827 Sherwood Ave.
+1029,Westport,United States,,,6880,202 Berkshire Ave.
+1030,Maspeth,United States,,,11378,5 Manhattan Lane
+1031,Charlottesville,United States,,,22901,1 S. Pulaski Avenue
+1032,Key West,United States,,,33040,85 Bridgeton St.
+1033,Montgomery,United States,,,36109,55 Nichols St.
+1034,Bethel Park,United States,,,15102,901 Buckingham Lane
+1035,Uniontown,United States,,,15401,759C Swanson Dr.
+1036,Dorchester Center,United States,,,2124,763 Hudson St.
+1037,Yuma,United States,,,85365,995 SE. Pierce Dr.
+1038,Gaithersburg,United States,,,20877,11 Hilldale Street
+1039,Parkersburg,United States,,,26101,575 W. Amherst Dr.
+1040,Greenfield,United States,,,46140,8113 Silver Spear St.
+1041,Lombard,United States,,,60148,66 West Cherry Hill Lane
+1042,Buckeye,United States,,,85326,7223 Ann Drive
+1043,Daphne,United States,,,36526,58 Brown St.
+1044,Selden,United States,,,11784,44 Glenholme Lane
+1045,Ashland,United States,,,44805,9125 Bayport Rd.
+1046,Wake Forest,United States,,,27587,524 Woodside Road
+1047,Appleton,United States,,,54911,5 Hill St.
+1048,East Lansing,United States,,,48823,8846 Pierce Drive
+1049,Peachtree City,United States,,,30269,7737 Vernon Drive
+1050,Muskego,United States,,,53150,805 Addison Lane
+1051,Long Beach,United States,,,11561,980 Devon Street
+1052,Bloomfield,United States,,,7003,94 Blackburn Dr.
+1053,Venice,United States,,,34293,9379 Peachtree St.
+1054,South Richmond Hill,United States,,,11419,79 Marsh Street
+1055,Waukegan,United States,,,60085,615 Lawrence Rd.
+1056,Newton,United States,,,7860,960 East Newcastle Lane
+1057,Oklahoma City,United States,,,73112,8824 Circle Avenue
+1058,Owosso,United States,,,48867,38 Green Hill Lane
+1059,Chillicothe,United States,,,45601,1 E. Rocky River Dr.
+1060,Morganton,United States,,,28655,407 Country St.
+1061,Sun Prairie,United States,,,53590,897 West Blue Spring Ave.
+1062,Holland,United States,,,49423,68 Fairway Street
+1063,Liverpool,United States,,,13090,5 W. Roberts Dr.
+1064,Burnsville,United States,,,55337,846 North Lexington Lane
+1065,Long Branch,United States,,,7740,127 Poor House Road
+1066,Encino,United States,,,91316,8838 Cambridge Drive
+1067,Cartersville,United States,,,30120,69 Roosevelt Street
+1068,Concord,United States,,,3301,26 Cobblestone St.
+1069,Deer Park,United States,,,11729,9216 Old Richardson Street
+1070,Phoenixville,United States,,,19460,7837 Charles Ave.
+1071,Ashburn,United States,,,20147,255 N. Rose St.
+1072,Pembroke Pines,United States,,,33028,74 Greystone Dr.
+1073,Coventry,United States,,,2816,984 Old El Dorado Street
+1074,North Miami Beach,United States,,,33160,282 Lancaster Road
+1075,Pueblo,United States,,,81001,739 Tanglewood Road
+1076,Garfield,United States,,,7026,963 Evergreen St.
+1077,Mishawaka,United States,,,46544,133 E. Lakewood Dr.
+1078,Portage,United States,,,46368,977 Rocky River Lane
+1079,Carpentersville,United States,,,60110,14 Peg Shop Avenue
+1080,Dracut,United States,,,1826,8498 Arnold Drive
+1081,Bronx,United States,,,10451,7946 Sulphur Springs St.
+1082,Louisville,United States,,,40207,517 Big Rock Cove Lane
+1083,Cumming,United States,,,30040,88 Eagle Ave.
+1084,Staten Island,United States,,,10301,9023 Applegate St.
+1085,Dallas,United States,,,30132,49 W. Lancaster Ave.
+1086,Charlottesville,United States,,,22901,196 Eagle St.
+1087,Saint Cloud,United States,,,56301,29 Glen Eagles St.
+1088,Winter Haven,United States,,,33880,26 Del Monte Dr.
+1089,New Rochelle,United States,,,10801,6 Rockville Ave.
+1090,Yuma,United States,,,85365,8569 Glenridge Court
+1091,Vienna,United States,,,22180,8295 Brandywine Street
+1092,Manahawkin,United States,,,8050,7917 Smoky Hollow Dr.
+1093,Lawrence,United States,,,1841,70 New Drive
+1094,East Lansing,United States,,,48823,7725 N. Hudson Road
+1095,Piqua,United States,,,45356,7 Heritage St.
+1096,Berwyn,United States,,,60402,352 Glenholme Lane
+1097,North Fort Myers,United States,,,33917,5 North Fieldstone St.
+1098,Goshen,United States,,,46526,215 N. Beacon Court
+1099,Fremont,United States,,,43420,926 E. Plymouth Dr.
+1100,West Hempstead,United States,,,11552,8893 N. Delaware St.
+1101,Benton Harbor,United States,,,49022,9080 North High Point St.
+1102,Logansport,United States,,,46947,83 Shub Farm Dr.
+1103,Suite 109 ,United States,,,,7733 Wilson Street
+1104,Rolling Meadows,United States,,,60008,23 Sunset Rd.
+1105,Glasgow,United States,,,42141,462 S. Belmont Road
+1106,Wakefield,United States,,,1880,442 Campfire Street
+1107,Stroudsburg,United States,,,18360,409 Rockledge Lane
+1108,Casselberry,United States,,,32707,9561 Selby Street
+1109,Seymour,United States,,,47274,42 W. Brickell Court
+1110,Fort Mill,United States,,,29708,853 S. Alderwood Drive
+1111,Clinton Township,United States,,,48035,677 Orchard Street
+1112,Flint,United States,,,48504,9 Del Monte St.
+1113,New Rochelle,United States,,,10801,872 Shady St.
+1114,Long Beach,United States,,,11561,517 Fifth Street
+1115,Park Forest,United States,,,60466,661 W. Tanglewood Ave.
+1116,Cartersville,United States,,,30120,651 Greystone St.
+1117,Windsor Mill,United States,,,21244,7617 Heather Avenue
+1118,Chicago Heights,United States,,,60411,652 Bishop Road
+1119,Tucker,United States,,,30084,799 Ketch Harbour Street
+1120,Ashtabula,United States,,,44004,8690 N. Green Lake St.
+1121,Troy,United States,,,12180,202 Race St.
+1122,Glastonbury,United States,,,6033,8432 Augusta St.
+1123,Lowell,United States,,,1851,61 South Bayport Lane
+1124,Hialeah,United States,,,33010,390 Glenlake Ave.
+1125,Lansdale,United States,,,19446,9466 Young Lane
+1126,Euless,United States,,,76039,9553 Griffin Ave.
+1127,Sterling,United States,,,20164,7922 Coffee Drive
+1128,Crystal Lake,United States,,,60014,7033 Foster Street
+1129,Fort Dodge,United States,,,50501,869 East Central Dr.
+1130,Allentown,United States,,,18102,9446 W. Newport Drive
+1131,Louisville,United States,,,40207,9505 Garfield Drive
+1132,Newington,United States,,,6111,97 Homestead Street
+1133,Brooklyn,United States,,,11201,7278 Rock Maple Drive
+1134,Roselle,United States,,,60172,71 Selby Lane
+1135,Wayne,United States,,,7470,440 South Ramblewood Ave.
+1136,South Richmond Hill,United States,,,11419,96 Roosevelt Road
+1137,South El Monte,United States,,,91733,601 W. Fremont Drive
+1138,Springboro,United States,,,45066,964 N. Gulf Ave.
+1139,Hoffman Estates,United States,,,60169,9723 Olive Street
+1140,Burlington,United States,,,1803,732 10th Rd.
+1141,Grand Rapids,United States,,,49503,791 Courtland Ave.
+1142,Columbia,United States,,,21044,9 Southampton Ave.
+1143,Lutherville Timonium,United States,,,21093,819 Plymouth Avenue
+1144,South El Monte,United States,,,91733,9019 Hickory Lane
+1145,North Andover,United States,,,1845,9410 Ramblewood St.
+1146,Pomona,United States,,,91768,317 Cambridge Dr.
+1147,Irmo,United States,,,29063,7337 Windfall Lane
+1148,Aliquippa,United States,,,15001,55 Sugar St.
+1149,Jupiter,United States,,,33458,759 W. Birchpond St.
+1150,San Pablo,United States,,,94806,515 Henry Street
+1151,Irwin,United States,,,15642,991 Riverview Road
+1152,Ridgewood,United States,,,7450,99 Beechwood Rd.
+1153,Fairburn,United States,,,30213,9998 N. Leatherwood Street
+1154,Findlay,United States,,,45840,7794 St Margarets Ave.
+1155,Camp Hill,United States,,,17011,190 Surrey Dr.
+1156,Braintree,United States,,,2184,276 Old Sherwood Ave.
+1157,Hammonton,United States,,,8037,602 Old Arcadia Court
+1158,Myrtle Beach,United States,,,29577,199 Summer St.
+1159,Algonquin,United States,,,60102,8291 E. Mulberry Road
+1160,Corona,United States,,,11368,7617 Iroquois Drive
+1161,New Bedford,United States,,,2740,133 N. Oak Road
+1162,Dothan,United States,,,36301,72 Devon Drive
+1163,Plymouth,United States,,,2360,75 Beaver Ridge Ave.
+1164,Flint,United States,,,48504,220 Cobblestone Ave.
+1165,West Islip,United States,,,11795,903 Devon Ave.
+1166,Shepherdsville,United States,,,40165,242 Wentworth Dr.
+1167,Maineville,United States,,,45039,97 Colonial Ave.
+1168,Fullerton,United States,,,92831,8536 Ivy St.
+1169,Mebane,United States,,,27302,9803 E. Linda St.
+1170,Yuma,United States,,,85365,7424 Evergreen Dr.
+1171,Mebane,United States,,,27302,464 Pine Road
+1172,Olney,United States,,,20832,7 Wellington Avenue
+1173,Stafford,United States,,,22554,552 Court Rd.
+1174,Wethersfield,United States,,,6109,68 Orange St.
+1175,Dearborn Heights,United States,,,48127,476 South Border Rd.
+1176,Sewell,United States,,,8080,7712 N. Piper Street
+1177,Brick,United States,,,8723,240 Valley Farms St.
+1178,Granger,United States,,,46530,74 North Armstrong Road
+1179,Riverside,United States,,,8075,444 Cross Street
+1180,Wayne,United States,,,7470,89 Division Lane
+1181,Traverse City,United States,,,49684,62 SW. Rockwell St.
+1182,Batavia,United States,,,45103,57 W. Bayberry Dr.
+1183,Nashville,United States,,,37205,112 Andover St.
+1184,West Roxbury,United States,,,2132,7721 Gonzales Road
+1185,Grand Forks,United States,,,58201,605 E. Sherman Dr.
+1186,Tonawanda,United States,,,14150,8383 Bay Meadows Rd.
+1187,Hummelstown,United States,,,17036,908 Wood Avenue
+1188,Mason City,United States,,,50401,49 Woodsman St.
+1189,West Chicago,United States,,,60185,689 Thomas Rd.
+1190,Delray Beach,United States,,,33445,5 Studebaker Lane
+1191,Saint Augustine,United States,,,32084,33 Fulton Street
+1192,Portsmouth,United States,,,23703,7203 West Rd.
+1193,Kokomo,United States,,,46901,745 Linda Lane
+1194,Nutley,United States,,,7110,396 Tallwood Drive
+1195,Douglasville,United States,,,30134,43 Temple Ave.
+1196,Chesterfield,United States,,,23832,7130 E. Mayflower Lane
+1197,Oak Lawn,United States,,,60453,466 Green Lake Circle
+1198,Merrimack,United States,,,3054,555 Campfire St.
+1199,Dedham,United States,,,2026,8635 Pennsylvania Rd.
+1200,Taylor,United States,,,48180,222 W. Lancaster Drive
+1201,Des Moines,United States,,,50310,644 Gates Street
+1202,Oak Lawn,United States,,,60453,8448 Grant St.
+1203,Powhatan,United States,,,23139,7480 Hill Ave.
+1204,Pittsfield,United States,,,1201,3 Longfellow Drive
+1205,Roswell,United States,,,30075,7032 Lookout Ave.
+1206,Kingston,United States,,,12401,105 East Princeton Lane
+1207,Waterbury,United States,,,6705,9373 Golf St.
+1208,Asheville,United States,,,28803,9542 Ridge St.
+1209,Boynton Beach,United States,,,33435,389 Argyle Ave.
+1210,Cranston,United States,,,2920,4 Van Dyke Lane
+1211,Pickerington,United States,,,43147,2 Shub Farm Drive
+1212,Buffalo Grove,United States,,,60089,9363 Rockland Dr.
+1213,Oviedo,United States,,,32765,2 Wall Street
+1214,Suffolk,United States,,,23434,6 East Green Hill Lane
+1215,Union,United States,,,7083,152 Bayport Court
+1216,Noblesville,United States,,,46060,8747 53rd Drive
+1217,Buffalo Grove,United States,,,60089,193 Rosewood Ave.
+1218,North Brunswick,United States,,,8902,58 San Juan St.
+1219,Jamaica,United States,,,11432,93 Amherst St.
+1220,South Bend,United States,,,46614,512 Central Road
+1221,Quakertown,United States,,,18951,380 Stillwater Ave.
+1222,Augusta,United States,,,30906,8584 Second Court
+1223,North Ridgeville,United States,,,44039,9105 College Court
+1224,West Des Moines,United States,,,50265,7562 Smoky Hollow Avenue
+1225,Farmington,United States,,,48331,164 Nichols Street
+1226,Lincolnton,United States,,,28092,5 Marshall St.
+1227,Akron,United States,,,44312,638 Lakewood Dr.
+1228,Orlando,United States,,,32806,966 San Pablo Street
+1229,Perrysburg,United States,,,43551,146 Carpenter Rd.
+1230,Warminster,United States,,,18974,702 South Dr.
+1231,Natchez,United States,,,39120,8609 Vale Street
+1232,Waterloo,United States,,,50701,958 Race Circle
+1233,Reidsville,United States,,,27320,724 High Ridge St.
+1234,New Albany,United States,,,47150,561B Bishop Ave.
+1235,Ocoee,United States,,,34761,5 Creek Drive
+1236,East Hartford,United States,,,6118,4 Acacia St.
+1237,Sewell,United States,,,8080,8449 Creekside Dr.
+1238,Oxford,United States,,,38655,236 W. Wakehurst Drive
+1239,Clover,United States,,,29710,845 Front Ave.
+1240,Ellenwood,United States,,,30294,9299 Jackson Circle
+1241,De Pere,United States,,,54115,79 Belmont St.
+1242,Lombard,United States,,,60148,661 West Cherry Lane
+1243,Irwin,United States,,,15642,21 Gainsway Court
+1244,Macomb,United States,,,48042,7044 Lawrence St.
+1245,Morgantown,United States,,,26508,322 W. Smith Store Street
+1246,Key West,United States,,,33040,8711 Harvard St.
+1247,Natick,United States,,,1760,99 Laurel Ave.
+1248,Clearwater,United States,,,33756,8360 Hartford Lane
+1249,Toledo,United States,,,43612,142 Ashley Avenue
+1250,Jackson Heights,United States,,,11372,7188 San Juan Ave.
+1251,Cartersville,United States,,,30120,33 Grand St.
+1252,Graham,United States,,,27253,8731 Lexington Ave.
+1253,Rock Hill,United States,,,29730,8 Foster Street
+1254,Winston Salem,United States,,,27103,8400 Acacia Ave.
+1255,Huntersville,United States,,,28078,7526 North Walt Whitman Circle
+1256,Mechanicsburg,United States,,,17050,397 Hall Lane
+1257,Bronx,United States,,,10451,321 Miller Drive
+1258,Xenia,United States,,,45385,8121 Birch Hill Rd.
+1259,Glenview,United States,,,60025,7705 South Columbia St.
+1260,Apopka,United States,,,32703,34 Oklahoma Ave.
+1261,Ames,United States,,,50010,592 Warren St.
+1262,Cherry Hill,United States,,,8003,37 Birchpond Street
+1263,Paramus,United States,,,7652,906 South Rosewood St.
+1264,Pasadena,United States,,,21122,7472 S. Aspen St.
+1265,Champlin,United States,,,55316,9698 Manor Drive
+1266,Leland,United States,,,28451,3 Shub Farm St.
+1267,Plymouth,United States,,,2360,8 Myers Ave.
+1268,Lacey,United States,,,98503,9535 Essex Lane
+1269,Maplewood,United States,,,7040,93 SW. Market Dr.
+1270,Royersford,United States,,,19468,419 Galvin Street
+1271,Lynnwood,United States,,,98037,9736 Indian Spring Court
+1272,Mableton,United States,,,30126,656 Old Hilltop Street
+1273,Lancaster,United States,,,14086,503 Richardson Ave.
+1274,Carol Stream,United States,,,60188,312 E. Buckingham Street
+1275,Voorhees,United States,,,8043,20 Arlington Court
+1276,Southampton,United States,,,18966,348 Bank Road
+1277,Iowa City,United States,,,52240,7026 N. Saxon Court
+1278,Buffalo Grove,United States,,,60089,7192 Lake Forest Drive
+1279,Midlothian,United States,,,23112,310 West Hanover Dr.
+1280,Englewood,United States,,,7631,7900 Adams Court
+1281,Fort Lee,United States,,,7024,8283 High Point St.
+1282,Ridgecrest,United States,,,93555,67 Lantern St.
+1283,Medford,United States,,,2155,8220 Poplar St.
+1284,Anderson,United States,,,29621,719 Fairview St.
+1285,Cottage Grove,United States,,,55016,8609 Pierce Dr.
+1286,Utica,United States,,,13501,19 Sugar Ave.
+1287,Tampa,United States,,,33604,54 Rockwell Dr.
+1288,Hackettstown,United States,,,7840,673 Glenlake St.
+1289,Depew,United States,,,14043,7651 Rockwell St.
+1290,North Fort Myers,United States,,,33917,642 Longbranch Court
+1291,Mechanicsburg,United States,,,17050,4 Bridge St.
+1292,Peoria,United States,,,61604,81 Pineknoll Avenue
+1293,Washington,United States,,,15301,8118 Hudson St.
+1294,New Port Richey,United States,,,34653,30 Littleton Rd.
+1295,Jacksonville Beach,United States,,,32250,653 Edgewood Street
+1296,Amityville,United States,,,11701,11 Stillwater Drive
+1297,Berwyn,United States,,,60402,8 Marvon Court
+1298,Rock Hill,United States,,,29730,8339 New Ave.
+1299,Norfolk,United States,,,23503,7642 Princess Dr.
+1300,Merrimack,United States,,,3054,7051 Prince Street
+1301,Kennesaw,United States,,,30144,54 North Winchester St.
+1302,Williamsburg,United States,,,23185,94 Fieldstone Street
+1303,New Lenox,United States,,,60451,35 E. Shady Court
+1304,East Northport,United States,,,11731,9278 Longfellow Street
+1305,Carlisle,United States,,,17013,918 S. Lake View Lane
+1306,Waukegan,United States,,,60085,8856 Sierra St.
+1307,Marion,United States,,,28752,3 Birch Hill Drive
+1308,Eugene,United States,,,97402,8124 East Avenue
+1309,Doylestown,United States,,,18901,9963 Madison St.
+1310,Derry,United States,,,3038,7037 Selby Dr.
+1311,Deer Park,United States,,,11729,509 East Pendergast Street
+1312,Bethlehem,United States,,,18015,17 Ryan St.
+1313,Vista,United States,,,92083,76 Wintergreen Street
+1314,El Dorado,United States,,,71730,93 Williams Rd.
+1315,Elmhurst,United States,,,11373,89 Sunset Drive
+1316,Montgomery,United States,,,36109,577 Thomas Rd.
+1317,Anchorage,United States,,,99504,9924 Evergreen St.
+1318,New Haven,United States,,,6511,9359 Pennington Ave.
+1319,Floral Park,United States,,,11001,5 East Ivy St.
+1320,North Royalton,United States,,,44133,62 Ridge St.
+1321,Danville,United States,,,24540,8819 Oakwood Drive
+1322,Long Beach,United States,,,11561,9529 Orange Lane
+1323,Floral Park,United States,,,11001,468 Ridgeview Street
+1324,Rosedale,United States,,,11422,896 Ivy Road
+1325,El Paso,United States,,,79930,327 Sulphur Springs Rd.
+1326,Pittsfield,United States,,,1201,26 Pierce Street
+1327,Park Ridge,United States,,,60068,623 Annadale Rd.
+1328,Waterford,United States,,,48329,83 Rock Maple Circle
+1329,Pompano Beach,United States,,,33060,149 2nd Street
+1330,Gurnee,United States,,,60031,961 Atlantic Street
+1331,Rockledge,United States,,,32955,547 Carriage Ave.
+1332,Montgomery Village,United States,,,20886,89 Sierra St.
+1333,Bonita Springs,United States,,,34135,58 North Longbranch St.
+1334,Fullerton,United States,,,92831,92 South New Rd.
+1335,Muncie,United States,,,47302,9787 South Wakehurst Street
+1336,Lawndale,United States,,,90260,98 Hilldale Rd.
+1337,Schaumburg,United States,,,60193,857 Rock Maple St.
+1338,Beloit,United States,,,53511,7667 Rockledge Ave.
+1339,Ridgecrest,United States,,,93555,583 S. Bald Hill St.
+1340,Chandler,United States,,,85224,65 Stonybrook St.
+1341,Quakertown,United States,,,18951,15 Lake View Drive
+1342,Muncie,United States,,,47302,212 Philmont St.
+1343,Paducah,United States,,,42001,8045 Catherine Rd.
+1344,Littleton,United States,,,80123,970 John Dr.
+1345,Flushing,United States,,,11354,8928 Arcadia Ave.
+1346,Cleveland,United States,,,37312,1 Vernon Street
+1347,Royal Oak,United States,,,48067,15 North Highland Rd.
+1348,Grandville,United States,,,49418,143 Euclid Dr.
+1349,Massapequa,United States,,,11758,98 Piper St.
+1350,Baldwin,United States,,,11510,7 Sunset Street
+1351,Fort Dodge,United States,,,50501,120 W. Gartner St.
+1352,Rockville,United States,,,20850,37 Galvin St.
+1353,Reidsville,United States,,,27320,1 Meadow Ave.
+1354,Greenville,United States,,,27834,17 North Cooper Drive
+1355,Martinsville,United States,,,24112,7391 Harvard Ave.
+1356,Somerset,United States,,,8873,723 Third Court
+1357,Prior Lake,United States,,,55372,29 Beechwood St.
+1358,Valley Stream,United States,,,11580,195 Oxford Dr.
+1359,Spring Hill,United States,,,34608,921 Smith St.
+1360,Ravenna,United States,,,44266,8724 Hillside Dr.
+1361,Stroudsburg,United States,,,18360,62 Strawberry Circle
+1362,Cambridge,United States,,,2138,22 New St.
+1363,New Port Richey,United States,,,34653,998 Olive Road
+1364,Depew,United States,,,14043,85 Galvin Ave.
+1365,Westland,United States,,,48185,71 Airport St.
+1366,De Pere,United States,,,54115,7566 E. Crescent St.
+1367,Myrtle Beach,United States,,,29577,344 Squaw Creek Ave.
+1368,Alliance,United States,,,44601,262 South Pearl St.
+1369,Shelbyville,United States,,,37160,234 Manor Lane
+1370,Richmond Hill,United States,,,11418,164 Beacon Ave.
+1371,Queensbury,United States,,,12804,7162 Beechwood Street
+1372,Warwick,United States,,,2886,8700 W. White Rd.
+1373,Elizabeth City,United States,,,27909,35 E. 10th Street
+1374,Ft Mitchell,United States,,,41017,6 Bridgeton Lane
+1375,Riverview,United States,,,33569,8 E. Cottage Lane
+1376,Phillipsburg,United States,,,8865,112 Fairfield Dr.
+1377,Marion,United States,,,28752,187 North River Road
+1378,Alexandria,United States,,,22304,7929 Rosewood Street
+1379,Battle Creek,United States,,,49015,44 Border Dr.
+1380,Huntington Station,United States,,,11746,186 SW. Surrey Lane
+1381,Irwin,United States,,,15642,215 Aspen Street
+1382,Moses Lake,United States,,,98837,7578 Valley Court
+1383,Longview,United States,,,75604,397 Cottage Circle
+1384,Fishers,United States,,,46037,16 Johnson Court
+1385,Mount Prospect,United States,,,60056,65 Fairway St.
+1386,Rocklin,United States,,,95677,3 Tallwood Street
+1387,Morganton,United States,,,28655,6 Henry Smith Avenue
+1388,Muskogee,United States,,,74403,7515 Amherst Ave.
+1389,Auburn,United States,,,13021,411 Hanover Lane
+1390,Middle River,United States,,,21220,8598 Riverview Rd.
+1391,Bountiful,United States,,,84010,444 Cottage St.
+1392,Auburn,United States,,,13021,7 Sage Court
+1393,Meriden,United States,,,6450,9023 Talbot Rd.
+1394,Raeford,United States,,,28376,9228 Swanson Street
+1395,East Elmhurst,United States,,,11369,9844 Pheasant Ave.
+1396,Tualatin,United States,,,97062,552 West Sunset Street
+1397,Elizabeth,United States,,,7202,24 Bank St.
+1398,Parsippany,United States,,,7054,7776 Old Mechanic Street
+1399,Greenville,United States,,,27834,58 South Marlborough Street
+1400,Albany,United States,,,12203,34 High Point Court
+1401,Queensbury,United States,,,12804,87 E. James St.
+1402,Saginaw,United States,,,48601,550 Lakeview Road
+1403,Waynesboro,United States,,,17268,177 Lake Forest St.
+1404,West Fargo,United States,,,58078,209 Paris Hill St.
+1405,New Milford,United States,,,6776,69 Stonybrook Street
+1406,Bridgeport,United States,,,6606,977 West Amerige Ave.
+1407,Mahwah,United States,,,7430,56 Bohemia Ave.
+1408,Beltsville,United States,,,20705,25 S. Grant Rd.
+1409,Brookfield,United States,,,53045,8232 Garden Court
+1410,Monroe,United States,,,10950,23 Birchpond Rd.
+1411,Oak Ridge,United States,,,37830,9852 W. High Point Drive
+1412,Venice,United States,,,34293,78 Valley Farms Rd.
+1413,Wallingford,United States,,,6492,822 Santa Clara St.
+1414,Winter Garden,United States,,,34787,10 Richardson Drive
+1415,Santa Clara,United States,,,95050,875 Annadale Dr.
+1416,Freehold,United States,,,7728,407 Oakwood Drive
+1417,Marlborough,United States,,,1752,9018 Aspen Ave.
+1418,Banning,United States,,,92220,536 Pawnee Drive
+1419,Lake Villa,United States,,,60046,65 Shirley St.
+1420,Yakima,United States,,,98908,9 Chapel Lane
+1421,Cranberry Twp,United States,,,16066,534 Constitution Street
+1422,Hackensack,United States,,,7601,16 South Country Club Drive
+1423,Rossville,United States,,,30741,25 Ramblewood St.
+1424,Winona,United States,,,55987,24 Purple Finch Ave.
+1425,High Point,United States,,,27265,9046 Old Lyme Street
+1426,Saint Augustine,United States,,,32084,46 East Circle Drive
+1427,Mount Holly,United States,,,8060,445 Broad St.
+1428,Derry,United States,,,3038,41 Beaver Ridge Road
+1429,Waxhaw,United States,,,28173,182 Swanson Drive
+1430,Galloway,United States,,,43119,729 Princess Dr.
+1431,Shakopee,United States,,,55379,935 County Dr.
+1432,New Lenox,United States,,,60451,939 Lyme St.
+1433,Alliance,United States,,,44601,8 Delaware Dr.
+1434,Westbury,United States,,,11590,81 South Logan Avenue
+1435,Lowell,United States,,,1851,71 Amherst St.
+1436,Hallandale,United States,,,33009,495 North Chestnut Street
+1437,Hallandale,United States,,,33009,828 Edgefield Avenue
+1438,Mason,United States,,,45040,963 10th Drive
+1439,Branford,United States,,,6405,65 Olive Drive
+1440,North Royalton,United States,,,44133,11 Manor Ave.
+1441,Dothan,United States,,,36301,191 Proctor Rd.
+1442,Champaign,United States,,,61821,8866 Sunset Ave.
+1443,Havertown,United States,,,19083,270 Orchard Ave.
+1444,Helena,United States,,,59601,186 Windsor St.
+1445,Livonia,United States,,,48150,8334 St Louis Lane
+1446,Endicott,United States,,,13760,8575 Saxton St.
+1447,Clermont,United States,,,34711,7572 Mammoth Road
+1448,Medford,United States,,,2155,9755 Glen Creek Ave.
+1449,New Rochelle,United States,,,10801,816 Annadale Dr.
+1450,Lapeer,United States,,,48446,7991 Hilldale St.
+1451,Kaukauna,United States,,,54130,24 Marshall Court
+1452,Centereach,United States,,,11720,305 Ann St.
+1453,Grand Island,United States,,,68801,72 North Clay St.
+1454,Media,United States,,,19063,36B South Durham St.
+1455,Lumberton,United States,,,28358,68 Oakwood Street
+1456,Spring Valley,United States,,,10977,320 North Depot Rd.
+1457,Schenectady,United States,,,12302,3 Meadowbrook Ave.
+1458,Passaic,United States,,,7055,8987 Ketch Harbour Lane
+1459,Los Banos,United States,,,93635,90 Sherman Street
+1460,Reno,United States,,,89523,52 E. Thomas Drive
+1461,Grandville,United States,,,49418,72 Division Drive
+1462,Rowlett,United States,,,75088,322 Goldfield Ave.
+1463,Cranston,United States,,,2920,88 Beech Circle
+1464,Woonsocket,United States,,,2895,1 Tarkiln Hill Lane
+1465,Fort Myers,United States,,,33905,50 Valley Farms St.
+1466,Southgate,United States,,,48195,7144 Shadow Brook St.
+1467,Glendale,United States,,,85302,9471 William Street
+1468,Carmel,United States,,,10512,144 Rocky River Street
+1469,Memphis,United States,,,38106,589 Mountainview St.
+1470,Wake Forest,United States,,,27587,9325 James Ave.
+1471,Kennewick,United States,,,99337,32 Parker Lane
+1472,Sheboygan,United States,,,53081,969 New Saddle Court
+1473,Cockeysville,United States,,,21030,32 Glen Ridge Street
+1474,Muncie,United States,,,47302,4 University Court
+1475,Ringgold,United States,,,30736,468 S. Smith Store Ave.
+1476,Levittown,United States,,,11756,888 Rockwell St.
+1477,Plainview,United States,,,11803,43 Rockaway Dr.
+1478,Scarsdale,United States,,,10583,9182 Willow Street
+1479,Auburndale,United States,,,33823,8 Nichols Ave.
+1480,Lawrenceville,United States,,,30043,9652 County Street
+1481,Westmont,United States,,,60559,622 Pulaski Lane
+1482,Pembroke Pines,United States,,,33028,44 Ann Street
+1483,Spring Hill,United States,,,34608,9 East Rose St.
+1484,Willingboro,United States,,,8046,59 Colonial Court
+1485,Memphis,United States,,,38106,64 East Primrose St.
+1486,Jenison,United States,,,49428,128 Primrose St.
+1487,Lanham,United States,,,20706,434 Logan Street
+1488,Cape Coral,United States,,,33904,270 York Street
+1489,Lincolnton,United States,,,28092,1 Tallwood Street
+1490,Crawfordsville,United States,,,47933,8172 Old Mammoth Street
+1491,Bronx,United States,,,10451,7251 Cemetery Street
+1492,Leland,United States,,,28451,7104 Westminster Ave.
+1493,Stockbridge,United States,,,30281,768 Hill Drive
+1494,Trussville,United States,,,35173,489 Bohemia St.
+1495,Pleasanton,United States,,,94566,32 Cherry Hill Ave.
+1496,Brentwood,United States,,,11717,21 High Point Road
+1497,Crown Point,United States,,,46307,7199 Sutor Ave.
+1498,Jackson Heights,United States,,,11372,6 Arrowhead Road
+1499,Iowa City,United States,,,52240,98 Durham St.
+1500,Orland Park,United States,,,60462,76 Littleton Ave.
+1501,Vincentown,United States,,,8088,997 North Church Dr.
+1502,Findlay,United States,,,45840,83 Wood Circle
+1503,Findlay,United States,,,45840,264 Livingston Street
+1504,Elkton,United States,,,21921,7475 Buttonwood Street
+1505,Farmingdale,United States,,,11735,9893 Swanson Ave.
+1506,Powell,United States,,,37849,27 Mayfield Dr.
+1507,Stamford,United States,,,6902,9811 Orchard St.
+1508,Valley Stream,United States,,,11580,9394 Edgemont Street
+1509,Orange Park,United States,,,32065,35 Rockville St.
+1510,Flint,United States,,,48504,955 Randall Mill St.
+1511,Titusville,United States,,,32780,7674 North Foster Lane
+1512,Sarasota,United States,,,34231,521 E. Sherman Ave.
+1513,Muskegon,United States,,,49441,695 Queen Road
+1514,Elmont,United States,,,11003,4 Pilgrim Dr.
+1515,Streamwood,United States,,,60107,68 Strawberry Ave.
+1516,Ithaca,United States,,,14850,395 SW. Valley Farms Drive
+1517,Tupelo,United States,,,38801,32 Bald Hill Rd.
+1518,Mahopac,United States,,,10541,1 S. Green Hill Dr.
+1519,Saint Augustine,United States,,,32084,7280 Hartford Drive
+1520,Edison,United States,,,8817,56 NW. Constitution Street
+1521,Moorhead,United States,,,56560,8525 N. Clay St.
+1522,Summerfield,United States,,,34491,630 Rock Maple St.
+1523,Mentor,United States,,,44060,3 8th Ave.
+1524,Fort Lee,United States,,,7024,8957 Lafayette Street
+1525,West Islip,United States,,,11795,27 Lantern Ave.
+1526,Hopewell Junction,United States,,,12533,7781 West Jefferson Ave.
+1527,Horn Lake,United States,,,38637,70 Chestnut Avenue
+1528,Indiana,United States,,,15701,428 North Canal Drive
+1529,Portsmouth,United States,,,23703,7776 Mill Pond St.
+1530,Mount Juliet,United States,,,37122,8631 Marlborough Rd.
+1531,Rome,United States,,,13440,8707 W. Green Lake Dr.
+1532,Sylvania,United States,,,43560,9213 West Washington Avenue
+1533,Los Banos,United States,,,93635,10 Sierra Lane
+1534,Eastpointe,United States,,,48021,8642 Clark Dr.
+1535,Marlborough,United States,,,1752,483 Grove St.
+1536,Princeton,United States,,,8540,903 Pilgrim Dr.
+1537,Circle Pines,United States,,,55014,57 Chestnut St.
+1538,Woodhaven,United States,,,11421,46 Carriage Street
+1539,Huntersville,United States,,,28078,40 Carpenter Ave.
+1540,Taylor,United States,,,48180,975 Hilldale Dr.
+1541,Streamwood,United States,,,60107,694 Green Hill St.
+1542,Victoria,United States,,,77904,7963 Selby Dr.
+1543,Amarillo,United States,,,79106,8084 Williams Drive
+1544,Farmington,United States,,,48331,7177 Birchpond St.
+1545,Downingtown,United States,,,19335,8102 Pine Street
+1546,Branford,United States,,,6405,131 Nut Swamp Drive
+1547,Deer Park,United States,,,11729,94 Canterbury Drive
+1548,Plainfield,United States,,,7060,465 Gartner Street
+1549,Depew,United States,,,14043,471 Buttonwood Ave.
+1550,North Canton,United States,,,44720,8196 Gulf Road
+1551,Allentown,United States,,,18102,87 Wall Street
+1552,Indiana,United States,,,15701,6 6th Street
+1553,Saugus,United States,,,1906,478 Brandywine St.
+1554,Seymour,United States,,,47274,928 Maiden Drive
+1555,Smithtown,United States,,,11787,1 Glendale Rd.
+1556,Easton,United States,,,18042,128 Dunbar St.
+1557,Port Huron,United States,,,48060,291 Jackson St.
+1558,Mcdonough,United States,,,30252,248 Garden St.
+1559,Bergenfield,United States,,,7621,162 Leeton Ridge St.
+1560,Ottawa,United States,,,61350,651 Prairie Street
+1561,Mobile,United States,,,36605,659 Morris Dr.
+1562,Newark,United States,,,7103,392 Brandywine Drive
+1563,Ankeny,United States,,,50023,9454 Manor Lane
+1564,North Ridgeville,United States,,,44039,9142 Bellevue Drive
+1565,Stratford,United States,,,6614,9001 Vermont St.
+1566,Deerfield Beach,United States,,,33442,8049 West Holly Lane
+1567,Fuquay Varina,United States,,,27526,8098 Center Avenue
+1568,Liverpool,United States,,,13090,8527 South Campfire Avenue
+1569,Peoria,United States,,,61604,452 Kirkland Court
+1570,Ladson,United States,,,29456,96 Arnold Lane
+1571,Westwood,United States,,,7675,8253 Durham Court
+1572,Brooklyn,United States,,,11201,7053 Lakewood St.
+1573,Elizabethtown,United States,,,17022,43 Edgemont Drive
+1574,Alabaster,United States,,,35007,847 Linda Drive
+1575,Bonita Springs,United States,,,34135,7 Selby Ave.
+1576,Danvers,United States,,,1923,8590 Edgemont Street
+1577,Sylvania,United States,,,43560,8988 Oakland Rd.
+1578,Billerica,United States,,,1821,7226 Newport Ave.
+1579,Hamden,United States,,,6514,372 Westport Road
+1580,Sheboygan,United States,,,53081,6 South Franklin Street
+1581,Lansdale,United States,,,19446,788 Jefferson Dr.
+1582,Riverview,United States,,,33569,7721 Orchard St.
+1583,Cottage Grove,United States,,,55016,377 Carson St.
+1584,San Lorenzo,United States,,,94580,26 Brewery Court
+1585,Menasha,United States,,,54952,8726 Mayfair Street
+1586,Richmond,United States,,,23223,8492 Talbot St.
+1587,Smithtown,United States,,,11787,97 Aspen St.
+1588,Longview,United States,,,75604,809 Smith Ave.
+1589,Tampa,United States,,,33604,542C San Carlos Dr.
+1590,Montgomery,United States,,,36109,9728 Glenholme Ave.
+1591,East Stroudsburg,United States,,,18301,45 Willow Rd.
+1592,Piqua,United States,,,45356,84 Old Hill Street
+1593,Union City,United States,,,7087,41 Tanglewood Drive
+1594,Alliance,United States,,,44601,35 Maple Road
+1595,West Springfield,United States,,,1089,454 Annadale Dr.
+1596,Woodside,United States,,,11377,7668 Hill Street
+1597,Ridgefield,United States,,,6877,6 Wayne St.
+1598,Snellville,United States,,,30039,242 Pawnee Street
+1599,Elizabeth,United States,,,7202,55 Highland Dr.
+1600,Yonkers,United States,,,10701,9447 East Vernon Lane
+1601,Baldwinsville,United States,,,13027,95 Rock Creek Road
+1602,Baldwin,United States,,,11510,20 Mulberry Ave.
+1603,Harrisonburg,United States,,,22801,95 Grove St.
+1604,Redondo Beach,United States,,,90278,24 Cedarwood Lane
+1605,West Fargo,United States,,,58078,9290 Spruce Drive
+1606,District Heights,United States,,,20747,7659 Beacon St.
+1607,Helotes,United States,,,78023,875 Honey Creek St.
+1608,Battle Creek,United States,,,49015,452 Sunnyslope Rd.
+1609,Longview,United States,,,75604,254 South Nichols Road
+1610,Wilson,United States,,,27893,7538 E. Edgewood Drive
+1611,Bartlett,United States,,,60103,575 East Talbot Road
+1612,Hanover Park,United States,,,60133,9397 Wagon Street
+1613,Fredericksburg,United States,,,22405,826 Riverview Court
+1614,Waukegan,United States,,,60085,14 Mill Street
+1615,Munster,United States,,,46321,9005 W. Indian Summer Ave.
+1616,Lowell,United States,,,1851,85 Oxford St.
+1617,Wheeling,United States,,,26003,9151 Bow Ridge Ave.
+1618,Anderson,United States,,,29621,82 Old King Rd.
+1619,Ames,United States,,,50010,9336 Sunbeam Road
+1620,Bluffton,United States,,,29910,87 Beach Dr.
+1621,Butler,United States,,,16001,799 South John Ave.
+1622,Fairburn,United States,,,30213,791 Oklahoma Rd.
+1623,Mokena,United States,,,60448,404 Clay Lane
+1624,Concord,United States,,,3301,625 South Hamilton Road
+1625,West Chicago,United States,,,60185,345 Trenton Street
+1626,North Ridgeville,United States,,,44039,8843 Airport Ave.
+1627,Brick,United States,,,8723,60 Fieldstone Dr.
+1628,Rosedale,United States,,,11422,9 Lilac Ave.
+1629,Egg Harbor Township,United States,,,8234,9340 Oakwood Ave.
+1630,Wayne,United States,,,7470,7907 Hudson Drive
+1631,Palmetto,United States,,,34221,688 Beaver Ridge Ave.
+1632,Elizabethton,United States,,,37643,85 Lakeview St.
+1633,Auburndale,United States,,,33823,176 Del Monte Street
+1634,Norwalk,United States,,,6851,164 Clark Street
+1635,Omaha,United States,,,68107,980 East Pawnee Street
+1636,Westbury,United States,,,11590,509 North Marshall Street
+1637,Goldsboro,United States,,,27530,963 Augusta Rd.
+1638,Aliquippa,United States,,,15001,14 N. Walnut Street
+1639,West Roxbury,United States,,,2132,7 Vermont Street
+1640,Land O Lakes,United States,,,34639,53 Winding Way Rd.
+1641,Kent,United States,,,44240,463 Pleasant Drive
+1642,Ridgewood,United States,,,7450,255 3rd Street
+1643,Asbury Park,United States,,,7712,155 Brook St.
+1644,Sterling,United States,,,20164,231 Delaware St.
+1645,Laurel,United States,,,20707,536 Lake View Avenue
+1646,Woodstock,United States,,,30188,8225 Kingston Rd.
+1647,Stroudsburg,United States,,,18360,83 East Street
+1648,Ann Arbor,United States,,,48103,8108 Studebaker Rd.
+1649,Chesapeake,United States,,,23320,850 Euclid Drive
+1650,Havertown,United States,,,19083,8823 Beach Street
+1651,Marysville,United States,,,43040,9863 Myers Drive
+1652,New Milford,United States,,,6776,554 SE. Magnolia St.
+1653,Dorchester,United States,,,2125,575 Evergreen Street
+1654,Capitol Heights,United States,,,20743,569 E. Mill Pond Ave.
+1655,Patchogue,United States,,,11772,7599 Golf Drive
+1656,Clinton,United States,,,20735,269 N. Somerset Drive
+1657,Suffolk,United States,,,23434,25 W. New Avenue
+1658,Muncie,United States,,,47302,8016 Water Street
+1659,Linden,United States,,,7036,81 Greenrose Road
+1660,Perkasie,United States,,,18944,4 Beach Street
+1661,North Attleboro,United States,,,2760,666 Cambridge Avenue
+1662,Naugatuck,United States,,,6770,9741 Essex Street
+1663,Lakeville,United States,,,55044,8164 South Depot Lane
+1664,Powhatan,United States,,,23139,880 Helen Dr.
+1665,Chardon,United States,,,44024,52 Hilltop Ave.
+1666,Vienna,United States,,,22180,8238 Hamilton Ave.
+1667,Cantonment,United States,,,32533,68 Jockey Hollow Lane
+1668,Chippewa Falls,United States,,,54729,8480 8th St.
+1669,Smyrna,United States,,,30080,388 Rock Creek Court
+1670,Vienna,United States,,,22180,8236 Pulaski Ave.
+1671,Lowell,United States,,,1851,3 University Street
+1672,Canal Winchester,United States,,,43110,294 Lilac Street
+1673,Athens,United States,,,30605,7412 Selby St.
+1674,Asheboro,United States,,,27205,59 Gartner St.
+1675,Rapid City,United States,,,57701,535 Hanover Ave.
+1676,Spring Valley,United States,,,10977,6 North Piper St.
+1677,Lorton,United States,,,22079,652 Glenlake Street
+1678,Lansing,United States,,,48910,38 Bedford St.
+1679,Burnsville,United States,,,55337,7368 Hamilton Drive
+1680,Garland,United States,,,75043,8415 Summer St.
+1681,Camas,United States,,,98607,3 Peninsula St.
+1682,Merrillville,United States,,,46410,792 East Sycamore St.
+1683,Lincolnton,United States,,,28092,83 Peg Shop Drive
+1684,Peoria,United States,,,61604,4 West Philmont Street
+1685,Chapel Hill,United States,,,27516,8648 Riverview Ave.
+1686,Roswell,United States,,,30075,887 Windfall Lane
+1687,Fort Wayne,United States,,,46804,7601 Sunnyslope Ave.
+1688,Avon Lake,United States,,,44012,398 Augusta Rd.
+1689,Metairie,United States,,,70001,3 W. Berkshire Court
+1690,East Hartford,United States,,,6118,701 Country Club St.
+1691,Burbank,United States,,,60459,578 N. Indian Spring Street
+1692,Conway,United States,,,29526,7369 Tallwood Drive
+1693,Bethel Park,United States,,,15102,948 Leatherwood Court
+1694,Sykesville,United States,,,21784,635 Longbranch Street
+1695,Hazleton,United States,,,18201,41 SE. White Lane
+1696,New Kensington,United States,,,15068,174 Pennington St.
+1697,New Britain,United States,,,6051,2 Sherwood Lane
+1698,Kalispell,United States,,,59901,60 Helen Rd.
+1699,Hamtramck,United States,,,48212,458 Pheasant Street
+1700,Linden,United States,,,7036,329 Oxford Drive
+1701,Sicklerville,United States,,,8081,871 Atlantic Lane
+1702,Saint Charles,United States,,,60174,7739 E. Edgewater Street
+1703,Algonquin,United States,,,60102,33 Brown Drive
+1704,York,United States,,,17402,9047 Studebaker Ave.
+1705,Atlantic City,United States,,,8401,77 East Franklin Street
+1706,West Des Moines,United States,,,50265,8784 Carriage Ave.
+1707,Bonita Springs,United States,,,34135,338 Summit Dr.
+1708,Fort Myers,United States,,,33905,7720C Longbranch Dr.
+1709,Cumming,United States,,,30040,87 Orange Street
+1710,Bayside,United States,,,11361,336 Surrey St.
+1711,Myrtle Beach,United States,,,29577,53 Charles Ave.
+1712,Westmont,United States,,,60559,129 East Greenview Drive
+1713,Southfield,United States,,,48076,545 Depot Ave.
+1714,Banning,United States,,,92220,449 Shore Drive
+1715,Brentwood,United States,,,11717,8 Glendale Drive
+1716,Malden,United States,,,2148,70 Essex Lane
+1717,Westlake,United States,,,44145,56 Winchester Lane
+1718,Leland,United States,,,28451,17 Berkshire Street
+1719,Mcminnville,United States,,,37110,59 Redwood St.
+1720,Sidney,United States,,,45365,9922 Pennington Ave.
+1721,Asheboro,United States,,,27205,7056 Griffin Lane
+1722,Starkville,United States,,,39759,7662 San Carlos Ave.
+1723,Columbus,United States,,,31904,53 W. Mammoth Street
+1724,Xenia,United States,,,45385,272 Carpenter Drive
+1725,Apple Valley,United States,,,92307,931 S. Penn St.
+1726,Holyoke,United States,,,1040,624 Young Lane
+1727,Garland,United States,,,75043,925 Redwood Street
+1728,Bloomington,United States,,,47401,382 West Big Rock Cove St.
+1729,Unit 208 ,United States,,,,262 E. Bellevue St.
+1730,Mesa,United States,,,85203,590 North Birchpond Drive
+1731,Owings Mills,United States,,,21117,9449 Lexington St.
+1732,Wisconsin Rapids,United States,,,54494,9667 Pumpkin Hill Road
+1733,Maumee,United States,,,43537,203 Holly Court
+1734,Roanoke Rapids,United States,,,27870,823 Brook St.
+1735,Jeffersonville,United States,,,47130,9 Arrowhead Court
+1736,Huntsville,United States,,,35803,8611C Carson Street
+1737,Hartford,United States,,,6106,8004 Snake Hill St.
+1738,Lorton,United States,,,22079,92 Harrison Street
+1739,Niles,United States,,,49120,86 Branch Dr.
+1740,East Orange,United States,,,7017,317 Sunbeam St.
+1741,Paducah,United States,,,42001,196 Coffee St.
+1742,Canfield,United States,,,44406,761 S. 8th Street
+1743,East Lansing,United States,,,48823,9279 8th St.
+1744,Little Rock,United States,,,72209,7636 Fifth Street
+1745,Johnston,United States,,,2919,100 Shirley St.
+1746,Windsor Mill,United States,,,21244,92 Edgewater Street
+1747,Tewksbury,United States,,,1876,8861 Hartford Avenue
+1748,Vienna,United States,,,22180,8 South Park Rd.
+1749,Sunnyside,United States,,,11104,7205 Smith Store Drive
+1750,Ozone Park,United States,,,11417,224 Bedford Road
+1751,Pickerington,United States,,,43147,2 Cleveland Street
+1752,Winston Salem,United States,,,27103,48 Jones Lane
+1753,Independence,United States,,,41051,50 Evergreen Street
+1754,Chelsea,United States,,,2150,86 Saxon Road
+1755,Fairfield,United States,,,6824,17 Bow Ridge St.
+1756,Spring Hill,United States,,,34608,998 Gainsway Drive
+1757,Flowery Branch,United States,,,30542,8760 Parker Court
+1758,El Dorado,United States,,,71730,45 Manhattan Street
+1759,Harrison Township,United States,,,48045,7788 Bay Meadows St.
+1760,Champlin,United States,,,55316,4 South Lafayette St.
+1761,Pasadena,United States,,,21122,8813 S. George Street
+1762,West New York,United States,,,7093,76 Bellevue St.
+1763,New Bern,United States,,,28560,8718 Lake View Rd.
+1764,Auburn,United States,,,13021,9907 Columbia Dr.
+1765,North Canton,United States,,,44720,218 South Swanson Ave.
+1766,Durham,United States,,,27703,80 South 10th Court
+1767,Rossville,United States,,,30741,9039 Galvin Street
+1768,Waltham,United States,,,2453,981 Roehampton Rd.
+1769,Sicklerville,United States,,,8081,4 Lower River Dr.
+1770,Dorchester Center,United States,,,2124,93 N. Meadow St.
+1771,Desoto,United States,,,75115,5 Greenrose Court
+1772,Scotch Plains,United States,,,7076,38 Ashley St.
+1773,Vicksburg,United States,,,39180,361 Bow Ridge Street
+1774,Norwalk,United States,,,6851,63 Market St.
+1775,Glenview,United States,,,60025,7312 West Rd.
+1776,Edison,United States,,,8817,459 Sherman Lane
+1777,Charlottesville,United States,,,22901,936 Buckingham St.
+1778,Media,United States,,,19063,8417 North Thompson Lane
+1779,Nashua,United States,,,3060,8026 W. Tunnel Drive
+1780,Plymouth,United States,,,2360,7412 School Dr.
+1781,Lockport,United States,,,14094,654 South Aspen St.
+1782,Lake Villa,United States,,,60046,69 Lake View Ave.
+1783,Mason City,United States,,,50401,7547 Whitemarsh St.
+1784,Roslindale,United States,,,2131,4 Lake View Road
+1785,Highland Park,United States,,,60035,862 Ridgewood St.
+1786,Franklin Square,United States,,,11010,57 Joy Ridge Drive
+1787,Helotes,United States,,,78023,81 Fairway Rd.
+1788,Bay City,United States,,,48706,9112 North Rockcrest Lane
+1789,Wheaton,United States,,,60187,7985 Lexington Circle
+1790,Saint Charles,United States,,,60174,8094 S. Mayfield St.
+1791,Janesville,United States,,,53546,9871 Corona Lane
+1792,Winston Salem,United States,,,27103,494 Jefferson Street
+1793,Shepherdsville,United States,,,40165,986 Summit Drive
+1794,Panama City,United States,,,32404,13 Marsh St.
+1795,Bowie,United States,,,20715,68 Trout St.
+1796,Revere,United States,,,2151,84 Hall Court
+1797,Far Rockaway,United States,,,11691,42 Philmont Dr.
+1798,Brownsburg,United States,,,46112,828 Garfield Ave.
+1799,Wooster,United States,,,44691,7331 E. Laurel Dr.
+1800,Cary,United States,,,27511,7402 Southampton St.
+1801,Newington,United States,,,6111,7517 Evergreen Lane
+1802,Saint Cloud,United States,,,56301,6 Ohio St.
+1803,Brookfield,United States,,,53045,8424 Orange Dr.
+1804,Richmond Hill,United States,,,11418,1 San Carlos St.
+1805,Easton,United States,,,18042,63 Pawnee St.
+1806,Lacey,United States,,,98503,69 Warren Ave.
+1807,Mount Prospect,United States,,,60056,84 Riverside Ave.
+1808,Blackwood,United States,,,8012,422 Franklin Circle
+1809,Montclair,United States,,,7042,7414 Southampton Drive
+1810,Lacey,United States,,,98503,707 Oak Drive
+1811,Muscatine,United States,,,52761,650 S. Ramblewood St.
+1812,Glasgow,United States,,,42141,7 S. Vernon St.
+1813,Apt 888 ,United States,,,,50 Augusta Dr.
+1814,Daphne,United States,,,36526,858 Del Monte Ave.
+1815,Wantagh,United States,,,11793,67 Amerige St.
+1816,Vincentown,United States,,,8088,9907 Oak Meadow Drive
+1817,Deltona,United States,,,32725,9326 Squaw Creek Dr.
+1818,East Hartford,United States,,,6118,81 St Margarets Street
+1819,Shelbyville,United States,,,37160,7712 Santa Clara St.
+1820,Wausau,United States,,,54401,774 North Washington Street
+1821,Sioux Falls,United States,,,57103,431 Marshall St.
+1822,Absecon,United States,,,8205,8973 Edgemont St.
+1823,Vista,United States,,,92083,731 Lafayette Court
+1824,Methuen,United States,,,1844,53 George Drive
+1825,Sioux Falls,United States,,,57103,34 S. Indian Spring Avenue
+1826,Colonial Heights,United States,,,23834,610 Cactus St.
+1827,Suwanee,United States,,,30024,428 West Big Rock Cove St.
+1828,Chatsworth,United States,,,30705,7133 S. Cleveland Street
+1829,Niceville,United States,,,32578,86 Primrose Ave.
+1830,Murrells Inlet,United States,,,29576,332 College Avenue
+1831,Lutherville Timonium,United States,,,21093,541 James Dr.
+1832,Taunton,United States,,,2780,40 Oxford Street
+1833,Lithonia,United States,,,30038,99 Poor House St.
+1834,Coachella,United States,,,92236,3 West Edgewood St.
+1835,Schenectady,United States,,,12302,86 Surrey Ave.
+1836,Indian Trail,United States,,,28079,7882 Delaware St.
+1837,Stroudsburg,United States,,,18360,5 Kirkland Lane
+1838,Fairborn,United States,,,45324,99 Cambridge St.
+1839,Richmond Hill,United States,,,11418,450 Cedar Swamp Dr.
+1840,Granger,United States,,,46530,9078 Vine Street
+1841,Cape Coral,United States,,,33904,8054 Purple Finch Dr.
+1842,Roseville,United States,,,48066,36 Highland Court
+1843,Leominster,United States,,,1453,429 Ridge Ave.
+1844,Bemidji,United States,,,56601,9210 Valley View St.
+1845,Rapid City,United States,,,57701,186 Homestead Street
+1846,Hoffman Estates,United States,,,60169,8779 Valley View Street
+1847,Champlin,United States,,,55316,21 Halifax Dr.
+1848,Irwin,United States,,,15642,19 Creekside Dr.
+1849,Port Washington,United States,,,11050,46 Brickell Ave.
+1850,Clayton,United States,,,27520,493 Honey Creek St.
+1851,Silver Spring,United States,,,20901,8378 Armstrong Ave.
+1852,Lawrence Township,United States,,,8648,9587 South Sussex Ave.
+1853,Glendora,United States,,,91740,19 South Longfellow Drive
+1854,Branford,United States,,,6405,50 Oakland Street
+1855,Starkville,United States,,,39759,223 Wagon Drive
+1856,Sanford,United States,,,27330,93 Durham St.
+1857,West Chicago,United States,,,60185,62 N. Sierra St.
+1858,Cockeysville,United States,,,21030,9548 North Longfellow St.
+1859,Mebane,United States,,,27302,899 Lake View Street
+1860,Natick,United States,,,1760,847 Mill Pond St.
+1861,Mchenry,United States,,,60050,53 Chapel Street
+1862,Bowie,United States,,,20715,62 SW. Rocky River St.
+1863,Loganville,United States,,,30052,2 S. Lancaster Ave.
+1864,Westerville,United States,,,43081,69 Fulton St.
+1865,Coatesville,United States,,,19320,714 Sierra Lane
+1866,Albany,United States,,,12203,55 East Big Rock Cove Dr.
+1867,North Haven,United States,,,6473,41 Livingston St.
+1868,Gulfport,United States,,,39503,336 Talbot St.
+1869,Bayside,United States,,,11361,14 Valley View Ave.
+1870,Clifton,United States,,,7011,34 Cardinal St.
+1871,New Brunswick,United States,,,8901,55 Brook Court
+1872,North Canton,United States,,,44720,310 Belmont St.
+1873,Deer Park,United States,,,11729,561 N. Ramblewood Ave.
+1874,Grand Rapids,United States,,,49503,729 Whitemarsh Court
+1875,Southgate,United States,,,48195,86 Branch Avenue
+1876,Westford,United States,,,1886,546 Lower River St.
+1877,Mason,United States,,,45040,71 Trenton St.
+1878,Rolling Meadows,United States,,,60008,8201 Paris Hill St.
+1879,Powder Springs,United States,,,30127,9758 Bohemia Ave.
+1880,Conway,United States,,,29526,8976 State Court
+1881,Oxon Hill,United States,,,20745,8466 Prince St.
+1882,Bridgewater,United States,,,8807,7886 Fairground Drive
+1883,Front Royal,United States,,,22630,80 Colonial Road
+1884,Paramus,United States,,,7652,8498 Woodsman Ave.
+1885,Ottawa,United States,,,61350,47 Central Lane
+1886,Lancaster,United States,,,14086,848 Second St.
+1887,Lilburn,United States,,,30047,9250 Philmont Lane
+1888,Ocoee,United States,,,34761,9835 Country Club St.
+1889,Ashtabula,United States,,,44004,8512 Rockville Street
+1890,Germantown,United States,,,20874,28 SE. Galvin Court
+1891,Coventry,United States,,,2816,7008 Buttonwood Drive
+1892,Stamford,United States,,,6902,68 Walnutwood Rd.
+1893,Dekalb,United States,,,60115,9176 SW. Harrison Ave.
+1894,Providence,United States,,,2904,7982 Virginia Street
+1895,Orchard Park,United States,,,14127,8779 Thatcher Dr.
+1896,North Royalton,United States,,,44133,27 53rd Ave.
+1897,Bayside,United States,,,11361,524 Brickell Street
+1898,Howard Beach,United States,,,11414,9809 SW. Miles Drive
+1899,Romeoville,United States,,,60446,9136 Philmont Rd.
+1900,Latrobe,United States,,,15650,861 W. St Paul Court
+1901,Asheville,United States,,,28803,270 S. Briarwood Dr.
+1902,Ogden,United States,,,84404,9877 Lakeview Drive
+1903,Garfield,United States,,,7026,8487 Brook Street
+1904,Suite J ,United States,,,,9351 Country St.
+1905,Deltona,United States,,,32725,9845 Charles Street
+1906,Chillicothe,United States,,,45601,56 N. Ridgewood Drive
+1907,Capitol Heights,United States,,,20743,536 Tanglewood Drive
+1908,Port Richey,United States,,,34668,22 Mayfield Drive
+1909,Amsterdam,United States,,,12010,90 Amerige Dr.
+1910,Noblesville,United States,,,46060,275 Rose Ave.
+1911,Freeport,United States,,,11520,9138 S. Cardinal Dr.
+1912,Indiana,United States,,,15701,80 Country Club St.
+1913,Boca Raton,United States,,,33428,47 York St.
+1914,Central Islip,United States,,,11722,98 Kingston Ave.
+1915,Fairburn,United States,,,30213,554 Elm Drive
+1916,Parkersburg,United States,,,26101,7123 Vale Dr.
+1917,Colonial Heights,United States,,,23834,27 W. Halifax Ave.
+1918,Navarre,United States,,,32566,8 Arch St.
+1919,Marcus Hook,United States,,,19061,159 Beechwood Drive
+1920,Princeton,United States,,,8540,947 Delaware Dr.
+1921,Stockbridge,United States,,,30281,8765 Elm St.
+1922,Huntington,United States,,,11743,11 N. Vermont Drive
+1923,Henderson,United States,,,42420,8622 Henry Ave.
+1924,Spring Hill,United States,,,34608,32 Greenview St.
+1925,Round Lake,United States,,,60073,82 Oak Meadow St.
+1926,Grand Blanc,United States,,,48439,8839 Arnold Lane
+1927,Jamaica Plain,United States,,,2130,88 Queen Avenue
+1928,Saginaw,United States,,,48601,821 North Taylor Road
+1929,Amarillo,United States,,,79106,7513 High Point Ave.
+1930,Eau Claire,United States,,,54701,371 Sierra Ave.
+1931,Paterson,United States,,,7501,9908 Acacia Court
+1932,Front Royal,United States,,,22630,7418 Greenrose St.
+1933,Clayton,United States,,,27520,9258 E. Morris Street
+1934,Saint Petersburg,United States,,,33702,417 Glen Creek Avenue
+1935,Brockton,United States,,,2301,8780 Tallwood Street
+1936,State College,United States,,,16801,7 Coffee Street
+1937,Coram,United States,,,11727,7425 Military St.
+1938,Mount Pleasant,United States,,,29464,981 East Cleveland Ave.
+1939,Englewood,United States,,,7631,71 Riverside St.
+1940,Deer Park,United States,,,11729,443 Lilac St.
+1941,Elmhurst,United States,,,11373,8186 Glen Ridge Drive
+1942,Jacksonville Beach,United States,,,32250,756 Hilltop Drive
+1943,Deerfield Beach,United States,,,33442,47 Edgefield Ave.
+1944,Chambersburg,United States,,,17201,99 Gainsway Court
+1945,Syosset,United States,,,11791,410 Evergreen Dr.
+1946,Spring Valley,United States,,,10977,7566 West Front St.
+1947,Lincoln Park,United States,,,48146,262 S. Grant Lane
+1948,Clifton Park,United States,,,12065,25 El Dorado Ave.
+1949,New Haven,United States,,,6511,5 Randall Mill Street
+1950,Mchenry,United States,,,60050,35 Shub Farm Street
+1951,Piscataway,United States,,,8854,10 Princess St.
+1952,West Bloomfield,United States,,,48322,34 Bay Meadows Court
+1953,Media,United States,,,19063,968 Columbia Drive
+1954,Madisonville,United States,,,42431,8396 Wayne Drive
+1955,Muskego,United States,,,53150,95 East Pine Lane
+1956,San Antonio,United States,,,78213,9786 8th Dr.
+1957,Miamisburg,United States,,,45342,7430 Oakland Rd.
+1958,Gloucester,United States,,,1930,613 Lantern Court
+1959,Plainview,United States,,,11803,236 W. Prairie Drive
+1960,Fairborn,United States,,,45324,554 Grand Drive
+1961,Bristol,United States,,,6010,54 Manor Station Ave.
+1962,Glendora,United States,,,91740,40 Fawn Road
+1963,Spring Hill,United States,,,34608,233 Bohemia Street
+1964,Carpentersville,United States,,,60110,976 New Ave.
+1965,Franklin Square,United States,,,11010,633 James St.
+1966,Cambridge,United States,,,2138,9322 East Grandrose Rd.
+1967,Passaic,United States,,,7055,402 High Noon Dr.
+1968,Columbus,United States,,,31904,8415 West Johnson Ave.
+1969,North Haven,United States,,,6473,37 Hamilton Dr.
+1970,Grand Island,United States,,,68801,72 NE. Harvey St.
+1971,Hixson,United States,,,37343,8890 Charles St.
+1972,Tuckerton,United States,,,8087,9480 Ketch Harbour Drive
+1973,Greer,United States,,,29650,9258 Smith Store St.
+1974,Indiana,United States,,,15701,293 Franklin Street
+1975,Webster,United States,,,14580,405 Stonybrook St.
+1976,Winder,United States,,,30680,477 Bridle St.
+1977,Wellington,United States,,,33414,29 South Southampton St.
+1978,Deltona,United States,,,32725,50 Cedar Swamp Avenue
+1979,Tuscaloosa,United States,,,35405,498 Garden Street
+1980,Delray Beach,United States,,,33445,8533 Glen Creek Rd.
+1981,Norwalk,United States,,,6851,251 Southampton St.
+1982,Ypsilanti,United States,,,48197,300 Woodsman Lane
+1983,Mebane,United States,,,27302,8642 South Marvon Road
+1984,La Crosse,United States,,,54601,8698 Grove Avenue
+1985,Crown Point,United States,,,46307,262 Laurel Drive
+1986,Haines City,United States,,,33844,7571 Elizabeth Drive
+1987,Shrewsbury,United States,,,1545,9338 Pendergast St.
+1988,Fresh Meadows,United States,,,11365,310 S. Swanson Lane
+1989,Fort Mill,United States,,,29708,16 Baker St.
+1990,Schererville,United States,,,46375,7509 Pineknoll Rd.
+1991,Beverly,United States,,,1915,739 Pine St.
+1992,Fredericksburg,United States,,,22405,3 Country Drive
+1993,Port Charlotte,United States,,,33952,937 Manhattan St.
+1994,Owensboro,United States,,,42301,6 East Rockaway Drive
+1995,Eden Prairie,United States,,,55347,887 El Dorado Ave.
+1996,Rock Hill,United States,,,29730,7327 Country Club Drive
+1997,Niagara Falls,United States,,,14304,371 Big Rock Cove Lane
+1998,Cornelius,United States,,,28031,88 Middle River St.
+1999,New York,United States,,,10002,9224 S. Poor House Ave.
+2000,Holyoke,United States,,,1040,596 Atlantic St.
