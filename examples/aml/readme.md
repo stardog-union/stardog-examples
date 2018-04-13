@@ -44,7 +44,7 @@ The goal of the queries in this example is to identify fraudulent financial acti
 strategies to obscure their activity, often incorporating multiple financial institutions from several countries. This
 example looks to find activity that matches a general pattern in which money flows from an "originator" through several
 affiliated entities (other People or Companies), where this institution knows of the affiliation but not necessarily has
-evidence of actual money being transferred. It follows money transferred from one of these affiliated entities' 
+evidence of actual money being transferred. It follows money transferred from one of these affiliated entities'
 accounts into a second account. It then looks for several more associations from that second account to an ultimate
 "beneficiary."
 
