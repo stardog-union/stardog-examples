@@ -6,7 +6,8 @@ DB=fraud_demo
 
 stardog-admin db drop $DB
 
-stardog-admin db create -o spatial.enabled=true -n $DB namespaces.ttl
+stardog-admin db create -o spatial.enabled=true -o search.enabled=true -n $DB
+stardog namespace add $DB --prefix "" --uri tag:stardog:demo:aml:
 
 stardog-admin virtual import $DB address-mapping.ttl aml_dataset_addresses.csv
 stardog-admin virtual import $DB bank-account-mapping.ttl aml_dataset_bank_accounts.csv

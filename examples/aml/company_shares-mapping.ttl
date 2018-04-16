@@ -1,5 +1,6 @@
 @prefix : <tag:stardog:demo:aml:> .
 
-:Company-{company1} :holds [
+:Company-{company1} :holds :Holding-C{company1}-{company2} .
+:Holding-C{company1}-{company2} a :Holding ;
   :company :Company-{company2} ;
-  :share "{share}"^^xsd:integer ] .
+  :share "{share}"^^xsd:integer .
