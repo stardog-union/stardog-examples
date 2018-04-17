@@ -1,8 +1,8 @@
 # Node types
-select ?t (count(?a) as ?g) {
-    ?a a ?t
+select ?nodeType (count(*) as ?count) {
+    ?node a ?nodeType
 }
-group by ?t
+group by ?nodeType
 
 :Address	2000
 :BankAccount	1999
@@ -12,11 +12,11 @@ group by ?t
 
 
 # Relationship types
-select ?relationship (count(*) as ?count)
-{
+select ?relationship (count(*) as ?count) {
   ?node ?relationship ?node2
 }
 group by ?relationship
+order by ?count
 
 :street	2000
 wgs:lat	997
@@ -75,6 +75,25 @@ select * {
      :company ?c .
   filter (?c in (:Company-355,:Company-52,:Company-707))
 }
+
+# Count number of distict entity pairs that have transactions
+select (count(*) as ?count) {
+    select distinct ?bankAccount1 ?bankAccount2 {
+        ?bankAccount1 :originated ?tx .
+        ?tx :beneficiary ?bankAccount2 .
+    }
+}
+
+# Group and count transactions by the types of the parties involved
+select ?nodeType1 ?nodeType2 (count(*) as ?count) {
+    ?entity1 a ?nodeType1 ;
+        :hasBankAccount ?bankAccount1.
+    ?bankAccount1 :originated ?tx .
+    ?tx :beneficiary ?bankAccount2 .
+    ?entity2 a ?nodeType2 ;
+        :hasBankAccount ?bankAccount2.
+}
+group by ?nodeType1 ?nodeType2
 
 # Find money transfers through a (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
 select ?org ?ben (sum(?m) as ?s) {
