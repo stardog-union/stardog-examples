@@ -63,7 +63,7 @@ public class StardogSpringClient {
             // Queries the database with reasoning off. With reasoning off, there would be
             // no connection between Spider-Man and his mother, Mary Parker, since the triple
             // is only associated with his mother
-            boolean aExistsNoReasoning = snarlTemplate.getDataSource().getConnection().get()
+            boolean aExistsNoReasoning = snarlTemplate
                     .reasoning(false)
                     .subject(Values.iri("http://api.stardog.com/spiderMan"))
                     .predicate(Values.iri("http://api.stardog.com/childOf"))
@@ -77,7 +77,7 @@ public class StardogSpringClient {
             // Spider-Man and his mother, Mary Parker. This locial connection exists since
             // there is a triple associated with Mary Parker and the ontology says that
             // :childOf is the inverse of :parentOf.
-            boolean aExistsReasoning = snarlTemplate.getDataSource().getConnection().get()
+            boolean aExistsReasoning = snarlTemplate
                     .reasoning(true)
                     .subject(Values.iri("http://api.stardog.com/spiderMan"))
                     .predicate(Values.iri("http://api.stardog.com/childOf"))
@@ -92,8 +92,6 @@ public class StardogSpringClient {
             // an explanation back as to how they were connected and why the results were returned.
             System.out.println("\n** Show Inference **");
             StardogExplainer aExplanation = snarlTemplate
-                    .getDataSource()
-                    .getConnection()
                     .as(ReasoningConnection.class)
                     .explain(ExpressionFactory.fromStatements(
                             Values.statement(
