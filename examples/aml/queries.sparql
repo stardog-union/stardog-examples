@@ -95,6 +95,20 @@ select ?nodeType1 ?nodeType2 (count(*) as ?count) {
 }
 group by ?nodeType1 ?nodeType2
 
+# Group, count and sum transactions between pairs of people
+select ?person1 ?person2 (sum(?amount) as ?total) (count(*) as ?count) {
+    ?person1 a :Person ;
+        :hasBankAccount ?bankAccount1.
+    ?bankAccount1 :originated ?tx .
+    ?tx :beneficiary ?bankAccount2 ;
+        :amount ?amount .
+    ?person2 a :Person ;
+        :hasBankAccount ?bankAccount2.
+}
+group by ?person1 ?person2
+order by desc(?total)
+limit 100
+
 # Find money transfers through a (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
 select ?org ?ben (sum(?m) as ?s) {
   ?org a :Person ;
@@ -146,7 +160,7 @@ group by ?org ?ben
 order by desc(?s)
 limit 100
 
-# Score fraud indicator as $ x (paths count)^2
+# Fraud score as Money * (Paths Count)^2
 select * {
     {
         # Count distint paths
@@ -187,6 +201,18 @@ select * {
     bind(?s * ?c * ?c as ?z)
 }
 order by desc(?z) ?org ?ben
+
+# List transactions through affiliates of a specifc pair of actors
+select * {
+    :Person-99 :hasAffiliation* ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?a1 :originated ?tx .
+    ?tx :beneficiary ?a2 ;
+        :amount ?m .
+    ?t2 :hasBankAccount ?a2 ;
+        :hasAffiliation* :Person-842 .
+}
+
 
 # Find money transfers through an affiliated relationship using virtual transaction data
 select ?org ?ben (sum(?m) as ?s) {
