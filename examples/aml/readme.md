@@ -71,8 +71,10 @@ defined in the `aml_rules.ttl` file:
 ```turtle
 :Rule-AffiliationHolds stardog:rule:content """
 IF {
-    ?x :holds ?a .
-    ?a :company ?c .
+    ?x :holds ?holding .
+    ?holding :company ?c .
+    ?holding :share ?share .
+    filter (?share >= 50)
 }
 THEN {
     ?x :hasAffiliation ?c .
