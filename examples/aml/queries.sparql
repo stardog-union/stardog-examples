@@ -8,6 +8,7 @@ group by ?nodeType
 :BankAccount	1999
 :Company	1000
 :Person	1000
+:Holding	163
 :Transaction	23259
 
 
@@ -18,30 +19,29 @@ select ?relationship (count(*) as ?count) {
 group by ?relationship
 order by ?count
 
-:street	2000
+:share	163
+:company	163
+:holds	163
 wgs:lat	997
-rdf:type	29258
 wgs:long	997
-:city	2000
-:country	3000
-:zipCode	1144
-:balance	1999
-:number	1999
-:description	1000
 :name	1000
 :lastName	1000
-:firstName	1000
+:description	1000
 :email	1000
-:hasAddress	2000
+:firstName	1000
+:zipCode	1144
 :hasBankAccount	1213
-:holds	163
-:company	163
-:share	163
-:originated	22370
-:beneficiary	22370
-:amount	22370
-:date	22370
-
+:number	1999
+:balance	1999
+:city	2000
+:street	2000
+:hasAddress	2000
+:country	3000
+:amount	23259
+:beneficiary	23259
+:date	23259
+:originated	23259
+rdf:type	29421
 
 # Find people without accounts
 select ?p {
