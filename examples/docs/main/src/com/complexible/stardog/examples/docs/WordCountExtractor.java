@@ -15,18 +15,18 @@
 
 package com.complexible.stardog.examples.docs;
 
+import java.io.BufferedReader;
+import java.io.Reader;
+
 import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.rdf.StatementSource;
 import com.complexible.common.rdf.impl.MemoryStatementSource;
 import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.db.DatabaseConnection;
+import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.docs.extraction.tika.TextProvidingRDFExtractor;
 import org.openrdf.model.IRI;
 import org.openrdf.model.Model;
 import org.openrdf.model.Statement;
-
-import java.io.BufferedReader;
-import java.io.Reader;
 
 /**
  * A Stardog RDF extractor that will process the document to compute
@@ -39,20 +39,23 @@ import java.io.Reader;
  * file (pdf, docx, etc).
  */
 public class WordCountExtractor extends TextProvidingRDFExtractor {
-    /**
-     * Compute the word count, create an RDF triple linking the word count to the document, return it as a {@link Model}.
-     */
-    protected StatementSource extractFromText(DatabaseConnection theConnection, IRI theDocIri, Reader theText) throws Exception {
-        int words = 0;
-        String line;
-        BufferedReader aBufferedReader = new BufferedReader(theText);
 
-        while ((line = aBufferedReader.readLine()) != null) {
-            words += line.split(" ").length;
-        }
+	/**
+	 * Compute the word count, create an RDF triple linking the word count to the document, return it as a {@link Model}.
+	 */
+	@Override
+	protected StatementSource extractFromText(final Connection theConnection, final IRI theDocIri, final Reader theText) throws Exception {
+		int words = 0;
+		String line;
+		BufferedReader aBufferedReader = new BufferedReader(theText);
 
-        Statement aWordCountStatement = Values.statement(theDocIri, Values.iri("tag:stardog:example:wordcount"), Values.literal(words));
+		while ((line = aBufferedReader.readLine()) != null) {
+			words += line.split(" ").length;
+		}
 
-        return MemoryStatementSource.of(Models2.newModel(aWordCountStatement));
-    }
+		Statement aWordCountStatement = Values.statement(theDocIri, Values.iri("tag:stardog:example:wordcount"), Values.literal(words));
+
+		return MemoryStatementSource.of(Models2.newModel(aWordCountStatement));
+	}
+
 }
