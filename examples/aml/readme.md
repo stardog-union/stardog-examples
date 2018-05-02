@@ -69,7 +69,6 @@ To simplify the construction of these queries, we employ reasoning to define a `
 defined in the `aml_rules.ttl` file:
 
 ```turtle
-:Rule-AffiliationHolds stardog:rule:content """
 IF {
     ?x :holds ?holding .
     ?holding :company ?c .
@@ -80,9 +79,7 @@ THEN {
     ?x :hasAffiliation ?c .
     ?c :hasAffiliation ?x .
 }
-""" .
 
-:Rule-AffiliationAddress stardog:rule:content """
 IF {
     ?x :hasAddress ?a .
     ?y :hasAddress ?a .
@@ -91,7 +88,6 @@ IF {
 THEN {
     ?x :hasAffiliation ?y .
 }
-""" .
 ```
 
 When running the queries in the example, make sure that reasoning is enabled any time the query references the
