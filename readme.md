@@ -73,3 +73,4 @@ the `ServiceLoader` to make them up.
 1. [Transaction Listener](./examples/listener/readme.md)
 1. [Cloud Foundry Example Application](https://github.com/stardog-union/cf-example)
 1. [Machine Learning](./examples/machinelearning)
+1. [AML Example](./examples/aml-example)

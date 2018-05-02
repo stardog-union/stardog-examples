@@ -1,0 +1,371 @@
+# Node types
+select ?nodeType (count(*) as ?count) {
+    ?node a ?nodeType
+}
+group by ?nodeType
+
+:Address	2000
+:BankAccount	1999
+:Company	1000
+:Person	1000
+:Holding	163
+:Transaction	23259
+
+
+# Relationship types
+select ?relationship (count(*) as ?count) {
+  ?node ?relationship ?node2
+}
+group by ?relationship
+order by ?count
+
+:share	163
+:company	163
+:holds	163
+wgs:lat	997
+wgs:long	997
+:name	1000
+:lastName	1000
+:description	1000
+:email	1000
+:firstName	1000
+:zipCode	1144
+:hasBankAccount	1213
+:number	1999
+:balance	1999
+:city	2000
+:street	2000
+:hasAddress	2000
+:country	3000
+:amount	23259
+:beneficiary	23259
+:date	23259
+:originated	23259
+rdf:type	29421
+
+# Find people without accounts
+select ?p {
+    ?p a :Person .
+    filter not exists {?p :hasBankAccount ?o}
+}
+
+# Same thing with virtual
+select * {
+  service <virtual://aml> {
+    :BankAccount-4391-4466-9775-8814 :originated ?t .
+    ?t :beneficiary :BankAccount-8201-8285-4081-3604 ;
+       :amount ?a ;
+       :date ?d
+  }
+}
+
+# Find company holdings (no company should have > 100% shares outstanding)
+select ?c (sum(?s) as ?total) {
+ ?t :holds ?h .
+ ?h :share ?s ;
+    :company ?c .
+}
+group by ?c
+order by desc (sum(?s))
+
+# Find holdings for a specific set of companies
+select * {
+  ?t :holds ?h .
+  ?h :share ?s ;
+     :company ?c .
+  filter (?c in (:Company-355,:Company-52,:Company-707))
+}
+
+# Count number of distict entity pairs that have transactions
+select (count(*) as ?count) {
+    select distinct ?bankAccount1 ?bankAccount2 {
+        ?bankAccount1 :originated ?tx .
+        ?tx :beneficiary ?bankAccount2 .
+    }
+}
+
+# Group and count transactions by the types of the parties involved
+select ?nodeType1 ?nodeType2 (count(*) as ?count) {
+    ?entity1 a ?nodeType1 ;
+        :hasBankAccount ?bankAccount1.
+    ?bankAccount1 :originated ?tx .
+    ?tx :beneficiary ?bankAccount2 .
+    ?entity2 a ?nodeType2 ;
+        :hasBankAccount ?bankAccount2.
+}
+group by ?nodeType1 ?nodeType2
+
+# Group, count and sum transactions between pairs of people
+select ?person1 ?person2 (sum(?amount) as ?total) (count(*) as ?count) {
+    ?person1 a :Person ;
+        :hasBankAccount ?bankAccount1.
+    ?bankAccount1 :originated ?tx .
+    ?tx :beneficiary ?bankAccount2 ;
+        :amount ?amount .
+    ?person2 a :Person ;
+        :hasBankAccount ?bankAccount2.
+}
+group by ?person1 ?person2
+order by desc(?total)
+limit 100
+
+# Find money transfers through a (single-hop) affiliated relationship (on each side of transfer), grouped by party pairs
+select ?org ?ben (sum(?m) as ?s) {
+  ?org a :Person ;
+      :hasAffiliation ?t1 .
+  ?t1 :hasBankAccount ?a1 .
+  ?a1 :originated ?tx .
+  ?tx :beneficiary ?a2 ;
+      :amount ?m .
+  ?t2 :hasBankAccount ?a2 .
+  ?ben a :Person ;
+      :hasAffiliation ?t2 .
+}
+group by ?org ?ben
+order by desc(?s)
+limit 50
+
+# List all direct transfers between two specific people.
+select * {
+  :Person-992 :hasAffiliation ?b .
+  ?b :hasBankAccount ?c .
+  ?c :originated ?d .
+  ?d :beneficiary ?e ;
+    :amount ?m .
+  ?f :hasBankAccount ?e .
+  :Person-321 :hasAffiliation ?f .
+}
+
+# Find paths between two people (turn reasoning off)
+PATHS ALL
+START ?s = :Person-451 END ?e = :Person-506
+VIA { {?s ?p ?e} UNION {?e ?p ?s} FILTER (?p not in (rdf:type) && !isLiteral(?e)) }
+MAX LENGTH 8
+
+# Find all transfers through affiliated relationships (includes cases where ?org = ?ben, excludes direct to direct, includes direct to indirect and inverse)
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation* ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?a1 :originated ?tx .
+    ?tx :beneficiary ?a2 ;
+        :amount ?m .
+    ?t2 :hasBankAccount ?a2 ;
+        :hasAffiliation* ?ben .
+    ?ben a :Person .
+    # Nothing suspicious about direct transfers
+    filter (?org != ?t1 || ?ben != ?t2)
+}
+group by ?org ?ben
+order by desc(?s)
+limit 100
+
+# Fraud score as Money * (Paths Count)^2
+select * {
+    {
+        # Count distinct paths
+        select ?org ?name1 ?ben ?name2 ?s (count(*) as ?c) {
+            {
+                # Group by intermediaries
+                select ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s {
+                    ?org :lastName ?lname1 ;
+                        :firstName ?fname1 ;
+                        :hasAffiliation* ?t1 .
+                    ?t1 :hasBankAccount ?a1 .
+                    ?a1 :originated ?tx .
+                    ?tx :beneficiary ?a2 .
+                    ?t2 :hasBankAccount ?a2 ;
+                        :hasAffiliation* ?ben .
+                    ?ben :lastName ?lname2 ;
+                        :firstName ?fname2 .
+                    {
+                        # Find highest sum of Tx for all paths
+                        # between ?org and ?ben
+                        select ?org ?ben (sum(?m) as ?s) {
+                            ?org a :Person ;
+                                :hasAffiliation* ?t1 .
+                            ?t1 :hasBankAccount ?a1 .
+                            ?a1 :originated ?tx .
+                            ?tx :beneficiary ?a2 ;
+                                :amount ?m .
+                            ?t2 :hasBankAccount ?a2 ;
+                                :hasAffiliation* ?ben .
+                            ?ben a :Person .
+                        }
+                        group by ?org ?ben
+                        order by desc(?s) ?org ?ben
+                        limit 1000
+                    }
+                    bind(concat(?fname1, ' - ', ?lname1) as ?name1)
+                    bind(concat(?fname2, ' - ', ?lname2) as ?name2)
+                }
+                group by ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s
+            }
+        }
+        group by ?org ?ben ?name1 ?name2 ?s
+        order by desc(?s) ?org ?ben
+    }
+    bind(?s * ?c * ?c as ?z)
+}
+order by desc(?z) ?org ?ben
+
+# List transactions through affiliates of a specific pair of actors
+select * {
+    :Person-99 :hasAffiliation* ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?a1 :originated ?tx .
+    ?tx :beneficiary ?a2 ;
+        :amount ?m .
+    ?t2 :hasBankAccount ?a2 ;
+        :hasAffiliation* :Person-842 .
+}
+
+# Find money transfers through an affiliated relationship using virtual transaction data
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?t2 :hasBankAccount ?a2 .
+    ?ben a :Person ;
+        :hasAffiliation ?t2 .
+
+    graph <virtual://aml>
+    {
+        ?a1 :originated ?tx .
+        ?tx :beneficiary ?a2 ;
+            :amount ?m .
+    }
+}
+group by ?org ?ben
+order by desc(?s)
+limit 50
+
+# Portion of query plan prior query. Necessarily transfers all Tx data to Stardog
+Slice(offset=0, limit=50) [#50]
+`─ Distinct [#536K]
+   `─ Projection(?org, ?ben, ?s) [#536K]
+      `─ OrderBy(DESC(?s), offset=0, limit=50) [#536K]
+         `─ Group(by=[?org, ?ben] aggregates=[(SUM(?m) AS ?s)]) [#536K]
+            `─ Distinct [#2.1M]
+               `─ Projection(?tx, ?m, ?a2, ?a1, ?org, ?t1, ?ben, ?t2) [#2.1M]
+                  `─ HashJoin(?a1) [#2.1M]
+                     +─ ServiceJoin(?a2) [#945]
+                     │  +─ VirtualGraphSql<virtual://aml> [#17084] {
+                     │  │  +─    SELECT `tx_id` AS `F_1`, `account1` AS `F_0`, `account2` AS `F_6`, `amount` AS `F_5`
+                     │  │  +─    FROM `transactions`
+                     │  │  +─    WHERE `amount` IS NOT NULL AND `account2` IS NOT NULL AND `account1` IS NOT NULL
+                     │  │  }
+                     │  `─ Union [#472]
+                     ...
+
+# Materialize (store in Stardog natively) rolled-up Tx data from date range
+insert {
+    ?a1 :originated [
+        :beneficiary ?a2 ;
+        :amount ?msum ;
+        :date ?date
+    ]
+}
+where {
+    select * {
+        graph <virtual://aml>
+        {
+            select ?a1 ?a2 (sum(?m) as ?msum) ('2017-08-31'^^xsd:date as ?date) {
+                ?a1 :originated ?tx .
+                ?tx :beneficiary ?a2 ;
+                    :amount ?m ;
+                    :date ?d .
+                # Could save roll-up Tx for (say) each quarter, or could merge into single Tx per account pair
+                filter (?d < '2017-09-01'^^xsd:date)
+            }
+            group by ?a1 ?a2
+        }
+    }
+}
+
+# Find money transfers through an affiliated relationship using hybrid materialized/virtual transaction data
+select ?org ?ben (sum(?m) as ?s) {
+    ?org a :Person ;
+        :hasAffiliation ?t1 .
+    ?t1 :hasBankAccount ?a1 .
+    ?t2 :hasBankAccount ?a2 .
+    ?ben a :Person ;
+        :hasAffiliation ?t2 .
+    {
+        ?a1 :originated ?tx .
+        ?tx :beneficiary ?a2 ;
+            :amount ?m ;
+            :date ?d
+        filter (?d < '2017-09-01'^^xsd:date)
+    }
+    union
+    {
+        graph <virtual://aml> {
+            ?a1 :originated ?tx .
+            ?tx :beneficiary ?a2 ;
+                :amount ?m ;
+                :date ?d
+            filter (?d >= '2017-09-01'^^xsd:date)
+        }
+    }
+}
+group by ?org ?ben
+order by desc(?s)
+limit 50
+
+# Big Daddy - score fraud indicator as $ x (paths count)^2 - using hybrid materialized/virtual transaction data
+select * {
+    {
+        # Count distinct paths
+        select ?org ?ben ?s (count(*) as ?c) {
+            {
+                # Group by intermediaries
+                select ?org ?ben ?t1 ?t2 ?s {
+                    ?org :hasAffiliation* ?t1 .
+                    ?t1 :hasBankAccount ?a1 .
+                    ?a1 :originated ?tx .
+                    ?tx :beneficiary ?a2 .
+                    ?t2 :hasBankAccount ?a2 ;
+                        :hasAffiliation* ?ben .
+                    {
+                        # Find highest sum of Tx for all paths between org and ben
+                        select ?org ?ben (sum(?m) as ?s) {
+                            ?org a :Person ;
+                                :hasAffiliation* ?t1 .
+                            ?t1 :hasBankAccount ?a1 .
+                            ?t2 :hasBankAccount ?a2 ;
+                                :hasAffiliation* ?ben .
+                            ?ben a :Person .
+                            # Combine older summarized Tx from Stardog and newer itemized Tx from virtual source
+                            {
+                                ?a1 :originated ?tx .
+                                ?tx :beneficiary ?a2 ;
+                                    :amount ?m ;
+                                    :date ?d
+                                filter (?d < '2017-09-01'^^xsd:date)
+                            }
+                            union
+                            {
+                                graph <virtual://aml> {
+                                    ?a1 :originated ?tx .
+                                    ?tx :beneficiary ?a2 ;
+                                        :amount ?m ;
+                                        :date ?d
+                                    filter (?d >= '2017-09-01'^^xsd:date)
+                                }
+                            }
+                        }
+                        group by ?org ?ben
+                        order by desc(?s) ?org ?ben
+                        limit 1000
+                    }
+                }
+                group by ?org ?ben ?t1 ?t2 ?s
+            }
+        }
+        group by ?org ?ben ?s
+        order by desc(?s) ?org ?ben
+    }
+    bind(?s * ?c * ?c as ?z)
+}
+order by desc(?z) ?org ?ben
