@@ -71,16 +71,12 @@ public class WordCountExtractorTest {
 			                        .connect()) {
 			StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
 
-			aConn.begin();
-
 			IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
 
 			String aQuery = "select ?wc { graph ?doc { ?doc <tag:stardog:example:wordcount> ?wc } }";
 			TupleQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
 			String wordCount = aRes.next().getBinding("wc").getValue().stringValue();
 			assertEquals("313", wordCount);
-
-			aConn.rollback();
 		}
 	}
 }
