@@ -49,7 +49,7 @@ public class ConnectionPoolsExample {
 				}
 
 				// Create a disk-based database with default settings
-				aAdminConnection.disk("testConnectionAPI").create();
+				aAdminConnection.disk("testConnectionPool").create();
 				// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
 				// This configuration tells the pool how to create the new connections as they are needed.
 				ConnectionConfiguration aConnConfig = ConnectionConfiguration
