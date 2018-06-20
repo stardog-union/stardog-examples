@@ -16,6 +16,7 @@
 package com.complexible.stardog.examples.connectable.listener;
 
 import java.io.IOException;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -56,6 +57,13 @@ import org.slf4j.LoggerFactory;
 final class ExampleConnectableConnection implements ConnectableConnection {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleConnectableConnection.class);
 
+	/**
+	 * Each connection should declare what kind of changes (additions or removals) it will track so the server can optimize
+	 * the callbacks accordingly. If a certain change type is not included in the {@link #getTrackedIndexChanges()} result
+	 * the connection is not guaranteed to receive the data associated with that change.
+	 */
+	private static final EnumSet<IndexChange> TRACKED_CHANGES = EnumSet.allOf(IndexChange.class);
+
 	private final String mDb;
 
 	private boolean mClosed = false;
@@ -77,7 +85,7 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 
 		return theType.isInstance(this)
 		       ? Optional.of((T) this)
-		       : Optional.empty();
+		       : Optional.<T>empty();
 	}
 
 	/**
@@ -131,6 +139,11 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 	public Set<String> getQueryRewritings() {
 		// no query rewritings are performed
 		return ImmutableSet.of();
+	}
+
+	@Override
+	public EnumSet<IndexChange> getTrackedIndexChanges() {
+		return TRACKED_CHANGES;
 	}
 
 	@Override

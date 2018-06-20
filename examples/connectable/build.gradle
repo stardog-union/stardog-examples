@@ -3,4 +3,6 @@ group = "com.complexible.stardog.examples.connectable"
 dependencies {
 	// server core modules
 	compile "com.complexible.stardog:server:${stardogVersion}"
+
+	testRuntime "com.complexible.stardog:client-embedded:${stardogVersion}"
 }
