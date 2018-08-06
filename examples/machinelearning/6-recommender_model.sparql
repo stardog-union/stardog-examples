@@ -10,7 +10,8 @@ INSERT {
                     spa:l1 0.000001
                 ] ;
                 spa:arguments (?actors ?writers ?directors ?genres ?producers ?keywords ?languages ?contentRating ?year ?metaCritic ?rating) ;
-                spa:predict ?rec .
+                spa:predict ?rec ;
+                spa:overwrite True .
     }
 }
 WHERE {

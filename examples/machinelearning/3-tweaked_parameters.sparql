@@ -17,7 +17,8 @@ INSERT {
                 spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
                 spa:predict ?rating ;
                 spa:crossValidation 100 ;
-                spa:validationMetric spa:mae .
+                spa:validationMetric spa:mae ;
+                spa:overwrite True .
     }
 }
 WHERE {

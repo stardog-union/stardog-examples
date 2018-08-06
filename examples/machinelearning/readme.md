@@ -9,7 +9,7 @@ For an overview of all the features and usage syntax, please refer to the offici
 Before digging into details, let's load the data into Stardog.
 
 ```
-./stardog-admin db create -n movies movies.ttl
+stardog-admin db create -n movies movies.ttl
 ```
 
 The dataset contains information about 6730 movies.
@@ -42,7 +42,7 @@ We'll be testing if solely based on a movie's metadata, we can accurately predic
 First, let's look at the distribution of ratings in the dataset.
 
 ```
-./stardog query movies 1-histogram.sparql
+stardog query movies 1-histogram.sparql
 ```
 
 ```
@@ -75,7 +75,8 @@ INSERT {
             spa:arguments (?genres ?contentRating ?storyline ?metaCritic) ;
             spa:predict ?rating ;
             spa:crossValidation 100 ;
-            spa:validationMetric spa:mae .
+            spa:validationMetric spa:mae ;
+            spa:overwrite True .
     }
 }
 WHERE {
@@ -106,13 +107,13 @@ The `WHERE` clause selects the data used in the training of the model. There is 
 Models are automatically evaluated on creation, and by defining the `spa:crossValidation` and `spa:validationMetric` properties, we are defining how that evaluation will happen. In this case, we will be using 100-fold cross validation, using the mean absolute error as score.
 
 ```
-./stardog query movies 2-simple_model.sparql
+stardog query movies 2-simple_model.sparql
 ```
 
 After creating the model, the evaluation results are stored in the database and can be easily acessed.
 
 ```
-./stardog query movies 2.1-score.sparql
+stardog query movies 2.1-score.sparql
 ```
 
 ```
@@ -128,8 +129,8 @@ We can accurately predict a movie's rating with a one star error margin. Not bad
 Using [hyperparameter optimization](https://www.stardog.com/docs/#_hyperparameter_optimization), we can decrease the error even further.
 
 ```
-./stardog query movies 3-tweaked_parameters.sparql
-./stardog query movies 3.1-score.sparql
+stardog query movies 3-tweaked_parameters.sparql
+stardog query movies 3.1-score.sparql
 ```
 
 ```
@@ -143,7 +144,7 @@ Using [hyperparameter optimization](https://www.stardog.com/docs/#_hyperparamete
 Let's inspect the ratings given by this model for some random movies in the dataset.
 
 ```
-./stardog query movies 4-predicted_ratings.sparql
+stardog query movies 4-predicted_ratings.sparql
 ```
 
 ```
@@ -187,7 +188,7 @@ Unfortunately, we don't have this kind of rich data about users. Our challenge w
 We are going to solve this problem as a classification task, the objective being predicting if IMDB considers two movies as similar. Since recommendations present in this dataset are very sparse, we need to select which movies are we interested in being able to suggest as recommendations. For the purpose of this tutorial, we took a sample of 100 movies from the original dataset.
 
 ```
-./stardog query movies 5-top_recommended_movies.sparql
+stardog query movies 5-top_recommended_movies.sparql
 ```
 
 Our model is going to be similar to the one previously created for rating prediction.
@@ -205,7 +206,8 @@ INSERT {
                     spa:l1 0.000001
                 ] ;
                 spa:arguments (?actors ?writers ?directors ?genres ?producers ?keywords ?languages ?contentRating ?year ?metaCritic ?rating) ;
-                spa:predict ?rec .
+                spa:predict ?rec ;
+                spa:overwrite True .
     }
 }
 WHERE {
@@ -254,14 +256,14 @@ From all the movies in the dataset, we select the ones that are similar to the p
 Our target variable is the movie being recommended, a categorical feature. Therefore, we use a `spa:ClassificationModel`, with some additional (optional) parameters.
 
 ```
-./stardog query movies 6-recommender_model.sparql
+stardog query movies 6-recommender_model.sparql
 ```
 
 Using the `spa:confidence` parameter, this model can be used to generate a weighted list of recommendations for any movie. 
 Here are the top 5 recommended movies for [The Big Lebowski](https://www.youtube.com/watch?v=PztgWdMEJdg):
 
 ```
-./stardog query movies 7-recommended_movies.sparql
+stardog query movies 7-recommended_movies.sparql
 ```
 
 ```
@@ -275,6 +277,75 @@ Here are the top 5 recommended movies for [The Big Lebowski](https://www.youtube
 | "Ted"                  | 7.016666978597641E-2  |
 +------------------------+-----------------------+
 ```
+
+
+### Finding Similar Movies
+
+A simpler, and unsupervised, way of generating recommendations is by finding movies with similar features.
+This can be achieved by using a `SimilarityModel`.
+
+```
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :s1 a spa:SimilarityModel ;
+            spa:arguments (?genres ?directors ?authors ?producers ?metaCritic) ;
+            spa:predict ?movie ;
+            spa:overwrite True .
+    }
+}
+WHERE {
+    SELECT 
+    (agg:spa:set(?genre) as ?genres) 
+    (agg:spa:set(?director) as ?directors)
+    (agg:spa:set(?author) as ?authors)
+    (agg:spa:set(?producer) as ?producers)
+    ?metaCritic
+    ?movie
+    {
+        ?movie  :genre ?genre ;
+                :director ?director ;
+                :author ?author .
+
+        OPTIONAL {
+            ?movie  :productionCompany ?producer .
+        }
+
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
+        }
+    }
+    GROUP BY ?movie ?metaCritic 
+}
+```
+
+This model will find similar movies based on their genres, directors, authors, producers, and MetaCritic score. 
+
+```
+stardog query movies 8-similarity_model.sparql
+```
+
+Using this model, we can find the most similar movies to `The Big Lebowski`, aka the ones which share the most amount of features.
+
+```
+stardog query movies 9-similarity_search.sparql
+```
+
+```
++----------------------------+----------------------+
+|     similarMovieLabel      |      confidence      |
++----------------------------+----------------------+
+| "The Big Lebowski"         | 9.999999999999998E-1 |
+| "Fargo"                    | 9.996443676337468E-1 |
+| "Blood Simple."            | 9.996332068990889E-1 |
+| "The Man Who Wasn't There" | 9.996019945613324E-1 |
+| "Barton Fink"              | 9.99580272822665E-1  |
++----------------------------+----------------------+
+```
+
+The most similar movie is, obviously, the movie itself, followed by other movies from the same crew.
+
 
 ### Future Work
 
