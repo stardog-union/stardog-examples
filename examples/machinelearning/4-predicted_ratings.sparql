@@ -1,3 +1,4 @@
+prefix : <http://schema.org/>
 prefix agg: <urn:aggregate>
 prefix spa: <tag:stardog:api:analytics:>
 

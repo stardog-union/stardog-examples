@@ -1,3 +1,5 @@
+prefix : <http://schema.org/>
+prefix t: <http://www.imdb.com/title/>
 prefix spa: <tag:stardog:api:analytics:>
 
 SELECT ?similarMovieLabel ?confidence

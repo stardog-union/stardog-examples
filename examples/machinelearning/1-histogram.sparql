@@ -1,3 +1,5 @@
+prefix : <http://schema.org/>
+
 select ?rating (count(*) as ?count)
 where {
     ?movie :rating ?float

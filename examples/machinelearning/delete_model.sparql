@@ -1,3 +1,4 @@
+prefix : <http://schema.org/>
 prefix spa: <tag:stardog:api:analytics:>
 
 DELETE DATA {
