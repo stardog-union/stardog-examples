@@ -314,19 +314,36 @@ order by desc(?s)
 limit 50
 
 # Big Daddy - score fraud indicator as $ x (paths count)^2 - using hybrid materialized/virtual transaction data
-select * {
+select ?org ?name1 ?ben ?name2 ?score {
     {
         # Count distinct paths
-        select ?org ?ben ?s (count(*) as ?c) {
+        select ?org ?name1 ?ben ?name2 ?s (count(*) as ?c) {
             {
                 # Group by intermediaries
-                select ?org ?ben ?t1 ?t2 ?s {
-                    ?org :hasAffiliation* ?t1 .
+                select ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s {
+                    ?org :lastName ?lname1 ;
+                        :firstName ?fname1 ;
+                        :hasAffiliation* ?t1 .
                     ?t1 :hasBankAccount ?a1 .
-                    ?a1 :originated ?tx .
-                    ?tx :beneficiary ?a2 .
                     ?t2 :hasBankAccount ?a2 ;
                         :hasAffiliation* ?ben .
+                    ?ben :lastName ?lname2 ;
+                        :firstName ?fname2 .
+                    {
+                        ?a1 :originated ?tx .
+                        ?tx :beneficiary ?a2 ;
+                            :date ?d .
+                        filter (?d < '2017-09-01'^^xsd:date)
+                    }
+                    union
+                    {
+                        graph <virtual://aml> {
+                            ?a1 :originated ?tx .
+                            ?tx :beneficiary ?a2 ;
+                                :date ?d .
+                            filter (?d >= '2017-09-01'^^xsd:date)
+                        }
+                    }
                     {
                         # Find highest sum of Tx for all paths between org and ben
                         select ?org ?ben (sum(?m) as ?s) {
@@ -336,7 +353,6 @@ select * {
                             ?t2 :hasBankAccount ?a2 ;
                                 :hasAffiliation* ?ben .
                             ?ben a :Person .
-                            # Combine older summarized Tx from Stardog and newer itemized Tx from virtual source
                             {
                                 ?a1 :originated ?tx .
                                 ?tx :beneficiary ?a2 ;
@@ -359,13 +375,17 @@ select * {
                         order by desc(?s) ?org ?ben
                         limit 1000
                     }
+                    bind(concat(?fname1, ' - ', ?lname1) as ?name1)
+                    bind(concat(?fname2, ' - ', ?lname2) as ?name2)
                 }
-                group by ?org ?ben ?t1 ?t2 ?s
+                group by ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s
             }
         }
-        group by ?org ?ben ?s
+        group by ?org ?ben ?name1 ?name2 ?s
         order by desc(?s) ?org ?ben
     }
-    bind(?s * ?c * ?c as ?z)
+    # Calculate score as total money transacted times
+    # the square of unique path count between actors
+    bind(?s * ?c * ?c as ?score)
 }
-order by desc(?z) ?org ?ben
+order by desc(?score) ?org ?ben
