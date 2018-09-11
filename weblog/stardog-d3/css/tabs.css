@@ -1,0 +1,337 @@
+.row {
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+.console {
+    margin: 10px
+}
+
+.tabContent {
+    border: 1px solid #003045;
+    border-bottom: none;
+}
+
+.tab {
+    display: inline-block;
+    min-height: 32px;
+    background: #e1e5e5;
+    border-right: 1px solid #003045;
+    padding: 6px 12px;
+    color: #003045;
+    cursor: pointer;
+}
+
+.tabOn {
+    color: #e1e5e5;
+    background: #003045;
+}
+
+.inputBorder {
+    border: 1px solid #003045;
+    /*border-left: none;*/
+    padding: 10px;
+}
+
+.consoleBorder {
+    border: 1px solid #003045;
+    padding: 10px;
+}
+
+.consoleBody {
+    padding: 10px;
+    border: 1px solid #003045;
+}
+
+.labelColumn {
+    width: 100px;
+    min-width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+.inputColumn {
+    width: 100%;
+    display: inline-block;
+}
+
+.inputColumn select {
+    width: 100%
+}
+
+.inputColumn input {
+    height: 34px;
+    padding: 2px 15px 2px 10px;
+}
+
+.personForm {
+    /*width: 336px;*/
+}
+
+.personAddBtn {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.error {
+    color: red;
+    /*text-align: center;*/
+    padding-top: 10px;
+}
+
+.relationshipForm {
+    /*width: 592px;*/
+}
+
+.labelRow {
+    width: 100px;
+    min-width: 100px;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+
+.personSelect {
+    width: 200px;
+    /*height: 200px !important;*/
+    margin: 0;
+}
+
+input[type="radio"] {
+    height: 14px;
+}
+
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 10px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal p {
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #003045;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #fff;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0px; opacity: 1}
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.modalHeader {
+    width: 100%;
+    border-right: none;
+}
+
+.graphButton {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.stardogd3 {
+    /*width: 100%;*/
+    /*height: 500px;*/
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+/*.relationships line {*/
+/*stroke: #999;*/
+/*}*/
+
+.relationships .overlay {
+    fill: #6ac6ff;
+    opacity: 0;
+}
+
+.relationships .overlayOn {
+    fill: #6ac6ff;
+    opacity: .2;
+}
+
+.relationships .overlayCurveOn {
+    fill: none;
+    opacity: .2;
+    stroke-width: 6px;
+    stroke: #6ac6ff;
+}
+
+.nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.nodes .ring {
+    stroke: none;
+    fill: none;
+}
+
+.nodes .ringOn {
+    stroke: none;
+    stroke-width: 1.5px;
+    fill: #6ac6ff;
+    opacity: 0.5;
+}
+
+.nodes text {
+    font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ced2d9;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #f15a24;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+}
+
+.on
+{
+    display: none;
+}
+
+.on, .off
+{
+    color: white;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 33%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+.off {
+    left: 64%;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;}
