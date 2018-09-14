@@ -17,6 +17,8 @@ package com.complexible.stardog.examples.connectable.listener;
 
 import com.complexible.stardog.AbstractStardogModule;
 import com.complexible.stardog.db.ConnectableFactory;
+import com.complexible.stardog.metadata.MetaProperties;
+
 import com.google.inject.Singleton;
 import com.google.inject.multibindings.Multibinder;
 
@@ -28,6 +30,9 @@ import com.google.inject.multibindings.Multibinder;
 public final class ExampleModule extends AbstractStardogModule {
 	@Override
 	protected void configure() {
+		// database options need to be registered at the beginning
+		MetaProperties.register(ExampleConnectableOption.class);
+
 		Multibinder.newSetBinder(binder(), ConnectableFactory.class)
 		           .addBinding()
 		           .to(ExampleConnectableFactory.class)

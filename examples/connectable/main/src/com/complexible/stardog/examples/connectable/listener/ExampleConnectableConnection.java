@@ -15,11 +15,16 @@
 
 package com.complexible.stardog.examples.connectable.listener;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 
 import com.complexible.common.base.Change;
 import com.complexible.common.base.Options;
@@ -66,13 +71,16 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 
 	private final String mDb;
 
+	private final BooleanSupplier isEnabled;
+
 	private boolean mClosed = false;
 
 	// we will buffer all changes until commit because the transaction will have no effect unless it is committed
 	private final List<Change> mChanges = Lists.newArrayList();
 
-	ExampleConnectableConnection(final String theDb) {
+	ExampleConnectableConnection(final String theDb, final BooleanSupplier theEnabled) throws FileNotFoundException {
 		mDb = theDb;
+		isEnabled = theEnabled;
 	}
 
 	/**
@@ -159,6 +167,15 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 	                                                          IllegalTransactionStateException,
 	                                                          ResourceTransactionException {
 		Preconditions.checkState(isOpen(), "Cannot use a closed connection");
+
+		// since the database option is defined to be `writableWhileOnline` we need to check the value at every transaction
+		// since the user can modify the value at any time. if the option was defined as only `writable` then we could do
+		// this check in the constructor or way earlier in `ExampleConnectableFactory` and not create the connectable for
+		// this database. when a database is offlined and then onlined all the connectables are recreated so options
+		// that are not `writableWhileOnline` can be checked only once.
+		if (!isEnabled.getAsBoolean()) {
+			return;
+		}
 
 		System.out.println("Transaction started for database " + mDb);
 

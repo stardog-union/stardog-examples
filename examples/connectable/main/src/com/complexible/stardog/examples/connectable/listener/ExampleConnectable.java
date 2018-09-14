@@ -17,6 +17,7 @@ package com.complexible.stardog.examples.connectable.listener;
 
 import com.complexible.stardog.db.Connectable;
 import com.complexible.stardog.db.ConnectableConnection;
+import com.complexible.stardog.db.ConnectableMetadata;
 import com.complexible.stardog.db.ConnectionContext;
 import com.google.common.base.Preconditions;
 
@@ -27,9 +28,15 @@ import com.google.common.base.Preconditions;
  * @author  Evren Sirin
  */
 final class ExampleConnectable implements Connectable {
+	private final ConnectableMetadata mMetadata;
+
 	private boolean mClosed = false;
 
 	private boolean mInitialized = false;
+
+	public ExampleConnectable(final ConnectableMetadata theMetadata) {
+		mMetadata = theMetadata;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -60,6 +67,6 @@ final class ExampleConnectable implements Connectable {
 	public ConnectableConnection openConnection(final ConnectionContext theContext) throws Exception {
 		// retrieve the database name from the connnection context and pass it to the connection
 		String aDbName = theContext.require(ConnectionContext.NAME, String.class);
-		return new ExampleConnectableConnection(aDbName);
+		return new ExampleConnectableConnection(aDbName, () -> mMetadata.get(ExampleConnectableOption.ENABLE_LOGGING));
 	}
 }

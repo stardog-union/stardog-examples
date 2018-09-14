@@ -34,7 +34,7 @@ final class ExampleConnectableFactory implements ConnectableFactory<ExampleConne
 	 */
 	@Override
 	public Optional<ExampleConnectable> create(final ConnectableMetadata theMetadata, final Index theIndex) throws Exception {
-		return Optional.of(new ExampleConnectable());
+		return Optional.of(new ExampleConnectable(theMetadata));
 	}
 
 	/**
@@ -43,6 +43,6 @@ final class ExampleConnectableFactory implements ConnectableFactory<ExampleConne
 	@Override
 	public Optional<ExampleConnectable> restore(final ConnectableMetadata theMetadata, final Index theIndex,
 	                                            final Backup theBackup, final PrintStream theStream) throws Exception {
-		return Optional.of(new ExampleConnectable());
+		return Optional.of(new ExampleConnectable(theMetadata));
 	}
 }

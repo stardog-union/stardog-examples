@@ -22,6 +22,8 @@ import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -29,8 +31,9 @@ import org.junit.Test;
 import org.openrdf.model.Model;
 
 /**
- * This is NOT a test class. This class simply makes some changes in the database which will end up calling the {@link ExampleConnectable} that will print the changes in the
- * console. The console output for each test can be used for informational purposes. This class can be turned into a proper automated
+ * This is NOT a test class. This class simply makes some changes in the database which will end up calling the {@link ExampleConnectable} that will
+ * print the changes in the console. The console output for each test can be used for informational purposes. This class can be turned into a proper
+ * automated test with some additional work.
  *
  * @author  Evren Sirin
  */
@@ -71,11 +74,15 @@ public class ExampleConnectableTest {
 				aConn.drop(DB);
 			}
 
-			aConn.newDatabase(DB).create();
+			// setting the option here is not necessary since the default value is `true` but if desired
+			// the value can be set to `false` here and no logging output should be visible.
+			aConn.newDatabase(DB)
+			     .set(ExampleConnectableOption.ENABLE_LOGGING, true)
+			     .create();
 		}
 	}
 
-	@Before
+	@After
 	public void dropDB() {
 		try (AdminConnection aConn = connectAdmin()) {
 			if (aConn.list().contains(DB)) {
