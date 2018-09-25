@@ -66,7 +66,7 @@ Users have the tendency to give positive ratings overall, with ratings following
 With this in mind, let's build our first model!
 
 ````
-prefix agg: <urn:aggregate>
+prefix : <http://schema.org/>
 prefix spa: <tag:stardog:api:analytics:>
 
 INSERT {
@@ -81,7 +81,7 @@ INSERT {
 }
 WHERE {
     SELECT 
-    (agg:spa:set(?genre) as ?genres) 
+    (spa:set(?genre) as ?genres) 
     ?contentRating
     ?storyline
     ?metaCritic
@@ -194,7 +194,8 @@ stardog query movies 5-top_recommended_movies.sparql
 Our model is going to be similar to the one previously created for rating prediction.
 
 ```
-prefix agg: <urn:aggregate>
+prefix : <http://schema.org/>
+prefix t: <http://www.imdb.com/title/>
 prefix spa: <tag:stardog:api:analytics:>
 
 INSERT {
@@ -212,13 +213,13 @@ INSERT {
 }
 WHERE {
     SELECT         
-    (agg:spa:set(?actor) as ?actors) 
-    (agg:spa:set(?writer) as ?writers)
-    (agg:spa:set(?director) as ?directors)
-    (agg:spa:set(?genre) as ?genres)
-    (agg:spa:set(?producer) as ?producers)
-    (agg:spa:set(?keyword) as ?keywords)
-    (agg:spa:set(?language) as ?languages)
+    (spa:set(?actor) as ?actors) 
+    (spa:set(?writer) as ?writers)
+    (spa:set(?director) as ?directors)
+    (spa:set(?genre) as ?genres)
+    (spa:set(?producer) as ?producers)
+    (spa:set(?keyword) as ?keywords)
+    (spa:set(?language) as ?languages)
     ?contentRating
     ?year
     ?metaCritic
@@ -285,6 +286,7 @@ A simpler, and unsupervised, way of generating recommendations is by finding mov
 This can be achieved by using a `SimilarityModel`.
 
 ```
+prefix : <http://schema.org/>
 prefix spa: <tag:stardog:api:analytics:>
 
 INSERT {
@@ -297,10 +299,10 @@ INSERT {
 }
 WHERE {
     SELECT 
-    (agg:spa:set(?genre) as ?genres) 
-    (agg:spa:set(?director) as ?directors)
-    (agg:spa:set(?author) as ?authors)
-    (agg:spa:set(?producer) as ?producers)
+    (spa:set(?genre) as ?genres) 
+    (spa:set(?director) as ?directors)
+    (spa:set(?author) as ?authors)
+    (spa:set(?producer) as ?producers)
     ?metaCritic
     ?movie
     {

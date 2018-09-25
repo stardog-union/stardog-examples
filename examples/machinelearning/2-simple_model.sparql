@@ -1,5 +1,4 @@
 prefix : <http://schema.org/>
-prefix agg: <urn:aggregate>
 prefix spa: <tag:stardog:api:analytics:>
 
 INSERT {
@@ -14,7 +13,7 @@ INSERT {
 }
 WHERE {
     SELECT 
-    (agg:spa:set(?genre) as ?genres) 
+    (spa:set(?genre) as ?genres) 
     ?contentRating
     ?storyline
     ?metaCritic

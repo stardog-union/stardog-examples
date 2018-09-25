@@ -1,6 +1,5 @@
 prefix : <http://schema.org/>
 prefix t: <http://www.imdb.com/title/>
-prefix agg: <urn:aggregate>
 prefix spa: <tag:stardog:api:analytics:>
 
 SELECT ?recommendation ?confidence
@@ -13,13 +12,13 @@ WHERE {
     }
     {
         SELECT         
-        (agg:spa:set(?actor) as ?actors) 
-        (agg:spa:set(?writer) as ?writers)
-        (agg:spa:set(?director) as ?directors)
-        (agg:spa:set(?genre) as ?genres)
-        (agg:spa:set(?producer) as ?producers)
-    	(agg:spa:set(?keyword) as ?keywords)
-    	(agg:spa:set(?language) as ?languages)
+        (spa:set(?actor) as ?actors) 
+        (spa:set(?writer) as ?writers)
+        (spa:set(?director) as ?directors)
+        (spa:set(?genre) as ?genres)
+        (spa:set(?producer) as ?producers)
+    	(spa:set(?keyword) as ?keywords)
+    	(spa:set(?language) as ?languages)
         ?contentRating
         ?year
         ?metaCritic

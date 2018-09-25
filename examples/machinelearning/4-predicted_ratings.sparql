@@ -1,5 +1,4 @@
 prefix : <http://schema.org/>
-prefix agg: <urn:aggregate>
 prefix spa: <tag:stardog:api:analytics:>
 
 SELECT ?title ?rating ?predictedRating
@@ -11,10 +10,10 @@ WHERE {
 
     {
     SELECT         
-        (agg:spa:set(?author) as ?authors)
-        (agg:spa:set(?director) as ?directors)
-        (agg:spa:set(?producer) as ?producers)
-        (agg:spa:set(?keyword) as ?keywords)
+        (spa:set(?author) as ?authors)
+        (spa:set(?director) as ?directors)
+        (spa:set(?producer) as ?producers)
+        (spa:set(?keyword) as ?keywords)
         ?contentRating
         ?year
         ?metaCritic
