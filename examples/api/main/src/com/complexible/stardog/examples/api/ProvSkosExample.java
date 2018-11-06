@@ -17,9 +17,6 @@ package com.complexible.stardog.examples.api;
 
 import java.util.Arrays;
 
-import com.complexible.common.openrdf.vocabulary.Vocabulary;
-import com.complexible.common.rdf.model.Values;
-import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
@@ -30,12 +27,17 @@ import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.prov.ProvVocabulary;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Resource;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.SKOS;
-import org.openrdf.query.resultio.QueryResultIO;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Resource;
+import com.stardog.stark.Values;
+import com.stardog.stark.io.RDFWriters;
+import com.stardog.stark.query.io.QueryResultFormats;
+import com.stardog.stark.query.io.QueryResultWriters;
+import com.stardog.stark.vocabs.DC;
+import com.stardog.stark.vocabs.RDF;
+import com.stardog.stark.vocabs.SKOS;
+
+import static com.stardog.stark.Values.iri;
 
 /**
  * <p>Example code illustrating use of the built-in ontologies in Stardog, specifically for PROV and SKOS ontologies.</p>
@@ -47,27 +49,11 @@ import org.openrdf.query.resultio.QueryResultIO;
 public class ProvSkosExample {
 
 	// Very simple publication vocabulary used in this example
-	private static class PublicationVocabulary extends Vocabulary {
-
-		private static final PublicationVocabulary INSTANCE = new PublicationVocabulary();
-
-		private PublicationVocabulary() {
-			super("urn:example:publication:");
-		}
-
-		private IRI Book = term("Book");
-
-		private IRI Fiction = term("Fiction");
-
-		private IRI ScienceFiction = term("ScienceFiction");
-
-		private IRI Author = term("Author");
-	}
-
-	// Define constants for vocabularies that we will use
-	private static final PublicationVocabulary PUB = PublicationVocabulary.INSTANCE;
-
-	private static final ProvVocabulary PROV = ProvVocabulary.INSTANCE;
+	private static final String publicationNamespace = "urn:example:publication:";
+	private static final IRI Book = iri(publicationNamespace, "Book");
+	private static final IRI Fiction = iri(publicationNamespace, "Fiction");
+	private static final IRI ScienceFiction = iri(publicationNamespace, "ScienceFiction");
+	private static final IRI Author = iri(publicationNamespace, "Author");
 
 	// Database Archetypes
 	// ---
@@ -101,12 +87,12 @@ public class ProvSkosExample {
 					// First create some SKOS data and introduce an error (related and transitive broader relations should be disjoint)
 					aConn.begin();
 					aConn.add()
-					     .statement(PUB.Book, RDF.TYPE, SKOS.CONCEPT)
-					     .statement(PUB.Fiction, RDF.TYPE, SKOS.CONCEPT)
-					     .statement(PUB.ScienceFiction, RDF.TYPE, SKOS.CONCEPT)
-					     .statement(PUB.Book, SKOS.NARROWER, PUB.Fiction)
-					     .statement(PUB.ScienceFiction, SKOS.BROADER, PUB.Fiction)
-					     .statement(PUB.ScienceFiction, SKOS.RELATED, PUB.Book);
+					     .statement(Book, RDF.TYPE, SKOS.Concept)
+					     .statement(Fiction, RDF.TYPE, SKOS.Concept)
+					     .statement(ScienceFiction, RDF.TYPE, SKOS.Concept)
+					     .statement(Book, SKOS.narrower, Fiction)
+					     .statement(ScienceFiction, SKOS.broader, Fiction)
+					     .statement(ScienceFiction, SKOS.related, Book);
 					aConn.commit();
 
 					// Let's validate the SKOS data we just created. Note that SKOS inferences and constraints are automatically
@@ -125,14 +111,14 @@ public class ProvSkosExample {
 					Resource attr = Values.bnode();
 					aConn.begin();
 					aConn.remove()
-					     .statements(PUB.ScienceFiction, SKOS.RELATED, PUB.Book);
+					     .statements(ScienceFiction, SKOS.related, Book);
 					aConn.add()
-					     .statement(The_War_of_the_Worlds, RDF.TYPE, PROV.Entity)
-					     .statement(The_War_of_the_Worlds, DC.SUBJECT, PUB.ScienceFiction)
-					     .statement(The_War_of_the_Worlds, PROV.qualifiedAttribution, attr)
-					     .statement(attr, RDF.TYPE, PROV.Attribution)
-					     .statement(attr, PROV.agent, H_G_Wells)
-					     .statement(attr, PROV.hadRole, PUB.Author);
+					     .statement(The_War_of_the_Worlds, RDF.TYPE, ProvVocabulary.Entity)
+					     .statement(The_War_of_the_Worlds, DC.subject, ScienceFiction)
+					     .statement(The_War_of_the_Worlds, ProvVocabulary.qualifiedAttribution, attr)
+					     .statement(attr, RDF.TYPE, ProvVocabulary.Attribution)
+					     .statement(attr, ProvVocabulary.agent, H_G_Wells)
+					     .statement(attr, ProvVocabulary.hadRole, Author);
 					aConn.commit();
 
 					// Now that the problematic triples is removed, the data will be valid
@@ -147,7 +133,7 @@ public class ProvSkosExample {
 					// Also note that we don't need to define prefixes for skos and prov which are automatically registered
 					// to the database when the archetypes are loaded
 					SelectQuery aQuery = aConn.select(
-						"PREFIX pub: <" + PUB.uri() + ">" +
+						"PREFIX pub: <" + publicationNamespace + ">" +
 						"PREFIX dc: <" + DC.NAMESPACE + ">" +
 						"SELECT * WHERE {\n" +
 						"  ?book dc:subject/skos:broaderTransitive pub:Book;\n" +
@@ -155,7 +141,7 @@ public class ProvSkosExample {
 						"}");
 
 					// Print the query results
-					QueryResultIO.writeTuple(aQuery.execute(), TextTableQueryResultWriter.FORMAT, System.out);
+					QueryResultWriters.write(aQuery.execute(), System.out, QueryResultFormats.TEXT);
 				}
 				finally {
 					if (dbms.list().contains(db)) {

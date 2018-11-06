@@ -17,7 +17,6 @@ package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
@@ -26,10 +25,10 @@ import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
-import org.openrdf.model.IRI;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Values;
+import com.stardog.stark.io.RDFFormats;
+import com.stardog.stark.query.SelectQueryResult;
 
 /**
  * <p>A small example program illustrating how to access Stardog's reasoning capabilities.</p>
@@ -100,7 +99,7 @@ public class ReasoningExample {
 					aReasoningConn.begin();
 
 					aReasoningConn.add().io()
-					              .format(RDFFormat.RDFXML)
+					              .format(RDFFormats.RDFXML)
 					              .file(Paths.get("data/University0_0.owl"))
 					              .file(Paths.get("data/lubmSchema.owl"));
 
@@ -127,7 +126,7 @@ public class ReasoningExample {
 		}
 	}
 
-	private static void printCounts(final Connection theConn) throws StardogException, QueryEvaluationException {
+	private static void printCounts(final Connection theConn) throws StardogException {
 		IRI PERSON = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person");
 		IRI STUDENT = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student");
 		IRI GRAD_STUDENT = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent");
@@ -139,7 +138,7 @@ public class ReasoningExample {
 		                                    "}");
 
 		aQuery.parameter("type", PERSON);
-		TupleQueryResult aResult = aQuery.execute();
+		SelectQueryResult aResult = aQuery.execute();
 		System.out.println("Number of Persons: " + count(aResult));
 
 		aQuery.parameter("type", STUDENT);
@@ -159,7 +158,7 @@ public class ReasoningExample {
 		System.out.println("Number of Full Professors: " + count(aResult));
 	}
 
-	private static int count(final TupleQueryResult theResult) throws QueryEvaluationException {
+	private static int count(final SelectQueryResult theResult) {
 		try {
 			int count = 0;
 			while (theResult.hasNext()) {

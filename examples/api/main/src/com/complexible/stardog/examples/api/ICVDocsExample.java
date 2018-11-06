@@ -15,15 +15,10 @@
 
 package com.complexible.stardog.examples.api;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 import com.complexible.common.base.CloseableIterator;
-import com.complexible.common.openrdf.model.Models2;
-import com.complexible.common.openrdf.util.ExpressionFactory;
-import com.complexible.common.openrdf.util.ModelBuilder;
-import com.complexible.common.openrdf.util.OWL2;
-import com.complexible.common.openrdf.vocabulary.Vocabulary;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
@@ -37,34 +32,39 @@ import com.complexible.stardog.icv.ConstraintViolation;
 import com.complexible.stardog.icv.ICV;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.google.common.base.Strings;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Model;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.BindingSet;
+import com.google.common.collect.ImmutableSet;
+import com.stardog.stark.Axioms;
+import com.stardog.stark.Datatype;
+import com.stardog.stark.IRI;
+import com.stardog.stark.OWL;
+import com.stardog.stark.Resource;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Value;
+import com.stardog.stark.Values;
+import com.stardog.stark.query.BindingSet;
+import com.stardog.stark.util.GraphBuilder;
+import com.stardog.stark.vocabs.RDF;
+import com.stardog.stark.vocabs.RDFS;
+import com.stardog.stark.vocabs.XSD;
 
-import static com.complexible.common.openrdf.util.ExpressionFactory.all;
-import static com.complexible.common.openrdf.util.ExpressionFactory.and;
-import static com.complexible.common.openrdf.util.ExpressionFactory.cardinality;
-import static com.complexible.common.openrdf.util.ExpressionFactory.dataProperty;
-import static com.complexible.common.openrdf.util.ExpressionFactory.domain;
-import static com.complexible.common.openrdf.util.ExpressionFactory.functionalProperty;
-import static com.complexible.common.openrdf.util.ExpressionFactory.hasValue;
-import static com.complexible.common.openrdf.util.ExpressionFactory.inverse;
-import static com.complexible.common.openrdf.util.ExpressionFactory.max;
-import static com.complexible.common.openrdf.util.ExpressionFactory.min;
-import static com.complexible.common.openrdf.util.ExpressionFactory.namedClass;
-import static com.complexible.common.openrdf.util.ExpressionFactory.objectProperty;
-import static com.complexible.common.openrdf.util.ExpressionFactory.or;
-import static com.complexible.common.openrdf.util.ExpressionFactory.propertyList;
-import static com.complexible.common.openrdf.util.ExpressionFactory.range;
-import static com.complexible.common.openrdf.util.ExpressionFactory.some;
-import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
-import static com.complexible.common.openrdf.util.ExpressionFactory.subPropertyOf;
+import static com.stardog.stark.Axioms.all;
+import static com.stardog.stark.Axioms.and;
+import static com.stardog.stark.Axioms.cardinality;
+import static com.stardog.stark.Axioms.dataProperty;
+import static com.stardog.stark.Axioms.domain;
+import static com.stardog.stark.Axioms.functionalProperty;
+import static com.stardog.stark.Axioms.hasValue;
+import static com.stardog.stark.Axioms.inverse;
+import static com.stardog.stark.Axioms.max;
+import static com.stardog.stark.Axioms.min;
+import static com.stardog.stark.Axioms.namedClass;
+import static com.stardog.stark.Axioms.objectProperty;
+import static com.stardog.stark.Axioms.or;
+import static com.stardog.stark.Axioms.propertyList;
+import static com.stardog.stark.Axioms.range;
+import static com.stardog.stark.Axioms.some;
+import static com.stardog.stark.Axioms.subClassOf;
+import static com.stardog.stark.Axioms.subPropertyOf;
 
 /**
  * <p>Source code for the examples in the Stardog ICV documentation.</p>
@@ -102,50 +102,50 @@ public class ICVDocsExample {
 					final ICVConnection aValidator = aConn.as(ICVConnection.class);
 
 					// before we dive into the examples, lets create the concepts and data we'll be using in the examples
-					final Vocabulary aVocab = new Vocabulary("http://www.semanticweb.org/company.owl#");
+					final String aNamespace = "http://www.semanticweb.org/company.owl#";
+					
+					final IRI Manager = Values.iri(aNamespace, "Manager");
+					final IRI Employee = Values.iri(aNamespace, "Employee");
+					final IRI Project = Values.iri(aNamespace, "Project");
+					final IRI Project_Leader = Values.iri(aNamespace, "Project_Leader");
+					final IRI Supervisor = Values.iri(aNamespace, "Supervisor");
+					final IRI Department = Values.iri(aNamespace, "Department");
+					final IRI US_Government_Agency = Values.iri(aNamespace, "US_Government_Agency");
 
-					final IRI Manager = aVocab.term("Manager");
-					final IRI Employee = aVocab.term("Employee");
-					final IRI Project = aVocab.term("Project");
-					final IRI Project_Leader = aVocab.term("Project_Leader");
-					final IRI Supervisor = aVocab.term("Supervisor");
-					final IRI Department = aVocab.term("Department");
-					final IRI US_Government_Agency = aVocab.term("US_Government_Agency");
+					final IRI is_responsible_for = Values.iri(aNamespace, "is_responsible_for");
+					final IRI is_supervisor_of = Values.iri(aNamespace, "is_supervisor_of");
+					final IRI receives_funds_from = Values.iri(aNamespace, "receives_funds_from");
+					final IRI dob = Values.iri(aNamespace, "dob");
+					final IRI number = Values.iri(aNamespace, "number");
+					final IRI supervises = Values.iri(aNamespace, "supervises");
+					final IRI works_on = Values.iri(aNamespace, "works_on");
+					final IRI works_in = Values.iri(aNamespace, "works_in");
+					final IRI manages = Values.iri(aNamespace, "manages");
+					final IRI name = Values.iri(aNamespace, "name");
+					final IRI nationality = Values.iri(aNamespace, "nationality");
 
-					final IRI is_responsible_for = aVocab.term("is_responsible_for");
-					final IRI is_supervisor_of = aVocab.term("is_supervisor_of");
-					final IRI receives_funds_from = aVocab.term("receives_funds_from");
-					final IRI dob = aVocab.term("dob");
-					final IRI number = aVocab.term("number");
-					final IRI supervises = aVocab.term("supervises");
-					final IRI works_on = aVocab.term("works_on");
-					final IRI works_in = aVocab.term("works_in");
-					final IRI manages = aVocab.term("manages");
-					final IRI name = aVocab.term("name");
-					final IRI nationality = aVocab.term("nationality");
-
-					final IRI NASA = aVocab.term("NASA");
-					final IRI Alice = aVocab.term("Alice");
-					final IRI Andy = aVocab.term("Andy");
-					final IRI Jose = aVocab.term("Jose");
-					final IRI Heidi = aVocab.term("Heidi");
-					final IRI Diego = aVocab.term("Diego");
-					final IRI Maria = aVocab.term("Maria");
-					final IRI Bob = aVocab.term("Bob");
-					final IRI Esteban = aVocab.term("Esteban");
-					final IRI Lucinda = aVocab.term("Lucinda");
-					final IRI Isabella = aVocab.term("Isabella");
-					final IRI MyProject = aVocab.term("MyProject");
-					final IRI MyProjectFoo = aVocab.term("MyProjectFoo");
-					final IRI MyProjectBar = aVocab.term("MyProjectBar");
-					final IRI MyProjectBaz = aVocab.term("MyProjectBaz");
-					final IRI MyDepartment = aVocab.term("MyDepartment");
-					final IRI MyDepartment1 = aVocab.term("MyDepartment1");
+					final IRI NASA = Values.iri(aNamespace, "NASA");
+					final IRI Alice = Values.iri(aNamespace, "Alice");
+					final IRI Andy = Values.iri(aNamespace, "Andy");
+					final IRI Jose = Values.iri(aNamespace, "Jose");
+					final IRI Heidi = Values.iri(aNamespace, "Heidi");
+					final IRI Diego = Values.iri(aNamespace, "Diego");
+					final IRI Maria = Values.iri(aNamespace, "Maria");
+					final IRI Bob = Values.iri(aNamespace, "Bob");
+					final IRI Esteban = Values.iri(aNamespace, "Esteban");
+					final IRI Lucinda = Values.iri(aNamespace, "Lucinda");
+					final IRI Isabella = Values.iri(aNamespace, "Isabella");
+					final IRI MyProject = Values.iri(aNamespace, "MyProject");
+					final IRI MyProjectFoo = Values.iri(aNamespace, "MyProjectFoo");
+					final IRI MyProjectBar = Values.iri(aNamespace, "MyProjectBar");
+					final IRI MyProjectBaz = Values.iri(aNamespace, "MyProjectBaz");
+					final IRI MyDepartment = Values.iri(aNamespace, "MyDepartment");
+					final IRI MyDepartment1 = Values.iri(aNamespace, "MyDepartment1");
 
 					System.out.println();
 
 					// the GraphBuilder we'll use to create our Aboxes for the example
-					final ModelBuilder aBuilder = new ModelBuilder();
+					final GraphBuilder aBuilder = new GraphBuilder();
 
 					System.out.println("(1) Subsumption Constraints");
 					System.out.println(Strings.repeat("-", 25) + "\n");
@@ -160,13 +160,13 @@ public class ICVDocsExample {
 					aBuilder.instance(Manager, Alice); // Alice is a Manager
 
 					// and add that to stardog
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("This ABox is not valid, Alice is violating our constraint because she is not an Employee...");
 					printValidity(aValidator);
 
 					// we know we're missing that Alice is an Employee, so lets add that to our database
-					insert(aConn, Models2.newModel(statement(Alice, RDF.TYPE, Employee)));
+					insert(aConn, statement(Alice, RDF.TYPE, Employee));
 
 					System.out.println("But now that we've stated that Alice is an Employee, we're valid...");
 					printValidity(aValidator);
@@ -187,31 +187,31 @@ public class ICVDocsExample {
 
 					// lets create our initial invalid abox
 					aBuilder.instance(Project, MyProject);
-					aBuilder.instance(null /* no type */, Alice)
+					aBuilder.instance(Alice)
 					        .addProperty(is_responsible_for, MyProject);
 
 					// add the invalid data into Stardog
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("We should see that Alice is violating the domain constraint that she is a Project_Leader...");
 					printValidity(aValidator);
 
 					// next example of an invalid abox
 					// first remove the old invalid data
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 
 					// a different invalid abox.  MyProject is not typed as a Project
 					aBuilder.reset();
 					aBuilder.instance(Project_Leader, Alice)
 					        .addProperty(is_responsible_for, MyProject);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("Now we should see that MyProject is invalid for the range constraint...");
 					printValidity(aValidator);
 
 					// remove invalid data
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 
 					// create a valid abox
 					aBuilder.reset();
@@ -219,7 +219,7 @@ public class ICVDocsExample {
 					aBuilder.instance(Project_Leader, Alice)
 					        .addProperty(is_responsible_for, MyProject);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("And with a complete ABox with all the correct domain and range restrictions met, we're valid...");
 					printValidity(aValidator);
@@ -231,26 +231,26 @@ public class ICVDocsExample {
 
 					// all dates of birth must be dates.  Note that we're explicitly stating that dob is a dataProperty
 					// if this is not specified, the constraint will not be interpreted correctly.
-					Constraint aRangeConstraint2 = ConstraintFactory.constraint(range(dataProperty(dob), XMLSchema.DATE));
+					Constraint aRangeConstraint2 = ConstraintFactory.constraint(range(dataProperty(dob), XSD.DATE));
 
 					addConstraint(aValidator, aRangeConstraint2);
 
-					aBuilder.instance(null /* no type */, Bob)
+					aBuilder.instance(Bob)
 					        .addProperty(dob, "1970-01-01");
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("We should see that Bob is violating the range constraint...");
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					// now we'll constraint a valid abox
-					aBuilder.instance(null /* no type */, Bob)
-					        .addProperty(dob, Values.literal("1970-01-01", XMLSchema.DATE));
+					aBuilder.instance(Bob)
+					        .addProperty(dob, Values.literal("1970-01-01", Datatype.DATE));
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("Now that Bob's dob is typed, we're valid...");
 					printValidity(aValidator);
@@ -266,24 +266,24 @@ public class ICVDocsExample {
 
 					aBuilder.instance(Supervisor, Alice);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("We are invalid because Alice is a Supervisor but supervises no one...");
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					aBuilder.instance(Supervisor, Alice)
 					        .addProperty(supervises, Bob);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					System.out.println("This is still invalid, Alice is a Supervisor and does supervise someone, but that individual is not known to be an employee...");
 					printValidity(aValidator);
 
 					// assert that Bob is an employee
-					insert(aConn, Models2.newModel(statement(Bob, RDF.TYPE, Employee)));
+					insert(aConn, statement(Bob, RDF.TYPE, Employee));
 
 					System.out.println("We asserted that Bob is an Employee, so we're ok now...");
 					printValidity(aValidator);
@@ -294,46 +294,45 @@ public class ICVDocsExample {
 					System.out.println(Strings.repeat("-", 25) + "\n");
 
 					Constraint aValidProjectNumberConstraint = ConstraintFactory.constraint(subClassOf(Project, some(number,
-					                                                                                                 ExpressionFactory.Datatypes.Integer
-						                                                                                                 .minInclusive(Values.literal("0", XMLSchema.INTEGER))
-						                                                                                                 .maxExclusive(Values
-							                                                                                                               .literal("5000", XMLSchema.INTEGER)))));
+							Axioms.restrict(Axioms.Datatypes.Integer,
+									new Axioms.FacetRestriction(Axioms.Facet.minInclusive, Values.literal("0", XSD.INTEGER)),
+									new Axioms.FacetRestriction(Axioms.Facet.maxExclusive, Values.literal("5000", XSD.INTEGER))))));
 
 					addConstraint(aValidator, aValidProjectNumberConstraint);
 
 					System.out.println("This is ok, it's not typed as a project...");
-					aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyProject);
-					insert(aConn, aBuilder.model());
+					aBuilder.instance(OWL.NAMED_INDIVIDUAL, MyProject);
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					System.out.println("But this is not valid: a project w/o a number...");
 					aBuilder.instance(Project, MyProject);
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					Statement aNumberUntyped = statement(MyProject, number, Values.literal("23"));
-					Statement aNumberTypedButOutOfRange = statement(MyProject, number, Values.literal("6000", XMLSchema.INTEGER));
-					Statement aNumberTypedAndInRange = statement(MyProject, number, Values.literal("23", XMLSchema.INTEGER));
+					Statement aNumberTypedButOutOfRange = statement(MyProject, number, Values.literal("6000", XSD.INTEGER));
+					Statement aNumberTypedAndInRange = statement(MyProject, number, Values.literal("23", XSD.INTEGER));
 
 					System.out.println("Also invalid: number in range, but untyped...");
-					insert(aConn, Models2.newModel(aNumberUntyped));
+					insert(aConn, aNumberUntyped);
 					printValidity(aValidator);
 
-					remove(aConn, Models2.newModel(aNumberUntyped));
+					remove(aConn, aNumberUntyped);
 
 					System.out.println("Still invalid: number is typed, but out of range...");
-					insert(aConn, Models2.newModel(aNumberTypedButOutOfRange));
+					insert(aConn, aNumberTypedButOutOfRange);
 					printValidity(aValidator);
 
-					remove(aConn, Models2.newModel(aNumberTypedButOutOfRange));
+					remove(aConn, aNumberTypedButOutOfRange);
 
 					System.out.println("Now number is typed, and is in range, this is ok...");
-					insert(aConn, Models2.newModel(aNumberTypedAndInRange));
+					insert(aConn, aNumberTypedAndInRange);
 					printValidity(aValidator);
 
 					clear(aValidator);
@@ -346,12 +345,12 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aEmployeeWorkOnMaxThreeProjects);
 
 					System.out.println("This is ok since Bob not typed as an Employee...");
-					aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Bob);
-					insert(aConn, aBuilder.model());
+					aBuilder.instance(OWL.NAMED_INDIVIDUAL, Bob);
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					System.out.println("This is also ok, Bob only works on one project...");
@@ -361,11 +360,11 @@ public class ICVDocsExample {
 
 					aBuilder.instance(Project, MyProject);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					System.out.println("But this is not, Bob cannot work on four projects...");
@@ -381,7 +380,7 @@ public class ICVDocsExample {
 					aBuilder.instance(Project, MyProjectBar);
 					aBuilder.instance(Project, MyProjectBaz);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
@@ -395,12 +394,12 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aDeptsMustHaveAtLeastTwoEmployees);
 
 					System.out.println("An untyped 'department' is ok...");
-					aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
-					insert(aConn, aBuilder.model());
+					aBuilder.instance(OWL.NAMED_INDIVIDUAL, MyDepartment);
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					System.out.println("This won't be valid, only Bob works in the department, and you need at least two people in a dept...");
@@ -409,12 +408,12 @@ public class ICVDocsExample {
 						.instance(Employee, Bob)
 						.addProperty(works_in, MyDepartment);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					System.out.println("We'll add a second employee to the department, and that will be valid...");
-					insert(aConn, Models2.newModel(statement(Alice, RDF.TYPE, Employee), statement(Alice, works_in, MyDepartment)));
+					insert(aConn, ImmutableSet.of(statement(Alice, RDF.TYPE, Employee), statement(Alice, works_in, MyDepartment)));
 
 					printValidity(aValidator);
 
@@ -428,28 +427,28 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aManagerMustManageExactlyOneDepartment);
 
 					System.out.println("This is ok since the manager is untyped...");
-					aBuilder.instance(OWL2.NAMED_INDIVIDUAL, Isabella);
-					insert(aConn, aBuilder.model());
+					aBuilder.instance(OWL.NAMED_INDIVIDUAL, Isabella);
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
-					remove(aConn, aBuilder.model());
+					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
 					System.out.println("This is invalid since Isabella is a Manager, but is not managing any departments...");
 					aBuilder.instance(Manager, Isabella);
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					System.out.println("This is valid since now Isabella manages a department...");
-					insert(aConn, Models2.newModel(statement(Isabella, manages, MyDepartment),
+					insert(aConn, ImmutableSet.of(statement(Isabella, manages, MyDepartment),
 					                               statement(MyDepartment, RDF.TYPE, Department)));
 
 					printValidity(aValidator);
 
 					System.out.println("This is invalid since now Isabella manages two departments...");
-					insert(aConn, Models2.newModel(statement(Isabella, manages, MyDepartment1),
+					insert(aConn, ImmutableSet.of(statement(Isabella, manages, MyDepartment1),
 					                               statement(MyDepartment1, RDF.TYPE, Department)));
 
 					printValidity(aValidator);
@@ -464,18 +463,18 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aEntitesMustHaveOnlyOneName);
 
 					System.out.println("Untyped 'department' is ok...");
-					aBuilder.instance(OWL2.NAMED_INDIVIDUAL, MyDepartment);
-					insert(aConn, aBuilder.model());
+					aBuilder.instance(OWL.NAMED_INDIVIDUAL, MyDepartment);
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					System.out.println("A department with one name is fine too...");
-					insert(aConn, Models2.newModel(statement(MyDepartment, name, literal("Human Resources"))));
+					insert(aConn, statement(MyDepartment, name, literal("Human Resources")));
 
 					printValidity(aValidator);
 
 					System.out.println("But if you add a second name, its invalid...");
-					insert(aConn, Models2.newModel(statement(MyDepartment, name, literal("Legal"))));
+					insert(aConn, statement(MyDepartment, name, literal("Legal")));
 
 					printValidity(aValidator);
 
@@ -489,12 +488,12 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aManagerMustWorkInTheirDept);
 
 					System.out.println("Bob manages a department, but does not work in it, this is not ok...");
-					insert(aConn, Models2.newModel(statement(Bob, manages, MyDepartment)));
+					insert(aConn, statement(Bob, manages, MyDepartment));
 
 					printValidity(aValidator);
 
 					System.out.println("But if we assert that Bob works in his department, then we're back to being valid...");
-					insert(aConn, Models2.newModel(statement(Bob, works_in, MyDepartment)));
+					insert(aConn, statement(Bob, works_in, MyDepartment));
 
 					printValidity(aValidator);
 
@@ -504,28 +503,28 @@ public class ICVDocsExample {
 					System.out.println(Strings.repeat("-", 25) + "\n");
 
 					Constraint aManagersMustSuperviseAllDeptEmployees = ConstraintFactory.constraint(subPropertyOf(propertyList(objectProperty(manages), inverse(works_in)),
-					                                                                                               objectProperty(is_supervisor_of)));
+							objectProperty(is_supervisor_of)));
 
 					addConstraint(aValidator, aManagersMustSuperviseAllDeptEmployees);
 
 					aBuilder
-						.instance(null /* no type */, Jose)
+						.instance(Jose)
 						.addProperty(manages, MyDepartment)
 						.addProperty(is_supervisor_of, Maria);
 					aBuilder
-						.instance(null /* no type */, Maria)
+						.instance(Maria)
 						.addProperty(works_in, MyDepartment);
 					aBuilder
-						.instance(null /* no type */, Diego)
+						.instance(Diego)
 						.addProperty(works_in, MyDepartment);
 
 					System.out.println("This data is invalid because Jose is not the supervisor of Diego even though he works in Jose's department...");
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					System.out.println("But if we assert that Diego is supervised by Jose, the data is again valid");
-					insert(aConn, Models2.newModel(statement(Jose, is_supervisor_of, Diego)));
+					insert(aConn, statement(Jose, is_supervisor_of, Diego));
 
 					printValidity(aValidator);
 
@@ -547,7 +546,7 @@ public class ICVDocsExample {
 
 					System.out.println("This is invalid because Esteban is an Employee but does not work on, supervise, or manage anything he's required to...");
 					aBuilder.instance(Employee, Esteban);
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
@@ -557,12 +556,12 @@ public class ICVDocsExample {
 						.addProperty(supervises, Lucinda);
 					aBuilder.instance(Employee, Lucinda);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
 
 					System.out.println("So now if we state that Lucinda works on a project, we're ok...");
-					insert(aConn, Models2.newModel(statement(Lucinda, works_on, MyProject), statement(MyProject, RDF.TYPE, Project)));
+					insert(aConn, ImmutableSet.of(statement(Lucinda, works_on, MyProject), statement(MyProject, RDF.TYPE, Project)));
 
 					printValidity(aValidator);
 
@@ -578,7 +577,7 @@ public class ICVDocsExample {
 					printValidity(aValidator);
 
 					System.out.println("Additionally, we can state that Esteban works on a project and that is ok too...");
-					insert(aConn, Models2.newModel(statement(Esteban, works_on, Project),
+					insert(aConn, ImmutableSet.of(statement(Esteban, works_on, Project),
 					                               statement(MyProject, RDF.TYPE, Project)));
 
 					printValidity(aValidator);
@@ -601,12 +600,12 @@ public class ICVDocsExample {
 					aBuilder
 						.instance(US_Government_Agency, NASA);
 
-					insert(aConn, aBuilder.model());
+					insert(aConn, aBuilder.graph());
 					printValidity(aValidator);
 
 					System.out.println("But now this will be invalid because we've stated that Andy works on the project, but we've not stated that he's a US citizen...");
 
-					insert(aConn, Models2.newModel(statement(Andy, RDF.TYPE, Employee),
+					insert(aConn, ImmutableSet.of(statement(Andy, RDF.TYPE, Employee),
 					                               statement(Andy, works_on, MyProject)));
 
 					printValidity(aValidator);
@@ -614,19 +613,19 @@ public class ICVDocsExample {
 
 					System.out.println("We can fix that by stating that he's a citizen...");
 
-					insert(aConn, Models2.newModel(statement(Andy, nationality, literal("US"))));
+					insert(aConn, statement(Andy, nationality, literal("US")));
 
 					printValidity(aValidator);
 
 					System.out.println("This is invalid; even though we've stated Heidi's nationality correctly, she's a Supervisor rather than an Employee...");
-					insert(aConn, Models2.newModel(statement(Heidi, RDF.TYPE, Supervisor),
+					insert(aConn, ImmutableSet.of(statement(Heidi, RDF.TYPE, Supervisor),
 					                               statement(Heidi, works_on, MyProject),
 					                               statement(Heidi, nationality, literal("US"))));
 
 					printValidity(aValidator);
 
 					System.out.println("Now if we state the subclass relationship between Employee and Supervisor, we're valid again...");
-					insert(aConn, Models2.newModel(statement(Supervisor, RDFS.SUBCLASSOF, Employee)));
+					insert(aConn, statement(Supervisor, RDFS.SUBCLASSOF, Employee));
 					printValidity(aValidator);
 				}
 				finally {
@@ -679,13 +678,25 @@ public class ICVDocsExample {
 		System.out.println();
 	}
 
-	private static void insert(final Connection theConn, final Model theGraph) throws StardogException {
+	private static void insert(final Connection theConn, final Statement theStmt) throws StardogException {
+		theConn.begin();
+		theConn.add().statement(theStmt);
+		theConn.commit();
+	}
+
+	private static void insert(final Connection theConn, final Collection<Statement> theGraph) throws StardogException {
 		theConn.begin();
 		theConn.add().graph(theGraph);
 		theConn.commit();
 	}
 
-	private static void remove(final Connection theConn, final Model theGraph) throws StardogException {
+	private static void remove(final Connection theConn, final Statement theStmt) throws StardogException {
+		theConn.begin();
+		theConn.remove().statement(theStmt);
+		theConn.commit();
+	}
+
+	private static void remove(final Connection theConn, final Collection<Statement> theGraph) throws StardogException {
 		theConn.begin();
 		theConn.remove().graph(theGraph);
 		theConn.commit();

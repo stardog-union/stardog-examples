@@ -15,12 +15,7 @@
 
 package com.complexible.stardog.examples.api;
 
-import java.util.List;
-import java.util.Set;
-
 import com.complexible.common.base.CloseableIterator;
-import com.complexible.common.rdf.model.Values;
-import com.complexible.common.rdf.rio.RDFWriters;
 import com.complexible.stardog.Contexts;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
@@ -38,18 +33,23 @@ import com.complexible.stardog.db.DatabaseOptions;
 import com.complexible.stardog.versioning.VersioningOptions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Namespace;
-import org.openrdf.model.Statement;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandlerException;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
+import com.stardog.stark.io.RDFFormats;
+import com.stardog.stark.io.RDFHandlerException;
+import com.stardog.stark.io.RDFWriters;
+import com.stardog.stark.vocabs.DC;
+import com.stardog.stark.vocabs.FOAF;
+import com.stardog.stark.vocabs.RDF;
 
-import static com.complexible.common.rdf.model.Values.iri;
-import static com.complexible.common.rdf.model.Values.literal;
-import static com.complexible.common.rdf.model.Values.namespace;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static com.stardog.stark.Values.iri;
+import static com.stardog.stark.Values.literal;
+import static com.stardog.stark.Values.namespace;
 
 /**
  * <p>Simple example for versioning</p>
@@ -102,12 +102,12 @@ public class VersioningExample {
 					// Now, let's make some changes to the databases
 					aConn.begin();
 					aConn.add()
-					     .statement(Alice, DC.PUBLISHER, literal("Alice"))
-					     .statement(Bob, DC.PUBLISHER, literal("Bob"))
-					     .statement(Alice, RDF.TYPE, FOAF.PERSON, Alice)
-					     .statement(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice)
-					     .statement(Bob, RDF.TYPE, FOAF.PERSON, Bob)
-					     .statement(Bob, FOAF.MBOX, literal("mailto:bob@example.org"), Bob);
+					     .statement(Alice, DC.publisher, literal("Alice"))
+					     .statement(Bob, DC.publisher, literal("Bob"))
+					     .statement(Alice, RDF.TYPE, FOAF.Person, Alice)
+					     .statement(Alice, FOAF.mbox, literal("mailto:alice@example.org"), Alice)
+					     .statement(Bob, RDF.TYPE, FOAF.Person, Bob)
+					     .statement(Bob, FOAF.mbox, literal("mailto:bob@example.org"), Bob);
 
 					// And we'll commit our changes with a commit message
 					aConn.commit("Adding Alice and Bob");
@@ -116,24 +116,24 @@ public class VersioningExample {
 					// Let's change Alice's email
 					aConn.begin();
 					aConn.remove()
-					     .statements(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice);
+					     .statements(Alice, FOAF.mbox, literal("mailto:alice@example.org"), Alice);
 					aConn.add()
-					     .statement(Alice, FOAF.MBOX, literal("mailto:alice@another.example.org"), Alice);
+					     .statement(Alice, FOAF.mbox, literal("mailto:alice@another.example.org"), Alice);
 					aConn.commit("Changing Alice's email");
 
 					// Print the contents of the database and verify they are correct
-					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
+					RDFWriters.write(System.out, RDFFormats.TRIG, aConn.get().context(Contexts.ALL).statements().collect(Collectors.toList()), aConn.namespaces());
 
 					// We can still use the regular commit function from the `Connection` interface. This will also create a new
 					// version along with its metadata but it will not have a commit message
 					aConn.begin();
 					aConn.add()
-					     .statement(Charlie, DC.PUBLISHER, literal("Charlie"))
-					     .statement(Charlie, RDF.TYPE, FOAF.PERSON, Charlie)
-					     .statement(Charlie, FOAF.MBOX, literal("mailto:charlie@example.org"), Charlie);
+					     .statement(Charlie, DC.publisher, literal("Charlie"))
+					     .statement(Charlie, RDF.TYPE, FOAF.Person, Charlie)
+					     .statement(Charlie, FOAF.mbox, literal("mailto:charlie@example.org"), Charlie);
 					aConn.commit();
 
-					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
+					RDFWriters.write(System.out, RDFFormats.TRIG, aConn.get().context(Contexts.ALL).statements().collect(Collectors.toList()), aConn.namespaces());
 
 					// Lets try an example with the basic versioning API to list all versions
 					try (CloseableIterator<Version> resultIt = aConn.versions()
@@ -172,12 +172,9 @@ public class VersioningExample {
 					try {
 						// We'll write the diffs as SPARQL update queries
 						UpdateHandler aWriter = new UpdateSPARQLWriter(System.out);
-						aWriter.startRDF();
+						aWriter.start();
 
-						Iterable<Namespace> aNamespaces = aConn.namespaces();
-						for (Namespace aNamespace : aNamespaces) {
-							aWriter.handleNamespace(aNamespace.getPrefix(), aNamespace.getName());
-						}
+						aConn.namespaces().forEach(theNS -> aWriter.namespace(theNS.prefix(), theNS.iri()));
 
 						UpdateSequence aDiff;
 
@@ -210,7 +207,7 @@ public class VersioningExample {
 
 						Updates.handle(aDiff, aWriter);
 
-						aWriter.endRDF();
+						aWriter.end();
 					}
 					catch (RDFHandlerException e) {
 						throw new StardogException(e);
@@ -222,7 +219,7 @@ public class VersioningExample {
 					// so we can see that we're back to where we started.
 					aConn.revert(aHeadVersion.getRelativeVersion(-2), aHeadVersion, "Undo last two commits");
 
-					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
+					RDFWriters.write(System.out, RDFFormats.TRIG, aConn.get().context(Contexts.ALL).statements().collect(Collectors.toList()), aConn.namespaces());
 				}
 				finally {
 					if (dbms.list().contains(aDB)) {
@@ -244,7 +241,7 @@ public class VersioningExample {
 			List<Statement> aResult = Lists.newArrayList();
 			for (Statement aStmt : theOp.getStatements()) {
 				for (IRI aGraph : theOp.getNamedGraphs()) {
-					aResult.add(Values.statement(aStmt.getSubject(), aStmt.getPredicate(), aStmt.getObject(), aGraph));
+					aResult.add(Values.statement(aStmt.subject(), aStmt.predicate(), aStmt.object(), aGraph));
 				}
 			}
 			return aResult;

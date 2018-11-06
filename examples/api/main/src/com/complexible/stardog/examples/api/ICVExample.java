@@ -15,8 +15,6 @@
 
 package com.complexible.stardog.examples.api;
 
-import com.complexible.common.openrdf.model.Models2;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
@@ -28,13 +26,18 @@ import com.complexible.stardog.icv.ConstraintFactory;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Model;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import com.google.common.collect.ImmutableSet;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
+import com.stardog.stark.vocabs.RDF;
+import com.stardog.stark.vocabs.RDFS;
 
-import static com.complexible.common.openrdf.util.ExpressionFactory.some;
-import static com.complexible.common.openrdf.util.ExpressionFactory.subClassOf;
+import java.util.Set;
+
+import static com.stardog.stark.Axioms.some;
+import static com.stardog.stark.Axioms.subClassOf;
+import static com.stardog.stark.Values.statement;
 
 /**
  * <p></p>
@@ -79,16 +82,16 @@ public class ICVExample {
 					IRI e1 = Values.iri("urn:e1");
 					IRI m1 = Values.iri("urn:m1");
 
-					Model aGraph = Models2.newModel();
-
 					// Let's create a very simple piece of data, complete with a bit of schema information, to use
-					aGraph.add(Engine, RDFS.SUBCLASSOF, Product);
-					aGraph.add(e1, RDF.TYPE, Engine);
-					aGraph.add(e1, manufacturedBy, m1);
+					Set<Statement> aStatements = ImmutableSet.of(
+							statement(Engine, RDFS.SUBCLASSOF, Product),
+							statement(e1, RDF.TYPE, Engine),
+							statement(e1, manufacturedBy, m1)
+					);
 
 					// We'll insert that into the database
 					aConn.begin();
-					aConn.add().graph(aGraph);
+					aConn.add().graph(aStatements);
 					aConn.commit();
 
 					// Now let's define a constraint; we want to say that a product must be manufactured by a Manufacturer:

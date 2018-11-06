@@ -16,7 +16,6 @@
 package com.complexible.stardog.examples.api;
 
 import com.complexible.common.openrdf.util.Expression;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
@@ -25,10 +24,11 @@ import com.complexible.stardog.api.reasoning.ReasoningConnection;
 import com.complexible.stardog.reasoning.ExpressionWriter;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import com.stardog.stark.IRI;
+import com.stardog.stark.OWL;
+import com.stardog.stark.Values;
+import com.stardog.stark.vocabs.RDF;
+import com.stardog.stark.vocabs.RDFS;
 
 import static com.complexible.common.openrdf.util.ExpressionFactory.type;
 
@@ -120,10 +120,9 @@ public class ExplanationExample {
 					// [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html).  A `Proof`
 					// will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
 					// To get the explanation, we simply ask the `Connection` to provide us with the `Proof` for the given
-					// [Expression](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/Expression.html).
-					// An `Expression` is an OWL Axiom as a collection of RDF statements and are created using
-					// [ExpressionFactory](http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html)
-					Proof aExplanation = aReasoningConnection.explain(type(z, A)).proof();
+					// Statement
+
+					Proof aExplanation = aReasoningConnection.explain(Values.statement(z, RDF.TYPE, A)).proof();
 
 					// Now that we have the proof, we can print it out and we will see that the subClassOf axiom is
 					// responsible for the inference.
@@ -132,7 +131,7 @@ public class ExplanationExample {
 
 					// Another statement the reasoner will infer is `(x, RDF.TYPE, A)`.  But to infer this, it needs both of
 					// the axioms in the TBox, so the `Proof` to explain this is a bit more complicated.
-					aExplanation = aReasoningConnection.explain(type(x, A)).proof();
+					aExplanation = aReasoningConnection.explain(Values.statement(x, RDF.TYPE, A)).proof();
 
 					System.out.println("Explain inference: ");
 					System.out.println(ProofWriter.toString(aExplanation));
