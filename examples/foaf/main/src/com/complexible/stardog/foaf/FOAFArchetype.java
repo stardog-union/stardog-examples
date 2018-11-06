@@ -15,10 +15,9 @@
 
 package com.complexible.stardog.foaf;
 
-import org.openrdf.model.vocabulary.FOAF;
-
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.icv.ConstrainedDatabaseArchetypeBase;
+import com.stardog.stark.Values;
+import com.stardog.stark.vocabs.FOAF;
 
 /**
  * User-defined database archetype example for FOAF. This example shows an archetype with constraints but we can

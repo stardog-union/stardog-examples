@@ -18,15 +18,14 @@ package com.complexible.stardog.examples.docs;
 import java.io.BufferedReader;
 import java.io.Reader;
 
-import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.rdf.StatementSource;
 import com.complexible.common.rdf.impl.MemoryStatementSource;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.docs.extraction.tika.TextProvidingRDFExtractor;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Model;
-import org.openrdf.model.Statement;
+import com.google.common.collect.ImmutableSet;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
 
 /**
  * A Stardog RDF extractor that will process the document to compute
@@ -41,7 +40,7 @@ import org.openrdf.model.Statement;
 public class WordCountExtractor extends TextProvidingRDFExtractor {
 
 	/**
-	 * Compute the word count, create an RDF triple linking the word count to the document, return it as a {@link Model}.
+	 * Compute the word count, create an RDF triple linking the word count to the document, return it as a graph.
 	 */
 	@Override
 	protected StatementSource extractFromText(final Connection theConnection, final IRI theDocIri, final Reader theText) throws Exception {
@@ -55,7 +54,7 @@ public class WordCountExtractor extends TextProvidingRDFExtractor {
 
 		Statement aWordCountStatement = Values.statement(theDocIri, Values.iri("tag:stardog:example:wordcount"), Values.literal(words));
 
-		return MemoryStatementSource.of(Models2.newModel(aWordCountStatement));
+		return MemoryStatementSource.of(ImmutableSet.of(aWordCountStatement));
 	}
 
 }

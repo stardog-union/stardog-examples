@@ -16,10 +16,7 @@
 package com.complexible.stardog.examples.connectable.listener;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +46,7 @@ import com.complexible.tx.api.logging.recovery.RecoveryContext;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import org.openrdf.rio.RDFFormat;
+import com.stardog.stark.io.RDFFormats;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -230,7 +227,7 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 			// NOTE: it is possible statements are associated with a named graph so it might
 			// be necessary to use a named graph aware RDF format here
 			try {
-				StatementSources.write(aStatements, RDFFormat.NQUADS, System.out);
+				StatementSources.write(aStatements, RDFFormats.NQUADS, System.out);
 			}
 			catch (IOException e) {
 				LOGGER.warn("Error while writing transaction data", e);

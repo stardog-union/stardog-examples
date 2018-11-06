@@ -16,15 +16,15 @@
 package com.complexible.stardog.examples.functions;
 
 import com.complexible.common.base.Strings2;
-import com.complexible.common.rdf.model.Namespaces;
-import com.complexible.common.rdf.model.StardogValueFactory;
+import com.complexible.stardog.plan.filter.expr.ValueOrError;
 import com.complexible.stardog.plan.filter.functions.AbstractFunction;
-import com.complexible.stardog.plan.filter.ExpressionEvaluationException;
 import com.complexible.stardog.plan.filter.ExpressionVisitor;
 import com.complexible.stardog.plan.filter.functions.string.StringFunction;
-import org.openrdf.model.Value;
+import com.stardog.stark.Datatype;
+import com.stardog.stark.Namespaces;
+import com.stardog.stark.Value;
 
-import static com.complexible.common.rdf.model.Values.literal;
+import static com.stardog.stark.Values.literal;
 
 /**
  * <p>Example for creating your own SPARQL filter function</p>
@@ -82,13 +82,13 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Value internalEvaluate(final Value... theArgs) throws ExpressionEvaluationException {
+	protected ValueOrError internalEvaluate(final Value... theArgs) {
 
 		// Verify that the single input argument is a plain literal, or an xsd:string.
 		assertStringLiteral(theArgs[0]);
 
 		// We know that we have a string, so let's just title case it and return it.
-		return literal(Strings2.toTitleCase(theArgs[0].stringValue()), StardogValueFactory.Datatype.STRING);
+		return ValueOrError.General.of(literal(Strings2.toTitleCase(theArgs[0].toString()), Datatype.STRING));
 	}
 
 
