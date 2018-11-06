@@ -18,26 +18,25 @@ package com.complexible.stardog.examples.describe;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.Set;
 
 import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.protocols.server.Server;
 import com.complexible.common.protocols.server.ServerOptions;
-import com.complexible.common.rdf.model.StardogValueFactory;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.google.common.base.Charsets;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
+import com.stardog.stark.io.RDFFormats;
+import com.stardog.stark.query.GraphQueryResult;
+import com.stardog.stark.vocabs.RDF;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.model.Model;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.rio.RDFFormat;
 
 import static org.junit.Assert.assertTrue;
 
@@ -105,15 +104,13 @@ public class TestExampleDescribe {
 		                                               .connect()) {
 
 			aConn.begin();
-			aConn.add().io().format(RDFFormat.TURTLE).stream(new ByteArrayInputStream(DATA.getBytes(Charsets.UTF_8)));
+			aConn.add().io().format(RDFFormats.TURTLE).stream(new ByteArrayInputStream(DATA.getBytes(Charsets.UTF_8)));
 			aConn.commit();
 
 			try (GraphQueryResult aQueryResult = aConn.graph(aQuery).execute()) {
-				ValueFactory aFactory = StardogValueFactory.instance();
-				Model aResult = Models2.newModel(aQueryResult);
-
-				assertTrue(aResult.contains(aFactory.createStatement(Values.iri("urn:Bob"), RDF.TYPE, Values.iri("urn:Person"))));
-				assertTrue(aResult.contains(aFactory.createStatement(Values.iri("urn:Alice"), Values.iri("urn:knows"), Values.iri("urn:Bob"))));
+				Set<Statement> aResult = aQueryResult.toGraph();
+				assertTrue(aResult.contains(Values.statement(Values.iri("urn:Bob"), RDF.TYPE, Values.iri("urn:Person"))));
+				assertTrue(aResult.contains(Values.statement(Values.iri("urn:Alice"), Values.iri("urn:knows"), Values.iri("urn:Bob"))));
 			}
 		}
 	}

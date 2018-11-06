@@ -24,11 +24,12 @@ import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.docs.StardocsConnection;
 import com.complexible.stardog.docs.StardocsOptions;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Values;
+import com.stardog.stark.query.SelectQueryResult;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.model.IRI;
-import org.openrdf.query.TupleQueryResult;
 
 import static org.junit.Assert.assertEquals;
 
@@ -74,8 +75,8 @@ public class WordCountExtractorTest {
 			IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
 
 			String aQuery = "select ?wc { graph ?doc { ?doc <tag:stardog:example:wordcount> ?wc } }";
-			TupleQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
-			String wordCount = aRes.next().getBinding("wc").getValue().stringValue();
+			SelectQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
+			String wordCount = aRes.next().value("wc").orElse(Values.bnode()).toString();
 			assertEquals("313", wordCount);
 		}
 	}
