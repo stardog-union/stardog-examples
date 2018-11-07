@@ -167,7 +167,7 @@ public class ConnectionAPIExample {
 					try(SelectQueryResult aResult = aQuery.execute()) {
 						System.out.println("\nNow a particular slice...");
 
-						QueryResultWriters.write(aResult, System.out, QueryResultFormats.TEXT);
+						QueryResultWriters.write(aResult, System.out, TextTableQueryResultWriter.FORMAT);
 					}
 
 					// The previous query was just getting the statements in which the value of `aURI` is the subject.  We can get the
