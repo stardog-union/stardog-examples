@@ -89,8 +89,10 @@ public class SesameExample {
 						TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");
 
 						try (TupleQueryResult aResults = aQuery.evaluate()) {
-							// Print the results in CSV format
-							QueryResultIO.writeTuple(aResults, TupleQueryResultFormat.CSV, System.out);
+							// Print the results to the console
+							while (aResults.hasNext()) {
+								System.out.println(aResults.next());
+							}
 						}
 					}
 				}
