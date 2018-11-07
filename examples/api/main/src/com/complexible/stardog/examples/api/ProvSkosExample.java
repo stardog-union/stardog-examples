@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import com.complexible.stardog.prov.ProvVocabulary;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Resource;
 import com.stardog.stark.Values;
-import com.stardog.stark.io.RDFWriters;
 import com.stardog.stark.query.io.QueryResultFormats;
 import com.stardog.stark.query.io.QueryResultWriters;
 import com.stardog.stark.vocabs.DC;
@@ -43,7 +42,7 @@ import static com.stardog.stark.Values.iri;
  * <p>Example code illustrating use of the built-in ontologies in Stardog, specifically for PROV and SKOS ontologies.</p>
  *
  * @author Evren Sirin
- * @version 4.0
+ * @version 6.0
  * @since 2.0
  */
 public class ProvSkosExample {

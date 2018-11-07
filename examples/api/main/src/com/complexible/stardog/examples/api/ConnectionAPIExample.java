@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import com.stardog.stark.vocabs.RDF;
  * <p>Example code illustrating use of the Stardog Connection API</p>
  *
  * @author Michael Grove
- * @version 5.0
+ * @version 6.0
  * @since 0.4
  */
 public class ConnectionAPIExample {

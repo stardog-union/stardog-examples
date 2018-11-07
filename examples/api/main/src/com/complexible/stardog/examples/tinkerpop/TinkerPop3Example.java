@@ -22,7 +22,7 @@ import org.apache.tinkerpop.gremlin.structure.VertexProperty;
  *
  * @author  Edgar Rodriguez-Diaz
  * @since   4.0
- * @version 4.0
+ * @version 6.0
  */
 public final class TinkerPop3Example {
 
