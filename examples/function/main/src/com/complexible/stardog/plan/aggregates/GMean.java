@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ import static com.stardog.stark.Values.literal;
  *
  * @author  Michael Grove
  * @since   3.0
- * @version 5.0
+ * @version 6.0
  */
 public final class GMean extends AbstractAggregate {
 	private Root mRoot;

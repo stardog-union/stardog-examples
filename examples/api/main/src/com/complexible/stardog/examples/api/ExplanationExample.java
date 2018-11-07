@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import static com.complexible.common.openrdf.util.ExpressionFactory.type;
  * <p>Simple example to show how to use Stardog's explanation facilities.</p>
  *
  * @author Michael Grove
- * @version 4.0
+ * @version 6.0
  * @see Expression
  * @see com.complexible.common.openrdf.util.ExpressionFactory
  * @since 0.7.3

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
-import java.util.Optional;
 
 import com.complexible.common.base.CloseableIterator;
 import com.complexible.stardog.Stardog;
@@ -31,7 +30,6 @@ import com.complexible.stardog.api.search.SearchResults;
 import com.complexible.stardog.api.search.Searcher;
 import com.complexible.stardog.search.SearchOptions;
 import com.stardog.stark.Literal;
-import com.stardog.stark.Value;
 import com.stardog.stark.io.RDFFormats;
 import com.stardog.stark.query.BindingSet;
 import com.stardog.stark.query.SelectQueryResult;
@@ -40,7 +38,7 @@ import com.stardog.stark.query.SelectQueryResult;
  * <p>Simple example </p>
  *
  * @author Michael Grove
- * @version 4.0
+ * @version 6.0
  * @since 0.6.5
  */
 public class WaldoAPIExample {
