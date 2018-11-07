@@ -1,0 +1,6 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:Person-{person} :holds :Holding-P{person}-{company} .
+:Holding-P{person}-{company} a :Holding ;
+  :company :Company-{company} ;
+  :share "{share}"^^xsd:integer .

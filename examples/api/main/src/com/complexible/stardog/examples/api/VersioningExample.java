@@ -12,33 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
-
-import static com.complexible.common.rdf.model.Values.literal;
-import static com.complexible.common.rdf.model.Values.namespace;
-import static com.complexible.common.rdf.model.Values.iri;
-
-import com.complexible.common.base.CloseableIterator;
-import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.api.update.UpdateHandler;
-import com.complexible.stardog.api.update.UpdateOperation;
-import com.complexible.stardog.api.update.UpdateSequence;
-import com.complexible.stardog.api.update.Updates;
-import com.complexible.stardog.api.update.io.UpdateSPARQLWriter;
-import com.google.common.collect.Sets;
 
 import java.util.List;
 import java.util.Set;
 
-import org.openrdf.model.IRI;
-import org.openrdf.model.Namespace;
-import org.openrdf.model.Statement;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.rio.RDFFormat;
-
-import com.complexible.common.protocols.server.Server;
+import com.complexible.common.base.CloseableIterator;
+import com.complexible.common.rdf.model.Values;
 import com.complexible.common.rdf.rio.RDFWriters;
 import com.complexible.stardog.Contexts;
 import com.complexible.stardog.Stardog;
@@ -46,43 +27,59 @@ import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.complexible.stardog.api.update.UpdateHandler;
+import com.complexible.stardog.api.update.UpdateOperation;
+import com.complexible.stardog.api.update.UpdateSequence;
+import com.complexible.stardog.api.update.Updates;
+import com.complexible.stardog.api.update.io.UpdateSPARQLWriter;
 import com.complexible.stardog.api.versioning.Version;
 import com.complexible.stardog.api.versioning.VersioningConnection;
 import com.complexible.stardog.db.DatabaseOptions;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
 import com.complexible.stardog.versioning.VersioningOptions;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Namespace;
+import org.openrdf.model.Statement;
+import org.openrdf.model.vocabulary.DC;
+import org.openrdf.model.vocabulary.FOAF;
+import org.openrdf.model.vocabulary.RDF;
+import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFHandlerException;
+
+import static com.complexible.common.rdf.model.Values.iri;
+import static com.complexible.common.rdf.model.Values.literal;
+import static com.complexible.common.rdf.model.Values.namespace;
 
 /**
  * <p>Simple example for versioning</p>
  *
- * @author  Evren Sirin
- * @since   2.2
+ * @author Evren Sirin
  * @version 4.0
+ * @since 2.2
  */
 public class VersioningExample {
+
 	private static final String NS = "http://example.org/test/";
+
 	private static final IRI Alice = iri(NS, "Alice");
+
 	private static final IRI Bob = iri(NS, "Bob");
+
 	private static final IRI Charlie = iri(NS, "Charlie");
 
 	// Versioning of RDF graphs
 	// ---
-	// New in Stardog 2.2 is the ability to [version RDF graphs](http://docs.stardog.com/#_versioning).  This
+	// Stardog supports [version RDF graphs](http://docs.stardog.com/#_versioning).  This
 	// gives you VCS-like commands and concepts, such as tags and revert, for your RDF graphs.
 	public static void main(String[] args) throws Exception {
-		// As always, we need to create and start a Stardog server for our example
-		Server aServer = Stardog
-			                 .buildServer()
-			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-			                 .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			String aDB = "versionedDB";
 
 			// Create an `AdminConnection` to Stardog to set up the database for the example
-
 			// If the database exists, drop and it create it fresh
 			ConnectionConfiguration aConfig;
 			try (AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
@@ -98,136 +95,144 @@ public class VersioningExample {
 				                                                                  namespace("foaf", FOAF.NAMESPACE),
 				                                                                  namespace("dc", DC.NAMESPACE)))
 				              .create();
-			}
+				// Obtain a `Connection` to the database and request a view of the connection as a
+				// [VersioningConnection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html)
+
+				try (VersioningConnection aConn = aConfig.connect().as(VersioningConnection.class)) {
+					// Now, let's make some changes to the databases
+					aConn.begin();
+					aConn.add()
+					     .statement(Alice, DC.PUBLISHER, literal("Alice"))
+					     .statement(Bob, DC.PUBLISHER, literal("Bob"))
+					     .statement(Alice, RDF.TYPE, FOAF.PERSON, Alice)
+					     .statement(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice)
+					     .statement(Bob, RDF.TYPE, FOAF.PERSON, Bob)
+					     .statement(Bob, FOAF.MBOX, literal("mailto:bob@example.org"), Bob);
+
+					// And we'll commit our changes with a commit message
+					aConn.commit("Adding Alice and Bob");
 
 
-			// Obtain a `Connection` to the database and request a view of the connection as a
-			// [VersioningConnection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/versioning/VersioningConnection.html)
+					// Let's change Alice's email
+					aConn.begin();
+					aConn.remove()
+					     .statements(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice);
+					aConn.add()
+					     .statement(Alice, FOAF.MBOX, literal("mailto:alice@another.example.org"), Alice);
+					aConn.commit("Changing Alice's email");
 
-			try (VersioningConnection aConn = aConfig.connect().as(VersioningConnection.class)) {
-				// Now, let's make some changes to the databases
-				aConn.begin();
-				aConn.add()
-				     .statement(Alice, DC.PUBLISHER, literal("Alice"))
-				     .statement(Bob, DC.PUBLISHER, literal("Bob"))
-				     .statement(Alice, RDF.TYPE, FOAF.PERSON, Alice)
-				     .statement(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice)
-				     .statement(Bob, RDF.TYPE, FOAF.PERSON, Bob)
-				     .statement(Bob, FOAF.MBOX, literal("mailto:bob@example.org"), Bob);
+					// Print the contents of the database and verify they are correct
+					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 
-				// And we'll commit our changes with a commit message
-				aConn.commit("Adding Alice and Bob");
+					// We can still use the regular commit function from the `Connection` interface. This will also create a new
+					// version along with its metadata but it will not have a commit message
+					aConn.begin();
+					aConn.add()
+					     .statement(Charlie, DC.PUBLISHER, literal("Charlie"))
+					     .statement(Charlie, RDF.TYPE, FOAF.PERSON, Charlie)
+					     .statement(Charlie, FOAF.MBOX, literal("mailto:charlie@example.org"), Charlie);
+					aConn.commit();
 
+					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 
-				// Let's change Alice's email
-				aConn.begin();
-				aConn.remove()
-				     .statements(Alice, FOAF.MBOX, literal("mailto:alice@example.org"), Alice);
-				aConn.add()
-				     .statement(Alice, FOAF.MBOX, literal("mailto:alice@another.example.org"), Alice);
-				aConn.commit("Changing Alice's email");
+					// Lets try an example with the basic versioning API to list all versions
+					try (CloseableIterator<Version> resultIt = aConn.versions()
+					                                                .find()
+					                                                .oldestFirst()
+					                                                .iterator()) {
+						System.out.println("\nVersions: ");
+						while (resultIt.hasNext()) {
+							Version aVersion = resultIt.next();
 
-				// Print the contents of the database and verify they are correct
-				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
-
-				// We can still use the regular commit function from the `Connection` interface. This will also create a new
-				// version along with its metadata but it will not have a commit message
-				aConn.begin();
-				aConn.add()
-				     .statement(Charlie, DC.PUBLISHER, literal("Charlie"))
-				     .statement(Charlie, RDF.TYPE, FOAF.PERSON, Charlie)
-				     .statement(Charlie, FOAF.MBOX, literal("mailto:charlie@example.org"), Charlie);
-				aConn.commit();
-
-				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
-
-				// Lets try an example with the basic versioning API to list all versions
-				try (CloseableIterator<Version> resultIt = aConn.versions()
-				                                                .find()
-				                                                .oldestFirst()
-				                                                .iterator()) {
-					System.out.println("\nVersions: ");
-					while (resultIt.hasNext()) {
-						Version aVersion = resultIt.next();
-
-						System.out.println(aVersion);
-					}
-				}
-
-				// We're at a good point with our data, we think it's a 1.0 version, so let's tag it so we could
-				// come back to this state if need be
-				String aTag = "Release 1.0";
-
-				// Get the head (current) revision, that's what we're going to tag.
-				Version aHeadVersion = aConn.versions().getHead();
-				aConn.tags().create(aHeadVersion, aTag);
-
-				// Now you can see the effects of having created the tag
-				System.out.println(aHeadVersion.getTags());
-
-				System.out.println("Tagged " + aHeadVersion.getURI() + " " + aTag);
-
-				// Let's show a quick example of how to print out the diffs between two versions as SPARQL Update queries
-				// These are the versions we want to calculate the diff between
-				Version aTo = aHeadVersion;
-				Version aFrom = aHeadVersion.getRelativeVersion(-2);
-
-				System.out.println();
-				System.out.println("Print the diffs between HEAD-2 and HEAD:");
-
-				try {
-					// We'll write the diffs as SPARQL update queries
-					UpdateHandler aWriter = new UpdateSPARQLWriter(System.out);
-					aWriter.startRDF();
-
-					Iterable<Namespace> aNamespaces = aConn.namespaces();
-					for (Namespace aNamespace : aNamespaces) {
-						aWriter.handleNamespace(aNamespace.getPrefix(), aNamespace.getName());
-					}
-
-					UpdateSequence aDiff;
-
-					final Set<Statement> aAdditions = Sets.newHashSet();
-					final Set<Statement> aRemovals = Sets.newHashSet();
-
-					Version aVersion = aFrom;
-					// Iterate over the versions, grabbing the diff, and coalescing the changes
-					while (aVersion != null) {
-						aDiff = aVersion.getDiff();
-						for (UpdateOperation aOp : aDiff) {
-							Set<Statement> aAddTarget = aOp.getType() == UpdateOperation.Type.ADD ? aAdditions : aRemovals;
-							Set<Statement> aRemoveTarget = aOp.getType() == UpdateOperation.Type.REMOVE ? aAdditions : aRemovals;
-							for (Statement aStmt : toStatements(aOp)) {
-								aAddTarget.add(aStmt);
-								aRemoveTarget.remove(aStmt);
-							}
+							System.out.println(aVersion);
 						}
-						aVersion = aVersion.equals(aTo) ? null : aVersion.getNext();
 					}
 
-					// now that we have all the changes, create the diff and write it out
-					aDiff = Updates.newSequence(Updates.add(aAdditions), Updates.remove(aRemovals));
+					// We're at a good point with our data, we think it's a 1.0 version, so let's tag it so we could
+					// come back to this state if need be
+					String aTag = "Release 1.0";
 
-					Updates.handle(aDiff, aWriter);
+					// Get the head (current) revision, that's what we're going to tag.
+					Version aHeadVersion = aConn.versions().getHead();
+					aConn.tags().create(aHeadVersion, aTag);
 
-					aWriter.endRDF();
+					// Now you can see the effects of having created the tag
+					System.out.println(aHeadVersion.getTags());
+
+					System.out.println("Tagged " + aHeadVersion.getURI() + " " + aTag);
+
+					// Let's show a quick example of how to print out the diffs between two versions as SPARQL Update queries
+					// These are the versions we want to calculate the diff between
+					Version aTo = aHeadVersion;
+					Version aFrom = aHeadVersion.getRelativeVersion(-2);
+
+					System.out.println();
+					System.out.println("Print the diffs between HEAD-2 and HEAD:");
+
+					try {
+						// We'll write the diffs as SPARQL update queries
+						UpdateHandler aWriter = new UpdateSPARQLWriter(System.out);
+						aWriter.startRDF();
+
+						Iterable<Namespace> aNamespaces = aConn.namespaces();
+						for (Namespace aNamespace : aNamespaces) {
+							aWriter.handleNamespace(aNamespace.getPrefix(), aNamespace.getName());
+						}
+
+						UpdateSequence aDiff;
+
+						final Set<Statement> aAdditions = Sets.newHashSet();
+						final Set<Statement> aRemovals = Sets.newHashSet();
+
+						Version aVersion = aFrom;
+						// Iterate over the versions, grabbing the diff, and coalescing the changes
+						while (aVersion != null) {
+							aDiff = aVersion.getDiff();
+							for (UpdateOperation aOp : aDiff) {
+								Set<Statement> aAddTarget = aOp.getType() == UpdateOperation.Type.ADD
+								                            ? aAdditions
+								                            : aRemovals;
+								Set<Statement> aRemoveTarget = aOp.getType() == UpdateOperation.Type.REMOVE
+								                               ? aAdditions
+								                               : aRemovals;
+								for (Statement aStmt : toStatements(aOp)) {
+									aAddTarget.add(aStmt);
+									aRemoveTarget.remove(aStmt);
+								}
+							}
+							aVersion = aVersion.equals(aTo)
+							           ? null
+							           : aVersion.getNext();
+						}
+
+						// now that we have all the changes, create the diff and write it out
+						aDiff = Updates.newSequence(Updates.add(aAdditions), Updates.remove(aRemovals));
+
+						Updates.handle(aDiff, aWriter);
+
+						aWriter.endRDF();
+					}
+					catch (RDFHandlerException e) {
+						throw new StardogException(e);
+					}
+
+					System.out.println();
+
+					// Finally, we can revert.  Let's undo our last to commits and print the current data in the database
+					// so we can see that we're back to where we started.
+					aConn.revert(aHeadVersion.getRelativeVersion(-2), aHeadVersion, "Undo last two commits");
+
+					RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 				}
-				catch (RDFHandlerException e) {
-					throw new StardogException(e);
+				finally {
+					if (dbms.list().contains(aDB)) {
+						dbms.drop(aDB);
+					}
 				}
-
-				System.out.println();
-
-				// Finally, we can revert.  Let's undo our last to commits and print the current data in the database
-				// so we can see that we're back to where we started.
-				aConn.revert(aHeadVersion.getRelativeVersion(-2), aHeadVersion, "Undo last two commits");
-
-				RDFWriters.write(aConn.get().context(Contexts.ALL).statements(), RDFFormat.TRIG, aConn.namespaces(), System.out);
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 

@@ -14,13 +14,9 @@
  */
 package com.complexible.stardog.plan.aggregates;
 
-import java.io.IOException;
 import java.util.List;
 
-import com.complexible.common.io.ByteReader;
-import com.complexible.common.io.ByteWriter;
 import com.complexible.common.rdf.model.Namespaces;
-import com.complexible.stardog.index.memory.ValueSerializer;
 import com.complexible.stardog.plan.filter.Expression;
 import com.complexible.stardog.plan.filter.ExpressionEvaluationException;
 import com.complexible.stardog.plan.filter.functions.numeric.Multiply;
@@ -36,7 +32,7 @@ import static com.complexible.common.rdf.model.Values.literal;
  *
  * @author  Michael Grove
  * @since   3.0
- * @version 3.0
+ * @version 5.0
  */
 public final class GMean extends AbstractAggregate {
 	private Root mRoot;
@@ -54,23 +50,12 @@ public final class GMean extends AbstractAggregate {
 		mProduct = new Multiply();
 	}
 
-	protected GMean(final GMean theAgg) {
+	GMean(final GMean theAgg) {
 		super(theAgg);
 
 		mCount = new Count();
 		mRoot = new Root();
 		mProduct = new Multiply();
-	}
-
-	// for deserialization purposes only
-	private GMean(final boolean theDistinct, final List<Expression> theArgs) {
-		super(theDistinct, theArgs, "SAMPLE");
-
-		mRoot = new Root();
-		mProduct = new Multiply();
-
-		mRoot.initialize();
-		mProduct.initialize();
 	}
 
 	/**
@@ -111,16 +96,13 @@ public final class GMean extends AbstractAggregate {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	protected void aggregate(final Value theValue, final long theMultiplicity) throws ExpressionEvaluationException {
+	protected void aggregate(final long theMultiplicity, final Value theValue, final Value... theOtherValues) throws ExpressionEvaluationException {
 		if (!(theValue instanceof Literal)) {
 			throw new ExpressionEvaluationException("Invalid argument to " + getName() + " argument MUST be a literal value, was: " + theValue);
 		}
 
-		mCount.aggregate(theValue, theMultiplicity);
+		mCount.aggregate(theMultiplicity, theValue);
 
 		if (mCurr == null) {
 			mCurr = theValue;
@@ -140,49 +122,5 @@ public final class GMean extends AbstractAggregate {
 		return new GMean(this);
 	}
 
-	@Override
-	public AggregateSerializer getSerializer() {
-		return new AbstractAggregateSerializer() {
-
-			private final ValueSerializer mValueSerializer = new ValueSerializer();
-
-			@Override
-			public int sizeOf(final Aggregate theAgg) {
-				GMean aAgg = (GMean) theAgg;
-
-				return baseSize(aAgg) + (aAgg.mFailed ? 0 : (aAgg.mCount.getSerializer().sizeOf(aAgg.mCount) + valueSize(aAgg.mCurr, mValueSerializer)));
-			}
-
-			@Override
-			public Aggregate read(final ByteReader theReader) throws IOException {
-				Aggregate aAgg = super.read(theReader, theDistinct -> new GMean(theDistinct, getArgs()));
-
-				if (aAgg instanceof GMean) {
-					((GMean) aAgg).mCount = (Count) mCount.getSerializer().read(theReader);
-					((GMean) aAgg).mCurr = readValue(theReader, mValueSerializer);
-				}
-
-				return aAgg;
-			}
-
-			@Override
-			public void write(final Aggregate theObj, final ByteWriter theWriter) throws IOException {
-				GMean aAgg = (GMean) theObj;
-
-				super.write(theObj, theWriter);
-
-				if (!aAgg.mFailed) {
-					mCount.getSerializer().write(aAgg.mCount, theWriter);
-					writeValue(aAgg.mCurr, theWriter, mValueSerializer);
-				}
-			}
-
-			@Override
-			public boolean supportsNull() {
-				return false;
-			}
-
-		};
-	}
 }
 

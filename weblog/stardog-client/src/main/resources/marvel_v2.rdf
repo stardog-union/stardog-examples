@@ -1,0 +1,38 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:parentOf a owl:ObjectProperty ;
+	owl:inverseOf :childOf .
+:childOf a owl:ObjectProperty ;
+	owl:inverseOf :parentOf .
+
+:ironMan rdf:type foaf:Person ;
+	foaf:name "Anthony Edward Stark" ;
+	foaf:title "Iron Man" ;
+	foaf:givenname "Anthony" ;
+	foaf:family_name "Stark" ;
+	foaf:nick "Tony" ;
+	foaf:knows :blackWidow, :captainAmerica, :thor, :incredibleHulk .
+
+:spiderMan rdf:type foaf:Person ;
+	foaf:name "Peter Parker" ;
+	foaf:title "Spider-Man" ;
+	foaf:givenname "Peter" ;
+	foaf:family_name "Parker" ;
+	foaf:knows :ironMan .
+
+:antMan rdf:type foaf:Person ;
+	foaf:name "Scott Lang" ;
+	foaf:title "Ant-Man" ;
+	foaf:givenname "Scott" ;
+	foaf:family_name "Lang" ;
+	foaf:knows :captainAmerica .
+
+:maryParker rdf:type foaf:Person ;
+	foaf:name "Mary Parker" ;
+	foaf:title "Spider-Man's Mother" ;
+	foaf:givenname "Mary" ;
+	foaf:family_name "Parker" ;
+	:parentOf :spiderMan .
+

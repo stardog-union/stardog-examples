@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    Bean to make sure that the testDB is created. This is done so that the DataSourceFactoryBean doesn't
+    fail when attempting to work with a disk db that hasn't been created.
+    -->
+    <bean name="stardogAdmin" class="com.stardog.examples.StardogAdmin">
+        <property name="to" value="testDB"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="admin"/>
+        <property name="url" value="http://localhost:5820"/>
+    </bean>
+
+    <bean name="dataSource" class="com.complexible.stardog.ext.spring.DataSourceFactoryBean">
+        <property name="to" value="testDB"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="admin"/>
+        <property name="reasoningType" value="true" />
+        <property name="url" value="http://localhost:5820"/>
+    </bean>
+
+    <bean name="template" class="com.complexible.stardog.ext.spring.SnarlTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean name="importer" class="com.complexible.stardog.ext.spring.DataImporter">
+        <property name="snarlTemplate" ref="template"/>
+        <property name="format" value="N3"/>
+        <property name="inputFiles">
+            <list>
+                <value>classpath:foaf.rdf</value>
+                <value>classpath:marvel.rdf</value>
+                <value>classpath:marvel_v2.rdf</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

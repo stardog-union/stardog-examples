@@ -1,0 +1,1052 @@
+<html>
+
+<head>
+    <title>Stardog Demo</title>
+    <meta charset="utf-8"/>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.production.min.js"></script>
+    <script src="js/prop-types.js"></script>
+    <script src="js/babel.min.js"></script>
+    <script src="js/stardog.min.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/d3.v5.js"></script>
+    <script src="js/stardogd3.js"></script>
+
+    <script>
+        const standConn = new stardogjs.Connection({
+            username: 'admin',
+            password: 'admin',
+            endpoint: 'http://localhost:5820',
+            });
+
+        const graphQLConn = new stardogjs.Connection({
+                username: 'admin',
+                password: 'admin',
+                endpoint: 'http://localhost:5820',
+            },
+            {
+                createHeaders: ({headers}) => {
+                    headers.set('Content-Type', 'application/json');
+                    return headers;
+                }
+            }
+        );
+
+        window.onload = () => {
+
+            stardogjs.db.create(standConn, 'stardogDemo').then(({body}) => {
+
+                let ttl = '@prefix : <http://api.stardog.com/> .\n' +
+                    '@prefix owl: <http://www.w3.org/2002/07/owl#> .\n' +
+                    '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n' +
+                    '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+                    '@prefix stardog: <tag:stardog:api:> .\n' +
+                    '@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n' +
+                    '\n' +
+                    ':linkType a owl:ObjectProperty .\n' +
+                    '\n' +
+                    ':motherOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':fatherOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':friendOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':cousinOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':uncleOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':auntOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':sonOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':daughterOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':brotherOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':sisterOf rdfs:subPropertyOf :linkType .\n' +
+                    '\n' +
+                    ':husbandOf a owl:ObjectProperty ;\n' +
+                    '\trdfs:subPropertyOf :linkType ;\n' +
+                    '\towl:inverseOf :wifeOf .\n' +
+                    '\n' +
+                    ':wifeOf a owl:ObjectProperty ;\n' +
+                    '\trdfs:subPropertyOf :linkType ;\n' +
+                    '\towl:inverseOf :husbandOf .\n' +
+                    '\n' +
+                    ':isSisterOf a <tag:stardog:api:rule:SPARQLRule> ;\n' +
+                    '\t<tag:stardog:api:rule:content> """\n' +
+                    '\tIF {\n' +
+                    '  \t\t    ?r a :Person ;\n' +
+                    '\t\t\tstardog:gender \'female\' .  \n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :fatherOf ?r .\n' +
+                    '\t\t\t\t?f :fatherOf ?o .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t} \n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :motherOf ?r .\n' +
+                    '\t\t\t\t?f :motherOf ?o .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{\n' +
+                    '\t\t\t\t?o :sisterOf ?r .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\t\n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?o :brotherOf ?r .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\n' +
+                    '  \t\t}\n' +
+                    '\tTHEN {\n' +
+                    '            ?r :sisterOf ?o .\n' +
+                    '        } """ .\n' +
+                    '\n' +
+                    ':isBrotherOf a <tag:stardog:api:rule:SPARQLRule> ;\n' +
+                    '\t<tag:stardog:api:rule:content> """\n' +
+                    '\tIF {\n' +
+                    '  \t\t    ?r a :Person ;\n' +
+                    '\t\t\tstardog:gender \'male\' .  \n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :fatherOf ?r .\n' +
+                    '\t\t\t\t?f :fatherOf ?o .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t} \n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :motherOf ?r .\n' +
+                    '\t\t\t\t?f :motherOf ?o .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{\n' +
+                    '\t\t\t\t?o :sisterOf ?r .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\t\n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?o :brotherOf ?r .\n' +
+                    '\t\t\t\tfilter ( ?r != ?o )\n' +
+                    '\t\t\t}\n' +
+                    '  \t\t}\n' +
+                    '\tTHEN {\n' +
+                    '            ?r :brotherOf ?o .\n' +
+                    '        } """ .\t\t\n' +
+                    '\n' +
+                    ':isSonOf a <tag:stardog:api:rule:SPARQLRule> ;\n' +
+                    '\t<tag:stardog:api:rule:content> """\n' +
+                    '\tIF {\n' +
+                    '  \t\t    ?r a :Person ;\n' +
+                    '\t\t\tstardog:gender \'male\' .  \n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :fatherOf ?r .\n' +
+                    '\t\t\t} \n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :motherOf ?r .\n' +
+                    '\t\t\t}\n' +
+                    '  \t\t}\n' +
+                    '\tTHEN {\n' +
+                    '            ?r :sonOf ?f .\n' +
+                    '        } """ .\t\t\n' +
+                    '\n' +
+                    ':isDaughterOf a <tag:stardog:api:rule:SPARQLRule> ;\n' +
+                    '\t<tag:stardog:api:rule:content> """\n' +
+                    '\tIF {\n' +
+                    '  \t\t    ?r a :Person ;\n' +
+                    '\t\t\tstardog:gender \'female\' .  \n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :fatherOf ?r .\n' +
+                    '\t\t\t} \n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :motherOf ?r .\n' +
+                    '\t\t\t}\n' +
+                    '  \t\t}\n' +
+                    '\tTHEN {\n' +
+                    '            ?r :daughterOf ?f .\n' +
+                    '        } """ .\t\t\t\t\n' +
+                    '\n' +
+                    '\n' +
+                    '\n' +
+                    ':isCousinOf a <tag:stardog:api:rule:SPARQLRule> ;\n' +
+                    '\t<tag:stardog:api:rule:content> """\n' +
+                    '\tIF {\n' +
+                    '  \t\t    ?r a :Person ;\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :fatherOf ?r .\n' +
+                    '\t\t\t\t?f :brotherOf ?o .\n' +
+                    '\t\t\t\t?o :fatherOf ?c\n' +
+                    '\t\t\t} \n' +
+                    '\t\t\tUNION\n' +
+                    '\t\t\t{ \n' +
+                    '\t\t\t\t?f :motherOf ?r .\n' +
+                    '\t\t\t\t?f :sisterOf ?o .\n' +
+                    '\t\t\t\t?o :motherOf ?c\n' +
+                    '\t\t\t}\n' +
+                    '  \t\t}\n' +
+                    '\tTHEN {\n' +
+                    '            ?r :cousinOf ?c .\n' +
+                    '        } """ .\n' +
+                    '\n' +
+                    '<http://stardog.com/John_Kennedy> a :Person ;\n' +
+                    '\t:fatherOf <http://stardog.com/Patrick_Kennedy> , <http://stardog.com/John_Jr_Kennedy> , <http://stardog.com/Caroline_Kennedy> ;\n' +
+                    '\t:husbandOf <http://stardog.com/Jacqueline_Kennedy> ;\n' +
+                    '\t:brotherOf <http://stardog.com/Robert_Kennedy> ;\n' +
+                    '\t<tag:stardog:api:firstName> "John" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "male" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Robert_Kennedy> a :Person ;\n' +
+                    '\t:fatherOf <http://stardog.com/Robert_Jr_Kennedy> , <http://stardog.com/Courtney_Kennedy> ;\n' +
+                    '\t<tag:stardog:api:firstName> "Robert" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "male" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Patrick_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "Patrick" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "male" .\n' +
+                    '\n' +
+                    '<http://stardog.com/John_Jr_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "John_Jr" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "male" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Caroline_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "Caroline" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "female" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Jacqueline_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "Jacqueline" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "female" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Robert_Jr_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "Robert_Jr" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "male" .\n' +
+                    '\n' +
+                    '<http://stardog.com/Courtney_Kennedy> a :Person ;\n' +
+                    '\t<tag:stardog:api:firstName> "Courtney" ;\n' +
+                    '\t<tag:stardog:api:lastName> "Kennedy" ;\n' +
+                    '\t<tag:stardog:api:gender> "female" .\n';
+
+                let tid;
+                stardogjs.db.transaction.begin(standConn, 'stardogDemo').then(res => {
+                    tid = res.body;
+                    stardogjs.db.add(standConn, 'stardogDemo', tid, ttl, {
+                        contentType: 'text/turtle',
+                    }).then(res => {
+                        return stardogjs.db.transaction.commit(standConn, 'stardogDemo', tid);
+                    });
+                })
+                .catch((err) => {
+                    return Promise.reject(err);
+                });
+
+
+            }).catch((err) => {
+                console.log("ERROR", err);
+                return Promise.reject(err);
+            });
+        };
+
+        var stardogd3, vizData;
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/style_1.css">
+    <link rel="stylesheet" type="text/css" href="css/tabs.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    
+        const rootElement = document.getElementById('root');
+
+        class QueryEditor extends React.Component {
+            state = {queryTxt: ''};
+
+            handleClick = () => {
+                this.props.runQuery(this.state.queryTxt)
+            };
+
+            onChange = (ev) => {
+                this.setState({queryTxt: ev.target.value})
+            };
+
+            render() {
+                return (
+                    <div>
+                        <div>
+                            <textarea onChange={this.onChange} value={this.state.queryTxt} />
+                        </div>
+                        <div style={{marginTop: '5px', textAlign: 'right'}}>
+                            <button onClick={this.handleClick}>
+                                Execute Query
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        QueryEditor.propTypes = {
+            runQuery: PropTypes.func.isRequired
+        };
+
+        class ResultPane extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                return (
+                    <div style={{marginTop: '20px'}}>
+                        <div>
+                            <textarea value={this.props.queryResult} />
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        ResultPane.propTypes = {
+            queryResult: PropTypes.string.isRequired
+        };
+        ResultPane.defaultProps = {
+            queryResult: ''
+        };
+
+        class AddPerson extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.error = "Please fill in both the First and Last name."
+            }
+
+            state = {
+                firstName: '',
+                lastName: '',
+                showError: false,
+                gender: 'male'
+            };
+
+            handleEnterClick = (e) => {
+                if (e.keyCode === 13) {
+                    this.handleClick();
+                }
+            };
+
+            handleClick = () => {
+                if (this.state.firstName && this.state.lastName) {
+                    this.setState({
+                        showError: false
+                    });
+                    this.props.addPerson({
+                        firstName: this.state.firstName.trim(),
+                        lastName: this.state.lastName.trim(),
+                        gender: this.state.gender});
+                } else {
+                    this.setState({showError: true});
+                }
+            };
+
+            updateFNState = (ev) => {
+                this.setState({firstName: ev.target.value});
+            };
+
+            updateLNState = (ev) => {
+                this.setState({lastName: ev.target.value});
+            };
+
+            updateGenderState = (ev) => {
+                this.setState({gender: ev.target.id});
+            };
+
+            componentDidUpdate() {
+                if (this.props.clearForm && (this.state.firstName !== '' || this.state.lastName !== '')) {
+                    this.setState({
+                        firstName: '',
+                        lastName: '',
+                        gender: 'male'
+                    });
+                }
+            }
+
+            render() {
+                return (
+                    <div style={{paddingTop: '10px'}}>
+                        <div>Add Person</div>
+                        <div className="consoleBorder personForm">
+                            <div>
+                                <div className="labelColumn">First Name:</div>
+                                <div className="inputColumn">
+                                    <input type="text" value={this.state.firstName} onKeyDown={this.handleEnterClick} onChange={this.updateFNState}/>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="labelColumn">Last Name:</div>
+                                <div className="inputColumn">
+                                    <input type="text" value={this.state.lastName} onKeyDown={this.handleEnterClick} onChange={this.updateLNState}/>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="labelColumn">Gender:</div>
+                                <div className="inputColumn">
+                                    <span style={{paddingRight: '10px'}}>
+                                        <input type="radio" id="male" name='gender' checked={this.state.gender === 'male'} onChange={this.updateGenderState}/>
+                                        <label htmlFor='male'>Male</label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" id="female" name='gender' checked={this.state.gender === 'female'} onChange={this.updateGenderState}/>
+                                        <label htmlFor='female'>Female</label>
+                                    </span>
+                                </div>
+                            </div>
+                            {this.state.showError && <div className="error">{this.error}</div>}
+                            <div className="personAddBtn">
+                                <button onClick={this.handleClick}>
+                                    Add Person
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        AddPerson.propTypes = {
+            addPerson: PropTypes.func.isRequired,
+            clearForm: PropTypes.bool
+        };
+
+        class AddRelationship extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.allDataError = "Please select a 'From Person', 'Relationship', and 'To Person'.";
+                this.samePerson = "Please select a different 'To Person' than the 'From Person'.";
+
+
+                this.state = {
+                    personOptions: [],
+                    edgeOptions: [],
+                    fromPerson: '',
+                    toPerson: '',
+                    relationship: '',
+                    error: '',
+                    showError: false,
+                    updateRelationships: false,
+                };
+            }
+
+            componentDidMount() {
+                this.getRelationships();
+            }
+
+            componentDidUpdate() {
+                if (this.props.updateRelationships) {
+                    this.getRelationships();
+                }
+            }
+
+            getRelationships() {
+                stardogjs.query.graphql.execute(graphQLConn, 'stardogDemo',
+                    'query ' +
+                    '   withAliases @config(alias: {person: "http://api.stardog.com/Person"}) {' +
+                    '       person {' +
+                    '           firstName: stardog_firstName,' +
+                    '           lastName: stardog_lastName ' +
+                    '       }' +
+                    '   }',
+                    {
+                        "@reasoning": true
+                    }
+                ).then(({body}) => {
+                    if (body && body.data.length > 0) {
+
+                        let newOptions = [];
+                        body.data.forEach(p => {
+                            newOptions.push(<option key={`${p.firstName}_${p.lastName}`} value={`${p.firstName}_${p.lastName}`}>{`${p.firstName} ${p.lastName}`}</option>);
+                        });
+
+                        this.setState({personOptions: newOptions})
+                    }
+
+                }).catch((err) => {
+                    return Promise.reject(err);
+                });
+
+                let queryStr = 'select ?linkType where { \n' +
+                    '    ?linkType rdfs:subPropertyOf :linkType . \n' +
+                    '}';
+                stardogjs.query.execute(standConn, 'stardogDemo', queryStr, 'application/sparql-results+json', {reasoning: false}).then(({body}) => {
+                    if (body && body.results && body.results.bindings && body.results.bindings.length > 0) {
+                        let newOptions = [];
+                        body.results.bindings.forEach(p => {
+                            let relationship = p.linkType.value.substring(p.linkType.value.lastIndexOf('/') + 1, p.linkType.value.length);
+                            newOptions.push(<option key={relationship} value={relationship}>{relationship}</option>);
+                        });
+
+                        this.setState({edgeOptions: newOptions})
+                    }
+                });
+            }
+
+            handleClick = () => {
+              if (!this.state.fromPerson || !this.state.toPerson || !this.state.relationship) {
+                  this.setState({
+                      error: this.allDataError,
+                      showError: true
+                  });
+              } else if (this.state.fromPerson === this.state.toPerson) {
+                  this.setState({
+                      error: this.samePerson,
+                      showError: true
+                  });
+              } else {
+                  this.setState({
+                      error: '',
+                      showError: false
+                  });
+
+                  this.props.addRelationship({
+                      fromPerson: this.state.fromPerson,
+                      toPerson: this.state.toPerson,
+                      relationship: this.state.relationship})
+              }
+
+            };
+
+            handleFrom = (ev) => {
+                this.setState({
+                    fromPerson: `<http://stardog.com/${ev.target.value}>`
+                });
+            };
+
+            handleTo = (ev) => {
+                this.setState({
+                    toPerson: `<http://stardog.com/${ev.target.value}>`
+                });
+            };
+
+
+            handleRelationship = (ev) => {
+                this.setState({
+                    relationship: `:${ev.target.value}`
+                });
+            };
+
+            shouldComponentUpdate(nextProps, nextState) {
+                return !_.isEqual(this.state, nextState) ||
+                    this.props.updateRelationships !== nextProps.updateRelationships;
+            }
+
+            render() {
+                return (
+                    <div style={{paddingTop: '10px'}}>
+                        <div>Add Relationship</div>
+                        <div className="consoleBorder relationshipForm">
+                            <div style={{verticalAlign: 'top'}}>
+                                <div className="labelRow">From Person:</div>
+                                <div className="inputColumn">
+                                    <select name="fromPerson" multiple className="personSelect" onClick={this.handleFrom}>
+                                        {this.state.personOptions}
+                                    </select>
+                                </div>
+                            </div>
+                            <div style={{verticalAlign: 'top'}}>
+                                <div className="labelRow">Relationship:</div>
+                                <div className="inputColumn">
+                                    <select style={{width: '150px'}} onChange={this.handleRelationship}>
+                                        <option value="" />
+                                        {this.state.edgeOptions}
+                                    </select>
+                                </div>
+                            </div>
+                            <div style={{verticalAlign: 'top'}}>
+                                <div className="labelRow">To Person:</div>
+                                <div className="inputColumn">
+                                    <select name="toPerson" multiple className="personSelect" onClick={this.handleTo}>
+                                        {this.state.personOptions}
+                                    </select>
+                                </div>
+                            </div>
+                            {this.state.showError && <div className="error">{this.state.error}</div>}
+                            <div className="personAddBtn">
+                                <button onClick={this.handleClick}>
+                                    Add Relationship
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        AddRelationship.propTypes = {
+            addRelationship: PropTypes.func.isRequired,
+            updateRelationships: PropTypes.bool
+        };
+
+        class GraphView extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    edgesLoading: false,
+                    nodesLoading: false
+                };
+
+                this.edges = [];
+                this.nodes = [];
+            }
+
+            componentDidUpdate() {
+
+                if (this.props.shouldUpdate) {
+                    this.setState({
+                        edgesLoading: true,
+                        nodesLoading: true
+                    });
+
+                    this.performQuery();
+                } else {
+                    if (!this.state.edgesLoading && !this.state.nodesLoading) {
+
+                        vizData = {
+                            nodes: this.nodes,
+                            relationships: this.edges
+                        };
+
+                        if (!stardogd3) {
+                            stardogd3 = new StardogD3('#stardogd3', {
+                                minCollision: 60,
+                                stardogData: vizData,
+                                infoPanel: false,
+                                nodeRadius: 25,
+                                relationshipColor: "blue",
+                                relationshipOpacity: .1,
+                                showRelationshipTitles: true,
+                                relationshipIcon: 'arrow',
+                                showRelationshipCurvedEdges: true,
+                                alwaysShowCurvedEdges: true,
+                            });
+                        } else {
+                            stardogd3.updateWithStardogData(vizData)
+                        }
+                    }
+                }
+            }
+
+            componentDidMount() {
+                this.setState({
+                    edgesLoading: true,
+                    nodesLoading: true
+                });
+
+                this.performQuery();
+            }
+
+            performQuery() {
+
+                let nodeQueryStr = 'query \n' +
+                    '   withAliases @config(alias: {person: "http://api.stardog.com/Person"}) {\n' +
+                    '       person {\n' +
+                    '           firstName: stardog_firstName,\n' +
+                    '           lastName: stardog_lastName,\n' +
+                    '           gender: stardog_gender,\n' +
+                    '           id @bind(to : "CONCAT($firstName, \'_\', $lastName)")\n' +
+                    '           label @bind(to : "CONCAT($firstName, \' \', $lastName)")\n' +
+                    '       }\n' +
+                    '   }';
+
+                stardogjs.query.graphql.execute(graphQLConn, 'stardogDemo', nodeQueryStr,
+                    {
+                        "@reasoning": false
+                    }
+                ).then(({body}) => {
+
+                    this.setState({nodesLoading: false});
+
+                    if (body && body.data.length > 0) {
+                        this.nodes = body.data;
+                    }
+                }).catch((err) => {
+                    this.setState({nodesLoading: false});
+                    return Promise.reject(err);
+                });
+
+                let edgeQueryStr = 'select ?source ?target ?linkType where { \n' +
+                    '    ?linkType rdfs:subPropertyOf :linkType . \n' +
+                    '    ?s ?linkType ?t .\n' +
+                    '    ?s stardog:firstName ?sfn .\n' +
+                    '    ?s stardog:lastName ?sln .\n' +
+                    '    ?t stardog:firstName ?tfn .\n' +
+                    '    ?t stardog:lastName ?tln .\n' +
+                    '    BIND (concat (?sfn, \'_\', ?sln) AS ?source) .\n' +
+                    '    BIND (concat (?tfn, \'_\', ?tln) AS ?target) .\n' +
+                    '    FILTER (?linkType != :linkType) \n' +
+                    '}';
+
+                stardogjs.query.execute(standConn, 'stardogDemo', edgeQueryStr, 'application/sparql-results+json',
+                    {
+                        reasoning: this.props.useReasoning
+                    }
+                ).then(({body}) => {
+                    if (body && body.results && body.results.bindings && body.results.bindings.length > 0) {
+
+                        this.edges = [];
+
+                        if (!_.isEmpty(body.results.bindings)) {
+                            body.results.bindings.forEach(e => {
+                                this.edges.push({
+                                    source: e.source.value,
+                                    target: e.target.value,
+                                    linkType: e.linkType.value.substring(e.linkType.value.lastIndexOf('/') + 1, e.linkType.value.length),
+                                    id: `${e.source.value}_${e.linkType.value}_${e.target.value}`
+
+                                });
+                            });
+                        }
+                    }
+
+                    this.setState({edgesLoading: false});
+
+                }).catch((err) => {
+                    this.setState({edgesLoading: false});
+                    return Promise.reject(err);
+                });
+            }
+
+            shouldComponentUpdate(nextProps, nextState) {
+                return !!nextProps.shouldUpdate
+                    || !_.isEqual(this.state, nextState);
+            }
+
+            render() {
+                return (
+                    <div id='graphView'>
+                        <div id="stardogd3"/>
+                    </div>
+                )
+            }
+        }
+
+        GraphView.propTypes = {
+            shouldUpdate: PropTypes.bool,
+            useReasoning: PropTypes.bool,
+        };
+
+        GraphView.defaultProps = {
+            shouldUpdate: false,
+            useReasoning: false
+        };
+
+
+        class Body extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            state = {queryResult: '', response: null, clearForm: false, updateReasoning: false, reasoning: false, updateRelationships: false};
+
+            addPerson = (person) => {
+                let queryStr = `insert data { <http://stardog.com/${person.firstName}_${person.lastName}> stardog:firstName '${person.firstName}' ;
+                    rdf:type :Person ;
+                    stardog:lastName '${person.lastName}' ;
+                    stardog:gender '${person.gender}' }`;
+
+                stardogjs.query.execute(standConn, 'stardogDemo', queryStr, 'application/sparql-results+json').then(({body}) => {
+                    if (body) {
+                        this.setState({response: body});
+                        setTimeout(() => this.setState({response: ''}), 3000);
+                    } else {
+                        this.setState({response: {code: 'Insert Successful', message: 'Insert Successful'}});
+                        setTimeout(() => this.setState({response: '', clearForm: true}), 1000);
+                    }
+                });
+            };
+
+            addRelationship = (data) => {
+                let queryStr = `insert data { ${data.fromPerson} ${data.relationship} ${data.toPerson} }`;
+
+                stardogjs.query.execute(standConn, 'stardogDemo', queryStr, 'application/sparql-results+json').then(({body}) => {
+                    if (body) {
+                        this.setState({response: body});
+                        setTimeout(() => this.setState({response: ''}), 3000);
+                    } else {
+                        this.setState({response: {code: 'Insert Successful', message: 'Insert Successful'}});
+                        setTimeout(() => this.setState({response: '', clearForm: true}), 1000);
+                    }
+                });
+            };
+
+            updateReasoning = (value) => {
+                this.setState({updateReasoning: true, reasoning: value});
+            };
+
+            componentDidUpdate() {
+                if (this.state.clearForm === true) {
+                    this.setState({clearForm: false});
+                }
+
+                if (this.state.updateReasoning) {
+                    this.setState({updateReasoning: false});
+                }
+
+                if (this.state.updateRelationships) {
+                    this.setState({updateRelationships: false});
+                }
+            }
+
+            shouldComponentUpdate(nextProps, nextState) {
+                return this.props.tabIndex !== nextProps.tabIndex
+                    || this.state.response !== nextState.response
+                    || this.state.clearForm !== nextState.clearForm
+                    || this.state.updateReasoning !== nextState.updateReasoning;
+            }
+
+            render() {
+                let content = (
+                    <div className="inputBorder">
+                        <div style={{width: '70%', display: 'inline-block', height: '810px'}}>
+                            <GraphView useReasoning={this.state.reasoning}
+                                       shouldUpdate={this.state.updateRelationships || this.state.clearForm || this.state.updateReasoning}/>
+                        </div>
+                        <div style={{width: '30%', display: 'inline-block', verticalAlign: 'top', height: '810px'}}>
+                            <div className="inputBorder">
+                                <Reasoning updateReasoning={this.updateReasoning}/>
+                                <AddPerson addPerson={this.addPerson}
+                                           clearForm={this.state.clearForm || this.state.updateReasoning} />
+                                <AddRelationship
+                                    addRelationship={this.addRelationship}
+                                    updateRelationships={this.state.clearForm || this.state.updateReasoning}/>
+                            </div>
+                        </div>
+                    </div>
+                );
+
+                return (<div>{this.state.response && <Modal response={this.state.response}/>}{content}</div>);
+            }
+        }
+
+        class Reasoning extends React.Component {
+
+            onChange = (event) => {
+                this.props.updateReasoning(event.target.checked);
+            };
+
+            render() {
+                return (
+                    <div>
+                        <div>Reasoning</div>
+                        <div className="consoleBorder personForm">
+                            <label className="switch">
+                                <input type="checkbox" id="togBtn" onChange={this.onChange} />
+                                    <div className="slider round">
+                                        <span className="on">ON</span>
+                                        <span className="off">OFF</span>
+                                    </div>
+                            </label>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        Reasoning.propTypes = {
+            updateReasoning: PropTypes.func.isRequired
+        };
+
+
+        class Modal extends React.Component {
+            render() {
+                return (
+                    <div id="myModal" className="modal">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <p>{this.props.response.code}</p>
+                            </div>
+                            <div className="modal-body">
+                                <p>{this.props.response.message}</p>
+                            </div>
+                        </div>
+                    </div>);
+            }
+        }
+
+        Modal.propTypes = {
+            response: PropTypes.object.isRequired
+        };
+        Modal.defaultProps = {
+            response: ''
+        };
+
+        class Console extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            state = {tabIndex: 0, showModal: false};
+
+            showModal = () => {
+                this.setState({ showModal: true });
+            };
+
+            hideModal = () => {
+                this.setState({ showModal: false });
+            };
+
+            render() {
+                return (
+                    <div>
+                        <Header />
+                        <div className="console">
+                            <Body tabIndex={this.state.tabIndex}/>
+                        </div>
+                        <Footer />
+                        <InfoModal show={this.state.showModal} handleClose={this.hideModal} />
+                    </div>
+                );
+            }
+        }
+
+        class Header extends React.PureComponent {
+            render() {
+                return (
+                    <div className="topbarmenu" id="home">
+                        <div className="preheader">
+                            <div className="row" id="top-navigation">
+                                <div className="large-4 medium-6 small-9 column">
+                                    <div className="mascot">
+                                        <a href="http://www.stardog.com">
+                                            <img src="images/stardog-logo.png"
+                                                alt="Stardog logo" /></a>
+                                    </div>
+                                    <div className="stardog-name">
+                                        <a href="http://www.stardog.com" title="Stardog—The Knowledge Graph Platform for the Enterprise">
+                                            STARDOG
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                            
+                );
+            }
+         }
+
+        class Footer extends React.PureComponent {
+            render() {
+                return (
+                    <section className="copyright">
+                        <div className="row">
+                            <div className="small-12 column">
+                                <p>© <span id="year">2018</span> Stardog Union · All Rights Reserved. <a href="https://www.stardog.com/pp.html" target="_blank" className="mt20">Privacy Policy</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                );
+            }
+        }
+
+        const InfoModal = ({ handleClose, show }) => {
+            const showHideClassName = show ? "modal display-block" : "modal display-none";
+
+            const graphQLCall = 'query \n' +
+                '  withAliases @config(alias: {person: "http://api.stardog.com/Person"}) {\n' +
+                '    person {\n' +
+                '      firstName: stardog_firstName,\n' +
+                '      lastName: stardog_lastName,\n' +
+                '      id @bind(to : "CONCAT($firstName, \'_\', $lastName)")\n' +
+                '   }\n' +
+                '  }';
+
+            const sparqlCall = 'select ?source ?target ?linkType where { \n' +
+                '    ?linkType rdfs:subPropertyOf :linkType . \n' +
+                '    ?s ?linkType ?t .\n' +
+                '    ?s stardog:firstName ?sfn .\n' +
+                '    ?s stardog:lastName ?sln .\n' +
+                '    ?t stardog:firstName ?tfn .\n' +
+                '    ?t stardog:lastName ?tln .\n' +
+                '    BIND (concat (?sfn, \'_\', ?sln) AS ?source) .\n' +
+                '    BIND (concat (?tfn, \'_\', ?tln) AS ?target) .\n' +
+                '}';
+
+            return (
+                <div className={showHideClassName}>
+                    <div className="modal-main">
+                        <div className={'tab tabOn modalHeader'}>
+                            Query Information
+                        </div>
+                        <div style={{margin: '15px'}}>
+                            In order to use our data with d3, we need to query for both the nodes and edges that
+                            we want to display. We will use the latest version of stardogJS and execute both GraphQL
+                            and SPARQL queries. GraphQL is highly recommended with the use of d3 as it can return
+                            a JSON object exactly as you need it. In some instances, as for getting the edges, we will
+                            need to perform a regular SPARQL query and convert it to the JSON we want.
+
+                            <div style={{margin: '15px 0', border: '1px solid #112d36'}}>
+                                <div className={'tab modalHeader'} style={{borderBottom: '1px solid #112d36'}}>Nodes</div>
+                                <div style={{padding: `6px 12px`}}>
+                                    <div>
+                                        We use Stardog's GraphQL interface in order to pull back the list of nodes. We
+                                        get the Person's first name, last name, and their ID as an ID is needed by d3
+                                        in order to attached the edges to the specific nodes.
+                                    </div>
+                                    <div>
+                                        <pre>
+                                            <code>
+                                                {graphQLCall}
+                                            </code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style={{margin: '15px 0', border: '1px solid #112d36'}}>
+                                <div className={'tab modalHeader'} style={{borderBottom: '1px solid #112d36'}}>Edges</div>
+                                <div style={{padding: `6px 12px`}}>
+                                    <div>
+                                        We use Stardog's SPARQL interface in order to pull back the list of edges. In
+                                        the query, we get all the Predicates that are of rdfs:subPropertyOf of :linkType.
+                                        In addition, we have to create both the source and the target using the Person's
+                                        first and last name in order to create the ID that is used in the list of nodes.
+
+                                    </div>
+                                    <div>
+                                        <pre>
+                                            <code>
+                                                {sparqlCall}
+                                            </code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style={{borderTop: '1px solid #112d36', width: '100%'}}>
+                            <div style={{margin: '10px', float: 'right'}}>
+                                <button onClick={handleClose}>Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        setTimeout(() => {
+            ReactDOM.render(<Console/>, rootElement);
+        }, 750);
+    </script>
+
+</body>
+
+</html>

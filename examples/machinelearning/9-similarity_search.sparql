@@ -1,0 +1,42 @@
+prefix : <http://schema.org/>
+prefix t: <http://www.imdb.com/title/>
+prefix spa: <tag:stardog:api:analytics:>
+
+SELECT ?similarMovieLabel ?confidence
+WHERE {
+    graph spa:model {
+      :s1   spa:arguments (?genres ?directors ?authors ?producers ?metaCritic) ;
+            spa:confidence ?confidence ;
+            spa:parameters [ spa:limit 5 ] ;
+            spa:predict ?similarMovie .
+    }
+
+    { ?similarMovie rdfs:label ?similarMovieLabel }
+        
+    {
+        SELECT 
+        (spa:set(?genre) as ?genres) 
+        (spa:set(?director) as ?directors)
+        (spa:set(?author) as ?authors)
+        (spa:set(?producer) as ?producers)
+        ?metaCritic
+        ?movie
+        {
+            ?movie  :genre ?genre ;
+                    :director ?director ;
+                    :author ?author .
+
+            OPTIONAL {
+                ?movie  :productionCompany ?producer .
+            }
+            OPTIONAL {
+                ?movie  :metaCritic ?metaCritic .
+            }
+
+            VALUES ?movie { t:tt0118715 } # The Big Lebowski
+        }
+        GROUP BY ?movie ?metaCritic
+    } 
+}
+
+ORDER BY DESC(?confidence)

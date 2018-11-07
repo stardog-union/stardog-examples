@@ -1,0 +1,8 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:Person-{id} a :Person ;
+  :firstName "{first_name}" ;
+  :lastName "{last_name}" ;
+  :email "{email}" ;
+  :country "{country}" ;
+.

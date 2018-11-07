@@ -12,18 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
 import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
-import org.openrdf.model.IRI;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
-
-import com.complexible.common.protocols.server.Server;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
@@ -32,33 +26,27 @@ import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
+import org.openrdf.model.IRI;
+import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.query.TupleQueryResult;
+import org.openrdf.rio.RDFFormat;
 
 /**
  * <p>A small example program illustrating how to access Stardog's reasoning capabilities.</p>
  *
- * @author  Michael Grove
- * @since   0.4.5
+ * @author Michael Grove
  * @version 4.0
+ * @since 0.4.5
  */
 public class ReasoningExample {
-    // Using Reasoning in Stardog
-    // --------------------------
-    // In this example we'll walk through a simple example using the SNARL API to access Stardog's
-    // reasoning capabilities.
+
+	// Using Reasoning in Stardog
+	// --------------------------
+	// In this example we'll walk through a simple example using the SNARL API to access Stardog's
+	// reasoning capabilities.
 	public static void main(String[] args) throws Exception {
-        // Creating a Server
-        // -----------------
-		// You'll need a server to connect to, obviously.  The `Stardog`
-		// class provides a simple [builder interface](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html)
-		// which can be used to configure the server.  This will return you a
-		// [Server](http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html) object which
-		// can be used to start & stop the Stardog server.
-		//
-		// This example shows up to create and start the embedded server.
-        Server aServer = Stardog
-            .buildServer()
-            .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
-            .start();
+		// First need to initialize the Stardog instance which will automatically start the embedded server.
+		Stardog aStardog = Stardog.builder().create();
 
 		try {
 			// Using AdminConnection
@@ -80,57 +68,62 @@ public class ReasoningExample {
 					aAdminConnection.drop("reasoningExampleTest");
 				}
 
-				// Convenience function for creating a non-persistent in-memory database with all the default settings.
-				aAdminConnection.createMemory("reasoningExampleTest");
-			}
+				// create a disk database
+				aAdminConnection.disk("reasoningExampleTest").create();
 
-			// Using reasoning via SNARL
-			// -------------------------
-			// Now that we've created our database for the example, lets open a connection to it.  For that we use the
-			// [SNARLConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/SNARLConnectionConfiguration.html)
-			// to configure and open a new connection to a database.
-			//
-			// We'll use the configuration to specify which database we want to connect to as well as our login information,
-			// then we can obtain a new connection.  This is also where you specify whether you would like the connection
-			// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
-			// reasoning you want to use when you create a database.
 
-			try (ReasoningConnection aReasoningConn = ConnectionConfiguration
-				                                          .to("reasoningExampleTest")
-				                                          .credentials("admin", "admin")
-				                                          .reasoning(true)
-				                                          .connect()
-				                                          .as(ReasoningConnection.class);
-			     // and obtain a non-reasoning connection to the database for comparison
-			     Connection aConn = ConnectionConfiguration
-				                        .to("reasoningExampleTest")
-				                        .credentials("admin", "admin")
-				                        .connect()) {
-				
-				// Now lets add lubm1 and the lubm ontology to the database.
-				// We can use either the reasoning connection or the base connection for addition, results will be same
-				aReasoningConn.begin();
+				// Using reasoning via SNARL
+				// -------------------------
+				// Now that we've created our database for the example, lets open a connection to it.  For that we use the
+				// [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
+				// to configure and open a new connection to a database.
+				//
+				// We'll use the configuration to specify which database we want to connect to as well as our login information,
+				// then we can obtain a new connection.  This is also where you specify whether you would like the connection
+				// to use reasoning.  Please note that reasoning is *per connection* there's no requirement to specify the type of
+				// reasoning you want to use when you create a database.
 
-				aReasoningConn.add().io()
-				              .format(RDFFormat.RDFXML)
-				              .file(Paths.get("data/University0_0.owl"))
-				              .file(Paths.get("data/lubmSchema.owl"));
+				try (ReasoningConnection aReasoningConn = ConnectionConfiguration
+					                                          .to("reasoningExampleTest")
+					                                          .credentials("admin", "admin")
+					                                          .reasoning(true)
+					                                          .connect()
+					                                          .as(ReasoningConnection.class);
+				     // and obtain a non-reasoning connection to the database for comparison
+				     Connection aConn = ConnectionConfiguration
+					                        .to("reasoningExampleTest")
+					                        .credentials("admin", "admin")
+					                        .connect()) {
 
-				aReasoningConn.commit();
+					// Now lets add lubm1 and the lubm ontology to the database.
+					// We can use either the reasoning connection or the base connection for addition, results will be same
+					aReasoningConn.begin();
 
-				// So let's print out how many of some different types there are...
-				System.out.println("The default results...");
-				printCounts(aConn);
+					aReasoningConn.add().io()
+					              .format(RDFFormat.RDFXML)
+					              .file(Paths.get("data/University0_0.owl"))
+					              .file(Paths.get("data/lubmSchema.owl"));
 
-				// Let's do the same thing with the reasoning connection
-				// and print the same set of counts, but this time, with reasoning so we can see the difference
-				System.out.println("\nResults with reasoning...");
-				printCounts(aReasoningConn);
+					aReasoningConn.commit();
+
+					// So let's print out how many of some different types there are...
+					System.out.println("The default results...");
+					printCounts(aConn);
+
+					// Let's do the same thing with the reasoning connection
+					// and print the same set of counts, but this time, with reasoning so we can see the difference
+					System.out.println("\nResults with reasoning...");
+					printCounts(aReasoningConn);
+				}
+				finally {
+					if (aAdminConnection.list().contains("reasoningExampleTest")) {
+						aAdminConnection.drop("reasoningExampleTest");
+					}
+				}
 			}
 		}
 		finally {
-			// You MUST stop the server if you've started it!
-			aServer.stop();
+			aStardog.shutdown();
 		}
 	}
 
@@ -142,8 +135,8 @@ public class ReasoningExample {
 		IRI FULL_PROFESSOR = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor");
 
 		SelectQuery aQuery = theConn.select("SELECT ?x WHERE {\n" +
-									 "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
-									 "}");
+		                                    "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
+		                                    "}");
 
 		aQuery.parameter("type", PERSON);
 		TupleQueryResult aResult = aQuery.execute();

@@ -34,5 +34,4 @@ jar containing this `META-INF/services` directory as well as the implementation 
 added on the classpath. Stardog will pick up the implementation on startup by using the JDK `ServiceLoader` framework.
 
 Note, as of Stardog 3.0, only *one* `AnalyzerFactory` can be registered at a time, attempts to register more than one
-will yield errors on startup.  It is planned that this will be changed from a system-wide analyzer to a per-database
-analyzer in the 3.x release cycle.
+will yield errors on startup.

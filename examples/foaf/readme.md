@@ -2,7 +2,7 @@
 
 The [Stardog database archetypes](http://docs.stardog.com/#_database_archetypes) provide a simple way to associate one or more
 ontologies and optionally a set of constraints with a database. Stardog provides two built-in database archetypes out-of-the-box:
-PROV and SKOS. This example shows a user-define archetype for [FOAF](http://xmlns.com/foaf/spec/).
+PROV and SKOS. This example shows a user-defined archetype for [FOAF](http://xmlns.com/foaf/spec/).
 
 ## Running FOAF Example
 

@@ -1,0 +1,77 @@
+:Character a rdfs:Class .
+
+:Human a owl:Class ;
+    rdfs:subClassOf :Character .
+
+:Droid a owl:Class ;
+    rdfs:subClassOf :Character .
+
+:luke a :Human ;
+    :id 1000 ;
+    :name 'Luke Skywalker' ;
+    :friends :han , :leia , :threepio , :artoo ;
+    :appearsIn :NewHope , :Empire , :Jedi ;
+    :homePlanet :Tatooine .
+
+
+:vader a :Human ;
+    :id 1001 ;
+    :name 'Darth Vader' ;
+    :friends :tarkin ;
+    :appearsIn :NewHope , :Empire , :Jedi ;
+    :homePlanet :Tatooine .
+
+:han a :Human ;
+    :id 1002 ;
+    :name 'Han Solo' ;
+    :friends  :luke , :leia , :artoo ;
+    :appearsIn :NewHope , :Empire , :Jedi .
+
+:leia a :Human ;
+    :id 1003 ;
+    :name 'Leia Organa' ;
+    :friends :luke , :han , :threepio , :artoo ;
+    :appearsIn :NewHope , :Empire , :Jedi ;
+    :homePlanet :Alderaan .
+
+:tarkin a :Human ;
+    :id 1004 ;
+    :name 'Wilhuff Tarkin' ;
+    :friends :vader ;
+    :appearsIn :NewHope .
+
+:threepio a :Droid ;
+    :id 2000 ;
+    :name 'C-3PO' ;
+    :friends :luke , :han , :leia , :artoo ;
+    :appearsIn :NewHope , :Empire , :Jedi ;
+    :primaryFunction 'Protocol' .
+
+:artoo a :Droid ;
+    :id 2001 ;
+    :name 'R2-D2' ;
+    :friends :luke , :han , :leia ;
+    :appearsIn :NewHope , :Empire , :Jedi ;
+    :primaryFunction 'Astromech' .
+
+:NewHope a :Episode ;
+	:name "A New Hope" ;
+    :index 4 .
+
+:Empire a :Episode ;
+    :name "The Empire Strikes Back" ;
+    :index 5 .
+
+:Jedi a :Episode ;
+	:name "Return of the Jedi" ;
+    :index 6 .
+
+:Tatooine a :Planet ;
+	:region :OuterRim ;
+	:sector :Arkanis ;
+	:system :Tatoo .
+
+:Alderaan a :Planet ;
+	:region :CoreWorlds ;
+	:sector :Alderaan ;
+	:system :Alderaan .

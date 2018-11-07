@@ -24,7 +24,7 @@ To run any of the examples, you can use the Gradle `execute` task.  By default, 
 program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
 
 ```java
-gradle execute -PmainClass=com.complexible.stardog.examples.ICVExample
+gradle execute -PmainClass=com.complexible.stardog.examples.api.ICVExample
 ```
 
 ## Generating Documentation
@@ -59,3 +59,18 @@ and the contents of the file should be a list of the fully qualified class names
 
 These need to be a part of your classpath, usually embedded in the jar file with the compiled source, in order for
 the `ServiceLoader` to make them up.
+
+## List of Examples
+
+1. [Custom Analyzers](./examples/analyzer/readme.md)
+1. [Stardog API Examples](./examples/api/readme.md)
+1. [Integrity Constraint Validation](./examples/cli/icv)
+1. [Stardog Versioning](./examples/cli/versioning/README.md)
+1. [CSV example](./examples/cli/virtual/csv/readme.md)
+1. [Docs Examples](./examples/docs/readme.md)
+1. [Database Archetype Extensibility](./examples/foaf/readme.md)
+1. [Function Extensibility](./examples/function/readme.md)
+1. [Transaction Listener](./examples/listener/readme.md)
+1. [Cloud Foundry Example Application](https://github.com/stardog-union/cf-example)
+1. [Machine Learning](./examples/machinelearning)
+1. [AML Example](./examples/aml-example)

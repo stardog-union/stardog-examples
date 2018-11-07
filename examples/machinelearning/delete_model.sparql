@@ -1,0 +1,9 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+DELETE DATA {
+  graph spa:model {
+      # change model IRI to delete existent model
+      [] spa:deleteModel :c1 .
+  }
+}

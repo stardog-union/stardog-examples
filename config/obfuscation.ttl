@@ -4,7 +4,7 @@
 # rules, Stardog filter functions, and magic properties. 
 
 # Default namespace will be used as the base URI of the output
-@prefix : <http://example.com/obfuscated#> .
+@prefix : <tag:stardog:api:obf:> .
 
 # Namespaces that will be used in pattern specification 
 # These namespaces will also be used in the output RDF
@@ -13,7 +13,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix stardog: <tag:stardog:api:> .
-@prefix swrl: <http://www.w3.org/2003/11/swrlb#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
 @prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @prefix xpath: <http://www.w3.org/2005/xpath-functions#> .
 @prefix math: <http://www.w3.org/2005/xpath-functions/math#> .

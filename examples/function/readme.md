@@ -109,22 +109,13 @@ are registered with Stardog in the exact same manner.
 
 ## Using Custom Aggregates in a Query
 
-Referring to custom aggregates within a SPARQL query relies only on the use of marker token `agg:`.  Assuming we have
+You can use your custom aggregates just like any other aggregate function.  Assuming we have
 a custom aggregate `gmean` defined in the `tag:stardog:api:` namespace, we can refer to it within a query as such:
 
 ```sparql
 PREFIX : <http://www.example.org>
 PREFIX stardog: <tag:stardog:api:>
-PREFIX agg: <urn:aggregate>
 
-SELECT (agg:stardog:gmean(?O) AS ?C)
+SELECT (stardog:gmean(?O) AS ?C)
 WHERE { ?S ?P ?O }
 ```
-
-The SPARQL parser will notice the `agg:` token which specifies that the following qname or URI signifies a custom
-aggregate *NOT* a custom function.  The aggregate with the URI `tag:stardog:api:gmean` will then be used for the
-evaluation of the query.
-
-Note that the definition of the prefix `agg` is completely optional; Stardog will parse the query just fine without its
-inclusion.  However, by including that prefix declaration, the query is valid SPARQL and will be parseable by _any_
-compliant SPARQL parser.

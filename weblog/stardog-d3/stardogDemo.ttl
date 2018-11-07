@@ -1,0 +1,204 @@
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:linkType a owl:ObjectProperty .
+
+:motherOf rdfs:subPropertyOf :linkType .
+
+:fatherOf rdfs:subPropertyOf :linkType .
+
+:friendOf rdfs:subPropertyOf :linkType .
+
+:cousinOf rdfs:subPropertyOf :linkType .
+
+:uncleOf rdfs:subPropertyOf :linkType .
+
+:auntOf rdfs:subPropertyOf :linkType .
+
+:sonOf rdfs:subPropertyOf :linkType .
+
+:daughterOf rdfs:subPropertyOf :linkType .
+
+:brotherOf rdfs:subPropertyOf :linkType .
+
+:sisterOf rdfs:subPropertyOf :linkType .
+
+:husbandOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :linkType ;
+	owl:inverseOf :wifeOf .
+
+:wifeOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :linkType ;
+	owl:inverseOf :husbandOf .
+
+:isSisterOf a <tag:stardog:api:rule:SPARQLRule> ;
+	<tag:stardog:api:rule:content> """
+	IF {
+  		    ?r a :Person ;
+			stardog:gender 'female' .  
+			{ 
+				?f :fatherOf ?r .
+				?f :fatherOf ?o .
+				filter ( ?r != ?o )
+			} 
+			UNION
+			{ 
+				?f :motherOf ?r .
+				?f :motherOf ?o .
+				filter ( ?r != ?o )
+			}
+			UNION
+			{
+				?o :sisterOf ?r .
+				filter ( ?r != ?o )
+			}	
+			UNION
+			{ 
+				?o :brotherOf ?r .
+				filter ( ?r != ?o )
+			}
+  		}
+	THEN {
+            ?r :sisterOf ?o .
+        } """ .
+
+:isBrotherOf a <tag:stardog:api:rule:SPARQLRule> ;
+	<tag:stardog:api:rule:content> """
+	IF {
+  		    ?r a :Person ;
+			stardog:gender 'male' .  
+			{ 
+				?f :fatherOf ?r .
+				?f :fatherOf ?o .
+				filter ( ?r != ?o )
+			} 
+			UNION
+			{ 
+				?f :motherOf ?r .
+				?f :motherOf ?o .
+				filter ( ?r != ?o )
+			}
+			UNION
+			{
+				?o :sisterOf ?r .
+				filter ( ?r != ?o )
+			}	
+			UNION
+			{ 
+				?o :brotherOf ?r .
+				filter ( ?r != ?o )
+			}
+  		}
+	THEN {
+            ?r :brotherOf ?o .
+        } """ .		
+
+:isSonOf a <tag:stardog:api:rule:SPARQLRule> ;
+	<tag:stardog:api:rule:content> """
+	IF {
+  		    ?r a :Person ;
+			stardog:gender 'male' .  
+			{ 
+				?f :fatherOf ?r .
+			} 
+			UNION
+			{ 
+				?f :motherOf ?r .
+			}
+  		}
+	THEN {
+            ?r :sonOf ?f .
+        } """ .		
+
+:isDaughterOf a <tag:stardog:api:rule:SPARQLRule> ;
+	<tag:stardog:api:rule:content> """
+	IF {
+  		    ?r a :Person ;
+			stardog:gender 'female' .  
+			{ 
+				?f :fatherOf ?r .
+			} 
+			UNION
+			{ 
+				?f :motherOf ?r .
+			}
+  		}
+	THEN {
+            ?r :daughterOf ?f .
+        } """ .				
+
+
+
+:isCousinOf a <tag:stardog:api:rule:SPARQLRule> ;
+	<tag:stardog:api:rule:content> """
+	IF {
+  		    ?r a :Person ;
+			{ 
+				?f :fatherOf ?r .
+				?f :brotherOf ?o .
+				?o :fatherOf ?c
+			} 
+			UNION
+			{ 
+				?f :motherOf ?r .
+				?f :sisterOf ?o .
+				?o :motherOf ?c
+			}
+  		}
+	THEN {
+            ?r :cousinOf ?c .
+        } """ .
+
+<http://stardog.com/John_Kennedy> a :Person ;
+	:fatherOf <http://stardog.com/Patrick_Kennedy> , <http://stardog.com/John_Jr_Kennedy> , <http://stardog.com/Caroline_Kennedy> ;
+	:husbandOf <http://stardog.com/Jacqueline_Kennedy> ;
+	:brotherOf <http://stardog.com/Robert_Kennedy> ;
+	<tag:stardog:api:firstName> "John" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "male" .
+
+<http://stardog.com/Robert_Kennedy> a :Person ;
+	:fatherOf <http://stardog.com/Robert_Jr_Kennedy> , <http://stardog.com/Courtney_Kennedy> ;
+	:husbandOf <http://stardog.com/Ethel_Skakel> ;
+	<tag:stardog:api:firstName> "Robert" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "male" .
+
+<http://stardog.com/Patrick_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "Patrick" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "male" .
+
+<http://stardog.com/John_Jr_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "John_Jr" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "male" .
+
+<http://stardog.com/Caroline_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "Caroline" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "female" .
+
+<http://stardog.com/Jacqueline_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "Jacqueline" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "female" .
+
+<http://stardog.com/Robert_Jr_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "Robert_Jr" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "male" .
+
+<http://stardog.com/Ethel_Skakel> a :Person ;
+	<tag:stardog:api:firstName> "Ethel" ;
+	<tag:stardog:api:lastName> "Skakel" ;
+	<tag:stardog:api:gender> "female" .
+
+<http://stardog.com/Courtney_Kennedy> a :Person ;
+	<tag:stardog:api:firstName> "Courtney" ;
+	<tag:stardog:api:lastName> "Kennedy" ;
+	<tag:stardog:api:gender> "female" .

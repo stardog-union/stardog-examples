@@ -1,0 +1,19 @@
+IF {
+    ?x :holds ?holding .
+    ?holding :company ?c .
+    ?holding :share ?share .
+    filter (?share >= 50)
+}
+THEN {
+    ?x :hasAffiliation ?c .
+    ?c :hasAffiliation ?x .
+}
+
+IF {
+    ?x :hasAddress ?a .
+    ?y :hasAddress ?a .
+    filter (?x != ?y)
+}
+THEN {
+    ?x :hasAffiliation ?y .
+}

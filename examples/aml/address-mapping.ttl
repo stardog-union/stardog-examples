@@ -1,0 +1,11 @@
+@prefix : <tag:stardog:demo:aml:> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> . 
+
+:Address-{id} a :Address ;
+  :city "{city}" ;
+  :country "{country}" ;
+  wgs:lat "{lat}"^^xsd:decimal ;
+  wgs:long "{long}"^^xsd:decimal ;
+  :zipCode "{zip_code}" ;
+  :street "{street}" ;
+.
