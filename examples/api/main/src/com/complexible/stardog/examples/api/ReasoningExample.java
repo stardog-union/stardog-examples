@@ -134,28 +134,30 @@ public class ReasoningExample {
 		IRI FULL_PROFESSOR = Values.iri("http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor");
 
 		SelectQuery aQuery = theConn.select("SELECT ?x WHERE {\n" +
-		                                    "?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
-		                                    "}");
+				"?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type\n" +
+				"}");
 
 		aQuery.parameter("type", PERSON);
-		SelectQueryResult aResult = aQuery.execute();
-		System.out.println("Number of Persons: " + count(aResult));
-
+		try (SelectQueryResult aResult = aQuery.execute()) {
+			System.out.println("Number of Persons: " + count(aResult));
+		}
 		aQuery.parameter("type", STUDENT);
-		aResult = aQuery.execute();
-		System.out.println("Number of Students: " + count(aResult));
-
+		try (SelectQueryResult aResult = aQuery.execute()) {
+			System.out.println("Number of Students: " + count(aResult));
+		}
 		aQuery.parameter("type", GRAD_STUDENT);
-		aResult = aQuery.execute();
-		System.out.println("Number of Grad Students: " + count(aResult));
-
+		try (SelectQueryResult aResult = aQuery.execute()) {
+			System.out.println("Number of Grad Students: " + count(aResult));
+		}
 		aQuery.parameter("type", PROFESSOR);
-		aResult = aQuery.execute();
-		System.out.println("Number of Professors: " + count(aResult));
-
+		try (SelectQueryResult aResult = aQuery.execute()) {
+			System.out.println("Number of Professors: " + count(aResult));
+		}
 		aQuery.parameter("type", FULL_PROFESSOR);
-		aResult = aQuery.execute();
-		System.out.println("Number of Full Professors: " + count(aResult));
+		try (SelectQueryResult aResult = aQuery.execute()) {
+			System.out.println("Number of Full Professors: " + count(aResult));
+		}
+
 	}
 
 	private static int count(final SelectQueryResult theResult) {

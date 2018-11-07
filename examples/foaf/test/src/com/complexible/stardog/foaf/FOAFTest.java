@@ -76,7 +76,7 @@ public class FOAFTest {
 				aConn.add()
 				     .statement(alice, FOAF.knows, bob)
 				     .statement(alice, FOAF.homepage, homepage)
-				     .statement(bob, Values.iri(FOAF.NAMESPACE, "is_primary_topic_of"), homepage);
+				     .statement(bob, Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf"), homepage);
 				aConn.commit();
 			}
 		}
@@ -103,7 +103,7 @@ public class FOAFTest {
 			assertTrue(aConn.get().subject(homepage).predicate(FOAF.primaryTopic).object(alice).ask());
 
 			// test subPropertyOf inferences
-			assertTrue(aConn.get().subject(alice).predicate(Values.iri(FOAF.NAMESPACE, "is_primary_topic_of")).object(homepage).ask());
+			assertTrue(aConn.get().subject(alice).predicate(Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf")).object(homepage).ask());
 			assertTrue(aConn.get().subject(alice).predicate(Values.iri(FOAF.NAMESPACE, "page")).object(homepage).ask());
 		}
 	}
@@ -120,7 +120,7 @@ public class FOAFTest {
 
 			Proof aProof = aConn.explain().proof();
 			assertEquals(ProofType.VIOLATED, aProof.getType());
-			assertEquals(Values.statement(Values.iri(FOAF.NAMESPACE, "is_primary_topic_of"), RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY),
+			assertEquals(Values.statement(Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf"), RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY),
 			             Iterables.getOnlyElement(aProof.getExpression().toGraph()));
 		}
 	}

@@ -20,8 +20,8 @@ import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.stardog.stark.Literal;
 import com.stardog.stark.Namespaces;
-import com.stardog.stark.Values;
 import com.stardog.stark.query.BindingSet;
 import com.stardog.stark.query.SelectQueryResult;
 import org.junit.AfterClass;
@@ -77,7 +77,7 @@ public class TestTitleCaseFunction {
 			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
 				assertTrue("Should have a result", aResult.hasNext());
 
-				final String aValue = aResult.next().value("str").orElse(Values.bnode()).toString();
+				final String aValue = aResult.next().literal("str").orElseThrow(Exception::new).label();
 
 				assertEquals("This Sentence Does Not Use Title Case.", aValue);
 
@@ -94,30 +94,6 @@ public class TestTitleCaseFunction {
 		                                               .connect()) {
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(\"this is one argument.\", \"And this is another\") as ?str) }";
-
-			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
-				// there should be a result because implicit in the query is the singleton set, so because the bind
-				// should fail due to the value error, we expect a single empty binding
-				assertTrue("Should have a result", aResult.hasNext());
-
-				final BindingSet aBindingSet = aResult.next();
-
-				assertEquals("Should have no bindings", 0, aBindingSet.size());
-
-				assertFalse("Should have no more results", aResult.hasNext());
-			}
-		}
-	}
-
-	@Test
-	public void testTitleCaseWrongType() throws Exception {
-
-		try (Connection aConn = ConnectionConfiguration.to(DB)
-		                                               .credentials("admin", "admin")
-		                                               .connect()) {
-
-			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
-			                      "select ?str where { bind(stardog:titleCase(7) as ?str) }";
 
 			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
 				// there should be a result because implicit in the query is the singleton set, so because the bind

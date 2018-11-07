@@ -21,6 +21,7 @@ import com.complexible.stardog.plan.filter.functions.AbstractFunction;
 import com.complexible.stardog.plan.filter.ExpressionVisitor;
 import com.complexible.stardog.plan.filter.functions.string.StringFunction;
 import com.stardog.stark.Datatype;
+import com.stardog.stark.Literal;
 import com.stardog.stark.Namespaces;
 import com.stardog.stark.Value;
 
@@ -88,7 +89,7 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 		assertStringLiteral(theArgs[0]);
 
 		// We know that we have a string, so let's just title case it and return it.
-		return ValueOrError.General.of(literal(Strings2.toTitleCase(theArgs[0].toString()), Datatype.STRING));
+		return ValueOrError.General.of(literal(Strings2.toTitleCase(((Literal)theArgs[0]).label()), Datatype.STRING));
 	}
 
 

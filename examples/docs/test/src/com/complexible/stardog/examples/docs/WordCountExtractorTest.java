@@ -22,10 +22,10 @@ import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.docs.StardocsConnection;
-import com.complexible.stardog.docs.StardocsOptions;
+import com.complexible.stardog.docs.BitesConnection;
+import com.complexible.stardog.docs.BitesOptions;
 import com.stardog.stark.IRI;
-import com.stardog.stark.Values;
+import com.stardog.stark.Literal;
 import com.stardog.stark.query.SelectQueryResult;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -55,7 +55,7 @@ public class WordCountExtractorTest {
 				aConn.drop(DB);
 			}
 
-			aConn.newDatabase(DB).set(StardocsOptions.DOCS_DEFAULT_RDF_EXTRACTORS, "WordCountExtractor").create();
+			aConn.newDatabase(DB).set(BitesOptions.DOCS_DEFAULT_RDF_EXTRACTORS, "WordCountExtractor").create();
 		}
 	}
 
@@ -70,14 +70,15 @@ public class WordCountExtractorTest {
 			                        .to(DB)
 			                        .credentials("admin", "admin")
 			                        .connect()) {
-			StardocsConnection aDocsConn = aConn.as(StardocsConnection.class);
+			BitesConnection aDocsConn = aConn.as(BitesConnection.class);
 
 			IRI aDocIri = aDocsConn.putDocument(new File("input.pdf").toPath());
 
 			String aQuery = "select ?wc { graph ?doc { ?doc <tag:stardog:example:wordcount> ?wc } }";
-			SelectQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute();
-			String wordCount = aRes.next().value("wc").orElse(Values.bnode()).toString();
-			assertEquals("313", wordCount);
+			try(SelectQueryResult aRes = aConn.select(aQuery).parameter("doc", aDocIri).execute()) {
+				int aWordCount = Literal.intValue(aRes.next().literal("wc").orElseThrow(Exception::new));
+				assertEquals(313, aWordCount);
+			}
 		}
 	}
 }

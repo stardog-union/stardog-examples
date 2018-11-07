@@ -131,11 +131,7 @@ public class WaldoAPIExample {
 						System.out.println("Query results: ");
 						while (aResult.hasNext()) {
 							BindingSet result = aResult.next();
-							Optional<Value> s = result.value("s");
-							Optional<Literal> score = result.literal("score");
-							if (s.isPresent() && score.isPresent()) {
-								System.out.println(s.get() + " with a score of: " + Literal.doubleValue(score.get()));
-							}
+							result.value("s").ifPresent(s -> System.out.println(s + result.literal("score").map(score -> " with a score of: " + Literal.doubleValue(score)).orElse("")));
 						}
 					}
 				}

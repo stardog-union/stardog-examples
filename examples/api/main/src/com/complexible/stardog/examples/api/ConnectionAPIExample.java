@@ -110,9 +110,9 @@ public class ConnectionAPIExample {
 					// containing information you want to add or remove from the database and make the modification wrt
 					// that graph.  Here we'll add a statement that we want added to our database.
 					Statement aStatement = Values.statement(Values.iri("uri:subj"),
-															Values.iri("urn:pred"),
-															Values.iri("urn:obj"),
-															Values.iri("urn:test:context"));
+							Values.iri("urn:pred"),
+							Values.iri("urn:obj"),
+							Values.iri("urn:test:context"));
 
 					// We can easily add this Statement to our database. We also could have used the `graph` method
 					// to add a collection of them all at once.

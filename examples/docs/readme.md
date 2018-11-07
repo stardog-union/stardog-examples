@@ -19,7 +19,7 @@ that can consist of the following:
 
 RDF extractors can be also be chosen for each `put()` request by
 providing a sequence of extractor names to the appropriate version of
-the `put()` method on a `StardocsConnection`.
+the `put()` method on a `BitesConnection`.
 
 ## Usage
 

@@ -48,18 +48,18 @@ public final class ExampleDescribe implements DescribeStrategy {
 		// it doesn't say whether the same dataset should be used for describing matched resources.
 		// It should be otherwise queries like DESCRIBE :A FROM :g don't make sense but one may want to
 		// describe resources matched in G1 based on information in G2.
-		Dataset aDataset = Datasets.builder()
-		                                   .namedGraphs(Iterables.concat(theDataset.defaultGraphs(), theDataset.namedGraphs()))
-		                                   .build();
-		GraphQueryResult aResults = theFactory.graph("construct {graph ?g { ?subject ?p ?object } } where { " +
-		                                             "graph ?g { " +
-		                                             "{ ?s ?p ?o . bind (?s as ?subject) bind(?o as ?object) } " +
-		                                             "union " +
-		                                             "{ ?o ?p ?s . bind (?o as ?subject) bind(?s as ?object) } } }",
-		                                             Namespaces.STARDOG)
-		                                      .dataset(aDataset)
-		                                      .parameter("s", theValue)
-		                                      .execute();
+        Dataset aDataset = Datasets.builder()
+                .namedGraphs(Iterables.concat(theDataset.defaultGraphs(), theDataset.namedGraphs()))
+                .build();
+        GraphQueryResult aResults = theFactory.graph("construct {graph ?g { ?subject ?p ?object } } where { " +
+                        "graph ?g { " +
+                        "{ ?s ?p ?o . bind (?s as ?subject) bind(?o as ?object) } " +
+                        "union " +
+                        "{ ?o ?p ?s . bind (?o as ?subject) bind(?s as ?object) } } }",
+                Namespaces.STARDOG)
+                .dataset(aDataset)
+                .parameter("s", theValue)
+                .execute();
 		CloseableIterator<Statement> aResultsIter = new CloseableIterator.AbstractCloseableIterator<Statement>() {
 			@Override
 			public void close() {
