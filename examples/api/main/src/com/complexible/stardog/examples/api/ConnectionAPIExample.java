@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
@@ -149,7 +150,7 @@ public class ConnectionAPIExample {
 					try(SelectQueryResult aResult = aQuery.execute()) {
 						System.out.println("The first ten results...");
 
-						QueryResultWriters.write(aResult, System.out, QueryResultFormats.TEXT);
+						QueryResultWriters.write(aResult, System.out, TextTableQueryResultWriter.FORMAT);
 					}
 
 					// `Query` objects are easily parameterized; so we can bind the "s" variable in the previous query with a specific value.
