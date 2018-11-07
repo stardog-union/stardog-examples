@@ -15,23 +15,25 @@
 
 package com.complexible.stardog.examples.connectable.listener;
 
-import com.complexible.common.openrdf.model.Models2;
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 
+import com.google.common.collect.ImmutableSet;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.model.Model;
+
+import java.util.Set;
 
 /**
- * This is NOT a test class. This class simply makes some changes in the database which will end up calling the {@link ExampleConnectable} that will
+ * This is NOT a test class. This class simply makes some changes in the database which will end up calling the ExampleConnectable that will
  * print the changes in the console. The console output for each test can be used for informational purposes. This class can be turned into a proper
  * automated test with some additional work.
  *
@@ -73,12 +75,7 @@ public class ExampleConnectableTest {
 			if (aConn.list().contains(DB)) {
 				aConn.drop(DB);
 			}
-
-			// setting the option here is not necessary since the default value is `true` but if desired
-			// the value can be set to `false` here and no logging output should be visible.
-			aConn.newDatabase(DB)
-			     .set(ExampleConnectableOption.ENABLE_LOGGING, true)
-			     .create();
+			aConn.newDatabase(DB).create();
 		}
 	}
 
@@ -95,11 +92,11 @@ public class ExampleConnectableTest {
 	public void testAddAndRemove() throws Exception {
 		try (Connection aConn = connect()) {
 			aConn.begin();
-			Model g1 = Models2.newModel(Values.statement(Values.iri("urn:s1"),
+			Set<Statement> g1 = ImmutableSet.of(Values.statement(Values.iri("urn:s1"),
 			                                             Values.iri("urn:p1"),
 			                                             Values.iri("urn:o1"),
 			                                             Values.iri("urn:g1")));
-			Model g2 = Models2.newModel(Values.statement(Values.iri("urn:s2"),
+			Set<Statement> g2 = ImmutableSet.of(Values.statement(Values.iri("urn:s2"),
 			                                             Values.iri("urn:p2"),
 			                                             Values.iri("urn:o2"),
 			                                             Values.iri("urn:g2")));
@@ -118,7 +115,7 @@ public class ExampleConnectableTest {
 	public void testRemoveGraph() throws Exception {
 		try (Connection aConn = connect()) {
 			aConn.begin();
-			Model g = Models2.newModel(Values.statement(Values.iri("urn:s1"),
+			Set<Statement> g = ImmutableSet.of(Values.statement(Values.iri("urn:s1"),
 			                                            Values.iri("urn:p1"),
 			                                            Values.iri("urn:o1"),
 			                                            Values.iri("urn:g1")));
@@ -135,11 +132,11 @@ public class ExampleConnectableTest {
 	public void testRemoveAll() throws Exception {
 		try (Connection aConn = connect()) {
 			aConn.begin();
-			Model g1 = Models2.newModel(Values.statement(Values.iri("urn:s1"),
+			Set<Statement> g1 = ImmutableSet.of(Values.statement(Values.iri("urn:s1"),
 			                                             Values.iri("urn:p1"),
 			                                             Values.iri("urn:o1"),
 			                                             Values.iri("urn:g1")));
-			Model g2 = Models2.newModel(Values.statement(Values.iri("urn:s2"),
+			Set<Statement> g2 = ImmutableSet.of(Values.statement(Values.iri("urn:s2"),
 			                                             Values.iri("urn:p2"),
 			                                             Values.iri("urn:o2")));
 			aConn.add()
@@ -171,11 +168,11 @@ public class ExampleConnectableTest {
 	public void testMoveQuery() throws Exception {
 		try (Connection aConn = connect()) {
 			aConn.begin();
-			Model g1 = Models2.newModel(Values.statement(Values.iri("urn:s1"),
+			Set<Statement> g1 = ImmutableSet.of(Values.statement(Values.iri("urn:s1"),
 			                                             Values.iri("urn:p1"),
 			                                             Values.iri("urn:o1"),
 			                                             Values.iri("urn:g1")));
-			Model g2 = Models2.newModel(Values.statement(Values.iri("urn:s2"),
+			Set<Statement> g2 = ImmutableSet.of(Values.statement(Values.iri("urn:s2"),
 			                                             Values.iri("urn:p2"),
 			                                             Values.iri("urn:o2"),
 			                                             Values.iri("urn:g2")));

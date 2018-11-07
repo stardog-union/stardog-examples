@@ -16,6 +16,7 @@
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import com.complexible.common.base.CloseableIterator;
 import com.complexible.stardog.Stardog;
@@ -29,10 +30,11 @@ import com.complexible.stardog.api.search.SearchResult;
 import com.complexible.stardog.api.search.SearchResults;
 import com.complexible.stardog.api.search.Searcher;
 import com.complexible.stardog.search.SearchOptions;
-import org.openrdf.model.Literal;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
+import com.stardog.stark.Literal;
+import com.stardog.stark.Value;
+import com.stardog.stark.io.RDFFormats;
+import com.stardog.stark.query.BindingSet;
+import com.stardog.stark.query.SelectQueryResult;
 
 /**
  * <p>Simple example </p>
@@ -75,7 +77,7 @@ public class WaldoAPIExample {
 					aConn.begin();
 					aConn
 						.add().io()
-						.format(RDFFormat.RDFXML)
+						.format(RDFFormats.RDFXML)
 						.file(Paths.get("data/catalog.rdf"));
 
 					aConn.commit();
@@ -125,12 +127,11 @@ public class WaldoAPIExample {
 
 					SelectQuery query = aConn.select(aQuery);
 
-					try (TupleQueryResult aResult = query.execute()) {
+					try (SelectQueryResult aResult = query.execute()) {
 						System.out.println("Query results: ");
 						while (aResult.hasNext()) {
 							BindingSet result = aResult.next();
-
-							System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
+							result.value("s").ifPresent(s -> System.out.println(s + result.literal("score").map(score -> " with a score of: " + Literal.doubleValue(score)).orElse("")));
 						}
 					}
 				}

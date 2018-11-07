@@ -15,17 +15,18 @@
 
 package com.complexible.stardog.examples.functions;
 
-import com.complexible.common.rdf.model.Namespaces;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.stardog.stark.Literal;
+import com.stardog.stark.Namespaces;
+import com.stardog.stark.query.BindingSet;
+import com.stardog.stark.query.SelectQueryResult;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.TupleQueryResult;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -73,10 +74,10 @@ public class TestTitleCaseFunction {
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(\"this sentence does not use title case.\") as ?str) }";
 
-			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
+			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
 				assertTrue("Should have a result", aResult.hasNext());
 
-				final String aValue = aResult.next().getValue("str").stringValue();
+				final String aValue = aResult.next().literal("str").orElseThrow(Exception::new).label();
 
 				assertEquals("This Sentence Does Not Use Title Case.", aValue);
 
@@ -94,38 +95,14 @@ public class TestTitleCaseFunction {
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
 			                      "select ?str where { bind(stardog:titleCase(\"this is one argument.\", \"And this is another\") as ?str) }";
 
-			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
+			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
 				// there should be a result because implicit in the query is the singleton set, so because the bind
 				// should fail due to the value error, we expect a single empty binding
 				assertTrue("Should have a result", aResult.hasNext());
 
 				final BindingSet aBindingSet = aResult.next();
 
-				assertTrue("Should have no bindings", aBindingSet.getBindingNames().isEmpty());
-
-				assertFalse("Should have no more results", aResult.hasNext());
-			}
-		}
-	}
-
-	@Test
-	public void testTitleCaseWrongType() throws Exception {
-
-		try (Connection aConn = ConnectionConfiguration.to(DB)
-		                                               .credentials("admin", "admin")
-		                                               .connect()) {
-
-			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +
-			                      "select ?str where { bind(stardog:titleCase(7) as ?str) }";
-
-			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
-				// there should be a result because implicit in the query is the singleton set, so because the bind
-				// should fail due to the value error, we expect a single empty binding
-				assertTrue("Should have a result", aResult.hasNext());
-
-				final BindingSet aBindingSet = aResult.next();
-
-				assertTrue("Should have no bindings", aBindingSet.getBindingNames().isEmpty());
+				assertEquals("Should have no bindings", 0, aBindingSet.size());
 
 				assertFalse("Should have no more results", aResult.hasNext());
 			}

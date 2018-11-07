@@ -5,7 +5,7 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '5.3.0'
+	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '6.0.0'
 	projectVersion = '0.0.5'
 
 	distPath = "${projectDir}/dist"

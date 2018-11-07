@@ -14,18 +14,19 @@
  */
 package com.complexible.stardog.plan.aggregates;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-import com.complexible.common.rdf.model.Namespaces;
 import com.complexible.stardog.plan.filter.Expression;
-import com.complexible.stardog.plan.filter.ExpressionEvaluationException;
+import com.complexible.stardog.plan.filter.expr.ValueOrError;
 import com.complexible.stardog.plan.filter.functions.numeric.Multiply;
 import com.complexible.stardog.plan.filter.functions.numeric.Root;
 import com.google.common.base.Preconditions;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Value;
+import com.stardog.stark.Literal;
+import com.stardog.stark.Namespaces;
+import com.stardog.stark.Value;
 
-import static com.complexible.common.rdf.model.Values.literal;
+import static com.stardog.stark.Values.literal;
 
 /**
  * <p>Implementation of a custom aggregate for calculating the geometric mean of the input values.</p>
@@ -87,20 +88,17 @@ public final class GMean extends AbstractAggregate {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Value _getValue() throws ExpressionEvaluationException {
+	protected ValueOrError _getValue() {
 		if (mCurr == null) {
-			return literal("0D");
+			return ValueOrError.BigDecimal.of(new BigDecimal(0));
 		}
 		else {
-			return mRoot.evaluate(mCurr, mCount.get());
+			return mRoot.evaluate(ValueOrError.General.of(mCurr), mCount.get());
 		}
 	}
 
 	@Override
-	protected void aggregate(final long theMultiplicity, final Value theValue, final Value... theOtherValues) throws ExpressionEvaluationException {
-		if (!(theValue instanceof Literal)) {
-			throw new ExpressionEvaluationException("Invalid argument to " + getName() + " argument MUST be a literal value, was: " + theValue);
-		}
+	protected ValueOrError aggregate(final long theMultiplicity, final Value theValue, final Value... theOtherValues) {
 
 		mCount.aggregate(theMultiplicity, theValue);
 
@@ -109,9 +107,10 @@ public final class GMean extends AbstractAggregate {
 		}
 		else {
 			mCurr = mProduct.evaluate(theMultiplicity == 1
-			                          ? theValue
-			                          : mProduct.evaluate(theValue, literal(theMultiplicity)), mCurr);
+					? theValue :
+					mProduct.evaluate(theValue, literal(theMultiplicity), mCurr).value()).value();
 		}
+		return null;
 	}
 
 	/**

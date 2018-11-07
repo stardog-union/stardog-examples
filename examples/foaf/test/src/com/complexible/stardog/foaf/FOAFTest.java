@@ -15,7 +15,6 @@
 
 package com.complexible.stardog.foaf;
 
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
@@ -27,13 +26,14 @@ import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofType;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import com.stardog.stark.IRI;
+import com.stardog.stark.OWL;
+import com.stardog.stark.Values;
+import com.stardog.stark.vocabs.FOAF;
+import com.stardog.stark.vocabs.RDF;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -74,9 +74,9 @@ public class FOAFTest {
 			                                  .connect()) {
 				aConn.begin();
 				aConn.add()
-				     .statement(alice, FOAF.KNOWS, bob)
-				     .statement(alice, FOAF.HOMEPAGE, homepage)
-				     .statement(bob, FOAF.IS_PRIMARY_TOPIC_OF, homepage);
+				     .statement(alice, FOAF.knows, bob)
+				     .statement(alice, FOAF.homepage, homepage)
+				     .statement(bob, Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf"), homepage);
 				aConn.commit();
 			}
 		}
@@ -94,17 +94,17 @@ public class FOAFTest {
 		                                               .reasoning(true)
 		                                               .connect()) {
 			// test domain inference
-			assertTrue(aConn.get().subject(alice).predicate(RDF.TYPE).object(FOAF.PERSON).ask());
+			assertTrue(aConn.get().subject(alice).predicate(RDF.TYPE).object(FOAF.Person).ask());
 
 			// test range and subClassOf inference
-			assertTrue(aConn.get().subject(bob).predicate(RDF.TYPE).object(FOAF.AGENT).ask());
+			assertTrue(aConn.get().subject(bob).predicate(RDF.TYPE).object(FOAF.Agent).ask());
 
 			// test inverse inference
-			assertTrue(aConn.get().subject(homepage).predicate(FOAF.PRIMARY_TOPIC).object(alice).ask());
+			assertTrue(aConn.get().subject(homepage).predicate(FOAF.primaryTopic).object(alice).ask());
 
 			// test subPropertyOf inferences
-			assertTrue(aConn.get().subject(alice).predicate(FOAF.IS_PRIMARY_TOPIC_OF).object(homepage).ask());
-			assertTrue(aConn.get().subject(alice).predicate(FOAF.PAGE).object(homepage).ask());
+			assertTrue(aConn.get().subject(alice).predicate(Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf")).object(homepage).ask());
+			assertTrue(aConn.get().subject(alice).predicate(Values.iri(FOAF.NAMESPACE, "page")).object(homepage).ask());
 		}
 	}
 
@@ -120,8 +120,8 @@ public class FOAFTest {
 
 			Proof aProof = aConn.explain().proof();
 			assertEquals(ProofType.VIOLATED, aProof.getType());
-			assertEquals(Values.statement(FOAF.IS_PRIMARY_TOPIC_OF, RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY),
-			             Iterables.getOnlyElement(aProof.getExpression().model()));
+			assertEquals(Values.statement(Values.iri(FOAF.NAMESPACE, "isPrimaryTopicOf"), RDF.TYPE, OWL.INVERSEFUNCTIONALPROPERTY),
+			             Iterables.getOnlyElement(aProof.getExpression().toGraph()));
 		}
 	}
 }

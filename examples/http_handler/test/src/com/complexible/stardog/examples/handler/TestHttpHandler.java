@@ -1,26 +1,17 @@
 package com.complexible.stardog.examples.handler;
 
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.Principal;
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
 import com.complexible.common.protocols.server.Server;
 import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.Connection;
-import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.google.common.base.Charsets;
 import com.google.common.io.Files;
-import com.stardog.http.server.undertow.HttpServiceLoader;
-import io.undertow.server.HttpHandler;
-import io.undertow.server.HttpServerExchange;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -35,10 +26,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertTrue;
 

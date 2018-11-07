@@ -18,7 +18,6 @@ package com.complexible.stardog.examples.sesame;
 import java.io.File;
 
 import com.complexible.common.openrdf.repository.RepositoryConnections;
-import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
@@ -28,6 +27,7 @@ import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.resultio.QueryResultIO;
+import org.openrdf.query.resultio.TupleQueryResultFormat;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 
@@ -89,8 +89,8 @@ public class SesameExample {
 						TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");
 
 						try (TupleQueryResult aResults = aQuery.evaluate()) {
-							// Print the results in tabular format
-							QueryResultIO.writeTuple(aResults, TextTableQueryResultWriter.FORMAT, System.out);
+							// Print the results in CSV format
+							QueryResultIO.writeTuple(aResults, TupleQueryResultFormat.CSV, System.out);
 						}
 					}
 				}

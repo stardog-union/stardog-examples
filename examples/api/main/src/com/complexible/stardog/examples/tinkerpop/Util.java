@@ -79,7 +79,7 @@ final class Util {
 		                                                                     .connectionString(theConnString)
 		                                                                     .credentials(STARDOG_USER, STARDOG_PASSWORD)
 		                                                                     .reasoning(theReasoningFlag) /* is reasoning enabled? */
-		                                                                     .namedGraph(Contexts.DEFAULT.stringValue() /* Abox data is in the default graph */)
+		                                                                     .namedGraph(Contexts.DEFAULT.toString() /* Abox data is in the default graph */)
 		                                                                     .cache(theCache);
 
 		if (!Strings.isNullOrEmpty(theBaseIRI)) {

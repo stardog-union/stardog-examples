@@ -5,17 +5,17 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.complexible.common.rdf.model.Values;
 import com.complexible.stardog.Stardog;
 import com.google.common.collect.ImmutableList;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Values;
+import com.stardog.stark.vocabs.RDF;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversal;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;
 import org.apache.tinkerpop.gremlin.structure.Graph;
 import org.apache.tinkerpop.gremlin.structure.Property;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.apache.tinkerpop.gremlin.structure.VertexProperty;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.RDF;
 
 /**
  * <p>A basic example using Stardog with the TinkerPop 3 API with Stardog Rules Reasoning.</p>
@@ -56,7 +56,7 @@ public final class TinkerPop3Example {
 				// Traverse the vertices of this graph, they're just 9 vertices
 				for (Vertex aVertex : g.V().toList()) {
 					// Get the `http://example.org/vehicles/yearModel` property if the vertex has it
-					Property<Integer> aYearModel = aVertex.property(aYearModelKey.stringValue());
+					Property<Integer> aYearModel = aVertex.property(aYearModelKey.toString());
 
 					if (aYearModel != VertexProperty.<Integer>empty()) {
 
@@ -112,7 +112,7 @@ public final class TinkerPop3Example {
 
 		System.out.println("------------");
 		System.out.println(String.format("Car <%s> %s <%s>",
-		                                 aVertexId.stringValue(),
+		                                 aVertexId.toString(),
 		                                 isOrNot,
 		                                 theClass));
 		System.out.println("------------");
@@ -135,7 +135,7 @@ public final class TinkerPop3Example {
 
 		// Traverse the - in-edges source vertices - of Vertex with Id `theClass` having label rdf:type
 		GraphTraversal<Vertex, Vertex> aIndividuals = theG.V(theClass)
-		                                                  .in(RDF.TYPE.stringValue());
+		                                                  .in(RDF.TYPE.toString());
 
 		// Iterate and get the source vertices
 		try (Stream<Vertex> aVertexStream = aIndividuals.toStream()) {

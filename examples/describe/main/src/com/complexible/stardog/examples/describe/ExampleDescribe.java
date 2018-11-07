@@ -19,16 +19,16 @@ import java.util.stream.Stream;
 
 import com.complexible.common.base.CloseableIterator;
 import com.complexible.common.base.Streams;
-import com.complexible.common.openrdf.query.ImmutableDataset;
-import com.complexible.common.rdf.model.Namespaces;
 import com.complexible.stardog.plan.describe.DescribeStrategy;
 import com.complexible.stardog.query.QueryFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.GraphQueryResult;
+import com.stardog.stark.Namespaces;
+import com.stardog.stark.Resource;
+import com.stardog.stark.Statement;
+import com.stardog.stark.query.Dataset;
+import com.stardog.stark.query.Datasets;
+import com.stardog.stark.query.GraphQueryResult;
 
 /**
  * Example {@link DescribeStrategy} which returns all statements where the node occurs as a subject or as an object.
@@ -48,18 +48,18 @@ public final class ExampleDescribe implements DescribeStrategy {
 		// it doesn't say whether the same dataset should be used for describing matched resources.
 		// It should be otherwise queries like DESCRIBE :A FROM :g don't make sense but one may want to
 		// describe resources matched in G1 based on information in G2.
-		Dataset aDataset = ImmutableDataset.builder()
-		                                   .namedGraphs(Iterables.concat(theDataset.getDefaultGraphs(), theDataset.getNamedGraphs()))
-		                                   .build();
-		GraphQueryResult aResults = theFactory.graph("construct {graph ?g { ?subject ?p ?object } } where { " +
-		                                             "graph ?g { " +
-		                                             "{ ?s ?p ?o . bind (?s as ?subject) bind(?o as ?object) } " +
-		                                             "union " +
-		                                             "{ ?o ?p ?s . bind (?o as ?subject) bind(?s as ?object) } } }",
-		                                             Namespaces.STARDOG)
-		                                      .dataset(aDataset)
-		                                      .parameter("s", theValue)
-		                                      .execute();
+        Dataset aDataset = Datasets.builder()
+                .namedGraphs(Iterables.concat(theDataset.defaultGraphs(), theDataset.namedGraphs()))
+                .build();
+        GraphQueryResult aResults = theFactory.graph("construct {graph ?g { ?subject ?p ?object } } where { " +
+                        "graph ?g { " +
+                        "{ ?s ?p ?o . bind (?s as ?subject) bind(?o as ?object) } " +
+                        "union " +
+                        "{ ?o ?p ?s . bind (?o as ?subject) bind(?s as ?object) } } }",
+                Namespaces.STARDOG)
+                .dataset(aDataset)
+                .parameter("s", theValue)
+                .execute();
 		CloseableIterator<Statement> aResultsIter = new CloseableIterator.AbstractCloseableIterator<Statement>() {
 			@Override
 			public void close() {

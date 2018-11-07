@@ -29,12 +29,12 @@ import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import com.stardog.stark.io.RDFFormats;
+import com.stardog.stark.query.SelectQueryResult;
 import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.rio.RDFFormat;
 
 import static org.junit.Assert.assertTrue;
 
@@ -112,10 +112,10 @@ public class TestExampleService {
 		                                               .connect()) {
 
 			aConn.begin();
-			aConn.add().io().format(RDFFormat.TURTLE).stream(new ByteArrayInputStream(DATA.getBytes(Charsets.UTF_8)));
+			aConn.add().io().format(RDFFormats.TURTLE).stream(new ByteArrayInputStream(DATA.getBytes(Charsets.UTF_8)));
 			aConn.commit();
 
-			try (TupleQueryResult aResult = aConn.select(aQuery).execute()) {
+			try (SelectQueryResult aResult = aConn.select(aQuery).execute()) {
 				assertTrue("Should have a result", aResult.hasNext());
 			}
 		}
