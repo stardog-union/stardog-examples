@@ -3,4 +3,5 @@ group = "com.complexible.stardog.examples.connectable"
 dependencies {
 	// server core modules
 	compile "com.complexible.stardog:server:${stardogVersion}"
+	compile "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
 }

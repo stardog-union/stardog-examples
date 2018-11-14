@@ -4,6 +4,8 @@ dependencies {
 	// server core modules
 	compile "com.complexible.stardog:server:${stardogVersion}@pom"
 	compile "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
+	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
+	compile "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
 
 	// client modules
 	compile "com.complexible.stardog:client-embedded:${stardogVersion}"
