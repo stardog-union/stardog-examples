@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
@@ -13,34 +14,40 @@
  * limitations under the License.
  */
 
-package com.complexible.stardog.examples.sesame;
+package com.complexible.stardog.examples.rdf4j;
 
 import java.io.File;
 
-import com.complexible.common.openrdf.repository.RepositoryConnections;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.sesame.StardogRepository;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQuery;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryConnection;
+import com.complexible.stardog.rdf4j.StardogRepository;
+import com.google.common.collect.Iterables;
+import com.stardog.common.rdf4j.repository.RepositoryConnections;
+import com.stardog.stark.query.io.QueryResultFormats;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.QueryResults;
+import org.eclipse.rdf4j.query.TupleQuery;
+import org.eclipse.rdf4j.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.resultio.QueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.QueryResultIO;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 /**
- * <p>A basic example of using Stardog via the Sesame API</p>
+ * <p>A basic example of using Stardog via the RDF4J API</p>
  *
  * @author Michael Grove
  * @version 2.0
  * @since 0.4
  */
-public class SesameExample {
+public class RDF4JExample {
 
-	// Using Stardog with the [Sesame](http://openrdf.org) API
+	// Using Stardog with the [RDF4J](http://rdf4j.org) API
 	// -------------------
-	// In this example we'll show how to use the bindings for the Sesame API to use Stardog as a drop in replacement
+	// In this example we'll show how to use the bindings for the RDF4J API to use Stardog as a drop in replacement
 	// for an existing `Repository` based application.
 	public static void main(String[] args) throws Exception {
 		// First need to initialize the Stardog instance which will automatically start the embedded server.
@@ -61,17 +68,17 @@ public class SesameExample {
 			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
 				// if it does, we want to drop it and re-create so that we can run the example from a clean database.
-				if (aAdminConnection.list().contains("testSesame")) {
-					aAdminConnection.drop("testSesame");
+				if (aAdminConnection.list().contains("testRDF4J")) {
+					aAdminConnection.drop("testRDF4J");
 				}
 
 				// Convenience function for creating a non-persistent in-memory database with all the default settings.
-				aAdminConnection.disk("testSesame").create();
+				aAdminConnection.disk("testRDF4J").create();
 
-				// Create a Sesame `Repository` from a Stardog `ConnectionConfiguration`.  The configuration will be used
+				// Create a RDF4J `Repository` from a Stardog `ConnectionConfiguration`.  The configuration will be used
 				// when creating new `RepositoryConnection` objects
 				Repository aRepo = new StardogRepository(ConnectionConfiguration
-					                                         .to("testSesame")
+					                                         .to("testRDF4J")
 					                                         .credentials("admin", "admin"));
 
 				// You must always initialize a `Repository`
@@ -88,9 +95,7 @@ public class SesameExample {
 
 						try (TupleQueryResult aResults = aQuery.evaluate()) {
 							// Print the results to the console
-							while (aResults.hasNext()) {
-								System.out.println(aResults.next());
-							}
+							QueryResultIO.writeTuple(aResults, TupleQueryResultFormat.TSV, System.out);
 						}
 					}
 				}
@@ -100,7 +105,7 @@ public class SesameExample {
 					aRepo.shutDown();
 				}
 
-				aAdminConnection.drop("testSesame");
+				aAdminConnection.drop("testRDF4J");
 			}
 		}
 		finally {
