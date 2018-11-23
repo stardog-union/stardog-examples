@@ -15,7 +15,6 @@
 
 package com.complexible.stardog.examples.api;
 
-import com.complexible.common.openrdf.util.Expression;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
@@ -30,15 +29,11 @@ import com.stardog.stark.Values;
 import com.stardog.stark.vocabs.RDF;
 import com.stardog.stark.vocabs.RDFS;
 
-import static com.complexible.common.openrdf.util.ExpressionFactory.type;
-
 /**
  * <p>Simple example to show how to use Stardog's explanation facilities.</p>
  *
  * @author Michael Grove
  * @version 6.0
- * @see Expression
- * @see com.complexible.common.openrdf.util.ExpressionFactory
  * @since 0.7.3
  */
 public class ExplanationExample {
@@ -73,7 +68,7 @@ public class ExplanationExample {
 				}
 
 				// Create a disk-based database with default settings
-				aAdminConnection.disk("reasoningTest").create();
+				aAdminConnection.newDatabase("reasoningTest").create();
 				// Open a `Connection` to the database we just created with reasoning turned on.
 				// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
 				// [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
