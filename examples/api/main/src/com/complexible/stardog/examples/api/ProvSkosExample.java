@@ -17,6 +17,7 @@ package com.complexible.stardog.examples.api;
 
 import java.util.Arrays;
 
+import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
@@ -30,7 +31,6 @@ import com.complexible.stardog.prov.ProvVocabulary;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Resource;
 import com.stardog.stark.Values;
-import com.stardog.stark.query.io.QueryResultFormats;
 import com.stardog.stark.query.io.QueryResultWriters;
 import com.stardog.stark.vocabs.DC;
 import com.stardog.stark.vocabs.RDF;
@@ -75,7 +75,7 @@ public class ProvSkosExample {
 				}
 
 				// Enable both `PROV` and `SKOS` ontologies for the current database
-				dbms.disk(db).set(DatabaseOptions.ARCHETYPES, Arrays.asList("skos", "prov")).create();
+				dbms.newDatabase(db).set(DatabaseOptions.ARCHETYPES, Arrays.asList("skos", "prov")).create();
 
 				// Obtain a connection to the database
 				try (Connection aConn = ConnectionConfiguration
@@ -140,7 +140,7 @@ public class ProvSkosExample {
 						"}");
 
 					// Print the query results
-					QueryResultWriters.write(aQuery.execute(), System.out, QueryResultFormats.TEXT);
+					QueryResultWriters.write(aQuery.execute(), System.out, TextTableQueryResultWriter.FORMAT);
 				}
 				finally {
 					if (dbms.list().contains(db)) {
