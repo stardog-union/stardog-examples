@@ -100,12 +100,12 @@ public class ConnectionAPIExample {
 
 					// The SNARL API provides fluent objects for adding & removing data from a database.  Here we'll use the
 					// [Adder](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Adder.html) to read in an N3 file
-					// from disk containing the 10k triples SP2B dataset.  Actually, for RDF data coming from a stream or from
+					// from disk containing a small subset of the SP2B dataset.  Actually, for RDF data coming from a stream or from
 					// disk, we'll use the helper class [IO](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/IO.html)
 					// for this task.  `IO` will automatically close the stream once the data has been read.
 					aConn.add().io()
-					     .format(RDFFormats.N3)
-					     .stream(new FileInputStream("data/sp2b_10k.n3"));
+					     .format(RDFFormats.TURTLE)
+					     .stream(new FileInputStream("data/sp2b.ttl"));
 
 					// You're not restricted to adding, or removing, data from a file.  You can create `Statement` objects
 					// containing information you want to add or remove from the database and make the modification wrt

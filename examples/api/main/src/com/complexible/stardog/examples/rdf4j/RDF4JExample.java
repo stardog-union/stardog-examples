@@ -88,7 +88,7 @@ public class RDF4JExample {
 					// Let's open a connection to the database, add some data, then query it
 					try (RepositoryConnection aRepoConn = aRepo.getConnection()) {
 						// First add some data to the connection so we can query it.
-						RepositoryConnections.add(aRepoConn, new File("data/sp2b_10k.n3"));
+						RepositoryConnections.add(aRepoConn, new File("data/sp2b.ttl"));
 
 						// Now we can query the data we just loaded into the database
 						TupleQuery aQuery = aRepoConn.prepareTupleQuery(QueryLanguage.SPARQL, "select * where { ?s ?p ?o. filter(?s = <http://localhost/publications/articles/Journal1/1940/Article1>).}");

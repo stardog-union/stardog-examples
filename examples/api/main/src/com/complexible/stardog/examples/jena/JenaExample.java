@@ -75,7 +75,7 @@ public class JenaExample {
 					// Read data into the model.  note, this will add statement at a time.  Bulk loading needs to be performed directly with the BulkUpdateHandler provided
 					// by the underlying graph, or read in files in RDF/XML format, which uses the bulk loader natively.  Alternatively, you can load data into the stardog
 					// database using it's native API via the command line client.
-					aModel.getReader("N3").read(aModel, new FileInputStream("data/sp2b_10k.n3"), "");
+					aModel.getReader("TURTLE").read(aModel, new FileInputStream("data/sp2b.ttl"), "");
 
 					// When you're done adding, you need to commit the changes
 					aModel.commit();
