@@ -96,7 +96,7 @@ spec:
       containers:
       - name: stardog-cluster
         imagePullPolicy: IfNotPresent
-        image: complexible-eps-docker.jfrog.io/stardog:6.0.1
+        image: stardog-eps-docker.jfrog.io/stardog:6.0.1
         ports:
         - containerPort: 5820
         volumeMounts:
@@ -107,21 +107,39 @@ spec:
           mountPath: /var/opt/stardog/
         - name: stardog-cluster-config
           mountPath: /etc/stardog-conf
+        env:
+        - name: PORT
+          value: "5820"
+        - name: STARDOG_HOME
+          value: "/var/opt/stardog/"
+        command:
+        - /bin/sh
+        - -c
+        - |
+          cp /etc/stardog-license/stardog-license-key.bin ${STARDOG_HOME} && \
+          cp /etc/stardog-conf/stardog.properties ${STARDOG_HOME} && \
+          /opt/stardog/bin/stardog-admin server start --foreground --port ${PORT} --home ${STARDOG_HOME}
         livenessProbe:
           httpGet:
             path: /admin/healthcheck
             port: 5820
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
+          periodSeconds: 60
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /admin/healthcheck
+            port: 5820
+          initialDelaySeconds: 5
           periodSeconds: 5
         lifecycle:
-          postStart:
+          preStop:
             exec:
               command:
               - /bin/sh
               - -c
               - |
-                cp /etc/stardog-license/stardog-license-key.bin /var/opt/stardog/ && \
-                cp /etc/stardog-conf/stardog.properties /var/opt/stardog/
+                /opt/stardog/bin/stardog-admin server stop
       imagePullSecrets:
       - name: stardog-artifactory-credentials
       volumes:
@@ -157,7 +175,7 @@ spec:
   selector:
     app: zk
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zk
