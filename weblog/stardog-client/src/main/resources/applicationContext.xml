@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--
     Bean to make sure that the testDB is created. This is done so that the DataSourceFactoryBean doesn't
@@ -27,9 +30,12 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+
     <bean name="importer" class="com.complexible.stardog.ext.spring.DataImporter">
         <property name="snarlTemplate" ref="template"/>
-        <property name="format" value="N3"/>
+        <property name="format">
+            <util:constant static-field="com.stardog.stark.io.RDFFormats.N3"/>
+        </property>
         <property name="inputFiles">
             <list>
                 <value>classpath:foaf.rdf</value>

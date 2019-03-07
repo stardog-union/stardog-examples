@@ -1,8 +1,10 @@
 package com.stardog.examples;
 
 import com.complexible.common.base.CloseableIterator;
-import com.complexible.common.openrdf.util.ExpressionFactory;
-import com.complexible.common.rdf.model.Values;
+import com.complexible.stardog.ext.spring.ConnectionCallback;
+import com.complexible.stardog.ext.spring.SnarlTemplate;
+import com.complexible.stardog.ext.spring.mapper.SimpleRowMapper;
+import com.stardog.stark.Values;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.SelectQuery;
@@ -11,14 +13,11 @@ import com.complexible.stardog.api.search.SearchConnection;
 import com.complexible.stardog.api.search.SearchResult;
 import com.complexible.stardog.api.search.SearchResults;
 import com.complexible.stardog.api.search.Searcher;
-import com.complexible.stardog.ext.spring.ConnectionCallback;
-import com.complexible.stardog.ext.spring.SnarlTemplate;
-import com.complexible.stardog.ext.spring.mapper.SimpleRowMapper;
 import com.complexible.stardog.reasoning.ProofWriter;
 import com.complexible.stardog.reasoning.StardogExplainer;
-import org.openrdf.model.Literal;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.TupleQueryResult;
+import com.stardog.stark.query.SelectQueryResult;
+import com.stardog.stark.query.BindingSet;
+import com.stardog.stark.Literal;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -93,11 +92,10 @@ public class StardogSpringClient {
             System.out.println("\n** Show Inference **");
             StardogExplainer aExplanation = snarlTemplate
                     .as(ReasoningConnection.class)
-                    .explain(ExpressionFactory.fromStatements(
-                            Values.statement(
+                    .explain(Values.statement(
                                     Values.iri("http://api.stardog.com/spiderMan"),
                                     Values.iri("http://api.stardog.com/childOf"),
-                                    Values.iri("http://api.stardog.com/maryParker"))));
+                                    Values.iri("http://api.stardog.com/maryParker")));
 
 
             System.out.println("Explain inference: ");
@@ -141,12 +139,12 @@ public class StardogSpringClient {
 
                         SelectQuery query = connection.select(aQuery);
 
-                        try (TupleQueryResult aResult = query.execute()) {
+                        try (SelectQueryResult aResult = query.execute()) {
                             System.out.println("Query results: ");
                             while (aResult.hasNext()) {
                                 BindingSet result = aResult.next();
 
-                                System.out.println(result.getValue("s") + " with a score of: " + ((Literal) result.getValue("score")).doubleValue());
+                                result.value("s").ifPresent(s -> System.out.println(s + result.literal("score").map(score -> " with a score of: " + Literal.doubleValue(score)).orElse("")));
                             }
                         }
 

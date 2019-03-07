@@ -5,19 +5,20 @@ import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.*;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.query.resultio.QueryResultIO;
-import org.openrdf.rio.RDFFormat;
+import com.stardog.stark.IRI;
+import com.stardog.stark.query.SelectQueryResult;
+import com.stardog.stark.query.io.QueryResultWriters;
+import com.stardog.stark.vocabs.FOAF;
+import com.stardog.stark.vocabs.RDF;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static com.complexible.common.rdf.model.Values.iri;
-import static com.complexible.common.rdf.model.Values.literal;
+import com.stardog.stark.io.*;
+import com.stardog.stark.*;
+
+import static com.stardog.stark.Values.literal;
 
 public class StardogClient {
 
@@ -36,11 +37,11 @@ public class StardogClient {
     private static TimeUnit expirationTimeUnit = TimeUnit.SECONDS;
 
     private static final String NS = "http://api.stardog.com/";
-    private static final IRI IronMan = iri(NS, "ironMan");
-    private static final IRI BlackWidow = iri(NS, "blackWidow");
-    private static final IRI CaptainAmerica = iri(NS, "captainAmerica");
-    private static final IRI Thor = iri(NS, "thor");
-    private static final IRI IncredibleHulk = iri(NS, "incredibleHulk");
+    private static final IRI IronMan = Values.iri(NS, "ironMan");
+    private static final IRI BlackWidow = Values.iri(NS, "blackWidow");
+    private static final IRI CaptainAmerica = Values.iri(NS, "captainAmerica");
+    private static final IRI Thor = Values.iri(NS, "thor");
+    private static final IRI IncredibleHulk = Values.iri(NS, "incredibleHulk");
 
     public static void main(String[] args) {
         createAdminConnection(); // creates the admin connection to perform some administrative actions
@@ -57,15 +58,15 @@ public class StardogClient {
                 // first start a transaction. This will generate the contents of the databse from the N3 file.
                 connection.begin();
                 // declare the transaction
-                connection.add().io().format(RDFFormat.N3).stream(new FileInputStream("src/main/resources/marvel.rdf"));
+                connection.add().io().format(RDFFormats.N3).stream(new FileInputStream("src/main/resources/marvel.rdf"));
                 // and commit the change
                 connection.commit();
 
                 // Query the database to get our list of Marvel superheroes and print the results to the console
                 SelectQuery query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> " +
                         "select * { ?s rdf:type foaf:Person }");
-                TupleQueryResult tupleQueryResult = query.execute();
-                QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
+                SelectQueryResult tupleQueryResult = query.execute();
+                QueryResultWriters.write(tupleQueryResult, System.out, TextTableQueryResultWriter.FORMAT);
 
                 // Query the database to see if the any of Thor's friends are not listed in the database and
                 // print the results to the console
@@ -74,22 +75,21 @@ public class StardogClient {
                         "          filter not exists {?o rdf:type foaf:Person . } " +
                         " } ");
                 tupleQueryResult = query.execute();
-                QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
+                QueryResultWriters.write(tupleQueryResult, System.out, TextTableQueryResultWriter.FORMAT);
 
                 // first start a transaction - This will add Tony Stark A.K.A Iron Man to the database
                 connection.begin();
                 // declare the transaction
                 connection.add()
-                        .statement(IronMan, RDF.TYPE, FOAF.PERSON)
-                        .statement(IronMan, FOAF.NAME, literal("Anthony Edward Stark"))
-                        .statement(IronMan, FOAF.TITLE, literal("Iron Man"))
-                        .statement(IronMan, FOAF.GIVEN_NAME, literal("Anthony"))
-                        .statement(IronMan, FOAF.FAMILY_NAME, literal("Stark"))
-                        .statement(IronMan, FOAF.NICK, literal("Tony"))
-                        .statement(IronMan, FOAF.KNOWS, BlackWidow)
-                        .statement(IronMan, FOAF.KNOWS, CaptainAmerica)
-                        .statement(IronMan, FOAF.KNOWS, Thor)
-                        .statement(IronMan, FOAF.KNOWS, IncredibleHulk);
+                        .statement(IronMan, RDF.TYPE, FOAF.Person)
+                        .statement(IronMan, FOAF.name, literal("Anthony Edward Stark"))
+                        .statement(IronMan, FOAF.title, literal("Iron Man"))
+                        .statement(IronMan, FOAF.givenName, literal("Anthony"))
+                        .statement(IronMan, FOAF.familyName, literal("Stark"))
+                        .statement(IronMan, FOAF.knows, BlackWidow)
+                        .statement(IronMan, FOAF.knows, CaptainAmerica)
+                        .statement(IronMan, FOAF.knows, Thor)
+                        .statement(IronMan, FOAF.knows, IncredibleHulk);
                 // and commit the change
                 connection.commit();
 
@@ -100,7 +100,7 @@ public class StardogClient {
                         "          filter not exists {?o rdf:type foaf:Person . }" +
                         " } ");
                 tupleQueryResult = query.execute();
-                QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
+                QueryResultWriters.write(tupleQueryResult, System.out, TextTableQueryResultWriter.FORMAT);
 
                 // first start a transaction - this will remove Captain America from the list where he is eithe the
                 // subject or the object
@@ -116,7 +116,7 @@ public class StardogClient {
                 // has been added while Captain America has been removed.
                 query = connection.select("PREFIX foaf:<http://xmlns.com/foaf/0.1/> select * { ?s rdf:type foaf:Person }");
                 tupleQueryResult = query.execute();
-                QueryResultIO.writeTuple(tupleQueryResult, TextTableQueryResultWriter.FORMAT, System.out);
+                QueryResultWriters.write(tupleQueryResult, System.out, TextTableQueryResultWriter.FORMAT);
 
             } catch (StardogException|IOException e) {
                 e.printStackTrace();

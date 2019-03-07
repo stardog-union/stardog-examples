@@ -12,9 +12,9 @@ repositories {
 
 dependencies {
     // Core Dependencies
-    compile ('com.complexible.stardog:client-http:5.2.3')
-    compile ('com.complexible.stardog:stardog-spring:5.2.3')
-    compile "com.complexible.stardog:server:5.2.3"
+    compile ('com.complexible.stardog:client-http:6.1.0')
+    compile ('com.stardog:stardog-spring:6.1.0')
+    compile "com.complexible.stardog:server:6.1.0"
 
     compile ('org.springframework:spring-core:4.3.10.RELEASE')
     compile ('org.springframework:spring-beans:4.3.10.RELEASE')
