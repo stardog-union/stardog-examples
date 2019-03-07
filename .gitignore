@@ -15,3 +15,5 @@ examples/.idea/workspace.xml
 examples/*/out
 
 **/.DS_Store
+
+stardog-license-key.bin

@@ -1,0 +1,223 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stardog-artifactory-credentials
+  namespace: {{ .Release.Namespace }}
+data:
+  .dockerconfigjson: {{ template "dockercreds" .  }}
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stardog-license
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+data:
+  stardog-license-key.bin: {{ .Files.Get "stardog-license-key.bin" | b64enc }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stardog-cluster-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: stardog-cluster
+spec:
+  ports:
+  - port: {{ .Values.stardog.port }}
+    name: server
+  type: LoadBalancer
+  selector:
+    app: stardog-cluster
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stardog-cluster-cm
+  namespace: {{ .Release.Namespace }}
+data:
+  stardog.properties: |
+    pack.enabled=true
+    pack.zookeeper.address={{- template "zkservers" . }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stardog-cluster
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: stardog-cluster
+  serviceName: stardog-cluster-service
+  replicas: {{ .Values.stardog.count }}
+  template:
+    metadata:
+      labels:
+        app: stardog-cluster
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - stardog-cluster
+              topologyKey: "kubernetes.io/hostname"
+      initContainers:
+      - name: wait-for-zk
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - |
+          while :
+          do
+            echo "Checking for ZK followers"
+            ZK_MNTR=$(echo mntr | nc zk-service.{{ .Release.Namespace }} 2181)
+            ZK_FOLLOWERS=$(echo "${ZK_MNTR}" | grep zk_synced_followers | awk '{print $2}')
+            echo "Currently ${ZK_FOLLOWERS} ZK followers"
+            if [[ "${ZK_FOLLOWERS}" -gt "1" ]]; then
+              echo "ZK has two sync'd followers (with the leader that makes 3)"
+              exit 0
+            fi
+            sleep 1
+          done
+      containers:
+      - name: stardog-cluster
+        imagePullPolicy: IfNotPresent
+        image: stardog-eps-docker.jfrog.io/stardog:6.0.1
+        ports:
+        - containerPort: {{ .Values.stardog.port }}
+        volumeMounts:
+        - name: stardog-license
+          mountPath: /etc/stardog-license
+          readOnly: true
+        - name: stardog-cluster-data
+          mountPath: /var/opt/stardog/
+        - name: stardog-cluster-config
+          mountPath: /etc/stardog-conf
+        livenessProbe:
+          httpGet:
+            path: /admin/healthcheck
+            port: {{ .Values.stardog.port }}
+          initialDelaySeconds: 30
+          periodSeconds: 5
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - |
+                cp /etc/stardog-license/stardog-license-key.bin /var/opt/stardog/ && \
+                cp /etc/stardog-conf/stardog.properties /var/opt/stardog/
+      imagePullSecrets:
+      - name: stardog-artifactory-credentials
+      volumes:
+      - name: stardog-license
+        secret:
+          secretName: stardog-license
+      - name: stardog-cluster-config
+        configMap:
+          name: stardog-cluster-cm
+  volumeClaimTemplates:
+  - metadata:
+      name: stardog-cluster-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.stardog.disk }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zk-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: zk
+spec:
+  ports:
+  - port: 2888
+    name: server
+  - port: 3888
+    name: leader-election
+  clusterIP: None
+  selector:
+    app: zk
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: zk
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: zk
+  serviceName: zk-service
+  replicas: {{ .Values.zookeeper.count }}
+  template:
+    metadata:
+      labels:
+        app: zk
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - zk
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: zookeeper
+        imagePullPolicy: IfNotPresent
+        image: gcr.io/google_samples/k8szk:v3
+        ports:
+        - containerPort: 2181
+          name: client
+        - containerPort: 2888
+          name: server
+        - containerPort: 3888
+          name: leader-election
+        env:
+        - name : ZK_REPLICAS
+          value: {{ quote .Values.zookeeper.count }}
+        command:
+        - sh
+        - -c
+        - zkGenConfig.sh && zkServer.sh start-foreground
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "zkOk.sh"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "zkOk.sh"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        volumeMounts:
+        - name: zk-data
+          mountPath: /var/lib/zookeeper
+  volumeClaimTemplates:
+  - metadata:
+      name: zk-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.zookeeper.disk }}

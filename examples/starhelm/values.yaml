@@ -1,0 +1,15 @@
+k8s:
+  nameprefix: stardog1
+
+zookeeper:
+  count: 3
+  disk: 2Gi
+
+dockerrepo:
+  url: https://stardog-eps-docker.jfrog.io
+  username: ci-readonly
+
+stardog:
+  count: 3
+  disk: 10Gi
+  port: 5820
