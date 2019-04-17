@@ -104,6 +104,7 @@ public class StardogSpringClient {
             // Full text search has the ability to do exactly that. Search the database for a specific value.
             // Here we will specify that we only want results over a score of `0.5`, and no more than `2` results
             // for things that match the search term `man`. Below we will perform the search in two different ways.
+            snarlTemplate.setReasoning(false);
             snarlTemplate.execute(new ConnectionCallback<Boolean>() {
                 @Override
                 public Boolean doWithConnection(Connection connection) {
