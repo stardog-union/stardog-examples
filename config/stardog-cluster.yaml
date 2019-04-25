@@ -173,6 +173,16 @@ spec:
   selector:
     app: zk
 ---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: zk-pdb
+spec:
+  selector:
+    matchLabels:
+      app: zk
+  minAvailable: 2
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
