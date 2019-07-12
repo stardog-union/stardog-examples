@@ -19,11 +19,13 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import com.complexible.common.base.CloseableIterator;
+import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.ContextSets;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
+import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.icv.Constraint;
@@ -42,6 +44,8 @@ import com.stardog.stark.Statement;
 import com.stardog.stark.Value;
 import com.stardog.stark.Values;
 import com.stardog.stark.query.BindingSet;
+import com.stardog.stark.query.SelectQueryResult;
+import com.stardog.stark.query.io.QueryResultWriters;
 import com.stardog.stark.util.GraphBuilder;
 import com.stardog.stark.vocabs.RDF;
 import com.stardog.stark.vocabs.RDFS;
@@ -89,7 +93,7 @@ public class ICVDocsExample {
 					dbms.drop("testICVDocs");
 				}
 
-				dbms.disk("testICVDocs").create();
+				dbms.newDatabase("testICVDocs").create();
 
 				// obtain a connection to the database
 				try (Connection aConn = ConnectionConfiguration
@@ -157,7 +161,7 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aSubConstraint);
 
 					// we'll create our initial invalid Abox
-					aBuilder.instance(Manager, Alice); // Alice is a Manager
+					aBuilder.instance(Alice, Manager); // Alice is a Manager
 
 					// and add that to stardog
 					insert(aConn, aBuilder.graph());
@@ -177,6 +181,8 @@ public class ICVDocsExample {
 					// and clear the database
 					clear(aValidator);
 
+
+					//problem 2
 					System.out.println("(2) Domain-Range constraints: Only project leaders can be responsible for projects");
 					System.out.println(Strings.repeat("-", 25) + "\n");
 
@@ -186,12 +192,13 @@ public class ICVDocsExample {
 					addConstraint(aValidator, aDomainConstraint, aRangeConstraint);
 
 					// lets create our initial invalid abox
-					aBuilder.instance(Project, MyProject);
+					aBuilder.instance(MyProject, Project);
 					aBuilder.instance(Alice)
 					        .addProperty(is_responsible_for, MyProject);
 
 					// add the invalid data into Stardog
 					insert(aConn, aBuilder.graph());
+
 
 					System.out.println("We should see that Alice is violating the domain constraint that she is a Project_Leader...");
 					printValidity(aValidator);
@@ -202,7 +209,7 @@ public class ICVDocsExample {
 
 					// a different invalid abox.  MyProject is not typed as a Project
 					aBuilder.reset();
-					aBuilder.instance(Project_Leader, Alice)
+					aBuilder.instance(Alice, Project_Leader)
 					        .addProperty(is_responsible_for, MyProject);
 
 					insert(aConn, aBuilder.graph());
@@ -210,13 +217,14 @@ public class ICVDocsExample {
 					System.out.println("Now we should see that MyProject is invalid for the range constraint...");
 					printValidity(aValidator);
 
+
 					// remove invalid data
 					remove(aConn, aBuilder.graph());
 
 					// create a valid abox
 					aBuilder.reset();
-					aBuilder.instance(Project, MyProject);
-					aBuilder.instance(Project_Leader, Alice)
+					aBuilder.instance(MyProject, Project);
+					aBuilder.instance(Alice, Project_Leader)
 					        .addProperty(is_responsible_for, MyProject);
 
 					insert(aConn, aBuilder.graph());
@@ -235,6 +243,7 @@ public class ICVDocsExample {
 
 					addConstraint(aValidator, aRangeConstraint2);
 
+					//note that here it is just a string
 					aBuilder.instance(Bob)
 					        .addProperty(dob, "1970-01-01");
 
@@ -264,7 +273,7 @@ public class ICVDocsExample {
 
 					addConstraint(aValidator, aSuperviseConstraint);
 
-					aBuilder.instance(Supervisor, Alice);
+					aBuilder.instance(Alice, Supervisor);
 
 					insert(aConn, aBuilder.graph());
 
@@ -274,7 +283,7 @@ public class ICVDocsExample {
 					remove(aConn, aBuilder.graph());
 					aBuilder.reset();
 
-					aBuilder.instance(Supervisor, Alice)
+					aBuilder.instance(Alice, Supervisor)
 					        .addProperty(supervises, Bob);
 
 					insert(aConn, aBuilder.graph());
@@ -310,7 +319,7 @@ public class ICVDocsExample {
 					aBuilder.reset();
 
 					System.out.println("But this is not valid: a project w/o a number...");
-					aBuilder.instance(Project, MyProject);
+					aBuilder.instance(MyProject, Project);
 					insert(aConn, aBuilder.graph());
 
 					printValidity(aValidator);
