@@ -40,7 +40,7 @@ task execute(type:JavaExec, dependsOn: compileJava) {
 	}
 }
 
-task executeAll(dependsOn: compileJava) << {
+task executeAll(dependsOn: compileJava) doLast {
 	sourceSets.main.allJava.each { File aFile ->
 		if (aFile.getName().contains("Example")) {
 			runExample aFile.getAbsolutePath()
@@ -48,7 +48,7 @@ task executeAll(dependsOn: compileJava) << {
 	}
 }
 
-task docs << {
+task docs doLast {
 	exec {
 		commandLine "docco",
 					"-o",
