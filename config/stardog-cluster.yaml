@@ -8,20 +8,11 @@ metadata:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: stardog-artifactory-credentials
-  namespace: stardog-k8s
-data:
-  .dockerconfigjson: <base64 encoded string of credentials>
-type: kubernetes.io/dockerconfigjson
----
-apiVersion: v1
-kind: Secret
-metadata:
   name: stardog-7-license
   namespace: stardog-k8s
 type: Opaque
 data:
-  stardog-license-key.bin: <base64 encoded string of the license file>
+  stardog-license-key.bin: <base64 encoded license>
 ---
 apiVersion: v1
 kind: Service
@@ -96,7 +87,7 @@ spec:
       containers:
       - name: stardog-cluster
         imagePullPolicy: IfNotPresent
-        image: stardog-eps-docker.jfrog.io/stardog:6.0.1
+        image: stardog/stardog
         ports:
         - containerPort: 5820
         volumeMounts:
@@ -140,8 +131,6 @@ spec:
               - -c
               - |
                 /opt/stardog/bin/stardog-admin server stop
-      imagePullSecrets:
-      - name: stardog-artifactory-credentials
       volumes:
       - name: stardog-license
         secret:
@@ -254,3 +243,4 @@ spec:
       resources:
         requests:
           storage: 2Gi
+
