@@ -35,8 +35,10 @@ task execute(type:JavaExec, dependsOn: compileJava) {
 
 	classpath = sourceSets.main.runtimeClasspath
 
+	jvmArgs = [ "-Djava.library.path=${project.stardogLib}" ]
+
 	if (project.hasProperty("stardogHome")) {
-		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
+		jvmArgs += "-Dstardog.home=${project.stardogHome}"
 	}
 }
 
@@ -82,8 +84,11 @@ def runExample(String example) {
 
 		classpath = project(':examples:api').sourceSets.main.runtimeClasspath
 
+
+		jvmArgs = [ "-Djava.library.path=${project.stardogLib}" ]
+
 		if (project.hasProperty("stardogHome")) {
-			jvmArgs = [ "-Dstardog.home=${stardogHome}" ]
+			jvmArgs += "-Dstardog.home=${project.stardogHome}"
 		}
 		// else stardog will attempt to use its own $STARDOG_HOME
 	}
