@@ -59,7 +59,6 @@ task docs doLast {
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ExplanationExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/VersioningExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ProvSkosExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",

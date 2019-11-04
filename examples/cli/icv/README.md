@@ -279,8 +279,8 @@ enable guard mode for an existing database, we need to take the database
 offline first and set the options later:
 
 ```
-$ stardog-admin db offline --timeout 0 issues 
-$ stardog-admin metadata set -o icv.enabled=true icv.reasoning.enabled=true issues
+$ stardog-admin db offline issues
+$ stardog-admin metadata set -o transaction.isolation=serializable icv.enabled=true icv.reasoning.enabled=true issues
 $ stardog-admin db online issues
 ```
 
