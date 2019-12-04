@@ -4,6 +4,6 @@ prefix spa: <tag:stardog:api:analytics:>
 SELECT ?mean_absolute_error
 WHERE {
     graph spa:model {
-        :r1 spa:validationScore ?mean_absolute_error
+        :r1 spa:evaluationScore ?mean_absolute_error
     }
 }

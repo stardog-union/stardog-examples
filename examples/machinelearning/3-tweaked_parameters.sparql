@@ -16,8 +16,9 @@ INSERT {
                 ] ;
                 spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
                 spa:predict ?rating ;
+                spa:evaluation true ;
                 spa:crossValidation 100 ;
-                spa:validationMetric spa:mae ;
+                spa:evaluationMetric spa:mae ;
                 spa:overwrite True .
     }
 }
