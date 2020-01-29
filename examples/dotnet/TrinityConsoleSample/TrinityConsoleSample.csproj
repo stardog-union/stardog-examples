@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject>TrinityConsoleSample.Program</StartupObject>
+    <ApplicationIcon />
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Semiodesk.Trinity" Version="1.0.3.22" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="ontologies.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ontologies\music_schema.ttl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ontologies\rdf.ttl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ontologies\rdfs.ttl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

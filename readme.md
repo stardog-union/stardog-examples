@@ -27,6 +27,28 @@ program, but you can specify the fully-qualified class name of any of the other 
 gradle execute -PmainClass=com.complexible.stardog.examples.api.ICVExample
 ```
 
+### .NET Examples
+
+To compile the .NET examples, you will need to install [.NET Core](https://dotnet.microsoft.com/download). Make sure that the `dotnet` tool is on your `PATH`
+
+Once you have installed .NET Core, you can build the sample with the following command:
+
+```bash
+gradle compileDotnet
+```
+
+To run the .NET examples you should have Stardog running locally and listening on port 5820 (you can change this by editing the connection string in [Program.cs](./examples/dotnet/TrinityConsoleSample/Program.cs). In addition, the example expects Stardog to have a database named 'music' loaded with the data from [music_schema.ttl](./examples/dotnet/TrinityConsoleSample/Ontologies/music_schema.ttl) and [music.ttl.gz](https://github.com/stardog-union/stardog-tutorials/blob/master/music/music.ttl.gz) in a named graph called `http://stardog.com/tutorial`
+
+You can run the sample with the following command (NOTE: the following command will automatically rebuild the sample):
+
+```bash
+gradle runDotnet
+```
+
+The sample project will connect to Stardog and execute several queries using SPARQL and LINQ. It will print the results to the console.
+
+For additional information see the DotNet Samples' [README](./examples/dotnet/README.md)
+
 ## Generating Documentation
 
 The Stardog [documentation](http://docs.stardog.com) and its [javadocs](http://docs.stardog.com/java/snarl) are a good
