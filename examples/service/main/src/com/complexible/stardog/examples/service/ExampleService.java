@@ -75,9 +75,9 @@ final class ExampleService extends SingleQueryService {
 	}
 
 	@Override
-        public PlanNode translate(IRI iri, PlanNode body, IntFunction<String> varNames, final Function<String, Integer> varAllocator, boolean silent) {
+	public PlanNode translate(IRI iri, PlanNode body, IntFunction<String> varNames, final Function<String, Integer> varAllocator, boolean silent) {
 		return PlanNodes.service()
-                                .query(createQuery(iri, body))
+				.query(createQuery(iri, body))
 				.silent(silent)
 				.build();
 	}
