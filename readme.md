@@ -9,12 +9,12 @@ well as examples of how to use some of the extension points within Stardog.
 
 First, you'll need a valid Stardog download.
 
-For the examples in `examples/api`, `example/foaf`, and `examples/function`, you'll need [Gradle](http://www.gradle.org/).
+You can use the included Gradle Wrapper script to build the examples in `examples/api`, `example/foaf`, `examples/function`.
 
 To compile or run the examples, gradle will automatically download the dependencies from our public maven repository:
 
 ```bash
-gradle compileJava
+$ ./gradlew compileJava
 ```
 
 To run the examples, they require a valid `$STARDOG_HOME`; you can provide this via the parameter `stardog.home`
@@ -24,30 +24,36 @@ To run any of the examples, you can use the Gradle `execute` task.  By default, 
 program, but you can specify the fully-qualified class name of any of the other examples using the `mainClass` parameter.
 
 ```java
-gradle execute -PmainClass=com.complexible.stardog.examples.api.ICVExample
+$ ./gradlew execute -PmainClass=com.complexible.stardog.examples.api.ICVExample
 ```
 
 ### .NET Examples
 
 To compile the .NET examples, you will need to install [.NET Core](https://dotnet.microsoft.com/download). Make sure that the `dotnet` tool is on your `PATH`
 
-Once you have installed .NET Core, you can build the sample with the following command:
+While you can build the sample with the latest version of the .NET Core SDK you will need .NET Core runtime installed to **run** the example. You can download it from [here](https://dotnet.microsoft.com/download/dotnet-core/2.1) - you can verify which .NET Core runtimes you have installed by running:
 
 ```bash
-gradle compileDotnet
+dotnet --list-runtimes
 ```
 
-To run the .NET examples you should have Stardog running locally and listening on port 5820 (you can change this by editing the connection string in [Program.cs](./examples/dotnet/TrinityConsoleSample/Program.cs). In addition, the example expects Stardog to have a database named 'music' loaded with the data from [music_schema.ttl](./examples/dotnet/TrinityConsoleSample/Ontologies/music_schema.ttl) and [music.ttl.gz](https://github.com/stardog-union/stardog-tutorials/blob/master/music/music.ttl.gz) in a named graph called `http://stardog.com/tutorial`
+Once you have installed .NET Core SDK and runtime,you can build the sample with the following command:
+
+```bash
+$ ./gradlew compileDotnet
+```
+
+To run the .NET examples you should have Stardog running locally and listening on port 5820 (you can change this by editing the connection string in `./examples/dotnet/TrinityConsoleSample/Program.cs`. In addition, the example expects Stardog to have a database named 'music' loaded with the data from `./examples/dotnet/TrinityConsoleSample/Ontologies/music_schema.ttl` and [music.ttl.gz](https://github.com/stardog-union/stardog-tutorials/blob/master/music/music.ttl.gz) in a named graph called `http://stardog.com/tutorial`
 
 You can run the sample with the following command (NOTE: the following command will automatically rebuild the sample):
 
 ```bash
-gradle runDotnet
+$ ./gradlew runDotnet
 ```
 
 The sample project will connect to Stardog and execute several queries using SPARQL and LINQ. It will print the results to the console.
 
-For additional information see the DotNet Samples' [README](./examples/dotnet/README.md)
+For additional information see the DotNet Samples' README file - `./examples/dotnet/README.md`
 
 ## Generating Documentation
 
@@ -58,13 +64,13 @@ place to start. But some examples in this repository are annotated using Markdow
 If you don't have Docco installed, it's pretty easy to get started:
 
 ```bash
-sudo npm install -g docco
+$ sudo npm install -g docco
 ```
 
 Then, you can run it directly against any example:
 
 ```bash
-docco -o docs main/src/com/complexible/stardog/api/ConnectionAPIExample.java
+$ docco -o docs main/src/com/complexible/stardog/api/ConnectionAPIExample.java
 ```
 
 Or you can use the supplied `gradle docs` task in each build file that will run Docco against all annotated source files.
@@ -91,6 +97,7 @@ the `ServiceLoader` to make them up.
 1. [CSV example](./examples/cli/virtual/csv/readme.md)
 1. [Docs Examples](./examples/docs/readme.md)
 1. [Database Archetype Extensibility](./examples/foaf/readme.md)
+1. [DotNet Example](./examples/dotnet/README.md)
 1. [Function Extensibility](./examples/function/readme.md)
 1. [Transaction Listener](./examples/listener/readme.md)
 1. [Cloud Foundry Example Application](https://github.com/stardog-union/cf-example)
