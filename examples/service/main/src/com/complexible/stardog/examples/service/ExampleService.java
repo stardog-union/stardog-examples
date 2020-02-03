@@ -16,6 +16,7 @@
 package com.complexible.stardog.examples.service;
 
 import java.io.InputStream;
+import java.util.function.Function;
 import java.util.function.IntFunction;
 
 import com.complexible.common.base.Strings2;
@@ -74,9 +75,9 @@ final class ExampleService extends SingleQueryService {
 	}
 
 	@Override
-	public PlanNode translate(IRI iri, PlanNode planNode, IntFunction<String> intFunction, boolean silent) {
+	public PlanNode translate(IRI iri, PlanNode body, IntFunction<String> varNames, final Function<String, Integer> varAllocator, boolean silent) {
 		return PlanNodes.service()
-				.query(createQuery(iri, planNode))
+				.query(createQuery(iri, body))
 				.silent(silent)
 				.build();
 	}

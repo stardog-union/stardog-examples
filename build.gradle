@@ -1,15 +1,16 @@
 apply plugin: 'java'
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.2'
+	gradleVersion = '4.10'
 }
 
 ext {
 	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '7.0.2'
-	projectVersion = '0.0.5'
+	projectVersion = '0.0.6'
 
 	distPath = "${projectDir}/dist"
 	stardogRepo = project.hasProperty("stardogRepo") ? project.getProperty("stardogRepo") : "http://maven.stardog.com"
+	stardogLib = project.hasProperty("stardogLib") ? project.getProperty("stardogLib") : "."
 }
 
 allprojects {
