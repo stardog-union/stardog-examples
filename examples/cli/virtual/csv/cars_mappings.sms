@@ -32,8 +32,8 @@ TO {
         gr:hasCurrencyValue ?price_float .
 }
 WHERE {
-    # A variable (?Make, ?Model) will be created for each column. Column names will be
-    # taken from the header record (or use ?0, ?1, ?2... for column names if there is no header).
+    # A variable (?Make, ?Model) will be created for each column. Column names are case-sensitive, and will be taken from
+    # the header row (or use ?0, ?1, ?2... for column names if there is no header).
 
     # New variables can be created in the WHERE clause using the SPARQL BIND function.
 

@@ -14,10 +14,12 @@ The following command can be used to import the contents of the CSV file into th
 stardog-admin virtual import --format sms2 mydb cars_mappings.sms cars.csv
 ```
 
-Mappings can be ommitted from the virtual import command for delimited files and they will be generated automatically.
-See the comments in the [cars_autogenerate.properties](cars_autogenerate.properties) file for a description of the
-needed properties for automatic mappings generation. The final output for an import with generated mappings can be seen
-in [cars_autogenerate.ttl](cars_autogenerate.ttl).
+Mappings can be ommitted from the virtual import command for delimited files and the mappings will be generated
+automatically. Both source files with and without a header row can be imported without mappings. For those
+without a header row, IRIs will be generated using the index of the columns. See the comments in the
+[cars_autogenerate.properties](cars_autogenerate.properties) file for a description of the needed properties for
+automatic mappings generation. The final output for an import with generated mappings can be seen in
+[cars_autogenerate.ttl](cars_autogenerate.ttl).
 
 The following command can be used to import the contents of the CSV file using automatically generated mappings into
 the Stardog database `mydb`:
