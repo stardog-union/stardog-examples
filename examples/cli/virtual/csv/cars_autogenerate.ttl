@@ -1,0 +1,26 @@
+@prefix : <http://example.org/cars#> .
+@prefix vso: <http://purl.org/vso/ns#> .
+
+<http://example.org/cars/Make=Ford;Model=E350> a vso:Automobile ;
+   :Make "Ford" ;
+   :Description "ac, abs, moon" ;
+   :Model "E350" ;
+   :Price "3000.0" ;
+   :Year "1997" .
+<http://example.org/cars/Make=Chevy;Model=Venture%20%22Extended%20Edition%22> a vso:Automobile ;
+   :Make "Chevy" ;
+   :Model "Venture \"Extended Edition\"" ;
+   :Price "4900.0" ;
+   :Year "1999" .
+<http://example.org/cars/Make=Chevy;Model=Venture%20%22Extended%20Edition%2C%20Very%20Large%22> a vso:Automobile ;
+   :Make "Chevy" ;
+   :Model "Venture \"Extended Edition, Very Large\"" ;
+   :Price "5000.0" ;
+   :Year "1999" .
+<http://example.org/cars/Make=Jeep;Model=Grand%20Cherokee> a vso:Automobile ;
+   :Make "Jeep" ;
+   :Description """MUST SELL!
+air, moon roof, loaded""" ;
+   :Model "Grand Cherokee" ;
+   :Price "4799.0" ;
+   :Year "1996" .
