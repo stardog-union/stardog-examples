@@ -34,7 +34,7 @@
 
 :index a owl:DatatypeProperty , owl:FunctionalProperty;
 	rdfs:domain :Episode ;
-	rdfs:range xsd:striintng .
+	rdfs:range xsd:int .
 
 :Planet a owl:Class .
 
