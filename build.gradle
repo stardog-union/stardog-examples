@@ -5,7 +5,7 @@ task wrapper(type: Wrapper) {
 }
 
 ext {
-	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '7.0.2'
+	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '7.1.2'
 	projectVersion = '0.0.6'
 
 	distPath = "${projectDir}/dist"
@@ -40,10 +40,10 @@ subprojects {
 
 	// common deps
 	dependencies {
-		compile 'org.slf4j:slf4j-api:1.7.7'
-		compile 'org.slf4j:slf4j-jdk14:1.7.7'
+		compile 'org.slf4j:slf4j-api:1.7.12'
+		compile 'org.slf4j:slf4j-jdk14:1.7.12'
 
-		testCompile 'junit:junit:4.8.2'
+		testCompile 'junit:junit:4.12'
 	}
 
 	sourceSets {
