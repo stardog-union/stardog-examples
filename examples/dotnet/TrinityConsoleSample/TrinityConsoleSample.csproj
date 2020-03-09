@@ -7,7 +7,7 @@
     <ApplicationIcon />
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Semiodesk.Trinity" Version="1.0.3.22" />
+    <PackageReference Include="Semiodesk.Trinity" Version="1.0.3.30" />
   </ItemGroup>
   <ItemGroup>
     <None Update="ontologies.config">
