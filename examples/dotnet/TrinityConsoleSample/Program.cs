@@ -75,7 +75,7 @@ namespace TrinityConsoleSample
 
             watch.Restart();
 
-            // NOTE: Creating a Queryable<> does not issue a query. Queries are created and executed in a 
+            // NOTE: Creating a Queryable<> does not issue a query. Queries are created and executed in a
             // lazy fashion when you access the results, depending on your requested result type:
             //
             // Default: SPARQL SELECT
@@ -136,10 +136,10 @@ namespace TrinityConsoleSample
             Console.WriteLine($"Get the members of bands that start with \"{SEARCH_STRING}\" using SPARQL");
 
             // NOTES ON SPARQL:
-            // 1. No need to define the PREFIXes here because the SparqlQuery will automatically 
+            // 1. No need to define the PREFIXes here because the SparqlQuery will automatically
             // assert the ones registered in the ontologies.config file. This allows us to manage
             // namespaces at the app level.
-            // 2. We do need a FROM to specify the named graph because it will be asserted by the Model
+            // 2. We don't need a FROM to specify the named graph because it will be asserted by the Model
 
             var sparqlQuery = new SparqlQuery($@"
                   SELECT ?member ?member_name
@@ -159,7 +159,7 @@ namespace TrinityConsoleSample
 
                 foreach (var binding in bindings)
                 {
-                    Console.WriteLine($"\tMember: {binding.Values.First()}");
+                    Console.WriteLine($"\tMember: {binding.Values.FirstOrDefault()?.ToString()}");
                 }
             }
 
