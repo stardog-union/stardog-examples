@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
@@ -13,6 +14,12 @@ namespace HttpApiConsoleSample
     {
         [JsonProperty("databases")]
         public List<string> Databases { get; set; }
+    }
+
+    public class CreateResponse
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 
     class Program
@@ -36,6 +43,7 @@ namespace HttpApiConsoleSample
             listDatabasesRequest.Credentials = requestCredentialsCache;
             listDatabasesRequest.Method = "GET";
 
+            // using will call Dispose() for us
             using (HttpWebResponse listDatabasesResponse = (HttpWebResponse)listDatabasesRequest.GetResponse())
             {
                 if (listDatabasesResponse.StatusCode == HttpStatusCode.OK)
@@ -46,7 +54,7 @@ namespace HttpApiConsoleSample
                         var databases = JsonConvert.DeserializeObject<DatabaseList>(databasesAsJson);
                         if (databases.Databases.Contains(DATABASE_NAME))
                         {
-                            // Database exists, DROP it
+                            // if a database with the same name exists, DROP it
 
                             HttpWebRequest deleteDatabaseRequest = (HttpWebRequest)WebRequest.Create(new Uri(baseServerUri, $"admin/databases/{DATABASE_NAME}"));
                             deleteDatabaseRequest.Method = "DELETE";
@@ -68,7 +76,7 @@ namespace HttpApiConsoleSample
                 }
             }
 
-            // Create the database
+            // Create the database and add a triple from a file to it.
 
             HttpWebRequest createDatabasesRequest = (HttpWebRequest)WebRequest.Create(new Uri(baseServerUri, "admin/databases"));
 
@@ -79,8 +87,7 @@ namespace HttpApiConsoleSample
             createDatabasesRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
             createDatabasesRequest.UserAgent = "Stardog DotNet Sample";
 
-            
-            string boundary = "--------------------------" + DateTime.Now.Ticks.ToString("x", NumberFormatInfo.InvariantInfo); ;
+            string boundary = "--------------------------" + DateTime.Now.Ticks.ToString("x", NumberFormatInfo.InvariantInfo); // just need something unique
 
             byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
             byte[] terminatorBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
@@ -118,18 +125,38 @@ namespace HttpApiConsoleSample
                 byte[] fileBytes = Encoding.UTF8.GetBytes(fileItem);
                 s.Write(fileBytes, 0, fileBytes.Length);
 
-                // Then terminating boundary
+                // terminating boundary
                 s.Write(terminatorBytes, 0, terminatorBytes.Length);
                 s.Close();
             }
 
             using (HttpWebResponse createDatabasesResponse = (HttpWebResponse)createDatabasesRequest.GetResponse())
             {
-                using (var sr = new StreamReader(createDatabasesResponse.GetResponseStream()))
+                var rs = createDatabasesResponse.GetResponseStream();
+
+                try
                 {
-                    var responseText = sr.ReadToEnd();
-                    Console.WriteLine(responseText);
+                    if (createDatabasesResponse.ContentEncoding.ToLower().Contains("gzip"))
+                    {
+                        rs = new GZipStream(rs, CompressionMode.Decompress);
+                    }
+                    else if (createDatabasesResponse.ContentEncoding.ToLower().Contains("deflate"))
+                    {
+                        rs = new DeflateStream(rs, CompressionMode.Decompress);
+                    }
+
+                    StreamReader Reader = new StreamReader(rs, Encoding.Default);
+
+                    string jsonResponse = Reader.ReadToEnd();
+                    CreateResponse cr =  JsonConvert.DeserializeObject<CreateResponse>(jsonResponse);
+
+                    Console.WriteLine(cr.Message);
                 }
+                finally
+                {
+                    rs.Close();
+                }
+
             }
         }
     }
