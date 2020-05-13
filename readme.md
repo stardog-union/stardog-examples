@@ -97,7 +97,7 @@ the `ServiceLoader` to make them up.
 1. [CSV example](./examples/cli/virtual/csv/readme.md)
 1. [Docs Examples](./examples/docs/readme.md)
 1. [Database Archetype Extensibility](./examples/foaf/readme.md)
-1. [DotNet Example](./examples/dotnet/README.md)
+1. [DotNet Examples](./examples/dotnet/README.md)
 1. [Function Extensibility](./examples/function/readme.md)
 1. [Transaction Listener](./examples/listener/readme.md)
 1. [Cloud Foundry Example Application](https://github.com/stardog-union/cf-example)
