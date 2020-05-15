@@ -91,6 +91,9 @@ namespace HttpApiConsoleSample
             createDatabasesRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
             createDatabasesRequest.UserAgent = "Stardog DotNet Sample";
 
+            // Hand coding multipart requests are tricky. For this section I leaned heavily on the
+            // implementation found in dotNetRDF - see https://github.com/dotnetrdf/dotnetrdf/blob/master/Libraries/dotNetRDF/Storage/Management/StardogServer.cs
+
             string boundary = "--------------------------" + DateTime.Now.Ticks.ToString("x", NumberFormatInfo.InvariantInfo); // just need something unique
 
             byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
