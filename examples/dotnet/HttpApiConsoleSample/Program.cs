@@ -10,12 +10,16 @@ using Newtonsoft.Json.Linq;
 
 namespace HttpApiConsoleSample
 {
+    // helper class for deserializing the response of the
+    // list databases request
     public class DatabaseList
     {
         [JsonProperty("databases")]
         public List<string> Databases { get; set; }
     }
 
+    // helper class for deserializing the response of the
+    // create database request
     public class CreateResponse
     {
         [JsonProperty("message")]
