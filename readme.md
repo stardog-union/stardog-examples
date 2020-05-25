@@ -93,7 +93,6 @@ the `ServiceLoader` to make them up.
 1. [Custom Analyzers](./examples/analyzer/readme.md)
 1. [Stardog API Examples](./examples/api/readme.md)
 1. [Integrity Constraint Validation](./examples/cli/icv)
-1. [Stardog Versioning](./examples/cli/versioning/README.md)
 1. [CSV example](./examples/cli/virtual/csv/readme.md)
 1. [Docs Examples](./examples/docs/readme.md)
 1. [Database Archetype Extensibility](./examples/foaf/readme.md)
