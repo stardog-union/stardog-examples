@@ -39,7 +39,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus-intprod",
+      "datasource": "$datasource",
       "description": null,
       "editable": true,
       "error": false,
@@ -90,7 +90,7 @@
       "targets": [
         {
           "datasource": "",
-          "expr": "dbms_memory_heap_query_blocks_max",
+          "expr": "dbms_memory_heap_used",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -106,7 +106,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Dbms Memory Heap Query Blocks Max",
+      "title": "Dbms Memory Heap Used",
       "tooltip": {
         "msResolution": true,
         "shared": true,
