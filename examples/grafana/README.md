@@ -53,5 +53,12 @@ for importing a dashbaord with a json file.
 
 
 
+## Example screenshots
+1. All Databases metrics
 
+![All Databases](img/all_databases.png?raw=true "All Databases")
+
+2. Stardog Overview metrics
+
+![Stardog Overview](img/stardog_overview.png?raw=true "Stardog Overview")
 
