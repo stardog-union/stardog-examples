@@ -5,7 +5,7 @@ Stardog provides a preconfigured Stardog dashboard for Grafana in the form of a 
 be imported into Grafana. In order to be able to use the dashboard you must have Prometheus
 configured to scrape Stardog kubenetes pods for metrics data.
 
-*screen shots go here*
+![Stardog Overview](img/Stardog_Overview_-_Grafana_1.png?raw=true "Stardog Overview")
 
 Step 1: Configuring Prometheus to scrape Stardog
 ------------------------------------------------
@@ -47,11 +47,22 @@ Download via curl:
     curl -o stardog-databases.json https://raw.githubusercontent.com/stardog-union/stardog-examples/develop/examples/grafana/stardog-databases.json
 
 The follow the [Grafana instructions](https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard)
-for importing a dashbaord with a json file.
+for importing a dashboard with a json file.
 
 ![import](./img/stardog-import-grafana.png)
 
 
 
+## Example screenshots
+All Databases metrics collapsed rows.
 
+![All Databases](img/All_Databases_-_Grafana_1.png?raw=true "All Databases")
+
+All Databases expanded rows.
+
+![All Databases](img/All_Databases_-_Grafana_2.png?raw=true "All Databases")
+
+Stardog Overview metrics expanded rows.
+
+![Stardog Overview](img/Stardog_Overview_-_Grafana_2.png?raw=true "Stardog Overview")
 
