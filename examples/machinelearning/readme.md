@@ -352,7 +352,7 @@ The most similar movie is, obviously, the movie itself, followed by other movies
 ### Future Work
 
 This tutorial touched the basics of machine learning in Stardog. 
-For a more compreensive and updated overview, refer to the official [documentation](http://www.stardog.com/docs/#_machine_learning).
+For a more comprehensive and updated overview, refer to the official [documentation](http://www.stardog.com/docs/#_machine_learning).
 
 If you have any questions or suggestions, drop by our [community forum](https://community.stardog.com/).
 Happy Machine Learning!
