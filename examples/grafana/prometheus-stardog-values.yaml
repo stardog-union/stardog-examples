@@ -1,0 +1,54 @@
+
+# extra scrape configuration for prometheus server to grab metrics from
+# stardog cluster kubenetes pods.
+#
+# The first scrape job `stardog` will gather stardog metrics from
+# pods with the label:
+#    app.kubernetes.io/name=stardog
+#
+# The second scape job `stardog_legacy` will gather metrics from pods with the label:
+#    stardog.com/resource-type=cluster-node
+#
+# which is a label from Stardog's earlier generation K8S deployments
+#
+extraScrapeConfigs: |
+    - job_name: stardog
+      metrics_path: /admin/status/prometheus
+      scrape_interval: 15s
+      kubernetes_sd_configs:
+        - role: pod
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          regex: stardog
+          action: keep
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          action: replace
+          target_label: kubernetes_pod_name
+      basic_auth:
+        username: monitor
+        password: *******
+    - job_name: stardog_legacy
+      metrics_path: /admin/status/prometheus
+      scrape_interval: 15s
+      kubernetes_sd_configs:
+        - role: pod
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_stardog_com_resource_type]
+          regex: cluster-node
+          action: keep
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          action: replace
+          target_label: kubernetes_pod_name
+      basic_auth:
+        username: monitor
+        password: *******
