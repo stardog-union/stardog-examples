@@ -1,27 +1,25 @@
 # A basic SMS2 mapping.
 MAPPING
 FROM CSV {
-    
 }
-to {
+TO {
   ?reportIRI a :Report ;
-          :county ?countyIRI ;
-          :date ?dateTyped ;
-          :cases ?casesTyped ;
-          :deaths ?deathsTyped .
+    :county ?countyIRI ;
+    :date ?dateTyped ;
+    :cases ?casesTyped ;
+    :deaths ?deathsTyped .
   ?countyIRI a :County ;
-           rdfs:label ?county ;
-           :state ?stateIRI ;
-           :fips ?fips .
+    rdfs:label ?county ;
+    :state ?stateIRI ;
+    :fips ?fips .
   ?stateIRI a :State ;
-            rdfs:label ?state.
-
+    rdfs:label ?state.
 }
-where {
-  bind(xsd:date(?date) as ?dateTyped)
-  bind(xsd:integer(?cases) as ?casesTyped)
-  bind(xsd:integer(?deaths) as ?deathsTyped)
-  bind(template("http://api.stardog.com/County{fips}") as ?countyIRI)
-  bind(template("http://api.stardog.com/{state}") as ?stateIRI)
-  bind(uuid() as ?reportIRI)
+WHERE {
+  BIND(xsd:date(?date) AS ?dateTyped)
+  BIND(xsd:integer(?cases) AS ?casesTyped)
+  BIND(xsd:integer(?deaths) AS ?deathsTyped)
+  BIND(TEMPLATE("http://api.stardog.com/County{fips}") AS ?countyIRI)
+  BIND(TEMPLATE("http://api.stardog.com/{state}") AS ?stateIRI)
+  BIND(UUID() AS ?reportIRI)
 }
