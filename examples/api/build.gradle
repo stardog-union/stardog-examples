@@ -20,9 +20,6 @@ dependencies {
 	compile "com.complexible.stardog.rdf4j:stardog-rdf4j:${stardogVersion}"
 	compile "org.eclipse.rdf4j:rdf4j-runtime:2.2.4"
 	compile "com.complexible.stardog.jena:stardog-jena:${stardogVersion}"
-	compile ("com.complexible.stardog.gremlin:stardog-gremlin:${stardogVersion}") {
-		exclude group: "com.carrotsearch"
-	}
 }
 
 task execute(type:JavaExec, dependsOn: compileJava) {
@@ -64,10 +61,7 @@ task docs doLast {
 					"${srcPath}/com/complexible/stardog/examples/api/ProvSkosExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",
 					"${srcPath}/com/complexible/stardog/examples/sesame/SesameExample.java",
-					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/TinkerPop3Example.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/StardogGraphComputerExample.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/Util.java"
+					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java"
 	}
 }
 
