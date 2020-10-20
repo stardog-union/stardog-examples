@@ -12,11 +12,12 @@
       }
     ]
   },
+  "description": "",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 367,
-  "iteration": 1590607373584,
+  "id": 460,
+  "iteration": 1603239835799,
   "links": [],
   "panels": [
     {
@@ -43,6 +44,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -106,7 +113,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Dbms Memory Heap Used",
+      "title": "Dbms Memory Heap Query Blocks Max",
       "tooltip": {
         "msResolution": true,
         "shared": true,
@@ -155,6 +162,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -267,6 +280,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -379,6 +398,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -491,6 +516,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -603,6 +634,12 @@
       "description": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "grid": {},
@@ -720,11 +757,20 @@
         {
           "aliasColors": {},
           "bars": false,
+          "dashLength": 10,
+          "dashes": false,
           "datasource": "$datasource",
           "description": null,
           "editable": true,
           "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
@@ -732,6 +778,7 @@
             "x": 0,
             "y": 16
           },
+          "hiddenSeries": false,
           "id": 7,
           "isNew": true,
           "legend": {
@@ -754,43 +801,51 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "repeat": null,
           "seriesOverrides": [],
+          "spaceLength": 10,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
               "datasource": "",
-              "expr": "dbms_memory_heap_max",
+              "expr": "dbms_memory_heap_used",
               "format": "time_series",
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Pod: {{kubernetes_pod_name}}",
               "metric": "",
-              "refId": "",
+              "refId": "A",
               "step": 10,
               "target": ""
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
-          "title": "Dbms Memory Heap Max",
+          "title": "Dbms Memory Heap Used",
           "tooltip": {
             "msResolution": true,
             "shared": true,
             "sort": 0,
             "value_type": "cumulative"
           },
-          "transparent": false,
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -811,16 +866,29 @@
               "min": 0,
               "show": true
             }
-          ]
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "aliasColors": {},
           "bars": false,
+          "dashLength": 10,
+          "dashes": false,
           "datasource": "$datasource",
           "description": null,
           "editable": true,
           "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
@@ -828,6 +896,7 @@
             "x": 12,
             "y": 16
           },
+          "hiddenSeries": false,
           "id": 8,
           "isNew": true,
           "legend": {
@@ -850,43 +919,51 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "repeat": null,
           "seriesOverrides": [],
+          "spaceLength": 10,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
               "datasource": "",
-              "expr": "dbms_memory_heap_query_blocks_max",
+              "expr": "dbms_memory_heap_max",
               "format": "time_series",
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Pod: {{kubernetes_pod_name}}",
               "metric": "",
-              "refId": "",
+              "refId": "A",
               "step": 10,
               "target": ""
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
-          "title": "Dbms Memory Heap Query Blocks Max",
+          "title": "Dbms Memory Heap Max",
           "tooltip": {
             "msResolution": true,
             "shared": true,
             "sort": 0,
             "value_type": "cumulative"
           },
-          "transparent": false,
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -907,16 +984,29 @@
               "min": 0,
               "show": true
             }
-          ]
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "aliasColors": {},
           "bars": false,
+          "dashLength": 10,
+          "dashes": false,
           "datasource": "$datasource",
           "description": null,
           "editable": true,
           "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
@@ -924,6 +1014,7 @@
             "x": 0,
             "y": 23
           },
+          "hiddenSeries": false,
           "id": 9,
           "isNew": true,
           "legend": {
@@ -946,43 +1037,51 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "repeat": null,
           "seriesOverrides": [],
+          "spaceLength": 10,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
               "datasource": "",
-              "expr": "dbms_memory_heap_used",
+              "expr": "dbms_memory_heap_query_blocks_used",
               "format": "time_series",
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Pod: {{kubernetes_pod_name}}",
               "metric": "",
-              "refId": "",
+              "refId": "A",
               "step": 10,
               "target": ""
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
-          "title": "Dbms Memory Heap Used",
+          "title": "Dbms Memory Heap Query Blocks Used",
           "tooltip": {
             "msResolution": true,
             "shared": true,
             "sort": 0,
             "value_type": "cumulative"
           },
-          "transparent": false,
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -1003,16 +1102,29 @@
               "min": 0,
               "show": true
             }
-          ]
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "aliasColors": {},
           "bars": false,
+          "dashLength": 10,
+          "dashes": false,
           "datasource": "$datasource",
           "description": null,
           "editable": true,
           "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
           "fill": 1,
+          "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 7,
@@ -1020,6 +1132,7 @@
             "x": 12,
             "y": 23
           },
+          "hiddenSeries": false,
           "id": 10,
           "isNew": true,
           "legend": {
@@ -1042,43 +1155,51 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "repeat": null,
           "seriesOverrides": [],
+          "spaceLength": 10,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
               "datasource": "",
-              "expr": "dbms_memory_heap_query_blocks_used",
+              "expr": "dbms_memory_heap_query_blocks_max",
               "format": "time_series",
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Pod: {{kubernetes_pod_name}}",
               "metric": "",
-              "refId": "",
+              "refId": "A",
               "step": 10,
               "target": ""
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
-          "title": "Dbms Memory Heap Query Blocks Used",
+          "title": "Dbms Memory Heap Query Blocks Max",
           "tooltip": {
             "msResolution": true,
             "shared": true,
             "sort": 0,
             "value_type": "cumulative"
           },
-          "transparent": false,
           "type": "graph",
           "xaxis": {
-            "show": true
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
           "yaxes": [
             {
@@ -1099,7 +1220,11 @@
               "min": 0,
               "show": true
             }
-          ]
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "repeat": null,
@@ -1165,7 +1290,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "cluster_sync_attempt_count",
+              "expr": "cluster_sync_success_count",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1180,7 +1305,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Cluster Sync Attempt Count",
+          "title": "Cluster Sync Success Count",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1261,7 +1386,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "cluster_sync_success_count",
+              "expr": "cluster_fullsync_attempts",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1276,7 +1401,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Cluster Sync Success Count",
+          "title": "Cluster Fullsync Attempts",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1453,7 +1578,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "cluster_sync_failure_count",
+              "expr": "cluster_sync_running",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1468,7 +1593,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Cluster Sync Failure Count",
+          "title": "Cluster Sync Running",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1549,7 +1674,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "cluster_sync_running",
+              "expr": "cluster_sync_attempt_count",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1564,7 +1689,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Cluster Sync Running",
+          "title": "Cluster Sync Attempt Count",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1645,7 +1770,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "cluster_fullsync_attempts",
+              "expr": "cluster_sync_failure_count",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1660,7 +1785,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Cluster Fullsync Attempts",
+          "title": "Cluster Sync Failure Count",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2461,7 +2586,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime_max",
+              "expr": "com_stardog_http_server_5820_avgRequestTime_min",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2476,7 +2601,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time Max",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime Min",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2557,7 +2682,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime_min",
+              "expr": "com_stardog_http_server_5820_avgRequestTime_max",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2572,7 +2697,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time Min",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime Max",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2653,7 +2778,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime_count",
+              "expr": "com_stardog_http_server_5820_avgRequestTime_mean",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2668,7 +2793,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time Count",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime Mean",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2749,7 +2874,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime_stddev",
+              "expr": "com_stardog_http_server_5820_avgRequestTime_count",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2764,7 +2889,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time Stddev",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime Count",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2845,7 +2970,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_currentRequests",
+              "expr": "com_stardog_http_server_5820_avgRequestTime_stddev",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2860,7 +2985,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Current requests",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime Stddev",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -2941,7 +3066,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime",
+              "expr": "com_stardog_http_server_5820_currentRequests",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -2956,7 +3081,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time",
+          "title": "Com Stardog Http Server 5820 Currentrequests",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -3037,7 +3162,7 @@
           "targets": [
             {
               "datasource": "",
-              "expr": "com_stardog_http_server_5820_avgRequestTime_mean",
+              "expr": "com_stardog_http_server_5820_avgRequestTime",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -3052,7 +3177,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Com Stardog Http Server 5820 Avg request time Mean",
+          "title": "Com Stardog Http Server 5820 Avgrequesttime",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -3154,7 +3279,7 @@
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Pod: {{kubernetes_pod_name}}",
+              "legendFormat": "Namespace: {{kubernetes_namespace}} - Pod: {{kubernetes_pod_name}}",
               "metric": "",
               "refId": "",
               "step": 10,
@@ -3250,7 +3375,7 @@
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Pod: {{kubernetes_pod_name}}",
+              "legendFormat": "Namespace: {{kubernetes_namespace}} - Pod: {{kubernetes_pod_name}}",
               "metric": "",
               "refId": "",
               "step": 10,
@@ -3346,7 +3471,7 @@
               "instant": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Pod: {{kubernetes_pod_name}}",
+              "legendFormat": "Namespace: {{kubernetes_namespace}} - Pod: {{kubernetes_pod_name}}",
               "metric": "",
               "refId": "",
               "step": 10,
@@ -3371,7 +3496,7 @@
           "yaxes": [
             {
               "decimals": null,
-              "format": "short",
+              "format": "milliseconds",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -3380,7 +3505,7 @@
             },
             {
               "decimals": null,
-              "format": "short",
+              "format": "milliseconds",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -3391,21 +3516,21 @@
         }
       ],
       "repeat": null,
-      "title": "System Summary",
+      "title": "System Uptime",
       "type": "row"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 22,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "$datasource",
-          "value": "$datasource"
+          "selected": true,
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "hide": 0,
         "includeAll": false,
@@ -3414,6 +3539,7 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3427,7 +3553,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -3452,9 +3577,6 @@
   },
   "timezone": "utc",
   "title": "Stardog Overview",
-  "uid": "",
-  "variables": {
-    "list": []
-  },
-  "version": 2
+  "uid": "RYgNCVtMk",
+  "version": 1
 }
