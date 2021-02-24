@@ -15,13 +15,16 @@ access the Prometheus monitoring endpoint:
 
     stardog-admin user add monitor
 
-If you don't have Prometheus deployed already on your K8S cluster we recommend deploying using
-[Prometheus Helm Hub](https://hub.helm.sh/charts/stable/prometheus) templates. To scape Stardog pods
-with Prometheus you must create additional scrape jobs. When using Prometheus deployed with Helm the
-simplest way is to pass in additional scraping configs using a helm values file
-[prometheus-stardog-values.yaml](./prometheus-stardog-values.yaml) provided in this repository. However,
-a similar scrape job configuration can be passed to Prometheus without Helm if desired. Be sure to replace
-the password for the `monitor` user with the one created above.
+If you don't have Prometheus deployed already on your K8S cluster we recommend deploying using the official 
+[Prometheus Helm Charts](https://github.com/prometheus-community/helm-charts) which are available 
+[Prometheus Artifact Hub](https://artifacthub.io/packages/helm/prometheus-community/prometheus). 
+To scrape Stardog pods with Prometheus you must create additional scrape jobs. When using
+Prometheus deployed with Helm the simplest way is to pass in additional scraping configs using a
+helm values file [prometheus-stardog-values.yaml](./prometheus-stardog-values.yaml) provided in this
+repository. However, a similar scrape job configuration can be passed to Prometheus without Helm if
+desired. Be sure to replace the password for the `monitor` user with the one created above. If monitoring 
+and using Prometheus outside of K8S we also provide an example `scrape_config` 
+[section](./prometheus-static-config.yaml).
 
 
 Step 2: Creating a Prometheus Data Source for Grafana
