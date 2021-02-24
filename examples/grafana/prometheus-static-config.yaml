@@ -1,0 +1,19 @@
+#
+# This is an example file for configuring the scrape_config section of
+# of a prometheus server when not using kubernetes for discovery of the
+# endpoints.
+#
+# replace stardog_hostname below
+
+scrape_config:
+  - job_name: stardog
+    metrics_path: /admin/status/prometheus
+    scrape_interval: 15s
+    basic_auth:
+      username: monitor
+      password: '*******'
+    static_config:
+      targets:
+      - '<stardog_hostname:5820>'
+
+
