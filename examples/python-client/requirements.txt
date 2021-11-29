@@ -1,0 +1,8 @@
+certifi==2021.10.8
+charset-normalizer==2.0.7
+contextlib2==21.6.0
+idna==3.3
+pystardog==0.10.0
+requests==2.26.0
+requests-toolbelt==0.9.1
+urllib3==1.26.7
