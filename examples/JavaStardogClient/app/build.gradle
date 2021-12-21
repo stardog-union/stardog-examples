@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url "https://maven.stardog.com" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation('com.complexible.stardog:client-http:7.7.2')
+}
+
+application {
+    mainClass = 'JavaStardogClient.App'
+}
