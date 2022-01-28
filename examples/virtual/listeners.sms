@@ -1,0 +1,16 @@
+PREFIX : <urn:>
+PREFIX band: <urn:band:>
+
+MAPPING
+FROM SQL {
+  SELECT * FROM Bands
+}
+TO {
+  ?band a :Band ;
+    rdfs:label ?name ;
+    :country ?country ;
+    :yearFormed ?year_formed .
+}
+WHERE {
+  BIND(TEMPLATE("urn:band:{id}") AS ?band)
+}
