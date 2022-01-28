@@ -1,0 +1,20 @@
+PREFIX : <urn:>
+
+MAPPING
+FROM SQL {
+  SELECT * FROM Songs
+}
+TO {
+  ?recording a :Recording ;
+    :song ?song ;
+    :performedBy ?performer .
+  ?song a :Song ;
+    :writtenBy ?writer ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:song:{id}") AS ?song)
+  BIND(TEMPLATE("urn:recording:{id}:{band}") AS ?recording)
+  BIND(TEMPLATE("urn:artist:{band}") AS ?performer)
+  BIND(TEMPLATE("urn:artist:{writer}") AS ?writer)
+}

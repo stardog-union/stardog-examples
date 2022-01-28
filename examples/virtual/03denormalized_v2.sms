@@ -1,0 +1,44 @@
+PREFIX : <urn:>
+
+MAPPING
+FROM SQL {
+  SELECT * FROM Roles
+}
+TO {
+  ?movie a :Movie ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+
+  ?role a :Role ;
+    :movie ?movie ;
+    :character ?char_name ;
+    :actor ?actor ;
+    :creditedAs ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:role:{movie_id}_{actor_id}") AS ?role)
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+  BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
+}
+
+;
+
+# This is an act of desperation to get the actors latest name - avoid this if possible
+MAPPING
+FROM SQL {
+  SELECT t1.actor_id AS id, name
+  FROM Roles AS t1
+  JOIN (
+    -- year is a reserved word in Stardog's parser so quoting
+    SELECT actor_id, max("year") AS maxyear
+    FROM Roles
+    GROUP BY actor_id) AS t2
+  ON t1.actor_id = t2.actor_id AND t1."year" = t2.maxyear
+}
+TO {
+  ?actor a :Actor ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:actor:{id}") AS ?actor)
+}

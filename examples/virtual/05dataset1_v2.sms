@@ -1,0 +1,14 @@
+PREFIX : <urn:>
+
+MAPPING :datasets1
+FROM SQL {
+  SELECT * FROM Actors
+}
+TO {
+  ?actor a :Actor ;
+    :name ?name ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:actor:{id}") AS ?actor)
+}
