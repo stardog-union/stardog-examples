@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :denormalized
 FROM SQL {
   SELECT * FROM Roles
 }
@@ -24,7 +24,7 @@ WHERE {
 ;
 
 # This is an act of desperation to get the actors latest name - avoid this if possible
-MAPPING
+MAPPING :antipattern
 FROM SQL {
   SELECT t1.actor_id AS id, name
   FROM Roles AS t1

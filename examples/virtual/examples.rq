@@ -1,0 +1,155 @@
+# Unique Keys
+
+SELECT * FROM <virtual://uniques> {
+    ?s rdfs:label ?label ;
+       :yearFormed ?yearFormed .
+}
+
+# Denormalized Data - version 1
+
+SELECT * FROM <virtual://denormalized1> {
+    ?s a :Actor ;
+       rdfs:label ?name .
+}
+
+# Denormalized Data - version 2
+
+SELECT * FROM <virtual://denormalized2> {
+    [] a :Role ;
+        :actor ?actor ;
+        :creditedAs ?name .
+}
+
+# Denormalized Data - query over an Actors view
+
+SELECT * FROM <virtual://denormalized2> {
+    ?s a :Actor ;
+       rdfs:label ?name .
+}
+
+# Map rdf:type Conservatively
+
+SELECT * FROM <virtual://actors1> {
+    ?s a :Actor
+}
+
+SELECT * FROM <virtual://actors2> {
+    ?s a :Actor
+}
+
+# Unique Predicates
+
+SELECT * {
+    GRAPH <virtual://predicates> {
+        ?s rdfs:label "Tom Hanks"
+    }
+}
+
+SELECT * {
+    GRAPH <virtual://predicates> {
+        ?s :name "Tom Hanks"
+    }
+}
+
+# Mutually Exclusive Templates
+
+SELECT * {
+    GRAPH <virtual://predicates> {
+        ?s a :Actor .
+        ?s rdfs:label "Tom Hanks" .
+    }
+}
+
+# SQL Functions and Query Outputs
+
+SELECT * FROM <virtual://remakes> {
+    :movie:5
+        :title ?title ;
+        :releaseYear ?year ;
+        rdfs:label ?label .
+}
+
+SELECT * FROM <virtual://remakes> {
+    ?movie a :Movie ;
+        :title "A Star is Born" ;
+        :releaseYear 2018 ;
+        rdfs:label ?label .
+}
+
+SELECT * FROM <virtual://remakes> {
+    ?movie a :Movie ;
+        :title ?title ;
+        :releaseYear ?year ;
+        rdfs:label "A Star Is Born (2018)" .
+}
+
+# FROM vs FROM NAMED
+
+INSERT DATA {
+    GRAPH :g1 {
+        :a :knows :b, :d .
+        :b :knows :c .
+    }
+    GRAPH :g2 {
+        :d :knows :c .
+    }
+}
+
+SELECT * FROM :g1 FROM :g2 {
+    :a :knows ?mutual .
+    ?mutual :knows :c .
+}
+
+SELECT * FROM NAMED :g1 FROM NAMED :g2 {
+    GRAPH ?g {
+        :a :knows ?mutual .
+        ?mutual :knows :c .
+    }
+}
+
+# Datasets and Virtual Graphs
+
+SELECT * {
+    GRAPH <virtual://datasets1> {
+        ?s a :Actor .
+        ?s rdfs:label "Tom Hanks" .
+    }
+}
+
+SELECT * {
+    GRAPH <virtual://datasets1> {
+        ?s a :Actor .
+        ?s rdfs:label "Tom Hanks" .
+    }
+}
+
+SELECT * FROM NAMED <virtual://datasets1> FROM NAMED <virtual://datasets2> {
+    GRAPH ?g {
+        ?s a :Actor .
+        ?s rdfs:label "Tom Hanks" .
+    }
+}
+
+SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+    ?s a :Actor .
+    ?s rdfs:label "Tom Hanks" .
+}
+
+# Unique Predicates, Revisited
+
+SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+    :node:2 a ?type .
+}
+
+SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+    ?s a :Actor .
+    ?s rdfs:label "Tom Hanks" .
+}
+
+# Areas for Improvement
+
+SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+    ?s rdfs:label "Tom Hanks" .
+}
+
+

@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :templates-actors
 FROM SQL {
   SELECT * FROM Actors
 }
@@ -15,7 +15,7 @@ WHERE {
 
 ;
 
-MAPPING
+MAPPING :templates-movies
 FROM SQL {
   SELECT * FROM Movies
 }

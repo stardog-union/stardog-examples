@@ -1,7 +1,6 @@
 PREFIX : <urn:>
-PREFIX band: <urn:band:>
 
-MAPPING
+MAPPING :uniques
 FROM SQL {
   SELECT * FROM Bands
 }

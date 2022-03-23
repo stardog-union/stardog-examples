@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :predicates-actors
 FROM SQL {
   SELECT * FROM Actors
 }
@@ -15,7 +15,7 @@ WHERE {
 
 ;
 
-MAPPING
+MAPPING :predicates-movies
 FROM SQL {
   SELECT * FROM Movies
 }
