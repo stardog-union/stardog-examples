@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :actor1_actors
 FROM SQL {
   SELECT * FROM Actors
 }
@@ -14,7 +14,7 @@ WHERE {
 
 ;
 
-MAPPING
+MAPPING :actors1_roles
 FROM SQL {
   SELECT * FROM Roles
 }
@@ -29,7 +29,7 @@ TO {
     :actor ?actor ;
     :creditedAs ?name .
 
-  # Do we really want the Roles table to be the authoritative source for Actors?
+  # Do we really want the Roles table to be an authoritative source for Actors?
   ?actor a :Actor .
 
   # If you really want to make a mess, give this actor an rdfs:label from the Roles table

@@ -20,3 +20,4 @@ CREATE TABLE Actors(id   INTEGER     NOT NULL,
                     PRIMARY KEY (id));
 
 INSERT INTO Actors VALUES(1, 'Robin Wright');
+INSERT INTO Actors VALUES(2, 'Tom Hanks');

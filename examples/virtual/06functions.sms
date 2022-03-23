@@ -1,8 +1,8 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :remakes
 FROM SQL {
-  -- Mixing * and specific fields is non-standard SQL but the Stardog SQL parser accepts it
+  -- Mixing * and specific fields is non-standard SQL but the Stardog SQL parser supports it
   SELECT *, title || ' (' || release_year || ')' AS label FROM Remakes
 }
 TO {

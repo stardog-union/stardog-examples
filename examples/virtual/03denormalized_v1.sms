@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING
+MAPPING :denormalized
 FROM SQL {
   SELECT * FROM Roles
 }
@@ -17,4 +17,3 @@ WHERE {
   BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
   BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
 }
-
