@@ -1,0 +1,30 @@
+PREFIX : <urn:>
+
+MAPPING :predicates-actors
+FROM SQL {
+  SELECT * FROM Actors
+}
+TO {
+  ?actor a :Actor ;
+    :name ?name ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:actor:{id}") AS ?actor)
+}
+
+;
+
+MAPPING :predicates-movies
+FROM SQL {
+  SELECT * FROM Movies
+}
+TO {
+  ?movie a :Movie ;
+    :title ?title ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+}
+WHERE {
+  BIND(TEMPLATE("urn:movie:{id}") AS ?movie)
+}

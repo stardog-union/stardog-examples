@@ -1,0 +1,36 @@
+PREFIX : <urn:>
+
+MAPPING :actor2_actors
+FROM SQL {
+  SELECT * FROM Actors
+}
+TO {
+  ?actor a :Actor ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:actor:{id}") AS ?actor)
+}
+
+;
+
+MAPPING :actor2_roles
+FROM SQL {
+  SELECT * FROM Roles
+}
+TO {
+  ?movie a :Movie ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+
+  ?role a :Role ;
+    :movie ?movie ;
+    :character ?char_name ;
+    :actor ?actor ;
+    :creditedAs ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:role:{movie_id}_{actor_id}") AS ?role)
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+  BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
+}

@@ -1,0 +1,30 @@
+PREFIX : <urn:>
+
+# If we know each song has one name
+MAPPING
+FROM SQL {
+  SELECT id, MIN(name) AS name FROM Songs GROUP BY id
+}
+TO {
+  ?song a :Song ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:song:{id}") AS ?song)
+}
+
+;
+
+MAPPING
+FROM SQL {
+  SELECT id, band, writer FROM Songs
+}
+TO {
+  ?song :performedBy ?performer ;
+    :writtenBy ?writer .
+}
+WHERE {
+  BIND(TEMPLATE("urn:song:{id}") AS ?song)
+  BIND(TEMPLATE("urn:artist:{band}") AS ?performer)
+  BIND(TEMPLATE("urn:artist:{writer}") AS ?writer)
+}

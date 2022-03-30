@@ -1,0 +1,42 @@
+PREFIX : <urn:>
+
+MAPPING :actor1_actors
+FROM SQL {
+  SELECT * FROM Actors
+}
+TO {
+  ?actor a :Actor ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:actor:{id}") AS ?actor)
+}
+
+;
+
+MAPPING :actors1_roles
+FROM SQL {
+  SELECT * FROM Roles
+}
+TO {
+  ?movie a :Movie ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+
+  ?role a :Role ;
+    :movie ?movie ;
+    :character ?char_name ;
+    :actor ?actor ;
+    :creditedAs ?name .
+
+  # Do we really want the Roles table to be an authoritative source for Actors?
+  ?actor a :Actor .
+
+  # If you really want to make a mess, give this actor an rdfs:label from the Roles table
+  # ?actor rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:role:{movie_id}_{actor_id}") AS ?role)
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+  BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
+}
