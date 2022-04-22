@@ -27,7 +27,7 @@ import com.complexible.stardog.plan.eval.ExecutionContext;
 import com.complexible.stardog.plan.eval.operator.Operator;
 import com.complexible.stardog.plan.eval.operator.OperatorException;
 import com.complexible.stardog.plan.eval.operator.SolutionIterator;
-import com.complexible.stardog.plan.eval.service.ResultsToSolutionIterator;
+import com.complexible.stardog.plan.eval.service.SelectResultsToSolutionIterator;
 import com.complexible.stardog.plan.eval.service.ServiceQuery;
 import com.complexible.stardog.plan.eval.service.SingleQueryService;
 import com.complexible.stardog.plan.util.ExplainRenderer;
@@ -75,7 +75,7 @@ final class ExampleService extends SingleQueryService {
 	}
 
 	@Override
-	public PlanNode translate(IRI iri, PlanNode body, IntFunction<String> varNames, final Function<String, Integer> varAllocator, boolean silent) {
+	public PlanNode translate(ExecutionContext execCxt, IRI iri, PlanNode body, IntFunction<String> varNames, Function<String, Integer> varAllocator, boolean silent) {
 		return PlanNodes.service()
 				.query(createQuery(iri, body))
 				.silent(silent)
@@ -93,7 +93,7 @@ final class ExampleService extends SingleQueryService {
 	public ServiceQuery createQuery(final IRI theIRI, final PlanNode thePlanNode) {
 		return new ServiceQuery(theIRI) {
 			@Override
-			public SolutionIterator evaluate(final ExecutionContext theContext, final Operator theOperator, final PlanVarInfo theVarInfo) throws OperatorException {
+			public SolutionIterator<?> evaluate(final ExecutionContext theContext, final Operator theOperator, final PlanVarInfo theVarInfo) throws OperatorException {
 				// convert the service IRI to an http:// IRI
 				String aServiceIRI = serviceTerm().getValue().stringValue().replace(EXAMPLE_SCHEME, "http://");
 
@@ -119,7 +119,7 @@ final class ExampleService extends SingleQueryService {
 						SelectQueryResult aSelectQueryResult = QueryResultParsers.readSelect(aServiceResults, FORMAT);
 
 						// convert the results to a solution iterator so it can be processed by the execution engine, e.g. joined with the rest of the query results
-						return new ResultsToSolutionIterator(theContext, aSelectQueryResult, theVarInfo, thePlanNode.getAllVars());
+						return new SelectResultsToSolutionIterator(theContext, aSelectQueryResult, theVarInfo, thePlanNode.getAllVars());
 					}
 				}
 				catch (Exception e) {
@@ -140,6 +140,11 @@ final class ExampleService extends SingleQueryService {
 			@Override
 			public String explain(PlanVarInfo theVarInfo) {
 				return String.format("Service %s %s {\n%s\n}", (new QueryTermRenderer(theVarInfo)).render(this.serviceTerm()), ExplainRenderer.toCardinalityString(PlanNodes.serviceOf(this)), SPARQLRenderer.renderSelect(thePlanNode, theVarInfo, false));
+			}
+
+			@Override
+			public String explainVerbose(PlanVarInfo theVarInfo) {
+				return explain(theVarInfo);
 			}
 
 			@Override
