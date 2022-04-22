@@ -29,6 +29,7 @@ import com.complexible.common.rdf.StatementSource;
 import com.complexible.common.rdf.StatementSources;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.db.ConnectableConnection;
+import com.complexible.stardog.db.QueryRewriting;
 import com.complexible.stardog.db.tx.IndexChange;
 import com.complexible.stardog.db.tx.TxFormats;
 import com.complexible.stardog.plan.optimizer.OptimizationPipeline;
@@ -86,9 +87,17 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> Optional<T> as(final Class<T> theType) {
+		return as(theType, Options.empty());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public <T> Optional<T> as(final Class<T> theClass, final Options theOptions) {
 		Preconditions.checkState(isOpen(), "Cannot use a closed connection");
 
-		return theType.isInstance(this)
+		return theClass.isInstance(this)
 		       ? Optional.of((T) this)
 		       : Optional.<T>empty();
 	}
@@ -141,7 +150,7 @@ final class ExampleConnectableConnection implements ConnectableConnection {
 	}
 
 	@Override
-	public Set<String> getQueryRewritings() {
+	public Set<QueryRewriting> getQueryRewritings() {
 		// no query rewritings are performed
 		return ImmutableSet.of();
 	}
