@@ -36,6 +36,7 @@ import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
 import com.google.common.collect.ImmutableSet;
 import com.stardog.stark.IRI;
+import com.stardog.stark.Namespaces;
 import com.stardog.stark.Statement;
 import com.stardog.stark.Values;
 import com.stardog.stark.io.AbstractRDFHandler;
@@ -80,9 +81,13 @@ public class SHACLExample {
 			// connect to the database and convert the connection to an ICVConnection
 			try (ICVConnection aConn = aConfig.connect().as(ICVConnection.class)) {
 				// add the SHACL constraints to the database
-				aConn.addConstraints()
+				aConn.begin();
+				aConn.add()
+				     .io()
+				     .context(Values.iri(Namespaces.BASE_URI, "constraints"))
 				     .format(RDFFormats.TURTLE)
 				     .file(Paths.get("data/music_shacl.ttl"));
+				aConn.commit();
 
 				// print if data is valid
 				System.out.printf("Is data valid: %s%n%n", aConn.isValid());
