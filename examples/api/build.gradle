@@ -56,12 +56,12 @@ task docs doLast {
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionAPIExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ExplanationExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/GraphQLExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/ProvSkosExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",
-					"${srcPath}/com/complexible/stardog/examples/sesame/SesameExample.java",
-					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java"
+					"${srcPath}/com/complexible/stardog/examples/api/SHACLExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
+					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java",
+					"${srcPath}/com/complexible/stardog/examples/rdf4j/RDF4JExample.java"
 	}
 }
 

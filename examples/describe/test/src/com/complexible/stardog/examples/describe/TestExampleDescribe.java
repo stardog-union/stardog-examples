@@ -70,7 +70,7 @@ public class TestExampleDescribe {
 				aConn.drop(DB);
 			}
 
-			aConn.createMemory(DB);
+			aConn.newDatabase(DB).create();
 		}
 	}
 
