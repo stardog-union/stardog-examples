@@ -1,0 +1,14 @@
+prefix net: <http://stardog.com/network/>
+
+
+Mapping
+FROM CSV {
+    
+}
+TO {    
+    ?from_iri net:connects ?to_iri .
+}
+WHERE {
+    bind(template("http://stardog.com/network/{from}") as ?from_iri)
+    bind(template("http://stardog.com/network/{to}") as ?to_iri)
+}

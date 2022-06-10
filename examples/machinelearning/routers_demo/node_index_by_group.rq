@@ -1,0 +1,15 @@
+## Average node index by scope 
+
+select ?type (avg(?edges) as ?node_index_avg) {
+    SELECT ?r ?type (count(?connection) as ?edges) {
+
+        VALUES (?connection) {(net:connects)}
+        ?r 
+            ?connection ?s ;
+            a ?type
+
+        FILTER (?type != net:Router)     
+    }
+    GROUP BY ?r ?type
+}
+group by ?type

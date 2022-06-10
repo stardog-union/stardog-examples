@@ -1,0 +1,14 @@
+# Node_index.rq
+# To get all edges regardless of direction. Must add --reasoning to the query
+
+select ?r (count(?connection) as ?edges) {
+    VALUES (?connection) {(net:connects)}
+    ?r 
+        a net:Router ;
+        ?connection ?s .
+
+    ?s 
+        a net:Router.
+}
+group by ?r 
+order by desc(?edges) 
