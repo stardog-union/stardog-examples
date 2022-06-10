@@ -1,7 +1,0 @@
-group = "com.complexible.stardog.examples.foaf"
-
-dependencies {
-	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
-	compile "com.complexible.stardog:client-embedded:${stardogVersion}"
-}
