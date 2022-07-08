@@ -1,0 +1,208 @@
+# # Data Exploration - May The Force Be With You: Demo Day Workbook
+# 
+# Below you will find a number of queries to execute throughout the exercise
+# You will have to change this first line of the workbook to reflect your environment
+# but after that, all other queries will work as is, if you use the same names as
+# we do in the exercise. If you do not, you will need to adjust the queries accordingly.
+
+# 1) Execute the query from your workbook that returns all graphs. It should return a 
+# handful of graphs, one of which should look something like 
+# `tag:stardog:project:220707193045:model:59876` -- your numbers will be unique. Snip the 
+# first part of this identifier, from the first character, up to AND INCLUDING THE `:`
+# character prior to the word `model`. Replace the fragment below with this string
+prefix : <tag:stardog:project:220707193045:>
+
+# 2) Get all of the spacecraft in the knowledge graph and their lengths
+# Filter out any lengths which are not valid, and strip out any formatting
+# characters in use for easier parsing.
+select ?craft ?length from kg:local {
+    ?craft a :modelConceptClass:Spacecraft ;
+        :modelConceptAttribute:length ?len .
+    
+    filter (?len != "NA" && ?len != "")
+    bind(xsd:decimal(replace(?len,",","")) as ?length)
+}
+
+# 3) This query gets the same part of the knowledge graph as the previous one except
+# it returns a graph instead of a table. The returned graph is new information:
+# the spacecraft and their cleaned up lengths
+construct { ?craft :modelConceptAttribute:length_of_ship ?length } 
+from kg:local
+{
+    ?craft a :modelConceptClass:Spacecraft ;
+        :modelConceptAttribute:length ?len .
+    
+    filter (?len != "NA" && ?len != "")
+    bind(xsd:decimal(replace(?len,",","")) as ?length)
+}
+
+# 5) Now run the query and see the cleaned up data, this returns the same results as the
+# non-reasoning version above. 
+select ?craft ?length from kg:local {
+    ?craft :modelConceptAttribute:length_of_ship ?length .
+}
+
+# 6) For our next dev iteration, let's clean up our old state 
+DELETE WHERE { graph ?g { ?s ?p ?o } } 
+
+# 7) Find all ships with a hyperdrive of a particular speed
+select ?craft from kg:local {
+    ?craft :modelConceptAttribute:hyperdrive_rating ?rating .
+    
+    filter (xsd:float(?rating) <= 1.5)
+}
+
+# 9) Return a new graph asserting that ships having those types of hyperdrives are 
+construct { ?craft a :modelConceptClass:Fast_Hyperdrive } 
+from kg:local {
+    ?craft :modelConceptAttribute:hyperdrive_rating ?rating .
+    
+    filter (xsd:float(?rating) <= 1.5)
+}
+
+# 10) Let's clear our data
+DELETE WHERE { graph ?g { ?s ?p ?o } }
+
+# 11) Now let's connect our new information about orgs to the manufacturer data
+# we have from our source. We will get exact matches or substring matches for the
+# purposes of our exercise.
+select ?craft ?org from kg:local { 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+            :modelConceptAttribute:org_name ?m.
+    }
+    union 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+               :modelConceptAttribute:org_name ?on.
+        
+        filter(contains(lcase(?m), lcase(?on)))
+    } 
+}
+
+# 12) Let's clear our data
+DELETE WHERE { graph ?g { ?s ?p ?o } }
+
+# 13) Trying to link org data w/ spacecraft manufacturer data
+select *
+from kg:local { 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+            :modelConceptAttribute:org_name ?m.
+    }
+    union 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+               :modelConceptAttribute:org_name ?on.
+        
+        filter(contains(lcase(?m), lcase(?on)))
+    } 
+}
+
+# 14) Creating a new graph of the data we want to infer, linking spacecraft to their manufacturers 
+construct {
+    ?craft :modelConceptRelationship:manufactured_by ?org .
+}
+from kg:local { 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+            :modelConceptAttribute:org_name ?m.
+    }
+    union 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+               :modelConceptAttribute:org_name ?on.
+        
+        filter(contains(lcase(?m), lcase(?on)))
+    } 
+}
+
+## 16
+DELETE WHERE { graph ?g { ?s ?p ?o } }
+
+## 17) Add some of our own data about org membership
+insert {
+    ?luke :modelConceptRelationship:member ?redSquadron.
+    ?wedge :modelConceptRelationship:member ?redSquadron.
+    ?biggs :modelConceptRelationship:member ?redSquadron.
+    
+    ?han :modelConceptRelationship:member ?rebels .
+    ?chewie :modelConceptRelationship:member ?rebels .
+    ?lando :modelConceptRelationship:member ?rebels .
+    ?leia :modelConceptRelationship:member ?rebels .
+    
+    ?tarkin :modelConceptRelationship:member ?empire .
+    ?palpatine :modelConceptRelationship:member ?empire .
+    ?vader :modelConceptRelationship:member ?empire .
+    
+    ?yoda a :modelConceptClass:Jedi .
+    ?kenobi a :modelConceptClass:Jedi . 
+    ?vader a :modelConceptClass:Sith . 
+    ?palpatine a :modelConceptClass:Sith .
+}
+using kg:local
+where {
+    ?luke rdfs:label "Luke Skywalker" .
+    ?wedge rdfs:label "Wedge Antilles" .
+    ?biggs rdfs:label "Biggs Darklighter" .
+    ?han rdfs:label "Han Solo" .
+    ?chewie rdfs:label "Chewbacca" .
+    ?vader rdfs:label "Darth Vader" .
+    ?tarkin rdfs:label "Wilhuff Tarkin" .
+    ?palpatine rdfs:label "Palpatine" .
+    ?lando rdfs:label "Lando Calrissian".
+    ?leia rdfs:label "Leia Organa" .
+    ?kenobi rdfs:label "Obi-Wan Kenobi" .
+    ?yoda rdfs:label "Yoda".
+    
+    ?redSquadron rdfs:label "Red Squadron" .
+    ?rebels rdfs:label "Rebel Alliance" .
+    ?empire rdfs:label "Galactic Empire" .
+}
+
+## 18) Get the Rebels - Part 1; Reasoning: OFF
+select ?name from kg:local {
+    ?rebels rdfs:label "Rebel Alliance" .
+    ?rebel :modelConceptRelationship:member ?rebels ;
+           rdfs:label ?name .
+}
+
+## 19) Get the Rebels - Part 2; Reasoning: OFF
+select ?name from kg:local {
+    ?rebels rdfs:label "Rebel Alliance" .
+    
+    ?org :modelConceptRelationship:parent+ ?rebels . ?rebel :modelConceptRelationship:member ?org .
+    ?rebel rdfs:label ?name .
+}
+
+## 20) Get the Rebels - Complete; Reasoning: OFF
+select ?name from kg:local {
+    ?rebels rdfs:label "Rebel Alliance" .
+    { ?rebel :modelConceptRelationship:member ?rebels }
+    union {?org :modelConceptRelationship:parent+ ?rebels . ?rebel :modelConceptRelationship:member ?org }
+    ?rebel rdfs:label ?name .
+}
+
+## 22) Get the Rebels; Reasoning: ON
+select ?name from kg:local {
+    ?rebels rdfs:label "Rebel Alliance" .
+    ?rebel :modelConceptRelationship:member ?rebels ;
+           rdfs:label ?name .
+}
+
+## 25) Who are my enemies? Run this with each of the two schemas
+select ?name from kg:local {
+    ?enemy a :modelConceptClass:Enemy ; rdfs:label ?name .
+}
