@@ -1,0 +1,15 @@
+prefix : <tag:stardog:project:220707193045:>
+
+# 24) Defining the enemies of the Empire
+:EnemiesOfTheEmpire rdfs:label "The entire rebel alliance are enemies as well as the Jedi."
+Rule :EnemiesOfTheEmpire
+if {
+    {
+        ?person :modelConceptRelationship:member :modelConceptClass:Organization-Rebel%20Alliance
+    } union {
+        ?person a :modelConceptClass:Jedi .
+    }
+}
+then {
+    ?person a :modelConceptClass:Enemy .
+}

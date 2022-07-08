@@ -1,0 +1,43 @@
+name,parent
+Kuat Drive Yards,Techno Union
+Kuat Systems Engineering,Kuat Drive Yards
+Sienar Fleet Systems,Sienar Technologies
+Incom Corporation,
+Corellian Engineering Corporation,Techno Union
+Techno Union,
+Corellian Arms,Corellian Engineering Corporation
+Geonosian Industries,Techno Union
+Baktoid Industries,
+Trade Federation,
+Sienar Technologies,Santhe Corporation
+Santhe Corporation,
+Cygnus Spaceworks,
+Subpro Corporation,
+Nubia Star Drives,
+Theed Palace Space Vessel Engineering Corps,
+Galactic Republic,
+Galactic Senate,Galactic Republic
+Rebel Alliance,
+Rebel Alliance Navy,Rebel Alliance Military
+New Republic,
+Galactic Empire,
+First Order,
+Final Order,
+Jedi Council,Jedi Order
+Starfighter Corps,Rebel Alliance Navy
+Red Squadron,Starfighter Corps
+Gold Squadron,Starfighter Corps
+Green Squadron,Starfighter Corps
+Galactic Navy,
+Army of the Republic,Galactic Republic
+Black Squadron,Galactic Navy
+Inferno Squadron,Galactic Navy
+Resistance,
+Sapphire Squadron,Galactic Navy
+Blade Squadron,Starfighter Corps
+Blue Squadron,Starfighter Corps
+Corona Squadron,Starfighter Corps
+Grey Squadron,Starfighter Corps
+Jedi Order,
+Rebel Alliance Military,Rebel Alliance
+Rebel Alliance Army,Rebel Alliance Military

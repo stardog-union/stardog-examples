@@ -1,0 +1,123 @@
+# copy this line from your workbook, it should be the same declaration in both cases!
+prefix : <tag:stardog:project:220707193045:>
+
+# 4) Here we are just transforming our graph query into a rule that will infer the
+# data we constructed in our workbook
+:SpacecraftLengthConversion 
+    rdfs:comment "Converts base length as a string to a decimal value. Also filters out empty and invalid lengths" .
+RULE :SpacecraftLengthConversion
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+        :modelConceptAttribute:length ?len .
+    
+    filter (?len != "NA" && ?len != "")
+    bind(xsd:decimal(replace(?len,",","")) as ?length)
+}
+then {
+    ?craft :modelConceptAttribute:length_of_ship ?length
+}
+
+# 9) Again, just changing our graph query into a rule. 
+# Actually, let's make two, one for fast, the other for very fast!
+RULE :DefineFastHyperdrives
+if {
+    ?craft :modelConceptAttribute:hyperdrive_rating ?rating .
+    
+    filter (xsd:float(?rating) <= 1.5)
+}
+then { ?craft a :modelConceptClass:Fast_Hyperdrive } 
+
+RULE :DefineVeryFastHyperdrives
+if {
+    ?craft :modelConceptAttribute:hyperdrive_rating ?rating .
+    
+    filter (xsd:float(?rating) <= 0.5)
+}
+then { ?craft a :modelConceptClass:Very_Fast_Hyperdrive } 
+
+
+# 11) Next up, some simple ship classifications based on the characteristics
+# of the ship. notably we're using the computed length from another rule
+Rule :ClassifyStarfighter
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+           :modelConceptAttribute:crew "1"
+}
+then {
+    ?craft a :modelConceptClass:Starfighter .
+}
+
+Rule :ClassifyCorvette
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+           :modelConceptAttribute:length_of_ship ?len
+     filter(?len > 100 && ?len < 200)
+}
+then {
+    ?craft a :modelConceptClass:Corvette .
+}
+
+Rule :ClassifyCruiser
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+           :modelConceptAttribute:length_of_ship ?len
+     filter(?len > 1000 && ?len < 2000)
+}
+then {
+    ?craft a :modelConceptClass:Cruiser .
+}
+
+Rule :ClassifyBattleship
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+           :modelConceptAttribute:length_of_ship ?len
+     filter(?len > 3000 && ?len < 5000)
+}
+then {
+    ?craft a :modelConceptClass:Battleship .
+}
+
+Rule :ClassifyDreadnaught
+if {
+    ?craft a :modelConceptClass:Spacecraft ;
+           :modelConceptAttribute:length_of_ship ?len
+     filter(?len > 5000)
+}
+then {
+    ?craft a :modelConceptClass:Dreadnaught .
+}
+
+## 15) Matching spacecraft manufacturer names with existing organizations and if we find a match
+## we link them directly in the graph.
+Rule :UpliftManufacturers
+if { 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        ?org a :modelConceptClass:Organization ; 
+            :modelConceptAttribute:org_name ?m.
+    }
+    union 
+    {
+        ?craft a :modelConceptClass:Spacecraft ; 
+           :modelConceptAttribute:manufacturer ?m .
+        
+        ?org a :modelConceptClass:Organization ; 
+               :modelConceptAttribute:org_name ?on.
+        
+        filter(contains(lcase(?m), lcase(?on)))
+    } 
+}
+then {
+    ?craft :modelConceptRelationship:manufactured_by ?org .
+}
+
+## 21 Anyone who belongs to an org that has a parent organization also is a member of the parent org.
+Rule :OrgMembership
+if {
+    ?org :modelConceptRelationship:parent ?parent . 
+    ?person :modelConceptRelationship:member ?org
+}
+then {
+    ?person :modelConceptRelationship:member ?parent
+}
