@@ -1,3 +1,5 @@
+prefix kg: <tag:stardog:api:context:>
+
 # # Data Exploration - May The Force Be With You: Demo Day Workbook
 # 
 # Below you will find a number of queries to execute throughout the exercise
