@@ -238,7 +238,7 @@ to find out <em>why</em> an inference was made.</p>
               </div>
               <p>Open a <code>Connection</code> to the database we just created with the default <code>RL</code> reasoning level.
 We’ll use <code>as(...)</code> to give us a view of the parent connection that exposes the Stardog
-<a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html">reasoning capabilities</a>.</p>
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html">reasoning capabilities</a>.</p>
 
             </div>
             
@@ -343,12 +343,12 @@ we created the <code>Connection</code>, we will see that the statement is inferr
               </div>
               <p>Pretty cool!  Now lets find out <em>why</em> that statement was inferred by the reasoner.  Stardog can
 provide explanations for why an inference was made in the form of a
-<a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html">Proof</a>.  A <code>Proof</code>
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/reasoning/Proof.html">Proof</a>.  A <code>Proof</code>
 will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
 To get the explanation, we simply ask the <code>Connection</code> to provide us with the <code>Proof</code> for the given
-<a href="http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/Expression.html">Expression</a>.
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/openrdf/util/Expression.html">Expression</a>.
 An <code>Expression</code> is an OWL Axiom as a collection of RDF statements and are created using
-<a href="http://docs.stardog.com/java/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html">ExpressionFactory</a></p>
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html">ExpressionFactory</a></p>
 
             </div>
             

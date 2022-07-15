@@ -81,11 +81,11 @@ public class WaldoAPIExample {
 					aConn.commit();
 
 					// Lets try an example with the basic Waldo API
-					// We want to view this connection as a [searchable connection](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/SearchConnection.html),
+					// We want to view this connection as a [searchable connection](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/search/SearchConnection.html),
 					// so we request a view of the `Connection` as a `SearchConnection`
 					SearchConnection aSearchConn = aConn.as(SearchConnection.class);
 
-					// With that done, let's create a [Searcher](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/search/Searcher.html)
+					// With that done, let's create a [Searcher](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/search/Searcher.html)
 					// that we can use to run some full text searches over the database.
 					// Here we will specify that we only want results over a score of `0.5`, and no more than `50` results
 					// for things that match the search term `mac`.  Stardog's full text search is backed by [Lucene](http://lucene.apache.org)
