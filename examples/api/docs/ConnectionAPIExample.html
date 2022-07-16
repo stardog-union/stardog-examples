@@ -198,9 +198,9 @@ and client APIs to perform some basic operations.</p>
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>You’ll need a server to connect to, obviously.  The <code>Stardog</code>
-class provides a simple <a href="http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/ServerBuilder.html">builder interface</a> to specify which protocol
+class provides a simple <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/protocols/server/ServerBuilder.html">builder interface</a> to specify which protocol
 the server should use (options are HTTP &amp; SNARL) and takes a <code>SocketAddress</code>
-the server should bind to.  This will return you a <a href="http://docs.stardog.com/java/snarl/com/complexible/common/protocols/server/Server.html">Server</a> object which
+the server should bind to.  This will return you a <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/protocols/server/Server.html">Server</a> object which
 can be used to start &amp; stop the Stardog server.</p>
 <p>This example shows up to create and start the embedded SNARL server.  Note that
 you can only embed the <em>SNARL</em> server, not HTTP.</p>
@@ -326,7 +326,7 @@ if it does, we want to drop it and re-create so that we can run the example from
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Now that we’ve created our database for the example, let’s open a connection to it.  For that we use the
-<a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html">ConnectionConfiguration</a>
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionConfiguration.html">ConnectionConfiguration</a>
 to configure and open a new connection to a database.</p>
 <p>We’ll use the configuration to specify which database we want to connect to as well as our login information,
 then we can obtain a new connection.</p>
@@ -366,9 +366,9 @@ so we can begin firing off some queries, so first, we’ll start a new transacti
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>The SNARL API provides fluent objects for adding &amp; removing data from a database.  Here we’ll use the
-<a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Adder.html">Adder</a> to read in an N3 file
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Adder.html">Adder</a> to read in an N3 file
 from disk containing the 10k triples SP2B dataset.  Actually, for RDF data coming from a stream or from
-disk, we’ll use the helper class <a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/IO.html">IO</a>
+disk, we’ll use the helper class <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/IO.html">IO</a>
 for this task.  <code>IO</code> will automatically close the stream once the data has been read.</p>
 
             </div>
@@ -455,7 +455,7 @@ in the <code>Graph</code> into the given context.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>Now we’ll use the <a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Remover.html">Remover</a> to
+              <p>Now we’ll use the <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Remover.html">Remover</a> to
 remove some data from the database.  <code>Remover</code> has a very similar API to <code>Adder</code>, so this code should look
 somewhat familiar.  It has many of the same methods as <code>Adder</code>, the only difference is that they’ll cause
 the triples to be removed instead of added.</p>
@@ -490,7 +490,7 @@ the triples to be removed instead of added.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <p>A SNARL connection provides <a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Query.html">parameterized queries</a>
+              <p>A SNARL connection provides <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Query.html">parameterized queries</a>
 which you can use to easily build and execute SPARQL queries against the database.  First, let’s create a simple
 query that will get all of the statements in the database.</p>
 
@@ -634,7 +634,7 @@ so we can go head and remove the limit and get all the results.</p>
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>The previous query was just getting the statements in which the value of <code>aURI</code> is the subject.  We can get the
-same results just as easily via the <a href="http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Getter.html">Getter</a>
+same results just as easily via the <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Getter.html">Getter</a>
 interface.  <code>Getter</code> is designed to make it easy to list statements matching specific criteria; it’s analogous to
 <code>listStatements</code> or <code>match</code> in the Jena &amp; Sesame APIs respectively.</p>
 <p>So here we’ll create a <code>Getter</code> to obtain the list of statements with <code>aURI</code> as the subject.  If we print those

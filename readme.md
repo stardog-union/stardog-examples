@@ -57,7 +57,7 @@ For additional information see the DotNet Samples' README file - `./examples/dot
 
 ## Generating Documentation
 
-The Stardog [documentation](http://docs.stardog.com) and its [javadocs](http://docs.stardog.com/java/snarl) are a good
+The Stardog [documentation](http://docs.stardog.com) and its [javadocs](http://docs.stardog.com/javadoc/snarl) are a good
 place to start. But some examples in this repository are annotated using Markdown; they can be processed by
 [Docco](http://jashkenas.github.io/docco/).
 

@@ -1,6 +1,6 @@
 # Function Extensibility
 
-The Stardog [com.complexible.stardog.plan.filter.functions.Function](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/Function.html)
+The Stardog [com.complexible.stardog.plan.filter.functions.Function](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/Function.html)
 interface is the extension point for section 17.6 (Extensible Value Testing) of the [SPARQL spec](http://www.w3.org/TR/2012/PR-sparql11-query-20121108/#extensionFunctions).
 
 `Function` corresponds to built-in expressions used in `FILTER`, `BIND` and `SELECT` expressions, as well as
@@ -9,7 +9,7 @@ SPARQL spec like `sameTerm`, `str`, and `now`.
 
 ## Implementing Custom Functions
 
-The starting point for implementing your own custom function is to extend [AbstractFunction](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html).
+The starting point for implementing your own custom function is to extend [AbstractFunction](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html).
 This class provides much of the basic scaffolding for implementing a new `Function` from scratch.
 
 If your new function falls into one of the existing categories, it should implement the appropriate marker interface:
@@ -86,7 +86,7 @@ provides a mechanism for creating and using custom aggregates *without* requirin
 ## Implementing a Custom Aggregate
 
 To implement a custom aggregate, you should extend
-[AbstractAggregate](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/aggregates/AbstractAggregate.html).
+[AbstractAggregate](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/aggregates/AbstractAggregate.html).
 
 The rules regarding constructor, "copy constructor" and the `copy` method for `Function` apply to `Aggregate` as well.
 
