@@ -74,7 +74,7 @@ public class ReasoningExample {
 				// Using reasoning via SNARL
 				// -------------------------
 				// Now that we've created our database for the example, lets open a connection to it.  For that we use the
-				// [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
+				// [ConnectionConfiguration](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
 				// to configure and open a new connection to a database.
 				//
 				// We'll use the configuration to specify which database we want to connect to as well as our login information,

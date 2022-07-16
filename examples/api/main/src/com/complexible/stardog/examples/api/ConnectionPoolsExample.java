@@ -36,7 +36,7 @@ public class ConnectionPoolsExample {
 
 	// Using Connection Pools
 	// -------------------
-	// In this example, we illustrate the configuration and use of the SNARL [ConnectionPool](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionPool.html)
+	// In this example, we illustrate the configuration and use of the SNARL [ConnectionPool](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionPool.html)
 	public static void main(String[] args) throws Exception {
 		// First need to initialize the Stardog instance which will automatically start the embedded server.
 		Stardog aStardog = Stardog.builder().create();
@@ -50,13 +50,13 @@ public class ConnectionPoolsExample {
 
 				// Create a disk-based database with default settings
 				aAdminConnection.disk("testConnectionPool").create();
-				// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
+				// Pools are based around a [ConnectionConfiguration](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionConfiguration.html).
 				// This configuration tells the pool how to create the new connections as they are needed.
 				ConnectionConfiguration aConnConfig = ConnectionConfiguration
 					                                      .to("testConnectionPool")
 					                                      .credentials("admin", "admin");
 
-				// Now we want to create the [configuration for our pool](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionPoolConfig.html).
+				// Now we want to create the [configuration for our pool](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionPoolConfig.html).
 				// We start by providing the `ConnectionConfiguration` we just created, that's the basis of the pool.  Then
 				// we can configure some aspects of the pool such as expiration time and maximum size.
 				ConnectionPoolConfig aConfig = ConnectionPoolConfig

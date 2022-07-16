@@ -84,7 +84,7 @@ public class ConnectionAPIExample {
 				// Using the SNARL API
 				// -------------------
 				// Now that we've created our database for the example, let's open a connection to it.  For that we use the
-				// [ConnectionConfiguration](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
+				// [ConnectionConfiguration](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
 				// to configure and open a new connection to a database.
 				//
 				// We'll use the configuration to specify which database we want to connect to as well as our login information,
@@ -99,9 +99,9 @@ public class ConnectionAPIExample {
 					aConn.begin();
 
 					// The SNARL API provides fluent objects for adding & removing data from a database.  Here we'll use the
-					// [Adder](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Adder.html) to read in an N3 file
+					// [Adder](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Adder.html) to read in an N3 file
 					// from disk containing a small subset of the SP2B dataset.  Actually, for RDF data coming from a stream or from
-					// disk, we'll use the helper class [IO](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/IO.html)
+					// disk, we'll use the helper class [IO](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/IO.html)
 					// for this task.  `IO` will automatically close the stream once the data has been read.
 					aConn.add().io()
 					     .format(RDFFormats.TURTLE)
@@ -125,7 +125,7 @@ public class ConnectionAPIExample {
 					// Removing data from a database is just as easy.  Again, we need to start a transaction before making any changes.
 					aConn.begin();
 
-					// Now we'll use the [Remover](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Remover.html) to
+					// Now we'll use the [Remover](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Remover.html) to
 					// remove some data from the database.  `Remover` has a very similar API to `Adder`, so this code should look
 					// somewhat familiar.  It has many of the same methods as `Adder`, the only difference is that they'll cause
 					// the triples to be removed instead of added.
@@ -136,7 +136,7 @@ public class ConnectionAPIExample {
 					// Lastly, we'll commit the changes.
 					aConn.commit();
 
-					// A SNARL connection provides [parameterized queries](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Query.html)
+					// A SNARL connection provides [parameterized queries](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Query.html)
 					// which you can use to easily build and execute SPARQL queries against the database.  First, let's create a simple
 					// query that will get all of the statements in the database.
 					SelectQuery aQuery = aConn.select("select * where { ?s ?p ?o }");
@@ -171,7 +171,7 @@ public class ConnectionAPIExample {
 					}
 
 					// The previous query was just getting the statements in which the value of `aURI` is the subject.  We can get the
-					// same results just as easily via the [Getter](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Getter.html)
+					// same results just as easily via the [Getter](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/Getter.html)
 					// interface.  `Getter` is designed to make it easy to list statements matching specific criteria; it's analogous to
 					// `listStatements` or `match` in the Jena & Sesame APIs respectively.
 					//

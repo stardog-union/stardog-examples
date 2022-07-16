@@ -40,7 +40,7 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 
 	// ## Initializing a Function
 	//
-	// This implementation extends from [AbstractFunction](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html)
+	// This implementation extends from [AbstractFunction](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html)
 	// which takes care of much of the work of creating a custom function.  We're passing in that our new function
 	// `TitleCase` takes a single argument, and that it's name is tag:stardog:api:titleCase.  Note that names
 	// should be URIs.

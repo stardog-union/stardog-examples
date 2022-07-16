@@ -71,7 +71,7 @@ public class ExplanationExample {
 				aAdminConnection.newDatabase("reasoningTest").create();
 				// Open a `Connection` to the database we just created with reasoning turned on.
 				// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
-				// [reasoning capabilities](http://docs.stardog.com/java/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
+				// [reasoning capabilities](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
 				try (ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
 				                                                                       .credentials("admin", "admin")
 				                                                                       .reasoning(true)
@@ -112,7 +112,7 @@ public class ExplanationExample {
 
 					// Pretty cool!  Now lets find out _why_ that statement was inferred by the reasoner.  Stardog can
 					// provide explanations for why an inference was made in the form of a
-					// [Proof](http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/Proof.html).  A `Proof`
+					// [Proof](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/reasoning/Proof.html).  A `Proof`
 					// will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
 					// To get the explanation, we simply ask the `Connection` to provide us with the `Proof` for the given
 					// Statement
