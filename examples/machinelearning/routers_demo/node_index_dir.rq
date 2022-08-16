@@ -1,0 +1,15 @@
+## Node index directional
+## Omit reasoning
+
+select ?r (count(?connection) as ?edges) {
+    VALUES (?connection) {(net:connects)}
+    ?r 
+        a ?type1;
+        ?connection ?s .
+
+    ?s 
+        a ?type2 .
+    
+}
+group by ?r 
+order by desc(?edges) 

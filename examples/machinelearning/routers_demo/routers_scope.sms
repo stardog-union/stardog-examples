@@ -1,0 +1,21 @@
+prefix net: <http://stardog.com/network/>
+prefix scope: <http://stardog.com/network/classes/>
+
+
+Mapping
+FROM CSV {
+    
+}
+TO {
+    
+    ?router_iri rdf:type ?type ;
+        rdfs:label ?name .   
+
+    ?from_iri net:connects ?to_iri .
+}
+WHERE {
+    bind(template("http://stardog.com/network/{name}") as ?router_iri)
+    bind(template("http://stardog.com/network/classes/{scope}") as ?type)
+    
+}
+    

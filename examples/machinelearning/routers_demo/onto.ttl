@@ -1,0 +1,14 @@
+# The ontology data
+
+net:Router a rdfs:Class ; 
+        rdfs:label "Router" .
+
+scope:Regional rdfs:subClassOf net:Router .
+scope:Local rdfs:subClassOf net:Router .        
+
+net:connects a owl:SymmetricProperty ;
+    rdfs:label "connects" ;
+    rdfs:domain net:Router ;
+    rdfs:range net:Router .   
+
+    
