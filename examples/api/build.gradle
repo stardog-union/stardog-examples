@@ -2,18 +2,20 @@ group = "com.complexible.stardog.examples.api"
 
 dependencies {
 	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
+	compile "com.complexible.stardog:server:${stardogVersion}@pom"
+	compile "com.complexible.stardog.cache:stardog-cache-core:${stardogVersion}"
+	compile "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
+	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
+	compile "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
 
 	// client modules
-	compile "com.complexible.stardog:client-snarl:${stardogVersion}" // needed for embedded mode
-	compile "com.complexible.stardog:client-http:${stardogVersion}"
+	compile "com.complexible.stardog:client-embedded:${stardogVersion}"
+	compile "com.complexible.stardog:client-http:${stardogVersion}@pom"
 
 	// external apis
-	compile "com.complexible.stardog.sesame:stardog-sesame-core:${stardogVersion}"
+	compile "com.complexible.stardog.rdf4j:stardog-rdf4j:${stardogVersion}"
+	compile "org.eclipse.rdf4j:rdf4j-runtime:2.2.4"
 	compile "com.complexible.stardog.jena:stardog-jena:${stardogVersion}"
-	compile ("com.complexible.stardog.gremlin:stardog-gremlin:${stardogVersion}") {
-		exclude group: "com.carrotsearch"
-	}
 }
 
 task execute(type:JavaExec, dependsOn: compileJava) {
@@ -27,12 +29,14 @@ task execute(type:JavaExec, dependsOn: compileJava) {
 
 	classpath = sourceSets.main.runtimeClasspath
 
+	jvmArgs = [ "-Djava.library.path=${project.stardogLib}" ]
+
 	if (project.hasProperty("stardogHome")) {
-		jvmArgs = [ "-Dstardog.home=${project.stardogHome}" ]
+		jvmArgs += "-Dstardog.home=${project.stardogHome}"
 	}
 }
 
-task executeAll(dependsOn: compileJava) << {
+task executeAll(dependsOn: compileJava) doLast {
 	sourceSets.main.allJava.each { File aFile ->
 		if (aFile.getName().contains("Example")) {
 			runExample aFile.getAbsolutePath()
@@ -40,7 +44,7 @@ task executeAll(dependsOn: compileJava) << {
 	}
 }
 
-task docs << {
+task docs doLast {
 	exec {
 		commandLine "docco",
 					"-o",
@@ -48,16 +52,12 @@ task docs << {
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionAPIExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ExplanationExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/VersioningExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/GraphQLExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/ProvSkosExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/ICVExample.java",
-					"${srcPath}/com/complexible/stardog/examples/sesame/SesameExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/SHACLExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
 					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/TinkerPop3Example.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/StardogGraphComputerExample.java",
-					"${srcPath}/com/complexible/stardog/examples/gremlin/Util.java"
+					"${srcPath}/com/complexible/stardog/examples/rdf4j/RDF4JExample.java"
 	}
 }
 
@@ -74,8 +74,11 @@ def runExample(String example) {
 
 		classpath = project(':examples:api').sourceSets.main.runtimeClasspath
 
+
+		jvmArgs = [ "-Djava.library.path=${project.stardogLib}" ]
+
 		if (project.hasProperty("stardogHome")) {
-			jvmArgs = [ "-Dstardog.home=${stardogHome}" ]
+			jvmArgs += "-Dstardog.home=${project.stardogHome}"
 		}
 		// else stardog will attempt to use its own $STARDOG_HOME
 	}

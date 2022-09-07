@@ -17,6 +17,16 @@ that can consist of the following:
 * A simple class name of an RDF extractor registered via the service loader
 * The string "tika" to enable the Apache Tika metadata extractor which reads embedded metadata
 
-RDF extractors can be also be chosen for each "put()" request by
+RDF extractors can be also be chosen for each `put()` request by
 providing a sequence of extractor names to the appropriate version of
-the put() method on a StardocsConnection.
+the `put()` method on a `BitesConnection`.
+
+## Usage
+
+- Run `gradle clean jar`
+- In build\libs there should now be a `docs-x.y.z.jar`
+- Copy that jar into [$STARDOG_EXT](https://www.stardog.com/docs/#_extending_stardog) or somewhere such as `$STARDOG\server\dbms` that is on your Stardog classpath
+- Restart your Stardog server
+- `WordCountExtractor` will be available as an RDF extractor
+
+See `WordCountExtractorTest.java` for an API usage example.

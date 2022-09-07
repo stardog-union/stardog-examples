@@ -1,0 +1,16 @@
+PREFIX : <urn:>
+
+MAPPING :remakes
+FROM SQL {
+  -- Mixing * and specific fields is non-standard SQL but the Stardog SQL parser supports it
+  SELECT *, title || ' (' || release_year || ')' AS label FROM Remakes
+}
+TO {
+  ?movie a :Movie ;
+    :title ?title ;
+    :releaseYear "?release_year"^^xsd:integer ;
+    rdfs:label ?label .
+}
+WHERE {
+  BIND(TEMPLATE("urn:movie:{id}") AS ?movie)
+}

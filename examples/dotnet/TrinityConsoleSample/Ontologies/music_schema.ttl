@@ -1,0 +1,76 @@
+﻿@prefix : <http://stardog.com/tutorial/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Person a rdfs:Class ;
+   rdfs:label "Person" ;
+   rdfs:comment "A person." .
+
+:Artist a rdfs:Class ;
+   rdfs:label "Artist" ;
+   rdfs:comment "A person or a group of people creating and performing music." .
+
+:Band a rdfs:Class ;
+   rdfs:label "Band" ;
+   rdfs:comment "A music group; that is, is a group of people creating and performing music together." ;
+   rdfs:subClassOf :Artist .
+
+:SoloArtist a rdfs:Class ;
+   rdfs:label "SoloArtist" ;
+   rdfs:comment "A single person who is a musical artist." ;
+   rdfs:subClassOf :Artist , :Person .
+
+:Album a rdfs:Class ;
+   rdfs:label "Album" ;
+   rdfs:comment "A collection of songs released by an artist on physical or digital medium." .
+
+:Song a rdfs:Class ;
+   rdfs:label "Song" ;
+   rdfs:comment "A music recording that is a single work of music." .
+
+:Songwriter a rdfs:Class ;
+   rdfs:label "Songwriter" ;
+   rdfs:comment "A person or a group of people who participated in the creation of song as a composer or a lyricist." ;
+   rdfs:subClassOf :Person .
+
+:name a rdf:Property ;
+   rdfs:label "name" ;
+   rdfs:comment "The name of an entity." ;
+   rdfs:range xsd:string .
+
+:member a rdf:Property ;
+   rdfs:label "member" ;
+   rdfs:comment "A member of a band. Does not distinguish between past vs current members." ;
+   rdfs:domain :Band ;
+   rdfs:range :SoloArtist .
+
+:date a rdf:Property ;
+   rdfs:label "date" ;
+   rdfs:comment "The release date of an album." ;
+   rdfs:domain :Album ;
+   rdfs:range xsd:date .
+
+:artist a rdf:Property ;
+   rdfs:label "artist" ;
+   rdfs:comment "The artist that performed this album." ;
+   rdfs:domain :Album ;
+   rdfs:range :Artist .
+
+:track a rdf:Property ;
+   rdfs:label "track" ;
+   rdfs:comment "A song included in an album." ;
+   rdfs:domain :Album ;
+   rdfs:range :Song .
+
+:writer a rdf:Property ;
+   rdfs:label "writer" ;
+   rdfs:comment "A person or a group of people who participated in the creation of song as a composer or a lyricist." ;
+   rdfs:domain :Song ;
+   rdfs:range :Songwriter .
+
+:length a rdf:Property ;
+   rdfs:label "length" ;
+   rdfs:comment "The length of a song in the album expressed in seconds." ;
+   rdfs:domain :Song ;
+   rdfs:range xsd:integer .

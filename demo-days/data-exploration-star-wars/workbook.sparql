@@ -1,0 +1,36 @@
+prefix kg: <tag:stardog:api:context:>
+
+# # Overview
+# This is a simple Stardog Knowledge Graph workbook
+# Below you will find a number of example queries that you can use
+# to explore your knowledge graph. Simply place your cursor in the query
+# you want to execute and hit the "Run" button. Make sure you've selected
+# any runtime configuration, such the database to execute against, or 
+# whether or not to use reasoning, prior to executing.
+
+# Return a list of all sub-graphs in your knowledge graph
+select DISTINCT ?g { graph ?g {} }
+
+# Return the contents of specified graph as a table
+select distinct ?s ?p ?o where { bind(<graph:iri:goes:here> as ?g) graph ?g { ?s ?p ?o } }
+
+# Return the specified graph as a graph
+construct { ?s ?p ?o } where { bind(<graph:iri:goes:here> as ?g) graph ?g { ?s ?p ?o } }
+
+# Return all classes
+select DISTINCT ?cls from kg:local { ?cls a owl:Class } order by ?cls
+
+# Return all defined properties
+select DISTINCT ?p from kg:local { { ?p a owl:DatatypeProperty } union {?p a owl:ObjectProperty} union { ?p a rdf:Property } } order by ?p
+
+# Return all properties in use, regardless of whether or not they've been defined
+select DISTINCT ?p from kg:local { ?s ?p ?o } order by ?p
+
+# return all instances of a particular classes
+select DISTINCT ?cls from kg:local { ?cls a <class:iri:goes:here> } order by ?cls
+
+# Delete everything, use with caution
+DELETE WHERE { graph ?g { ?s ?p ?o } }
+
+# delete a specific graph
+clear silent graph <graph:iri:goes:here>

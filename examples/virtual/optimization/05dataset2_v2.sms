@@ -1,0 +1,15 @@
+PREFIX : <urn:>
+
+MAPPING :datasets2
+FROM SQL {
+  SELECT * FROM Movies
+}
+TO {
+  ?movie a :Movie ;
+    :title ?title ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+}
+WHERE {
+  BIND(TEMPLATE("urn:movie:{id}") AS ?movie)
+}

@@ -1,0 +1,18 @@
+task DotnetClean (type:Exec){
+  commandLine 'dotnet', 'clean', '-c', 'Release', '-v', 'normal', project.solution
+}
+
+task DotnetCompile (type:Exec, dependsOn: DotnetClean){
+  commandLine 'dotnet', 'build', '-c', 'Release', '-v', 'normal', project.solution
+}
+
+task DotnetRun (type:Exec, dependsOn: DotnetCompile){
+  workingDir './TrinityConsoleSample'
+  commandLine 'dotnet', 'run', '-c', 'Release', '-v', 'normal', '--no-build'
+}
+
+task compileDotnet (dependsOn: DotnetCompile){
+}
+
+task runDotnet (dependsOn: DotnetRun) {
+}

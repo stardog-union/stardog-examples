@@ -1,0 +1,6 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:BankAccount-{number} a :BankAccount ;
+  :number "{number}" ;
+  :balance "{total}"^^xsd:decimal ;
+.

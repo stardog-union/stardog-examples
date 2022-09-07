@@ -1,0 +1,50 @@
+:Character a owl:Class .
+
+:id a owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:domain :Character ;
+	rdfs:range xsd:int .
+
+:name a owl:DatatypeProperty , owl:FunctionalProperty;
+	rdfs:range xsd:string .
+
+:friends a owl:ObjectProperty;
+	rdfs:domain :Character ;
+	rdfs:range :Character.
+
+:appearsIn a owl:ObjectProperty;
+	rdfs:domain :Character ;
+	rdfs:range :Episode.
+
+:Human a owl:Class ;
+    rdfs:subClassOf :Character .
+
+:homePlanet a owl:ObjectProperty , owl:FunctionalProperty;
+	rdfs:domain :Human ;
+	rdfs:range :Planet.
+
+:Droid a owl:Class ;
+    rdfs:subClassOf :Character .
+
+:primaryFunction a owl:DatatypeProperty , owl:FunctionalProperty;
+	rdfs:domain :Droid ;
+	rdfs:range xsd:string .
+
+:Episode a owl:Class .
+
+:index a owl:DatatypeProperty , owl:FunctionalProperty;
+	rdfs:domain :Episode ;
+	rdfs:range xsd:int .
+
+:Planet a owl:Class .
+
+:region a owl:ObjectProperty , owl:FunctionalProperty;
+	rdfs:domain :Planet ;
+	rdfs:range :Region .
+
+:sector a owl:ObjectProperty , owl:FunctionalProperty;
+	rdfs:domain :Planet ;
+	rdfs:range :Sector .
+
+:system a owl:ObjectProperty ;
+	rdfs:domain :Planet ;
+	rdfs:range :System .

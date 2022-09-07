@@ -1,0 +1,19 @@
+PREFIX : <urn:>
+
+MAPPING :denormalized
+FROM SQL {
+  SELECT * FROM Roles
+}
+TO {
+  ?movie a :Movie ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer ;
+    :actor ?actor .
+
+  ?actor a :Actor ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+  BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
+}

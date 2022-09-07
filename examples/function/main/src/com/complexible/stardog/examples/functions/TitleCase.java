@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,23 @@
 package com.complexible.stardog.examples.functions;
 
 import com.complexible.common.base.Strings2;
-import com.complexible.common.rdf.model.Namespaces;
-import com.complexible.common.rdf.model.StardogValueFactory;
+import com.complexible.stardog.plan.filter.expr.ValueOrError;
 import com.complexible.stardog.plan.filter.functions.AbstractFunction;
-import com.complexible.stardog.plan.filter.ExpressionEvaluationException;
 import com.complexible.stardog.plan.filter.ExpressionVisitor;
 import com.complexible.stardog.plan.filter.functions.string.StringFunction;
-import org.openrdf.model.Value;
+import com.stardog.stark.Datatype;
+import com.stardog.stark.Literal;
+import com.stardog.stark.Namespaces;
+import com.stardog.stark.Value;
 
-import static com.complexible.common.rdf.model.Values.literal;
+import static com.stardog.stark.Values.literal;
 
 /**
  * <p>Example for creating your own SPARQL filter function</p>
  *
  * @author  Michael Grove
  * @since   1.0
- * @version 1.0
+ * @version 6.0
  *
  * @see <a href="http://www.w3.org/TR/2012/PR-sparql11-query-20121108/#extensionFunctions">Extension Functions</a>
  */
@@ -39,7 +40,7 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 
 	// ## Initializing a Function
 	//
-	// This implementation extends from [AbstractFunction](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html)
+	// This implementation extends from [AbstractFunction](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html)
 	// which takes care of much of the work of creating a custom function.  We're passing in that our new function
 	// `TitleCase` takes a single argument, and that it's name is tag:stardog:api:titleCase.  Note that names
 	// should be URIs.
@@ -82,13 +83,13 @@ public final class TitleCase extends AbstractFunction implements StringFunction 
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Value internalEvaluate(final Value... theArgs) throws ExpressionEvaluationException {
+	protected ValueOrError internalEvaluate(final Value... theArgs) {
 
 		// Verify that the single input argument is a plain literal, or an xsd:string.
 		assertStringLiteral(theArgs[0]);
 
 		// We know that we have a string, so let's just title case it and return it.
-		return literal(Strings2.toTitleCase(theArgs[0].stringValue()), StardogValueFactory.XSD.STRING);
+		return ValueOrError.General.of(literal(Strings2.toTitleCase(((Literal)theArgs[0]).label()), Datatype.STRING));
 	}
 
 

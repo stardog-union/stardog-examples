@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+group 'com.stardog.examples'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url "http://maven.stardog.com" }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Core Dependencies
+    compile ('com.complexible.stardog:client-http:6.1.0')
+    compile ('com.stardog:stardog-spring:6.1.1')
+    compile "com.complexible.stardog:server:6.1.0"
+
+    compile ('org.springframework:spring-core:4.3.10.RELEASE')
+    compile ('org.springframework:spring-beans:4.3.10.RELEASE')
+    compile ('org.springframework:spring-context:4.3.10.RELEASE')
+    compile ('org.springframework:spring-tx:4.3.10.RELEASE')
+    compile ('org.slf4j:slf4j-api:1.6.1')
+}
+
+mainClassName = "com.stardog.examples.StardogSpringClient"

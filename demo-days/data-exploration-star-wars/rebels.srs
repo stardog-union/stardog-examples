@@ -1,0 +1,10 @@
+prefix : <tag:stardog:project:220707193045:>
+
+# 23) defining the enemies of the Rebel Alliance
+Rule :EnemiesOfTheRebels
+if {
+    ?person :modelConceptRelationship:member :modelConceptClass:Organization-Galactic%20Empire
+}
+then {
+    ?person a :modelConceptClass:Enemy .
+}

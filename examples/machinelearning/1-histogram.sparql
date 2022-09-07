@@ -1,0 +1,9 @@
+prefix : <http://schema.org/>
+
+select ?rating (count(*) as ?count)
+where {
+    ?movie :rating ?float
+    bind(xsd:integer(?float) as ?rating)
+}
+group by ?rating
+order by desc(?rating)

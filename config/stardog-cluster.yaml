@@ -1,0 +1,246 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stardog-k8s
+  labels:
+    name: stardog-k8s
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stardog-7-license
+  namespace: stardog-k8s
+type: Opaque
+data:
+  stardog-license-key.bin: <base64 encoded license>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stardog-cluster-service
+  namespace: stardog-k8s
+  labels:
+    app: stardog-cluster
+spec:
+  ports:
+  - port: 5820
+    name: server
+  type: LoadBalancer
+  selector:
+    app: stardog-cluster
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stardog-cluster-cm
+  namespace: stardog-k8s
+data:
+  stardog.properties: |
+    pack.enabled=true
+    pack.zookeeper.address=zk-0.zk-service.stardog-k8s:2181,zk-1.zk-service.stardog-k8s:2181,zk-2.zk-service.stardog-k8s:2181
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stardog-cluster
+  namespace: stardog-k8s
+spec:
+  selector:
+    matchLabels:
+      app: stardog-cluster
+  serviceName: stardog-cluster-service
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: stardog-cluster
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - stardog-cluster
+              topologyKey: "kubernetes.io/hostname"
+      initContainers:
+      - name: wait-for-zk
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - |
+          while :
+          do
+            echo "Checking for ZK followers"
+            ZK_MNTR=$(echo mntr | nc zk-service.stardog-k8s 2181)
+            ZK_FOLLOWERS=$(echo "${ZK_MNTR}" | grep zk_synced_followers | awk '{print $2}')
+            echo "Currently ${ZK_FOLLOWERS} ZK followers"
+            if [[ "${ZK_FOLLOWERS}" -gt "1" ]]; then
+              echo "ZK has two sync'd followers (with the leader that makes 3)"
+              exit 0
+            fi
+            sleep 1
+          done
+      containers:
+      - name: stardog-cluster
+        imagePullPolicy: IfNotPresent
+        image: stardog/stardog
+        ports:
+        - containerPort: 5820
+        volumeMounts:
+        - name: stardog-license
+          mountPath: /etc/stardog-license
+          readOnly: true
+        - name: stardog-cluster-data
+          mountPath: /var/opt/stardog/
+        - name: stardog-cluster-config
+          mountPath: /etc/stardog-conf
+        env:
+        - name: PORT
+          value: "5820"
+        - name: STARDOG_HOME
+          value: "/var/opt/stardog/"
+        command:
+        - /bin/sh
+        - -c
+        - |
+          cp /etc/stardog-license/stardog-license-key.bin ${STARDOG_HOME} && \
+          cp /etc/stardog-conf/stardog.properties ${STARDOG_HOME} && \
+          /opt/stardog/bin/stardog-admin server start --foreground --port ${PORT} --home ${STARDOG_HOME}
+        livenessProbe:
+          httpGet:
+            path: /admin/healthcheck
+            port: 5820
+          initialDelaySeconds: 120
+          periodSeconds: 60
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /admin/healthcheck
+            port: 5820
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - |
+                /opt/stardog/bin/stardog-admin server stop
+      volumes:
+      - name: stardog-license
+        secret:
+          secretName: stardog-7-license
+      - name: stardog-cluster-config
+        configMap:
+          name: stardog-cluster-cm
+  volumeClaimTemplates:
+  - metadata:
+      name: stardog-cluster-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zk-service
+  namespace: stardog-k8s
+  labels:
+    app: zk
+spec:
+  ports:
+  - port: 2181
+    name: client
+  clusterIP: None
+  selector:
+    app: zk
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: zk-pdb
+spec:
+  selector:
+    matchLabels:
+      app: zk
+  minAvailable: 2
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zk
+  namespace: stardog-k8s
+spec:
+  selector:
+    matchLabels:
+      app: zk
+  serviceName: zk-service
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: zk
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - zk
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: zookeeper
+        imagePullPolicy: IfNotPresent
+        image: gcr.io/google_samples/k8szk:v3
+        ports:
+        - containerPort: 2181
+          name: client
+        - containerPort: 2888
+          name: server
+        - containerPort: 3888
+          name: leader-election
+        env:
+        - name : ZK_REPLICAS
+          value: "3"
+        command:
+        - sh
+        - -c
+        - zkGenConfig.sh && zkServer.sh start-foreground
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "zkOk.sh"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "zkOk.sh"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        volumeMounts:
+        - name: zk-data
+          mountPath: /var/lib/zookeeper
+  volumeClaimTemplates:
+  - metadata:
+      name: zk-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 2Gi
+

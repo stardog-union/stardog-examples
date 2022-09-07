@@ -3,5 +3,6 @@ group = "com.complexible.stardog.examples.docs"
 dependencies {
 	compile "com.complexible.stardog:server:${stardogVersion}"
 	compile "com.complexible.stardog:client-http:${stardogVersion}"
-	compile "com.complexible.stardog.stardocs.http:stardog-stardocs-protocols-http-client:${stardogVersion}"
+	compile "com.complexible.stardog:client-embedded:${stardogVersion}"
+	compile "com.complexible.stardog.bites:stardog-bites-protocols-embedded:${stardogVersion}"
 }

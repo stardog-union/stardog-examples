@@ -1,0 +1,34 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :s1 a spa:SimilarityModel ;
+            spa:arguments (?genres ?directors ?authors ?producers ?metaCritic) ;
+            spa:predict ?movie ;
+            spa:overwrite True .
+    }
+}
+WHERE {
+    SELECT 
+    (spa:set(?genre) as ?genres) 
+    (spa:set(?director) as ?directors)
+    (spa:set(?author) as ?authors)
+    (spa:set(?producer) as ?producers)
+    ?metaCritic
+    ?movie
+    {
+        ?movie  :genre ?genre ;
+                :director ?director ;
+                :author ?author .
+
+        OPTIONAL {
+            ?movie  :productionCompany ?producer .
+        }
+
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
+        }
+    }
+    GROUP BY ?movie ?metaCritic 
+}

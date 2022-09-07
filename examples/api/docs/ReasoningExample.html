@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ReasoningExample.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="ConnectionAPIExample.html">
+                ConnectionAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="ConnectionPoolsExample.html">
+                ConnectionPoolsExample.java
+              </a>
+            
+              
+              <a class="source" href="ExplanationExample.html">
+                ExplanationExample.java
+              </a>
+            
+              
+              <a class="source" href="ICVExample.html">
+                ICVExample.java
+              </a>
+            
+              
+              <a class="source" href="ProvSkosExample.html">
+                ProvSkosExample.java
+              </a>
+            
+              
+              <a class="source" href="ReasoningExample.html">
+                ReasoningExample.java
+              </a>
+            
+              
+              <a class="source" href="VersioningExample.html">
+                VersioningExample.java
+              </a>
+            
+              
+              <a class="source" href="WaldoAPIExample.html">
+                WaldoAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="JenaExample.html">
+                JenaExample.java
+              </a>
+            
+              
+              <a class="source" href="SesameExample.html">
+                SesameExample.java
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>ReasoningExample.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * Copyright (c) 2010-2014 Clark &amp; Parsia, LLC. &lt;http://www.clarkparsia.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */</span>
+<span class="hljs-keyword">package</span> com.complexible.stardog.examples.api;
+
+<span class="hljs-keyword">import</span> java.io.File;
+
+<span class="hljs-keyword">import</span> com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+<span class="hljs-keyword">import</span> org.openrdf.model.URI;
+<span class="hljs-keyword">import</span> org.openrdf.model.impl.ValueFactoryImpl;
+<span class="hljs-keyword">import</span> org.openrdf.query.QueryEvaluationException;
+<span class="hljs-keyword">import</span> org.openrdf.query.TupleQueryResult;
+<span class="hljs-keyword">import</span> org.openrdf.rio.RDFFormat;
+
+<span class="hljs-keyword">import</span> com.complexible.common.protocols.server.Server;
+<span class="hljs-keyword">import</span> com.complexible.stardog.Stardog;
+<span class="hljs-keyword">import</span> com.complexible.stardog.StardogException;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.Connection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.IO;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.ConnectionConfiguration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.SelectQuery;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.reasoning.ReasoningConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.reasoning.api.ReasoningType;
+
+<span class="hljs-javadoc">/**
+ * &lt;p&gt;A small example program illustrating how to access Stardog's reasoning capabilities.&lt;/p&gt;
+ *
+ *<span class="hljs-javadoctag"> @author</span>  Michael Grove
+ *<span class="hljs-javadoctag"> @since</span>   0.4.5
+ *<span class="hljs-javadoctag"> @version</span> 2.0
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReasoningExample</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="using-reasoning-in-stardog">Using Reasoning in Stardog</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>In this example we’ll walk through a simple example using the SNARL API to access Stardog’s
+reasoning capabilities.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(String[] args) <span class="hljs-keyword">throws</span> Exception {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h2 id="creating-a-server">Creating a Server</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>You’ll need a server to connect to, obviously.  The <code>Stardog</code>
+class provides a simple <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/Stardog.html">builder interface</a> to specify which protocol
+the server should use (options are HTTP &amp; SNARL) and takes a <code>SocketAddress</code>
+the server should bind to.  This will return you a <code>Server</code> object which
+can be used to start &amp; stop the Stardog server.</p>
+<p>This example shows up to create and start the embedded SNARL server.  Note that
+you can only embed the <em>SNARL</em> server, not HTTP.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        Server aServer = Stardog
+            .buildServer()
+            .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
+            .start();
+
+		<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h2 id="using-adminconnection">Using AdminConnection</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Now that the server is running, we want to create a connection to the DBMS itself so we can do
+some administrative stuff, namely, creating a new database to use for the purpose of this example.
+We need to create a connection to perform administrative actions, so we can use the <code>AdminConnectionConfiguration</code>
+utility class for opening the connection.</p>
+<p>Most operations supported by the DBMS require specific permissions, so either an admin account
+is required, or a user who has been granted the ability to perform the actions.  You can learn
+more about this in the <a href="http://docs.stardog.com/security">Security chapter</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                               .credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+			                                                               .connect();
+
+			<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>With our admin connection, we’re able to see if the database for this example already exists, and
+if it does, we want to drop it and re-create so that we can run the example from clean database.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">if</span> (aAdminConnection.list().contains(<span class="hljs-string">"reasoningExampleTest"</span>)) {
+					aAdminConnection.drop(<span class="hljs-string">"reasoningExampleTest"</span>);
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Convenience function for creating a non-persistent in-memory database with all the default settings.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aAdminConnection.createMemory(<span class="hljs-string">"reasoningExampleTest"</span>);
+			}
+			<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p><em>ALWAYS</em> close your connections!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aAdminConnection.close();
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <h2 id="using-reasoning-via-snarl">Using reasoning via SNARL</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Now that we’ve created our database for the example, lets open a connection to it.  For that we use the
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/SNARLConnectionConfiguration.html">SNARLConnectionConfiguration</a>
+to configure and open a new connection to a database.</p>
+<p>We’ll use the configuration to specify which database we want to connect to as well as our login information,
+then we can obtain a new connection.  This is also where you specify the type of reasoning you would like the connection
+to use.  Please note that reasoning is <em>per connection</em> there’s no requirement to specify the type of
+reasoning you want to use when you create a database.  You can use whatever type of reasoning suits your
+current use-case by specifying it when you create a Connection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			ReasoningConnection aReasoningConn = ConnectionConfiguration
+				.to(<span class="hljs-string">"reasoningExampleTest"</span>)
+				.credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+				.reasoning(ReasoningType.QL)
+				.connect()
+				.as(ReasoningConnection.class);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Now obtain a non-reasoning connection to the database for comparison</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			Connection aConn = ConnectionConfiguration
+							.to(<span class="hljs-string">"reasoningExampleTest"</span>)
+							.credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+							.connect();
+
+			<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Now lets add lubm1 and the lubm ontology to the database.
+We can use either the reasoning connection or the base connection for addition, results will be same</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aReasoningConn.begin();
+
+				IO aAdder = aReasoningConn.add().io().format(RDFFormat.RDFXML);
+
+				aAdder.file(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"data/University0_0.owl"</span>))
+					  .file(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"data/lubmSchema.owl"</span>));
+
+				aReasoningConn.commit();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>So let’s print out how many of some different types there are…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				System.out.println(<span class="hljs-string">"The default results..."</span>);
+				printCounts(aConn);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Let’s do the same thing with the reasoning connection
+and print the same set of counts, but this time, with reasoning so we can see the difference</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				System.out.println(<span class="hljs-string">"\nResults with reasoning..."</span>);
+				printCounts(aReasoningConn);
+			}
+			<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Closing the reasoning connection will close the base connection too</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aReasoningConn.close();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>And close our other connection</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aConn.close();
+			}
+		}
+		<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>You MUST stop the server if you’ve started it!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			aServer.stop();
+		}
+	}
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printCounts</span>(<span class="hljs-keyword">final</span> Connection theConn) <span class="hljs-keyword">throws</span> StardogException, QueryEvaluationException {
+		URI PERSON = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Person"</span>);
+		URI STUDENT = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Student"</span>);
+		URI GRAD_STUDENT = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent"</span>);
+		URI PROFESSOR = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#Professor"</span>);
+		URI FULL_PROFESSOR = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#FullProfessor"</span>);
+
+		SelectQuery aQuery = theConn.select(<span class="hljs-string">"SELECT ?x WHERE {\n"</span> +
+									 <span class="hljs-string">"?x &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; ?type\n"</span> +
+									 <span class="hljs-string">"}"</span>);
+
+		aQuery.parameter(<span class="hljs-string">"type"</span>, PERSON);
+		TupleQueryResult aResult = aQuery.execute();
+		System.out.println(<span class="hljs-string">"Number of Persons: "</span> + count(aResult));
+
+		aQuery.parameter(<span class="hljs-string">"type"</span>, STUDENT);
+		aResult = aQuery.execute();
+		System.out.println(<span class="hljs-string">"Number of Students: "</span> + count(aResult));
+
+		aQuery.parameter(<span class="hljs-string">"type"</span>, GRAD_STUDENT);
+		aResult = aQuery.execute();
+		System.out.println(<span class="hljs-string">"Number of Grad Students: "</span> + count(aResult));
+
+		aQuery.parameter(<span class="hljs-string">"type"</span>, PROFESSOR);
+		aResult = aQuery.execute();
+		System.out.println(<span class="hljs-string">"Number of Professors: "</span> + count(aResult));
+
+		aQuery.parameter(<span class="hljs-string">"type"</span>, FULL_PROFESSOR);
+		aResult = aQuery.execute();
+		System.out.println(<span class="hljs-string">"Number of Full Professors: "</span> + count(aResult));
+	}
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">count</span>(<span class="hljs-keyword">final</span> TupleQueryResult theResult) <span class="hljs-keyword">throws</span> QueryEvaluationException {
+		<span class="hljs-keyword">try</span> {
+			<span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+			<span class="hljs-keyword">while</span> (theResult.hasNext()) {
+				count++;
+				theResult.next();
+			}
+
+			<span class="hljs-keyword">return</span> count;
+		}
+		<span class="hljs-keyword">finally</span> {
+			theResult.close();
+		}
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

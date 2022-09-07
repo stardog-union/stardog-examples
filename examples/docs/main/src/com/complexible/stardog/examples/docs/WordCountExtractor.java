@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2016 Clark & Parsia, LLC. <http://www.clarkparsia.com>
+ * Copyright (c) 2010-2018 Stardog Union. <https://stardog.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
 
 package com.complexible.stardog.examples.docs;
 
-import com.complexible.common.openrdf.model.Models2;
-import com.complexible.common.rdf.StatementSource;
-import com.complexible.common.rdf.impl.MemoryStatementSource;
-import com.complexible.common.rdf.model.Values;
-import com.complexible.stardog.db.DatabaseConnection;
-import com.complexible.stardog.docs.extraction.tika.TextProvidingRDFExtractor;
-import org.openrdf.model.IRI;
-import org.openrdf.model.Model;
-import org.openrdf.model.Statement;
-
 import java.io.BufferedReader;
 import java.io.Reader;
+
+import com.complexible.common.rdf.StatementSource;
+import com.complexible.common.rdf.impl.MemoryStatementSource;
+import com.complexible.stardog.api.Connection;
+import com.complexible.stardog.docs.extraction.tika.TextProvidingRDFExtractor;
+import com.google.common.collect.ImmutableSet;
+import com.stardog.stark.IRI;
+import com.stardog.stark.Statement;
+import com.stardog.stark.Values;
 
 /**
  * A Stardog RDF extractor that will process the document to compute
@@ -39,20 +38,23 @@ import java.io.Reader;
  * file (pdf, docx, etc).
  */
 public class WordCountExtractor extends TextProvidingRDFExtractor {
-    /**
-     * Compute the word count, create an RDF triple linking the word count to the document, return it as a {@link Model}.
-     */
-    protected StatementSource extractFromText(DatabaseConnection theConnection, IRI theDocIri, Reader theText) throws Exception {
-        int words = 0;
-        String line;
-        BufferedReader aBufferedReader = new BufferedReader(theText);
 
-        while ((line = aBufferedReader.readLine()) != null) {
-            words += line.split(" ").length;
-        }
+	/**
+	 * Compute the word count, create an RDF triple linking the word count to the document, return it as a graph.
+	 */
+	@Override
+	protected StatementSource extractFromText(final Connection theConnection, final IRI theDocIri, final Reader theText) throws Exception {
+		int words = 0;
+		String line;
+		BufferedReader aBufferedReader = new BufferedReader(theText);
 
-        Statement aWordCountStatement = Values.statement(theDocIri, Values.iri("tag:stardog:example:wordcount"), Values.literal(words));
+		while ((line = aBufferedReader.readLine()) != null) {
+			words += line.split(" ").length;
+		}
 
-        return MemoryStatementSource.of(Models2.newModel(aWordCountStatement));
-    }
+		Statement aWordCountStatement = Values.statement(theDocIri, Values.iri("tag:stardog:example:wordcount"), Values.literal(words));
+
+		return MemoryStatementSource.of(ImmutableSet.of(aWordCountStatement));
+	}
+
 }

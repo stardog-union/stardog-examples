@@ -1,0 +1,37 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+SELECT ?title ?rating ?predictedRating
+WHERE {
+    graph spa:model {
+        :r2 spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
+            spa:predict ?predictedRating .
+    }
+
+    {
+    SELECT         
+        (spa:set(?author) as ?authors)
+        (spa:set(?director) as ?directors)
+        (spa:set(?producer) as ?producers)
+        (spa:set(?keyword) as ?keywords)
+        ?contentRating
+        ?year
+        ?metaCritic
+        ?rating
+        ?title
+        {
+            ?movie  rdfs:label ?title ;
+                    :rating ?rating ;
+                    :author ?author ;
+                    :director ?director ;
+                    :productionCompany ?producer ;
+                    :keyword ?keyword ;
+                    :contentRating ?contentRating ;
+                    :copyrightYear ?year ;
+                    :metaCritic ?metaCritic .
+        }
+        GROUP BY ?movie ?contentRating ?year ?metaCritic ?rating ?title
+        ORDER BY rand()
+        LIMIT 20
+    }
+}

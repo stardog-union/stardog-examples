@@ -1,0 +1,6 @@
+group = "com.complexible.stardog.examples.handler"
+
+dependencies {
+	// server core modules
+	compile "com.complexible.stardog:server:${stardogVersion}"
+}

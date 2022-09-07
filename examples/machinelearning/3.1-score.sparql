@@ -1,0 +1,9 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+SELECT ?mean_absolute_error
+WHERE {
+    graph spa:model {
+        :r2 spa:evaluationScore ?mean_absolute_error
+    }
+}

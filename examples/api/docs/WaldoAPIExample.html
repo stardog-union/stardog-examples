@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>WaldoAPIExample.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="ConnectionAPIExample.html">
+                ConnectionAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="ConnectionPoolsExample.html">
+                ConnectionPoolsExample.java
+              </a>
+            
+              
+              <a class="source" href="ExplanationExample.html">
+                ExplanationExample.java
+              </a>
+            
+              
+              <a class="source" href="ICVExample.html">
+                ICVExample.java
+              </a>
+            
+              
+              <a class="source" href="ProvSkosExample.html">
+                ProvSkosExample.java
+              </a>
+            
+              
+              <a class="source" href="ReasoningExample.html">
+                ReasoningExample.java
+              </a>
+            
+              
+              <a class="source" href="VersioningExample.html">
+                VersioningExample.java
+              </a>
+            
+              
+              <a class="source" href="WaldoAPIExample.html">
+                WaldoAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="JenaExample.html">
+                JenaExample.java
+              </a>
+            
+              
+              <a class="source" href="SesameExample.html">
+                SesameExample.java
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>WaldoAPIExample.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * Copyright (c) 2010-2014 Clark &amp; Parsia, LLC. &lt;http://www.clarkparsia.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */</span>
+<span class="hljs-keyword">package</span> com.complexible.stardog.examples.api;
+
+<span class="hljs-keyword">import</span> java.io.File;
+
+<span class="hljs-keyword">import</span> com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+<span class="hljs-keyword">import</span> com.complexible.common.protocols.server.Server;
+<span class="hljs-keyword">import</span> org.openrdf.model.Literal;
+<span class="hljs-keyword">import</span> org.openrdf.query.BindingSet;
+<span class="hljs-keyword">import</span> org.openrdf.query.QueryEvaluationException;
+<span class="hljs-keyword">import</span> org.openrdf.query.TupleQueryResult;
+<span class="hljs-keyword">import</span> org.openrdf.rio.RDFFormat;
+
+<span class="hljs-keyword">import</span> com.complexible.common.iterations.Iteration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.Stardog;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.ConnectionConfiguration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.Connection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.SelectQuery;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.search.SearchConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.search.SearchResult;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.search.SearchResults;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.search.Searcher;
+
+<span class="hljs-javadoc">/**
+ * &lt;p&gt;Simple example &lt;/p&gt;
+ *
+ *<span class="hljs-javadoctag"> @author</span>  Michael Grove
+ *<span class="hljs-javadoctag"> @since</span>   0.6.5
+ *<span class="hljs-javadoctag"> @version</span> 2.0
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WaldoAPIExample</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="using-the-waldo-search-api">Using the Waldo Search API</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>A short example illustrating the use of the <a href="http://docs.stardog.com/using/#sd-Searching">full text search capabilities</a> in Stardog
+via the SNARL API.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(String[] args) <span class="hljs-keyword">throws</span> Exception {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>First thing’s first, we have to create and start a Stardog server to use</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		Server aServer = Stardog
+			                 .buildServer()
+			                 .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
+			                 .start();
+
+		<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Open an <code>AdminConnection</code> to Stardog so that we can setup the database for the example</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			AdminConnection dbms = AdminConnectionConfiguration.toEmbeddedServer()
+			                                                   .credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+			                                                   .connect();
+
+			<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>If our example database exists, drop it and create it anew</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">if</span> (dbms.list().contains(<span class="hljs-string">"waldoTest"</span>)) {
+					dbms.drop(<span class="hljs-string">"waldoTest"</span>);
+				}
+
+				dbms.memory(<span class="hljs-string">"waldoTest"</span>)
+				    .searchable(<span class="hljs-keyword">true</span>)
+				    .create();
+			}
+			<span class="hljs-keyword">finally</span> {
+				dbms.close();
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Obtain a <code>Connection</code> to the database we just created</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			Connection aConn = ConnectionConfiguration
+				                   .to(<span class="hljs-string">"waldoTest"</span>)
+				                   .credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+				                   .connect();
+
+			<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>To start, lets add some data into the database so that it can be queried and searched</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aConn.begin();
+				aConn
+					.add().io()
+					.format(RDFFormat.RDFXML)
+					.file(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"data/catalog.rdf"</span>));
+
+				aConn.commit();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Lets try an example with the basic Waldo API
+We want to view this connection as a <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/search/SearchConnection.html">searchable connection</a>,
+so we request a view of the <code>Connection</code> as a <code>SearchConnection</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				SearchConnection aSearchConn = aConn.as(SearchConnection.class);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>With that done, let’s create a <a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/search/Searcher.html">Searcher</a>
+that we can use to run some full text searches over the database.
+Here we will specify that we only want results over a score of <code>0.5</code>, and no more than <code>50</code> results
+for things that match the search term <code>mac</code>.  Stardog’s full text search is backed by <a href="http://lucene.apache.org">Lucene</a>
+so you can use the full Lucene search syntax in your queries.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				Searcher aSearch = aSearchConn.search()
+					                   .limit(<span class="hljs-number">50</span>)
+					                   .query(<span class="hljs-string">"mac"</span>)
+					                   .threshold(<span class="hljs-number">0.5</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>We can run the search and then iterate over the results</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				SearchResults aSearchResults = aSearch.search();
+
+				Iteration&lt;SearchResult, QueryEvaluationException&gt; resultIt = aSearchResults.iteration();
+
+				<span class="hljs-keyword">try</span> {
+					System.out.println(<span class="hljs-string">"\nAPI results: "</span>);
+					<span class="hljs-keyword">while</span> (resultIt.hasNext()) {
+						SearchResult aHit = resultIt.next();
+
+						System.out.println(aHit.getHit() + <span class="hljs-string">" with a score of: "</span> + aHit.getScore());
+					}
+				}
+				<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p><code>Iteration</code>s must be closed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					resultIt.close();
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>The <code>Searcher</code> can be re-used if we want to find the next set of results.  We already found the
+first fifty, so lets grab the next page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aSearch.offset(<span class="hljs-number">50</span>);
+
+				aSearchResults = aSearch.search();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>The Stardog full-text search index no different than the RDF index, which means you can query it
+via SPARQL, even combining your search over the full-text index with BGPs which query your RDF
+letting you query <em>both</em> indexes at the same time.  The SPARQL syntax is based on the LARQ
+syntax in Jena.  Here you will see the SPARQL query that is equivalent to the search we just
+did via <code>Searcher</code>, which we can see when we print the results.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				String aQuery = <span class="hljs-string">"SELECT DISTINCT ?s ?score WHERE {\n"</span> +
+				                <span class="hljs-string">"\t?s ?p ?l.\n"</span> +
+				                <span class="hljs-string">"\t( ?l ?score ) &lt;"</span> + SearchConnection.MATCH_PREDICATE + <span class="hljs-string">"&gt; ( 'mac' 0.5 50 ).\n"</span> +
+				                <span class="hljs-string">"}"</span>;
+
+				SelectQuery query = aConn.select(aQuery);
+
+				TupleQueryResult aResult = query.execute();
+
+				<span class="hljs-keyword">try</span> {
+					System.out.println(<span class="hljs-string">"Query results: "</span>);
+					<span class="hljs-keyword">while</span> (aResult.hasNext()) {
+						BindingSet result = aResult.next();
+
+						System.out.println(result.getValue(<span class="hljs-string">"s"</span>) + <span class="hljs-string">" with a score of: "</span> + ((Literal) result.getValue(<span class="hljs-string">"score"</span>)).doubleValue());
+					}
+				}
+				<span class="hljs-keyword">finally</span> {
+                    aResult.close();
+				}
+			}
+			<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Always close your connections when you’re done</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				aConn.close();
+			}
+		}
+		<span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>You MUST stop the server if you’ve started it!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			aServer.stop();
+		}
+
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

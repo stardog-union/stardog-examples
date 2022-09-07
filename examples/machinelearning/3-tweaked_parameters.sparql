@@ -1,0 +1,51 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :r2 a spa:RegressionModel ;
+                spa:parameters [
+                    spa:loss_function 'squared' ;
+                    spa:b 22 ;
+                    spa:l (0.01 0.08) ;
+                    spa:l1 (0.0000001 0.000001) ;
+                    spa:passes 2 ;
+                    spa:k True ;
+                    spa:c True ;
+                    spa:holdout_off True ;
+                ] ;
+                spa:arguments (?authors ?directors ?producers ?keywords ?contentRating ?year ?metaCritic) ;
+                spa:predict ?rating ;
+                spa:evaluation true ;
+                spa:crossValidation 100 ;
+                spa:evaluationMetric spa:mae ;
+                spa:overwrite True .
+    }
+}
+WHERE {
+    SELECT         
+        (spa:set(?author) as ?authors)
+        (spa:set(?director) as ?directors)
+        (spa:set(?producer) as ?producers)
+    	(spa:set(?keyword) as ?keywords)
+        ?contentRating
+        ?year
+        ?metaCritic
+        ?rating
+    {
+        ?movie  :rating ?rating ;
+                :author ?author ;
+                :director ?director ;
+                :keyword ?keyword ;
+                :contentRating ?contentRating ;
+                :copyrightYear ?year .
+
+        OPTIONAL {
+            ?movie  :productionCompany ?producer .
+        }
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
+        }
+    }
+    GROUP BY ?movie ?contentRating ?year ?metaCritic ?rating
+}

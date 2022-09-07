@@ -1,0 +1,33 @@
+prefix : <http://schema.org/>
+prefix spa: <tag:stardog:api:analytics:>
+
+INSERT {
+    graph spa:model {
+        :r1 a spa:RegressionModel ;
+            spa:arguments (?genres ?contentRating ?storyline ?metaCritic) ;
+            spa:predict ?rating ;
+            spa:crossValidation 100 ;
+            spa:evaluation true ;
+            spa:evaluationMetric spa:mae ;
+            spa:overwrite True .
+    }
+}
+WHERE {
+    SELECT 
+    (spa:set(?genre) as ?genres) 
+    ?contentRating
+    ?storyline
+    ?metaCritic
+    ?rating
+    {
+        ?movie  :rating ?rating ;
+                :genre ?genre ;
+                :contentRating ?contentRating ;
+                :storyline ?storyline .
+
+        OPTIONAL {
+            ?movie  :metaCritic ?metaCritic .
+        }
+    }
+    GROUP BY ?movie ?rating ?contentRating ?storyline ?metaCritic
+}

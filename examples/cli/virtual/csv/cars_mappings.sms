@@ -1,0 +1,61 @@
+prefix :    <http://example.org/cars#>
+prefix gr:  <http://purl.org/goodrelations/v1#>
+prefix vso: <http://purl.org/vso/ns#>
+
+MAPPING
+# Use an empty FROM CSV clause to indicate this is a delimited input.
+FROM CSV {
+}
+TO {
+    ?car_iri a vso:Automobile, gr:ActualProductOrServiceInstance ;
+        rdfs:label ?car_label ;
+        gr:hasManufacturer ?make_iri ;
+        gr:hasMakeAndModel ?model_iri ;
+        vso:modelDate ?model_date .
+
+    ?make_iri a gr:BusinessEntity ;
+        rdfs:label ?Make .
+
+    ?model_iri a gr:ProductOrServiceModel ;
+        rdfs:label ?model_string ;
+        gr:hasManufacturer ?make_iri .
+
+    ?offer_iri a gr:Offering ;
+        rdfs:comment ?Description ;
+        gr:includes ?car_iri ;
+        gr:hasBusinessFunction gr:Sell ;
+        gr:hasPriceSpecification ?price_bnode .
+
+    ?price_bnode a gr:UnitPriceSpecification ;
+        gr:hasCurrency "USD"^^xsd:string ;
+        :uuid ?uuidstr ;
+        gr:hasCurrencyValue ?price_float .
+}
+WHERE {
+    # A variable (?Make, ?Model) will be created for each column. Column names are case-sensitive, and will be taken from
+    # the header row (or use ?0, ?1, ?2... for column names if there is no header).
+
+    # New variables can be created in the WHERE clause using the SPARQL BIND function.
+
+    # Use the special TEMPLATE function to construct IRIs from column names.
+    BIND(TEMPLATE("http://example.org/cars#Manufacturer-{Make}") AS ?make_iri)
+    BIND(TEMPLATE("http://example.org/cars#Model-{Model}") AS ?model_iri)
+
+    # The SPARQL CONCAT function can be used to build up new String variables from columns.
+    BIND(CONCAT(?Make, " ", ?Model) AS ?model_string)
+    BIND(CONCAT(?Make, " ", ?Model, " (", ?Year, ")") AS ?car_label)
+
+    # For delimited import (only), a special _ROW_NUMBER_ variable will contain the current ROW number of the CSV file.
+    BIND(TEMPLATE("http://example.org/cars#Car-{_ROW_NUMBER_}") AS ?car_iri)
+    BIND(TEMPLATE("http://example.org/cars#Offer-{_ROW_NUMBER_}") AS ?offer_iri)
+
+    # Cast Price column from String to Float.
+    BIND(xsd:float(?Price) AS ?price_float)
+
+    # SPARQL functions can be combined as needed.
+    BIND(xsd:date(CONCAT(?Year, "-01-01")) AS ?model_date)
+
+    # The SPARQL BNODE function can be used to create blank nodes. An optional argument can supply the ID.
+    # The SPARQL UUID a STRUUID functions can be used to generate unique IRIs and Strings, respectively.
+    BIND(BNODE(CONCAT("price-", STRUUID())) AS ?price_bnode)
+}

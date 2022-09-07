@@ -1,0 +1,65 @@
+# # Overview
+# This is a simple Stardog Knowledge Graph workbook
+#
+# The following are a bunch of common namespace declarations
+# including the ones you'll need for Stardog. This makes 
+# working with SPARQL a lot easier. 
+
+prefix stardog: <tag:stardog:api:>
+prefix catalog: <tag:stardog:api:catalog:>
+prefix m: <urn:stardog:modules:>
+prefix kg: <tag:stardog:api:context:>
+prefix sqs: <tag:stardog:api:sqs:>
+prefix rule: <tag:stardog:api:rule:>
+prefix sd: <urn:stardog:>
+prefix sql: <tag:stardog:api:sql:>
+prefix mp: <urn:stardog:marketplace:>
+prefix spa: <tag:stardog:api:analytics:>
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix sh: <http://www.w3.org/ns/shacl#>
+
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix dcat: <http://www.w3.org/ns/dcat#>
+prefix dct: <http://purl.org/dc/terms/>
+prefix qudt: <http://qudt.org/schema/qudt/>
+prefix unit: <http://qudt.org/vocab/unit/>
+prefix void: <http://rdfs.org/ns/void#>
+prefix so: <https://schema.org/>
+prefix prov: <http://www.w3.org/ns/prov#>
+
+# Below you will find a number of example queries that you can use
+# to explore your knowledge graph. Simply place your cursor IN the query
+# you want to execute and hit the `Run` button. Make sure you've selected
+# any runtime configuration, such the database to execute against, prior to running.
+
+# Return a list of all sub-graphs in your knowledge graph
+select DISTINCT ?g { graph ?g {} }
+
+# Return the contents of specified graph as a table
+select distinct ?s ?p ?o where { bind(<graph:iri:goes:here> as ?g) graph ?g { ?s ?p ?o } }
+
+# Return the specified graph as a graph
+construct { ?s ?p ?o } where { bind(<graph:iri:goes:here> as ?g) graph ?g { ?s ?p ?o } }
+
+# Return all classes
+select DISTINCT ?cls from kg:local { { ?cls a owl:Class } union { ?cls a rdfs:Class } } order by ?cls
+
+# Return all defined properties
+select DISTINCT ?p from kg:local { { ?p a owl:DatatypeProperty } union {?p a owl:ObjectProperty} union { ?p a rdf:Property } } order by ?p
+
+# Return all properties in use, regardless of whether or not they've been defined
+select DISTINCT ?p from kg:local { ?s ?p ?o } order by ?p
+
+# return all instances of a particular classes
+select DISTINCT ?inst from kg:local { ?inst a <class:iri:goes:here> } order by ?inst
+
+# Delete everything, use with caution
+DELETE WHERE { graph ?g { ?s ?p ?o } }
+
+# delete a specific graph
+clear silent graph <graph:iri:goes:here>

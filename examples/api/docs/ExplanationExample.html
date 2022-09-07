@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ExplanationExample.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="ConnectionAPIExample.html">
+                ConnectionAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="ConnectionPoolsExample.html">
+                ConnectionPoolsExample.java
+              </a>
+            
+              
+              <a class="source" href="ExplanationExample.html">
+                ExplanationExample.java
+              </a>
+            
+              
+              <a class="source" href="ICVExample.html">
+                ICVExample.java
+              </a>
+            
+              
+              <a class="source" href="ProvSkosExample.html">
+                ProvSkosExample.java
+              </a>
+            
+              
+              <a class="source" href="ReasoningExample.html">
+                ReasoningExample.java
+              </a>
+            
+              
+              <a class="source" href="VersioningExample.html">
+                VersioningExample.java
+              </a>
+            
+              
+              <a class="source" href="WaldoAPIExample.html">
+                WaldoAPIExample.java
+              </a>
+            
+              
+              <a class="source" href="JenaExample.html">
+                JenaExample.java
+              </a>
+            
+              
+              <a class="source" href="SesameExample.html">
+                SesameExample.java
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>ExplanationExample.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * Copyright (c) 2010-2014 Clark &amp; Parsia, LLC. &lt;http://www.clarkparsia.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */</span>
+<span class="hljs-keyword">package</span> com.complexible.stardog.examples.api;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> com.complexible.common.openrdf.util.ExpressionFactory.type;
+
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.ConnectionConfiguration;
+<span class="hljs-keyword">import</span> org.openrdf.model.Statement;
+<span class="hljs-keyword">import</span> org.openrdf.model.URI;
+<span class="hljs-keyword">import</span> org.openrdf.model.impl.ValueFactoryImpl;
+<span class="hljs-keyword">import</span> org.openrdf.model.vocabulary.OWL;
+<span class="hljs-keyword">import</span> org.openrdf.model.vocabulary.RDF;
+<span class="hljs-keyword">import</span> org.openrdf.model.vocabulary.RDFS;
+
+<span class="hljs-keyword">import</span> com.complexible.common.openrdf.util.Expression;
+<span class="hljs-keyword">import</span> com.complexible.common.protocols.server.Server;
+<span class="hljs-keyword">import</span> com.complexible.stardog.Stardog;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+<span class="hljs-keyword">import</span> com.complexible.stardog.api.reasoning.ReasoningConnection;
+<span class="hljs-keyword">import</span> com.complexible.stardog.protocols.snarl.SNARLProtocolConstants;
+<span class="hljs-keyword">import</span> com.complexible.stardog.reasoning.Proof;
+<span class="hljs-keyword">import</span> com.complexible.stardog.reasoning.api.ReasoningType;
+<span class="hljs-keyword">import</span> com.complexible.stardog.reasoning.ExpressionWriter;
+<span class="hljs-keyword">import</span> com.complexible.stardog.reasoning.ProofWriter;
+
+<span class="hljs-javadoc">/**
+ * &lt;p&gt;Simple example to show how to use Stardog's explanation facilities.&lt;/p&gt;
+ *
+ *<span class="hljs-javadoctag"> @author</span> Michael Grove
+ *
+ *<span class="hljs-javadoctag"> @since</span>   0.7.3
+ *<span class="hljs-javadoctag"> @version</span> 2.0
+ *
+ *<span class="hljs-javadoctag"> @see</span> Expression
+ *<span class="hljs-javadoctag"> @see</span> com.complexible.common.openrdf.util.ExpressionFactory
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExplanationExample</span> </span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI x = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:x"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI y = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:y"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI z = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:z"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI A = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:A"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI B = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:B"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI C = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:C"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI D = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:D"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI p = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:p"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI p1 = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:p1"</span>);
+	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> URI p2 = ValueFactoryImpl.getInstance().createURI(<span class="hljs-string">"urn:p2"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="explanations-in-stardog">Explanations in Stardog</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Here we will show a short example of how to use the <a href="http://docs.stardog.com/owl2/#sd-Explaining-Reasoning-Results">explanation features of Stardog</a>
+to find out <em>why</em> an inference was made.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(String[] args) <span class="hljs-keyword">throws</span> Exception {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Create and start a server for us to use during the example</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        Server aServer = Stardog
+            .buildServer()
+            .bind(SNARLProtocolConstants.EMBEDDED_ADDRESS)
+            .start();
+
+	    <span class="hljs-keyword">try</span> {
+		    AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>).connect();
+
+		    <span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Drop the example database if it exists and start fresh</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    <span class="hljs-keyword">if</span> (aAdminConnection.list().contains(<span class="hljs-string">"reasoningTest"</span>)) {
+					aAdminConnection.drop(<span class="hljs-string">"reasoningTest"</span>);
+				}
+
+			    aAdminConnection.memory(<span class="hljs-string">"reasoningTest"</span>).create();
+		    }
+		    <span class="hljs-keyword">finally</span> {
+			    aAdminConnection.close();
+		    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Open a <code>Connection</code> to the database we just created with the default <code>RL</code> reasoning level.
+We’ll use <code>as(...)</code> to give us a view of the parent connection that exposes the Stardog
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html">reasoning capabilities</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		    ReasoningConnection aReasoningConnection = ConnectionConfiguration.to(<span class="hljs-string">"reasoningTest"</span>)
+		                                                                      .credentials(<span class="hljs-string">"admin"</span>, <span class="hljs-string">"admin"</span>)
+		                                                                      .reasoning(ReasoningType.RL)
+		                                                                      .connect()
+		                                                                      .as(ReasoningConnection.class);
+
+
+		    <span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Add a simple schema and couple instance triples to the database that we’ll use for the example</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    aReasoningConnection.begin();
+			    aReasoningConnection.add()
+					    .statement(p, RDFS.DOMAIN, B)
+					    .statement(B, RDFS.SUBCLASSOF, A)
+			            .statement(x, p, y)
+			            .statement(z, RDF.TYPE, B);
+			    aReasoningConnection.commit();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Now that we have data in the database, let’s see the effects of using reasoning.  The above snippet
+states <code>B(z)</code> and <code>subClassOf(B, A)</code>, so therefore <code>A(z)</code>.  Let’s look for that without using reasoning.
+We’ll use the <code>Getter</code> interface to look up <code>:z a :A</code>, but we’ll specify that no reasoning should
+be performed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    <span class="hljs-keyword">boolean</span> aExistsNoReasoning = aReasoningConnection.get()
+					    .reasoning(ReasoningType.NONE)
+			            .subject(z)
+			            .predicate(RDF.TYPE)
+			            .object(A)
+			            .ask();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>We will see that it’s not there since we’re not using reasoning</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    System.out.println(<span class="hljs-string">"Exists without reasoning? "</span> + aExistsNoReasoning);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>But if we do the same thing, but this time we don’t disable reasoning, remember we said <code>RL</code> when
+we created the <code>Connection</code>, we will see that the statement is inferred to exist.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    <span class="hljs-keyword">boolean</span> aExistsReasoning = aReasoningConnection.get()
+			            .subject(z)
+			            .predicate(RDF.TYPE)
+			            .object(A)
+			            .ask();
+
+			    System.out.println(<span class="hljs-string">"Exists with reasoning? "</span> + aExistsReasoning);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Pretty cool!  Now lets find out <em>why</em> that statement was inferred by the reasoner.  Stardog can
+provide explanations for why an inference was made in the form of a
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/reasoning/Proof.html">Proof</a>.  A <code>Proof</code>
+will list the steps the reasoner took to arrive at the conclusion that the triple was inferred.
+To get the explanation, we simply ask the <code>Connection</code> to provide us with the <code>Proof</code> for the given
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/openrdf/util/Expression.html">Expression</a>.
+An <code>Expression</code> is an OWL Axiom as a collection of RDF statements and are created using
+<a href="http://docs.stardog.com/javadoc/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html">ExpressionFactory</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    Proof aExplanation = aReasoningConnection.explain(type(z, A)).proof();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Now that we have the proof, we can print it out and we will see that the subClassOf axiom is
+responsible for the inference.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    System.out.println(<span class="hljs-string">"\nExplain inference: "</span>);
+			    System.out.println(ProofWriter.toString(aExplanation));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Another statement the reasoner will infer is <code>(x, RDF.TYPE, A)</code>.  But to infer this, it needs both of
+the axioms in the TBox, so the <code>Proof</code> to explain this is a bit more complicated.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    aExplanation = aReasoningConnection.explain(type(x, A)).proof();
+
+			    System.out.println(<span class="hljs-string">"Explain inference: "</span>);
+			    System.out.println(ProofWriter.toString(aExplanation));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Now let’s Introduce a simple inconsistency in our database.  We’ll say that A and D are disjoint and
+that <code>D(z)</code>.  We have already shown that <code>A(z)</code>, so <code>z</code> is both an <code>A</code> and a <code>D</code>, and that’s the
+inconsistency.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    aReasoningConnection.begin();
+			    aReasoningConnection.add()
+					    .statement(A, OWL.DISJOINTWITH, D)
+			            .statement(z, RDF.TYPE, D);
+			    aReasoningConnection.commit();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>We can see now that our database is inconsistent</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    System.out.println(<span class="hljs-string">"Consistent? "</span> + aReasoningConnection.isConsistent());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>But maybe we didn’t know that we were making an error, so we’ll be wondering why the database is
+now inconsistent.  Fortunately for us, Stardog can explain that as well.  Let’s ask for the <code>Proof</code>
+and find out why.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			    Proof aProof = aReasoningConnection.explainInconsistency().proof();
+			    System.out.println(<span class="hljs-string">"Explain inconsistency: "</span>);
+			    System.out.println(ProofWriter.toString(aProof));
+
+			    System.out.println(<span class="hljs-string">"Render only asserted statements: "</span>);
+			    System.out.println(ExpressionWriter.toString(aProof.getStatements()));
+		    }
+		    <span class="hljs-keyword">finally</span> {
+			    aReasoningConnection.close();
+		    }
+	    }
+	    <span class="hljs-keyword">finally</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>You MUST stop the server if you’ve started it!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		    aServer.stop();
+	    }
+    }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

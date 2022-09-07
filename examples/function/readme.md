@@ -1,6 +1,6 @@
 # Function Extensibility
 
-The Stardog [com.complexible.stardog.plan.filter.functions.Function](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/Function.html)
+The Stardog [com.complexible.stardog.plan.filter.functions.Function](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/Function.html)
 interface is the extension point for section 17.6 (Extensible Value Testing) of the [SPARQL spec](http://www.w3.org/TR/2012/PR-sparql11-query-20121108/#extensionFunctions).
 
 `Function` corresponds to built-in expressions used in `FILTER`, `BIND` and `SELECT` expressions, as well as
@@ -9,7 +9,7 @@ SPARQL spec like `sameTerm`, `str`, and `now`.
 
 ## Implementing Custom Functions
 
-The starting point for implementing your own custom function is to extend [AbstractFunction](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html).
+The starting point for implementing your own custom function is to extend [AbstractFunction](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/filter/functions/AbstractFunction.html).
 This class provides much of the basic scaffolding for implementing a new `Function` from scratch.
 
 If your new function falls into one of the existing categories, it should implement the appropriate marker interface:
@@ -86,7 +86,7 @@ provides a mechanism for creating and using custom aggregates *without* requirin
 ## Implementing a Custom Aggregate
 
 To implement a custom aggregate, you should extend
-[AbstractAggregate](http://docs.stardog.com/java/snarl/com/complexible/stardog/plan/aggregates/AbstractAggregate.html).
+[AbstractAggregate](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/plan/aggregates/AbstractAggregate.html).
 
 The rules regarding constructor, "copy constructor" and the `copy` method for `Function` apply to `Aggregate` as well.
 
@@ -109,22 +109,13 @@ are registered with Stardog in the exact same manner.
 
 ## Using Custom Aggregates in a Query
 
-Referring to custom aggregates within a SPARQL query relies only on the use of marker token `agg:`.  Assuming we have
+You can use your custom aggregates just like any other aggregate function.  Assuming we have
 a custom aggregate `gmean` defined in the `tag:stardog:api:` namespace, we can refer to it within a query as such:
 
 ```sparql
 PREFIX : <http://www.example.org>
 PREFIX stardog: <tag:stardog:api:>
-PREFIX agg: <urn:aggregate>
 
-SELECT (agg:stardog:gmean(?O) AS ?C)
+SELECT (stardog:gmean(?O) AS ?C)
 WHERE { ?S ?P ?O }
 ```
-
-The SPARQL parser will notice the `agg:` token which specifies that the following qname or URI signifies a custom
-aggregate *NOT* a custom function.  The aggregate with the URI `tag:stardog:api:gmean` will then be used for the
-evaluation of the query.
-
-Note that the definition of the prefix `agg` is completely optional; Stardog will parse the query just fine without its
-inclusion.  However, by including that prefix declaration, the query is valid SPARQL and will be parseable by _any_
-compliant SPARQL parser.

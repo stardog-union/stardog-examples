@@ -1,0 +1,3 @@
+@prefix : <tag:stardog:demo:aml:> .
+
+:Person-{person} :hasBankAccount :BankAccount-{account} .

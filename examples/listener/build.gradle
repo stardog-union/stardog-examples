@@ -1,6 +1,0 @@
-group = "com.complexible.stardog.examples.listener"
-
-dependencies {
-	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
-}
