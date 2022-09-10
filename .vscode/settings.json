@@ -3,5 +3,6 @@
         "dotnettools",
         "googlecloudtools"
     ],
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "svn.ignoreMissingSvnWarning": true
 }

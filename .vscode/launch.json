@@ -4,6 +4,11 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        appSrcRoot
+        apkFile
+        apk
+        256Mi
+    Alexa
         {
             "type": "android",
             "request": "attach",
