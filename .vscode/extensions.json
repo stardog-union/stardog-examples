@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "utsavm9.c-cpp-flag-debugging"
+        "utsavm9.c-cpp-flag-debugging",
+        "ms-dotnettools.dotnet-interactive-vscode"
     ]
 }
