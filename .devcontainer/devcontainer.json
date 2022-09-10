@@ -13,7 +13,8 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-dotnettools.csharp",
-				"elixir-lsp.elixir-ls"
+				"elixir-lsp.elixir-ls",
+				"googlecloudtools.closecode"
 			]
 		}
 	},
