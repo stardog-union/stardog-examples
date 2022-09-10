@@ -1,0 +1,32 @@
+/**
+ * classToCSS插件生成的apply样式文件
+ * 将会自动编译至classtocss_global.css文件中
+ * 根据需要自行编辑，不会被覆盖
+ */
+/* 预设重置样式代码 */
+.app-reset {
+  @apply .p-0 .m-0 .content-box;
+}
+/* 预设垂直居中（flex） */
+.mid {
+  @apply .flex .items-center;
+}
+/* 预设水平居中（flex） */
+.center {
+  @apply .flex .justify-center;
+}
+/* 预设水平垂直居中（flex） */
+.mid-center {
+  @apply .flex .justify-center .items-center;
+}
+/* 预设水平两端对齐、垂直居中（flex） */
+.mid-between {
+  @apply .flex .justify-between .items-center;
+}
+/* 预设水平平均分布、垂直居中（flex） */
+.mid-around {
+  @apply .flex .justify-around .items-center;
+}/* 预设水平平均分布、垂直居中（flex） */
+.mid-evenly {
+  @apply .flex .justify-evenly .items-center;
+}
