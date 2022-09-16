@@ -104,3 +104,4 @@ the `ServiceLoader` to make them up.
 1. [Anti-money laundering (AML) Example](./examples/aml)
 1. [Transaction listener](./examples/connectable)
 1. [Http handler](./examples/http_handler)
+1. [Stardog Free Examples](./examples/stardog_free)
