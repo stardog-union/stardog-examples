@@ -1,6 +1,5 @@
 package com.complexible.stardog.examples.handler;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.Principal;
@@ -11,8 +10,7 @@ import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.google.common.io.Files;
-import org.apache.commons.io.FileUtils;
+
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
@@ -35,16 +33,14 @@ public class TestHttpHandler  {
 
 	private static int TEST_PORT = 5858;
 
-	private static File TEST_HOME;
-
 	private static Stardog STARDOG;
 
 	private static Server SERVER;
 
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
+
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		TEST_HOME = Files.createTempDir();
-
 		STARDOG = Stardog.builder()
 		                 .set(ServerOptions.SECURITY_DISABLED, true)
 		                 .create();
@@ -54,7 +50,7 @@ public class TestHttpHandler  {
 		                .bind(new InetSocketAddress("localhost", TEST_PORT))
 		                .start();
 
-		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		try (AdminConnection aConn = AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                                         .credentials("admin", "admin")
 		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
@@ -70,8 +66,6 @@ public class TestHttpHandler  {
 		SERVER.stop();
 
 		STARDOG.shutdown();
-
-		FileUtils.deleteDirectory(TEST_HOME);
 	}
 
 	@Test

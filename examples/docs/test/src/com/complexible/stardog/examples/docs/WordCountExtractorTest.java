@@ -16,17 +16,21 @@
 package com.complexible.stardog.examples.docs;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.InetSocketAddress;
 
+import com.complexible.common.protocols.server.Server;
+import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.docs.BitesConnection;
-import com.complexible.stardog.docs.BitesOptions;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Literal;
 import com.stardog.stark.query.SelectQueryResult;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -41,33 +45,48 @@ import static org.junit.Assert.assertEquals;
 public class WordCountExtractorTest {
 	private static final String DB = "testExtractor";
 
-	private static Stardog stardog;
+	private static int TEST_PORT = 5858;
+
+	private static Stardog STARDOG;
+
+	private static Server SERVER;
+
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		stardog = Stardog.builder().create();
+		STARDOG = Stardog.builder()
+		                 .set(ServerOptions.SECURITY_DISABLED, true)
+		                 .create();
 
-		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		SERVER = STARDOG.newServer()
+		                .set(ServerOptions.SECURITY_DISABLED, true)
+		                .bind(new InetSocketAddress("localhost", TEST_PORT))
+		                .start();
+
+		try (AdminConnection aConn = AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                                         .credentials("admin", "admin")
 		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
 				aConn.drop(DB);
 			}
 
-			aConn.newDatabase(DB).set(BitesOptions.DOCS_DEFAULT_RDF_EXTRACTORS, "WordCountExtractor").create();
+			aConn.newDatabase(DB).create();
 		}
 	}
 
 	@AfterClass
-	public static void afterClass() throws Exception {
-		stardog.shutdown();
+	public static void afterClass() throws IOException {
+		SERVER.stop();
+
+		STARDOG.shutdown();
 	}
 
 	@Test
 	public void testWordCountExtractor() throws Exception {
 		try (Connection aConn = ConnectionConfiguration
 			                        .to(DB)
+			                        .server(SERVER_URL)
 			                        .credentials("admin", "admin")
 			                        .connect()) {
 			BitesConnection aDocsConn = aConn.as(BitesConnection.class);

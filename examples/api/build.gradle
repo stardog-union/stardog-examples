@@ -3,14 +3,19 @@ group = "com.complexible.stardog.examples.api"
 dependencies {
 	// server core modules
 	compile "com.complexible.stardog:server:${stardogVersion}@pom"
+	compile "com.complexible.stardog.protocols.http:stardog-protocols-http-server:${stardogVersion}"
 	compile "com.complexible.stardog.cache:stardog-cache-core:${stardogVersion}"
 	compile "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
 	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
 	compile "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
 
 	// client modules
-	compile "com.complexible.stardog:client-embedded:${stardogVersion}"
 	compile "com.complexible.stardog:client-http:${stardogVersion}@pom"
+	compile "com.complexible.stardog.graphql.http:stardog-graphql-protocols-http-client:${stardogVersion}"
+	compile "com.complexible.stardog.icv.http:stardog-icv-protocols-http-client:${stardogVersion}"
+	compile "com.complexible.stardog.reasoning.http:stardog-reasoning-protocols-http-client:${stardogVersion}"
+	compile "com.complexible.stardog.search:stardog-search-shared:${stardogVersion}"
+	compile "com.complexible.stardog.search.http:stardog-search-protocols-http-client:${stardogVersion}"
 
 	// external apis
 	compile "com.complexible.stardog.rdf4j:stardog-rdf4j:${stardogVersion}"
@@ -51,11 +56,11 @@ task docs doLast {
 					"${distPath}/docs",
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionAPIExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ConnectionPoolsExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/ExplanationExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/GraphQLExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/ReasoningExplanationExample.java",
 					"${srcPath}/com/complexible/stardog/examples/api/SHACLExample.java",
-					"${srcPath}/com/complexible/stardog/examples/api/WaldoAPIExample.java",
+					"${srcPath}/com/complexible/stardog/examples/api/SearchExample.java",
 					"${srcPath}/com/complexible/stardog/examples/jena/JenaExample.java",
 					"${srcPath}/com/complexible/stardog/examples/rdf4j/RDF4JExample.java"
 	}

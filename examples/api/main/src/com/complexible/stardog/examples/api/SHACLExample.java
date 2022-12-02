@@ -16,57 +16,37 @@
 package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
-import java.util.Set;
 
 import javax.annotation.Nonnull;
 
 import com.complexible.common.base.CloseableIterator;
 import com.complexible.common.rdf.StatementIterator;
-import com.complexible.stardog.ContextSets;
-import com.complexible.stardog.Stardog;
-import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.complexible.stardog.icv.Constraint;
-import com.complexible.stardog.icv.ConstraintFactory;
+import com.complexible.stardog.examples.TestServer;
 import com.complexible.stardog.icv.api.ICVConnection;
 import com.complexible.stardog.icv.shacl.SHACL;
-import com.complexible.stardog.reasoning.Proof;
-import com.complexible.stardog.reasoning.ProofWriter;
-import com.google.common.collect.ImmutableSet;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Namespaces;
 import com.stardog.stark.Statement;
 import com.stardog.stark.Values;
 import com.stardog.stark.io.AbstractRDFHandler;
-import com.stardog.stark.io.RDFFormat;
 import com.stardog.stark.io.RDFFormats;
 import com.stardog.stark.io.RDFWriters;
-import com.stardog.stark.vocabs.RDF;
-import com.stardog.stark.vocabs.RDFS;
-import org.apache.http.config.ConnectionConfig;
-
-import static com.stardog.stark.Axioms.some;
-import static com.stardog.stark.Axioms.subClassOf;
-import static com.stardog.stark.Values.statement;
 
 /**
- * <p></p>
- *
- * @author Evren Sirin
+ * Basic example of how to use Stardog's SHACL support for for data validation
  */
 public class SHACLExample {
-
-	// Basic example of how to use Stardog's SHACL support for for data validation
 	public static void main(String[] args) throws Exception {
 		String aDb = "testSHACL";
 		
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		// Open an `AdminConnection` to Stardog so we can set up our database for the example
-		try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+		try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL())
 		                                                                    .credentials("admin", "admin")
 		                                                                    .connect()) {
 			// If the example database exists, drop it, so we can create it fresh

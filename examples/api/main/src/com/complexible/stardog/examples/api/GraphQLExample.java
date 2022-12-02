@@ -17,11 +17,12 @@ package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.graphql.GraphQLConnection;
+import com.complexible.stardog.examples.TestServer;
+
 import graphql.ExecutionResult;
 
 /**
@@ -32,14 +33,14 @@ import graphql.ExecutionResult;
 public class GraphQLExample {
 
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		String db = "graphQL";
 
 		try {
 			// Open an `AdminConnection` to Stardog so we can set up our database for the example
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL())
 			                                                                    .credentials("admin", "admin")
 			                                                                    .connect()) {
 				// If the example database exists, drop it, so we can create it fresh
@@ -53,6 +54,7 @@ public class GraphQLExample {
 				// Obtain a GraphQLConnection connection to the database
 				try (GraphQLConnection aConn = ConnectionConfiguration
 					                               .to(db)
+					                               .server(aStardog.getServerURL())
 					                               .credentials("admin", "admin")
 					                               .connect()
 					                               .as(GraphQLConnection.class)) {
@@ -80,6 +82,7 @@ public class GraphQLExample {
 				// Obtain a GraphQLConnection connection to the database with reasoning enabled
 				try (GraphQLConnection aConn = ConnectionConfiguration
 					                               .to(db)
+					                               .server(aStardog.getServerURL())
 					                               .credentials("admin", "admin")
 					                               .reasoning(true)
 					                               .connect()

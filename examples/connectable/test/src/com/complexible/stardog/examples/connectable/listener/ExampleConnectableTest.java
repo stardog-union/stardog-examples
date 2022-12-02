@@ -15,22 +15,26 @@
 
 package com.complexible.stardog.examples.connectable.listener;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.Set;
+
+import com.complexible.common.protocols.server.Server;
+import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-
-import com.google.common.collect.ImmutableSet;
 import com.stardog.stark.Statement;
 import com.stardog.stark.Values;
+
+import com.google.common.collect.ImmutableSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.Set;
 
 /**
  * This is NOT a test class. This class simply makes some changes in the database which will end up calling the ExampleConnectable that will
@@ -42,21 +46,35 @@ import java.util.Set;
 public class ExampleConnectableTest {
 	private static final String DB = "ConnectableTestDB";
 
-	private static Stardog stardog;
+	private static int TEST_PORT = 5858;
+
+	private static Stardog STARDOG;
+
+	private static Server SERVER;
+
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		stardog = Stardog.builder().create();
+		STARDOG = Stardog.builder()
+		                 .set(ServerOptions.SECURITY_DISABLED, true)
+		                 .create();
+
+		SERVER = STARDOG.newServer()
+		                .set(ServerOptions.SECURITY_DISABLED, true)
+		                .bind(new InetSocketAddress("localhost", TEST_PORT))
+		                .start();
 	}
 
 	@AfterClass
-	public static void afterClass() throws Exception {
-		stardog.shutdown();
+	public static void afterClass() throws IOException {
+		SERVER.stop();
+
+		STARDOG.shutdown();
 	}
 
 	private AdminConnection connectAdmin() {
-		return AdminConnectionConfiguration.toEmbeddedServer()
+		return AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                   .credentials("admin", "admin")
 		                                   .connect();
 	}
@@ -64,6 +82,7 @@ public class ExampleConnectableTest {
 	private Connection connect() {
 		return ConnectionConfiguration
 			       .to(DB)
+			       .server(SERVER_URL)
 			       .credentials("admin", "admin")
 			       .connect();
 	}
@@ -154,6 +173,7 @@ public class ExampleConnectableTest {
 	public void testRollback() throws Exception {
 		try (Connection aConn = ConnectionConfiguration
 			                        .to(DB)
+			                        .server(SERVER_URL)
 			                        .credentials("admin", "admin")
 			                        .connect()) {
 			aConn.begin();

@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Set;
 
-import com.complexible.common.openrdf.model.Models2;
 import com.complexible.common.protocols.server.Server;
 import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
@@ -28,12 +27,13 @@ import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.google.common.base.Charsets;
 import com.stardog.stark.Statement;
 import com.stardog.stark.Values;
 import com.stardog.stark.io.RDFFormats;
 import com.stardog.stark.query.GraphQueryResult;
 import com.stardog.stark.vocabs.RDF;
+
+import com.google.common.base.Charsets;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -52,6 +52,8 @@ public class TestExampleDescribe {
 
 	private static Server SERVER;
 
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
+
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		STARDOG = Stardog.builder()
@@ -63,7 +65,7 @@ public class TestExampleDescribe {
 		                .bind(new InetSocketAddress("localhost", TEST_PORT))
 		                .start();
 
-		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		try (AdminConnection aConn = AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                                         .credentials("admin", "admin")
 		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
@@ -77,6 +79,7 @@ public class TestExampleDescribe {
 	@AfterClass
 	public static void afterClass() throws IOException {
 		SERVER.stop();
+
 		STARDOG.shutdown();
 	}
 
@@ -99,7 +102,7 @@ public class TestExampleDescribe {
 		                "DESCRIBE :Bob";
 
 		try (Connection aConn = ConnectionConfiguration.to(DB)
-		                                               .server("http://localhost:" + TEST_PORT)
+		                                               .server(SERVER_URL)
 		                                               .credentials("admin", "admin")
 		                                               .connect()) {
 

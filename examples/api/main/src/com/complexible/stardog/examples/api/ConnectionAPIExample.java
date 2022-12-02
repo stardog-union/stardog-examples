@@ -21,21 +21,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.Getter;
 import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-
+import com.complexible.stardog.examples.TestServer;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Statement;
 import com.stardog.stark.Values;
 import com.stardog.stark.io.RDFFormats;
 import com.stardog.stark.io.RDFWriters;
 import com.stardog.stark.query.SelectQueryResult;
-import com.stardog.stark.query.io.QueryResultFormats;
 import com.stardog.stark.query.io.QueryResultWriters;
 import com.stardog.stark.vocabs.RDF;
 
@@ -54,8 +52,8 @@ public class ConnectionAPIExample {
 	// API, which is the preferred way to interact with Stardog.  This will show how to use both the administrative
 	// and client APIs to perform some basic operations.
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the HTTP server.
+		TestServer aStardog = new TestServer();
 
 		try {
 			// Using AdminConnection
@@ -69,7 +67,7 @@ public class ConnectionAPIExample {
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
 
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL())
 			                                                                    .credentials("admin", "admin")
 			                                                                    .connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
@@ -92,6 +90,7 @@ public class ConnectionAPIExample {
 
 				try (Connection aConn = ConnectionConfiguration
 					                        .to("testConnectionAPI")
+					                        .server(aStardog.getServerURL())
 					                        .credentials("admin", "admin")
 					                        .connect()) {
 					// All changes to a database *must* be performed within a transaction.  We want to add some data to the database

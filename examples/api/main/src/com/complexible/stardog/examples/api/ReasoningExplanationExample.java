@@ -15,11 +15,11 @@
 
 package com.complexible.stardog.examples.api;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
+import com.complexible.stardog.examples.TestServer;
 import com.complexible.stardog.reasoning.ExpressionWriter;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
@@ -31,12 +31,8 @@ import com.stardog.stark.vocabs.RDFS;
 
 /**
  * <p>Simple example to show how to use Stardog's explanation facilities.</p>
- *
- * @author Michael Grove
- * @version 6.0
- * @since 0.7.3
  */
-public class ExplanationExample {
+public class ReasoningExplanationExample {
 
 	private static final IRI x = Values.iri("urn:x");
 
@@ -54,14 +50,14 @@ public class ExplanationExample {
 
 	// Explanations in Stardog
 	// -------------------
-	// Here we will show a short example of how to use the [explanation features of Stardog](http://docs.stardog.com/#_explaining_reasoning_results)
+	// Here we will show a short example of how to use the [explanation features of Stardog](https://docs.stardog.com/inference-engine/#explaining-reasoning-results)
 	// to find out _why_ an inference was made.
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		try {
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL()).credentials("admin", "admin").connect()) {
 				// Drop the example database if it exists and start fresh
 				if (aAdminConnection.list().contains("reasoningTest")) {
 					aAdminConnection.drop("reasoningTest");
@@ -73,6 +69,7 @@ public class ExplanationExample {
 				// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
 				// [reasoning capabilities](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
 				try (ReasoningConnection aReasoningConnection = ConnectionConfiguration.to("reasoningTest")
+				                                                                       .server(aStardog.getServerURL())
 				                                                                       .credentials("admin", "admin")
 				                                                                       .reasoning(true)
 				                                                                       .connect()

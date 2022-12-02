@@ -16,7 +16,6 @@
 package com.complexible.stardog.examples.service;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
@@ -27,11 +26,10 @@ import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 import com.stardog.stark.io.RDFFormats;
 import com.stardog.stark.query.SelectQueryResult;
-import org.apache.commons.io.FileUtils;
+
+import com.google.common.base.Charsets;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,16 +44,14 @@ public class TestExampleService {
 
 	private static int TEST_PORT = 5858;
 
-	private static File TEST_HOME;
-
 	private static Stardog STARDOG;
 
 	private static Server SERVER;
 
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
+
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		TEST_HOME = Files.createTempDir();
-
 		STARDOG = Stardog.builder()
 		                 .set(ServerOptions.SECURITY_DISABLED, true)
 		                 .create();
@@ -65,7 +61,7 @@ public class TestExampleService {
 		                .bind(new InetSocketAddress("localhost", TEST_PORT))
 		                .start();
 
-		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		try (AdminConnection aConn = AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                                         .credentials("admin", "admin")
 		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
@@ -81,8 +77,6 @@ public class TestExampleService {
 		SERVER.stop();
 
 		STARDOG.shutdown();
-
-		FileUtils.deleteDirectory(TEST_HOME);
 	}
 
 	@Test
@@ -107,7 +101,7 @@ public class TestExampleService {
 		                "}";
 
 		try (Connection aConn = ConnectionConfiguration.to(DB)
-		                                               .server("http://localhost:" + TEST_PORT)
+		                                               .server(SERVER_URL)
 		                                               .credentials("admin", "admin")
 		                                               .connect()) {
 

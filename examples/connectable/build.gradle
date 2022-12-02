@@ -5,5 +5,5 @@ dependencies {
 	compile "com.complexible.stardog:server:${stardogVersion}"
 	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
 
-	testRuntime "com.complexible.stardog:client-embedded:${stardogVersion}"
+	testRuntime "com.complexible.stardog:client-http:${stardogVersion}"
 }
