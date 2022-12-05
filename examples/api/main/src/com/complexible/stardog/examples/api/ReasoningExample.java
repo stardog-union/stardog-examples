@@ -17,7 +17,6 @@ package com.complexible.stardog.examples.api;
 
 import java.nio.file.Paths;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.StardogException;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
@@ -25,6 +24,7 @@ import com.complexible.stardog.api.SelectQuery;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
 import com.complexible.stardog.api.reasoning.ReasoningConnection;
+import com.complexible.stardog.examples.TestServer;
 import com.stardog.stark.IRI;
 import com.stardog.stark.Values;
 import com.stardog.stark.io.RDFFormats;
@@ -44,8 +44,8 @@ public class ReasoningExample {
 	// In this example we'll walk through a simple example using the SNARL API to access Stardog's
 	// reasoning capabilities.
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		try {
 			// Using AdminConnection
@@ -58,7 +58,7 @@ public class ReasoningExample {
 			// Most operations supported by the DBMS require specific permissions, so either an admin account
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL())
 			                                                                    .credentials("admin", "admin")
 			                                                                    .connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
@@ -84,6 +84,7 @@ public class ReasoningExample {
 
 				try (ReasoningConnection aReasoningConn = ConnectionConfiguration
 					                                          .to("reasoningExampleTest")
+					                                          .server(aStardog.getServerURL())
 					                                          .credentials("admin", "admin")
 					                                          .reasoning(true)
 					                                          .connect()
@@ -91,6 +92,7 @@ public class ReasoningExample {
 				     // and obtain a non-reasoning connection to the database for comparison
 				     Connection aConn = ConnectionConfiguration
 					                        .to("reasoningExampleTest")
+					                        .server(aStardog.getServerURL())
 					                        .credentials("admin", "admin")
 					                        .connect()) {
 

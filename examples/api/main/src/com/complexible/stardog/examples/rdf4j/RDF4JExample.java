@@ -18,19 +18,16 @@ package com.complexible.stardog.examples.rdf4j;
 
 import java.io.File;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.complexible.stardog.examples.TestServer;
 import com.complexible.stardog.rdf4j.StardogRepository;
-import com.google.common.collect.Iterables;
 import com.stardog.common.rdf4j.repository.RepositoryConnections;
-import com.stardog.stark.query.io.QueryResultFormats;
+
 import org.eclipse.rdf4j.query.QueryLanguage;
-import org.eclipse.rdf4j.query.QueryResults;
 import org.eclipse.rdf4j.query.TupleQuery;
 import org.eclipse.rdf4j.query.TupleQueryResult;
-import org.eclipse.rdf4j.query.resultio.QueryResultFormat;
 import org.eclipse.rdf4j.query.resultio.QueryResultIO;
 import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
 import org.eclipse.rdf4j.repository.Repository;
@@ -50,8 +47,8 @@ public class RDF4JExample {
 	// In this example we'll show how to use the bindings for the RDF4J API to use Stardog as a drop in replacement
 	// for an existing `Repository` based application.
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		try {
 			// Using AdminConnection
@@ -65,7 +62,7 @@ public class RDF4JExample {
 			// is required, or a user who has been granted the ability to perform the actions.  You can learn
 			// more about this in the [Security chapter](http://docs.stardog.com/security).
 
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL()).credentials("admin", "admin").connect()) {
 				// With our admin connection, we're able to see if the database for this example already exists, and
 				// if it does, we want to drop it and re-create so that we can run the example from a clean database.
 				if (aAdminConnection.list().contains("testRDF4J")) {
@@ -79,6 +76,7 @@ public class RDF4JExample {
 				// when creating new `RepositoryConnection` objects
 				Repository aRepo = new StardogRepository(ConnectionConfiguration
 					                                         .to("testRDF4J")
+					                                         .server(aStardog.getServerURL())
 					                                         .credentials("admin", "admin"));
 
 				// You must always initialize a `Repository`

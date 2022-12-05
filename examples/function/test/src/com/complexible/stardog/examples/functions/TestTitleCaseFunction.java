@@ -15,15 +15,20 @@
 
 package com.complexible.stardog.examples.functions;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+
+import com.complexible.common.protocols.server.Server;
+import com.complexible.common.protocols.server.ServerOptions;
 import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
-import com.stardog.stark.Literal;
 import com.stardog.stark.Namespaces;
 import com.stardog.stark.query.BindingSet;
 import com.stardog.stark.query.SelectQueryResult;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,13 +47,26 @@ import static org.junit.Assert.assertTrue;
 public class TestTitleCaseFunction {
 	private static final String DB = "testTitleCase";
 
+	private static int TEST_PORT = 5858;
+
 	private static Stardog STARDOG;
+
+	private static Server SERVER;
+
+	private static String SERVER_URL = "http://localhost:" + TEST_PORT;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		STARDOG = Stardog.builder().create();
+		STARDOG = Stardog.builder()
+		                 .set(ServerOptions.SECURITY_DISABLED, true)
+		                 .create();
 
-		try (AdminConnection aConn = AdminConnectionConfiguration.toEmbeddedServer()
+		SERVER = STARDOG.newServer()
+		                .set(ServerOptions.SECURITY_DISABLED, true)
+		                .bind(new InetSocketAddress("localhost", TEST_PORT))
+		                .start();
+
+		try (AdminConnection aConn = AdminConnectionConfiguration.toServer(SERVER_URL)
 		                                                         .credentials("admin", "admin")
 		                                                         .connect()) {
 			if (aConn.list().contains(DB)) {
@@ -60,7 +78,9 @@ public class TestTitleCaseFunction {
 	}
 
 	@AfterClass
-	public static void afterClass() {
+	public static void afterClass() throws IOException {
+		SERVER.stop();
+
 		STARDOG.shutdown();
 	}
 
@@ -68,6 +88,7 @@ public class TestTitleCaseFunction {
 	public void testTitleCase() throws Exception {
 
 		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .server(SERVER_URL)
 		                                               .credentials("admin", "admin")
 		                                               .connect()) {
 
@@ -90,6 +111,7 @@ public class TestTitleCaseFunction {
 	public void testTitleCaseTooManyArgs() throws Exception {
 
 		try (Connection aConn = ConnectionConfiguration.to(DB)
+		                                               .server(SERVER_URL)
 		                                               .credentials("admin", "admin")
 		                                               .connect()) {
 			final String aQuery = "prefix stardog: <" + Namespaces.STARDOG + ">" +

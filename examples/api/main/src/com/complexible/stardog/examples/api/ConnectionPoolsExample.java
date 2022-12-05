@@ -17,13 +17,13 @@ package com.complexible.stardog.examples.api;
 
 import java.util.concurrent.TimeUnit;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.ConnectionPool;
 import com.complexible.stardog.api.ConnectionPoolConfig;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.complexible.stardog.examples.TestServer;
 
 /**
  * <p>A simple example to show how to setup and use ConnectionPools with Stardog</p>
@@ -38,12 +38,12 @@ public class ConnectionPoolsExample {
 	// -------------------
 	// In this example, we illustrate the configuration and use of the SNARL [ConnectionPool](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionPool.html)
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		try {
 			// Second create a temporary database to use (if there is one already, drop it first)
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer().credentials("admin", "admin").connect()) {
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL()).credentials("admin", "admin").connect()) {
 				if (aAdminConnection.list().contains("testConnectionPool")) {
 					aAdminConnection.drop("testConnectionPool");
 				}
@@ -54,6 +54,7 @@ public class ConnectionPoolsExample {
 				// This configuration tells the pool how to create the new connections as they are needed.
 				ConnectionConfiguration aConnConfig = ConnectionConfiguration
 					                                      .to("testConnectionPool")
+					                                      .server(aStardog.getServerURL())
 					                                      .credentials("admin", "admin");
 
 				// Now we want to create the [configuration for our pool](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/ConnectionPoolConfig.html).

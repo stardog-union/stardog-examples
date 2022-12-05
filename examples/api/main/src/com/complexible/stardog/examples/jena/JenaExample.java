@@ -17,12 +17,13 @@ package com.complexible.stardog.examples.jena;
 
 import java.io.FileInputStream;
 
-import com.complexible.stardog.Stardog;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
+import com.complexible.stardog.examples.TestServer;
 import com.complexible.stardog.jena.SDJenaFactory;
+
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -44,12 +45,12 @@ public class JenaExample {
 	// -------------------
 	// In this example we'll show how to use the Stardog Jena API bindings.
 	public static void main(String[] args) throws Exception {
-		// First need to initialize the Stardog instance which will automatically start the embedded server.
-		Stardog aStardog = Stardog.builder().create();
+		// First need to initialize the Stardog instance which will automatically start the http server.
+		TestServer aStardog = new TestServer();
 
 		try {
 			// Next we'll establish a admin connection to Stardog so we can create a database to use for the example
-			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toEmbeddedServer()
+			try (AdminConnection aAdminConnection = AdminConnectionConfiguration.toServer(aStardog.getServerURL())
 			                                                                    .credentials("admin", "admin")
 			                                                                    .connect()) {
 				// If the database already exists, we'll drop it and create a fresh copy
@@ -62,6 +63,7 @@ public class JenaExample {
 				// Now we open a Connection our new database
 				try (Connection aConn = ConnectionConfiguration
 					                        .to("testJena")
+					                        .server(aStardog.getServerURL())
 					                        .credentials("admin", "admin")
 					                        .connect()) {
 
