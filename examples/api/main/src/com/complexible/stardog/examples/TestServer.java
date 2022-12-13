@@ -18,6 +18,7 @@ package com.complexible.stardog.examples;
 import java.net.InetSocketAddress;
 
 import com.complexible.common.protocols.server.Server;
+import com.complexible.common.protocols.server.ServerException;
 import com.complexible.stardog.Stardog;
 
 /**
@@ -31,12 +32,13 @@ public class TestServer {
 	private final Stardog stardog;
 	private final Server server;
 
-	public TestServer() {
+	public TestServer() throws ServerException {
 		// first need to initialize the Stardog instance
 		stardog = Stardog.builder().create();
 		// start an http server on the default port
 		server = stardog.newServer()
-		                .bind(new InetSocketAddress(HOSTNAME, PORT));;
+		                .bind(new InetSocketAddress(HOSTNAME, PORT))
+		                .start();
 	}
 
 	public String getServerURL() {
