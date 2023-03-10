@@ -67,7 +67,7 @@ public class GraphQLExample {
 					System.out.println(aResult.getData().toString());
 
 					// execute a GraphQL query with arguments
-					String query = "query getHuman($id: Integer) { " +
+					String query = "query getHuman($id: Int) { " +
 					               "  Human(id: $id) { " +
 					               "     name " +
 					               "  } " +
