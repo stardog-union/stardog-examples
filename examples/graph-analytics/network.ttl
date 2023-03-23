@@ -1,0 +1,18 @@
+@prefix net: <http://routers.stardog.com/> .
+
+net:able a net:Router .
+net:baker a net:Router .
+net:charlie a net:Router .
+net:delta a net:Router .
+net:echo a net:Router .
+net:foxtrot a net:Router .
+
+net:able net:connects net:baker .
+net:baker net:connects net:charlie .
+net:charlie net:connects net:able .
+
+net:delta net:connects net:echo .
+net:echo net:connects net:delta .
+
+net:Router a owl:Class .
+net:connects a owl:ObjectProperty .

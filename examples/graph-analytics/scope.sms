@@ -1,0 +1,13 @@
+prefix net: <http://routers.stardog.com/>
+
+Mapping
+from CSV {   
+}
+to {   
+    ?router_iri rdf:type ?type ;
+        rdfs:label ?name .   
+}
+where {
+    bind(template("http://routers.stardog.com/r_{name}") as ?router_iri)
+    bind(template("http://routers.stardog.com/{scope}") as ?type)  
+}

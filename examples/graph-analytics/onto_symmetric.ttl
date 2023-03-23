@@ -1,0 +1,24 @@
+@prefix net: <http://routers.stardog.com/> .
+@prefix rule: <tag:stardog:api:rule:> .
+
+net:Router a owl:Class ; 
+        rdfs:label "Router" .
+
+net:Regional rdfs:subClassOf net:Router ;
+        rdfs:label "Regional" .
+net:Local rdfs:subClassOf net:Router ;
+        rdfs:label "Local" .
+        
+net:connects a owl:ObjectProperty ;
+    rdfs:label "connects" ;
+    rdfs:domain net:Router ;
+    rdfs:range net:Router .   
+
+IF {
+    ?r1 net:connects ?r2
+}
+THEN {
+    ?r2 net:connects ?r1
+}    
+
+    

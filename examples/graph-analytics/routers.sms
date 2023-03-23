@@ -1,0 +1,12 @@
+prefix net: <http://routers.stardog.com/>
+
+Mapping
+from CSV {   
+}
+to {   
+    ?from_iri net:connects ?to_iri .
+}
+where {
+    bind(template("http://routers.stardog.com/r_{from}") as ?from_iri)
+    bind(template("http://routers.stardog.com/r_{to}") as ?to_iri)
+}
