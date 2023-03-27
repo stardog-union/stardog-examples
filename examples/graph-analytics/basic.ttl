@@ -1,0 +1,11 @@
+@prefix net: <http://routers.stardog.com/> .
+
+net:Regional a owl:Class ;
+    rdfs:label "Regional" .
+
+net:Local a owl:Class ;
+    rdfs:label "Local" .       
+
+net:connects a owl:ObjectProperty ;
+    rdfs:label "connects" .
+    

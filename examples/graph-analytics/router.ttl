@@ -1,0 +1,3647 @@
+@prefix : <http://api.stardog.com/> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+stardog:464 a :router ;
+   :connects stardog:1 , stardog:295 , stardog:155 , stardog:246 , stardog:429 , stardog:257 , stardog:209 , stardog:306 , stardog:402 , stardog:434 , stardog:90 , stardog:371 , stardog:462 , stardog:124 , stardog:372 , stardog:320 , stardog:393 , stardog:332 , stardog:227 , stardog:344 .
+stardog:1 a :router .
+stardog:698 a :router ;
+   :connects stardog:464 , stardog:1 , stardog:295 , stardog:179 , stardog:343 , stardog:605 , stardog:614 , stardog:619 , stardog:429 , stardog:557 , stardog:609 , stardog:484 , stardog:90 , stardog:371 , stardog:483 , stardog:462 , stardog:124 , stardog:372 , stardog:647 , stardog:223 , stardog:242 , stardog:332 , stardog:466 .
+stardog:15 a :router ;
+   :connects stardog:2 .
+stardog:2 a :router .
+stardog:1303 a :router ;
+   :connects stardog:3 , stardog:17 , stardog:536 , stardog:291 , stardog:295 , stardog:612 , stardog:712 , stardog:747 , stardog:708 , stardog:1031 , stardog:987 , stardog:1127 , stardog:204 , stardog:675 , stardog:586 , stardog:846 , stardog:862 .
+stardog:3 a :router .
+stardog:1388 a :router ;
+   :connects stardog:4 , stardog:155 , stardog:320 , stardog:254 , stardog:1052 , stardog:1163 , stardog:1225 , stardog:578 .
+stardog:4 a :router .
+stardog:627 a :router ;
+   :connects stardog:5 .
+stardog:5 a :router .
+stardog:2007 a :router ;
+   :connects stardog:5 , stardog:155 , stardog:31 , stardog:306 , stardog:402 , stardog:1518 , stardog:1707 , stardog:1890 , stardog:1301 , stardog:985 , stardog:57 , stardog:1671 , stardog:1977 , stardog:598 , stardog:1944 , stardog:285 , stardog:1768 , stardog:1396 , stardog:1934 .
+stardog:2025 a :router ;
+   :connects stardog:5 , stardog:2007 , stardog:246 , stardog:1671 .
+stardog:165 a :router ;
+   :connects stardog:6 .
+stardog:6 a :router .
+stardog:1071 a :router ;
+   :connects stardog:6 , stardog:423 , stardog:124 , stardog:175 .
+stardog:1265 a :router ;
+   :connects stardog:6 .
+stardog:1413 a :router ;
+   :connects stardog:6 , stardog:9 , stardog:1291 .
+stardog:1568 a :router ;
+   :connects stardog:165 , stardog:6 , stardog:1291 , stardog:306 , stardog:1400 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 , stardog:513 , stardog:259 , stardog:518 , stardog:235 , stardog:1365 , stardog:1310 , stardog:657 , stardog:1107 , stardog:1293 , stardog:1443 , stardog:1553 .
+stardog:1623 a :router ;
+   :connects stardog:165 , stardog:6 , stardog:1413 , stardog:1568 , stardog:80 , stardog:9 , stardog:842 , stardog:1122 , stardog:1404 , stardog:1127 , stardog:175 , stardog:197 , stardog:1246 , stardog:773 , stardog:1055 .
+stardog:1761 a :router ;
+   :connects stardog:165 , stardog:6 , stardog:1568 , stardog:1623 , stardog:9 , stardog:865 , stardog:1127 , stardog:128 , stardog:1274 , stardog:1382 , stardog:251 , stardog:1087 , stardog:245 .
+stardog:1810 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:6 , stardog:1413 , stardog:1568 , stardog:1623 , stardog:1761 , stardog:1291 , stardog:295 , stardog:429 , stardog:557 , stardog:1024 , stardog:865 , stardog:1671 , stardog:513 , stardog:1292 , stardog:90 , stardog:371 , stardog:483 , stardog:992 , stardog:1312 , stardog:1727 , stardog:1127 , stardog:124 , stardog:707 , stardog:1657 , stardog:253 , stardog:372 , stardog:411 , stardog:1542 , stardog:197 , stardog:1314 , stardog:285 , stardog:1586 , stardog:762 .
+stardog:1849 a :router ;
+   :connects stardog:165 , stardog:6 , stardog:1568 , stardog:1623 , stardog:1761 , stardog:1810 , stardog:1291 , stardog:1253 , stardog:1024 , stardog:1108 , stardog:896 , stardog:780 , stardog:513 , stardog:1383 , stardog:119 , stardog:1127 , stardog:253 , stardog:129 , stardog:169 , stardog:197 , stardog:769 , stardog:915 , stardog:316 , stardog:792 , stardog:872 .
+stardog:17 a :router ;
+   :connects stardog:7 .
+stardog:7 a :router .
+stardog:305 a :router ;
+   :connects stardog:7 , stardog:214 , stardog:253 , stardog:126 , stardog:219 .
+stardog:536 a :router ;
+   :connects stardog:17 , stardog:7 , stardog:305 , stardog:295 .
+stardog:790 a :router ;
+   :connects stardog:7 , stardog:408 , stardog:511 , stardog:637 .
+stardog:1315 a :router ;
+   :connects stardog:7 , stardog:511 .
+stardog:1545 a :router ;
+   :connects stardog:1303 , stardog:7 , stardog:305 , stardog:282 , stardog:712 , stardog:1031 , stardog:441 , stardog:646 , stardog:1013 , stardog:1028 , stardog:460 , stardog:611 , stardog:487 , stardog:958 .
+stardog:2022 a :router ;
+   :connects stardog:7 , stardog:305 , stardog:312 , stardog:208 .
+stardog:1081 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:8 , stardog:484 , stardog:930 , stardog:453 , stardog:602 .
+stardog:8 a :router .
+stardog:80 a :router ;
+   :connects stardog:9 , stardog:38 , stardog:49 , stardog:58 .
+stardog:9 a :router .
+stardog:803 a :router ;
+   :connects stardog:9 , stardog:609 , stardog:49 , stardog:58 , stardog:701 .
+stardog:1291 a :router ;
+   :connects stardog:165 , stardog:1265 , stardog:9 , stardog:685 , stardog:1024 , stardog:253 , stardog:128 , stardog:411 , stardog:197 , stardog:886 .
+stardog:1304 a :router ;
+   :connects stardog:9 .
+stardog:1463 a :router ;
+   :connects stardog:9 , stardog:1304 , stardog:614 , stardog:584 .
+stardog:1619 a :router ;
+   :connects stardog:9 , stardog:32 , stardog:1496 , stardog:1006 , stardog:49 , stardog:757 , stardog:701 .
+stardog:1504 a :router ;
+   :connects stardog:10 , stardog:593 , stardog:896 , stardog:760 , stardog:837 , stardog:645 , stardog:662 , stardog:859 , stardog:825 , stardog:1287 .
+stardog:10 a :router .
+stardog:1590 a :router ;
+   :connects stardog:1504 , stardog:10 , stardog:557 , stardog:1536 , stardog:1006 , stardog:610 , stardog:94 , stardog:251 , stardog:1111 , stardog:645 , stardog:772 , stardog:1151 , stardog:1287 , stardog:1436 .
+stardog:866 a :router ;
+   :connects stardog:11 , stardog:726 .
+stardog:11 a :router .
+stardog:1335 a :router ;
+   :connects stardog:11 .
+stardog:1434 a :router ;
+   :connects stardog:12 , stardog:1122 , stardog:294 , stardog:946 , stardog:559 , stardog:151 , stardog:836 .
+stardog:12 a :router .
+stardog:18 a :router ;
+   :connects stardog:13 .
+stardog:13 a :router .
+stardog:1176 a :router ;
+   :connects stardog:18 , stardog:13 , stardog:52 , stardog:87 , stardog:162 , stardog:198 , stardog:216 , stardog:313 , stardog:396 , stardog:414 , stardog:420 , stardog:433 , stardog:457 , stardog:471 , stardog:554 , stardog:583 , stardog:654 , stardog:656 , stardog:705 , stardog:805 , stardog:858 , stardog:864 , stardog:895 , stardog:900 , stardog:923 , stardog:1016 , stardog:1022 , stardog:1027 , stardog:1040 , stardog:1054 , stardog:1090 , stardog:1160 , stardog:1168 .
+stardog:2032 a :router ;
+   :connects stardog:18 , stardog:13 , stardog:1176 , stardog:52 , stardog:87 , stardog:162 , stardog:216 , stardog:313 , stardog:396 , stardog:414 , stardog:420 , stardog:433 , stardog:457 , stardog:471 , stardog:554 , stardog:583 , stardog:654 , stardog:656 , stardog:705 , stardog:805 , stardog:858 , stardog:864 , stardog:900 , stardog:923 , stardog:1016 , stardog:1022 , stardog:1027 , stardog:1040 , stardog:1090 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1234 , stardog:1269 , stardog:1285 , stardog:1386 , stardog:1407 , stardog:1421 , stardog:1473 , stardog:1507 , stardog:1571 , stardog:1592 , stardog:1646 , stardog:1655 , stardog:1666 , stardog:1677 , stardog:1744 , stardog:1808 , stardog:1815 , stardog:1821 , stardog:1875 , stardog:1877 , stardog:1963 , stardog:2018 , stardog:2024 , stardog:1826 , stardog:1980 , stardog:600 , stardog:444 , stardog:1644 .
+stardog:2089 a :router ;
+   :connects stardog:18 , stardog:13 , stardog:1176 , stardog:2032 , stardog:218 , stardog:420 , stardog:605 , stardog:619 , stardog:1016 , stardog:1027 , stardog:1168 , stardog:1285 , stardog:1646 , stardog:1666 , stardog:1808 , stardog:1875 , stardog:50 , stardog:1196 , stardog:1826 , stardog:1404 , stardog:185 , stardog:600 .
+stardog:312 a :router ;
+   :connects stardog:14 , stardog:30 , stardog:208 .
+stardog:14 a :router .
+stardog:954 a :router ;
+   :connects stardog:15 .
+stardog:1099 a :router ;
+   :connects stardog:15 , stardog:870 , stardog:542 , stardog:589 .
+stardog:1136 a :router ;
+   :connects stardog:15 , stardog:954 .
+stardog:1796 a :router ;
+   :connects stardog:15 , stardog:954 , stardog:1099 , stardog:1136 , stardog:734 , stardog:168 , stardog:76 , stardog:307 , stardog:1205 , stardog:354 , stardog:589 .
+stardog:1910 a :router ;
+   :connects stardog:15 , stardog:1136 , stardog:1796 , stardog:734 , stardog:168 , stardog:76 , stardog:939 , stardog:307 , stardog:244 , stardog:1205 , stardog:354 .
+stardog:1062 a :router ;
+   :connects stardog:16 , stardog:54 , stardog:294 , stardog:861 .
+stardog:16 a :router .
+stardog:1356 a :router ;
+   :connects stardog:80 , stardog:1062 , stardog:16 , stardog:619 , stardog:32 , stardog:23 , stardog:232 , stardog:24 , stardog:247 , stardog:283 , stardog:534 , stardog:696 , stardog:747 , stardog:947 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:394 , stardog:476 , stardog:516 , stardog:817 , stardog:820 , stardog:857 , stardog:874 , stardog:888 , stardog:943 , stardog:1106 , stardog:1166 , stardog:1328 , stardog:54 , stardog:1122 , stardog:294 , stardog:946 , stardog:968 , stardog:358 , stardog:559 , stardog:986 , stardog:837 , stardog:861 , stardog:310 , stardog:1185 , stardog:687 , stardog:701 , stardog:1266 , stardog:754 , stardog:1258 .
+stardog:1370 a :router ;
+   :connects stardog:1062 , stardog:16 , stardog:1356 .
+stardog:1540 a :router ;
+   :connects stardog:16 , stardog:343 , stardog:1476 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:1301 , stardog:1324 , stardog:1500 .
+stardog:1595 a :router ;
+   :connects stardog:16 , stardog:1554 .
+stardog:282 a :router ;
+   :connects stardog:17 .
+stardog:291 a :router ;
+   :connects stardog:17 , stardog:229 , stardog:204 .
+stardog:295 a :router ;
+   :connects stardog:17 , stardog:291 , stardog:90 , stardog:124 .
+stardog:445 a :router ;
+   :connects stardog:17 .
+stardog:612 a :router ;
+   :connects stardog:17 , stardog:291 , stardog:295 , stardog:386 , stardog:534 , stardog:64 , stardog:482 .
+stardog:685 a :router ;
+   :connects stardog:17 , stardog:472 .
+stardog:712 a :router ;
+   :connects stardog:17 , stardog:536 , stardog:80 , stardog:295 , stardog:445 , stardog:612 , stardog:386 , stardog:534 , stardog:708 , stardog:296 , stardog:632 , stardog:382 .
+stardog:914 a :router ;
+   :connects stardog:17 , stardog:612 , stardog:217 , stardog:164 , stardog:446 .
+stardog:989 a :router ;
+   :connects stardog:17 , stardog:685 , stardog:24 , stardog:142 , stardog:246 , stardog:331 , stardog:947 , stardog:294 , stardog:57 , stardog:547 , stardog:358 , stardog:418 , stardog:475 , stardog:779 .
+stardog:1616 a :router ;
+   :connects stardog:17 , stardog:952 , stardog:639 .
+stardog:1738 a :router ;
+   :connects stardog:1303 , stardog:17 , stardog:1545 , stardog:1356 , stardog:291 , stardog:295 , stardog:445 , stardog:612 , stardog:619 , stardog:32 , stardog:232 , stardog:386 , stardog:534 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:394 , stardog:476 , stardog:516 , stardog:817 , stardog:820 , stardog:857 , stardog:874 , stardog:888 , stardog:943 , stardog:1106 , stardog:1166 , stardog:1328 , stardog:1444 , stardog:1558 , stardog:1572 , stardog:1661 , stardog:143 , stardog:1028 , stardog:1341 , stardog:1185 , stardog:1617 .
+stardog:2002 a :router ;
+   :connects stardog:17 , stardog:305 , stardog:1814 .
+stardog:2010 a :router ;
+   :connects stardog:1303 , stardog:17 , stardog:295 , stardog:612 , stardog:712 , stardog:708 , stardog:1031 , stardog:1559 , stardog:1512 .
+stardog:38 a :router ;
+   :connects stardog:18 .
+stardog:52 a :router ;
+   :connects stardog:18 .
+stardog:87 a :router ;
+   :connects stardog:18 , stardog:50 .
+stardog:162 a :router ;
+   :connects stardog:18 .
+stardog:179 a :router ;
+   :connects stardog:18 , stardog:38 .
+stardog:198 a :router ;
+   :connects stardog:18 .
+stardog:216 a :router ;
+   :connects stardog:18 .
+stardog:218 a :router ;
+   :connects stardog:18 , stardog:52 , stardog:87 , stardog:198 , stardog:216 .
+stardog:300 a :router ;
+   :connects stardog:18 .
+stardog:313 a :router ;
+   :connects stardog:18 .
+stardog:343 a :router ;
+   :connects stardog:18 , stardog:179 , stardog:218 , stardog:155 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:302 , stardog:324 , stardog:336 , stardog:259 .
+stardog:396 a :router ;
+   :connects stardog:18 , stardog:50 .
+stardog:414 a :router ;
+   :connects stardog:18 , stardog:50 .
+stardog:420 a :router ;
+   :connects stardog:18 , stardog:52 , stardog:218 , stardog:300 , stardog:50 , stardog:185 .
+stardog:433 a :router ;
+   :connects stardog:18 .
+stardog:457 a :router ;
+   :connects stardog:18 .
+stardog:471 a :router ;
+   :connects stardog:18 , stardog:420 .
+stardog:554 a :router ;
+   :connects stardog:18 .
+stardog:583 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:420 .
+stardog:605 a :router ;
+   :connects stardog:18 , stardog:52 , stardog:87 , stardog:179 , stardog:198 , stardog:216 , stardog:343 , stardog:420 , stardog:583 , stardog:120 , stardog:171 , stardog:531 .
+stardog:614 a :router ;
+   :connects stardog:18 , stardog:179 , stardog:343 , stardog:155 , stardog:609 , stardog:48 , stardog:242 , stardog:290 , stardog:308 , stardog:490 , stardog:572 , stardog:580 , stardog:588 .
+stardog:619 a :router ;
+   :connects stardog:18 , stardog:38 , stardog:52 , stardog:87 , stardog:179 , stardog:216 , stardog:343 , stardog:420 , stardog:614 , stardog:32 , stardog:232 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:394 , stardog:476 , stardog:516 , stardog:609 , stardog:143 , stardog:351 , stardog:116 , stardog:591 , stardog:176 , stardog:223 , stardog:242 , stardog:213 , stardog:258 , stardog:260 , stardog:334 , stardog:421 , stardog:526 , stardog:573 .
+stardog:654 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:414 , stardog:420 , stardog:605 , stardog:619 , stardog:185 , stardog:95 .
+stardog:656 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:420 , stardog:605 , stardog:619 , stardog:50 , stardog:185 .
+stardog:688 a :router ;
+   :connects stardog:18 .
+stardog:705 a :router ;
+   :connects stardog:18 .
+stardog:805 a :router ;
+   :connects stardog:18 , stardog:185 .
+stardog:858 a :router ;
+   :connects stardog:18 , stardog:688 , stardog:600 .
+stardog:864 a :router ;
+   :connects stardog:18 , stardog:162 , stardog:198 , stardog:216 , stardog:218 , stardog:313 , stardog:396 , stardog:457 , stardog:605 , stardog:619 , stardog:185 , stardog:286 , stardog:373 , stardog:824 , stardog:735 .
+stardog:895 a :router ;
+   :connects stardog:18 .
+stardog:900 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:605 , stardog:619 , stardog:50 .
+stardog:923 a :router ;
+   :connects stardog:18 , stardog:654 .
+stardog:1016 a :router ;
+   :connects stardog:18 , stardog:619 .
+stardog:1022 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:605 , stardog:619 , stardog:805 , stardog:864 , stardog:50 , stardog:185 , stardog:600 .
+stardog:1027 a :router ;
+   :connects stardog:18 , stardog:52 , stardog:87 , stardog:162 , stardog:216 , stardog:218 , stardog:313 , stardog:396 , stardog:414 , stardog:420 , stardog:433 , stardog:457 , stardog:471 , stardog:554 , stardog:583 , stardog:654 , stardog:656 , stardog:705 , stardog:805 , stardog:858 , stardog:864 , stardog:900 , stardog:923 , stardog:1016 , stardog:1022 , stardog:50 .
+stardog:1040 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:605 , stardog:619 , stardog:1022 , stardog:1027 , stardog:50 , stardog:185 .
+stardog:1054 a :router ;
+   :connects stardog:18 , stardog:420 , stardog:864 , stardog:1027 , stardog:50 , stardog:143 .
+stardog:1090 a :router ;
+   :connects stardog:18 , stardog:198 , stardog:218 , stardog:605 , stardog:619 , stardog:864 , stardog:1027 , stardog:1054 , stardog:50 , stardog:185 , stardog:239 .
+stardog:1160 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:605 , stardog:619 , stardog:864 , stardog:1027 , stardog:185 .
+stardog:1165 a :router ;
+   :connects stardog:305 , stardog:18 , stardog:198 , stardog:214 , stardog:253 , stardog:126 , stardog:760 , stardog:219 , stardog:447 , stardog:952 , stardog:918 .
+stardog:1168 a :router ;
+   :connects stardog:18 , stardog:218 , stardog:605 , stardog:1027 .
+stardog:1232 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:654 , stardog:1027 .
+stardog:1234 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:619 , stardog:864 , stardog:1027 .
+stardog:1269 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:216 , stardog:1027 , stardog:185 .
+stardog:1285 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:1027 .
+stardog:1386 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:864 , stardog:1027 , stardog:1196 , stardog:185 .
+stardog:1407 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:864 , stardog:1027 .
+stardog:1421 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:654 , stardog:1027 , stardog:1404 .
+stardog:1431 a :router ;
+   :connects stardog:698 , stardog:18 , stardog:38 , stardog:179 , stardog:605 , stardog:614 , stardog:619 , stardog:543 , stardog:609 , stardog:1360 , stardog:982 , stardog:1203 , stardog:801 , stardog:242 , stardog:375 , stardog:435 , stardog:1346 .
+stardog:1473 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:1022 , stardog:1027 , stardog:50 , stardog:1196 , stardog:1404 , stardog:185 , stardog:942 .
+stardog:1507 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:420 , stardog:583 , stardog:605 , stardog:619 , stardog:1027 , stardog:1404 .
+stardog:1571 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:619 , stardog:1027 , stardog:1090 , stardog:50 , stardog:1196 , stardog:1404 , stardog:185 .
+stardog:1592 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:1022 , stardog:1027 .
+stardog:1639 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:1027 .
+stardog:1646 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:420 , stardog:605 , stardog:619 , stardog:858 , stardog:864 , stardog:1022 , stardog:1027 , stardog:1473 , stardog:1639 , stardog:50 , stardog:1196 , stardog:1404 , stardog:185 .
+stardog:1655 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:864 , stardog:1022 , stardog:1027 .
+stardog:1666 a :router ;
+   :connects stardog:698 , stardog:18 , stardog:52 , stardog:87 , stardog:198 , stardog:216 , stardog:313 , stardog:343 , stardog:414 , stardog:420 , stardog:433 , stardog:554 , stardog:583 , stardog:605 , stardog:614 , stardog:619 , stardog:654 , stardog:656 , stardog:805 , stardog:858 , stardog:864 , stardog:900 , stardog:923 , stardog:1016 , stardog:1022 , stardog:1040 , stardog:1090 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1234 , stardog:1285 , stardog:1386 , stardog:1407 , stardog:1421 , stardog:1431 , stardog:1473 , stardog:1507 , stardog:1571 , stardog:1646 , stardog:1495 , stardog:609 , stardog:1360 , stardog:1654 , stardog:1537 , stardog:1544 , stardog:223 , stardog:242 , stardog:1277 , stardog:1402 , stardog:556 , stardog:569 , stardog:816 .
+stardog:1677 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:654 , stardog:1027 , stardog:1666 , stardog:50 , stardog:1404 .
+stardog:1744 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:605 , stardog:654 , stardog:1027 , stardog:1666 , stardog:1404 .
+stardog:1760 a :router ;
+   :connects stardog:18 , stardog:1176 .
+stardog:1808 a :router ;
+   :connects stardog:698 , stardog:1568 , stardog:18 , stardog:38 , stardog:52 , stardog:87 , stardog:179 , stardog:216 , stardog:218 , stardog:343 , stardog:414 , stardog:420 , stardog:583 , stardog:605 , stardog:614 , stardog:619 , stardog:654 , stardog:656 , stardog:805 , stardog:858 , stardog:864 , stardog:900 , stardog:923 , stardog:1016 , stardog:1022 , stardog:1027 , stardog:1040 , stardog:1090 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1234 , stardog:1285 , stardog:1386 , stardog:1421 , stardog:1431 , stardog:1473 , stardog:1507 , stardog:1571 , stardog:1646 , stardog:1666 , stardog:1677 , stardog:1744 , stardog:306 , stardog:1400 , stardog:1495 , stardog:609 , stardog:1360 , stardog:594 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 , stardog:259 , stardog:518 , stardog:223 , stardog:861 , stardog:873 , stardog:840 , stardog:262 , stardog:1163 , stardog:1365 , stardog:1720 , stardog:1770 , stardog:1310 , stardog:657 , stardog:1107 , stardog:1293 , stardog:1443 , stardog:1651 , stardog:417 , stardog:421 , stardog:1346 , stardog:1713 , stardog:613 , stardog:1803 , stardog:1410 .
+stardog:1815 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:1027 , stardog:1666 .
+stardog:1821 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:420 , stardog:1027 , stardog:1666 .
+stardog:1875 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:1027 .
+stardog:1877 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:218 , stardog:396 , stardog:420 , stardog:433 , stardog:554 , stardog:605 , stardog:619 , stardog:864 , stardog:900 , stardog:1027 , stardog:1646 , stardog:1666 , stardog:1808 , stardog:50 , stardog:1404 .
+stardog:1963 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:420 , stardog:1027 , stardog:1666 .
+stardog:2018 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:216 , stardog:218 , stardog:605 , stardog:619 , stardog:1027 , stardog:1666 , stardog:1808 , stardog:1404 , stardog:1980 , stardog:185 , stardog:824 , stardog:1063 .
+stardog:2024 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:216 , stardog:1027 .
+stardog:2077 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:2032 , stardog:619 , stardog:1027 , stardog:1666 , stardog:1808 .
+stardog:2108 a :router ;
+   :connects stardog:18 , stardog:1176 , stardog:2032 , stardog:87 , stardog:218 , stardog:605 , stardog:619 , stardog:705 , stardog:864 , stardog:1027 , stardog:1666 , stardog:1808 , stardog:1404 , stardog:1980 .
+stardog:78 a :router ;
+   :connects stardog:19 .
+stardog:19 a :router .
+stardog:689 a :router ;
+   :connects stardog:19 , stardog:20 , stardog:523 , stardog:540 , stardog:652 , stardog:50 , stardog:302 , stardog:147 , stardog:194 , stardog:626 , stardog:615 .
+stardog:841 a :router ;
+   :connects stardog:19 , stardog:689 , stardog:648 .
+stardog:891 a :router ;
+   :connects stardog:78 , stardog:19 , stardog:689 .
+stardog:1510 a :router ;
+   :connects stardog:19 , stardog:689 , stardog:841 , stardog:1454 .
+stardog:1648 a :router ;
+   :connects stardog:19 , stardog:689 , stardog:841 .
+stardog:20 a :router .
+stardog:1428 a :router ;
+   :connects stardog:21 , stardog:634 , stardog:1379 , stardog:242 , stardog:521 , stardog:911 , stardog:854 .
+stardog:21 a :router .
+stardog:155 a :router ;
+   :connects stardog:22 , stardog:63 , stardog:99 , stardog:121 .
+stardog:22 a :router .
+stardog:1403 a :router ;
+   :connects stardog:22 .
+stardog:32 a :router ;
+   :connects stardog:23 .
+stardog:23 a :router .
+stardog:232 a :router ;
+   :connects stardog:32 , stardog:23 .
+stardog:1952 a :router ;
+   :connects stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:23 , stardog:1890 , stardog:394 , stardog:476 , stardog:817 , stardog:888 , stardog:1558 , stardog:1572 , stardog:1661 , stardog:1747 , stardog:1800 .
+stardog:2083 a :router ;
+   :connects stardog:165 , stardog:1568 , stardog:1623 , stardog:1761 , stardog:1810 , stardog:1849 , stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:23 , stardog:232 , stardog:1952 , stardog:1890 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:394 , stardog:476 , stardog:516 , stardog:817 , stardog:820 , stardog:857 , stardog:874 , stardog:888 , stardog:943 , stardog:1106 , stardog:1166 , stardog:1328 , stardog:1444 , stardog:1558 , stardog:1572 , stardog:1661 , stardog:1747 , stardog:1800 , stardog:1827 , stardog:1840 , stardog:865 , stardog:1274 , stardog:1913 , stardog:245 , stardog:2028 , stardog:1185 , stardog:1848 .
+stardog:71 a :router ;
+   :connects stardog:24 .
+stardog:24 a :router .
+stardog:142 a :router ;
+   :connects stardog:24 .
+stardog:246 a :router ;
+   :connects stardog:179 , stardog:155 , stardog:24 , stardog:223 .
+stardog:247 a :router ;
+   :connects stardog:80 , stardog:24 , stardog:115 .
+stardog:283 a :router ;
+   :connects stardog:24 .
+stardog:331 a :router ;
+   :connects stardog:24 .
+stardog:376 a :router ;
+   :connects stardog:24 .
+stardog:386 a :router ;
+   :connects stardog:165 , stardog:80 , stardog:295 , stardog:179 , stardog:24 , stardog:25 , stardog:277 , stardog:270 , stardog:223 , stardog:241 , stardog:297 .
+stardog:429 a :router ;
+   :connects stardog:295 , stardog:24 , stardog:29 , stardog:90 , stardog:371 , stardog:124 .
+stardog:534 a :router ;
+   :connects stardog:71 , stardog:24 , stardog:25 , stardog:410 .
+stardog:535 a :router ;
+   :connects stardog:24 .
+stardog:557 a :router ;
+   :connects stardog:464 , stardog:295 , stardog:32 , stardog:24 , stardog:429 , stardog:90 , stardog:371 , stardog:483 , stardog:124 , stardog:372 , stardog:203 , stardog:412 .
+stardog:696 a :router ;
+   :connects stardog:24 , stardog:408 , stardog:350 , stardog:561 .
+stardog:747 a :router ;
+   :connects stardog:24 , stardog:648 , stardog:49 , stardog:294 , stardog:637 , stardog:57 , stardog:547 , stardog:77 , stardog:558 , stardog:663 .
+stardog:947 a :router ;
+   :connects stardog:24 , stardog:102 .
+stardog:1119 a :router ;
+   :connects stardog:24 , stardog:54 .
+stardog:1198 a :router ;
+   :connects stardog:989 , stardog:71 , stardog:24 , stardog:386 , stardog:29 , stardog:775 , stardog:134 , stardog:252 , stardog:304 , stardog:630 .
+stardog:1476 a :router ;
+   :connects stardog:343 , stardog:24 , stardog:747 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1170 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1301 , stardog:1324 , stardog:1376 .
+stardog:1496 a :router ;
+   :connects stardog:165 , stardog:685 , stardog:989 , stardog:32 , stardog:24 , stardog:557 , stardog:234 , stardog:593 , stardog:734 , stardog:764 , stardog:896 , stardog:1006 , stardog:610 , stardog:203 , stardog:362 , stardog:505 , stardog:838 , stardog:680 , stardog:886 , stardog:971 , stardog:1002 , stardog:1330 .
+stardog:1536 a :router ;
+   :connects stardog:165 , stardog:32 , stardog:24 , stardog:557 , stardog:1496 , stardog:593 , stardog:896 , stardog:610 , stardog:96 , stardog:760 , stardog:330 , stardog:1010 , stardog:1482 , stardog:1207 , stardog:798 , stardog:575 , stardog:1118 , stardog:1436 .
+stardog:1660 a :router ;
+   :connects stardog:536 , stardog:989 , stardog:24 , stardog:747 , stardog:306 , stardog:1122 , stardog:294 , stardog:547 , stardog:946 , stardog:1305 , stardog:197 , stardog:1533 , stardog:238 , stardog:1125 , stardog:1597 , stardog:980 , stardog:1604 .
+stardog:1745 a :router ;
+   :connects stardog:1590 , stardog:1356 , stardog:24 , stardog:246 , stardog:386 , stardog:747 , stardog:1119 , stardog:1198 , stardog:1660 , stardog:1537 , stardog:837 , stardog:1382 , stardog:251 , stardog:1087 , stardog:1319 , stardog:389 , stardog:717 , stardog:772 , stardog:1497 .
+stardog:1748 a :router ;
+   :connects stardog:989 , stardog:24 , stardog:1235 .
+stardog:1958 a :router ;
+   :connects stardog:1796 , stardog:1356 , stardog:989 , stardog:24 , stardog:734 , stardog:168 , stardog:76 , stardog:127 , stardog:1194 , stardog:1457 , stardog:1825 , stardog:307 , stardog:190 , stardog:360 , stardog:1601 , stardog:1205 .
+stardog:139 a :router ;
+   :connects stardog:25 .
+stardog:25 a :router .
+stardog:261 a :router ;
+   :connects stardog:25 .
+stardog:532 a :router ;
+   :connects stardog:25 , stardog:524 .
+stardog:785 a :router ;
+   :connects stardog:25 .
+stardog:1001 a :router ;
+   :connects stardog:165 , stardog:25 .
+stardog:214 a :router ;
+   :connects stardog:26 , stardog:104 , stardog:108 .
+stardog:26 a :router .
+stardog:257 a :router ;
+   :connects stardog:26 .
+stardog:1249 a :router ;
+   :connects stardog:27 , stardog:171 , stardog:658 .
+stardog:27 a :router .
+stardog:703 a :router ;
+   :connects stardog:28 , stardog:634 , stardog:88 , stardog:321 , stardog:576 .
+stardog:28 a :router .
+stardog:967 a :router ;
+   :connects stardog:703 , stardog:28 , stardog:634 , stardog:935 , stardog:88 , stardog:929 , stardog:95 , stardog:259 , stardog:321 , stardog:388 , stardog:576 , stardog:926 , stardog:962 , stardog:964 , stardog:666 .
+stardog:29 a :router .
+stardog:30 a :router .
+stardog:1253 a :router ;
+   :connects stardog:165 , stardog:30 , stardog:1024 , stardog:253 , stardog:208 , stardog:383 , stardog:585 , stardog:746 , stardog:879 , stardog:976 , stardog:452 , stardog:620 , stardog:681 , stardog:1088 .
+stardog:104 a :router ;
+   :connects stardog:31 .
+stardog:31 a :router .
+stardog:172 a :router ;
+   :connects stardog:31 .
+stardog:187 a :router ;
+   :connects stardog:31 .
+stardog:209 a :router ;
+   :connects stardog:31 , stardog:185 , stardog:140 .
+stardog:274 a :router ;
+   :connects stardog:38 , stardog:31 , stardog:140 .
+stardog:281 a :router ;
+   :connects stardog:31 , stardog:274 .
+stardog:306 a :router ;
+   :connects stardog:155 , stardog:246 , stardog:31 , stardog:209 , stardog:56 , stardog:197 .
+stardog:402 a :router ;
+   :connects stardog:155 , stardog:31 , stardog:99 , stardog:393 , stardog:180 .
+stardog:408 a :router ;
+   :connects stardog:31 , stardog:294 , stardog:57 , stardog:74 , stardog:360 , stardog:278 , stardog:350 .
+stardog:434 a :router ;
+   :connects stardog:31 .
+stardog:543 a :router ;
+   :connects stardog:464 , stardog:179 , stardog:218 , stardog:343 , stardog:31 , stardog:434 , stardog:242 .
+stardog:664 a :router ;
+   :connects stardog:464 , stardog:31 , stardog:513 .
+stardog:860 a :router ;
+   :connects stardog:31 , stardog:402 , stardog:647 , stardog:723 .
+stardog:936 a :router ;
+   :connects stardog:31 , stardog:402 .
+stardog:977 a :router ;
+   :connects stardog:31 , stardog:402 , stardog:450 , stardog:173 , stardog:909 .
+stardog:1012 a :router ;
+   :connects stardog:464 , stardog:31 , stardog:402 , stardog:715 , stardog:63 , stardog:549 .
+stardog:1024 a :router ;
+   :connects stardog:31 , stardog:408 , stardog:65 , stardog:253 , stardog:128 , stardog:197 .
+stardog:1108 a :router ;
+   :connects stardog:31 , stardog:664 .
+stardog:1110 a :router ;
+   :connects stardog:155 , stardog:31 , stardog:860 , stardog:936 , stardog:977 , stardog:1012 , stardog:722 , stardog:665 .
+stardog:1121 a :router ;
+   :connects stardog:31 , stardog:209 , stardog:913 , stardog:117 , stardog:861 , stardog:385 , stardog:606 .
+stardog:1245 a :router ;
+   :connects stardog:31 , stardog:274 , stardog:281 , stardog:408 , stardog:1122 , stardog:1197 , stardog:140 .
+stardog:1318 a :router ;
+   :connects stardog:31 .
+stardog:1400 a :router ;
+   :connects stardog:300 , stardog:31 , stardog:209 , stardog:306 , stardog:977 , stardog:842 , stardog:913 , stardog:56 , stardog:1301 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 , stardog:518 , stardog:657 , stardog:1107 , stardog:1293 , stardog:344 , stardog:916 .
+stardog:1495 a :router ;
+   :connects stardog:179 , stardog:614 , stardog:619 , stardog:31 , stardog:1110 , stardog:565 , stardog:1309 , stardog:1163 , stardog:303 , stardog:469 , stardog:665 , stardog:479 , stardog:625 .
+stardog:1518 a :router ;
+   :connects stardog:464 , stardog:300 , stardog:619 , stardog:246 , stardog:31 , stardog:281 , stardog:402 , stardog:664 , stardog:860 , stardog:936 , stardog:1012 , stardog:1108 , stardog:1110 , stardog:871 , stardog:242 , stardog:213 , stardog:1309 , stardog:1021 , stardog:1363 , stardog:1350 , stardog:438 , stardog:1079 , stardog:1089 , stardog:1281 , stardog:1479 .
+stardog:1520 a :router ;
+   :connects stardog:31 , stardog:1110 , stardog:1495 , stardog:642 .
+stardog:1577 a :router ;
+   :connects stardog:31 , stardog:664 , stardog:1518 , stardog:913 , stardog:1100 .
+stardog:1612 a :router ;
+   :connects stardog:155 , stardog:31 , stardog:1110 , stardog:1270 .
+stardog:1707 a :router ;
+   :connects stardog:464 , stardog:300 , stardog:605 , stardog:614 , stardog:214 , stardog:31 , stardog:274 , stardog:402 , stardog:664 , stardog:860 , stardog:936 , stardog:1012 , stardog:1495 , stardog:1518 , stardog:1577 , stardog:1654 , stardog:1007 , stardog:871 , stardog:873 , stardog:242 , stardog:1309 , stardog:1363 , stardog:1350 , stardog:438 , stardog:665 , stardog:1089 , stardog:1281 , stardog:1479 , stardog:1627 .
+stardog:1804 a :router ;
+   :connects stardog:31 , stardog:172 , stardog:255 , stardog:1290 , stardog:169 , stardog:880 , stardog:608 , stardog:242 , stardog:362 .
+stardog:1807 a :router ;
+   :connects stardog:155 , stardog:31 , stardog:306 , stardog:1518 , stardog:1404 , stardog:1615 , stardog:1566 , stardog:1143 , stardog:1698 , stardog:347 , stardog:539 , stardog:916 , stardog:1680 , stardog:1200 .
+stardog:1857 a :router ;
+   :connects stardog:464 , stardog:300 , stardog:104 , stardog:31 , stardog:187 , stardog:209 , stardog:664 , stardog:860 , stardog:1121 , stardog:1318 , stardog:1400 , stardog:1518 , stardog:1707 , stardog:1804 , stardog:1807 , stardog:913 , stardog:1301 , stardog:1290 , stardog:253 , stardog:242 , stardog:362 , stardog:1601 , stardog:1289 .
+stardog:1890 a :router ;
+   :connects stardog:464 , stardog:1388 , stardog:1356 , stardog:1738 , stardog:619 , stardog:155 , stardog:32 , stardog:232 , stardog:31 , stardog:187 , stardog:209 , stardog:274 , stardog:281 , stardog:306 , stardog:664 , stardog:860 , stardog:1245 , stardog:1400 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:394 , stardog:476 , stardog:516 , stardog:817 , stardog:820 , stardog:857 , stardog:874 , stardog:888 , stardog:943 , stardog:1106 , stardog:1166 , stardog:1328 , stardog:1444 , stardog:1558 , stardog:1572 , stardog:1661 , stardog:1747 , stardog:1800 , stardog:1827 , stardog:1840 , stardog:913 , stardog:715 , stardog:143 , stardog:985 , stardog:1031 , stardog:1100 , stardog:351 , stardog:591 , stardog:1487 , stardog:320 , stardog:393 , stardog:385 , stardog:1494 , stardog:254 , stardog:695 , stardog:1185 .
+stardog:1908 a :router ;
+   :connects stardog:464 , stardog:155 , stardog:31 , stardog:1110 , stardog:1518 , stardog:1857 , stardog:1824 , stardog:1491 , stardog:1822 , stardog:873 , stardog:1903 , stardog:1862 , stardog:310 , stardog:909 , stardog:553 , stardog:1348 , stardog:1358 .
+stardog:2009 a :router ;
+   :connects stardog:31 , stardog:1518 , stardog:1707 , stardog:1987 .
+stardog:2070 a :router ;
+   :connects stardog:31 , stardog:1477 .
+stardog:53 a :router ;
+   :connects stardog:32 .
+stardog:153 a :router ;
+   :connects stardog:32 .
+stardog:199 a :router ;
+   :connects stardog:32 .
+stardog:205 a :router ;
+   :connects stardog:32 .
+stardog:234 a :router ;
+   :connects stardog:32 , stardog:203 .
+stardog:280 a :router ;
+   :connects stardog:32 .
+stardog:394 a :router ;
+   :connects stardog:80 , stardog:32 , stardog:232 , stardog:386 , stardog:53 , stardog:153 , stardog:199 , stardog:280 , stardog:143 , stardog:270 .
+stardog:476 a :router ;
+   :connects stardog:32 , stardog:232 , stardog:394 , stardog:371 , stardog:230 .
+stardog:516 a :router ;
+   :connects stardog:32 , stardog:394 , stardog:476 .
+stardog:593 a :router ;
+   :connects stardog:165 , stardog:32 , stardog:557 .
+stardog:734 a :router ;
+   :connects stardog:32 , stardog:168 , stardog:76 , stardog:127 , stardog:307 .
+stardog:764 a :router ;
+   :connects stardog:605 , stardog:32 , stardog:557 , stardog:96 , stardog:362 , stardog:505 .
+stardog:817 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 .
+stardog:820 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 .
+stardog:857 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 .
+stardog:874 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 .
+stardog:888 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 , stardog:510 .
+stardog:896 a :router ;
+   :connects stardog:32 , stardog:557 , stardog:747 , stardog:593 , stardog:764 , stardog:47 , stardog:409 , stardog:441 , stardog:121 , stardog:760 , stardog:169 , stardog:177 , stardog:203 , stardog:400 , stardog:501 , stardog:505 .
+stardog:943 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:153 , stardog:394 .
+stardog:1006 a :router ;
+   :connects stardog:32 , stardog:386 , stardog:557 , stardog:734 , stardog:764 , stardog:896 , stardog:75 , stardog:970 , stardog:84 , stardog:203 , stardog:251 , stardog:668 , stardog:520 .
+stardog:1106 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:214 , stardog:476 .
+stardog:1166 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:280 , stardog:394 , stardog:97 , stardog:528 .
+stardog:1328 a :router ;
+   :connects stardog:619 , stardog:32 , stardog:394 , stardog:476 .
+stardog:1444 a :router ;
+   :connects stardog:1356 , stardog:685 , stardog:619 , stardog:32 , stardog:232 , stardog:53 , stardog:153 , stardog:394 , stardog:476 , stardog:516 , stardog:820 , stardog:874 , stardog:888 , stardog:1166 , stardog:1328 , stardog:204 , stardog:1382 , stardog:586 , stardog:329 , stardog:1185 .
+stardog:1558 a :router ;
+   :connects stardog:1356 , stardog:619 , stardog:32 , stardog:394 , stardog:1499 .
+stardog:1572 a :router ;
+   :connects stardog:1356 , stardog:619 , stardog:32 , stardog:394 .
+stardog:1661 a :router ;
+   :connects stardog:1356 , stardog:619 , stardog:32 , stardog:394 .
+stardog:1699 a :router ;
+   :connects stardog:32 .
+stardog:1747 a :router ;
+   :connects stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:394 , stardog:1444 , stardog:1221 .
+stardog:1800 a :router ;
+   :connects stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:394 .
+stardog:1827 a :router ;
+   :connects stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:394 .
+stardog:1840 a :router ;
+   :connects stardog:1356 , stardog:1738 , stardog:619 , stardog:32 , stardog:394 , stardog:1444 .
+stardog:1968 a :router ;
+   :connects stardog:1590 , stardog:32 , stardog:247 , stardog:1496 , stardog:1536 , stardog:234 , stardog:593 , stardog:764 , stardog:896 , stardog:610 , stardog:1523 , stardog:203 , stardog:314 , stardog:1117 , stardog:1647 .
+stardog:2016 a :router ;
+   :connects stardog:1540 , stardog:343 , stardog:32 , stardog:557 , stardog:1476 , stardog:1496 , stardog:1536 , stardog:593 , stardog:1006 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1170 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1301 , stardog:1324 , stardog:1376 , stardog:1500 , stardog:1605 , stardog:1640 , stardog:1690 , stardog:1757 , stardog:1826 , stardog:2008 , stardog:1172 .
+stardog:511 a :router ;
+   :connects stardog:33 , stardog:69 , stardog:451 , stardog:189 , stardog:195 , stardog:311 , stardog:226 .
+stardog:33 a :router .
+stardog:1554 a :router ;
+   :connects stardog:34 , stardog:342 , stardog:1487 , stardog:861 , stardog:480 , stardog:212 , stardog:328 , stardog:1385 , stardog:334 , stardog:1447 , stardog:488 , stardog:692 , stardog:1004 , stardog:1262 .
+stardog:34 a :router .
+stardog:1154 a :router ;
+   :connects stardog:35 , stardog:163 , stardog:899 .
+stardog:35 a :router .
+stardog:523 a :router ;
+   :connects stardog:36 , stardog:50 , stardog:271 , stardog:66 , stardog:244 .
+stardog:36 a :router .
+stardog:1733 a :router ;
+   :connects stardog:523 , stardog:36 , stardog:1113 .
+stardog:780 a :router ;
+   :connects stardog:37 .
+stardog:37 a :router .
+stardog:540 a :router ;
+   :connects stardog:38 , stardog:306 , stardog:523 , stardog:50 , stardog:143 .
+stardog:587 a :router ;
+   :connects stardog:80 , stardog:38 , stardog:58 , stardog:372 , stardog:537 .
+stardog:609 a :router ;
+   :connects stardog:80 , stardog:38 , stardog:179 , stardog:343 , stardog:605 , stardog:543 .
+stardog:652 a :router ;
+   :connects stardog:38 , stardog:50 , stardog:143 , stardog:634 .
+stardog:720 a :router ;
+   :connects stardog:38 .
+stardog:806 a :router ;
+   :connects stardog:80 , stardog:38 .
+stardog:842 a :router ;
+   :connects stardog:38 , stardog:619 , stardog:274 , stardog:40 , stardog:58 , stardog:140 .
+stardog:851 a :router ;
+   :connects stardog:38 .
+stardog:913 a :router ;
+   :connects stardog:80 , stardog:38 , stardog:300 , stardog:155 , stardog:246 , stardog:209 , stardog:306 , stardog:402 , stardog:664 , stardog:385 .
+stardog:945 a :router ;
+   :connects stardog:38 .
+stardog:1251 a :router ;
+   :connects stardog:38 , stardog:540 , stardog:1041 , stardog:804 , stardog:659 , stardog:1137 .
+stardog:1360 a :router ;
+   :connects stardog:698 , stardog:38 , stardog:179 , stardog:343 , stardog:614 , stardog:619 , stardog:1277 .
+stardog:1397 a :router ;
+   :connects stardog:38 , stardog:851 .
+stardog:1654 a :router ;
+   :connects stardog:698 , stardog:536 , stardog:38 , stardog:179 , stardog:605 , stardog:614 , stardog:619 , stardog:274 , stardog:306 , stardog:543 , stardog:540 , stardog:609 , stardog:1544 , stardog:658 , stardog:1362 .
+stardog:1917 a :router ;
+   :connects stardog:38 , stardog:402 .
+stardog:1976 a :router ;
+   :connects stardog:38 , stardog:653 , stardog:1587 , stardog:1277 .
+stardog:2073 a :router ;
+   :connects stardog:38 , stardog:1808 , stardog:359 , stardog:1123 , stardog:110 , stardog:1749 , stardog:1729 .
+stardog:2093 a :router ;
+   :connects stardog:698 , stardog:38 , stardog:614 , stardog:945 , stardog:1236 , stardog:678 , stardog:223 , stardog:314 .
+stardog:2094 a :router ;
+   :connects stardog:38 , stardog:1544 , stardog:350 , stardog:561 , stardog:875 , stardog:1885 , stardog:1987 .
+stardog:1850 a :router ;
+   :connects stardog:1303 , stardog:1849 , stardog:80 , stardog:803 , stardog:343 , stardog:614 , stardog:386 , stardog:747 , stardog:394 , stardog:896 , stardog:587 , stardog:39 , stardog:277 , stardog:1378 , stardog:982 , stardog:1206 , stardog:1290 , stardog:1537 , stardog:1824 , stardog:409 , stardog:441 , stardog:1036 , stardog:1046 , stardog:1618 , stardog:120 , stardog:270 , stardog:436 , stardog:850 , stardog:987 , stardog:1127 , stardog:137 , stardog:1067 , stardog:160 , stardog:221 , stardog:407 , stardog:363 , stardog:379 , stardog:1225 , stardog:904 , stardog:932 , stardog:1279 , stardog:1286 , stardog:1460 , stardog:1238 , stardog:1325 , stardog:1580 , stardog:1771 .
+stardog:39 a :router .
+stardog:492 a :router ;
+   :connects stardog:40 , stardog:373 .
+stardog:40 a :router .
+stardog:594 a :router ;
+   :connects stardog:540 , stardog:40 , stardog:50 , stardog:143 , stardog:302 , stardog:158 , stardog:503 .
+stardog:1041 a :router ;
+   :connects stardog:619 , stardog:540 , stardog:40 , stardog:50 , stardog:302 , stardog:130 , stardog:176 , stardog:244 , stardog:258 , stardog:260 , stardog:334 , stardog:526 , stardog:573 , stardog:673 , stardog:735 , stardog:777 , stardog:786 , stardog:910 .
+stardog:1167 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1081 , stardog:689 , stardog:40 , stardog:484 , stardog:50 , stardog:143 , stardog:302 , stardog:395 , stardog:634 , stardog:714 , stardog:930 , stardog:462 , stardog:161 , stardog:332 , stardog:870 , stardog:667 , stardog:704 , stardog:1017 .
+stardog:1215 a :router ;
+   :connects stardog:40 , stardog:292 , stardog:60 , stardog:122 , stardog:421 .
+stardog:1158 a :router ;
+   :connects stardog:41 .
+stardog:41 a :router .
+stardog:1472 a :router ;
+   :connects stardog:1251 , stardog:42 , stardog:342 , stardog:286 , stardog:1317 , stardog:969 .
+stardog:42 a :router .
+stardog:722 a :router ;
+   :connects stardog:464 , stardog:155 , stardog:306 , stardog:402 , stardog:43 , stardog:225 , stardog:437 .
+stardog:43 a :router .
+stardog:489 a :router ;
+   :connects stardog:44 , stardog:58 .
+stardog:44 a :router .
+stardog:715 a :router ;
+   :connects stardog:464 , stardog:209 , stardog:44 , stardog:63 , stardog:254 , stardog:549 .
+stardog:56 a :router ;
+   :connects stardog:45 .
+stardog:45 a :router .
+stardog:255 a :router ;
+   :connects stardog:172 , stardog:45 .
+stardog:763 a :router ;
+   :connects stardog:45 .
+stardog:828 a :router ;
+   :connects stardog:45 , stardog:65 , stardog:527 .
+stardog:1519 a :router ;
+   :connects stardog:45 , stardog:1404 , stardog:1297 , stardog:85 , stardog:601 .
+stardog:484 a :router ;
+   :connects stardog:464 , stardog:46 .
+stardog:46 a :router .
+stardog:265 a :router ;
+   :connects stardog:47 .
+stardog:47 a :router .
+stardog:617 a :router ;
+   :connects stardog:265 , stardog:47 .
+stardog:648 a :router ;
+   :connects stardog:408 , stardog:47 , stardog:617 , stardog:507 .
+stardog:1219 a :router ;
+   :connects stardog:265 , stardog:47 .
+stardog:1264 a :router ;
+   :connects stardog:265 , stardog:47 , stardog:617 , stardog:1219 , stardog:1254 .
+stardog:48 a :router .
+stardog:54 a :router ;
+   :connects stardog:49 .
+stardog:49 a :router .
+stardog:135 a :router ;
+   :connects stardog:49 .
+stardog:477 a :router ;
+   :connects stardog:54 , stardog:49 .
+stardog:1122 a :router ;
+   :connects stardog:1062 , stardog:712 , stardog:247 , stardog:747 , stardog:402 , stardog:54 , stardog:49 , stardog:826 , stardog:1049 , stardog:495 , stardog:168 , stardog:76 , stardog:314 , stardog:350 , stardog:485 , stardog:702 , stardog:773 , stardog:836 .
+stardog:1485 a :router ;
+   :connects stardog:1434 , stardog:1062 , stardog:1356 , stardog:989 , stardog:747 , stardog:54 , stardog:49 , stardog:1122 , stardog:826 , stardog:294 , stardog:1049 , stardog:168 , stardog:986 , stardog:1305 , stardog:1051 , stardog:350 , stardog:836 , stardog:1394 .
+stardog:1584 a :router ;
+   :connects stardog:49 , stardog:1449 .
+stardog:1889 a :router ;
+   :connects stardog:1434 , stardog:1062 , stardog:218 , stardog:1745 , stardog:408 , stardog:54 , stardog:49 , stardog:1122 , stardog:1485 , stardog:294 , stardog:1049 , stardog:1560 , stardog:57 , stardog:358 , stardog:168 , stardog:1513 , stardog:986 , stardog:1662 , stardog:164 , stardog:1010 , stardog:350 , stardog:1522 .
+stardog:50 a :router .
+stardog:109 a :router ;
+   :connects stardog:50 .
+stardog:143 a :router ;
+   :connects stardog:50 .
+stardog:192 a :router ;
+   :connects stardog:50 .
+stardog:224 a :router ;
+   :connects stardog:50 , stardog:103 , stardog:150 .
+stardog:271 a :router ;
+   :connects stardog:50 .
+stardog:277 a :router ;
+   :connects stardog:80 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:79 , stardog:270 , stardog:137 .
+stardog:302 a :router ;
+   :connects stardog:50 , stardog:259 , stardog:287 .
+stardog:324 a :router ;
+   :connects stardog:50 , stardog:277 .
+stardog:336 a :router ;
+   :connects stardog:50 , stardog:277 .
+stardog:361 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 .
+stardog:395 a :router ;
+   :connects stardog:50 .
+stardog:424 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 .
+stardog:497 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 .
+stardog:624 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 .
+stardog:634 a :router ;
+   :connects stardog:540 , stardog:50 , stardog:143 , stardog:302 , stardog:183 , stardog:193 , stardog:521 , stardog:525 , stardog:443 , stardog:388 , stardog:544 .
+stardog:641 a :router ;
+   :connects stardog:155 , stardog:50 , stardog:268 , stardog:490 , stardog:588 .
+stardog:708 a :router ;
+   :connects stardog:295 , stardog:343 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 .
+stardog:714 a :router ;
+   :connects stardog:540 , stardog:50 , stardog:143 , stardog:302 , stardog:374 , stardog:626 .
+stardog:826 a :router ;
+   :connects stardog:343 , stardog:408 , stardog:54 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:294 , stardog:310 , stardog:350 .
+stardog:831 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 .
+stardog:865 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:224 , stardog:277 , stardog:361 , stardog:497 , stardog:708 , stardog:826 , stardog:61 .
+stardog:935 a :router ;
+   :connects stardog:703 , stardog:50 , stardog:634 .
+stardog:959 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:449 .
+stardog:998 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 .
+stardog:1023 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:766 .
+stardog:1034 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:375 .
+stardog:1074 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:582 .
+stardog:1139 a :router ;
+   :connects stardog:50 .
+stardog:1170 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:1034 .
+stardog:1183 a :router ;
+   :connects stardog:523 , stardog:50 .
+stardog:1196 a :router ;
+   :connects stardog:216 , stardog:343 , stardog:420 , stardog:583 , stardog:864 , stardog:1022 , stardog:1027 , stardog:967 , stardog:50 , stardog:109 , stardog:224 , stardog:277 , stardog:361 , stardog:424 , stardog:497 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:351 , stardog:502 , stardog:661 , stardog:693 , stardog:907 .
+stardog:1230 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:222 .
+stardog:1288 a :router ;
+   :connects stardog:1071 , stardog:343 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:1282 , stardog:868 .
+stardog:1301 a :router ;
+   :connects stardog:464 , stardog:343 , stardog:155 , stardog:246 , stardog:104 , stardog:664 , stardog:1012 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1170 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1127 , stardog:169 , stardog:320 , stardog:393 .
+stardog:1324 a :router ;
+   :connects stardog:343 , stardog:1027 , stardog:50 , stardog:192 , stardog:277 , stardog:708 , stardog:826 , stardog:959 , stardog:1034 , stardog:1074 , stardog:1170 , stardog:1196 , stardog:1301 , stardog:1098 , stardog:694 , stardog:1236 , stardog:521 , stardog:566 , stardog:907 .
+stardog:1376 a :router ;
+   :connects stardog:343 , stardog:50 , stardog:109 , stardog:224 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:1288 , stardog:1301 , stardog:371 , stardog:1025 , stardog:1282 .
+stardog:1379 a :router ;
+   :connects stardog:1054 , stardog:50 , stardog:634 , stardog:242 , stardog:193 , stardog:521 , stardog:525 , stardog:911 , stardog:1130 , stardog:293 , stardog:1146 , stardog:522 , stardog:767 , stardog:1094 , stardog:1116 .
+stardog:1500 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1301 , stardog:1324 , stardog:1376 , stardog:742 .
+stardog:1605 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1301 , stardog:1324 , stardog:1500 , stardog:868 , stardog:886 .
+stardog:1636 a :router ;
+   :connects stardog:50 , stardog:143 , stardog:647 , stardog:322 , stardog:949 .
+stardog:1640 a :router ;
+   :connects stardog:1540 , stardog:343 , stardog:1476 , stardog:50 , stardog:109 , stardog:192 , stardog:224 , stardog:277 , stardog:324 , stardog:336 , stardog:361 , stardog:424 , stardog:497 , stardog:624 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:959 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1170 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1301 , stardog:1324 , stardog:1376 , stardog:1500 , stardog:1605 , stardog:481 , stardog:683 , stardog:1563 .
+stardog:1690 a :router ;
+   :connects stardog:1370 , stardog:1540 , stardog:343 , stardog:1476 , stardog:50 , stardog:277 , stardog:497 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:1230 , stardog:1301 , stardog:1324 , stardog:1500 , stardog:1640 , stardog:533 , stardog:1374 .
+stardog:1730 a :router ;
+   :connects stardog:1054 , stardog:1431 , stardog:689 , stardog:540 , stardog:609 , stardog:652 , stardog:594 , stardog:1167 , stardog:50 , stardog:143 , stardog:302 , stardog:714 , stardog:1379 , stardog:342 , stardog:1098 , stardog:1203 , stardog:960 , stardog:870 , stardog:1406 , stardog:1665 .
+stardog:1757 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:1034 , stardog:1301 , stardog:1500 , stardog:1640 .
+stardog:1826 a :router ;
+   :connects stardog:52 , stardog:87 , stardog:216 , stardog:343 , stardog:420 , stardog:656 , stardog:805 , stardog:858 , stardog:864 , stardog:1022 , stardog:1040 , stardog:1090 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1285 , stardog:1386 , stardog:1421 , stardog:1473 , stardog:1507 , stardog:1571 , stardog:1646 , stardog:1744 , stardog:1476 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:1034 , stardog:1196 , stardog:1301 , stardog:1324 , stardog:1500 , stardog:1640 , stardog:1664 .
+stardog:1941 a :router ;
+   :connects stardog:689 , stardog:703 , stardog:967 , stardog:1167 , stardog:50 , stardog:634 , stardog:935 , stardog:1100 , stardog:1310 , stardog:1164 , stardog:388 , stardog:1011 , stardog:1162 , stardog:926 , stardog:962 , stardog:964 , stardog:1042 , stardog:1075 , stardog:1339 , stardog:1530 , stardog:666 .
+stardog:2008 a :router ;
+   :connects stardog:1540 , stardog:343 , stardog:1476 , stardog:50 , stardog:109 , stardog:224 , stardog:277 , stardog:336 , stardog:361 , stardog:424 , stardog:708 , stardog:826 , stardog:831 , stardog:865 , stardog:998 , stardog:1023 , stardog:1034 , stardog:1074 , stardog:1196 , stardog:1230 , stardog:1288 , stardog:1301 , stardog:1324 , stardog:1376 , stardog:1500 , stardog:1605 , stardog:1640 , stardog:1690 , stardog:1757 , stardog:1826 , stardog:103 , stardog:571 , stardog:679 , stardog:683 , stardog:1374 , stardog:1918 .
+stardog:2026 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:2016 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:865 , stardog:1034 , stardog:1196 , stardog:1301 , stardog:1500 , stardog:1605 , stardog:1640 , stardog:2008 .
+stardog:2048 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:2016 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:831 , stardog:1034 , stardog:1301 , stardog:1640 .
+stardog:2053 a :router ;
+   :connects stardog:1595 , stardog:1554 , stardog:540 , stardog:1041 , stardog:50 , stardog:143 , stardog:641 , stardog:161 , stardog:861 , stardog:592 , stardog:953 , stardog:692 , stardog:711 .
+stardog:2081 a :router ;
+   :connects stardog:343 , stardog:1476 , stardog:2016 , stardog:1554 , stardog:50 , stardog:277 , stardog:708 , stardog:826 , stardog:1034 , stardog:1196 , stardog:1301 , stardog:1324 , stardog:1500 , stardog:1640 , stardog:2008 , stardog:159 , stardog:1563 .
+stardog:1437 a :router ;
+   :connects stardog:51 , stardog:871 , stardog:418 , stardog:1192 , stardog:660 .
+stardog:51 a :router .
+stardog:1404 a :router ;
+   :connects stardog:52 , stardog:87 , stardog:198 , stardog:216 , stardog:420 , stardog:583 , stardog:654 , stardog:656 , stardog:858 , stardog:864 , stardog:900 , stardog:1022 , stardog:1040 , stardog:1090 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1285 , stardog:1386 , stardog:402 , stardog:913 , stardog:89 , stardog:678 , stardog:347 .
+stardog:1980 a :router ;
+   :connects stardog:52 , stardog:87 , stardog:216 , stardog:313 , stardog:414 , stardog:420 , stardog:471 , stardog:554 , stardog:583 , stardog:705 , stardog:864 , stardog:900 , stardog:923 , stardog:1022 , stardog:1027 , stardog:1040 , stardog:1160 , stardog:1168 , stardog:1232 , stardog:1234 , stardog:1285 , stardog:1386 , stardog:1421 , stardog:1473 , stardog:1571 , stardog:1646 , stardog:1677 , stardog:1744 , stardog:1815 , stardog:1821 , stardog:1877 , stardog:246 .
+stardog:294 a :router ;
+   :connects stardog:218 , stardog:54 , stardog:57 , stardog:128 .
+stardog:637 a :router ;
+   :connects stardog:247 , stardog:54 , stardog:237 , stardog:418 .
+stardog:1045 a :router ;
+   :connects stardog:747 , stardog:54 , stardog:485 .
+stardog:1049 a :router ;
+   :connects stardog:764 , stardog:54 , stardog:826 , stardog:986 , stardog:754 .
+stardog:1190 a :router ;
+   :connects stardog:54 .
+stardog:1560 a :router ;
+   :connects stardog:429 , stardog:54 , stardog:477 , stardog:968 .
+stardog:1780 a :router ;
+   :connects stardog:1062 , stardog:408 , stardog:1245 , stardog:54 , stardog:1122 , stardog:1485 , stardog:826 , stardog:495 , stardog:751 , stardog:57 , stardog:1449 , stardog:1671 , stardog:559 , stardog:1197 , stardog:1662 , stardog:310 , stardog:1751 , stardog:818 .
+stardog:1643 a :router ;
+   :connects stardog:55 , stardog:1502 , stardog:207 , stardog:381 , stardog:425 , stardog:545 , stardog:1159 , stardog:984 .
+stardog:55 a :router .
+stardog:138 a :router ;
+   :connects stardog:56 .
+stardog:378 a :router ;
+   :connects stardog:306 , stardog:56 , stardog:249 .
+stardog:423 a :router ;
+   :connects stardog:306 , stardog:56 , stardog:378 .
+stardog:472 a :router ;
+   :connects stardog:306 , stardog:56 , stardog:378 , stardog:423 , stardog:229 .
+stardog:495 a :router ;
+   :connects stardog:306 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:259 , stardog:98 , stardog:100 , stardog:493 .
+stardog:610 a :router ;
+   :connects stardog:343 , stardog:557 , stardog:306 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:259 , stardog:518 , stardog:203 .
+stardog:740 a :router ;
+   :connects stardog:306 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:371 , stardog:259 , stardog:119 , stardog:518 , stardog:169 , stardog:657 , stardog:327 .
+stardog:751 a :router ;
+   :connects stardog:747 , stardog:306 , stardog:408 , stardog:56 , stardog:294 , stardog:378 , stardog:423 , stardog:495 , stardog:610 , stardog:740 , stardog:358 , stardog:518 , stardog:657 .
+stardog:985 a :router ;
+   :connects stardog:464 , stardog:343 , stardog:605 , stardog:155 , stardog:306 , stardog:56 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:259 , stardog:518 , stardog:393 , stardog:262 , stardog:657 , stardog:830 .
+stardog:1031 a :router ;
+   :connects stardog:305 , stardog:536 , stardog:291 , stardog:295 , stardog:612 , stardog:712 , stardog:914 , stardog:386 , stardog:534 , stardog:306 , stardog:56 , stardog:708 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:518 , stardog:446 , stardog:657 , stardog:353 .
+stardog:1297 a :router ;
+   :connects stardog:56 , stardog:224 , stardog:1076 , stardog:601 .
+stardog:1378 a :router ;
+   :connects stardog:1291 , stardog:386 , stardog:306 , stardog:394 , stardog:56 , stardog:277 , stardog:302 , stardog:378 , stardog:423 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:58 , stardog:944 , stardog:982 , stardog:1175 , stardog:1290 , stardog:270 , stardog:359 , stardog:259 , stardog:518 , stardog:262 , stardog:1365 , stardog:1310 , stardog:657 , stardog:1107 , stardog:1293 , stardog:345 , stardog:1000 , stardog:655 , stardog:905 , stardog:997 , stardog:1342 .
+stardog:1687 a :router ;
+   :connects stardog:56 , stardog:1519 , stardog:1180 .
+stardog:1778 a :router ;
+   :connects stardog:56 , stardog:224 , stardog:138 , stardog:1297 , stardog:371 , stardog:150 , stardog:601 .
+stardog:228 a :router ;
+   :connects stardog:57 .
+stardog:57 a :router .
+stardog:547 a :router ;
+   :connects stardog:247 , stardog:331 , stardog:57 , stardog:151 , stardog:237 , stardog:475 .
+stardog:946 a :router ;
+   :connects stardog:826 , stardog:294 , stardog:57 .
+stardog:968 a :router ;
+   :connects stardog:142 , stardog:429 , stardog:57 , stardog:360 .
+stardog:1449 a :router ;
+   :connects stardog:1356 , stardog:1245 , stardog:1122 , stardog:57 , stardog:58 , stardog:358 , stardog:529 , stardog:278 , stardog:1010 , stardog:789 , stardog:1259 , stardog:1223 .
+stardog:1593 a :router ;
+   :connects stardog:294 , stardog:57 , stardog:460 .
+stardog:1671 a :router ;
+   :connects stardog:747 , stardog:294 , stardog:228 , stardog:57 , stardog:1197 .
+stardog:1950 a :router ;
+   :connects stardog:408 , stardog:1780 , stardog:57 , stardog:168 , stardog:1197 , stardog:1794 .
+stardog:58 a :router .
+stardog:358 a :router ;
+   :connects stardog:283 , stardog:58 .
+stardog:450 a :router ;
+   :connects stardog:80 , stardog:386 , stardog:58 .
+stardog:504 a :router ;
+   :connects stardog:58 , stardog:442 .
+stardog:513 a :router ;
+   :connects stardog:165 , stardog:58 , stardog:504 , stardog:253 , stardog:211 .
+stardog:529 a :router ;
+   :connects stardog:58 , stardog:358 , stardog:460 .
+stardog:941 a :router ;
+   :connects stardog:58 .
+stardog:944 a :router ;
+   :connects stardog:803 , stardog:386 , stardog:277 , stardog:58 , stardog:397 .
+stardog:950 a :router ;
+   :connects stardog:58 .
+stardog:956 a :router ;
+   :connects stardog:58 , stardog:850 .
+stardog:982 a :router ;
+   :connects stardog:80 , stardog:803 , stardog:685 , stardog:386 , stardog:394 , stardog:277 , stardog:58 , stardog:120 , stardog:270 , stardog:436 , stardog:93 , stardog:137 , stardog:190 , stardog:375 , stardog:795 , stardog:669 .
+stardog:988 a :router ;
+   :connects stardog:842 , stardog:58 .
+stardog:1155 a :router ;
+   :connects stardog:58 , stardog:1007 .
+stardog:1175 a :router ;
+   :connects stardog:803 , stardog:386 , stardog:58 , stardog:982 , stardog:190 , stardog:840 .
+stardog:1206 a :router ;
+   :connects stardog:305 , stardog:80 , stardog:1165 , stardog:386 , stardog:214 , stardog:587 , stardog:58 , stardog:944 , stardog:956 , stardog:982 , stardog:1155 , stardog:1175 , stardog:367 , stardog:359 , stardog:397 , stardog:436 , stardog:1007 , stardog:1149 , stardog:253 , stardog:126 , stardog:760 , stardog:219 , stardog:447 , stardog:887 , stardog:952 , stardog:918 .
+stardog:1290 a :router ;
+   :connects stardog:80 , stardog:386 , stardog:58 , stardog:944 , stardog:956 , stardog:982 , stardog:1206 , stardog:436 , stardog:850 , stardog:1007 , stardog:987 , stardog:1127 , stardog:242 , stardog:362 , stardog:840 .
+stardog:1537 a :router ;
+   :connects stardog:165 , stardog:80 , stardog:386 , stardog:1198 , stardog:1378 , stardog:58 , stardog:944 , stardog:982 , stardog:1175 , stardog:1290 , stardog:120 , stardog:270 , stardog:397 , stardog:850 , stardog:93 , stardog:987 , stardog:137 , stardog:880 , stardog:223 , stardog:1299 , stardog:190 , stardog:1382 , stardog:1087 , stardog:668 , stardog:550 , stardog:569 .
+stardog:1878 a :router ;
+   :connects stardog:664 , stardog:58 , stardog:513 , stardog:211 .
+stardog:1902 a :router ;
+   :connects stardog:80 , stardog:1593 , stardog:58 , stardog:982 , stardog:1206 , stardog:850 , stardog:855 .
+stardog:2027 a :router ;
+   :connects stardog:58 , stardog:1878 .
+stardog:552 a :router ;
+   :connects stardog:59 .
+stardog:59 a :router .
+stardog:292 a :router ;
+   :connects stardog:60 , stardog:98 .
+stardog:60 a :router .
+stardog:61 a :router .
+stardog:1588 a :router ;
+   :connects stardog:62 .
+stardog:62 a :router .
+stardog:1801 a :router ;
+   :connects stardog:1249 , stardog:587 , stardog:1158 , stardog:944 , stardog:1588 , stardog:62 , stardog:1392 , stardog:240 , stardog:768 , stardog:341 , stardog:390 , stardog:759 , stardog:1453 , stardog:1060 , stardog:1077 , stardog:1085 , stardog:1148 , stardog:1514 , stardog:1420 , stardog:1705 .
+stardog:63 a :router .
+stardog:1977 a :router ;
+   :connects stardog:1623 , stardog:402 , stardog:664 , stardog:1400 , stardog:1890 , stardog:609 , stardog:842 , stardog:1301 , stardog:513 , stardog:1878 , stardog:63 , stardog:364 , stardog:871 , stardog:1944 , stardog:1882 , stardog:579 .
+stardog:188 a :router ;
+   :connects stardog:64 .
+stardog:64 a :router .
+stardog:908 a :router ;
+   :connects stardog:188 , stardog:64 , stardog:248 , stardog:512 .
+stardog:65 a :router .
+stardog:1115 a :router ;
+   :connects stardog:65 .
+stardog:1138 a :router ;
+   :connects stardog:234 , stardog:65 , stardog:1115 .
+stardog:1723 a :router ;
+   :connects stardog:65 , stardog:1138 .
+stardog:66 a :router .
+stardog:1838 a :router ;
+   :connects stardog:66 , stardog:1137 .
+stardog:1201 a :router ;
+   :connects stardog:1081 , stardog:67 , stardog:276 , stardog:1113 , stardog:1189 .
+stardog:67 a :router .
+stardog:1824 a :router ;
+   :connects stardog:80 , stardog:394 , stardog:277 , stardog:1378 , stardog:450 , stardog:944 , stardog:982 , stardog:1206 , stardog:1537 , stardog:68 , stardog:873 , stardog:196 , stardog:574 , stardog:877 .
+stardog:68 a :router .
+stardog:69 a :router .
+stardog:1759 a :router ;
+   :connects stardog:70 , stardog:1447 , stardog:758 , stardog:1548 .
+stardog:70 a :router .
+stardog:1093 a :router ;
+   :connects stardog:71 .
+stardog:1353 a :router ;
+   :connects stardog:71 , stardog:1191 .
+stardog:1858 a :router ;
+   :connects stardog:71 .
+stardog:367 a :router ;
+   :connects stardog:72 , stardog:166 .
+stardog:72 a :router .
+stardog:749 a :router ;
+   :connects stardog:73 .
+stardog:73 a :router .
+stardog:1292 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:295 , stardog:557 , stardog:73 , stardog:371 , stardog:483 , stardog:992 , stardog:496 .
+stardog:74 a :router .
+stardog:206 a :router ;
+   :connects stardog:75 , stardog:137 .
+stardog:75 a :router .
+stardog:409 a :router ;
+   :connects stardog:75 , stardog:137 .
+stardog:441 a :router ;
+   :connects stardog:206 , stardog:75 , stardog:409 , stardog:137 , stardog:121 , stardog:352 .
+stardog:902 a :router ;
+   :connects stardog:75 , stardog:441 , stardog:775 , stardog:137 .
+stardog:970 a :router ;
+   :connects stardog:896 , stardog:206 , stardog:75 , stardog:441 , stardog:775 , stardog:137 , stardog:500 .
+stardog:1036 a :router ;
+   :connects stardog:75 , stardog:441 , stardog:970 , stardog:775 , stardog:137 , stardog:993 , stardog:500 .
+stardog:1046 a :router ;
+   :connects stardog:155 , stardog:75 , stardog:441 , stardog:970 , stardog:775 , stardog:137 , stardog:121 , stardog:993 , stardog:500 .
+stardog:1184 a :router ;
+   :connects stardog:155 , stardog:75 , stardog:441 , stardog:775 , stardog:137 , stardog:993 .
+stardog:1618 a :router ;
+   :connects stardog:896 , stardog:75 , stardog:441 , stardog:1046 , stardog:775 , stardog:137 , stardog:993 , stardog:250 .
+stardog:1789 a :router ;
+   :connects stardog:896 , stardog:1006 , stardog:206 , stardog:75 , stardog:441 , stardog:970 , stardog:1046 , stardog:775 , stardog:137 , stardog:993 , stardog:500 .
+stardog:168 a :router ;
+   :connects stardog:76 .
+stardog:76 a :router .
+stardog:939 a :router ;
+   :connects stardog:734 , stardog:168 , stardog:76 , stardog:102 , stardog:307 .
+stardog:1069 a :router ;
+   :connects stardog:76 .
+stardog:1502 a :router ;
+   :connects stardog:376 , stardog:1154 , stardog:76 , stardog:307 , stardog:202 , stardog:545 , stardog:560 , stardog:674 , stardog:744 , stardog:901 , stardog:1242 , stardog:1306 , stardog:1374 , stardog:1409 , stardog:1438 .
+stardog:77 a :router .
+stardog:79 a :router .
+stardog:120 a :router ;
+   :connects stardog:80 .
+stardog:225 a :router ;
+   :connects stardog:80 .
+stardog:270 a :router ;
+   :connects stardog:80 .
+stardog:359 a :router ;
+   :connects stardog:80 .
+stardog:397 a :router ;
+   :connects stardog:80 , stardog:386 , stardog:270 , stardog:167 .
+stardog:436 a :router ;
+   :connects stardog:80 , stardog:331 .
+stardog:618 a :router ;
+   :connects stardog:80 .
+stardog:653 a :router ;
+   :connects stardog:80 , stardog:406 .
+stardog:721 a :router ;
+   :connects stardog:80 .
+stardog:849 a :router ;
+   :connects stardog:80 , stardog:101 .
+stardog:850 a :router ;
+   :connects stardog:80 , stardog:408 , stardog:543 , stardog:450 , stardog:721 , stardog:317 , stardog:765 .
+stardog:897 a :router ;
+   :connects stardog:80 , stardog:247 , stardog:853 , stardog:604 .
+stardog:1007 a :router ;
+   :connects stardog:80 , stardog:386 , stardog:587 , stardog:956 , stardog:982 , stardog:359 , stardog:795 .
+stardog:1100 a :router ;
+   :connects stardog:698 , stardog:80 , stardog:967 .
+stardog:1149 a :router ;
+   :connects stardog:80 , stardog:394 , stardog:277 , stardog:982 .
+stardog:1384 a :router ;
+   :connects stardog:80 .
+stardog:1419 a :router ;
+   :connects stardog:80 .
+stardog:1439 a :router ;
+   :connects stardog:80 .
+stardog:1773 a :router ;
+   :connects stardog:80 , stardog:1378 .
+stardog:1786 a :router ;
+   :connects stardog:80 , stardog:489 , stardog:1206 , stardog:1719 .
+stardog:1820 a :router ;
+   :connects stardog:80 , stardog:367 , stardog:850 .
+stardog:1866 a :router ;
+   :connects stardog:536 , stardog:80 , stardog:394 , stardog:1654 , stardog:1850 , stardog:277 , stardog:944 , stardog:982 , stardog:1206 , stardog:197 , stardog:1533 .
+stardog:2096 a :router ;
+   :connects stardog:80 , stardog:274 , stardog:1245 , stardog:842 , stardog:1258 , stardog:1604 .
+stardog:2097 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1810 , stardog:80 , stardog:295 , stardog:386 , stardog:429 , stardog:557 , stardog:261 , stardog:394 , stardog:1850 , stardog:277 , stardog:1378 , stardog:1593 , stardog:450 , stardog:982 , stardog:1206 , stardog:1290 , stardog:1537 , stardog:1902 , stardog:1824 , stardog:1292 , stardog:120 , stardog:270 , stardog:397 , stardog:850 , stardog:1007 , stardog:1866 , stardog:90 , stardog:371 , stardog:992 , stardog:1312 , stardog:1727 , stardog:101 , stardog:124 , stardog:2045 , stardog:317 , stardog:372 , stardog:355 , stardog:1532 , stardog:1959 , stardog:855 , stardog:979 , stardog:1281 , stardog:1448 .
+stardog:108 a :router ;
+   :connects stardog:81 .
+stardog:81 a :router .
+stardog:335 a :router ;
+   :connects stardog:81 .
+stardog:1682 a :router ;
+   :connects stardog:214 , stardog:81 .
+stardog:2039 a :router ;
+   :connects stardog:214 , stardog:81 .
+stardog:201 a :router ;
+   :connects stardog:82 .
+stardog:82 a :router .
+stardog:217 a :router ;
+   :connects stardog:82 .
+stardog:1708 a :router ;
+   :connects stardog:1378 , stardog:1175 , stardog:1290 , stardog:201 , stardog:82 , stardog:840 .
+stardog:559 a :router ;
+   :connects stardog:83 , stardog:252 , stardog:485 .
+stardog:83 a :router .
+stardog:1019 a :router ;
+   :connects stardog:83 .
+stardog:1373 a :router ;
+   :connects stardog:83 , stardog:1019 , stardog:1352 .
+stardog:84 a :router .
+stardog:1471 a :router ;
+   :connects stardog:610 , stardog:84 , stardog:1020 , stardog:971 .
+stardog:821 a :router ;
+   :connects stardog:165 , stardog:85 , stardog:454 .
+stardog:85 a :router .
+stardog:2090 a :router ;
+   :connects stardog:85 , stardog:1488 , stardog:1711 , stardog:1704 .
+stardog:279 a :router ;
+   :connects stardog:86 .
+stardog:86 a :router .
+stardog:1326 a :router ;
+   :connects stardog:279 , stardog:86 , stardog:288 , stardog:459 , stardog:1147 .
+stardog:185 a :router ;
+   :connects stardog:87 .
+stardog:88 a :router .
+stardog:929 a :router ;
+   :connects stardog:703 , stardog:88 .
+stardog:1659 a :router ;
+   :connects stardog:703 , stardog:967 , stardog:88 .
+stardog:89 a :router .
+stardog:229 a :router ;
+   :connects stardog:90 .
+stardog:90 a :router .
+stardog:318 a :router ;
+   :connects stardog:90 .
+stardog:371 a :router ;
+   :connects stardog:295 , stardog:90 , stardog:124 , stardog:169 .
+stardog:483 a :router ;
+   :connects stardog:464 , stardog:295 , stardog:429 , stardog:229 , stardog:90 , stardog:371 , stardog:124 , stardog:372 .
+stardog:992 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:295 , stardog:429 , stardog:557 , stardog:90 , stardog:371 , stardog:483 , stardog:124 , stardog:372 , stardog:675 .
+stardog:1312 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:295 , stardog:429 , stardog:557 , stardog:1031 , stardog:1292 , stardog:90 , stardog:371 , stardog:483 , stardog:992 , stardog:124 , stardog:372 , stardog:562 , stardog:353 .
+stardog:1440 a :router ;
+   :connects stardog:386 , stardog:90 .
+stardog:1450 a :router ;
+   :connects stardog:429 , stardog:229 , stardog:90 , stardog:483 .
+stardog:1727 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:295 , stardog:429 , stardog:557 , stardog:90 , stardog:371 , stardog:483 , stardog:992 , stardog:1312 , stardog:124 , stardog:1589 , stardog:1649 .
+stardog:451 a :router ;
+   :connects stardog:91 , stardog:149 .
+stardog:91 a :router .
+stardog:374 a :router ;
+   :connects stardog:92 .
+stardog:92 a :router .
+stardog:368 a :router ;
+   :connects stardog:93 , stardog:144 .
+stardog:93 a :router .
+stardog:570 a :router ;
+   :connects stardog:368 , stardog:93 .
+stardog:650 a :router ;
+   :connects stardog:93 .
+stardog:775 a :router ;
+   :connects stardog:206 , stardog:409 , stardog:441 , stardog:93 , stardog:570 , stardog:121 , stardog:352 , stardog:500 , stardog:428 , stardog:651 .
+stardog:1033 a :router ;
+   :connects stardog:368 , stardog:93 .
+stardog:1178 a :router ;
+   :connects stardog:93 , stardog:811 , stardog:431 , stardog:852 , stardog:1043 , stardog:1066 .
+stardog:94 a :router .
+stardog:186 a :router ;
+   :connects stardog:95 .
+stardog:95 a :router .
+stardog:259 a :router ;
+   :connects stardog:95 , stardog:152 , stardog:256 .
+stardog:342 a :router ;
+   :connects stardog:95 , stardog:243 .
+stardog:351 a :router ;
+   :connects stardog:143 , stardog:95 , stardog:259 , stardog:286 .
+stardog:502 a :router ;
+   :connects stardog:95 , stardog:351 .
+stardog:600 a :router ;
+   :connects stardog:95 , stardog:328 .
+stardog:930 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:864 , stardog:484 , stardog:95 , stardog:462 , stardog:112 , stardog:332 , stardog:629 , stardog:667 , stardog:885 .
+stardog:942 a :router ;
+   :connects stardog:95 , stardog:351 , stardog:690 .
+stardog:1098 a :router ;
+   :connects stardog:1027 , stardog:841 , stardog:935 , stardog:95 , stardog:694 , stardog:328 , stardog:907 .
+stardog:1195 a :router ;
+   :connects stardog:95 .
+stardog:1203 a :router ;
+   :connects stardog:619 , stardog:609 , stardog:95 , stardog:342 , stardog:600 , stardog:1098 , stardog:328 .
+stardog:1451 a :router ;
+   :connects stardog:1183 , stardog:1196 , stardog:95 , stardog:351 , stardog:519 , stardog:693 , stardog:907 .
+stardog:1539 a :router ;
+   :connects stardog:95 , stardog:388 .
+stardog:1599 a :router ;
+   :connects stardog:540 , stardog:1196 , stardog:95 , stardog:259 , stardog:351 , stardog:286 , stardog:373 , stardog:146 , stardog:1095 , stardog:1008 , stardog:752 , stardog:1250 .
+stardog:1843 a :router ;
+   :connects stardog:891 , stardog:95 , stardog:342 , stardog:600 .
+stardog:96 a :router .
+stardog:97 a :router .
+stardog:141 a :router ;
+   :connects stardog:98 .
+stardog:98 a :router .
+stardog:1962 a :router ;
+   :connects stardog:98 , stardog:1185 , stardog:421 .
+stardog:99 a :router .
+stardog:100 a :router .
+stardog:1469 a :router ;
+   :connects stardog:100 , stardog:818 .
+stardog:101 a :router .
+stardog:102 a :router .
+stardog:1486 a :router ;
+   :connects stardog:947 , stardog:102 , stardog:1129 , stardog:264 .
+stardog:1513 a :router ;
+   :connects stardog:947 , stardog:408 , stardog:1485 , stardog:826 , stardog:946 , stardog:1449 , stardog:102 , stardog:1486 , stardog:986 , stardog:1197 , stardog:713 .
+stardog:103 a :router .
+stardog:1544 a :router ;
+   :connects stardog:698 , stardog:305 , stardog:179 , stardog:614 , stardog:1165 , stardog:214 , stardog:104 , stardog:274 , stardog:1518 , stardog:1041 , stardog:1301 , stardog:1206 , stardog:1100 , stardog:253 , stardog:126 , stardog:760 , stardog:647 , stardog:801 , stardog:447 , stardog:887 , stardog:952 , stardog:1478 , stardog:1535 , stardog:603 , stardog:1377 , stardog:1222 , stardog:918 , stardog:334 , stardog:421 , stardog:1134 , stardog:573 , stardog:673 , stardog:735 , stardog:777 , stardog:1323 , stardog:644 .
+stardog:986 a :router ;
+   :connects stardog:247 , stardog:826 , stardog:637 , stardog:168 , stardog:105 , stardog:687 .
+stardog:105 a :router .
+stardog:1383 a :router ;
+   :connects stardog:489 , stardog:513 , stardog:105 , stardog:549 .
+stardog:286 a :router ;
+   :connects stardog:106 , stardog:136 , stardog:182 .
+stardog:106 a :router .
+stardog:422 a :router ;
+   :connects stardog:286 , stardog:106 .
+stardog:2078 a :router ;
+   :connects stardog:107 , stardog:1955 , stardog:377 , stardog:1423 .
+stardog:107 a :router .
+stardog:1123 a :router ;
+   :connects stardog:359 , stardog:110 .
+stardog:110 a :router .
+stardog:1673 a :router ;
+   :connects stardog:343 , stardog:605 , stardog:111 , stardog:1218 , stardog:118 , stardog:801 , stardog:597 , stardog:456 .
+stardog:111 a :router .
+stardog:462 a :router ;
+   :connects stardog:112 , stardog:332 .
+stardog:112 a :router .
+stardog:473 a :router ;
+   :connects stardog:112 .
+stardog:1694 a :router ;
+   :connects stardog:462 , stardog:113 , stardog:1622 , stardog:1327 .
+stardog:113 a :router .
+stardog:883 a :router ;
+   :connects stardog:698 , stardog:114 , stardog:863 .
+stardog:114 a :router .
+stardog:1078 a :router ;
+   :connects stardog:114 .
+stardog:1871 a :router ;
+   :connects stardog:1303 , stardog:803 , stardog:343 , stardog:614 , stardog:1850 , stardog:1290 , stardog:1537 , stardog:120 , stardog:114 , stardog:1299 , stardog:1277 , stardog:1260 , stardog:1340 , stardog:1455 , stardog:1511 .
+stardog:115 a :router .
+stardog:1129 a :router ;
+   :connects stardog:712 , stardog:247 , stardog:115 , stardog:191 , stardog:296 , stardog:533 , stardog:838 .
+stardog:1254 a :router ;
+   :connects stardog:712 , stardog:247 , stardog:115 , stardog:1129 .
+stardog:116 a :router .
+stardog:117 a :router .
+stardog:2072 a :router ;
+   :connects stardog:464 , stardog:2007 , stardog:1666 , stardog:841 , stardog:155 , stardog:1745 , stardog:209 , stardog:306 , stardog:664 , stardog:1012 , stardog:1108 , stardog:1110 , stardog:1121 , stardog:1400 , stardog:1807 , stardog:1890 , stardog:1301 , stardog:1404 , stardog:1537 , stardog:1100 , stardog:117 , stardog:1825 , stardog:320 , stardog:393 , stardog:1805 , stardog:880 , stardog:223 , stardog:1494 , stardog:251 , stardog:1087 , stardog:454 , stardog:254 , stardog:1626 , stardog:1089 , stardog:878 , stardog:2060 , stardog:2017 .
+stardog:1218 a :router ;
+   :connects stardog:118 , stardog:1142 .
+stardog:118 a :router .
+stardog:119 a :router .
+stardog:987 a :router ;
+   :connects stardog:803 , stardog:277 , stardog:120 , stardog:160 , stardog:904 .
+stardog:1127 a :router ;
+   :connects stardog:155 , stardog:747 , stardog:896 , stardog:120 , stardog:987 , stardog:478 , stardog:792 , stardog:905 .
+stardog:1392 a :router ;
+   :connects stardog:605 , stardog:188 , stardog:120 , stardog:546 , stardog:1077 .
+stardog:1928 a :router ;
+   :connects stardog:605 , stardog:764 , stardog:1485 , stardog:714 , stardog:1049 , stardog:120 , stardog:410 , stardog:1617 .
+stardog:137 a :router ;
+   :connects stardog:121 .
+stardog:121 a :router .
+stardog:993 a :router ;
+   :connects stardog:155 , stardog:206 , stardog:409 , stardog:902 , stardog:970 , stardog:368 , stardog:121 , stardog:352 , stardog:500 , stardog:975 .
+stardog:122 a :router .
+stardog:1263 a :router ;
+   :connects stardog:896 , stardog:123 , stardog:567 .
+stardog:123 a :router .
+stardog:1608 a :router ;
+   :connects stardog:123 , stardog:1541 .
+stardog:124 a :router .
+stardog:707 a :router ;
+   :connects stardog:124 .
+stardog:1657 a :router ;
+   :connects stardog:371 , stardog:124 .
+stardog:1967 a :router ;
+   :connects stardog:1810 , stardog:124 , stardog:1377 .
+stardog:2045 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1810 , stardog:295 , stardog:429 , stardog:557 , stardog:1476 , stardog:1660 , stardog:1857 , stardog:1122 , stardog:1485 , stardog:1560 , stardog:968 , stardog:1292 , stardog:371 , stardog:483 , stardog:992 , stardog:1312 , stardog:1727 , stardog:124 , stardog:372 , stardog:1354 , stardog:242 , stardog:362 , stardog:1936 , stardog:710 , stardog:1784 , stardog:1144 , stardog:1185 , stardog:1433 , stardog:412 , stardog:925 , stardog:1635 , stardog:1901 , stardog:845 , stardog:1091 , stardog:1633 , stardog:1675 .
+stardog:1814 a :router ;
+   :connects stardog:1031 , stardog:125 , stardog:639 .
+stardog:125 a :router .
+stardog:253 a :router ;
+   :connects stardog:165 , stardog:214 , stardog:126 , stardog:242 , stardog:219 .
+stardog:126 a :router .
+stardog:649 a :router ;
+   :connects stardog:126 , stardog:447 .
+stardog:760 a :router ;
+   :connects stardog:305 , stardog:557 , stardog:214 , stardog:253 , stardog:126 , stardog:219 , stardog:447 , stardog:709 .
+stardog:1793 a :router ;
+   :connects stardog:305 , stardog:1165 , stardog:214 , stardog:1206 , stardog:367 , stardog:1544 , stardog:253 , stardog:126 , stardog:760 , stardog:219 , stardog:447 , stardog:952 , stardog:603 , stardog:1377 , stardog:1686 , stardog:1775 , stardog:1475 .
+stardog:555 a :router ;
+   :connects stardog:127 , stardog:307 .
+stardog:127 a :router .
+stardog:1194 a :router ;
+   :connects stardog:127 .
+stardog:1457 a :router ;
+   :connects stardog:1449 , stardog:127 .
+stardog:128 a :router .
+stardog:317 a :router ;
+   :connects stardog:218 , stardog:294 , stardog:128 .
+stardog:129 a :router .
+stardog:130 a :router .
+stardog:1551 a :router ;
+   :connects stardog:619 , stardog:1431 , stardog:1495 , stardog:1041 , stardog:130 , stardog:176 , stardog:258 , stardog:1222 , stardog:260 , stardog:334 , stardog:1134 , stardog:526 , stardog:573 , stardog:673 , stardog:735 , stardog:777 , stardog:1323 , stardog:910 , stardog:1529 , stardog:1131 .
+stardog:1645 a :router ;
+   :connects stardog:619 , stardog:1041 , stardog:130 , stardog:1551 , stardog:176 , stardog:258 , stardog:1222 , stardog:260 , stardog:334 , stardog:1134 , stardog:526 , stardog:573 , stardog:673 , stardog:735 , stardog:777 , stardog:1323 , stardog:910 , stardog:1529 , stardog:1131 .
+stardog:518 a :router ;
+   :connects stardog:306 , stardog:378 , stardog:472 , stardog:495 , stardog:131 .
+stardog:131 a :router .
+stardog:1226 a :router ;
+   :connects stardog:464 , stardog:131 , stardog:1220 .
+stardog:1347 a :router ;
+   :connects stardog:614 , stardog:155 , stardog:987 , stardog:131 , stardog:404 .
+stardog:912 a :router ;
+   :connects stardog:132 , stardog:245 , stardog:584 , stardog:825 .
+stardog:132 a :router .
+stardog:1615 a :router ;
+   :connects stardog:133 .
+stardog:133 a :router .
+stardog:1892 a :router ;
+   :connects stardog:698 , stardog:179 , stardog:343 , stardog:614 , stardog:619 , stardog:1495 , stardog:1807 , stardog:609 , stardog:397 , stardog:133 , stardog:1680 .
+stardog:783 a :router ;
+   :connects stardog:605 , stardog:134 .
+stardog:134 a :router .
+stardog:1186 a :router ;
+   :connects stardog:135 , stardog:294 .
+stardog:1197 a :router ;
+   :connects stardog:135 , stardog:1122 , stardog:826 , stardog:278 , stardog:1010 , stardog:350 .
+stardog:1662 a :router ;
+   :connects stardog:1062 , stardog:1356 , stardog:989 , stardog:1119 , stardog:135 , stardog:1485 , stardog:826 , stardog:294 , stardog:968 , stardog:559 , stardog:1305 , stardog:310 , stardog:1313 .
+stardog:136 a :router .
+stardog:922 a :router ;
+   :connects stardog:136 .
+stardog:352 a :router ;
+   :connects stardog:155 , stardog:137 .
+stardog:500 a :router ;
+   :connects stardog:155 , stardog:137 , stardog:352 .
+stardog:1067 a :router ;
+   :connects stardog:155 , stardog:896 , stardog:441 , stardog:775 , stardog:137 , stardog:993 , stardog:500 .
+stardog:853 a :router ;
+   :connects stardog:685 , stardog:139 , stardog:472 , stardog:229 .
+stardog:140 a :router .
+stardog:1755 a :router ;
+   :connects stardog:1356 , stardog:142 , stardog:747 , stardog:1476 , stardog:1745 , stardog:751 , stardog:1582 , stardog:1395 , stardog:1144 , stardog:1185 , stardog:556 , stardog:809 .
+stardog:1825 a :router ;
+   :connects stardog:1356 , stardog:142 , stardog:1745 , stardog:1006 , stardog:968 , stardog:1755 , stardog:251 , stardog:418 , stardog:475 , stardog:1720 , stardog:556 , stardog:1355 .
+stardog:356 a :router ;
+   :connects stardog:143 , stardog:351 .
+stardog:465 a :router ;
+   :connects stardog:143 , stardog:351 .
+stardog:591 a :router ;
+   :connects stardog:143 , stardog:351 .
+stardog:694 a :router ;
+   :connects stardog:143 , stardog:351 , stardog:465 .
+stardog:784 a :router ;
+   :connects stardog:143 , stardog:351 .
+stardog:889 a :router ;
+   :connects stardog:619 , stardog:143 , stardog:351 .
+stardog:960 a :router ;
+   :connects stardog:143 , stardog:502 .
+stardog:1209 a :router ;
+   :connects stardog:143 , stardog:351 , stardog:356 .
+stardog:1236 a :router ;
+   :connects stardog:652 , stardog:143 , stardog:942 .
+stardog:1237 a :router ;
+   :connects stardog:652 , stardog:143 , stardog:1236 .
+stardog:1487 a :router ;
+   :connects stardog:619 , stardog:143 , stardog:351 , stardog:694 .
+stardog:1852 a :router ;
+   :connects stardog:1473 , stardog:143 , stardog:351 .
+stardog:1920 a :router ;
+   :connects stardog:1890 , stardog:143 .
+stardog:144 a :router .
+stardog:678 a :router ;
+   :connects stardog:145 , stardog:432 , stardog:538 .
+stardog:145 a :router .
+stardog:373 a :router ;
+   :connects stardog:351 , stardog:146 .
+stardog:146 a :router .
+stardog:1095 a :router ;
+   :connects stardog:373 , stardog:146 .
+stardog:1442 a :router ;
+   :connects stardog:373 , stardog:146 .
+stardog:147 a :router .
+stardog:372 a :router ;
+   :connects stardog:295 , stardog:371 , stardog:148 , stardog:161 .
+stardog:148 a :router .
+stardog:149 a :router .
+stardog:716 a :router ;
+   :connects stardog:149 .
+stardog:867 a :router ;
+   :connects stardog:149 .
+stardog:1073 a :router ;
+   :connects stardog:149 .
+stardog:1354 a :router ;
+   :connects stardog:557 , stardog:149 , stardog:867 , stardog:590 , stardog:638 , stardog:990 .
+stardog:150 a :router .
+stardog:1076 a :router ;
+   :connects stardog:150 , stardog:169 , stardog:796 .
+stardog:151 a :router .
+stardog:152 a :router .
+stardog:370 a :router ;
+   :connects stardog:152 .
+stardog:876 a :router ;
+   :connects stardog:152 .
+stardog:1656 a :router ;
+   :connects stardog:152 , stardog:458 .
+stardog:1581 a :router ;
+   :connects stardog:153 .
+stardog:646 a :router ;
+   :connects stardog:154 .
+stardog:154 a :router .
+stardog:1334 a :router ;
+   :connects stardog:154 .
+stardog:1817 a :router ;
+   :connects stardog:1545 , stardog:408 , stardog:206 , stardog:409 , stardog:441 , stardog:902 , stardog:970 , stardog:1036 , stardog:1046 , stardog:1184 , stardog:1618 , stardog:1789 , stardog:500 , stardog:154 , stardog:1805 , stardog:236 , stardog:487 , stardog:428 , stardog:958 .
+stardog:1971 a :router ;
+   :connects stardog:646 , stardog:154 , stardog:1334 , stardog:1938 .
+stardog:1992 a :router ;
+   :connects stardog:154 , stardog:1817 , stardog:1382 , stardog:428 , stardog:958 .
+stardog:169 a :router ;
+   :connects stardog:155 , stardog:156 .
+stardog:173 a :router ;
+   :connects stardog:155 .
+stardog:220 a :router ;
+   :connects stardog:155 .
+stardog:268 a :router ;
+   :connects stardog:155 .
+stardog:284 a :router ;
+   :connects stardog:155 .
+stardog:320 a :router ;
+   :connects stardog:155 , stardog:254 .
+stardog:364 a :router ;
+   :connects stardog:155 .
+stardog:393 a :router ;
+   :connects stardog:155 , stardog:246 .
+stardog:415 a :router ;
+   :connects stardog:155 .
+stardog:598 a :router ;
+   :connects stardog:155 .
+stardog:729 a :router ;
+   :connects stardog:155 , stardog:641 .
+stardog:824 a :router ;
+   :connects stardog:300 , stardog:155 .
+stardog:871 a :router ;
+   :connects stardog:155 , stardog:306 , stardog:402 .
+stardog:890 a :router ;
+   :connects stardog:614 , stardog:155 , stardog:641 .
+stardog:978 a :router ;
+   :connects stardog:155 .
+stardog:1056 a :router ;
+   :connects stardog:155 , stardog:227 .
+stardog:1082 a :router ;
+   :connects stardog:155 .
+stardog:1097 a :router ;
+   :connects stardog:155 , stardog:169 .
+stardog:1124 a :router ;
+   :connects stardog:155 .
+stardog:1179 a :router ;
+   :connects stardog:155 .
+stardog:1470 a :router ;
+   :connects stardog:841 , stardog:155 , stardog:1108 , stardog:648 , stardog:284 , stardog:1204 .
+stardog:1491 a :router ;
+   :connects stardog:155 , stardog:364 , stardog:871 .
+stardog:1702 a :router ;
+   :connects stardog:155 , stardog:393 , stardog:1056 , stardog:227 .
+stardog:1703 a :router ;
+   :connects stardog:614 , stardog:155 , stardog:641 .
+stardog:1805 a :router ;
+   :connects stardog:155 , stardog:970 , stardog:1036 , stardog:1046 , stardog:1184 , stardog:1789 , stardog:993 , stardog:352 , stardog:500 , stardog:1067 .
+stardog:1822 a :router ;
+   :connects stardog:464 , stardog:155 , stardog:246 .
+stardog:1905 a :router ;
+   :connects stardog:614 , stardog:155 , stardog:641 , stardog:1750 .
+stardog:1944 a :router ;
+   :connects stardog:464 , stardog:155 , stardog:209 , stardog:860 , stardog:936 , stardog:1518 , stardog:1577 , stardog:1908 , stardog:722 , stardog:871 , stardog:1470 , stardog:1483 , stardog:1494 , stardog:1768 , stardog:829 , stardog:1241 .
+stardog:156 a :router .
+stardog:766 a :router ;
+   :connects stardog:157 .
+stardog:157 a :router .
+stardog:1483 a :router ;
+   :connects stardog:224 , stardog:1297 , stardog:766 , stardog:157 , stardog:601 , stardog:273 .
+stardog:158 a :router .
+stardog:2057 a :router ;
+   :connects stardog:594 , stardog:342 , stardog:158 .
+stardog:159 a :router .
+stardog:160 a :router .
+stardog:161 a :router .
+stardog:974 a :router ;
+   :connects stardog:372 , stardog:161 .
+stardog:163 a :router .
+stardog:164 a :router .
+stardog:411 a :router ;
+   :connects stardog:165 .
+stardog:482 a :router ;
+   :connects stardog:165 , stardog:312 , stardog:386 .
+stardog:1274 a :router ;
+   :connects stardog:165 , stardog:1253 , stardog:734 , stardog:253 , stardog:190 .
+stardog:1489 a :router ;
+   :connects stardog:165 , stardog:179 , stardog:246 , stardog:1198 , stardog:482 , stardog:223 , stardog:1299 , stardog:443 , stardog:297 , stardog:398 , stardog:1068 , stardog:1181 .
+stardog:1542 a :router ;
+   :connects stardog:165 .
+stardog:1579 a :router ;
+   :connects stardog:165 , stardog:179 , stardog:246 , stardog:386 , stardog:740 , stardog:821 , stardog:371 , stardog:169 , stardog:880 , stardog:1025 , stardog:223 , stardog:272 , stardog:1233 , stardog:584 .
+stardog:1696 a :router ;
+   :connects stardog:165 , stardog:1413 , stardog:605 , stardog:764 , stardog:1380 .
+stardog:1913 a :router ;
+   :connects stardog:165 , stardog:1761 , stardog:1849 , stardog:397 , stardog:253 , stardog:208 , stardog:1103 , stardog:726 , stardog:799 , stardog:836 .
+stardog:166 a :router .
+stardog:167 a :router .
+stardog:1566 a :router ;
+   :connects stardog:1434 , stardog:429 , stardog:747 , stardog:294 , stardog:397 , stardog:167 , stardog:1344 , stardog:1298 .
+stardog:1718 a :router ;
+   :connects stardog:167 .
+stardog:307 a :router ;
+   :connects stardog:168 .
+stardog:1305 a :router ;
+   :connects stardog:408 , stardog:1245 , stardog:1122 , stardog:826 , stardog:294 , stardog:1049 , stardog:168 .
+stardog:599 a :router ;
+   :connects stardog:169 .
+stardog:880 a :router ;
+   :connects stardog:740 , stardog:371 , stardog:169 , stardog:251 , stardog:454 , stardog:584 , stardog:878 .
+stardog:906 a :router ;
+   :connects stardog:169 .
+stardog:938 a :router ;
+   :connects stardog:169 .
+stardog:1025 a :router ;
+   :connects stardog:476 , stardog:740 , stardog:371 , stardog:169 , stardog:880 .
+stardog:1488 a :router ;
+   :connects stardog:476 , stardog:169 , stardog:491 .
+stardog:2061 a :router ;
+   :connects stardog:169 .
+stardog:996 a :router ;
+   :connects stardog:225 , stardog:411 , stardog:170 .
+stardog:170 a :router .
+stardog:1836 a :router ;
+   :connects stardog:411 , stardog:170 , stardog:1425 .
+stardog:1986 a :router ;
+   :connects stardog:1810 , stardog:170 .
+stardog:509 a :router ;
+   :connects stardog:171 .
+stardog:171 a :router .
+stardog:1480 a :router ;
+   :connects stardog:171 , stardog:531 , stardog:1188 , stardog:626 , stardog:724 .
+stardog:608 a :router ;
+   :connects stardog:172 .
+stardog:1630 a :router ;
+   :connects stardog:172 , stardog:1470 .
+stardog:647 a :router ;
+   :connects stardog:179 , stardog:614 , stardog:436 , stardog:174 , stardog:242 , stardog:421 .
+stardog:174 a :router .
+stardog:884 a :router ;
+   :connects stardog:175 .
+stardog:175 a :router .
+stardog:1180 a :router ;
+   :connects stardog:402 , stardog:1025 , stardog:175 .
+stardog:1523 a :router ;
+   :connects stardog:1122 , stardog:1471 , stardog:175 , stardog:1117 .
+stardog:176 a :router .
+stardog:177 a :router .
+stardog:1316 a :router ;
+   :connects stardog:177 .
+stardog:623 a :router ;
+   :connects stardog:429 , stardog:178 .
+stardog:178 a :router .
+stardog:837 a :router ;
+   :connects stardog:294 , stardog:495 , stardog:178 , stardog:662 .
+stardog:223 a :router ;
+   :connects stardog:179 .
+stardog:248 a :router ;
+   :connects stardog:179 , stardog:188 .
+stardog:448 a :router ;
+   :connects stardog:179 , stardog:386 , stardog:297 .
+stardog:658 a :router ;
+   :connects stardog:179 , stardog:609 , stardog:223 , stardog:613 .
+stardog:861 a :router ;
+   :connects stardog:698 , stardog:179 , stardog:614 , stardog:619 , stardog:609 , stardog:652 , stardog:248 , stardog:486 , stardog:491 , stardog:795 , stardog:566 .
+stardog:873 a :router ;
+   :connects stardog:179 , stardog:619 .
+stardog:1299 a :router ;
+   :connects stardog:179 , stardog:386 , stardog:1239 .
+stardog:1524 a :router ;
+   :connects stardog:179 , stardog:972 .
+stardog:1939 a :router ;
+   :connects stardog:179 , stardog:246 , stardog:223 , stardog:443 , stardog:742 .
+stardog:1990 a :router ;
+   :connects stardog:312 , stardog:179 , stardog:218 , stardog:1253 , stardog:1427 , stardog:1845 .
+stardog:180 a :router .
+stardog:1013 a :router ;
+   :connects stardog:441 , stardog:181 , stardog:487 , stardog:426 , stardog:852 , stardog:738 .
+stardog:181 a :router .
+stardog:182 a :router .
+stardog:183 a :router .
+stardog:1610 a :router ;
+   :connects stardog:841 , stardog:694 , stardog:1236 , stardog:183 , stardog:1594 , stardog:1310 , stardog:444 , stardog:1564 .
+stardog:1492 a :router ;
+   :connects stardog:930 , stardog:184 .
+stardog:184 a :router .
+stardog:983 a :router ;
+   :connects stardog:187 .
+stardog:1516 a :router ;
+   :connects stardog:187 , stardog:1274 , stardog:1320 .
+stardog:241 a :router ;
+   :connects stardog:188 .
+stardog:1596 a :router ;
+   :connects stardog:188 , stardog:248 , stardog:398 , stardog:802 .
+stardog:1935 a :router ;
+   :connects stardog:188 , stardog:908 , stardog:241 , stardog:1596 , stardog:731 .
+stardog:189 a :router .
+stardog:801 a :router ;
+   :connects stardog:658 , stardog:190 .
+stardog:190 a :router .
+stardog:1211 a :router ;
+   :connects stardog:609 , stardog:983 , stardog:801 , stardog:190 , stardog:244 .
+stardog:191 a :router .
+stardog:242 a :router ;
+   :connects stardog:193 .
+stardog:193 a :router .
+stardog:1916 a :router ;
+   :connects stardog:193 , stardog:525 .
+stardog:194 a :router .
+stardog:195 a :router .
+stardog:319 a :router ;
+   :connects stardog:196 .
+stardog:196 a :router .
+stardog:1172 a :router ;
+   :connects stardog:734 , stardog:764 , stardog:1006 , stardog:610 , stardog:196 , stardog:310 , stardog:338 , stardog:797 , stardog:981 .
+stardog:1631 a :router ;
+   :connects stardog:196 .
+stardog:1847 a :router ;
+   :connects stardog:196 .
+stardog:1903 a :router ;
+   :connects stardog:196 , stardog:628 , stardog:770 , stardog:1038 , stardog:1422 .
+stardog:197 a :router .
+stardog:1533 a :router ;
+   :connects stardog:246 , stardog:306 , stardog:540 , stardog:197 .
+stardog:1621 a :router ;
+   :connects stardog:197 .
+stardog:1919 a :router ;
+   :connects stardog:306 , stardog:1654 , stardog:197 , stardog:1621 .
+stardog:480 a :router ;
+   :connects stardog:198 , stardog:263 .
+stardog:1955 a :router ;
+   :connects stardog:1808 , stardog:552 , stardog:1292 , stardog:242 , stardog:200 , stardog:840 , stardog:1509 , stardog:999 , stardog:1229 , stardog:1527 , stardog:1823 .
+stardog:200 a :router .
+stardog:392 a :router ;
+   :connects stardog:201 .
+stardog:202 a :router .
+stardog:203 a :router .
+stardog:330 a :router ;
+   :connects stardog:203 .
+stardog:1020 a :router ;
+   :connects stardog:610 , stardog:203 , stardog:330 , stardog:520 .
+stardog:204 a :router .
+stardog:1382 a :router ;
+   :connects stardog:291 , stardog:685 , stardog:532 , stardog:472 , stardog:229 , stardog:204 , stardog:1087 , stardog:586 , stardog:719 , stardog:769 , stardog:668 .
+stardog:2050 a :router ;
+   :connects stardog:204 .
+stardog:1152 a :router ;
+   :connects stardog:207 .
+stardog:207 a :router .
+stardog:1414 a :router ;
+   :connects stardog:207 .
+stardog:208 a :router .
+stardog:2105 a :router ;
+   :connects stardog:208 .
+stardog:385 a :router ;
+   :connects stardog:209 .
+stardog:1048 a :router ;
+   :connects stardog:209 .
+stardog:1143 a :router ;
+   :connects stardog:209 .
+stardog:1494 a :router ;
+   :connects stardog:246 , stardog:209 , stardog:1400 , stardog:913 , stardog:1143 , stardog:254 , stardog:1320 .
+stardog:1911 a :router ;
+   :connects stardog:209 , stardog:913 , stardog:1034 , stardog:1301 , stardog:1478 , stardog:1289 .
+stardog:2076 a :router ;
+   :connects stardog:209 , stardog:1944 .
+stardog:2063 a :router ;
+   :connects stardog:1451 , stardog:210 .
+stardog:210 a :router .
+stardog:211 a :router .
+stardog:212 a :router .
+stardog:565 a :router ;
+   :connects stardog:213 , stardog:479 .
+stardog:213 a :router .
+stardog:1309 a :router ;
+   :connects stardog:619 , stardog:213 , stardog:622 , stardog:469 , stardog:479 , stardog:1079 .
+stardog:219 a :router ;
+   :connects stardog:214 .
+stardog:447 a :router ;
+   :connects stardog:305 , stardog:214 , stardog:253 .
+stardog:887 a :router ;
+   :connects stardog:305 , stardog:214 .
+stardog:952 a :router ;
+   :connects stardog:305 , stardog:214 , stardog:253 , stardog:760 , stardog:447 .
+stardog:1430 a :router ;
+   :connects stardog:214 .
+stardog:1478 a :router ;
+   :connects stardog:214 , stardog:664 .
+stardog:1535 a :router ;
+   :connects stardog:305 , stardog:214 , stardog:1206 .
+stardog:1812 a :router ;
+   :connects stardog:305 , stardog:1165 , stardog:214 , stardog:1206 , stardog:371 , stardog:1544 , stardog:253 , stardog:760 , stardog:1793 , stardog:1579 , stardog:219 , stardog:447 , stardog:887 , stardog:952 , stardog:1535 , stardog:918 , stardog:1547 .
+stardog:1898 a :router ;
+   :connects stardog:1165 , stardog:214 , stardog:1206 , stardog:1544 , stardog:253 , stardog:760 , stardog:1793 , stardog:1812 , stardog:1758 .
+stardog:332 a :router ;
+   :connects stardog:215 .
+stardog:215 a :router .
+stardog:239 a :router ;
+   :connects stardog:216 .
+stardog:446 a :router ;
+   :connects stardog:217 .
+stardog:675 a :router ;
+   :connects stardog:587 , stardog:217 .
+stardog:1415 a :router ;
+   :connects stardog:217 .
+stardog:1737 a :router ;
+   :connects stardog:217 , stardog:446 .
+stardog:1749 a :router ;
+   :connects stardog:712 , stardog:1031 , stardog:359 , stardog:217 , stardog:992 , stardog:1123 , stardog:731 , stardog:1729 .
+stardog:2085 a :router ;
+   :connects stardog:218 , stardog:343 , stardog:1808 , stardog:818 .
+stardog:221 a :router .
+stardog:222 a :router .
+stardog:251 a :router ;
+   :connects stardog:223 .
+stardog:1087 a :router ;
+   :connects stardog:880 , stardog:223 .
+stardog:1915 a :router ;
+   :connects stardog:1347 , stardog:223 .
+stardog:1998 a :router ;
+   :connects stardog:223 .
+stardog:601 a :router ;
+   :connects stardog:224 , stardog:454 .
+stardog:1282 a :router ;
+   :connects stardog:224 , stardog:454 .
+stardog:1425 a :router ;
+   :connects stardog:722 , stardog:225 , stardog:411 , stardog:996 , stardog:1125 , stardog:1233 .
+stardog:1906 a :router ;
+   :connects stardog:982 , stardog:225 .
+stardog:1932 a :router ;
+   :connects stardog:225 , stardog:411 , stardog:996 , stardog:1836 , stardog:1425 , stardog:1233 , stardog:800 , stardog:1445 .
+stardog:311 a :router ;
+   :connects stardog:226 .
+stardog:226 a :router .
+stardog:676 a :router ;
+   :connects stardog:226 .
+stardog:776 a :router ;
+   :connects stardog:226 .
+stardog:1351 a :router ;
+   :connects stardog:226 .
+stardog:2069 a :router ;
+   :connects stardog:226 .
+stardog:227 a :router .
+stardog:1220 a :router ;
+   :connects stardog:464 , stardog:227 , stardog:733 .
+stardog:1698 a :router ;
+   :connects stardog:227 .
+stardog:586 a :router ;
+   :connects stardog:291 , stardog:229 , stardog:524 .
+stardog:719 a :router ;
+   :connects stardog:229 .
+stardog:769 a :router ;
+   :connects stardog:685 , stardog:747 , stardog:472 , stardog:229 .
+stardog:1543 a :router ;
+   :connects stardog:557 , stardog:229 , stardog:575 , stardog:1118 .
+stardog:1781 a :router ;
+   :connects stardog:229 , stardog:1382 .
+stardog:1931 a :router ;
+   :connects stardog:229 , stardog:1382 .
+stardog:1946 a :router ;
+   :connects stardog:1303 , stardog:291 , stardog:1444 , stardog:1537 , stardog:229 , stardog:1382 , stardog:1087 , stardog:524 , stardog:816 , stardog:1873 , stardog:794 , stardog:1065 , stardog:1668 .
+stardog:230 a :router .
+stardog:2042 a :router ;
+   :connects stardog:1502 , stardog:231 , stardog:340 , stardog:365 , stardog:1114 , stardog:1663 , stardog:1974 , stardog:2023 .
+stardog:231 a :router .
+stardog:1261 a :router ;
+   :connects stardog:1099 , stardog:233 .
+stardog:233 a :router .
+stardog:360 a :router ;
+   :connects stardog:234 , stardog:237 .
+stardog:362 a :router ;
+   :connects stardog:234 , stardog:253 , stardog:242 .
+stardog:757 a :router ;
+   :connects stardog:234 , stardog:362 .
+stardog:235 a :router .
+stardog:430 a :router ;
+   :connects stardog:236 , stardog:428 .
+stardog:236 a :router .
+stardog:237 a :router .
+stardog:1601 a :router ;
+   :connects stardog:1356 , stardog:247 , stardog:283 , stardog:968 , stardog:1449 , stardog:1290 , stardog:242 , stardog:360 , stardog:362 , stardog:237 , stardog:1587 , stardog:632 , stardog:1363 , stardog:1582 .
+stardog:1638 a :router ;
+   :connects stardog:790 , stardog:237 , stardog:310 , stardog:1101 , stardog:1363 , stardog:713 .
+stardog:238 a :router .
+stardog:240 a :router .
+stardog:521 a :router ;
+   :connects stardog:242 .
+stardog:525 a :router ;
+   :connects stardog:242 .
+stardog:823 a :router ;
+   :connects stardog:242 .
+stardog:840 a :router ;
+   :connects stardog:587 , stardog:372 , stardog:242 .
+stardog:911 a :router ;
+   :connects stardog:634 , stardog:242 .
+stardog:1130 a :router ;
+   :connects stardog:634 , stardog:242 , stardog:289 .
+stardog:1361 a :router ;
+   :connects stardog:242 .
+stardog:1509 a :router ;
+   :connects stardog:609 , stardog:242 , stardog:840 .
+stardog:1587 a :router ;
+   :connects stardog:242 , stardog:1481 , stardog:1337 .
+stardog:1717 a :router ;
+   :connects stardog:634 , stardog:1379 , stardog:242 , stardog:521 .
+stardog:1862 a :router ;
+   :connects stardog:1470 , stardog:242 .
+stardog:1936 a :router ;
+   :connects stardog:1356 , stardog:747 , stardog:1745 , stardog:408 , stardog:1804 , stardog:1857 , stardog:1049 , stardog:1290 , stardog:242 , stardog:362 , stardog:1601 .
+stardog:2047 a :router ;
+   :connects stardog:1623 , stardog:1849 , stardog:1253 , stardog:1024 , stardog:1804 , stardog:1857 , stardog:513 , stardog:1290 , stardog:253 , stardog:1913 , stardog:242 , stardog:362 , stardog:1587 , stardog:1936 , stardog:2028 .
+stardog:243 a :router .
+stardog:244 a :router .
+stardog:245 a :router .
+stardog:1014 a :router ;
+   :connects stardog:245 .
+stardog:262 a :router ;
+   :connects stardog:246 .
+stardog:443 a :router ;
+   :connects stardog:246 .
+stardog:494 a :router ;
+   :connects stardog:246 .
+stardog:833 a :router ;
+   :connects stardog:246 .
+stardog:893 a :router ;
+   :connects stardog:246 .
+stardog:1021 a :router ;
+   :connects stardog:246 .
+stardog:1837 a :router ;
+   :connects stardog:246 , stardog:983 , stardog:1516 .
+stardog:1882 a :router ;
+   :connects stardog:246 , stardog:664 , stardog:513 , stardog:1878 .
+stardog:296 a :router ;
+   :connects stardog:247 .
+stardog:310 a :router ;
+   :connects stardog:247 .
+stardog:314 a :router ;
+   :connects stardog:247 .
+stardog:418 a :router ;
+   :connects stardog:247 .
+stardog:475 a :router ;
+   :connects stardog:247 , stardog:408 .
+stardog:632 a :router ;
+   :connects stardog:247 , stardog:382 .
+stardog:1101 a :router ;
+   :connects stardog:247 , stardog:648 .
+stardog:1125 a :router ;
+   :connects stardog:989 , stardog:247 .
+stardog:1363 a :router ;
+   :connects stardog:247 , stardog:1350 , stardog:427 , stardog:505 , stardog:1207 , stardog:507 , stardog:670 , stardog:713 , stardog:1224 .
+stardog:1582 a :router ;
+   :connects stardog:247 , stardog:408 , stardog:1122 , stardog:314 , stardog:269 , stardog:1057 .
+stardog:1960 a :router ;
+   :connects stardog:247 , stardog:1129 .
+stardog:249 a :router .
+stardog:1212 a :router ;
+   :connects stardog:378 , stardog:249 .
+stardog:250 a :router .
+stardog:454 a :router ;
+   :connects stardog:251 .
+stardog:793 a :router ;
+   :connects stardog:251 .
+stardog:252 a :router .
+stardog:1319 a :router ;
+   :connects stardog:559 , stardog:252 .
+stardog:603 a :router ;
+   :connects stardog:253 .
+stardog:1314 a :router ;
+   :connects stardog:977 , stardog:1024 , stardog:450 , stardog:1019 , stardog:253 .
+stardog:1377 a :router ;
+   :connects stardog:253 .
+stardog:1578 a :router ;
+   :connects stardog:1291 , stardog:253 .
+stardog:1686 a :router ;
+   :connects stardog:1165 , stardog:1544 , stardog:253 , stardog:760 .
+stardog:1754 a :router ;
+   :connects stardog:1024 , stardog:1671 , stardog:253 , stardog:285 .
+stardog:1797 a :router ;
+   :connects stardog:1165 , stardog:1544 , stardog:253 , stardog:760 , stardog:1793 , stardog:1765 .
+stardog:2028 a :router ;
+   :connects stardog:1810 , stardog:1849 , stardog:1291 , stardog:253 , stardog:1883 , stardog:438 .
+stardog:254 a :router .
+stardog:1052 a :router ;
+   :connects stardog:254 , stardog:584 , stardog:686 .
+stardog:1163 a :router ;
+   :connects stardog:619 , stardog:609 , stardog:502 , stardog:960 , stardog:320 , stardog:254 , stardog:787 .
+stardog:1405 a :router ;
+   :connects stardog:1388 , stardog:254 , stardog:299 .
+stardog:527 a :router ;
+   :connects stardog:255 .
+stardog:256 a :router .
+stardog:1947 a :router ;
+   :connects stardog:256 .
+stardog:750 a :router ;
+   :connects stardog:464 , stardog:257 .
+stardog:258 a :router .
+stardog:309 a :router ;
+   :connects stardog:259 .
+stardog:326 a :router ;
+   :connects stardog:259 .
+stardog:458 a :router ;
+   :connects stardog:259 , stardog:275 .
+stardog:551 a :router ;
+   :connects stardog:259 .
+stardog:607 a :router ;
+   :connects stardog:259 , stardog:551 .
+stardog:661 a :router ;
+   :connects stardog:259 , stardog:444 .
+stardog:814 a :router ;
+   :connects stardog:259 .
+stardog:822 a :router ;
+   :connects stardog:259 , stardog:607 , stardog:814 .
+stardog:1044 a :router ;
+   :connects stardog:259 , stardog:301 .
+stardog:1080 a :router ;
+   :connects stardog:259 .
+stardog:1141 a :router ;
+   :connects stardog:259 , stardog:370 .
+stardog:1222 a :router ;
+   :connects stardog:619 , stardog:1041 , stardog:259 .
+stardog:1252 a :router ;
+   :connects stardog:259 , stardog:876 .
+stardog:1365 a :router ;
+   :connects stardog:302 , stardog:495 , stardog:610 , stardog:740 , stardog:985 , stardog:259 , stardog:1310 .
+stardog:1695 a :router ;
+   :connects stardog:1022 , stardog:259 , stardog:309 , stardog:458 , stardog:551 , stardog:822 , stardog:1044 , stardog:1080 , stardog:1252 , stardog:1310 , stardog:1412 .
+stardog:1720 a :router ;
+   :connects stardog:1568 , stardog:1356 , stardog:302 , stardog:495 , stardog:610 , stardog:751 , stardog:985 , stardog:1378 , stardog:968 , stardog:259 , stardog:1365 , stardog:1310 .
+stardog:1770 a :router ;
+   :connects stardog:1568 , stardog:302 , stardog:495 , stardog:610 , stardog:740 , stardog:985 , stardog:1378 , stardog:259 , stardog:342 , stardog:1487 , stardog:326 , stardog:1141 , stardog:1310 , stardog:334 , stardog:1447 , stardog:1164 , stardog:1484 .
+stardog:1881 a :router ;
+   :connects stardog:259 .
+stardog:1956 a :router ;
+   :connects stardog:259 , stardog:1947 .
+stardog:2031 a :router ;
+   :connects stardog:259 , stardog:1695 , stardog:671 .
+stardog:2036 a :router ;
+   :connects stardog:259 , stardog:1365 , stardog:2004 .
+stardog:260 a :router .
+stardog:263 a :router .
+stardog:1785 a :router ;
+   :connects stardog:1554 , stardog:263 , stardog:566 , stardog:856 .
+stardog:264 a :router .
+stardog:710 a :router ;
+   :connects stardog:557 , stardog:266 .
+stardog:266 a :router .
+stardog:1784 a :router ;
+   :connects stardog:557 , stardog:710 , stardog:266 , stardog:748 , stardog:1561 .
+stardog:1876 a :router ;
+   :connects stardog:267 , stardog:1159 , stardog:1255 , stardog:1685 .
+stardog:267 a :router .
+stardog:1018 a :router ;
+   :connects stardog:268 .
+stardog:269 a :router .
+stardog:407 a :router ;
+   :connects stardog:270 .
+stardog:2003 a :router ;
+   :connects stardog:1431 , stardog:523 , stardog:271 , stardog:1944 , stardog:1669 , stardog:1402 .
+stardog:1270 a :router ;
+   :connects stardog:272 .
+stardog:272 a :router .
+stardog:273 a :router .
+stardog:2006 a :router ;
+   :connects stardog:1291 , stardog:1376 , stardog:371 , stardog:1944 , stardog:1579 , stardog:880 , stardog:1025 , stardog:273 , stardog:1669 , stardog:1441 .
+stardog:1271 a :router ;
+   :connects stardog:274 , stardog:402 , stardog:1245 .
+stardog:275 a :router .
+stardog:276 a :router .
+stardog:1799 a :router ;
+   :connects stardog:277 , stardog:1074 , stardog:1640 , stardog:653 .
+stardog:278 a :router .
+stardog:1028 a :router ;
+   :connects stardog:305 , stardog:536 , stardog:712 , stardog:408 , stardog:529 , stardog:278 , stardog:644 .
+stardog:288 a :router ;
+   :connects stardog:279 .
+stardog:419 a :router ;
+   :connects stardog:279 .
+stardog:563 a :router ;
+   :connects stardog:279 .
+stardog:672 a :router ;
+   :connects stardog:279 .
+stardog:870 a :router ;
+   :connects stardog:302 , stardog:279 , stardog:682 .
+stardog:973 a :router ;
+   :connects stardog:279 .
+stardog:1092 a :router ;
+   :connects stardog:279 .
+stardog:1192 a :router ;
+   :connects stardog:698 , stardog:279 , stardog:871 , stardog:870 .
+stardog:1573 a :router ;
+   :connects stardog:279 .
+stardog:1594 a :router ;
+   :connects stardog:1324 , stardog:279 , stardog:1326 , stardog:871 , stardog:870 , stardog:595 , stardog:682 , stardog:1564 .
+stardog:2091 a :router ;
+   :connects stardog:283 , stardog:1198 , stardog:1400 , stardog:1449 , stardog:358 , stardog:513 , stardog:1977 , stardog:782 , stardog:1371 , stardog:1658 .
+stardog:285 a :router .
+stardog:369 a :router ;
+   :connects stardog:286 .
+stardog:508 a :router ;
+   :connects stardog:286 .
+stardog:791 a :router ;
+   :connects stardog:286 .
+stardog:804 a :router ;
+   :connects stardog:286 .
+stardog:2049 a :router ;
+   :connects stardog:286 .
+stardog:2054 a :router ;
+   :connects stardog:286 , stardog:1891 .
+stardog:287 a :router .
+stardog:289 a :router .
+stardog:290 a :router .
+stardog:325 a :router ;
+   :connects stardog:291 .
+stardog:668 a :router ;
+   :connects stardog:291 , stardog:295 .
+stardog:846 a :router ;
+   :connects stardog:291 .
+stardog:1341 a :router ;
+   :connects stardog:1303 , stardog:291 .
+stardog:1517 a :router ;
+   :connects stardog:291 , stardog:1006 , stardog:861 , stardog:1382 , stardog:668 , stardog:1341 , stardog:1352 , stardog:1145 .
+stardog:1709 a :router ;
+   :connects stardog:1303 , stardog:291 , stardog:1517 .
+stardog:1867 a :router ;
+   :connects stardog:291 , stardog:1031 .
+stardog:2095 a :router ;
+   :connects stardog:1303 , stardog:291 , stardog:668 .
+stardog:293 a :router .
+stardog:839 a :router ;
+   :connects stardog:294 .
+stardog:1010 a :router ;
+   :connects stardog:826 , stardog:294 , stardog:946 .
+stardog:1051 a :router ;
+   :connects stardog:294 , stardog:1045 .
+stardog:1205 a :router ;
+   :connects stardog:294 .
+stardog:1586 a :router ;
+   :connects stardog:1024 , stardog:294 , stardog:317 .
+stardog:1637 a :router ;
+   :connects stardog:294 , stardog:1449 , stardog:362 , stardog:1010 , stardog:1522 , stardog:921 .
+stardog:1751 a :router ;
+   :connects stardog:294 , stardog:818 .
+stardog:562 a :router ;
+   :connects stardog:295 .
+stardog:297 a :router .
+stardog:582 a :router ;
+   :connects stardog:297 .
+stardog:755 a :router ;
+   :connects stardog:297 .
+stardog:1408 a :router ;
+   :connects stardog:1378 , stardog:297 .
+stardog:1427 a :router ;
+   :connects stardog:1318 , stardog:298 , stardog:1037 .
+stardog:298 a :router .
+stardog:299 a :router .
+stardog:499 a :router ;
+   :connects stardog:301 .
+stardog:301 a :router .
+stardog:592 a :router ;
+   :connects stardog:302 , stardog:467 .
+stardog:940 a :router ;
+   :connects stardog:302 .
+stardog:1310 a :router ;
+   :connects stardog:302 , stardog:935 , stardog:495 , stardog:610 , stardog:740 , stardog:985 , stardog:1098 , stardog:694 , stardog:955 , stardog:1109 .
+stardog:1381 a :router ;
+   :connects stardog:302 .
+stardog:1424 a :router ;
+   :connects stardog:302 .
+stardog:1787 a :router ;
+   :connects stardog:523 , stardog:1167 , stardog:302 .
+stardog:303 a :router .
+stardog:304 a :router .
+stardog:460 a :router ;
+   :connects stardog:305 .
+stardog:611 a :router ;
+   :connects stardog:305 , stardog:331 .
+stardog:918 a :router ;
+   :connects stardog:305 .
+stardog:920 a :router ;
+   :connects stardog:305 , stardog:675 .
+stardog:1321 a :router ;
+   :connects stardog:305 , stardog:760 , stardog:709 .
+stardog:1525 a :router ;
+   :connects stardog:305 , stardog:612 , stardog:708 , stardog:1031 , stardog:529 , stardog:1069 , stardog:768 .
+stardog:1547 a :router ;
+   :connects stardog:305 , stardog:1206 , stardog:367 , stardog:1544 , stardog:1535 .
+stardog:1775 a :router ;
+   :connects stardog:305 , stardog:1206 , stardog:760 .
+stardog:1969 a :router ;
+   :connects stardog:305 , stardog:1206 , stardog:1544 , stardog:1812 .
+stardog:657 a :router ;
+   :connects stardog:306 , stardog:378 , stardog:495 , stardog:610 , stardog:483 .
+stardog:1107 a :router ;
+   :connects stardog:306 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 .
+stardog:1293 a :router ;
+   :connects stardog:306 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:1031 .
+stardog:1362 a :router ;
+   :connects stardog:306 .
+stardog:1443 a :router ;
+   :connects stardog:306 , stardog:1400 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 .
+stardog:1651 a :router ;
+   :connects stardog:1568 , stardog:306 , stardog:1400 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 , stardog:880 .
+stardog:1768 a :router ;
+   :connects stardog:1165 , stardog:306 , stardog:402 , stardog:860 , stardog:1318 , stardog:1518 , stardog:1577 , stardog:913 , stardog:1301 , stardog:622 , stardog:530 , stardog:1089 .
+stardog:1940 a :router ;
+   :connects stardog:1568 , stardog:1808 , stardog:306 , stardog:1400 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:1031 , stardog:1378 , stardog:1450 , stardog:482 .
+stardog:1997 a :router ;
+   :connects stardog:1568 , stardog:1808 , stardog:306 , stardog:1400 , stardog:378 , stardog:472 , stardog:495 , stardog:610 , stardog:740 , stardog:751 , stardog:985 , stardog:1031 , stardog:1378 .
+stardog:1120 a :router ;
+   :connects stardog:734 , stardog:1006 , stardog:307 .
+stardog:1482 a :router ;
+   :connects stardog:734 , stardog:307 .
+stardog:308 a :router .
+stardog:574 a :router ;
+   :connects stardog:310 , stardog:387 .
+stardog:808 a :router ;
+   :connects stardog:310 .
+stardog:1083 a :router ;
+   :connects stardog:310 .
+stardog:1202 a :router ;
+   :connects stardog:310 .
+stardog:1456 a :router ;
+   :connects stardog:310 , stardog:928 .
+stardog:1526 a :router ;
+   :connects stardog:310 .
+stardog:1859 a :router ;
+   :connects stardog:747 , stardog:547 , stardog:1662 , stardog:310 .
+stardog:2111 a :router ;
+   :connects stardog:310 .
+stardog:383 a :router ;
+   :connects stardog:312 .
+stardog:585 a :router ;
+   :connects stardog:312 .
+stardog:746 a :router ;
+   :connects stardog:312 .
+stardog:879 a :router ;
+   :connects stardog:312 .
+stardog:976 a :router ;
+   :connects stardog:312 .
+stardog:1845 a :router ;
+   :connects stardog:312 , stardog:1253 , stardog:1427 , stardog:452 , stardog:581 , stardog:620 , stardog:681 , stardog:745 , stardog:1555 , stardog:1652 .
+stardog:1331 a :router ;
+   :connects stardog:1122 , stardog:314 .
+stardog:1395 a :router ;
+   :connects stardog:314 .
+stardog:1307 a :router ;
+   :connects stardog:315 , stardog:1089 .
+stardog:315 a :router .
+stardog:915 a :router ;
+   :connects stardog:316 , stardog:872 .
+stardog:316 a :router .
+stardog:321 a :router .
+stardog:1156 a :router ;
+   :connects stardog:929 , stardog:321 .
+stardog:322 a :router .
+stardog:564 a :router ;
+   :connects stardog:323 .
+stardog:323 a :router .
+stardog:1750 a :router ;
+   :connects stardog:614 , stardog:641 , stardog:890 , stardog:1703 , stardog:1018 , stardog:323 , stardog:490 , stardog:1210 , stardog:541 , stardog:995 , stardog:1105 , stardog:1466 , stardog:1032 .
+stardog:327 a :router .
+stardog:328 a :router .
+stardog:631 a :router ;
+   :connects stardog:328 .
+stardog:677 a :router ;
+   :connects stardog:328 .
+stardog:706 a :router ;
+   :connects stardog:328 , stardog:677 .
+stardog:1385 a :router ;
+   :connects stardog:328 , stardog:856 .
+stardog:1454 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1081 , stardog:1167 , stardog:484 , stardog:930 , stardog:462 , stardog:332 , stardog:328 , stardog:927 , stardog:1447 , stardog:348 , stardog:517 .
+stardog:1565 a :router ;
+   :connects stardog:328 .
+stardog:1706 a :router ;
+   :connects stardog:328 .
+stardog:1726 a :router ;
+   :connects stardog:328 .
+stardog:1961 a :router ;
+   :connects stardog:328 .
+stardog:329 a :router .
+stardog:723 a :router ;
+   :connects stardog:331 .
+stardog:1126 a :router ;
+   :connects stardog:331 .
+stardog:1144 a :router ;
+   :connects stardog:331 , stardog:429 , stardog:747 , stardog:968 , stardog:1126 .
+stardog:1465 a :router ;
+   :connects stardog:1356 , stardog:331 , stardog:1197 .
+stardog:927 a :router ;
+   :connects stardog:332 , stardog:631 .
+stardog:1302 a :router ;
+   :connects stardog:332 .
+stardog:1731 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1081 , stardog:1027 , stardog:841 , stardog:1167 , stardog:484 , stardog:935 , stardog:1324 , stardog:930 , stardog:1098 , stardog:462 , stardog:1610 , stardog:332 , stardog:1454 , stardog:1447 , stardog:1681 , stardog:566 , stardog:1466 , stardog:1724 , stardog:667 , stardog:1691 .
+stardog:1904 a :router ;
+   :connects stardog:332 .
+stardog:1965 a :router ;
+   :connects stardog:930 , stardog:332 , stardog:1454 , stardog:774 , stardog:827 .
+stardog:1841 a :router ;
+   :connects stardog:397 , stardog:333 .
+stardog:333 a :router .
+stardog:334 a :router .
+stardog:1008 a :router ;
+   :connects stardog:540 , stardog:334 .
+stardog:1447 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1081 , stardog:1167 , stardog:342 , stardog:930 , stardog:334 , stardog:399 , stardog:1199 .
+stardog:1973 a :router ;
+   :connects stardog:1554 , stardog:634 , stardog:661 , stardog:334 , stardog:1102 .
+stardog:1762 a :router ;
+   :connects stardog:1476 , stardog:336 , stardog:1640 .
+stardog:2088 a :router ;
+   :connects stardog:703 , stardog:967 , stardog:337 .
+stardog:337 a :router .
+stardog:338 a :router .
+stardog:1924 a :router ;
+   :connects stardog:804 , stardog:339 .
+stardog:339 a :router .
+stardog:340 a :router .
+stardog:768 a :router ;
+   :connects stardog:341 .
+stardog:341 a :router .
+stardog:690 a :router ;
+   :connects stardog:652 , stardog:342 .
+stardog:1164 a :router ;
+   :connects stardog:967 , stardog:634 , stardog:342 , stardog:388 , stardog:1011 , stardog:1162 , stardog:926 , stardog:962 , stardog:964 , stardog:1042 , stardog:1075 .
+stardog:1777 a :router ;
+   :connects stardog:343 , stardog:614 , stardog:1226 .
+stardog:344 a :router .
+stardog:345 a :router .
+stardog:486 a :router ;
+   :connects stardog:464 , stardog:346 .
+stardog:346 a :router .
+stardog:491 a :router ;
+   :connects stardog:486 , stardog:346 .
+stardog:347 a :router .
+stardog:725 a :router ;
+   :connects stardog:348 .
+stardog:348 a :router .
+stardog:1681 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1167 , stardog:930 , stardog:1454 , stardog:1447 , stardog:349 , stardog:1275 .
+stardog:349 a :router .
+stardog:350 a :router .
+stardog:561 a :router ;
+   :connects stardog:350 , stardog:481 , stardog:533 .
+stardog:875 a :router ;
+   :connects stardog:696 , stardog:350 , stardog:561 , stardog:481 .
+stardog:1885 a :router ;
+   :connects stardog:696 , stardog:350 , stardog:875 .
+stardog:1498 a :router ;
+   :connects stardog:351 .
+stardog:1846 a :router ;
+   :connects stardog:351 , stardog:384 , stardog:1710 .
+stardog:353 a :router .
+stardog:354 a :router .
+stardog:357 a :router ;
+   :connects stardog:355 .
+stardog:355 a :router .
+stardog:1532 a :router ;
+   :connects stardog:355 .
+stardog:1959 a :router ;
+   :connects stardog:448 , stardog:755 , stardog:357 , stardog:1532 .
+stardog:1313 a :router ;
+   :connects stardog:358 .
+stardog:731 a :router ;
+   :connects stardog:359 .
+stardog:1732 a :router ;
+   :connects stardog:1006 , stardog:495 , stardog:610 , stardog:362 , stardog:1720 .
+stardog:1739 a :router ;
+   :connects stardog:362 .
+stardog:363 a :router .
+stardog:365 a :router .
+stardog:2066 a :router ;
+   :connects stardog:594 , stardog:366 .
+stardog:366 a :router .
+stardog:1417 a :router ;
+   :connects stardog:367 .
+stardog:812 a :router ;
+   :connects stardog:368 , stardog:775 .
+stardog:1591 a :router ;
+   :connects stardog:368 , stardog:993 , stardog:470 .
+stardog:1047 a :router ;
+   :connects stardog:370 .
+stardog:1493 a :router ;
+   :connects stardog:370 .
+stardog:1070 a :router ;
+   :connects stardog:371 .
+stardog:1233 a :router ;
+   :connects stardog:722 , stardog:371 , stardog:411 , stardog:437 , stardog:1039 .
+stardog:1432 a :router ;
+   :connects stardog:371 .
+stardog:1970 a :router ;
+   :connects stardog:1335 , stardog:1807 , stardog:371 , stardog:1913 , stardog:1698 , stardog:1103 , stardog:1276 , stardog:568 , stardog:1670 .
+stardog:951 a :router ;
+   :connects stardog:372 .
+stardog:1217 a :router ;
+   :connects stardog:372 .
+stardog:1620 a :router ;
+   :connects stardog:372 .
+stardog:1740 a :router ;
+   :connects stardog:372 .
+stardog:1809 a :router ;
+   :connects stardog:372 .
+stardog:1991 a :router ;
+   :connects stardog:1292 , stardog:372 .
+stardog:2079 a :router ;
+   :connects stardog:373 , stardog:1095 , stardog:1173 .
+stardog:778 a :router ;
+   :connects stardog:375 .
+stardog:375 a :router .
+stardog:1182 a :router ;
+   :connects stardog:778 , stardog:375 , stardog:697 .
+stardog:1277 a :router ;
+   :connects stardog:1034 , stardog:378 , stardog:883 , stardog:375 , stardog:569 .
+stardog:1458 a :router ;
+   :connects stardog:375 .
+stardog:1684 a :router ;
+   :connects stardog:1033 , stardog:375 , stardog:1182 , stardog:697 .
+stardog:1336 a :router ;
+   :connects stardog:377 .
+stardog:377 a :router .
+stardog:379 a :router .
+stardog:514 a :router ;
+   :connects stardog:380 .
+stardog:380 a :router .
+stardog:381 a :router .
+stardog:382 a :router .
+stardog:384 a :router .
+stardog:695 a :router ;
+   :connects stardog:385 .
+stardog:1626 a :router ;
+   :connects stardog:385 .
+stardog:2062 a :router ;
+   :connects stardog:605 , stardog:619 , stardog:1318 , stardog:1890 , stardog:1485 , stardog:714 , stardog:826 , stardog:1049 , stardog:385 , stardog:514 , stardog:1626 , stardog:1059 , stardog:1161 , stardog:1994 .
+stardog:1225 a :router ;
+   :connects stardog:386 , stardog:394 , stardog:1006 , stardog:1014 , stardog:463 , stardog:506 , stardog:737 , stardog:771 .
+stardog:1256 a :router ;
+   :connects stardog:386 , stardog:482 .
+stardog:1399 a :router ;
+   :connects stardog:386 .
+stardog:387 a :router .
+stardog:388 a :router .
+stardog:1011 a :router ;
+   :connects stardog:967 , stardog:634 , stardog:388 .
+stardog:1162 a :router ;
+   :connects stardog:967 , stardog:634 , stardog:388 .
+stardog:389 a :router .
+stardog:390 a :router .
+stardog:1819 a :router ;
+   :connects stardog:557 , stardog:1261 , stardog:418 , stardog:1192 , stardog:391 , stardog:589 , stardog:660 .
+stardog:391 a :router .
+stardog:1672 a :router ;
+   :connects stardog:393 , stardog:829 .
+stardog:795 a :router ;
+   :connects stardog:394 , stardog:775 .
+stardog:1185 a :router ;
+   :connects stardog:619 , stardog:394 , stardog:670 .
+stardog:1294 a :router ;
+   :connects stardog:394 .
+stardog:741 a :router ;
+   :connects stardog:397 .
+stardog:1103 a :router ;
+   :connects stardog:397 , stardog:987 , stardog:934 .
+stardog:1276 a :router ;
+   :connects stardog:397 .
+stardog:398 a :router .
+stardog:399 a :router .
+stardog:400 a :router .
+stardog:1433 a :router ;
+   :connects stardog:557 , stardog:401 , stardog:925 , stardog:1311 .
+stardog:401 a :router .
+stardog:596 a :router ;
+   :connects stardog:402 .
+stardog:909 a :router ;
+   :connects stardog:402 .
+stardog:1204 a :router ;
+   :connects stardog:402 .
+stardog:1609 a :router ;
+   :connects stardog:402 , stardog:1404 .
+stardog:519 a :router ;
+   :connects stardog:403 .
+stardog:403 a :router .
+stardog:404 a :router .
+stardog:1199 a :router ;
+   :connects stardog:405 .
+stardog:405 a :router .
+stardog:406 a :router .
+stardog:485 a :router ;
+   :connects stardog:408 .
+stardog:807 a :router ;
+   :connects stardog:408 .
+stardog:1830 a :router ;
+   :connects stardog:408 , stardog:807 , stardog:1766 .
+stardog:1872 a :router ;
+   :connects stardog:408 , stardog:1122 , stardog:1305 .
+stardog:410 a :router .
+stardog:546 a :router ;
+   :connects stardog:410 .
+stardog:800 a :router ;
+   :connects stardog:411 .
+stardog:1445 a :router ;
+   :connects stardog:411 , stardog:1425 .
+stardog:412 a :router .
+stardog:639 a :router ;
+   :connects stardog:559 , stardog:413 .
+stardog:413 a :router .
+stardog:1283 a :router ;
+   :connects stardog:1183 , stardog:416 .
+stardog:416 a :router .
+stardog:1153 a :router ;
+   :connects stardog:417 .
+stardog:417 a :router .
+stardog:542 a :router ;
+   :connects stardog:418 .
+stardog:743 a :router ;
+   :connects stardog:418 .
+stardog:1884 a :router ;
+   :connects stardog:1437 , stardog:418 .
+stardog:421 a :router .
+stardog:1505 a :router ;
+   :connects stardog:422 .
+stardog:425 a :router .
+stardog:487 a :router ;
+   :connects stardog:426 .
+stardog:426 a :router .
+stardog:1350 a :router ;
+   :connects stardog:1007 , stardog:427 , stardog:438 , stardog:625 , stardog:1281 .
+stardog:427 a :router .
+stardog:1883 a :router ;
+   :connects stardog:1108 , stardog:1363 , stardog:1350 , stardog:427 , stardog:438 , stardog:1818 .
+stardog:428 a :router .
+stardog:717 a :router ;
+   :connects stardog:429 .
+stardog:975 a :router ;
+   :connects stardog:775 , stardog:430 .
+stardog:811 a :router ;
+   :connects stardog:431 .
+stardog:431 a :router .
+stardog:852 a :router ;
+   :connects stardog:570 , stardog:650 , stardog:487 , stardog:431 .
+stardog:1043 a :router ;
+   :connects stardog:811 , stardog:431 , stardog:852 .
+stardog:1066 a :router ;
+   :connects stardog:431 , stardog:1043 .
+stardog:432 a :router .
+stardog:1477 a :router ;
+   :connects stardog:434 .
+stardog:1895 a :router ;
+   :connects stardog:434 .
+stardog:1228 a :router ;
+   :connects stardog:698 , stardog:823 , stardog:435 .
+stardog:435 a :router .
+stardog:437 a :router .
+stardog:622 a :router ;
+   :connects stardog:438 .
+stardog:438 a :router .
+stardog:1345 a :router ;
+   :connects stardog:439 .
+stardog:439 a :router .
+stardog:1948 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1167 , stardog:930 , stardog:1454 , stardog:1731 , stardog:439 , stardog:728 , stardog:1272 .
+stardog:1146 a :router ;
+   :connects stardog:911 , stardog:440 .
+stardog:440 a :router .
+stardog:1753 a :router ;
+   :connects stardog:1640 , stardog:441 , stardog:1046 .
+stardog:442 a :router .
+stardog:444 a :router .
+stardog:742 a :router ;
+   :connects stardog:634 , stardog:677 , stardog:444 .
+stardog:1559 a :router ;
+   :connects stardog:445 .
+stardog:1776 a :router ;
+   :connects stardog:446 .
+stardog:1669 a :router ;
+   :connects stardog:1291 , stardog:982 , stardog:448 .
+stardog:449 a :router .
+stardog:1352 a :router ;
+   :connects stardog:450 , stardog:483 , stardog:957 , stardog:965 .
+stardog:1863 a :router ;
+   :connects stardog:977 , stardog:450 .
+stardog:452 a :router .
+stardog:453 a :router .
+stardog:815 a :router ;
+   :connects stardog:454 .
+stardog:1135 a :router ;
+   :connects stardog:454 .
+stardog:1113 a :router ;
+   :connects stardog:523 , stardog:455 , stardog:907 .
+stardog:455 a :router .
+stardog:597 a :router ;
+   :connects stardog:456 .
+stardog:456 a :router .
+stardog:819 a :router ;
+   :connects stardog:458 .
+stardog:1927 a :router ;
+   :connects stardog:1095 , stardog:458 , stardog:1846 , stardog:1562 , stardog:1674 .
+stardog:459 a :router .
+stardog:1783 a :router ;
+   :connects stardog:460 .
+stardog:1912 a :router ;
+   :connects stardog:464 , stardog:698 , stardog:1167 , stardog:930 , stardog:1454 , stardog:1731 , stardog:461 .
+stardog:461 a :router .
+stardog:621 a :router ;
+   :connects stardog:462 .
+stardog:727 a :router ;
+   :connects stardog:462 .
+stardog:761 a :router ;
+   :connects stardog:462 , stardog:577 .
+stardog:835 a :router ;
+   :connects stardog:462 .
+stardog:1296 a :router ;
+   :connects stardog:930 , stardog:462 .
+stardog:1375 a :router ;
+   :connects stardog:930 , stardog:462 , stardog:1150 .
+stardog:463 a :router .
+stardog:733 a :router ;
+   :connects stardog:464 .
+stardog:1575 a :router ;
+   :connects stardog:464 .
+stardog:1650 a :router ;
+   :connects stardog:464 .
+stardog:1716 a :router ;
+   :connects stardog:464 .
+stardog:1248 a :router ;
+   :connects stardog:594 , stardog:465 .
+stardog:466 a :router .
+stardog:848 a :router ;
+   :connects stardog:466 .
+stardog:467 a :router .
+stardog:1142 a :router ;
+   :connects stardog:592 , stardog:467 .
+stardog:1989 a :router ;
+   :connects stardog:930 , stardog:468 , stardog:1411 , stardog:1009 , stardog:1550 , stardog:1607 .
+stardog:468 a :router .
+stardog:2052 a :router ;
+   :connects stardog:468 .
+stardog:642 a :router ;
+   :connects stardog:469 .
+stardog:469 a :router .
+stardog:665 a :router ;
+   :connects stardog:469 .
+stardog:470 a :router .
+stardog:515 a :router ;
+   :connects stardog:474 .
+stardog:474 a :router .
+stardog:1861 a :router ;
+   :connects stardog:985 , stardog:515 , stardog:474 , stardog:1063 .
+stardog:2035 a :router ;
+   :connects stardog:1356 , stardog:982 , stardog:850 , stardog:1100 , stardog:475 , stardog:1578 .
+stardog:584 a :router ;
+   :connects stardog:476 .
+stardog:478 a :router .
+stardog:479 a :router .
+stardog:625 a :router ;
+   :connects stardog:479 .
+stardog:1079 a :router ;
+   :connects stardog:479 .
+stardog:1346 a :router ;
+   :connects stardog:614 , stardog:665 , stardog:479 , stardog:498 , stardog:700 .
+stardog:481 a :router .
+stardog:1246 a :router ;
+   :connects stardog:849 , stardog:482 .
+stardog:957 a :router ;
+   :connects stardog:483 , stardog:769 .
+stardog:1736 a :router ;
+   :connects stardog:484 , stardog:753 .
+stardog:738 a :router ;
+   :connects stardog:487 .
+stardog:958 a :router ;
+   :connects stardog:487 .
+stardog:1462 a :router ;
+   :connects stardog:1013 , stardog:487 .
+stardog:488 a :router .
+stardog:687 a :router ;
+   :connects stardog:489 .
+stardog:490 a :router .
+stardog:1174 a :router ;
+   :connects stardog:614 , stardog:490 .
+stardog:1210 a :router ;
+   :connects stardog:614 , stardog:490 .
+stardog:1257 a :router ;
+   :connects stardog:614 , stardog:490 .
+stardog:493 a :router .
+stardog:1951 a :router ;
+   :connects stardog:493 .
+stardog:818 a :router ;
+   :connects stardog:495 .
+stardog:1140 a :router ;
+   :connects stardog:495 .
+stardog:1811 a :router ;
+   :connects stardog:495 , stardog:610 .
+stardog:496 a :router .
+stardog:1134 a :router ;
+   :connects stardog:619 , stardog:864 , stardog:1041 , stardog:942 , stardog:498 , stardog:735 .
+stardog:498 a :router .
+stardog:501 a :router .
+stardog:503 a :router .
+stardog:505 a :router .
+stardog:1207 a :router ;
+   :connects stardog:505 .
+stardog:1818 a :router ;
+   :connects stardog:1518 , stardog:1707 , stardog:764 , stardog:1007 , stardog:1363 , stardog:1350 , stardog:505 , stardog:713 , stardog:1224 .
+stardog:506 a :router .
+stardog:507 a :router .
+stardog:510 a :router .
+stardog:739 a :router ;
+   :connects stardog:511 .
+stardog:1467 a :router ;
+   :connects stardog:511 .
+stardog:1802 a :router ;
+   :connects stardog:511 , stardog:1642 .
+stardog:2021 a :router ;
+   :connects stardog:511 .
+stardog:2082 a :router ;
+   :connects stardog:511 , stardog:1950 .
+stardog:512 a :router .
+stardog:782 a :router ;
+   :connects stardog:513 .
+stardog:1772 a :router ;
+   :connects stardog:513 .
+stardog:781 a :router ;
+   :connects stardog:514 .
+stardog:844 a :router ;
+   :connects stardog:514 .
+stardog:1227 a :router ;
+   :connects stardog:514 .
+stardog:1926 a :router ;
+   :connects stardog:514 .
+stardog:718 a :router ;
+   :connects stardog:517 .
+stardog:517 a :router .
+stardog:1402 a :router ;
+   :connects stardog:518 , stardog:1226 , stardog:1347 , stardog:678 , stardog:1068 .
+stardog:1667 a :router ;
+   :connects stardog:519 .
+stardog:520 a :router .
+stardog:522 a :router ;
+   :connects stardog:521 .
+stardog:1782 a :router ;
+   :connects stardog:522 .
+stardog:524 a :router .
+stardog:1343 a :router ;
+   :connects stardog:525 .
+stardog:526 a :router .
+stardog:528 a :router .
+stardog:1515 a :router ;
+   :connects stardog:530 .
+stardog:530 a :router .
+stardog:531 a :router .
+stardog:1247 a :router ;
+   :connects stardog:531 .
+stardog:1945 a :router ;
+   :connects stardog:1480 , stardog:531 .
+stardog:533 a :router .
+stardog:548 a :router ;
+   :connects stardog:534 .
+stardog:1369 a :router ;
+   :connects stardog:534 .
+stardog:1512 a :router ;
+   :connects stardog:534 .
+stardog:1600 a :router ;
+   :connects stardog:534 .
+stardog:1617 a :router ;
+   :connects stardog:712 , stardog:534 , stardog:546 .
+stardog:537 a :router .
+stardog:538 a :router .
+stardog:934 a :router ;
+   :connects stardog:539 .
+stardog:539 a :router .
+stardog:752 a :router ;
+   :connects stardog:540 .
+stardog:1250 a :router ;
+   :connects stardog:540 , stardog:1098 , stardog:694 .
+stardog:541 a :router .
+stardog:1719 a :router ;
+   :connects stardog:614 , stardog:689 , stardog:543 , stardog:1707 , stardog:648 , stardog:982 , stardog:1206 , stardog:1470 .
+stardog:1893 a :router ;
+   :connects stardog:543 , stardog:850 , stardog:1587 , stardog:569 , stardog:1208 , stardog:1481 .
+stardog:544 a :router .
+stardog:545 a :router .
+stardog:1401 a :router ;
+   :connects stardog:546 .
+stardog:558 a :router ;
+   :connects stardog:547 .
+stardog:1475 a :router ;
+   :connects stardog:547 , stardog:1197 .
+stardog:549 a :router .
+stardog:550 a :router .
+stardog:1086 a :router ;
+   :connects stardog:552 .
+stardog:1715 a :router ;
+   :connects stardog:552 .
+stardog:881 a :router ;
+   :connects stardog:553 .
+stardog:553 a :router .
+stardog:556 a :router .
+stardog:2030 a :router ;
+   :connects stardog:1382 , stardog:1087 , stardog:556 .
+stardog:925 a :router ;
+   :connects stardog:557 .
+stardog:1133 a :router ;
+   :connects stardog:557 .
+stardog:1268 a :router ;
+   :connects stardog:557 .
+stardog:1635 a :router ;
+   :connects stardog:557 .
+stardog:2056 a :router ;
+   :connects stardog:557 , stardog:1471 .
+stardog:2080 a :router ;
+   :connects stardog:557 , stardog:1536 , stardog:1006 , stardog:1944 , stardog:1010 , stardog:1637 , stardog:1515 , stardog:1479 .
+stardog:1035 a :router ;
+   :connects stardog:747 , stardog:558 .
+stardog:1574 a :router ;
+   :connects stardog:1496 , stardog:558 .
+stardog:1901 a :router ;
+   :connects stardog:558 .
+stardog:691 a :router ;
+   :connects stardog:559 .
+stardog:560 a :router .
+stardog:1597 a :router ;
+   :connects stardog:1353 , stardog:561 .
+stardog:917 a :router ;
+   :connects stardog:641 , stardog:564 .
+stardog:566 a :router .
+stardog:953 a :router ;
+   :connects stardog:566 .
+stardog:567 a :router .
+stardog:1978 a :router ;
+   :connects stardog:747 , stardog:567 , stardog:1541 , stardog:1613 .
+stardog:568 a :router .
+stardog:569 a :router .
+stardog:571 a :router .
+stardog:572 a :router .
+stardog:573 a :router .
+stardog:1171 a :router ;
+   :connects stardog:573 .
+stardog:1398 a :router ;
+   :connects stardog:573 , stardog:1171 .
+stardog:1914 a :router ;
+   :connects stardog:574 .
+stardog:798 a :router ;
+   :connects stardog:760 , stardog:575 .
+stardog:575 a :router .
+stardog:576 a :router .
+stardog:1996 a :router ;
+   :connects stardog:576 .
+stardog:577 a :router .
+stardog:578 a :router .
+stardog:1390 a :router ;
+   :connects stardog:912 , stardog:584 , stardog:578 , stardog:1322 .
+stardog:579 a :router .
+stardog:580 a :router .
+stardog:581 a :router .
+stardog:1779 a :router ;
+   :connects stardog:880 , stardog:584 .
+stardog:816 a :router ;
+   :connects stardog:586 .
+stardog:1873 a :router ;
+   :connects stardog:586 .
+stardog:1979 a :router ;
+   :connects stardog:586 .
+stardog:636 a :router ;
+   :connects stardog:587 .
+stardog:832 a :router ;
+   :connects stardog:587 .
+stardog:937 a :router ;
+   :connects stardog:587 .
+stardog:1367 a :router ;
+   :connects stardog:587 .
+stardog:1602 a :router ;
+   :connects stardog:587 .
+stardog:1676 a :router ;
+   :connects stardog:587 , stardog:675 , stardog:699 , stardog:1508 .
+stardog:1688 a :router ;
+   :connects stardog:587 , stardog:749 , stardog:675 .
+stardog:2012 a :router ;
+   :connects stardog:587 .
+stardog:588 a :router .
+stardog:589 a :router .
+stardog:590 a :router .
+stardog:635 a :router ;
+   :connects stardog:594 .
+stardog:813 a :router ;
+   :connects stardog:594 .
+stardog:1157 a :router ;
+   :connects stardog:594 .
+stardog:1710 a :router ;
+   :connects stardog:594 , stardog:1564 , stardog:1534 , stardog:1329 , stardog:1474 .
+stardog:1713 a :router ;
+   :connects stardog:1431 , stardog:594 , stardog:1544 .
+stardog:595 a :router .
+stardog:855 a :router ;
+   :connects stardog:598 .
+stardog:2086 a :router ;
+   :connects stardog:600 .
+stardog:602 a :router .
+stardog:1995 a :router ;
+   :connects stardog:603 , stardog:1377 , stardog:1003 .
+stardog:604 a :router .
+stardog:1188 a :router ;
+   :connects stardog:605 .
+stardog:1231 a :router ;
+   :connects stardog:605 , stardog:863 .
+stardog:606 a :router .
+stardog:1557 a :router ;
+   :connects stardog:1463 , stardog:1431 , stardog:609 , stardog:1427 .
+stardog:640 a :router ;
+   :connects stardog:610 .
+stardog:966 a :router ;
+   :connects stardog:610 .
+stardog:1111 a :router ;
+   :connects stardog:610 .
+stardog:613 a :router .
+stardog:730 a :router ;
+   :connects stardog:614 .
+stardog:995 a :router ;
+   :connects stardog:614 , stardog:641 .
+stardog:1005 a :router ;
+   :connects stardog:614 .
+stardog:1015 a :router ;
+   :connects stardog:614 .
+stardog:1064 a :router ;
+   :connects stardog:614 , stardog:665 .
+stardog:1105 a :router ;
+   :connects stardog:614 , stardog:729 .
+stardog:1267 a :router ;
+   :connects stardog:614 .
+stardog:1466 a :router ;
+   :connects stardog:614 , stardog:641 .
+stardog:1538 a :router ;
+   :connects stardog:614 .
+stardog:1790 a :router ;
+   :connects stardog:614 .
+stardog:1886 a :router ;
+   :connects stardog:614 .
+stardog:2038 a :router ;
+   :connects stardog:614 , stardog:633 .
+stardog:2065 a :router ;
+   :connects stardog:614 , stardog:1524 .
+stardog:626 a :router ;
+   :connects stardog:615 .
+stardog:615 a :router .
+stardog:765 a :router ;
+   :connects stardog:616 .
+stardog:616 a :router .
+stardog:673 a :router ;
+   :connects stardog:619 .
+stardog:735 a :router ;
+   :connects stardog:619 .
+stardog:777 a :router ;
+   :connects stardog:619 .
+stardog:1323 a :router ;
+   :connects stardog:619 , stardog:1041 .
+stardog:1795 a :router ;
+   :connects stardog:619 , stardog:1022 , stardog:1041 , stardog:1551 , stardog:1645 , stardog:735 , stardog:1764 .
+stardog:1899 a :router ;
+   :connects stardog:619 .
+stardog:1953 a :router ;
+   :connects stardog:619 , stardog:1041 , stardog:1551 , stardog:1645 .
+stardog:620 a :router .
+stardog:903 a :router ;
+   :connects stardog:621 .
+stardog:628 a :router .
+stardog:629 a :router .
+stardog:630 a :router .
+stardog:1193 a :router ;
+   :connects stardog:632 .
+stardog:633 a :router .
+stardog:926 a :router ;
+   :connects stardog:634 .
+stardog:962 a :router ;
+   :connects stardog:634 .
+stardog:964 a :router ;
+   :connects stardog:634 .
+stardog:1042 a :router ;
+   :connects stardog:967 , stardog:634 .
+stardog:1075 a :router ;
+   :connects stardog:967 , stardog:634 .
+stardog:1339 a :router ;
+   :connects stardog:967 , stardog:634 , stardog:1164 .
+stardog:1530 a :router ;
+   :connects stardog:703 , stardog:967 , stardog:634 , stardog:935 , stardog:962 .
+stardog:845 a :router ;
+   :connects stardog:637 .
+stardog:1091 a :router ;
+   :connects stardog:637 , stardog:845 .
+stardog:756 a :router ;
+   :connects stardog:638 .
+stardog:638 a :router .
+stardog:965 a :router ;
+   :connects stardog:639 .
+stardog:843 a :router ;
+   :connects stardog:641 .
+stardog:1683 a :router ;
+   :connects stardog:641 .
+stardog:1909 a :router ;
+   :connects stardog:641 .
+stardog:924 a :router ;
+   :connects stardog:643 .
+stardog:643 a :router .
+stardog:1724 a :router ;
+   :connects stardog:643 .
+stardog:1879 a :router ;
+   :connects stardog:1731 , stardog:643 .
+stardog:644 a :router .
+stardog:645 a :router .
+stardog:1938 a :router ;
+   :connects stardog:646 .
+stardog:651 a :router .
+stardog:1506 a :router ;
+   :connects stardog:653 .
+stardog:1000 a :router ;
+   :connects stardog:655 .
+stardog:655 a :router .
+stardog:659 a :router .
+stardog:660 a :router .
+stardog:1102 a :router ;
+   :connects stardog:661 .
+stardog:788 a :router ;
+   :connects stardog:662 .
+stardog:662 a :router .
+stardog:663 a :router .
+stardog:1089 a :router ;
+   :connects stardog:664 , stardog:913 .
+stardog:1320 a :router ;
+   :connects stardog:664 , stardog:913 , stardog:983 .
+stardog:2059 a :router ;
+   :connects stardog:664 , stardog:1518 , stardog:1707 , stardog:1990 , stardog:1427 .
+stardog:666 a :router .
+stardog:667 a :router .
+stardog:1177 a :router ;
+   :connects stardog:667 .
+stardog:669 a :router .
+stardog:670 a :router .
+stardog:671 a :router .
+stardog:674 a :router .
+stardog:679 a :router .
+stardog:838 a :router ;
+   :connects stardog:680 .
+stardog:680 a :router .
+stardog:681 a :router .
+stardog:682 a :router .
+stardog:683 a :router .
+stardog:1317 a :router ;
+   :connects stardog:684 .
+stardog:684 a :router .
+stardog:686 a :router .
+stardog:1416 a :router ;
+   :connects stardog:689 .
+stardog:1741 a :router ;
+   :connects stardog:689 .
+stardog:1742 a :router ;
+   :connects stardog:689 , stardog:841 .
+stardog:692 a :router .
+stardog:1132 a :router ;
+   :connects stardog:693 .
+stardog:693 a :router .
+stardog:1564 a :router ;
+   :connects stardog:1324 , stardog:1098 , stardog:694 , stardog:1128 , stardog:1534 , stardog:1474 .
+stardog:1987 a :router ;
+   :connects stardog:696 , stardog:1890 , stardog:1048 , stardog:1885 .
+stardog:697 a :router .
+stardog:863 a :router ;
+   :connects stardog:698 .
+stardog:961 a :router ;
+   :connects stardog:698 .
+stardog:972 a :router ;
+   :connects stardog:698 , stardog:883 .
+stardog:2092 a :router ;
+   :connects stardog:698 , stardog:1454 .
+stardog:699 a :router .
+stardog:700 a :router .
+stardog:701 a :router .
+stardog:702 a :router .
+stardog:869 a :router ;
+   :connects stardog:703 .
+stardog:1026 a :router ;
+   :connects stardog:703 .
+stardog:1050 a :router ;
+   :connects stardog:703 , stardog:967 , stardog:929 .
+stardog:1446 a :router ;
+   :connects stardog:703 , stardog:967 .
+stardog:1598 a :router ;
+   :connects stardog:703 , stardog:967 .
+stardog:2034 a :router ;
+   :connects stardog:703 , stardog:967 , stardog:894 .
+stardog:704 a :router .
+stardog:2043 a :router ;
+   :connects stardog:704 .
+stardog:709 a :router .
+stardog:732 a :router ;
+   :connects stardog:710 .
+stardog:748 a :router ;
+   :connects stardog:710 .
+stardog:859 a :router ;
+   :connects stardog:837 , stardog:710 .
+stardog:1061 a :router ;
+   :connects stardog:710 .
+stardog:711 a :router .
+stardog:1729 a :router ;
+   :connects stardog:712 , stardog:1123 .
+stardog:713 a :router .
+stardog:1851 a :router ;
+   :connects stardog:716 .
+stardog:933 a :router ;
+   :connects stardog:722 .
+stardog:1981 a :router ;
+   :connects stardog:722 , stardog:1932 , stardog:1233 .
+stardog:724 a :router .
+stardog:726 a :router .
+stardog:1721 a :router ;
+   :connects stardog:866 , stardog:1103 , stardog:726 .
+stardog:1332 a :router ;
+   :connects stardog:728 .
+stardog:728 a :router .
+stardog:1503 a :router ;
+   :connects stardog:729 , stardog:1105 .
+stardog:1159 a :router ;
+   :connects stardog:736 .
+stardog:736 a :router .
+stardog:737 a :router .
+stardog:744 a :router .
+stardog:745 a :router .
+stardog:1266 a :router ;
+   :connects stardog:747 , stardog:896 .
+stardog:1583 a :router ;
+   :connects stardog:747 , stardog:957 .
+stardog:753 a :router .
+stardog:754 a :router .
+stardog:1371 a :router ;
+   :connects stardog:757 .
+stardog:758 a :router .
+stardog:759 a :router .
+stardog:1896 a :router ;
+   :connects stardog:760 .
+stardog:847 a :router ;
+   :connects stardog:761 .
+stardog:994 a :router ;
+   :connects stardog:761 .
+stardog:1888 a :router ;
+   :connects stardog:761 .
+stardog:1894 a :router ;
+   :connects stardog:761 .
+stardog:762 a :router .
+stardog:1104 a :router ;
+   :connects stardog:764 .
+stardog:1311 a :router ;
+   :connects stardog:764 .
+stardog:767 a :router .
+stardog:1453 a :router ;
+   :connects stardog:768 .
+stardog:1887 a :router ;
+   :connects stardog:1801 , stardog:768 .
+stardog:1833 a :router ;
+   :connects stardog:769 .
+stardog:770 a :router .
+stardog:771 a :router .
+stardog:772 a :router .
+stardog:773 a :router .
+stardog:774 a :router .
+stardog:1389 a :router ;
+   :connects stardog:775 .
+stardog:1993 a :router ;
+   :connects stardog:1850 , stardog:775 .
+stardog:963 a :router ;
+   :connects stardog:779 .
+stardog:779 a :router .
+stardog:786 a :router .
+stardog:787 a :router .
+stardog:789 a :router .
+stardog:1259 a :router ;
+   :connects stardog:790 .
+stardog:1058 a :router ;
+   :connects stardog:792 .
+stardog:792 a :router .
+stardog:1118 a :router ;
+   :connects stardog:792 .
+stardog:2074 a :router ;
+   :connects stardog:896 , stardog:1127 , stardog:792 .
+stardog:794 a :router .
+stardog:1711 a :router ;
+   :connects stardog:1062 , stardog:795 .
+stardog:1897 a :router ;
+   :connects stardog:1062 , stardog:795 .
+stardog:796 a :router .
+stardog:2046 a :router ;
+   :connects stardog:1076 , stardog:796 .
+stardog:797 a :router .
+stardog:799 a :router .
+stardog:802 a :router .
+stardog:991 a :router ;
+   :connects stardog:804 .
+stardog:2001 a :router ;
+   :connects stardog:806 .
+stardog:809 a :router .
+stardog:1622 a :router ;
+   :connects stardog:810 , stardog:1411 .
+stardog:810 a :router .
+stardog:1053 a :router ;
+   :connects stardog:818 , stardog:966 .
+stardog:1464 a :router ;
+   :connects stardog:1356 , stardog:818 .
+stardog:1982 a :router ;
+   :connects stardog:1297 , stardog:821 , stardog:1076 .
+stardog:825 a :router .
+stardog:1522 a :router ;
+   :connects stardog:826 , stardog:1010 , stardog:1191 .
+stardog:827 a :router .
+stardog:829 a :router .
+stardog:830 a :router .
+stardog:2044 a :router ;
+   :connects stardog:1076 , stardog:834 .
+stardog:834 a :router .
+stardog:836 a :router .
+stardog:1344 a :router ;
+   :connects stardog:836 .
+stardog:2005 a :router ;
+   :connects stardog:837 , stardog:1014 .
+stardog:1435 a :router ;
+   :connects stardog:838 .
+stardog:1752 a :router ;
+   :connects stardog:840 , stardog:1295 .
+stardog:1829 a :router ;
+   :connects stardog:840 .
+stardog:907 a :router ;
+   :connects stardog:841 .
+stardog:1972 a :router ;
+   :connects stardog:841 .
+stardog:1746 a :router ;
+   :connects stardog:920 , stardog:845 .
+stardog:2112 a :router ;
+   :connects stardog:847 .
+stardog:2101 a :router ;
+   :connects stardog:849 , stardog:1246 , stardog:1954 .
+stardog:1208 a :router ;
+   :connects stardog:850 .
+stardog:1766 a :router ;
+   :connects stardog:1024 , stardog:850 .
+stardog:1983 a :router ;
+   :connects stardog:850 .
+stardog:854 a :router .
+stardog:856 a :router .
+stardog:1957 a :router ;
+   :connects stardog:860 .
+stardog:2055 a :router ;
+   :connects stardog:861 .
+stardog:862 a :router .
+stardog:1697 a :router ;
+   :connects stardog:867 .
+stardog:868 a :router .
+stardog:1943 a :router ;
+   :connects stardog:870 .
+stardog:2014 a :router ;
+   :connects stardog:871 .
+stardog:872 a :router .
+stardog:919 a :router ;
+   :connects stardog:872 .
+stardog:1468 a :router ;
+   :connects stardog:872 .
+stardog:1348 a :router ;
+   :connects stardog:873 .
+stardog:2099 a :router ;
+   :connects stardog:873 .
+stardog:877 a :router .
+stardog:878 a :router .
+stardog:1813 a :router ;
+   :connects stardog:930 , stardog:882 .
+stardog:882 a :router .
+stardog:885 a :router .
+stardog:886 a :router .
+stardog:1169 a :router ;
+   :connects stardog:888 .
+stardog:1531 a :router ;
+   :connects stardog:888 .
+stardog:2068 a :router ;
+   :connects stardog:936 , stardog:888 .
+stardog:2040 a :router ;
+   :connects stardog:1454 , stardog:1447 , stardog:892 .
+stardog:892 a :router .
+stardog:894 a :router .
+stardog:948 a :router ;
+   :connects stardog:896 .
+stardog:1216 a :router ;
+   :connects stardog:896 .
+stardog:1653 a :router ;
+   :connects stardog:896 .
+stardog:1798 a :router ;
+   :connects stardog:896 , stardog:1020 .
+stardog:1985 a :router ;
+   :connects stardog:896 .
+stardog:1411 a :router ;
+   :connects stardog:898 .
+stardog:898 a :router .
+stardog:899 a :router .
+stardog:901 a :router .
+stardog:904 a :router .
+stardog:1096 a :router ;
+   :connects stardog:905 .
+stardog:905 a :router .
+stardog:1922 a :router ;
+   :connects stardog:1450 , stardog:1127 , stardog:905 .
+stardog:2100 a :router ;
+   :connects stardog:1850 , stardog:1997 , stardog:905 , stardog:979 .
+stardog:1461 a :router ;
+   :connects stardog:907 .
+stardog:910 a :router .
+stardog:1529 a :router ;
+   :connects stardog:1041 , stardog:910 .
+stardog:1030 a :router ;
+   :connects stardog:911 .
+stardog:1244 a :router ;
+   :connects stardog:911 .
+stardog:1788 a :router ;
+   :connects stardog:911 .
+stardog:1570 a :router ;
+   :connects stardog:912 .
+stardog:1999 a :router ;
+   :connects stardog:912 .
+stardog:916 a :router .
+stardog:921 a :router .
+stardog:1964 a :router ;
+   :connects stardog:1540 , stardog:925 .
+stardog:1364 a :router ;
+   :connects stardog:927 .
+stardog:928 a :router .
+stardog:1366 a :router ;
+   :connects stardog:930 .
+stardog:1585 a :router ;
+   :connects stardog:930 .
+stardog:1700 a :router ;
+   :connects stardog:1326 , stardog:931 .
+stardog:931 a :router .
+stardog:932 a :router .
+stardog:1842 a :router ;
+   :connects stardog:967 , stardog:935 , stardog:1075 .
+stardog:1426 a :router ;
+   :connects stardog:936 , stardog:1024 .
+stardog:1214 a :router ;
+   :connects stardog:945 .
+stardog:949 a :router .
+stardog:955 a :router .
+stardog:1874 a :router ;
+   :connects stardog:1365 , stardog:955 , stardog:1391 .
+stardog:1338 a :router ;
+   :connects stardog:962 .
+stardog:969 a :router .
+stardog:971 a :router .
+stardog:1803 a :router ;
+   :connects stardog:972 .
+stardog:1937 a :router ;
+   :connects stardog:1801 , stardog:974 .
+stardog:1942 a :router ;
+   :connects stardog:977 , stardog:1518 , stardog:1707 , stardog:1890 , stardog:1301 , stardog:1911 .
+stardog:1387 a :router ;
+   :connects stardog:979 .
+stardog:979 a :router .
+stardog:980 a :router .
+stardog:981 a :router .
+stardog:2071 a :router ;
+   :connects stardog:1431 , stardog:982 , stardog:1399 , stardog:1774 .
+stardog:984 a :router .
+stardog:1279 a :router ;
+   :connects stardog:987 .
+stardog:1286 a :router ;
+   :connects stardog:987 .
+stardog:1460 a :router ;
+   :connects stardog:987 .
+stardog:1394 a :router ;
+   :connects stardog:989 .
+stardog:990 a :router .
+stardog:1614 a :router ;
+   :connects stardog:990 .
+stardog:2013 a :router ;
+   :connects stardog:992 , stardog:1727 .
+stardog:997 a :router .
+stardog:999 a :router .
+stardog:1002 a :router .
+stardog:1003 a :router .
+stardog:1004 a :router .
+stardog:1678 a :router ;
+   :connects stardog:1660 , stardog:1006 .
+stardog:1281 a :router ;
+   :connects stardog:1007 .
+stardog:1854 a :router ;
+   :connects stardog:1007 , stardog:1818 .
+stardog:1009 a :router .
+stardog:1641 a :router ;
+   :connects stardog:1014 .
+stardog:1017 a :router .
+stardog:1117 a :router ;
+   :connects stardog:1020 .
+stardog:1084 a :router ;
+   :connects stardog:1027 .
+stardog:1521 a :router ;
+   :connects stardog:1029 .
+stardog:1029 a :router .
+stardog:1541 a :router ;
+   :connects stardog:1263 , stardog:1521 , stardog:1029 .
+stardog:1418 a :router ;
+   :connects stardog:1030 .
+stardog:1864 a :router ;
+   :connects stardog:1031 .
+stardog:1032 a :router .
+stardog:1860 a :router ;
+   :connects stardog:1034 , stardog:1155 , stardog:1089 .
+stardog:1037 a :router .
+stardog:1038 a :router .
+stardog:1039 a :router .
+stardog:1368 a :router ;
+   :connects stardog:1052 .
+stardog:1501 a :router ;
+   :connects stardog:1052 .
+stardog:2084 a :router ;
+   :connects stardog:1052 .
+stardog:2067 a :router ;
+   :connects stardog:1053 .
+stardog:1055 a :router .
+stardog:1057 a :router .
+stardog:1059 a :router .
+stardog:1060 a :router .
+stardog:1644 a :router ;
+   :connects stardog:1404 , stardog:1134 , stardog:1063 .
+stardog:1063 a :router .
+stardog:1065 a :router .
+stardog:1068 a :router .
+stardog:1275 a :router ;
+   :connects stardog:1167 , stardog:1072 .
+stardog:1072 a :router .
+stardog:1243 a :router ;
+   :connects stardog:1076 .
+stardog:1459 a :router ;
+   :connects stardog:1076 .
+stardog:1077 a :router .
+stardog:1567 a :router ;
+   :connects stardog:1081 .
+stardog:1085 a :router .
+stardog:2060 a :router ;
+   :connects stardog:1537 , stardog:1087 , stardog:1946 .
+stardog:1088 a :router .
+stardog:1984 a :router ;
+   :connects stardog:1089 , stardog:1860 .
+stardog:1094 a :router .
+stardog:1280 a :router ;
+   :connects stardog:1099 .
+stardog:1393 a :router ;
+   :connects stardog:1099 .
+stardog:1680 a :router ;
+   :connects stardog:1277 , stardog:1103 .
+stardog:1109 a :router .
+stardog:1479 a :router ;
+   :connects stardog:1110 .
+stardog:1147 a :router ;
+   :connects stardog:1112 .
+stardog:1112 a :router .
+stardog:1114 a :router .
+stardog:1116 a :router .
+stardog:1372 a :router ;
+   :connects stardog:1122 , stardog:1155 .
+stardog:1490 a :router ;
+   :connects stardog:1122 .
+stardog:1831 a :router ;
+   :connects stardog:1122 , stardog:1485 , stardog:1755 .
+stardog:1213 a :router ;
+   :connects stardog:1127 .
+stardog:1273 a :router ;
+   :connects stardog:1127 .
+stardog:1284 a :router ;
+   :connects stardog:1127 .
+stardog:1625 a :router ;
+   :connects stardog:1127 .
+stardog:1701 a :router ;
+   :connects stardog:1127 .
+stardog:1763 a :router ;
+   :connects stardog:1127 .
+stardog:1855 a :router ;
+   :connects stardog:1127 .
+stardog:1925 a :router ;
+   :connects stardog:1127 .
+stardog:1128 a :router .
+stardog:1647 a :router ;
+   :connects stardog:1129 .
+stardog:1131 a :router .
+stardog:1137 a :router .
+stardog:1484 a :router ;
+   :connects stardog:1141 .
+stardog:1145 a :router .
+stardog:1148 a :router .
+stardog:1150 a :router .
+stardog:1151 a :router .
+stardog:1300 a :router ;
+   :connects stardog:1159 .
+stardog:1357 a :router ;
+   :connects stardog:1159 .
+stardog:1712 a :router ;
+   :connects stardog:1159 .
+stardog:1756 a :router ;
+   :connects stardog:1159 .
+stardog:1161 a :router .
+stardog:1624 a :router ;
+   :connects stardog:1163 , stardog:1278 .
+stardog:2098 a :router ;
+   :connects stardog:1163 .
+stardog:1629 a :router ;
+   :connects stardog:1164 .
+stardog:1240 a :router ;
+   :connects stardog:1165 .
+stardog:1549 a :router ;
+   :connects stardog:1172 .
+stardog:1173 a :router .
+stardog:1181 a :router .
+stardog:2011 a :router ;
+   :connects stardog:1183 .
+stardog:1229 a :router ;
+   :connects stardog:1187 .
+stardog:1187 a :router .
+stardog:1189 a :router .
+stardog:1191 a :router .
+stardog:2019 a :router ;
+   :connects stardog:1522 , stardog:1191 .
+stardog:1349 a :router ;
+   :connects stardog:1192 .
+stardog:1563 a :router ;
+   :connects stardog:1196 .
+stardog:1966 a :router ;
+   :connects stardog:1196 , stardog:1451 .
+stardog:1791 a :router ;
+   :connects stardog:1198 , stardog:1334 .
+stardog:2103 a :router ;
+   :connects stardog:1198 , stardog:1536 .
+stardog:1200 a :router .
+stardog:1221 a :router .
+stardog:1223 a :router .
+stardog:1224 a :router .
+stardog:1528 a :router ;
+   :connects stardog:1226 .
+stardog:1556 a :router ;
+   :connects stardog:1233 .
+stardog:1603 a :router ;
+   :connects stardog:1233 .
+stardog:1235 a :router .
+stardog:1238 a :router .
+stardog:1239 a :router .
+stardog:1880 a :router ;
+   :connects stardog:1536 , stardog:1240 .
+stardog:1241 a :router .
+stardog:1242 a :router .
+stardog:1258 a :router ;
+   :connects stardog:1245 .
+stardog:1604 a :router ;
+   :connects stardog:1356 , stardog:1245 , stardog:1258 .
+stardog:1452 a :router ;
+   :connects stardog:1246 .
+stardog:1333 a :router ;
+   :connects stardog:1249 .
+stardog:1514 a :router ;
+   :connects stardog:1249 .
+stardog:1692 a :router ;
+   :connects stardog:1249 .
+stardog:1555 a :router ;
+   :connects stardog:1253 .
+stardog:2064 a :router ;
+   :connects stardog:1253 , stardog:1845 .
+stardog:1255 a :router .
+stardog:1260 a :router .
+stardog:1262 a :router .
+stardog:1613 a :router ;
+   :connects stardog:1502 , stardog:1263 , stardog:1429 .
+stardog:2109 a :router ;
+   :connects stardog:1263 , stardog:1978 , stardog:1613 .
+stardog:1355 a :router ;
+   :connects stardog:1268 .
+stardog:1272 a :router .
+stardog:1278 a :router .
+stardog:1287 a :router .
+stardog:1289 a :router .
+stardog:1481 a :router ;
+   :connects stardog:1290 .
+stardog:1308 a :router ;
+   :connects stardog:1291 .
+stardog:1330 a :router ;
+   :connects stardog:1291 .
+stardog:1295 a :router .
+stardog:1689 a :router ;
+   :connects stardog:1296 .
+stardog:1298 a :router .
+stardog:1870 a :router ;
+   :connects stardog:1298 .
+stardog:1306 a :router .
+stardog:1929 a :router ;
+   :connects stardog:1307 .
+stardog:2015 a :router ;
+   :connects stardog:1310 .
+stardog:1611 a :router ;
+   :connects stardog:1314 .
+stardog:1497 a :router ;
+   :connects stardog:1319 .
+stardog:1322 a :router .
+stardog:1325 a :router .
+stardog:1628 a :router ;
+   :connects stardog:1326 .
+stardog:1327 a :router .
+stardog:1534 a :router ;
+   :connects stardog:1329 .
+stardog:1329 a :router .
+stardog:1337 a :router .
+stardog:1340 a :router .
+stardog:1342 a :router .
+stardog:2033 a :router ;
+   :connects stardog:1344 .
+stardog:2075 a :router ;
+   :connects stardog:1344 .
+stardog:2000 a :router ;
+   :connects stardog:1346 .
+stardog:1359 a :router ;
+   :connects stardog:1347 .
+stardog:2087 a :router ;
+   :connects stardog:1347 .
+stardog:2106 a :router ;
+   :connects stardog:1347 .
+stardog:1792 a :router ;
+   :connects stardog:1354 .
+stardog:2051 a :router ;
+   :connects stardog:1354 .
+stardog:2104 a :router ;
+   :connects stardog:1356 .
+stardog:1358 a :router .
+stardog:1374 a :router .
+stardog:1679 a :router ;
+   :connects stardog:1374 .
+stardog:1410 a :router ;
+   :connects stardog:1378 .
+stardog:1832 a :router ;
+   :connects stardog:1379 .
+stardog:1933 a :router ;
+   :connects stardog:1379 .
+stardog:1380 a :router .
+stardog:1900 a :router ;
+   :connects stardog:1385 .
+stardog:1391 a :router .
+stardog:1396 a :router .
+stardog:2110 a :router ;
+   :connects stardog:2097 , stardog:1399 , stardog:1448 .
+stardog:1552 a :router ;
+   :connects stardog:1405 .
+stardog:1634 a :router ;
+   :connects stardog:1405 .
+stardog:1839 a :router ;
+   :connects stardog:1405 .
+stardog:1406 a :router .
+stardog:1409 a :router .
+stardog:1412 a :router .
+stardog:1722 a :router ;
+   :connects stardog:1417 .
+stardog:1420 a :router .
+stardog:1422 a :router .
+stardog:1423 a :router .
+stardog:1429 a :router .
+stardog:1743 a :router ;
+   :connects stardog:1432 .
+stardog:1436 a :router .
+stardog:1835 a :router ;
+   :connects stardog:1437 .
+stardog:1438 a :router .
+stardog:1441 a :router .
+stardog:1725 a :router ;
+   :connects stardog:1447 .
+stardog:1448 a :router .
+stardog:1455 a :router .
+stardog:1474 a :router .
+stardog:1606 a :router ;
+   :connects stardog:1474 .
+stardog:2020 a :router ;
+   :connects stardog:1793 , stardog:1475 .
+stardog:1806 a :router ;
+   :connects stardog:1483 .
+stardog:1923 a :router ;
+   :connects stardog:1483 .
+stardog:1735 a :router ;
+   :connects stardog:1496 , stardog:1502 .
+stardog:1853 a :router ;
+   :connects stardog:1496 .
+stardog:1499 a :router .
+stardog:1664 a :router ;
+   :connects stardog:1500 , stardog:1640 .
+stardog:1546 a :router ;
+   :connects stardog:1502 .
+stardog:1714 a :router ;
+   :connects stardog:1502 .
+stardog:1869 a :router ;
+   :connects stardog:1502 .
+stardog:1734 a :router ;
+   :connects stardog:1504 , stardog:1590 .
+stardog:1769 a :router ;
+   :connects stardog:1504 , stardog:1590 .
+stardog:1508 a :router .
+stardog:1511 a :router .
+stardog:1576 a :router ;
+   :connects stardog:1518 .
+stardog:1627 a :router ;
+   :connects stardog:1518 .
+stardog:1527 a :router .
+stardog:1569 a :router ;
+   :connects stardog:1545 .
+stardog:1548 a :router .
+stardog:1550 a :router .
+stardog:1553 a :router .
+stardog:2102 a :router ;
+   :connects stardog:1554 , stardog:2053 .
+stardog:1561 a :router .
+stardog:1562 a :router .
+stardog:1580 a :router .
+stardog:1589 a :router .
+stardog:1607 a :router .
+stardog:1632 a :router ;
+   :connects stardog:1624 .
+stardog:1633 a :router .
+stardog:1642 a :router .
+stardog:1693 a :router ;
+   :connects stardog:1643 .
+stardog:1949 a :router ;
+   :connects stardog:1643 .
+stardog:1649 a :router .
+stardog:1652 a :router .
+stardog:1658 a :router .
+stardog:1663 a :router .
+stardog:1665 a :router .
+stardog:1668 a :router .
+stardog:1670 a :router .
+stardog:1918 a :router ;
+   :connects stardog:1671 .
+stardog:1674 a :router .
+stardog:1675 a :router .
+stardog:1728 a :router ;
+   :connects stardog:1676 .
+stardog:1685 a :router .
+stardog:1765 a :router ;
+   :connects stardog:1686 .
+stardog:2029 a :router ;
+   :connects stardog:1688 .
+stardog:1691 a :router .
+stardog:1704 a :router .
+stardog:1705 a :router .
+stardog:1767 a :router ;
+   :connects stardog:1710 .
+stardog:1921 a :router ;
+   :connects stardog:1913 , stardog:1721 .
+stardog:1834 a :router ;
+   :connects stardog:1733 .
+stardog:2041 a :router ;
+   :connects stardog:1738 .
+stardog:1764 a :router ;
+   :connects stardog:1750 .
+stardog:1975 a :router ;
+   :connects stardog:1750 .
+stardog:1758 a :router .
+stardog:1771 a :router .
+stardog:1774 a :router .
+stardog:1816 a :router ;
+   :connects stardog:1792 .
+stardog:1794 a :router .
+stardog:2113 a :router ;
+   :connects stardog:1796 .
+stardog:1828 a :router ;
+   :connects stardog:1801 .
+stardog:1868 a :router ;
+   :connects stardog:1801 .
+stardog:1844 a :router ;
+   :connects stardog:1817 .
+stardog:1823 a :router .
+stardog:1856 a :router ;
+   :connects stardog:1824 .
+stardog:1907 a :router ;
+   :connects stardog:1827 .
+stardog:1865 a :router ;
+   :connects stardog:1846 .
+stardog:1848 a :router .
+stardog:1891 a :router .
+stardog:1988 a :router ;
+   :connects stardog:1892 .
+stardog:2037 a :router ;
+   :connects stardog:1892 .
+stardog:1930 a :router ;
+   :connects stardog:1902 .
+stardog:2058 a :router ;
+   :connects stardog:1916 .
+stardog:1934 a :router .
+stardog:2107 a :router ;
+   :connects stardog:1944 .
+stardog:1954 a :router .
+stardog:1974 a :router .
+stardog:1994 a :router .
+stardog:2004 a :router .
+stardog:2017 a :router .
+stardog:2023 a :router .
