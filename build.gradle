@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 ext {
-	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '8.1.1'
+	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '9.0.0'
 	projectVersion = '0.0.6'
 
 	distPath = "${projectDir}/dist"
@@ -14,8 +14,8 @@ allprojects {
 	group = 'com.complexible.stardog'
 	version = projectVersion
 	// also configure in idea.gradle
-	sourceCompatibility = '1.8'
-	targetCompatibility = '1.8'
+	sourceCompatibility = '11'
+	targetCompatibility = '11'
 
 	repositories {
 		maven {
