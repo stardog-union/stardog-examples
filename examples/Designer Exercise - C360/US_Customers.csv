@@ -1,4 +1,4 @@
-customer_id,first_name,last_name,email,ssn,picture,phone,location,language,full_name,gender,race
+customer_id,first_name,last_name,email,ssn,picture,phone,location_id,language,full_name,gender,race
 1,Gabriello,Stocky,gstocky0@umich.edu,723-58-6387,"error: wrong number of arguments (given 3, expected 0)",786-509-8335,5ca80b84-441f-4bb7-b9a7-494ceb8a7d5e,Malay,Gabriello Stocky,Male,Tohono O'Odham
 2,Merna,Fruchter,mfruchter1@g.co,843-48-1389,"error: wrong number of arguments (given 3, expected 0)",879-158-7893,3dea5206-1db4-4d4e-a1fc-7b516a9d505d,English,Merna Fruchter,Female,Salvadoran
 3,Nelly,Bloys,nbloys2@nps.gov,510-92-1277,"error: wrong number of arguments (given 3, expected 0)",638-789-1317,bc457ce7-1b3b-4580-ae0b-2c941fe045ec,Malagasy,Nelly Bloys,Female,Colville

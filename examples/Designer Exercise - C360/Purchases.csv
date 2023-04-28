@@ -1,4 +1,4 @@
-purchase_id,pid,date,time,quantity,price,customer_id,card_id,reward_account
+purchase_id,product_id,date,time,quantity,price,customer_id,card_id,reward_account
 6d2ef7fd-19ed-4099-bc56-eea2f9ac0e6d,80,2015-10-18,4:22 PM,19,17165.17,1,1e067c13-1c62-4405-a2f4-8f523d11ad79,95c3dc58-4a95-494f-bc40-365c61700602
 771d35f8-757f-4ee4-92c3-2afe6d760d50,166,2022-08-26,7:40 PM,24,4389.6,1,1e067c13-1c62-4405-a2f4-8f523d11ad79,78481104-df9e-46a9-b494-343602468979
 33fce93e-7dc7-443c-b39d-efc6c91edc8c,280,2017-04-10,4:30 AM,5,665,1,1e067c13-1c62-4405-a2f4-8f523d11ad79,95c3dc58-4a95-494f-bc40-365c61700602
