@@ -22,7 +22,7 @@ dependencies {
 	compile "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
 
 	// external apis
-	compile "com.complexible.stardog.rdf4j:stardog-rdf4j-core:${stardogVersion}"
+	compile "com.complexible.stardog.rdf4j:stardog-rdf4j:${stardogVersion}"
 	compile "org.eclipse.rdf4j:rdf4j-runtime:2.2.4"
 	compile "com.complexible.stardog.jena:stardog-jena:${stardogVersion}"
 }
