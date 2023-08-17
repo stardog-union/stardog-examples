@@ -72,7 +72,7 @@ namespace DotNetRDFConsoleSample
                 //}
 
                 // Run a SPARQL query
-                object results = stardogConn.Query("SELECT * WHERE { GRAPH ?g { ?s ?p ?o } } LIMIT 100");
+                object results = stardogConn.Query("SELECT * WHERE { ?s ?p ?o } LIMIT 100");
                 if (results is SparqlResultSet)
                 {
                     SparqlResultSet rset = (SparqlResultSet)results;
