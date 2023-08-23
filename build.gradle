@@ -23,6 +23,10 @@ allprojects {
 		}
 		mavenLocal()
 		mavenCentral()
+		maven {
+			url 'https://jitpack.io'
+		}
+
 	}
 
 	tasks.withType(Test) {
