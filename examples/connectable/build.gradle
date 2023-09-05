@@ -2,8 +2,8 @@ group = "com.complexible.stardog.examples.connectable"
 
 dependencies {
 	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
-	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
+	implementation platform("com.complexible.stardog:server:${stardogVersion}")
+	implementation "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
 
-	testRuntime "com.complexible.stardog:client-http:${stardogVersion}"
+	testRuntimeOnly platform("com.complexible.stardog:client-http:${stardogVersion}")
 }

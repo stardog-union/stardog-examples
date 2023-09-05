@@ -2,8 +2,8 @@ group = "com.complexible.stardog.examples.service"
 
 dependencies {
 	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
-	compile "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
-	compile "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
-	compile "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
+	implementation platform("com.complexible.stardog:server:${stardogVersion}")
+	implementation "com.stardog.stark.query:stardog-stark-query-api:${stardogVersion}"
+	implementation "com.stardog.stark.io:stardog-stark-io-api:${stardogVersion}"
+	implementation "com.stardog.stark.query.io:stardog-stark-query-io:${stardogVersion}"
 }

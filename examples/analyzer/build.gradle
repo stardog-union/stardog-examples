@@ -1,7 +1,7 @@
 group = "com.complexible.stardog.examples.analyzer"
 
 dependencies {
-	compile "org.apache.lucene:lucene-analyzers-common:4.7.2"
+	implementation "org.apache.lucene:lucene-analyzers-common:4.7.2"
 
-	compile "com.complexible.stardog:server:${stardogVersion}"
+	implementation platform("com.complexible.stardog:server:${stardogVersion}")
 }
