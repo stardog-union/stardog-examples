@@ -23,6 +23,10 @@ allprojects {
 		}
 		mavenLocal()
 		mavenCentral()
+		maven {
+			url 'https://jitpack.io'
+		}
+
 	}
 
 	tasks.withType(Test) {
@@ -36,10 +40,10 @@ subprojects {
 
 	// common deps
 	dependencies {
-		compile 'org.slf4j:slf4j-api:1.7.12'
-		compile 'org.slf4j:slf4j-jdk14:1.7.12'
+		implementation 'org.slf4j:slf4j-api:1.7.12'
+		implementation 'org.slf4j:slf4j-jdk14:1.7.12'
 
-		testCompile 'junit:junit:4.12'
+		testImplementation 'junit:junit:4.12'
 	}
 
 	sourceSets {

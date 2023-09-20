@@ -2,5 +2,5 @@ group = "com.complexible.stardog.examples.function"
 
 dependencies {
 	// server core modules
-	compile "com.complexible.stardog:server:${stardogVersion}"
+	implementation platform("com.complexible.stardog:server:${stardogVersion}")
 }
