@@ -15,6 +15,8 @@
 
 package com.complexible.stardog.examples.api;
 
+import java.util.Set;
+
 import com.complexible.stardog.api.ConnectionConfiguration;
 import com.complexible.stardog.api.admin.AdminConnection;
 import com.complexible.stardog.api.admin.AdminConnectionConfiguration;
@@ -23,6 +25,7 @@ import com.complexible.stardog.examples.TestServer;
 import com.complexible.stardog.reasoning.ExpressionWriter;
 import com.complexible.stardog.reasoning.Proof;
 import com.complexible.stardog.reasoning.ProofWriter;
+import com.complexible.stardog.reasoning.ReasoningOptions;
 import com.stardog.stark.IRI;
 import com.stardog.stark.OWL;
 import com.stardog.stark.Values;
@@ -63,8 +66,11 @@ public class ReasoningExplanationExample {
 					aAdminConnection.drop("reasoningTest");
 				}
 
-				// Create a disk-based database with default settings
-				aAdminConnection.newDatabase("reasoningTest").create();
+				// Create a database with a dedicated schema graph
+				IRI schemaGraph = Values.iri("graph:schema");
+				aAdminConnection.newDatabase("reasoningTest")
+								.set(ReasoningOptions.SCHEMA_GRAPHS, Set.of(schemaGraph))
+				                .create();
 				// Open a `Connection` to the database we just created with reasoning turned on.
 				// We'll use `as(...)` to give us a view of the parent connection that exposes the Stardog
 				// [reasoning capabilities](http://docs.stardog.com/javadoc/snarl/com/complexible/stardog/api/reasoning/ReasoningConnection.html).
@@ -77,8 +83,8 @@ public class ReasoningExplanationExample {
 					// Add a simple schema and couple instance triples to the database that we'll use for the example
 					aReasoningConnection.begin();
 					aReasoningConnection.add()
-					                    .statement(p, RDFS.DOMAIN, B)
-					                    .statement(B, RDFS.SUBCLASSOF, A)
+					                    .statement(p, RDFS.DOMAIN, B, schemaGraph)
+					                    .statement(B, RDFS.SUBCLASSOF, A, schemaGraph)
 					                    .statement(x, p, y)
 					                    .statement(z, RDF.TYPE, B);
 					aReasoningConnection.commit();
@@ -133,7 +139,7 @@ public class ReasoningExplanationExample {
 					// inconsistency.
 					aReasoningConnection.begin();
 					aReasoningConnection.add()
-					                    .statement(A, OWL.DISJOINTWITH, C)
+					                    .statement(A, OWL.DISJOINTWITH, C, schemaGraph)
 					                    .statement(z, RDF.TYPE, C);
 					aReasoningConnection.commit();
 
