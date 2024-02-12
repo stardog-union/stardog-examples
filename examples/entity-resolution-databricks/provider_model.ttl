@@ -1,0 +1,178 @@
+@prefix : <http://api.stardog.com/> .
+@prefix sql: <tag:stardog:api:sql:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix so: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix stardog: <tag:stardog:api:> .
+
+stardog:EntityMatch a owl:Class ;
+    rdfs:label "Entity Match" .
+
+stardog:EntityMatchInfo a owl:Class ;
+    rdfs:label "Entity Match Info" .
+
+stardog:Entity1 a owl:ObjectProperty ;
+    rdfs:label "entity 1" ;
+    so:domainIncludes stardog:EntityMatchInfo ;
+    so:rangeIncludes <urn:provider:model:Address> , <urn:provider:model:Physician> .
+
+<urn:provider:model:Physician> a owl:Class ;
+    rdfs:label "Physician" .
+
+stardog:Entity2 a owl:ObjectProperty ;
+    rdfs:label "entity 2" ;
+    so:domainIncludes stardog:EntityMatchInfo ;
+    so:rangeIncludes <urn:provider:model:Address> , <urn:provider:model:Physician> .
+
+stardog:entityMatch a owl:ObjectProperty ;
+    rdfs:label "has entity match" ;
+    so:domainIncludes <urn:provider:model:Address> , <urn:provider:model:Physician> ;
+    so:rangeIncludes stardog:EntityMatch .
+
+stardog:hasEntityMatchInfo a owl:ObjectProperty ;
+    rdfs:label "has entity match info" ;
+    so:domainIncludes stardog:EntityMatch ;
+    so:rangeIncludes stardog:EntityMatchInfo .
+
+stardog:Score a owl:DatatypeProperty ;
+    rdfs:label "score" ;
+    so:domainIncludes stardog:EntityMatchInfo ;
+    so:rangeIncludes xsd:double .
+
+<urn:provider:model:source> a owl:DatatypeProperty ;
+    rdfs:label "source" ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:Address> a owl:Class ;
+    rdfs:label "Address" .
+
+<urn:provider:model:Source> a owl:Class ;
+    rdfs:label "Source" .
+
+<urn:provider:model:Specialty> a owl:Class ;
+    rdfs:label "Specialty" .
+
+<urn:provider:model:University> a owl:Class ;
+    rdfs:label "University" .
+
+<urn:provider:model:attended_medical_school> a owl:ObjectProperty ;
+    rdfs:label "attended medical school" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes <urn:provider:model:University> .
+
+<urn:provider:model:primary_practice_address> a owl:ObjectProperty ;
+    rdfs:label "primary practice address" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes <urn:provider:model:Address> .
+
+<urn:provider:model:sourced_from> a owl:ObjectProperty ;
+    rdfs:label "sourced from" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes <urn:provider:model:Source> .
+
+<urn:provider:model:specializes_in> a owl:ObjectProperty ;
+    rdfs:label "specializes in" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes <urn:provider:model:Specialty> .
+
+<urn:provider:model:city> a owl:DatatypeProperty ;
+    rdfs:label "city" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:first_name> a owl:DatatypeProperty ;
+    rdfs:label "first name" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:individual_pac_id> a owl:DatatypeProperty ;
+    rdfs:label "individual pac id" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:last_name> a owl:DatatypeProperty ;
+    rdfs:label "last name" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:middle_initial> a owl:DatatypeProperty ;
+    rdfs:label "middle initial" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:npi> a owl:DatatypeProperty ;
+    rdfs:comment "National Provider Identifier is a unique identification number for covered recipient physician (and not the NPI of a group the physician belongs to)." ;
+    rdfs:label "npi" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:org_pac_id> a owl:DatatypeProperty ;
+    rdfs:label "org pac id" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:postal_code> a owl:DatatypeProperty ;
+    rdfs:label "postal code" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:profile_id> a owl:DatatypeProperty ;
+    rdfs:comment "Open Payments system-generated unique identifier for physician profile with the ownership or investment interest being reported" ;
+    rdfs:label "profile id" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:province> a owl:DatatypeProperty ;
+    rdfs:label "province" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:school_name> a owl:DatatypeProperty ;
+    rdfs:label "school name" ;
+    so:domainIncludes <urn:provider:model:University> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:source_name> a owl:DatatypeProperty ;
+    rdfs:label "source name" ;
+    so:domainIncludes <urn:provider:model:Source> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:specialty_name> a owl:DatatypeProperty ;
+    rdfs:label "specialty name" ;
+    so:domainIncludes <urn:provider:model:Specialty> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:state> a owl:DatatypeProperty ;
+    rdfs:label "state" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:street_address_line_one> a owl:DatatypeProperty ;
+    rdfs:label "street address line one" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:street_address_line_two> a owl:DatatypeProperty ;
+    rdfs:label "street address line two" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:zip_code> a owl:DatatypeProperty ;
+    rdfs:label "zip code" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:full_name> a owl:DatatypeProperty ;
+    rdfs:label "full name" ;
+    so:domainIncludes <urn:provider:model:Physician> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model:full_address> a owl:DatatypeProperty ;
+    rdfs:label "full address" ;
+    so:domainIncludes <urn:provider:model:Address> ;
+    so:rangeIncludes xsd:string .
+
+<urn:provider:model> rdfs:label "provider" ;
+    so:datePublished "2023-08-22T15:35:51.645Z"^^xsd:dateTime .

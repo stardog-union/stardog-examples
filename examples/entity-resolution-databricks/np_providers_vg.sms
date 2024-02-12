@@ -1,0 +1,60 @@
+prefix : <http://api.stardog.com/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix so: <https://schema.org/>
+prefix stardog: <tag:stardog:api:>
+prefix provider: <urn:provider:model:>
+
+# national providers
+MAPPING
+FROM SQL {
+  SELECT *
+  FROM `main`.`entity_resolution_demo`.`nationalprovidersclean`
+}
+TO {
+  ?Address_iri a provider:Address ;
+    rdfs:label ?Full_Street_Address ;
+    provider:street_address_line_one ?Line_1_Street_Address ;
+    provider:street_address_line_two ?Line_2_Street_Address ;
+    provider:full_address ?Full_Street_Address ;
+    provider:city ?City ;
+    provider:state ?State ;
+    provider:zip_code ?Zip_Code .
+
+  ?Physician_iri a provider:Physician ;
+    rdfs:label ?Full_Name ;
+    provider:first_name ?First_Name ;
+    provider:last_name ?Last_Name ;
+    provider:middle_initial ?Middle_Name ;
+    provider:full_name ?Full_Name;
+    provider:npi ?NPI .
+
+  ?Source_iri a provider:Source ;
+    rdfs:label ?source ;
+    provider:source_name ?source .
+
+  ?Specialty_iri a provider:Specialty ;
+    rdfs:label ?Specialty ;
+    provider:specialty_name ?Specialty .
+
+  ?University_iri a provider:University ;
+    rdfs:label ?Medical_School_Name ;
+    provider:school_name ?Medical_School_Name .
+
+  ?Physician_iri provider:attended_medical_school ?University_iri .
+ 
+  ?Physician_iri provider:primary_practice_address ?Address_iri .
+
+  ?Physician_iri provider:sourced_from ?Source_iri .
+
+  ?Physician_iri provider:specializes_in ?Specialty_iri .
+}
+WHERE {
+  BIND(TEMPLATE("urn:provider:data:Physician:NP_{NPI}") AS ?Physician_iri)
+  BIND(TEMPLATE("urn:provider:data:Address:{Full_Street_Address}_{City}_{State}_{Zip_Code}") AS ?Address_iri)
+  BIND(TEMPLATE("urn:provider:data:Specialty:{Specialty}") AS ?Specialty_iri)
+  BIND(TEMPLATE("urn:provider:data:Source:{source}") AS ?Source_iri)
+  BIND(TEMPLATE("urn:provider:data:University:{Medical_School_Name}") AS ?University_iri)
+}
