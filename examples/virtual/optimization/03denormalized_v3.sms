@@ -27,7 +27,8 @@ MAPPING :renormalizing_by_latest_year
 FROM SQL {
   SELECT actor_id AS id, name
   FROM Roles
-  ORDER BY "year" DESC
+  -- pick the latest year; include name in sort to make the outcome deterministic
+  ORDER BY actor_id, "year" DESC, name
   LIMIT 1
 }
 TO {
