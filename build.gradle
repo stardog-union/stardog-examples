@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 ext {
-	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '11.2.0'
+	stardogVersion = project.hasProperty("stardogVersion") ? project.getProperty("stardogVersion") : '12.0.0'
 	projectVersion = '0.0.6'
 
 	distPath = "${projectDir}/dist"

@@ -1,7 +1,0 @@
-group = "com.complexible.stardog.examples.docs"
-
-dependencies {
-	implementation platform("com.complexible.stardog:server:${stardogVersion}")
-	implementation platform("com.complexible.stardog:client-http:${stardogVersion}")
-	implementation "com.complexible.stardog.bites:stardog-bites-protocols-http:${stardogVersion}"
-}
