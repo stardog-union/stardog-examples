@@ -8,9 +8,9 @@ ext {
 	stardogRepo = project.hasProperty("stardogRepo") ? project.getProperty("stardogRepo") : "https://maven.stardog.com"
 	stardogLib = project.hasProperty("stardogLib") ? project.getProperty("stardogLib") : "."
 
-	guavaVersion = "33.2.1-jre"
+	guavaVersion = "33.4.0-jre"
 	junitVersion = "4.12"
-	rdf4jRuntimeVersion = "2.2.4"
+	rdf4jRuntimeVersion = "3.7.7"
 	slf4jVersion = "2.0.13"
 }
 
