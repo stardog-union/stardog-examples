@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING :denormalized
+MAPPING :denormalized1
 FROM SQL {
   SELECT * FROM Roles
 }

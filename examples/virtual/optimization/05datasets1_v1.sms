@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING :datasets1
+MAPPING :datasets1_v1
 FROM SQL {
   SELECT * FROM Actors
 }
