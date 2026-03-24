@@ -1,6 +1,6 @@
 PREFIX : <urn:>
 
-MAPPING :datasets2
+MAPPING :datasets2_v2
 FROM SQL {
   SELECT * FROM Movies
 }

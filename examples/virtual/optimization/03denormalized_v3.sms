@@ -23,13 +23,11 @@ WHERE {
 
 ;
 
-MAPPING :renormalizing_by_latest_year
+MAPPING :renormalizing_by_aggregated_name
 FROM SQL {
-  SELECT actor_id AS id, name
+  SELECT actor_id AS id, ANY_VALUE(name) as name
   FROM Roles
-  -- pick the latest year; include name in sort to make the outcome deterministic
-  ORDER BY actor_id, "year" DESC, name
-  LIMIT 1
+  GROUP BY actor_id
 }
 TO {
   ?actor a :Actor ;

@@ -27,6 +27,13 @@ SELECT * FROM <virtual://denormalized2> {
        rdfs:label ?name .
 }
 
+# Renormalizing by Aggregated Name
+
+SELECT * FROM <virtual://denormalized3> {
+    ?s a :Actor ;
+       rdfs:label ?name .
+}
+
 # Map rdf:type Conservatively
 
 SELECT * FROM <virtual://actors1> {
@@ -110,45 +117,39 @@ SELECT * FROM NAMED :g1 FROM NAMED :g2 {
 # Datasets and Virtual Graphs
 
 SELECT * {
-    GRAPH <virtual://datasets1> {
+    GRAPH <virtual://datasets1_v1> {
         ?s a :Actor .
         ?s rdfs:label "Tom Hanks" .
     }
 }
 
 SELECT * {
-    GRAPH <virtual://datasets1> {
+    GRAPH <virtual://datasets2_v1> {
         ?s a :Actor .
         ?s rdfs:label "Tom Hanks" .
     }
 }
 
-SELECT * FROM NAMED <virtual://datasets1> FROM NAMED <virtual://datasets2> {
+SELECT * FROM NAMED <virtual://datasets1_v1> FROM NAMED <virtual://datasets2_v1> {
     GRAPH ?g {
         ?s a :Actor .
         ?s rdfs:label "Tom Hanks" .
     }
 }
 
-SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+SELECT * FROM <virtual://datasets1_v1> FROM <virtual://datasets2_v1> {
     ?s a :Actor .
     ?s rdfs:label "Tom Hanks" .
 }
 
 # Unique Predicates, Revisited
 
-SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+SELECT * FROM <virtual://datasets1_v1> FROM <virtual://datasets2_v1> {
     :node:2 a ?type .
 }
 
-SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
+SELECT * FROM <virtual://datasets1_v2> FROM <virtual://datasets2_v2> {
     ?s a :Actor .
-    ?s rdfs:label "Tom Hanks" .
-}
-
-# Areas for Improvement
-
-SELECT * FROM <virtual://datasets1> FROM <virtual://datasets2> {
     ?s rdfs:label "Tom Hanks" .
 }
 
