@@ -11,7 +11,7 @@ ext {
 	guavaVersion = "33.4.0-jre"
 	junitVersion = "4.12"
 	rdf4jRuntimeVersion = "3.7.7"
-    thriftVersion = "0.17.0" // excluded from Stardog deps due to detected vulnerabilities, should be aligned with the Jena version (4.7.0 depends on 0.17.0)
+    jenaVersion = "4.7.0" // should correspond to the Jena version on Stardog repo. we only need it here because Stardog excludes Thrift due to a vulnerability, but we need it for examples.
 	slf4jVersion = "2.0.13"
 }
 
