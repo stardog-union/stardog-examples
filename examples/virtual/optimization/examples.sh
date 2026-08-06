@@ -2,6 +2,8 @@
 
 stardog-admin virtual add -o -f sms2 -n uniques examples.properties 01uniquekeys.sms
 
+stardog-admin virtual add -o -f sms2 -n fk_example examples.properties 01foreignkeys.sms
+
 stardog-admin virtual add -o -f sms2 -n denormalized1 examples.properties 03denormalized_v1.sms
 
 stardog-admin virtual add -o -f sms2 -n denormalized2 examples.properties 03denormalized_v2.sms

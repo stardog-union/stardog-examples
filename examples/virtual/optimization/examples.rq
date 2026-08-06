@@ -5,6 +5,18 @@ SELECT * FROM <virtual://uniques> {
        :yearFormed ?yearFormed .
 }
 
+# Foreign Keys and Inclusion Dependencies
+
+SELECT * FROM <virtual://fk_example> {
+    ?album a :Album ;
+       rdfs:label ?title ;
+       :band ?band .
+    # Including :Band adds a join unless an Albums.band_id->Bands.id fk exists
+    ?band a :Band .
+    # Including rdfs:label adds the join despite foreign.key.sets
+    # ?band rdfs:label ?name .
+}
+
 # Denormalized Data - version 1
 
 SELECT * FROM <virtual://denormalized1> {
