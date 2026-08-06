@@ -1,0 +1,31 @@
+PREFIX : <urn:>
+
+MAPPING :fk_example
+FROM SQL {
+  SELECT * FROM Bands
+}
+TO {
+  ?band a :Band ;
+    rdfs:label ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:band:{id}") AS ?band)
+}
+
+;
+
+MAPPING
+FROM SQL {
+  SELECT * FROM Albums
+}
+TO {
+  ?album a :Album ;
+    rdfs:label ?title ;
+    :year ?year ;
+    :band ?band .
+}
+WHERE {
+  BIND(TEMPLATE("urn:album:{id}") AS ?album)
+  BIND(TEMPLATE("urn:band:{band_id}") AS ?band)
+}
+
