@@ -46,6 +46,38 @@ SELECT * FROM <virtual://denormalized3> {
        rdfs:label ?name .
 }
 
+# Including Movie details in a Role query
+
+SELECT * FROM <virtual://denormalized2> {
+    ?role :movie ?movie ;
+          :character ?char_name .
+    ?movie rdfs:label ?title ;
+           :releaseYear ?year .
+}
+
+# Movies-only query with functional dependencies
+
+SELECT * FROM <virtual://denormalized2> {
+    ?movie rdfs:label ?title ;
+           :releaseYear ?year .
+}
+
+# Querying a deduplicated Movies view
+
+SELECT * FROM <virtual://denormalized5> {
+    ?movie rdfs:label ?title ;
+           :releaseYear ?year .
+}
+
+# Combining Movie and Roles with functional dependencies
+
+SELECT * FROM <virtual://denormalized5> {
+    ?role :movie ?movie ;
+          :character ?char_name .
+    ?movie rdfs:label ?title ;
+           :releaseYear ?year .
+}
+
 # Map rdf:type Conservatively
 
 SELECT * FROM <virtual://actors1> {

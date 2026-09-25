@@ -10,6 +10,10 @@ stardog-admin virtual add -o -f sms2 -n denormalized2 examples.properties 03deno
 
 stardog-admin virtual add -o -f sms2 -n denormalized3 examples.properties 03denormalized_v3.sms
 
+stardog-admin virtual add -o -f sms2 -n denormalized4 examples.properties 03denormalized_v4.sms
+
+stardog-admin virtual add -o -f sms2 -n denormalized5 examples.properties 03denormalized_v5.sms
+
 stardog-admin virtual add -o -f sms2 -n actor1 examples.properties 04rdftype_v1.sms
 
 stardog-admin virtual add -o -f sms2 -n actor2 examples.properties 04rdftype_v2.sms
