@@ -1,5 +1,6 @@
 # Unique Keys
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://uniques> {
     ?s rdfs:label ?label ;
        :yearFormed ?yearFormed .
@@ -7,6 +8,7 @@ SELECT * FROM <virtual://uniques> {
 
 # Foreign Keys and Inclusion Dependencies
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://fk_example> {
     ?album a :Album ;
        rdfs:label ?title ;
@@ -19,6 +21,7 @@ SELECT * FROM <virtual://fk_example> {
 
 # Denormalized Data - version 1
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized1> {
     ?s a :Actor ;
        rdfs:label ?name .
@@ -26,6 +29,7 @@ SELECT * FROM <virtual://denormalized1> {
 
 # Denormalized Data - version 2
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized2> {
     [] a :Role ;
         :actor ?actor ;
@@ -34,6 +38,7 @@ SELECT * FROM <virtual://denormalized2> {
 
 # Denormalized Data - query over an Actors view
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized2> {
     ?s a :Actor ;
        rdfs:label ?name .
@@ -41,13 +46,15 @@ SELECT * FROM <virtual://denormalized2> {
 
 # Renormalizing by Aggregated Name
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized3> {
     ?s a :Actor ;
        rdfs:label ?name .
 }
 
-# Including Movie details in a Role query
+# Including Movie details in a Role query (declare functional.dependency.sets in the properties file to remove the self-joins)
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized2> {
     ?role :movie ?movie ;
           :character ?char_name .
@@ -55,22 +62,25 @@ SELECT * FROM <virtual://denormalized2> {
            :releaseYear ?year .
 }
 
-# Movies-only query with functional dependencies
+# Movies-only query (declare functional.dependency.sets in the properties file for a single scan)
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized2> {
     ?movie rdfs:label ?title ;
            :releaseYear ?year .
 }
 
-# Querying a deduplicated Movies view
+# Querying a deduplicated Movies view (requires functional.dependency.sets in the properties file)
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized5> {
     ?movie rdfs:label ?title ;
            :releaseYear ?year .
 }
 
-# Combining Movie and Roles with functional dependencies
+# Combining Movie and Roles (requires functional.dependency.sets in the properties file)
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://denormalized5> {
     ?role :movie ?movie ;
           :character ?char_name .
@@ -80,22 +90,26 @@ SELECT * FROM <virtual://denormalized5> {
 
 # Map rdf:type Conservatively
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://actors1> {
     ?s a :Actor
 }
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://actors2> {
     ?s a :Actor
 }
 
 # Unique Predicates
 
+PREFIX : <urn:>
 SELECT * {
     GRAPH <virtual://predicates> {
         ?s rdfs:label "Tom Hanks"
     }
 }
 
+PREFIX : <urn:>
 SELECT * {
     GRAPH <virtual://predicates> {
         ?s :name "Tom Hanks"
@@ -104,8 +118,9 @@ SELECT * {
 
 # Mutually Exclusive Templates
 
+PREFIX : <urn:>
 SELECT * {
-    GRAPH <virtual://predicates> {
+    GRAPH <virtual://templates> {
         ?s a :Actor .
         ?s rdfs:label "Tom Hanks" .
     }
@@ -113,6 +128,7 @@ SELECT * {
 
 # SQL Functions and Query Outputs
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://remakes> {
     :movie:5
         :title ?title ;
@@ -120,6 +136,7 @@ SELECT * FROM <virtual://remakes> {
         rdfs:label ?label .
 }
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://remakes> {
     ?movie a :Movie ;
         :title "A Star is Born" ;
@@ -127,6 +144,7 @@ SELECT * FROM <virtual://remakes> {
         rdfs:label ?label .
 }
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://remakes> {
     ?movie a :Movie ;
         :title ?title ;
@@ -136,6 +154,7 @@ SELECT * FROM <virtual://remakes> {
 
 # FROM vs FROM NAMED
 
+PREFIX : <urn:>
 INSERT DATA {
     GRAPH :g1 {
         :a :knows :b, :d .
@@ -146,11 +165,13 @@ INSERT DATA {
     }
 }
 
+PREFIX : <urn:>
 SELECT * FROM :g1 FROM :g2 {
     :a :knows ?mutual .
     ?mutual :knows :c .
 }
 
+PREFIX : <urn:>
 SELECT * FROM NAMED :g1 FROM NAMED :g2 {
     GRAPH ?g {
         :a :knows ?mutual .
@@ -160,6 +181,7 @@ SELECT * FROM NAMED :g1 FROM NAMED :g2 {
 
 # Datasets and Virtual Graphs
 
+PREFIX : <urn:>
 SELECT * {
     GRAPH <virtual://datasets1_v1> {
         ?s a :Actor .
@@ -167,6 +189,7 @@ SELECT * {
     }
 }
 
+PREFIX : <urn:>
 SELECT * {
     GRAPH <virtual://datasets2_v1> {
         ?s a :Actor .
@@ -174,6 +197,7 @@ SELECT * {
     }
 }
 
+PREFIX : <urn:>
 SELECT * FROM NAMED <virtual://datasets1_v1> FROM NAMED <virtual://datasets2_v1> {
     GRAPH ?g {
         ?s a :Actor .
@@ -181,6 +205,7 @@ SELECT * FROM NAMED <virtual://datasets1_v1> FROM NAMED <virtual://datasets2_v1>
     }
 }
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://datasets1_v1> FROM <virtual://datasets2_v1> {
     ?s a :Actor .
     ?s rdfs:label "Tom Hanks" .
@@ -188,10 +213,12 @@ SELECT * FROM <virtual://datasets1_v1> FROM <virtual://datasets2_v1> {
 
 # Unique Predicates, Revisited
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://datasets1_v1> FROM <virtual://datasets2_v1> {
     :node:2 a ?type .
 }
 
+PREFIX : <urn:>
 SELECT * FROM <virtual://datasets1_v2> FROM <virtual://datasets2_v2> {
     ?s a :Actor .
     ?s rdfs:label "Tom Hanks" .
