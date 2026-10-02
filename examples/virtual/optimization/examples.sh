@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# Usage: ./examples.sh          create the virtual graphs over MySQL (examples.properties)
+# Usage: ./examples.sh          create the virtual graphs over an existing MySQL (examples.properties)
+#        ./examples.sh mysql    load the tables into a MySQL Docker container and
+#                               create the virtual graphs over it (examples.properties)
 #        ./examples.sh mssql    load the tables into a SQL Server Docker container and
 #                               create the virtual graphs over it (examples_mssql.properties)
 
@@ -10,7 +12,23 @@ cd "$(dirname "$0")"
 PROPS=examples.properties
 V3=03denormalized_v3.sms
 
-if [ "$1" = "mssql" ]; then
+if [ "$1" = "mysql" ]; then
+  if ! docker ps -a --format '{{.Names}}' | grep -qx mysql-examples; then
+    docker run -d --name mysql-examples -e MYSQL_ROOT_PASSWORD=pssword -p 3306:3306 mysql:8.4
+  fi
+  docker start mysql-examples > /dev/null
+
+  mysql() {
+    docker exec -i mysql-examples mysql -uroot -ppssword "$@" 2> >(grep -v 'Using a password' >&2)
+  }
+
+  until mysql -e "SELECT 1" > /dev/null 2>&1; do sleep 2; done
+
+  # 04rdftype.sql recreates Roles without the Keanu Reeves row, so 03denormalized.sql is loaded after it
+  for f in 01uniquekeys.sql 01foreignkeys.sql 02denormalized_songs.sql 04rdftype.sql 03denormalized.sql 05predicates.sql 06functions.sql; do
+    mysql < "$f" > /dev/null
+  done
+elif [ "$1" = "mssql" ]; then
   PROPS=examples_mssql.properties
   SA_PASSWORD='Examples#2026'
 
