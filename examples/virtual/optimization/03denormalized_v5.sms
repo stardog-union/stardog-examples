@@ -1,0 +1,34 @@
+PREFIX : <urn:>
+
+MAPPING :denormalized5
+FROM SQL {
+  SELECT * FROM Roles
+}
+TO {
+  ?role a :Role ;
+    :movie ?movie ;
+    :character ?char_name ;
+    :actor ?actor ;
+    :creditedAs ?name .
+}
+WHERE {
+  BIND(TEMPLATE("urn:role:{movie_id}_{actor_id}") AS ?role)
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+  BIND(TEMPLATE("urn:actor:{actor_id}") AS ?actor)
+}
+
+;
+
+MAPPING :distinct
+FROM SQL {
+  SELECT DISTINCT movie_id, title, "year"
+  FROM Roles 
+}
+TO {
+  ?movie a :Movie ;
+    rdfs:label ?title ;
+    :releaseYear "?year"^^xsd:integer .
+}
+WHERE {
+  BIND(TEMPLATE("urn:movie:{movie_id}") AS ?movie)
+}
